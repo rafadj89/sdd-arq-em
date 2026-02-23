@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPME: Plataforma de Interoperabilidad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Chart Container Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        /* Flow Animation Classes */
+        .flow-step { transition: all 0.3s ease; opacity: 0.5; border-left: 4px solid transparent; }
+        .flow-step.active { opacity: 1; border-left-color: #10b981; background-color: #f0fdf4; transform: translateX(10px); }
+        
+        /* Architecture Zone Interactive Cards */
+        .arch-card { transition: all 0.3s ease; cursor: pointer; }
+        .arch-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .arch-card.selected { border: 2px solid #3b82f6; background-color: #eff6ff; }
+
+        /* Tab System */
+        .infra-tab { transition: all 0.3s ease; cursor: pointer; padding: 12px 24px; font-weight: 600; border-bottom: 3px solid transparent; }
+        .infra-tab:hover { background-color: rgba(255,255,255,0.05); }
+        .infra-tab.active-tab { border-bottom-color: #3b82f6; color: #3b82f6; background-color: rgba(59,130,246,0.05); }
+        .infra-tab.active-tab-oci { border-bottom-color: #c74634; color: #c74634; background-color: rgba(199,70,52,0.05); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* OCI specific */
+        .oci-card { transition: all 0.3s ease; cursor: pointer; }
+        .oci-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(199, 70, 52, 0.15); }
+        .oci-card.selected { border: 2px solid #c74634; background-color: #fef2f0; }
+    </style>
+    <!-- Chosen Palette: Cyber-Gov (Deep Blue, Clean White, Technical Grey, Electric Green) -->
+    <!-- Application Structure Plan: 
+         1. Hero Dashboard: High-level summary of the solution and key metrics.
+         2. Architectural Blueprint: Interactive zone-based explorer (External, DMZ, Core, Data, DevOps) to drill down into technical components without overwhelming the user.
+         3. Data Flow Simulator: Step-by-step interactive walkthrough of a single transaction (CPO -> Open Data) to explain the logic.
+         4. OCPI Standards Explorer: Accordion/Tree view to break down the complex data requirements.
+         5. Volumetrics Calculator: Interactive input/output tool with Chart.js to visualize storage/throughput impacts.
+         6. Sandbox Preview: Visual representation of the developer experience.
+    -->
+    <!-- Visualization & Content Choices:
+         - Volumetrics: Line Chart (Chart.js) to show data accumulation over time based on user inputs.
+         - Arch Diagram: CSS Grid layout with interactive cards replacing a static image.
+         - Flow: Vertical interactive list using Vanilla JS to toggle states.
+         - Icons: Unicode characters to avoid SVG dependency.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold tracking-tight text-blue-400">⚡ UPME Interoperabilidad</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <button onclick="scrollToSection('roadmap')" class="hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors text-emerald-400">Roadmap</button>
+                        <button onclick="scrollToSection('dashboard')" class="hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Dashboard</button>
+                        <button onclick="scrollToSection('architecture'); switchInfraTab('onprem')" class="hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">On-Premise</button>
+                        <button onclick="scrollToSection('architecture'); switchInfraTab('oci')" class="hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors text-red-400">OCI Cloud</button>
+                        <button onclick="scrollToSection('flow')" class="hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Flujo de Datos</button>
+                        <button onclick="scrollToSection('volumetrics')" class="hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Calculadora</button>
+                        <button onclick="scrollToSection('sandbox')" class="hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sandbox</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+
+        <!-- Section 0: Project Roadmap -->
+        <section id="roadmap" class="scroll-mt-24">
+            <div class="mb-6">
+                <h2 class="text-3xl font-bold text-slate-900">Roadmap del Proyecto</h2>
+                <p class="text-slate-600 max-w-4xl">
+                    Plan de ejecución en 6 fases para la plataforma de interoperabilidad de electromovilidad. 
+                    Estimación para un equipo de 8 personas con entregas incrementales cada 3-4 semanas.
+                </p>
+            </div>
+
+            <!-- Team Composition -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mb-8">
+                <h3 class="font-bold text-lg text-slate-800 mb-4">👥 Composición del Equipo (8 personas)</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-blue-50 border border-blue-100 rounded-lg p-3 text-center">
+                        <div class="text-2xl mb-1">⚙️</div>
+                        <div class="font-bold text-sm text-blue-800">2 Dev Sr. Backend</div>
+                        <div class="text-xs text-blue-600 mt-1">Go, Python, Kafka, OCPI</div>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-100 rounded-lg p-3 text-center">
+                        <div class="text-2xl mb-1">🔧</div>
+                        <div class="font-bold text-sm text-blue-800">2 Dev Jr. Backend</div>
+                        <div class="text-xs text-blue-600 mt-1">APIs, Tests, ETL, Docs</div>
+                    </div>
+                    <div class="bg-purple-50 border border-purple-100 rounded-lg p-3 text-center">
+                        <div class="text-2xl mb-1">🎨</div>
+                        <div class="font-bold text-sm text-purple-800">1 Dev Sr. Frontend</div>
+                        <div class="text-xs text-purple-600 mt-1">React, Dashboards, UX</div>
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-lg p-3 text-center">
+                        <div class="text-2xl mb-1">🚀</div>
+                        <div class="font-bold text-sm text-emerald-800">1 DevOps Sr. + 1 Jr.</div>
+                        <div class="text-xs text-emerald-600 mt-1">OKE, ArgoCD, Terraform, CI/CD</div>
+                    </div>
+                </div>
+                <div class="mt-4 flex justify-center">
+                    <div class="bg-amber-50 border border-amber-100 rounded-lg p-3 text-center w-fit">
+                        <div class="text-2xl mb-1">🏗️</div>
+                        <div class="font-bold text-sm text-amber-800">1 Arquitecto</div>
+                        <div class="text-xs text-amber-600 mt-1">Diseño, Governance, Code Review, Decisiones técnicas transversales</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Timeline (Gantt-style) -->
+            <div class="bg-slate-900 rounded-xl p-6 mb-8 shadow-2xl overflow-x-auto">
+                <div class="text-xs text-slate-500 mb-4">TIMELINE — ESTIMACIÓN 24 SEMANAS (~6 MESES)</div>
+                <div class="min-w-[700px]">
+                    <!-- Header months -->
+                    <div class="grid grid-cols-12 gap-1 mb-2 text-center">
+                        <div class="col-span-2 text-xs text-slate-400 border-b border-slate-700 pb-1">Mes 1</div>
+                        <div class="col-span-2 text-xs text-slate-400 border-b border-slate-700 pb-1">Mes 2</div>
+                        <div class="col-span-2 text-xs text-slate-400 border-b border-slate-700 pb-1">Mes 3</div>
+                        <div class="col-span-2 text-xs text-slate-400 border-b border-slate-700 pb-1">Mes 4</div>
+                        <div class="col-span-2 text-xs text-slate-400 border-b border-slate-700 pb-1">Mes 5</div>
+                        <div class="col-span-2 text-xs text-slate-400 border-b border-slate-700 pb-1">Mes 6</div>
+                    </div>
+                    <!-- Phase bars -->
+                    <div class="space-y-2 mt-3">
+                        <div class="grid grid-cols-12 gap-1 items-center">
+                            <div class="col-span-3 bg-slate-700 rounded px-2 py-2 text-xs text-slate-200 font-semibold text-center">F1: Fundación</div>
+                            <div class="col-span-9"></div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-1 items-center">
+                            <div class="col-span-2"></div>
+                            <div class="col-span-4 bg-blue-600 rounded px-2 py-2 text-xs text-white font-semibold text-center">F2: Core OCPI + Cárgame</div>
+                            <div class="col-span-6"></div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-1 items-center">
+                            <div class="col-span-4"></div>
+                            <div class="col-span-3 bg-green-600 rounded px-2 py-2 text-xs text-white font-semibold text-center">F3: Data Lake</div>
+                            <div class="col-span-5"></div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-1 items-center">
+                            <div class="col-span-5"></div>
+                            <div class="col-span-3 bg-purple-600 rounded px-2 py-2 text-xs text-white font-semibold text-center">F4: Frontend</div>
+                            <div class="col-span-4"></div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-1 items-center">
+                            <div class="col-span-7"></div>
+                            <div class="col-span-3 bg-amber-600 rounded px-2 py-2 text-xs text-white font-semibold text-center">F5: Sandbox</div>
+                            <div class="col-span-2"></div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-1 items-center">
+                            <div class="col-span-9"></div>
+                            <div class="col-span-3 bg-rose-600 rounded px-2 py-2 text-xs text-white font-semibold text-center">F6: DRP & Go-Live</div>
+                        </div>
+                    </div>
+                    <!-- Milestones -->
+                    <div class="grid grid-cols-12 gap-1 mt-4 text-center">
+                        <div class="col-span-3 text-xs text-emerald-400">▲ MVP Infra</div>
+                        <div class="col-span-3 text-xs text-blue-400">▲ API OCPI Live</div>
+                        <div class="col-span-2 text-xs text-green-400">▲ Lake Ready</div>
+                        <div class="col-span-2 text-xs text-purple-400">▲ Portal</div>
+                        <div class="col-span-2 text-xs text-rose-400">▲ GO-LIVE</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phases Detail -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Phase 1: Foundation -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-slate-700 px-4 py-3 flex items-center justify-between">
+                        <h4 class="font-bold text-white text-sm">Fase 1: Fundación & Infraestructura</h4>
+                        <span class="text-xs bg-slate-600 text-slate-200 px-2 py-1 rounded">Sem 1-4</span>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="text-xs text-slate-500 font-semibold uppercase tracking-wide mb-2">Entregables</div>
+                        <ul class="text-sm text-slate-600 space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-slate-400">▸</span>Provisión OCI: VCN, subnets, OKE (Dev + QA)</li>
+                            <li class="flex items-start gap-2"><span class="text-slate-400">▸</span>ArgoCD + pipelines CI/CD (OCIR, OCI DevOps)</li>
+                            <li class="flex items-start gap-2"><span class="text-slate-400">▸</span>Terraform modules base (IaC reutilizable)</li>
+                            <li class="flex items-start gap-2"><span class="text-slate-400">▸</span>Monorepo setup, branching strategy, code standards</li>
+                            <li class="flex items-start gap-2"><span class="text-slate-400">▸</span>OCI Vault + secrets management</li>
+                            <li class="flex items-start gap-2"><span class="text-slate-400">▸</span>Observabilidad base: Monitoring + Logging Analytics</li>
+                        </ul>
+                        <div class="border-t border-slate-100 pt-3 mt-3">
+                            <div class="text-xs font-semibold text-slate-500 mb-2">EQUIPO ASIGNADO</div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">DevOps Sr (Lead)</span>
+                                <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">DevOps Jr</span>
+                                <span class="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded font-medium">Arquitecto</span>
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">1 Dev Sr Backend</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2: Core OCPI + Cárgame -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-blue-600 px-4 py-3 flex items-center justify-between">
+                        <h4 class="font-bold text-white text-sm">Fase 2: Core OCPI & Cárgame</h4>
+                        <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">Sem 3-8</span>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="text-xs text-slate-500 font-semibold uppercase tracking-wide mb-2">Entregables</div>
+                        <ul class="text-sm text-slate-600 space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-blue-400">▸</span>Microservicio de Ingesta (Go) — alta concurrencia</li>
+                            <li class="flex items-start gap-2"><span class="text-blue-400">▸</span>Validador OCPI 2.2.1 (Python) — schema + business rules</li>
+                            <li class="flex items-start gap-2"><span class="text-blue-400">▸</span>OCI Streaming (Kafka) — tópicos y consumers</li>
+                            <li class="flex items-start gap-2"><span class="text-blue-400">▸</span>Integración Cárgame: VPN Connect + API + Circuit Breaker</li>
+                            <li class="flex items-start gap-2"><span class="text-blue-400">▸</span>Auth Server: OAuth2 + mTLS + API Keys por CPO</li>
+                            <li class="flex items-start gap-2"><span class="text-blue-400">▸</span>API Gateway: rate limiting, routing, JWT validation</li>
+                            <li class="flex items-start gap-2"><span class="text-blue-400">▸</span>Tests unitarios + integración (cobertura > 80%)</li>
+                        </ul>
+                        <div class="border-t border-slate-100 pt-3 mt-3">
+                            <div class="text-xs font-semibold text-slate-500 mb-2">EQUIPO ASIGNADO</div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">2 Dev Sr Backend (Lead)</span>
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">2 Dev Jr Backend</span>
+                                <span class="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded font-medium">Arquitecto</span>
+                                <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">DevOps Sr (VPN)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3: Data Lake -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-green-600 px-4 py-3 flex items-center justify-between">
+                        <h4 class="font-bold text-white text-sm">Fase 3: Data Lake & Gobierno</h4>
+                        <span class="text-xs bg-green-500 text-white px-2 py-1 rounded">Sem 7-10</span>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="text-xs text-slate-500 font-semibold uppercase tracking-wide mb-2">Entregables</div>
+                        <ul class="text-sm text-slate-600 space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-green-500">▸</span>OCI Object Storage: buckets Raw / Curated / Analytics</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500">▸</span>Autonomous DB: esquema normalizado, vistas materializadas</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500">▸</span>OCI Data Flow: pipelines ETL (Spark) para transformación</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500">▸</span>OCI Data Catalog: metadatos, clasificación PII, linaje</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500">▸</span>DLQ + CQRS + Event Sourcing patterns</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500">▸</span>Data quality tests (Great Expectations / dbt)</li>
+                        </ul>
+                        <div class="border-t border-slate-100 pt-3 mt-3">
+                            <div class="text-xs font-semibold text-slate-500 mb-2">EQUIPO ASIGNADO</div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">1 Dev Sr Backend (Lead)</span>
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">2 Dev Jr Backend</span>
+                                <span class="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded font-medium">Arquitecto</span>
+                                <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">DevOps Jr (Storage)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4: Frontend & Dashboards -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-purple-600 px-4 py-3 flex items-center justify-between">
+                        <h4 class="font-bold text-white text-sm">Fase 4: Portal & Dashboards</h4>
+                        <span class="text-xs bg-purple-500 text-white px-2 py-1 rounded">Sem 9-13</span>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="text-xs text-slate-500 font-semibold uppercase tracking-wide mb-2">Entregables</div>
+                        <ul class="text-sm text-slate-600 space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-purple-500">▸</span>Portal UPME: React + TailwindCSS + Vite</li>
+                            <li class="flex items-start gap-2"><span class="text-purple-500">▸</span>Dashboard operacional: KPIs en tiempo real</li>
+                            <li class="flex items-start gap-2"><span class="text-purple-500">▸</span>Mapa interactivo de estaciones (Leaflet/Mapbox)</li>
+                            <li class="flex items-start gap-2"><span class="text-purple-500">▸</span>Reportes Resolución 40559 (exportables PDF/CSV)</li>
+                            <li class="flex items-start gap-2"><span class="text-purple-500">▸</span>Panel de administración de CPOs</li>
+                            <li class="flex items-start gap-2"><span class="text-purple-500">▸</span>API Open Data para consulta pública</li>
+                        </ul>
+                        <div class="border-t border-slate-100 pt-3 mt-3">
+                            <div class="text-xs font-semibold text-slate-500 mb-2">EQUIPO ASIGNADO</div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded font-medium">Dev Sr Frontend (Lead)</span>
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">1 Dev Sr Backend (APIs)</span>
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">1 Dev Jr Backend (APIs)</span>
+                                <span class="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded font-medium">Arquitecto (UX review)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 5: Sandbox & Interoperability -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-amber-600 px-4 py-3 flex items-center justify-between">
+                        <h4 class="font-bold text-white text-sm">Fase 5: Sandbox & Onboarding CPO</h4>
+                        <span class="text-xs bg-amber-500 text-white px-2 py-1 rounded">Sem 13-17</span>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="text-xs text-slate-500 font-semibold uppercase tracking-wide mb-2">Entregables</div>
+                        <ul class="text-sm text-slate-600 space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-amber-500">▸</span>Portal de desarrolladores (developer.upme.gov.co)</li>
+                            <li class="flex items-start gap-2"><span class="text-amber-500">▸</span>Auto-registro de CPOs + generación de API Keys</li>
+                            <li class="flex items-start gap-2"><span class="text-amber-500">▸</span>Mock Server OCPI 2.2.1 con Swagger UI</li>
+                            <li class="flex items-start gap-2"><span class="text-amber-500">▸</span>Suite de validación automatizada (compliance tests)</li>
+                            <li class="flex items-start gap-2"><span class="text-amber-500">▸</span>Certificación digital de pruebas superadas</li>
+                            <li class="flex items-start gap-2"><span class="text-amber-500">▸</span>Documentación técnica + guías de integración</li>
+                        </ul>
+                        <div class="border-t border-slate-100 pt-3 mt-3">
+                            <div class="text-xs font-semibold text-slate-500 mb-2">EQUIPO ASIGNADO</div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded font-medium">Dev Sr Frontend</span>
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">1 Dev Sr Backend</span>
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">2 Dev Jr Backend</span>
+                                <span class="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded font-medium">Arquitecto (Docs)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 6: DRP, Hardening & Go-Live -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-rose-600 px-4 py-3 flex items-center justify-between">
+                        <h4 class="font-bold text-white text-sm">Fase 6: DRP, Hardening & Go-Live</h4>
+                        <span class="text-xs bg-rose-500 text-white px-2 py-1 rounded">Sem 17-24</span>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="text-xs text-slate-500 font-semibold uppercase tracking-wide mb-2">Entregables</div>
+                        <ul class="text-sm text-slate-600 space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-rose-500">▸</span>Provisión OKE Prod + región DR (OCI Full Stack DR)</li>
+                            <li class="flex items-start gap-2"><span class="text-rose-500">▸</span>Autonomous DB Data Guard (cross-region)</li>
+                            <li class="flex items-start gap-2"><span class="text-rose-500">▸</span>Object Storage replicación + Traffic Steering DNS</li>
+                            <li class="flex items-start gap-2"><span class="text-rose-500">▸</span>Penetration testing + SAST/DAST final</li>
+                            <li class="flex items-start gap-2"><span class="text-rose-500">▸</span>DR Drill (simulacro de failover completo)</li>
+                            <li class="flex items-start gap-2"><span class="text-rose-500">▸</span>Load testing (21.6M tx/mes simulados)</li>
+                            <li class="flex items-start gap-2"><span class="text-rose-500">▸</span>Go-Live: migración DNS + monitoreo 24/7 primera semana</li>
+                        </ul>
+                        <div class="border-t border-slate-100 pt-3 mt-3">
+                            <div class="text-xs font-semibold text-slate-500 mb-2">EQUIPO ASIGNADO</div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">DevOps Sr (Lead DRP)</span>
+                                <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">DevOps Jr</span>
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">2 Dev Sr Backend</span>
+                                <span class="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded font-medium">Dev Sr Frontend</span>
+                                <span class="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded font-medium">Arquitecto (Governance)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Dependencies & Risks -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                    <h3 class="font-bold text-lg text-slate-800 mb-4">⚠️ Dependencias Críticas</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3 p-3 bg-red-50 rounded-lg border border-red-100">
+                            <span class="text-red-500 font-bold text-sm mt-0.5">D1</span>
+                            <div>
+                                <div class="font-semibold text-sm text-slate-800">VPN con Cárgame</div>
+                                <p class="text-xs text-slate-500">Requiere coordinación con equipo de Cárgame para establecer túnel IPSec. Iniciar gestión en Fase 1.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-amber-50 rounded-lg border border-amber-100">
+                            <span class="text-amber-500 font-bold text-sm mt-0.5">D2</span>
+                            <div>
+                                <div class="font-semibold text-sm text-slate-800">Tenancy OCI & Presupuesto</div>
+                                <p class="text-xs text-slate-500">Aprobación del tenancy OCI y compartimentos. Definir límites de servicio y presupuesto mensual.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-blue-50 rounded-lg border border-blue-100">
+                            <span class="text-blue-500 font-bold text-sm mt-0.5">D3</span>
+                            <div>
+                                <div class="font-semibold text-sm text-slate-800">Especificación OCPI 2.2.1 Final</div>
+                                <p class="text-xs text-slate-500">Validar con UPME los módulos OCPI requeridos (Locations, Tariffs, Sessions, CDRs) antes de Fase 2.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-purple-50 rounded-lg border border-purple-100">
+                            <span class="text-purple-500 font-bold text-sm mt-0.5">D4</span>
+                            <div>
+                                <div class="font-semibold text-sm text-slate-800">Dominio & Certificados SSL</div>
+                                <p class="text-xs text-slate-500">Gestión de dominios (api.upme.gov.co, developer.upme.gov.co) y certificados SSL gubernamentales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                    <h3 class="font-bold text-lg text-slate-800 mb-4">📋 Ceremonias & Metodología</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="text-slate-600 text-lg">🔄</span>
+                            <div>
+                                <div class="font-semibold text-sm text-slate-800">Sprints de 2 semanas</div>
+                                <p class="text-xs text-slate-500">Planning lunes, Daily 15min, Review + Retro viernes de cierre. Demo a stakeholders cada sprint.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="text-slate-600 text-lg">👀</span>
+                            <div>
+                                <div class="font-semibold text-sm text-slate-800">Code Review obligatorio</div>
+                                <p class="text-xs text-slate-500">Todo PR requiere 1 approval de Sr + Arquitecto para merge a develop. PRs a main requieren 2 approvals.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="text-slate-600 text-lg">📐</span>
+                            <div>
+                                <div class="font-semibold text-sm text-slate-800">Architecture Decision Records (ADR)</div>
+                                <p class="text-xs text-slate-500">El Arquitecto documenta cada decisión técnica relevante en ADRs versionados en el repo.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="text-slate-600 text-lg">🎯</span>
+                            <div>
+                                <div class="font-semibold text-sm text-slate-800">Pair Programming (Jr + Sr)</div>
+                                <p class="text-xs text-slate-500">Cada Dev Jr trabaja en pair con un Sr al menos 40% del sprint. Acelera onboarding y calidad de código.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Executive Dashboard -->
+        <section id="dashboard" class="animate-fade-in">
+            <div class="mb-6">
+                <h1 class="text-4xl font-extrabold text-slate-900 mb-2">Visión General de la Solución</h1>
+                <p class="text-lg text-slate-600 max-w-3xl">
+                    Arquitectura de referencia para la plataforma de interoperabilidad de carga de vehículos eléctricos (Resolución 40559 de 2025). 
+                    Diseñada para ser resiliente, escalable y segura, gestionando la integración de CPOs y MSPs bajo el estándar OCPI 2.2.1.
+                </p>
+            </div>
+
+            <!-- KPI Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium text-slate-500">Transacciones/Mes</span>
+                        <span class="text-blue-600 text-xl">📊</span>
+                    </div>
+                    <div class="text-3xl font-bold text-slate-900">~21.6 M</div>
+                    <p class="text-xs text-slate-500 mt-1">Estimado con 500 estaciones @ 60s</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium text-slate-500">Disponibilidad (SLA)</span>
+                        <span class="text-green-600 text-xl">🛡️</span>
+                    </div>
+                    <div class="text-3xl font-bold text-slate-900">99.9%</div>
+                    <p class="text-xs text-slate-500 mt-1">Alta Disponibilidad Multi-zona</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium text-slate-500">Estándar Core</span>
+                        <span class="text-purple-600 text-xl">🔌</span>
+                    </div>
+                    <div class="text-3xl font-bold text-slate-900">OCPI 2.2.1</div>
+                    <p class="text-xs text-slate-500 mt-1">Interoperabilidad estricta</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium text-slate-500">Seguridad</span>
+                        <span class="text-red-600 text-xl">🔒</span>
+                    </div>
+                    <div class="text-3xl font-bold text-slate-900">AES-256</div>
+                    <p class="text-xs text-slate-500 mt-1">Cifrado + mTLS + OAuth</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Architecture with Tabs -->
+        <section id="architecture" class="scroll-mt-24">
+            <div class="mb-2">
+                <h2 class="text-3xl font-bold text-slate-900">Blueprint de Arquitectura</h2>
+                <p class="text-slate-600 mb-4">
+                    Explore las capas de la solución en dos escenarios de infraestructura. Seleccione una pestaña para comparar la propuesta On-Premise vs Oracle Cloud Infrastructure (OCI).
+                </p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex border-b border-slate-200 mb-8">
+                <button onclick="switchInfraTab('onprem')" id="tab-onprem" class="infra-tab active-tab text-sm rounded-t-lg flex items-center gap-2">
+                    🖥️ On-Premise (Kubernetes)
+                </button>
+                <button onclick="switchInfraTab('oci')" id="tab-oci" class="infra-tab text-sm rounded-t-lg flex items-center gap-2">
+                    ☁️ Oracle Cloud Infrastructure (OCI)
+                </button>
+            </div>
+
+            <!-- ==================== TAB: ON-PREMISE ==================== -->
+            <div id="content-onprem" class="tab-content active">
+
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">🖥️ Arquitectura On-Premise</h3>
+                <p class="text-slate-600 text-sm">
+                    Infraestructura propia sobre Kubernetes. Control total del hardware, seguridad perimetral física y cumplimiento de residencia de datos.
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Diagram Visualizer (Interactive Grid) -->
+                <div class="lg:w-1/2 space-y-4">
+                    <!-- Zone 1: External -->
+                    <div class="arch-card bg-white p-4 rounded-lg border border-slate-200 relative group" onclick="showArchDetail('external', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-slate-400 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">🌐 Zona Externa <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-500">Actores</span></h3>
+                            <div class="mt-2 flex gap-2">
+                                <span class="text-2xl" title="Electrolineras">⛽</span>
+                                <span class="text-2xl" title="Usuarios">📱</span>
+                                <span class="text-2xl" title="Firewall WAF">🛡️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zone 2: DMZ -->
+                    <div class="arch-card bg-white p-4 rounded-lg border border-slate-200 relative group" onclick="showArchDetail('dmz', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-yellow-400 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">🚧 DMZ (Seguridad & Gateway) <span class="text-xs bg-yellow-50 px-2 py-1 rounded text-yellow-600">Ingreso</span></h3>
+                            <div class="mt-2 flex gap-4 text-sm text-slate-600">
+                                <div class="bg-slate-50 px-2 py-1 border rounded">Kong Gateway</div>
+                                <div class="bg-slate-50 px-2 py-1 border rounded">Load Balancer</div>
+                                <div class="bg-slate-50 px-2 py-1 border rounded">mTLS</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zone: Cárgame (External System Integration) -->
+                    <div class="arch-card bg-white p-4 rounded-lg border border-slate-200 relative group" onclick="showArchDetail('cargame', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-teal-500 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">🔗 Cárgame (Sistema Externo) <span class="text-xs bg-teal-50 px-2 py-1 rounded text-teal-600">Validación CPO</span></h3>
+                            <div class="mt-2 flex gap-4 text-sm text-slate-600">
+                                <div class="bg-slate-50 px-2 py-1 border rounded">API REST</div>
+                                <div class="bg-slate-50 px-2 py-1 border rounded">VPN Site-to-Site</div>
+                                <div class="bg-slate-50 px-2 py-1 border rounded">Registro CPO</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zone 3: Core (Kubernetes) -->
+                    <div class="arch-card bg-white p-4 rounded-lg border border-slate-200 relative group selected" onclick="showArchDetail('core', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">⚙️ Core (Kubernetes Cluster) <span class="text-xs bg-blue-50 px-2 py-1 rounded text-blue-600">Procesamiento</span></h3>
+                            <div class="grid grid-cols-2 gap-2 mt-2">
+                                <div class="bg-blue-50 p-2 rounded text-center text-xs font-semibold">Ingesta (Go)</div>
+                                <div class="bg-blue-50 p-2 rounded text-center text-xs font-semibold">Validación OCPI</div>
+                                <div class="bg-blue-50 p-2 rounded text-center text-xs font-semibold">Auth Server</div>
+                                <div class="bg-orange-50 p-2 rounded text-center text-xs font-semibold text-orange-700">Kafka Bus 📨</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zone 4: Data Layer + Data Lake -->
+                    <div class="arch-card bg-white p-4 rounded-lg border border-slate-200 relative group" onclick="showArchDetail('data', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-green-500 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">💾 Data Lake & Gobierno de Datos <span class="text-xs bg-green-50 px-2 py-1 rounded text-green-600">Persistencia + Gobernanza</span></h3>
+                            <div class="mt-2 flex flex-wrap gap-2">
+                                <span class="bg-amber-50 text-xs px-2 py-1 rounded border border-amber-200 text-amber-700">Raw Zone</span>
+                                <span class="bg-blue-50 text-xs px-2 py-1 rounded border border-blue-200 text-blue-700">Curated Zone</span>
+                                <span class="bg-emerald-50 text-xs px-2 py-1 rounded border border-emerald-200 text-emerald-700">Analytics Zone</span>
+                                <span class="bg-slate-100 text-xs px-2 py-1 rounded border">Kafka (Async)</span>
+                                <span class="bg-slate-100 text-xs px-2 py-1 rounded border">CQRS</span>
+                                <span class="bg-slate-100 text-xs px-2 py-1 rounded border">DLQ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Zone 5: DevOps -->
+                     <div class="arch-card bg-white p-4 rounded-lg border border-slate-200 relative group" onclick="showArchDetail('devops', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-purple-500 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">🚀 Gestión & DevOps <span class="text-xs bg-purple-50 px-2 py-1 rounded text-purple-600">Ciclo de Vida</span></h3>
+                            <div class="mt-2 flex gap-2 text-xs">
+                                <span>GitOps (ArgoCD)</span> • <span>Observabilidad (Grafana)</span> • <span>CI/CD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Details Panel -->
+                <div class="lg:w-1/2 bg-white rounded-xl shadow-lg border border-slate-200 p-6 flex flex-col justify-center">
+                    <div id="arch-detail-content">
+                        <!-- Content injected via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Lake (On-Premise) -->
+            <div id="datalake" class="scroll-mt-24 mt-12">
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold text-slate-800">Arquitectura de Datos & Data Lake (On-Premise)</h3>
+                <p class="text-slate-600 max-w-4xl">
+                    Gobierno integral de datos para la plataforma de electromovilidad. El Data Lake centraliza toda la información de integraciones (CPOs, Cárgame, OCPI) 
+                    con mecanismos asíncronos que garantizan desacople, trazabilidad y calidad de datos.
+                </p>
+            </div>
+
+            <!-- Data Lake Layers -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Raw Zone -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-amber-500 px-4 py-3">
+                        <h3 class="font-bold text-white flex items-center gap-2">📥 Zona Raw (Landing)</h3>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-sm text-slate-600">Ingesta cruda sin transformación. Preserva el dato original para auditoría y reprocesamiento.</p>
+                        <ul class="text-xs text-slate-500 space-y-1">
+                            <li class="flex items-start gap-2"><span class="text-amber-500 mt-0.5">▸</span>Reportes OCPI 2.2.1 (JSON original)</li>
+                            <li class="flex items-start gap-2"><span class="text-amber-500 mt-0.5">▸</span>Respuestas de validación Cárgame</li>
+                            <li class="flex items-start gap-2"><span class="text-amber-500 mt-0.5">▸</span>Logs de telemetría de estaciones</li>
+                            <li class="flex items-start gap-2"><span class="text-amber-500 mt-0.5">▸</span>Formato: Parquet / JSON particionado por fecha</li>
+                        </ul>
+                        <div class="bg-amber-50 border border-amber-100 rounded p-2 text-xs text-amber-800">
+                            <span class="font-semibold">Storage:</span> MinIO (S3-compatible) con retención de 5 años
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curated Zone -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-blue-500 px-4 py-3">
+                        <h3 class="font-bold text-white flex items-center gap-2">🔄 Zona Curada (Processed)</h3>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-sm text-slate-600">Datos validados, normalizados y enriquecidos. Listos para consumo analítico y operacional.</p>
+                        <ul class="text-xs text-slate-500 space-y-1">
+                            <li class="flex items-start gap-2"><span class="text-blue-500 mt-0.5">▸</span>Esquema unificado de estaciones y conectores</li>
+                            <li class="flex items-start gap-2"><span class="text-blue-500 mt-0.5">▸</span>Registro maestro de CPOs (enriquecido con Cárgame)</li>
+                            <li class="flex items-start gap-2"><span class="text-blue-500 mt-0.5">▸</span>Series de tiempo normalizadas (TimescaleDB)</li>
+                            <li class="flex items-start gap-2"><span class="text-blue-500 mt-0.5">▸</span>Deduplicación y control de calidad automático</li>
+                        </ul>
+                        <div class="bg-blue-50 border border-blue-100 rounded p-2 text-xs text-blue-800">
+                            <span class="font-semibold">ETL:</span> Apache Spark / dbt para transformaciones batch
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Zone -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-emerald-500 px-4 py-3">
+                        <h3 class="font-bold text-white flex items-center gap-2">📊 Zona Analítica (Serving)</h3>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-sm text-slate-600">Capa de consumo optimizada para dashboards, reportes regulatorios y APIs de datos abiertos.</p>
+                        <ul class="text-xs text-slate-500 space-y-1">
+                            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">▸</span>Vistas materializadas para KPIs en tiempo real</li>
+                            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">▸</span>Reportes UPME / Resolución 40559</li>
+                            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">▸</span>API Open Data para consulta pública</li>
+                            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">▸</span>Catálogo de datos con Apache Atlas</li>
+                        </ul>
+                        <div class="bg-emerald-50 border border-emerald-100 rounded p-2 text-xs text-emerald-800">
+                            <span class="font-semibold">Serving:</span> PostgreSQL + Redis caché + API Gateway
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Async Mechanisms & Data Governance -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Async Mechanisms -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                    <h3 class="font-bold text-lg text-slate-800 mb-4 flex items-center gap-2">⚡ Mecanismos Asíncronos</h3>
+                    <p class="text-sm text-slate-600 mb-4">Patrones de integración asíncrona que garantizan desacople entre sistemas, tolerancia a fallos y procesamiento escalable.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex gap-4 items-start p-3 bg-orange-50 rounded-lg border border-orange-100">
+                            <span class="text-2xl">📨</span>
+                            <div>
+                                <h4 class="font-semibold text-sm text-slate-800">Apache Kafka (Event Streaming)</h4>
+                                <p class="text-xs text-slate-500 mt-1">Bus de eventos central. Tópicos dedicados: <code class="bg-white px-1 rounded">raw-reports</code>, <code class="bg-white px-1 rounded">cpo-validations</code>, <code class="bg-white px-1 rounded">cargame-responses</code>, <code class="bg-white px-1 rounded">data-quality-alerts</code>. Retención de 30 días para reprocesamiento.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 items-start p-3 bg-violet-50 rounded-lg border border-violet-100">
+                            <span class="text-2xl">🔁</span>
+                            <div>
+                                <h4 class="font-semibold text-sm text-slate-800">Dead Letter Queue (DLQ)</h4>
+                                <p class="text-xs text-slate-500 mt-1">Mensajes que fallan validación o procesamiento se envían a la DLQ para revisión manual o reprocesamiento automático con backoff exponencial.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 items-start p-3 bg-cyan-50 rounded-lg border border-cyan-100">
+                            <span class="text-2xl">🕐</span>
+                            <div>
+                                <h4 class="font-semibold text-sm text-slate-800">CQRS + Event Sourcing</h4>
+                                <p class="text-xs text-slate-500 mt-1">Separación de comandos (escritura) y consultas (lectura). Cada cambio de estado de un CPO o estación se registra como evento inmutable para trazabilidad completa.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 items-start p-3 bg-teal-50 rounded-lg border border-teal-100">
+                            <span class="text-2xl">🔗</span>
+                            <div>
+                                <h4 class="font-semibold text-sm text-slate-800">Webhooks & Callbacks Asíncronos</h4>
+                                <p class="text-xs text-slate-500 mt-1">Notificaciones push a CPOs cuando su validación en Cárgame se completa. Patrón request-reply asíncrono con correlation ID para trazabilidad end-to-end.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Governance -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                    <h3 class="font-bold text-lg text-slate-800 mb-4 flex items-center gap-2">🏛️ Gobierno de Datos</h3>
+                    <p class="text-sm text-slate-600 mb-4">Marco de gobernanza que asegura calidad, linaje, seguridad y cumplimiento normativo sobre todos los datos de la plataforma.</p>
+
+                    <div class="space-y-3">
+                        <div class="border border-slate-100 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded">CATÁLOGO</span>
+                                <span class="font-semibold text-sm text-slate-800">Apache Atlas / DataHub</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Catálogo centralizado de metadatos. Clasificación automática de datos sensibles (PII) de CPOs y usuarios. Búsqueda semántica de datasets.</p>
+                        </div>
+
+                        <div class="border border-slate-100 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">LINAJE</span>
+                                <span class="font-semibold text-sm text-slate-800">Data Lineage End-to-End</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Trazabilidad completa desde la fuente (CPO / Cárgame) hasta el reporte final. Cada transformación queda registrada con timestamp, versión y responsable.</p>
+                        </div>
+
+                        <div class="border border-slate-100 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-1 rounded">CALIDAD</span>
+                                <span class="font-semibold text-sm text-slate-800">Great Expectations / dbt Tests</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Validaciones automáticas: completitud, unicidad, rangos válidos, consistencia referencial. Alertas en Slack/Teams cuando un umbral de calidad se degrada.</p>
+                        </div>
+
+                        <div class="border border-slate-100 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded">SEGURIDAD</span>
+                                <span class="font-semibold text-sm text-slate-800">RBAC + Cifrado en Reposo</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Control de acceso basado en roles (RBAC) por zona del Data Lake. Cifrado AES-256 en reposo. Enmascaramiento dinámico de datos sensibles para entornos no-productivos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Async Integration Flow Diagram (CSS-based) -->
+            <div class="mt-8 bg-slate-900 rounded-xl p-6 text-sm font-mono shadow-2xl">
+                <div class="text-xs text-slate-500 mb-4">ASYNC DATA PIPELINE — INTEGRATION FLOW</div>
+                <div class="grid grid-cols-1 md:grid-cols-6 gap-2 items-center text-center">
+                    <div class="bg-slate-800 border border-slate-600 rounded p-3">
+                        <div class="text-amber-400 font-bold text-xs">CPO</div>
+                        <div class="text-slate-400 text-xs mt-1">PUT /locations</div>
+                    </div>
+                    <div class="text-green-400 text-xs hidden md:block">→ async →</div>
+                    <div class="bg-slate-800 border border-orange-500/50 rounded p-3">
+                        <div class="text-orange-400 font-bold text-xs">KAFKA</div>
+                        <div class="text-slate-400 text-xs mt-1">raw-reports</div>
+                    </div>
+                    <div class="text-green-400 text-xs hidden md:block">→ consume →</div>
+                    <div class="bg-slate-800 border border-teal-500/50 rounded p-3">
+                        <div class="text-teal-400 font-bold text-xs">CÁRGAME</div>
+                        <div class="text-slate-400 text-xs mt-1">VPN validate</div>
+                    </div>
+                    <div class="text-green-400 text-xs hidden md:block">→ enrich →</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-6 gap-2 items-center text-center mt-2">
+                    <div class="bg-amber-900/30 border border-amber-500/30 rounded p-3">
+                        <div class="text-amber-300 font-bold text-xs">RAW ZONE</div>
+                        <div class="text-slate-400 text-xs mt-1">MinIO / S3</div>
+                    </div>
+                    <div class="text-green-400 text-xs hidden md:block">→ ETL →</div>
+                    <div class="bg-blue-900/30 border border-blue-500/30 rounded p-3">
+                        <div class="text-blue-300 font-bold text-xs">CURATED</div>
+                        <div class="text-slate-400 text-xs mt-1">Spark / dbt</div>
+                    </div>
+                    <div class="text-green-400 text-xs hidden md:block">→ serve →</div>
+                    <div class="bg-emerald-900/30 border border-emerald-500/30 rounded p-3">
+                        <div class="text-emerald-300 font-bold text-xs">ANALYTICS</div>
+                        <div class="text-slate-400 text-xs mt-1">Dashboards</div>
+                    </div>
+                    <div class="bg-red-900/30 border border-red-500/30 rounded p-3">
+                        <div class="text-red-300 font-bold text-xs">DLQ</div>
+                        <div class="text-slate-400 text-xs mt-1">Retry / Alert</div>
+                    </div>
+                </div>
+            </div>
+            </div><!-- /datalake on-prem -->
+
+            </div><!-- /content-onprem tab -->
+
+            <!-- ==================== TAB: OCI (Oracle Cloud Infrastructure) ==================== -->
+            <div id="content-oci" class="tab-content">
+
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">☁️ Arquitectura Oracle Cloud Infrastructure (OCI)</h3>
+                <p class="text-slate-600 text-sm">
+                    Infraestructura cloud-native sobre OCI con DRP integrado. Aprovecha servicios gestionados para reducir carga operativa, con despliegue automatizado GitOps para ambientes Dev, QA y Prod.
+                </p>
+            </div>
+
+            <!-- OCI Blueprint -->
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:w-1/2 space-y-4">
+
+                    <!-- OCI Zone: External + WAF -->
+                    <div class="oci-card bg-white p-4 rounded-lg border border-slate-200 relative group" onclick="showOciDetail('oci_external', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-slate-400 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">🌐 Zona Externa + OCI WAF <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-500">Edge</span></h3>
+                            <div class="mt-2 flex flex-wrap gap-2 text-sm text-slate-600">
+                                <div class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700 text-xs">OCI WAF</div>
+                                <div class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700 text-xs">OCI DNS</div>
+                                <div class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700 text-xs">CDN / Edge</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OCI Zone: Networking & Security -->
+                    <div class="oci-card bg-white p-4 rounded-lg border border-slate-200 relative group" onclick="showOciDetail('oci_network', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-yellow-400 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">🔐 Networking & Security <span class="text-xs bg-yellow-50 px-2 py-1 rounded text-yellow-600">VCN</span></h3>
+                            <div class="mt-2 flex flex-wrap gap-2 text-sm text-slate-600">
+                                <div class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700 text-xs">VCN + Subnets</div>
+                                <div class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700 text-xs">OCI Load Balancer</div>
+                                <div class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700 text-xs">OCI API Gateway</div>
+                                <div class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700 text-xs">OCI Vault</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OCI Zone: Cárgame VPN -->
+                    <div class="oci-card bg-white p-4 rounded-lg border border-slate-200 relative group" onclick="showOciDetail('oci_cargame', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-teal-500 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">🔗 Cárgame (VPN Connect) <span class="text-xs bg-teal-50 px-2 py-1 rounded text-teal-600">Integración</span></h3>
+                            <div class="mt-2 flex flex-wrap gap-2 text-sm text-slate-600">
+                                <div class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700 text-xs">OCI VPN Connect (IPSec)</div>
+                                <div class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700 text-xs">OCI FastConnect</div>
+                                <div class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700 text-xs">DRG</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OCI Zone: Core OKE -->
+                    <div class="oci-card bg-white p-4 rounded-lg border border-slate-200 relative group selected" onclick="showOciDetail('oci_core', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-red-500 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">⚙️ Core (OKE - Kubernetes Engine) <span class="text-xs bg-red-50 px-2 py-1 rounded text-red-600">Compute</span></h3>
+                            <div class="grid grid-cols-2 gap-2 mt-2">
+                                <div class="bg-red-50 p-2 rounded text-center text-xs font-semibold text-red-700">OKE Cluster</div>
+                                <div class="bg-red-50 p-2 rounded text-center text-xs font-semibold text-red-700">OCI Functions</div>
+                                <div class="bg-red-50 p-2 rounded text-center text-xs font-semibold text-red-700">OCI Streaming (Kafka)</div>
+                                <div class="bg-red-50 p-2 rounded text-center text-xs font-semibold text-red-700">OCI Queue</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OCI Zone: Data -->
+                    <div class="oci-card bg-white p-4 rounded-lg border border-slate-200 relative group" onclick="showOciDetail('oci_data', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-green-500 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">💾 Data Lake & Gobierno (OCI) <span class="text-xs bg-green-50 px-2 py-1 rounded text-green-600">Data</span></h3>
+                            <div class="mt-2 flex flex-wrap gap-2">
+                                <span class="bg-red-50 text-xs px-2 py-1 rounded border border-red-200 text-red-700">OCI Object Storage</span>
+                                <span class="bg-red-50 text-xs px-2 py-1 rounded border border-red-200 text-red-700">Autonomous DB</span>
+                                <span class="bg-red-50 text-xs px-2 py-1 rounded border border-red-200 text-red-700">OCI Data Flow</span>
+                                <span class="bg-red-50 text-xs px-2 py-1 rounded border border-red-200 text-red-700">OCI Data Catalog</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OCI Zone: DevOps -->
+                    <div class="oci-card bg-white p-4 rounded-lg border border-slate-200 relative group" onclick="showOciDetail('oci_devops', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-purple-500 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">🚀 DevOps & CI/CD <span class="text-xs bg-purple-50 px-2 py-1 rounded text-purple-600">Pipelines</span></h3>
+                            <div class="mt-2 flex flex-wrap gap-2 text-xs">
+                                <span class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700">ArgoCD</span>
+                                <span class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700">OCI DevOps</span>
+                                <span class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700">OCIR</span>
+                                <span class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700">Dev / QA / Prod</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OCI Zone: DRP -->
+                    <div class="oci-card bg-white p-4 rounded-lg border border-slate-200 relative group" onclick="showOciDetail('oci_drp', this)">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-rose-600 rounded-l-lg"></div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">🛡️ DRP (Disaster Recovery) <span class="text-xs bg-rose-50 px-2 py-1 rounded text-rose-600">Respaldo</span></h3>
+                            <div class="mt-2 flex flex-wrap gap-2 text-xs">
+                                <span class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700">Cross-Region</span>
+                                <span class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700">Full Stack DR</span>
+                                <span class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700">RPO < 1h</span>
+                                <span class="bg-red-50 px-2 py-1 border border-red-200 rounded text-red-700">RTO < 30min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OCI Details Panel -->
+                <div class="lg:w-1/2 bg-white rounded-xl shadow-lg border border-slate-200 p-6 flex flex-col justify-center">
+                    <div id="oci-detail-content">
+                        <!-- Content injected via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- OCI Multi-Environment DevOps Section -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold text-slate-800 mb-2">DevOps Multi-Ambiente con ArgoCD</h3>
+                <p class="text-slate-600 text-sm mb-6">Pipeline GitOps automatizado para un equipo de 6 desarrolladores con promoción controlada entre ambientes.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <!-- DEV -->
+                    <div class="bg-white rounded-xl border-2 border-blue-200 shadow-sm overflow-hidden">
+                        <div class="bg-blue-500 px-4 py-3 flex items-center justify-between">
+                            <h4 class="font-bold text-white">🔧 DEV</h4>
+                            <span class="text-xs bg-blue-400 text-white px-2 py-1 rounded">feature/*</span>
+                        </div>
+                        <div class="p-5 space-y-3 text-sm">
+                            <div class="flex items-start gap-2"><span class="text-blue-500">▸</span><span class="text-slate-600"><strong>OKE Cluster:</strong> 2 nodos (VM.Standard.E4.Flex)</span></div>
+                            <div class="flex items-start gap-2"><span class="text-blue-500">▸</span><span class="text-slate-600"><strong>Autonomous DB:</strong> Free Tier / 1 OCPU</span></div>
+                            <div class="flex items-start gap-2"><span class="text-blue-500">▸</span><span class="text-slate-600"><strong>Namespace:</strong> dev-electromovility</span></div>
+                            <div class="flex items-start gap-2"><span class="text-blue-500">▸</span><span class="text-slate-600"><strong>ArgoCD:</strong> Auto-sync on push</span></div>
+                            <div class="flex items-start gap-2"><span class="text-blue-500">▸</span><span class="text-slate-600"><strong>Equipo:</strong> 6 devs, merge a develop</span></div>
+                            <div class="bg-blue-50 border border-blue-100 rounded p-2 text-xs text-blue-800 mt-2">
+                                <strong>Trigger:</strong> Push a <code>develop</code> → ArgoCD auto-deploy
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QA -->
+                    <div class="bg-white rounded-xl border-2 border-amber-200 shadow-sm overflow-hidden">
+                        <div class="bg-amber-500 px-4 py-3 flex items-center justify-between">
+                            <h4 class="font-bold text-white">🧪 QA</h4>
+                            <span class="text-xs bg-amber-400 text-white px-2 py-1 rounded">release/*</span>
+                        </div>
+                        <div class="p-5 space-y-3 text-sm">
+                            <div class="flex items-start gap-2"><span class="text-amber-500">▸</span><span class="text-slate-600"><strong>OKE Cluster:</strong> 3 nodos (réplica de prod)</span></div>
+                            <div class="flex items-start gap-2"><span class="text-amber-500">▸</span><span class="text-slate-600"><strong>Autonomous DB:</strong> 2 OCPU, datos anonimizados</span></div>
+                            <div class="flex items-start gap-2"><span class="text-amber-500">▸</span><span class="text-slate-600"><strong>Namespace:</strong> qa-electromovility</span></div>
+                            <div class="flex items-start gap-2"><span class="text-amber-500">▸</span><span class="text-slate-600"><strong>ArgoCD:</strong> Manual sync (approval gate)</span></div>
+                            <div class="flex items-start gap-2"><span class="text-amber-500">▸</span><span class="text-slate-600"><strong>Tests:</strong> Integration + OCPI compliance</span></div>
+                            <div class="bg-amber-50 border border-amber-100 rounded p-2 text-xs text-amber-800 mt-2">
+                                <strong>Trigger:</strong> PR a <code>release/*</code> → QA Lead aprueba
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROD -->
+                    <div class="bg-white rounded-xl border-2 border-emerald-200 shadow-sm overflow-hidden">
+                        <div class="bg-emerald-600 px-4 py-3 flex items-center justify-between">
+                            <h4 class="font-bold text-white">🚀 PROD</h4>
+                            <span class="text-xs bg-emerald-500 text-white px-2 py-1 rounded">main</span>
+                        </div>
+                        <div class="p-5 space-y-3 text-sm">
+                            <div class="flex items-start gap-2"><span class="text-emerald-500">▸</span><span class="text-slate-600"><strong>OKE Cluster:</strong> 3+ nodos HA, autoscaling</span></div>
+                            <div class="flex items-start gap-2"><span class="text-emerald-500">▸</span><span class="text-slate-600"><strong>Autonomous DB:</strong> 4 OCPU, auto-scaling storage</span></div>
+                            <div class="flex items-start gap-2"><span class="text-emerald-500">▸</span><span class="text-slate-600"><strong>Namespace:</strong> prod-electromovility</span></div>
+                            <div class="flex items-start gap-2"><span class="text-emerald-500">▸</span><span class="text-slate-600"><strong>ArgoCD:</strong> Manual sync + 2 approvals</span></div>
+                            <div class="flex items-start gap-2"><span class="text-emerald-500">▸</span><span class="text-slate-600"><strong>DRP:</strong> Cross-region standby activo</span></div>
+                            <div class="bg-emerald-50 border border-emerald-100 rounded p-2 text-xs text-emerald-800 mt-2">
+                                <strong>Trigger:</strong> Tag <code>v*</code> en <code>main</code> → 2 approvals requeridos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitOps Pipeline Visualization -->
+                <div class="bg-slate-900 rounded-xl p-6 text-sm font-mono shadow-2xl">
+                    <div class="text-xs text-slate-500 mb-4">GITOPS PIPELINE — ArgoCD + OKE (6 DEVELOPERS)</div>
+                    <div class="grid grid-cols-1 md:grid-cols-7 gap-2 items-center text-center">
+                        <div class="bg-slate-800 border border-slate-600 rounded p-3">
+                            <div class="text-blue-400 font-bold text-xs">DEV</div>
+                            <div class="text-slate-400 text-xs mt-1">feature branch</div>
+                        </div>
+                        <div class="text-green-400 text-xs hidden md:block">→ PR →</div>
+                        <div class="bg-slate-800 border border-blue-500/50 rounded p-3">
+                            <div class="text-blue-300 font-bold text-xs">CI</div>
+                            <div class="text-slate-400 text-xs mt-1">build + test</div>
+                        </div>
+                        <div class="text-green-400 text-xs hidden md:block">→ push →</div>
+                        <div class="bg-slate-800 border border-red-500/50 rounded p-3">
+                            <div class="text-red-400 font-bold text-xs">OCIR</div>
+                            <div class="text-slate-400 text-xs mt-1">container registry</div>
+                        </div>
+                        <div class="text-green-400 text-xs hidden md:block">→ sync →</div>
+                        <div class="bg-slate-800 border border-emerald-500/50 rounded p-3">
+                            <div class="text-emerald-400 font-bold text-xs">ArgoCD</div>
+                            <div class="text-slate-400 text-xs mt-1">GitOps deploy</div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-7 gap-2 items-center text-center mt-2">
+                        <div class="bg-blue-900/30 border border-blue-500/30 rounded p-3 md:col-start-3">
+                            <div class="text-blue-300 font-bold text-xs">SAST/DAST</div>
+                            <div class="text-slate-400 text-xs mt-1">security scan</div>
+                        </div>
+                        <div class="text-yellow-400 text-xs hidden md:block">→ gate →</div>
+                        <div class="bg-amber-900/30 border border-amber-500/30 rounded p-3">
+                            <div class="text-amber-300 font-bold text-xs">QA</div>
+                            <div class="text-slate-400 text-xs mt-1">approval</div>
+                        </div>
+                        <div class="text-yellow-400 text-xs hidden md:block">→ promote →</div>
+                        <div class="bg-emerald-900/30 border border-emerald-500/30 rounded p-3">
+                            <div class="text-emerald-300 font-bold text-xs">PROD</div>
+                            <div class="text-slate-400 text-xs mt-1">2x approval</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OCI DRP Section -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold text-slate-800 mb-2">Plan de Recuperación ante Desastres (DRP)</h3>
+                <p class="text-slate-600 text-sm mb-6">Estrategia de respaldo cross-region en OCI con failover automatizado. Garantiza continuidad del servicio para la plataforma de electromovilidad.</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Primary Region -->
+                    <div class="bg-white rounded-xl border-2 border-emerald-300 shadow-sm p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">PRIMARIA</span>
+                            <h4 class="font-bold text-lg text-slate-800">Bogotá Region (GRU / Santiago)</h4>
+                        </div>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start gap-2"><span class="text-emerald-500">▸</span><span class="text-slate-600"><strong>OKE Cluster:</strong> 3 nodos HA, multi-AD</span></div>
+                            <div class="flex items-start gap-2"><span class="text-emerald-500">▸</span><span class="text-slate-600"><strong>Autonomous DB:</strong> Active, auto-backup cada 1h</span></div>
+                            <div class="flex items-start gap-2"><span class="text-emerald-500">▸</span><span class="text-slate-600"><strong>Object Storage:</strong> Replicación cross-region activa</span></div>
+                            <div class="flex items-start gap-2"><span class="text-emerald-500">▸</span><span class="text-slate-600"><strong>OCI Streaming:</strong> Kafka managed, 3 brokers</span></div>
+                            <div class="flex items-start gap-2"><span class="text-emerald-500">▸</span><span class="text-slate-600"><strong>OCI Vault:</strong> Keys replicadas a región DR</span></div>
+                        </div>
+                    </div>
+
+                    <!-- DR Region -->
+                    <div class="bg-white rounded-xl border-2 border-rose-300 shadow-sm p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-rose-100 text-rose-700 text-xs font-bold px-3 py-1 rounded-full">DR STANDBY</span>
+                            <h4 class="font-bold text-lg text-slate-800">Región Secundaria (Vinhedo / Ashburn)</h4>
+                        </div>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start gap-2"><span class="text-rose-500">▸</span><span class="text-slate-600"><strong>OKE Cluster:</strong> Standby (warm), escala en failover</span></div>
+                            <div class="flex items-start gap-2"><span class="text-rose-500">▸</span><span class="text-slate-600"><strong>Autonomous DB:</strong> Data Guard Standby, sync automático</span></div>
+                            <div class="flex items-start gap-2"><span class="text-rose-500">▸</span><span class="text-slate-600"><strong>Object Storage:</strong> Réplica read-only, failover automático</span></div>
+                            <div class="flex items-start gap-2"><span class="text-rose-500">▸</span><span class="text-slate-600"><strong>OCI Full Stack DR:</strong> Orquestación de failover automatizada</span></div>
+                            <div class="flex items-start gap-2"><span class="text-rose-500">▸</span><span class="text-slate-600"><strong>DNS Failover:</strong> OCI Health Checks + Traffic Steering</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DRP KPIs -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-center">
+                        <div class="text-2xl font-bold text-red-600">< 1h</div>
+                        <div class="text-xs text-slate-500 mt-1">RPO (Recovery Point)</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-center">
+                        <div class="text-2xl font-bold text-red-600">< 30min</div>
+                        <div class="text-xs text-slate-500 mt-1">RTO (Recovery Time)</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-center">
+                        <div class="text-2xl font-bold text-emerald-600">99.95%</div>
+                        <div class="text-xs text-slate-500 mt-1">SLA con DRP</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-center">
+                        <div class="text-2xl font-bold text-blue-600">Auto</div>
+                        <div class="text-xs text-slate-500 mt-1">Failover Orquestado</div>
+                    </div>
+                </div>
+
+                <!-- DRP Flow -->
+                <div class="bg-slate-900 rounded-xl p-6 text-sm font-mono shadow-2xl">
+                    <div class="text-xs text-slate-500 mb-4">DRP FAILOVER SEQUENCE — OCI FULL STACK DR</div>
+                    <div class="grid grid-cols-1 md:grid-cols-7 gap-2 items-center text-center">
+                        <div class="bg-red-900/40 border border-red-500/50 rounded p-3">
+                            <div class="text-red-400 font-bold text-xs">INCIDENT</div>
+                            <div class="text-slate-400 text-xs mt-1">region down</div>
+                        </div>
+                        <div class="text-yellow-400 text-xs hidden md:block">→ detect →</div>
+                        <div class="bg-slate-800 border border-yellow-500/50 rounded p-3">
+                            <div class="text-yellow-400 font-bold text-xs">HEALTH CHECK</div>
+                            <div class="text-slate-400 text-xs mt-1">OCI Monitoring</div>
+                        </div>
+                        <div class="text-yellow-400 text-xs hidden md:block">→ trigger →</div>
+                        <div class="bg-slate-800 border border-blue-500/50 rounded p-3">
+                            <div class="text-blue-400 font-bold text-xs">FULL STACK DR</div>
+                            <div class="text-slate-400 text-xs mt-1">orchestrate</div>
+                        </div>
+                        <div class="text-green-400 text-xs hidden md:block">→ switch →</div>
+                        <div class="bg-emerald-900/40 border border-emerald-500/50 rounded p-3">
+                            <div class="text-emerald-400 font-bold text-xs">DR ACTIVE</div>
+                            <div class="text-slate-400 text-xs mt-1">service restored</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div><!-- /content-oci tab -->
+
+        </section>
+
+        <!-- Section 3: Data Flow Simulator -->
+        <section id="flow" class="scroll-mt-24 bg-slate-100 rounded-2xl p-8">
+            <div class="mb-8 text-center">
+                <h2 class="text-3xl font-bold text-slate-900">Simulador de Flujo de Datos</h2>
+                <p class="text-slate-600">Visualice paso a paso cómo se procesa un reporte de estación (JSON) desde el CPO hasta la Analítica.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 items-start">
+                <!-- Controls -->
+                <div class="lg:w-1/3 space-y-2">
+                    <div id="step-1" class="flow-step active bg-white p-4 rounded shadow-sm cursor-pointer" onclick="setFlowStep(1)">
+                        <h4 class="font-bold text-slate-800">1. Origen (CPO)</h4>
+                        <p class="text-sm text-slate-500">Envío de reporte JSON (PUT /locations).</p>
+                    </div>
+                    <div id="step-2" class="flow-step bg-white p-4 rounded shadow-sm cursor-pointer" onclick="setFlowStep(2)">
+                        <h4 class="font-bold text-slate-800">2. Gateway & Seguridad</h4>
+                        <p class="text-sm text-slate-500">Validación de Token, Rate Limit y WAF.</p>
+                    </div>
+                    <div id="step-3" class="flow-step bg-white p-4 rounded shadow-sm cursor-pointer" onclick="setFlowStep(3)">
+                        <h4 class="font-bold text-slate-800">3. Validación CPO (Cárgame)</h4>
+                        <p class="text-sm text-slate-500">Consulta vía VPN al sistema Cárgame para verificar registro del CPO.</p>
+                    </div>
+                    <div id="step-4" class="flow-step bg-white p-4 rounded shadow-sm cursor-pointer" onclick="setFlowStep(4)">
+                        <h4 class="font-bold text-slate-800">4. Ingesta & Cola (Kafka)</h4>
+                        <p class="text-sm text-slate-500">Desacople asíncrono para alta carga.</p>
+                    </div>
+                    <div id="step-5" class="flow-step bg-white p-4 rounded shadow-sm cursor-pointer" onclick="setFlowStep(5)">
+                        <h4 class="font-bold text-slate-800">5. Procesamiento & ETL</h4>
+                        <p class="text-sm text-slate-500">Validación esquema OCPI y limpieza.</p>
+                    </div>
+                    <div id="step-6" class="flow-step bg-white p-4 rounded shadow-sm cursor-pointer" onclick="setFlowStep(6)">
+                        <h4 class="font-bold text-slate-800">6. Almacenamiento</h4>
+                        <p class="text-sm text-slate-500">Persistencia en TimescaleDB y Data Lake.</p>
+                    </div>
+                </div>
+
+                <!-- Visualization Monitor -->
+                <div class="lg:w-2/3 bg-slate-900 rounded-xl p-6 text-green-400 font-mono text-sm min-h-[300px] shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-2 right-4 text-xs text-slate-500">SYSTEM MONITOR_V1.0</div>
+                    
+                    <div id="flow-display" class="space-y-4">
+                        <!-- Dynamic Content -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Volumetrics Calculator -->
+        <section id="volumetrics" class="scroll-mt-24">
+            <div class="mb-6">
+                <h2 class="text-3xl font-bold text-slate-900">Calculadora de Capacidad</h2>
+                <p class="text-slate-600">
+                    Estime el impacto en la infraestructura modificando las variables operativas. 
+                    Calculado en base a un payload promedio de 2KB por reporte OCPI completo.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Inputs -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 h-fit">
+                    <h3 class="font-bold text-lg mb-4 text-slate-800">Variables de Entrada</h3>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Número de Electrolineras</label>
+                        <input type="range" id="stationInput" min="100" max="5000" step="100" value="500" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                        <div class="flex justify-between text-xs text-slate-500 mt-1">
+                            <span>100</span>
+                            <span id="stationValue" class="font-bold text-blue-600 text-lg">500</span>
+                            <span>5000</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Frecuencia de Reporte (Segundos)</label>
+                        <input type="range" id="freqInput" min="10" max="300" step="10" value="60" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600" style="direction: rtl;"> 
+                        <!-- RTL trick to make left side 'faster' (smaller number) visually if desired, but kept standard here for clarity: Left=10s (High load), Right=300s (Low load) -->
+                        <div class="flex justify-between text-xs text-slate-500 mt-1">
+                            <span>10s (Alta Carga)</span>
+                            <span id="freqValue" class="font-bold text-blue-600 text-lg">60s</span>
+                            <span>300s</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-100">
+                        <h4 class="font-semibold text-blue-800 mb-2">Resultados Estimados (Mes)</h4>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm text-blue-600">Transacciones:</span>
+                            <span id="resultTrans" class="font-bold text-blue-900">21.6 M</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-blue-600">Almacenamiento (Raw):</span>
+                            <span id="resultStorage" class="font-bold text-blue-900">43.2 GB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-lg mb-4 text-slate-800">Proyección de Crecimiento de Datos (1 Año)</h3>
+                    <div class="chart-container">
+                        <canvas id="volumetricsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Sandbox & Developer Experience -->
+        <section id="sandbox" class="scroll-mt-24 mb-12">
+             <div class="mb-6">
+                <h2 class="text-3xl font-bold text-slate-900">Entorno Sandbox & Interoperabilidad</h2>
+                <p class="text-slate-600">
+                    Módulo mandatorio para que los CPOs validen su integración antes de producción. Incluye registro autónomo y validación sintáctica.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Developer Journey -->
+                <div class="space-y-4">
+                    <h3 class="font-bold text-lg text-slate-800">Flujo del Desarrollador (CPO)</h3>
+                    <div class="relative pl-8 border-l-2 border-slate-200 space-y-8">
+                        <div class="relative">
+                            <span class="absolute -left-[41px] bg-slate-100 border-2 border-slate-300 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs text-slate-600">1</span>
+                            <h4 class="font-bold text-slate-800">Auto-Registro</h4>
+                            <p class="text-sm text-slate-500">Acceso inmediato a developer.upme.gov.co sin burocracia inicial.</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-[41px] bg-slate-100 border-2 border-slate-300 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs text-slate-600">2</span>
+                            <h4 class="font-bold text-slate-800">API Key & Secrets</h4>
+                            <p class="text-sm text-slate-500">Generación de credenciales de prueba con botón de rotación.</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-[41px] bg-slate-100 border-2 border-slate-300 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs text-slate-600">3</span>
+                            <h4 class="font-bold text-slate-800">Pruebas con Mock Server</h4>
+                            <p class="text-sm text-slate-500">Validación contra OCPI 2.2.1 usando Swagger UI ("Try it out").</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-[41px] bg-green-100 border-2 border-green-500 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs text-green-600">4</span>
+                            <h4 class="font-bold text-green-700">Validación Exitosa</h4>
+                            <p class="text-sm text-slate-500">Certificado digital de pruebas superadas para paso a Producción.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mock UI Interface -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                    <div class="bg-slate-800 px-4 py-2 flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="text-xs text-slate-400 ml-2">sandbox-api.upme.gov.co/swagger</span>
+                    </div>
+                    <div class="p-6 font-mono text-sm">
+                        <div class="border border-green-200 bg-green-50 p-4 rounded mb-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-green-600 text-white px-2 py-0.5 rounded text-xs font-bold">PUT</span>
+                                <span class="text-slate-700 font-semibold">/ocpi/2.2.1/locations/{id}</span>
+                            </div>
+                            <div class="text-slate-500 text-xs mb-2">Update Location object</div>
+                            
+                            <div class="bg-white border p-2 rounded text-xs text-slate-600 overflow-x-auto">
+                                <pre>{
+  "id": "LOC-123",
+  "type": "ON_STREET",
+  "coordinates": {
+    "latitude": "4.6097",
+    "longitude": "-74.0817"
+  },
+  "evses": [...]
+}</pre>
+                            </div>
+                            <button class="mt-2 bg-slate-800 text-white px-3 py-1 rounded text-xs hover:bg-slate-700">Execute</button>
+                        </div>
+
+                        <div class="border border-red-200 bg-red-50 p-4 rounded">
+                             <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="font-bold text-red-700">400 Bad Request</span>
+                                    <p class="text-red-600 text-xs mt-1">Validation Error: Field 'connector_type' is missing in EVSE object.</p>
+                                </div>
+                                <span class="text-xs text-slate-400">Time: 45ms</span>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="mb-2">Arquitectura de Referencia - Resolución 40559 de 2025</p>
+            <p class="text-xs text-slate-600">Diseño basado en estándares de interoperabilidad OCPI 2.2.1</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- State Management ---
+        const state = {
+            currentArchZone: 'core',
+            stations: 500,
+            frequency: 60,
+            currentFlowStep: 1
+        };
+
+        // --- Data Content ---
+        const archDetails = {
+            external: {
+                title: "Zona Externa & Actores",
+                desc: "Punto de origen de la información. Incluye a los CPOs (Charge Point Operators) y usuarios finales.",
+                tech: [
+                    "WAF (Web App Firewall): Protección perimetral.",
+                    "JSON / OCPI 2.2.1: Formato estandarizado de reporte.",
+                    "Telemetría: Envío cada 60 segundos."
+                ],
+                rationale: "El control en el borde es crítico para evitar ataques DDoS y garantizar que solo tráfico cifrado (TLS 1.2+) ingrese al gobierno."
+            },
+            dmz: {
+                title: "DMZ: Gateway & Seguridad",
+                desc: "Capa de entrada controlada que protege el núcleo de procesamiento.",
+                tech: [
+                    "Kong / NGINX Gateway: Gestión de tráfico.",
+                    "Rate Limiting: Previene saturación por CPO.",
+                    "Validación mTLS: Autenticación mutua por certificados.",
+                    "Gestión de API Keys: Identidad única por operador."
+                ],
+                rationale: "Centraliza la autenticación y políticas de seguridad, descargando a los microservicios de tareas repetitivas."
+            },
+            cargame: {
+                title: "Cárgame: Validación de CPO (Sistema Externo)",
+                desc: "Integración con la plataforma externa Cárgame para verificar si un Charge Point Operator (CPO) se encuentra registrado y habilitado antes de permitir su operación en la plataforma UPME. La comunicación se realiza exclusivamente a través de un túnel VPN Site-to-Site.",
+                tech: [
+                    "API REST (HTTPS): Consulta GET /api/v1/cpo/{nit}/status para validar registro del CPO por NIT.",
+                    "VPN Site-to-Site (IPsec/IKEv2): Canal cifrado dedicado entre la infraestructura UPME y Cárgame. Sin exposición a internet público.",
+                    "Autenticación Mutua: Certificados X.509 + API Key exclusiva para la comunicación inter-sistema.",
+                    "Circuit Breaker & Retry: Patrón de resiliencia para manejar indisponibilidad temporal de Cárgame sin afectar el flujo principal.",
+                    "Caché de Validación (Redis): Respuestas de Cárgame se cachean por 24h para reducir latencia y dependencia en tiempo real."
+                ],
+                rationale: "La validación contra Cárgame garantiza que solo CPOs legítimos y registrados ante la autoridad competente puedan operar en la plataforma. El uso de VPN Site-to-Site elimina la exposición de datos sensibles en internet público, cumpliendo con los estándares de seguridad gubernamental. El patrón Circuit Breaker asegura que una falla en Cárgame no degrade la disponibilidad de la plataforma UPME."
+            },
+            core: {
+                title: "Core: Cluster Kubernetes",
+                desc: "Corazón de la plataforma. Arquitectura de microservicios contenerizados para escalabilidad y resiliencia.",
+                tech: [
+                    "Ingesta (Go): Alta concurrencia para recibir miles de requests.",
+                    "Validación de Negocio (Python): Reglas OCPI.",
+                    "Apache Kafka: Bus de eventos para desacoplamiento y manejo de picos.",
+                    "HPA (Horizontal Pod Autoscaler): Escalamiento automático."
+                ],
+                rationale: "Garantiza Alta Disponibilidad (HA). Si un nodo falla, los pods migran automáticamente. Kafka asegura cero pérdida de datos."
+            },
+            data: {
+                title: "Data Lake & Gobierno de Datos",
+                desc: "Arquitectura de datos en tres zonas (Raw → Curated → Analytics) con mecanismos asíncronos para desacople total entre sistemas y gobierno integral de la información.",
+                tech: [
+                    "Zona Raw (MinIO/S3): Ingesta cruda de reportes OCPI, respuestas Cárgame y telemetría. Formato Parquet/JSON, retención 5 años.",
+                    "Zona Curada (Spark/dbt): Datos validados, normalizados y enriquecidos. Esquema unificado de CPOs y estaciones con deduplicación automática.",
+                    "Zona Analítica (PostgreSQL + Redis): Vistas materializadas, KPIs en tiempo real, API Open Data y reportes Resolución 40559.",
+                    "Apache Kafka (Event Streaming): Bus asíncrono con tópicos raw-reports, cpo-validations, cargame-responses y data-quality-alerts. Retención 30 días.",
+                    "Dead Letter Queue (DLQ): Reprocesamiento automático con backoff exponencial para mensajes fallidos.",
+                    "CQRS + Event Sourcing: Separación lectura/escritura. Cada cambio de estado es un evento inmutable para trazabilidad completa.",
+                    "Gobierno: Apache Atlas (catálogo), Data Lineage end-to-end, Great Expectations (calidad), RBAC + AES-256 (seguridad)."
+                ],
+                rationale: "El Data Lake con zonas diferenciadas permite escalar ingesta y analítica de forma independiente. Los mecanismos asíncronos (Kafka, DLQ, CQRS) garantizan que una falla en Cárgame o en un CPO no afecte la disponibilidad global. El gobierno de datos asegura cumplimiento normativo y trazabilidad auditora de extremo a extremo."
+            },
+            devops: {
+                title: "Gestión & DevOps",
+                desc: "Herramientas para la operación continua, despliegue y monitoreo.",
+                tech: [
+                    "GitOps (ArgoCD): Sincronización automática de infraestructura.",
+                    "Prometheus/Grafana: Observabilidad y alertas en tiempo real.",
+                    "Harbor: Registro seguro de contenedores.",
+                    "CI/CD Pipelines: Análisis de seguridad (SAST/DAST) automático."
+                ],
+                rationale: "Permite actualizaciones ágiles de la plataforma sin tiempo de inactividad, esencial para servicios críticos del estado."
+            }
+        };
+
+        // --- OCI Architecture Details ---
+        const ociArchDetails = {
+            oci_external: {
+                title: "Zona Externa + OCI WAF & Edge",
+                desc: "Protección perimetral cloud-native con servicios gestionados de Oracle. Filtrado de tráfico malicioso antes de que llegue a la infraestructura.",
+                tech: [
+                    "OCI WAF (Web Application Firewall): Protección contra OWASP Top 10, DDoS L7, bot management. Reglas personalizadas por CPO.",
+                    "OCI DNS: Resolución global con health checks integrados. Soporte para Traffic Steering (failover automático a región DR).",
+                    "OCI Edge Services: CDN para assets estáticos del portal de desarrolladores. Reducción de latencia para CPOs en toda LATAM.",
+                    "OCI Certificates: Gestión automatizada de certificados TLS. Rotación automática sin downtime."
+                ],
+                rationale: "Los servicios edge de OCI absorben ataques volumétricos antes de que impacten la VCN. El WAF gestionado elimina la necesidad de mantener reglas WAF manualmente, reduciendo la carga operativa del equipo de 6 personas."
+            },
+            oci_network: {
+                title: "Networking & Security (VCN)",
+                desc: "Red virtual aislada con segmentación por subnets públicas y privadas. Toda la comunicación interna viaja cifrada dentro de la VCN.",
+                tech: [
+                    "OCI VCN (Virtual Cloud Network): Red aislada con subnets públicas (LB, API GW) y privadas (OKE, DB). Security Lists + NSGs granulares.",
+                    "OCI Load Balancer: L7 flexible con SSL termination, session persistence y health checks. Soporte WebSocket para telemetría real-time.",
+                    "OCI API Gateway: Rate limiting, autenticación OAuth2/JWT, transformación de requests. Políticas por CPO con cuotas diferenciadas.",
+                    "OCI Vault (KMS): Gestión centralizada de secrets y API keys. Integración nativa con OKE para inyección de secrets en pods. HSM FIPS 140-2 Level 3.",
+                    "OCI Bastion: Acceso SSH/RDP seguro a recursos en subnets privadas sin exponer IPs públicas. Sesiones auditadas y con TTL."
+                ],
+                rationale: "La segmentación en VCN con subnets privadas garantiza que los componentes críticos (OKE, DB) nunca están expuestos a internet. OCI Vault con HSM certificado cumple requisitos de seguridad gubernamental para manejo de claves criptográficas."
+            },
+            oci_cargame: {
+                title: "Cárgame: Integración vía OCI VPN Connect",
+                desc: "Conectividad segura hacia el sistema externo Cárgame usando servicios nativos de networking de OCI. Canal dedicado sin exposición a internet público.",
+                tech: [
+                    "OCI VPN Connect (IPSec): Túneles redundantes (activo/activo) hacia Cárgame. Cifrado AES-256-GCM, IKEv2. SLA 99.9% de disponibilidad del túnel.",
+                    "OCI DRG (Dynamic Routing Gateway): Hub central de routing que conecta VCN, VPN y FastConnect. Permite routing transitivo entre regiones para DRP.",
+                    "OCI FastConnect (Opcional): Conexión dedicada de 1-10 Gbps para baja latencia si Cárgame está en datacenter con partner de OCI.",
+                    "OCI Network Firewall: Inspección profunda de paquetes (DPI) en el tráfico VPN. Detección de anomalías en las consultas a Cárgame.",
+                    "OCI Service Connector Hub: Pipeline serverless para auditar todas las llamadas a Cárgame → Object Storage (logs de auditoría)."
+                ],
+                rationale: "OCI VPN Connect con túneles redundantes elimina puntos únicos de falla en la comunicación con Cárgame. El DRG permite que en un escenario DRP, la región secundaria también tenga conectividad VPN activa hacia Cárgame sin reconfiguración manual."
+            },
+            oci_core: {
+                title: "Core: OKE (Oracle Kubernetes Engine)",
+                desc: "Cluster Kubernetes gestionado con auto-scaling, patching automático y integración nativa con todos los servicios OCI.",
+                tech: [
+                    "OKE (Oracle Kubernetes Engine): Cluster managed con control plane HA. Node pools con VM.Standard.E4.Flex (escalamiento por OCPU). Virtual Nodes para workloads serverless.",
+                    "OCI Streaming (Kafka Managed): Compatible con Apache Kafka API. Particiones auto-escalables, retención configurable. Tópicos: raw-reports, cpo-validations, cargame-responses.",
+                    "OCI Functions: Serverless para validaciones ligeras (schema OCPI, enrichment). Escala a cero cuando no hay carga. Ideal para webhooks y callbacks asíncronos.",
+                    "OCI Queue: Cola de mensajes managed para DLQ y procesamiento asíncrono. Retención de hasta 7 días. Integración nativa con OCI Functions.",
+                    "OCI Service Mesh: Observabilidad, mTLS automático entre microservicios y traffic management (canary deployments) sin modificar código."
+                ],
+                rationale: "OKE elimina la gestión del control plane de Kubernetes. OCI Streaming reemplaza la operación manual de Kafka clusters. OCI Functions reduce costos para workloads intermitentes. El equipo de 6 personas se enfoca en código, no en infraestructura."
+            },
+            oci_data: {
+                title: "Data Lake & Gobierno de Datos (OCI)",
+                desc: "Arquitectura de datos cloud-native con servicios gestionados de OCI. Tres zonas (Raw → Curated → Analytics) con gobierno automatizado.",
+                tech: [
+                    "OCI Object Storage: Data Lake con tiers (Standard, Infrequent, Archive). Replicación cross-region automática para DRP. Lifecycle policies para retención de 5 años.",
+                    "OCI Autonomous Database (ATP/ADW): Base de datos auto-gestionada. Auto-scaling, auto-patching, auto-tuning. Data Guard para HA y DRP.",
+                    "OCI Data Flow (Apache Spark Managed): ETL serverless para transformaciones batch. Procesamiento de reportes OCPI y enriquecimiento con datos de Cárgame.",
+                    "OCI Data Catalog: Catálogo de metadatos con descubrimiento automático. Clasificación de datos sensibles (PII). Linaje de datos end-to-end.",
+                    "OCI Data Integration: Pipelines ETL visuales para mover datos entre zonas del Data Lake. Scheduling y monitoreo integrado.",
+                    "OCI GoldenGate: CDC (Change Data Capture) para replicación en tiempo real entre Autonomous DB y Data Lake. Zero-downtime migrations."
+                ],
+                rationale: "Autonomous Database elimina el 90% de la administración de base de datos. OCI Data Catalog provee gobierno de datos sin herramientas adicionales. La replicación cross-region nativa garantiza RPO < 1h para el DRP sin scripts custom."
+            },
+            oci_devops: {
+                title: "DevOps & CI/CD Multi-Ambiente",
+                desc: "Pipeline GitOps completo para un equipo de 6 desarrolladores con promoción controlada entre Dev, QA y Prod usando ArgoCD sobre OKE.",
+                tech: [
+                    "ArgoCD sobre OKE: GitOps controller desplegado en cada cluster. Sync automático para Dev, manual con approval gates para QA y Prod (2 approvals).",
+                    "OCI DevOps Service: Build pipelines nativos con integración a GitHub/GitLab. Stages: build, test (Vitest), SAST/DAST, push a OCIR.",
+                    "OCIR (OCI Container Registry): Registry privado con vulnerability scanning automático. Imágenes firmadas con OCI Vault keys.",
+                    "OCI Resource Manager (Terraform): IaC para provisionar infraestructura de los 3 ambientes. Módulos reutilizables: OKE + Autonomous DB + Object Storage.",
+                    "OCI Monitoring + Logging Analytics: Observabilidad centralizada. Dashboards por ambiente. Alertas en PagerDuty/Slack. Log Explorer con queries SQL-like.",
+                    "Branching Strategy: feature/* → develop (auto-deploy Dev) → release/* (QA approval) → main (Prod, 2 approvals + tag v*)."
+                ],
+                rationale: "ArgoCD + OCI DevOps combinan lo mejor de GitOps con pipelines nativos cloud. OCIR con scanning garantiza que solo imágenes seguras llegan a producción. Con Terraform, el equipo de 6 puede replicar ambientes completos en minutos."
+            },
+            oci_drp: {
+                title: "DRP: Disaster Recovery Plan (OCI)",
+                desc: "Estrategia de recuperación ante desastres cross-region con failover automatizado usando OCI Full Stack DR. Garantiza continuidad del servicio de electromovilidad.",
+                tech: [
+                    "OCI Full Stack DR: Orquestación automatizada de failover. Define DR plans con grupos de recursos (OKE, DB, Storage, DNS). Ejecución con un clic o automática.",
+                    "Autonomous DB Data Guard: Replicación síncrona/asíncrona a región standby. Switchover/failover automático. RPO cercano a 0 en modo síncrono.",
+                    "OCI Object Storage Cross-Region Replication: Réplica automática de todo el Data Lake a la región DR. Consistencia eventual con lag < 15 minutos.",
+                    "OCI Traffic Steering: DNS-based failover. Health checks cada 30s. Switchover automático de tráfico a región DR cuando la primaria falla.",
+                    "OCI Vault Replication: Keys y secrets replicados a región DR. Los pods en OKE DR arrancan con las mismas credenciales sin intervención manual.",
+                    "DR Drills: Ejecución trimestral de simulacros de failover. OCI Full Stack DR permite dry-runs sin afectar producción."
+                ],
+                rationale: "OCI Full Stack DR reduce el RTO de horas a minutos al orquestar automáticamente el failover de todos los componentes. La replicación nativa de Autonomous DB y Object Storage garantiza RPO < 1h sin scripts custom. Los DR drills trimestrales validan que el plan funciona antes de necesitarlo."
+            }
+        };
+
+        const flowSteps = [
+            {
+                step: 1,
+                title: "CPO Envía Reporte",
+                code: `PUT /locations/LOC-001\nHost: api.upme.gov.co\nAuth: Bearer eyJhbGci...`,
+                log: "> Iniciando transmisión TLS 1.3...\n> Payload: 2KB JSON (OCPI 2.2.1)\n> Estado: ENVIADO"
+            },
+            {
+                step: 2,
+                title: "Gateway Valida",
+                code: `[GATEWAY] Checking Rate Limit... OK\n[AUTH] Validating JWT Signature... OK\n[WAF] Scanning for malicious payload... CLEAN`,
+                log: "> Tráfico aceptado en DMZ\n> Enrutando a servicio de validación CPO"
+            },
+            {
+                step: 3,
+                title: "Validación CPO (Cárgame)",
+                code: `[VPN] Tunnel UPME <-> Cárgame: ESTABLISHED (IPsec/IKEv2)\n[API] GET https://cargame.internal/api/v1/cpo/900123456/status\n[AUTH] X.509 Cert + API-Key: VERIFIED\n[RESPONSE] { "registered": true, "status": "ACTIVE" }`,
+                log: "> Consulta vía VPN Site-to-Site...\n> CPO NIT 900123456 encontrado en Cárgame\n> Estado: ACTIVO y HABILITADO\n> Resultado cacheado en Redis (TTL: 24h)\n> Continuando flujo..."
+            },
+            {
+                step: 4,
+                title: "Ingesta & Kafka",
+                code: `func HandleRequest(w, r) {\n  topic.produce("station-reports", json)\n  w.WriteHeader(202) // Accepted\n}`,
+                log: "> Mensaje publicado en tópico 'raw-reports'\n> Confirmación enviada al CPO (Latencia < 200ms)\n> Desacople activo"
+            },
+            {
+                step: 5,
+                title: "Procesamiento ETL",
+                code: `Consumer group 'validator' reads message\n> Validate Schema(OCPI_Location)\n> Transform to Normalized Model\n> Detect Anomalies`,
+                log: "> Validación Exitosa\n> Datos preparados para persistencia"
+            },
+            {
+                step: 6,
+                title: "Persistencia",
+                code: `INSERT INTO metrics (time, power, station_id) VALUES (now(), 50.5, 'LOC-001');\nS3.PutObject('raw/2025/10/report.json')`,
+                log: "> Guardado en TimescaleDB (Rápido)\n> Archivado en Data Lake (Auditoría)\n> Actualización Caché API Pública"
+            }
+        ];
+
+        // --- Functions ---
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Tab Switching
+        function switchInfraTab(tab) {
+            // Hide all tab contents
+            document.getElementById('content-onprem').classList.remove('active');
+            document.getElementById('content-oci').classList.remove('active');
+
+            // Remove active from all tab buttons
+            document.getElementById('tab-onprem').classList.remove('active-tab', 'active-tab-oci');
+            document.getElementById('tab-oci').classList.remove('active-tab', 'active-tab-oci');
+
+            // Activate selected tab
+            if (tab === 'onprem') {
+                document.getElementById('content-onprem').classList.add('active');
+                document.getElementById('tab-onprem').classList.add('active-tab');
+            } else {
+                document.getElementById('content-oci').classList.add('active');
+                document.getElementById('tab-oci').classList.add('active-tab-oci');
+                // Initialize OCI detail panel on first view
+                const selectedOci = document.querySelector('.oci-card.selected');
+                if (selectedOci && !document.getElementById('oci-detail-content').innerHTML.trim()) {
+                    showOciDetail('oci_core', selectedOci);
+                }
+            }
+        }
+
+        // OCI Architecture Interactivity
+        function showOciDetail(zone, element) {
+            document.querySelectorAll('.oci-card').forEach(card => card.classList.remove('selected'));
+            element.classList.add('selected');
+
+            const info = ociArchDetails[zone];
+            const contentDiv = document.getElementById('oci-detail-content');
+
+            let techTags = info.tech.map(t => `<li class="flex items-start gap-2 mb-2"><span class="text-red-500 mt-1">▸</span><span>${t}</span></li>`).join('');
+
+            contentDiv.innerHTML = `
+                <h3 class="text-2xl font-bold text-slate-900 mb-2">${info.title}</h3>
+                <p class="text-slate-600 mb-6 border-b border-slate-100 pb-4">${info.desc}</p>
+                
+                <h4 class="font-semibold text-slate-800 mb-3">Componentes OCI:</h4>
+                <ul class="text-sm text-slate-600 mb-6 bg-red-50/50 p-4 rounded-lg border border-red-100">
+                    ${techTags}
+                </ul>
+
+                <div class="bg-red-50 p-4 rounded border-l-4 border-red-500">
+                    <h4 class="font-bold text-red-900 text-sm mb-1">Impacto / Racional:</h4>
+                    <p class="text-xs text-red-800 italic">"${info.rationale}"</p>
+                </div>
+            `;
+        }
+
+        // On-Premise Architecture Interactivity
+        function showArchDetail(zone, element) {
+            // Update UI selection
+            document.querySelectorAll('.arch-card').forEach(card => card.classList.remove('selected', 'border-blue-500', 'bg-blue-50'));
+            element.classList.add('selected');
+
+            const info = archDetails[zone];
+            const contentDiv = document.getElementById('arch-detail-content');
+            
+            // Build HTML
+            let techTags = info.tech.map(t => `<li class="flex items-start gap-2 mb-2"><span class="text-blue-500 mt-1">▸</span><span>${t}</span></li>`).join('');
+
+            contentDiv.innerHTML = `
+                <h3 class="text-2xl font-bold text-slate-900 mb-2">${info.title}</h3>
+                <p class="text-slate-600 mb-6 border-b border-slate-100 pb-4">${info.desc}</p>
+                
+                <h4 class="font-semibold text-slate-800 mb-3">Componentes Clave:</h4>
+                <ul class="text-sm text-slate-600 mb-6 bg-slate-50 p-4 rounded-lg border border-slate-100">
+                    ${techTags}
+                </ul>
+
+                <div class="bg-blue-50 p-4 rounded border-l-4 border-blue-500">
+                    <h4 class="font-bold text-blue-900 text-sm mb-1">Impacto / Racional:</h4>
+                    <p class="text-xs text-blue-800 italic">"${info.rationale}"</p>
+                </div>
+            `;
+        }
+
+        // Flow Interactivity
+        function setFlowStep(stepIndex) {
+            state.currentFlowStep = stepIndex;
+            
+            // Update sidebar UI
+            document.querySelectorAll('.flow-step').forEach((el, idx) => {
+                if (idx + 1 === stepIndex) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+
+            // Update Monitor Display
+            const data = flowSteps[stepIndex - 1];
+            const display = document.getElementById('flow-display');
+            
+            display.innerHTML = `
+                <div class="border-b border-slate-700 pb-2 mb-2">
+                    <span class="text-white font-bold">STEP ${stepIndex}/6:</span> ${data.title}
+                </div>
+                <div class="text-xs text-blue-300 font-mono mb-4">
+                    <pre>${data.code}</pre>
+                </div>
+                <div class="text-xs text-green-400 font-mono border-t border-slate-700 pt-2">
+                    <pre>${data.log}</pre>
+                </div>
+                ${stepIndex < 6 ? '<div class="animate-pulse mt-2 text-xs text-slate-500">Processing next step...</div>' : '<div class="mt-2 text-xs text-white bg-green-600 inline-block px-2 rounded">COMPLETE</div>'}
+            `;
+        }
+
+        // Volumetrics Logic
+        let volChart;
+
+        function initChart() {
+            const ctx = document.getElementById('volumetricsChart').getContext('2d');
+            
+            volChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    datasets: [{
+                        label: 'Almacenamiento Acumulado (GB)',
+                        data: [],
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'GigaBytes (GB)' }
+                        }
+                    }
+                }
+            });
+            
+            updateVolumetrics();
+        }
+
+        function updateVolumetrics() {
+            // Get inputs
+            const stations = parseInt(document.getElementById('stationInput').value);
+            // Reverse frequency logic for UI (slider left = fast/more data, right = slow/less data) if desired, 
+            // but here we used standard values. Let's fix the slider logic:
+            // The HTML input has min 10, max 300.
+            const freq = parseInt(document.getElementById('freqInput').value);
+
+            // Update Labels
+            document.getElementById('stationValue').innerText = stations;
+            document.getElementById('freqValue').innerText = freq + 's';
+
+            // Calculations
+            // 1 month = 30 days * 24h * 60m * 60s = 2,592,000 seconds
+            const secondsPerMonth = 2592000;
+            const txPerMonthPerStation = secondsPerMonth / freq;
+            const totalTxPerMonth = txPerMonthPerStation * stations;
+            
+            // Payload size avg: 2KB = 0.000002 GB
+            const payloadGB = 0.000002; 
+            const storagePerMonth = totalTxPerMonth * payloadGB;
+
+            // Update Result Cards
+            document.getElementById('resultTrans').innerText = (totalTxPerMonth / 1000000).toFixed(1) + ' M';
+            document.getElementById('resultStorage').innerText = storagePerMonth.toFixed(1) + ' GB';
+
+            // Update Chart Data (Cumulative)
+            const dataPoints = [];
+            let cumulative = 0;
+            for(let i=0; i<12; i++) {
+                cumulative += storagePerMonth;
+                dataPoints.push(cumulative.toFixed(1));
+            }
+
+            volChart.data.datasets[0].data = dataPoints;
+            volChart.update();
+        }
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load initial view
+            showArchDetail('core', document.querySelector('.arch-card.selected'));
+            setFlowStep(1);
+            initChart();
+
+            // Event Listeners for Volumetrics
+            document.getElementById('stationInput').addEventListener('input', updateVolumetrics);
+            document.getElementById('freqInput').addEventListener('input', updateVolumetrics);
+        });
+
+    </script>
+</body>
+</html>
