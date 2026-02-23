@@ -10,6 +10,7 @@ Directorio de especificaciones técnicas y contexto regulatorio para la platafor
 | `guia-integracion-cpo.md` | Manual de integración para CPOs: registro en Cárgame, onboarding, seguridad, rate limits, SLA |
 | `stack-tecnologico.md` | Stack tecnológico completo: backend, frontend, data, infra, seguridad, ambientes |
 | `areas-colaboracion.md` | Áreas de colaboración externas al equipo IT: Legal, Seguridad, Entidad Externa, CPOs |
+| `arquitectura-c4-ddd.md` | **Arquitectura C4 + DDD completa:** Context Map, 4 niveles C4 (System Context, Containers, Components, Code), Domain Models, Domain Events, Kafka Topics, Flujos de Secuencia, ADRs, Deployment OCI |
 
 ## Nota sobre la Resolución 40559
 
