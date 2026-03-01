@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Documento de Arquitectura — Plataforma Interoperabilidad UPME</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+mermaid.initialize({startOnLoad:true,theme:'default',
+themeVariables:{fontFamily:'Inter,sans-serif'},
+securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true},
+sequence:{useMaxWidth:true}});
+});
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+*{font-family:'Inter',sans-serif;box-sizing:border-box}
+body{background:#fff;color:#1e293b;line-height:1.7;margin:0}
+.doc{max-width:1100px;margin:0 auto;padding:20px 40px 60px}
+h1{font-size:1.9rem;font-weight:800;color:#0f172a;margin:0 0 8px;border-bottom:3px solid #f97316;padding-bottom:8px}
+h2{font-size:1.4rem;font-weight:700;color:#1e293b;margin:36px 0 12px;border-bottom:2px solid #e2e8f0;padding-bottom:6px}
+h3{font-size:1.08rem;font-weight:600;color:#334155;margin:20px 0 8px}
+h4{font-size:0.95rem;font-weight:600;color:#475569;margin:14px 0 6px}
+p,li{font-size:0.88rem}
+table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:0.8rem}
+th{background:#f1f5f9;color:#334155;font-weight:600;text-align:left;padding:7px 10px;border:1px solid #e2e8f0}
+td{padding:6px 10px;border:1px solid #e2e8f0;vertical-align:top}
+tr:nth-child(even){background:#f8fafc}
+.mermaid{margin:14px 0;overflow-x:auto}
+.toc a{color:#2563eb;text-decoration:none;display:block;padding:2px 0;font-size:0.85rem}
+.toc a:hover{text-decoration:underline}
+.toc .s{padding-left:22px;font-size:0.8rem;color:#475569}
+.cover{text-align:center;padding:60px 40px;background:linear-gradient(135deg,#0f172a,#1e3a5f,#0f172a);color:#fff;border-radius:12px;margin-bottom:36px}
+.cover h1{color:#fff;border:none;font-size:2.1rem}
+.badge{display:inline-block;padding:3px 10px;border-radius:16px;font-size:0.7rem;font-weight:600;margin:2px}
+.bo{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.bb{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+.bg{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
+.br{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+.bp{background:#faf5ff;color:#7e22ce;border:1px solid #e9d5ff}
+.pv{background:#f8fafc;border-left:4px solid;padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:0.86rem}
+.pv.ceo{border-color:#f97316}.pv.cto{border-color:#3b82f6}.pv.arch{border-color:#8b5cf6}
+.pv.tech{border-color:#10b981}.pv.data{border-color:#06b6d4}.pv.sec{border-color:#ef4444}
+.pv .rl{font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.ib{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:0.84rem}
+.wb{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:0.84rem}
+.cb{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:0.84rem}
+.sn{color:#f97316;font-weight:700;margin-right:4px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.cd{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px}
+@media print{.cover{page-break-after:always}h2{page-break-before:always}body{font-size:10pt}.np{display:none}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<!-- ==================== COVER PAGE ==================== -->
+<div class="cover">
+<div style="font-size:3rem;margin-bottom:12px">&#9889;</div>
+<h1>Documento de Arquitectura de Software</h1>
+<p style="font-size:1.1rem;color:#94a3b8;margin:4px 0 28px">Plataforma de Interoperabilidad de Electromovilidad</p>
+<div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:28px">
+<span class="badge bo">Res. 40559/2025</span>
+<span class="badge bb">OCPI 2.2.1</span>
+<span class="badge bg">Oracle Cloud (OCI)</span>
+<span class="badge bp">DDD + C4 Model</span>
+</div>
+<table style="width:auto;margin:0 auto;border:none;text-align:left;font-size:0.82rem;color:#cbd5e1">
+<tr style="background:transparent"><td style="border:none;padding:4px 20px 4px 0;color:#94a3b8">Entidad</td><td style="border:none;padding:4px 0"><strong style="color:#fff">UPME — Unidad de Planeaci&oacute;n Minero-Energ&eacute;tica</strong></td></tr>
+<tr style="background:transparent"><td style="border:none;padding:4px 20px 4px 0;color:#94a3b8">Regulaci&oacute;n</td><td style="border:none;padding:4px 0">Resoluci&oacute;n 40559 del 21/Nov/2025 &mdash; MinEnerg&iacute;a</td></tr>
+<tr style="background:transparent"><td style="border:none;padding:4px 20px 4px 0;color:#94a3b8">Versi&oacute;n</td><td style="border:none;padding:4px 0">1.0 &mdash; L&iacute;nea Base</td></tr>
+<tr style="background:transparent"><td style="border:none;padding:4px 20px 4px 0;color:#94a3b8">Fecha</td><td style="border:none;padding:4px 0">Febrero 2026</td></tr>
+<tr style="background:transparent"><td style="border:none;padding:4px 20px 4px 0;color:#94a3b8">Estado</td><td style="border:none;padding:4px 0"><span class="badge bo">PROPUESTO</span></td></tr>
+<tr style="background:transparent"><td style="border:none;padding:4px 20px 4px 0;color:#94a3b8">Clasificaci&oacute;n</td><td style="border:none;padding:4px 0">Entregable de Gobierno &mdash; Uso Interno</td></tr>
+</table>
+</div>
+
+<!-- ==================== TABLE OF CONTENTS ==================== -->
+<h1 id="toc">Tabla de Contenido</h1>
+<div class="toc" style="column-count:2;column-gap:30px">
+<a href="#s1"><strong>1.</strong> Visi&oacute;n Ejecutiva</a>
+<div class="s"><a href="#s1-1">1.1 Perspectiva CEO / Director UPME</a></div>
+<div class="s"><a href="#s1-2">1.2 Perspectiva CTO / L&iacute;der Tecnol&oacute;gico</a></div>
+<div class="s"><a href="#s1-3">1.3 Perspectiva Arquitecto de Soluciones</a></div>
+<a href="#s2"><strong>2.</strong> Contexto Regulatorio</a>
+<div class="s"><a href="#s2-1">2.1 Resoluci&oacute;n 40559/2025</a></div>
+<div class="s"><a href="#s2-2">2.2 Cronograma Mandatorio</a></div>
+<div class="s"><a href="#s2-3">2.3 Actores y Stakeholders</a></div>
+<a href="#s3"><strong>3.</strong> Arquitectura de Dominio (DDD)</a>
+<div class="s"><a href="#s3-1">3.1 Bounded Contexts</a></div>
+<div class="s"><a href="#s3-2">3.2 Context Map</a></div>
+<div class="s"><a href="#s3-3">3.3 Relaciones DDD</a></div>
+<a href="#s4"><strong>4.</strong> Arquitectura C4 Model</a>
+<div class="s"><a href="#s4-1">4.1 Nivel 1 &mdash; System Context</a></div>
+<div class="s"><a href="#s4-2">4.2 Nivel 2 &mdash; Container Diagram</a></div>
+<div class="s"><a href="#s4-3">4.3 Nivel 3 &mdash; Component Diagrams</a></div>
+<div class="s"><a href="#s4-4">4.4 Nivel 4 &mdash; Domain Models</a></div>
+<a href="#s5"><strong>5.</strong> Infraestructura &amp; Despliegue</a>
+<div class="s"><a href="#s5-1">5.1 Topolog&iacute;a H&iacute;brida (On-Premise + OCI)</a></div>
+<div class="s"><a href="#s5-2">5.2 Arquitectura de Red (VCN)</a></div>
+<div class="s"><a href="#s5-3">5.3 Kubernetes (OKE) &mdash; Namespaces</a></div>
+<div class="s"><a href="#s5-4">5.4 DRP &amp; Alta Disponibilidad</a></div>
+<a href="#s6"><strong>6.</strong> Arquitectura Data Lake</a>
+<div class="s"><a href="#s6-1">6.1 Medallion Architecture</a></div>
+<div class="s"><a href="#s6-2">6.2 Gobernanza de Datos</a></div>
+<div class="s"><a href="#s6-3">6.3 Soberan&iacute;a de Datos</a></div>
+<a href="#s7"><strong>7.</strong> Arquitectura de Seguridad</a>
+<div class="s"><a href="#s7-1">7.1 Defensa en Profundidad</a></div>
+<div class="s"><a href="#s7-2">7.2 Autenticaci&oacute;n &amp; Autorizaci&oacute;n</a></div>
+<div class="s"><a href="#s7-3">7.3 Auditor&iacute;a SIC &amp; WORM</a></div>
+<a href="#s8"><strong>8.</strong> Stack Tecnol&oacute;gico</a>
+<a href="#s9"><strong>9.</strong> DevOps &amp; Observabilidad</a>
+<a href="#s10"><strong>10.</strong> Flujos de Dominio</a>
+<a href="#s11"><strong>11.</strong> Decisiones de Arquitectura (ADRs)</a>
+<a href="#s12"><strong>12.</strong> Integraciones Externas</a>
+<a href="#s13"><strong>13.</strong> Roadmap &amp; Ambientes</a>
+</div>
+
+<!-- ==================== SECTION 1: EXECUTIVE VISION ==================== -->
+<h1 id="s1"><span class="sn">1.</span> Visi&oacute;n Ejecutiva</h1>
+
+<h3 id="s1-1">1.1 Perspectiva CEO / Director UPME</h3>
+<div class="pv ceo">
+<div class="rl" style="color:#f97316">&#128188; Director UPME &mdash; Visi&oacute;n Estrat&eacute;gica</div>
+<p>La Plataforma de Interoperabilidad de Electromovilidad representa el compromiso de la UPME con la transici&oacute;n energ&eacute;tica de Colombia. En cumplimiento de la <strong>Resoluci&oacute;n 40559/2025</strong> del Ministerio de Minas y Energ&iacute;a, esta plataforma habilitar&aacute; que <strong>cualquier usuario de veh&iacute;culo el&eacute;ctrico pueda cargar en cualquier estaci&oacute;n p&uacute;blica</strong>, independientemente del operador, con transparencia total en precios y disponibilidad en tiempo real.</p>
+<p><strong>Objetivos estrat&eacute;gicos:</strong></p>
+<ul>
+<li>Cumplir los plazos mandatorios regulatorios (informaci&oacute;n p&uacute;blica Abr 2026, Gu&iacute;a T&eacute;cnica May 2026, Go-Live Nov 2026)</li>
+<li>Posicionar a Colombia como referente latinoamericano en interoperabilidad de carga el&eacute;ctrica</li>
+<li>Garantizar soberan&iacute;a de datos &mdash; toda la informaci&oacute;n reside en territorio colombiano (OCI Regi&oacute;n Bogot&aacute;)</li>
+<li>Construir un ecosistema abierto basado en el est&aacute;ndar internacional OCPI 2.2.1</li>
+<li>Asegurar la supervisi&oacute;n y auditor&iacute;a por parte de la SIC para protecci&oacute;n del consumidor</li>
+</ul>
+</div>
+
+<h3 id="s1-2">1.2 Perspectiva CTO / L&iacute;der Tecnol&oacute;gico</h3>
+<div class="pv cto">
+<div class="rl" style="color:#3b82f6">&#128736;&#65039; CTO &mdash; Direcci&oacute;n T&eacute;cnica</div>
+<p>La arquitectura se dise&ntilde;&oacute; bajo principios de <strong>sistemas distribuidos de misi&oacute;n cr&iacute;tica para gobierno</strong>, priorizando: seguridad por dise&ntilde;o, observabilidad primero, API-first, zero-trust, e infraestructura como c&oacute;digo. El sistema est&aacute; preparado para manejar <strong>21.6M+ transacciones/mes</strong> con latencia P99 &lt; 100ms en ingesta.</p>
+<p><strong>Decisiones clave:</strong></p>
+<ul>
+<li><strong>Arquitectura event-driven</strong> con CQRS para separar escritura (ingesta CPOs) de lectura (consulta p&uacute;blica)</li>
+<li><strong>Microservicios por bounded context</strong> (DDD) &mdash; 7 contextos acotados independientes</li>
+<li><strong>Stack dual:</strong> Go 1.22+ para alta concurrencia (ingesta), Python 3.12+ para validaci&oacute;n de schemas OCPI</li>
+<li><strong>OCI como cloud primaria</strong> con Kubernetes (OKE), Autonomous DB, Streaming (Kafka API)</li>
+<li><strong>Data Lake Medallion</strong> (Bronze&rarr;Silver&rarr;Gold) con trazabilidad end-to-end para SIC</li>
+<li><strong>Equipo:</strong> 8 personas IT (2 Sr Backend, 2 Jr Backend, 1 Sr Frontend, 1 DevOps Sr, 1 DevOps Jr, 1 Arquitecto)</li>
+</ul>
+</div>
+
+<h3 id="s1-3">1.3 Perspectiva Arquitecto de Soluciones</h3>
+<div class="pv arch">
+<div class="rl" style="color:#8b5cf6">&#127975;&#65039; Arquitecto Senior &mdash; Dise&ntilde;o de Referencia</div>
+<p>Este documento presenta la <strong>l&iacute;nea base de arquitectura</strong> utilizando el modelo <strong>C4 (Context, Container, Component, Code)</strong> combinado con <strong>Domain-Driven Design (DDD)</strong>. Cada decisi&oacute;n est&aacute; documentada como ADR (Architecture Decision Record) con alternativas evaluadas e impacto regulatorio.</p>
+<p><strong>Principios arquitect&oacute;nicos:</strong> SOLID, DRY, KISS, 12-Factor App, Fail-fast/Fail-safe, Design for Failure, Observability-first, Security by Design, API-first, Zero-trust, IaC.</p>
+<p><strong>Patrones aplicados:</strong> Event Sourcing selectivo, CQRS, Anti-Corruption Layer, Circuit Breaker, Bulkhead, Saga, Idempotency Guard, Medallion Architecture, Published Language, Open Host Service.</p>
+</div>
+
+<!-- ==================== SECTION 2: REGULATORY CONTEXT ==================== -->
+<h1 id="s2"><span class="sn">2.</span> Contexto Regulatorio</h1>
+
+<h3 id="s2-1">2.1 Resoluci&oacute;n 40559/2025</h3>
+<div class="ib">
+<strong>Emisor:</strong> Ministerio de Minas y Energ&iacute;a &mdash; <strong>Fecha:</strong> 21 de noviembre de 2025<br>
+<strong>Objeto:</strong> Establecer lineamientos de interoperabilidad para estaciones de carga de veh&iacute;culos el&eacute;ctricos de acceso p&uacute;blico en Colombia<br>
+<strong>Est&aacute;ndar adoptado:</strong> OCPI 2.2.1 (Open Charge Point Interface)<br>
+<strong>M&oacute;dulos obligatorios:</strong> Locations, EVSEs, Tariffs, Sessions, CDRs, Tokens, Commands
+</div>
+
+<h3 id="s2-2">2.2 Cronograma Mandatorio</h3>
+<table>
+<tr><th>Hito</th><th>Fecha</th><th>Requerimiento T&eacute;cnico Clave</th></tr>
+<tr><td><strong>Entrada en Vigencia</strong></td><td>21 Nov 2025</td><td>Inicio obligaci&oacute;n normativa</td></tr>
+<tr><td><strong>Informaci&oacute;n P&uacute;blica RT</strong></td><td>~Abr 2026 (90 d&iacute;as h&aacute;biles)</td><td>Portal p&uacute;blico con precios, disponibilidad, ubicaci&oacute;n en tiempo real</td></tr>
+<tr><td><strong>Gu&iacute;a T&eacute;cnica</strong></td><td>~May 2026</td><td>Requisitos OCPI 2.2.1, protocolos de seguridad, procedimientos de registro</td></tr>
+<tr><td><strong>Sandbox CPOs</strong></td><td>~Ago 2026</td><td>Ambiente de pruebas para CPOs</td></tr>
+<tr><td><strong>Go-Live Producci&oacute;n</strong></td><td>~Nov 2026</td><td>Plataforma en producci&oacute;n con DRP activo</td></tr>
+<tr><td><strong>Operaci&oacute;n Plena</strong></td><td>~May 2027</td><td>Todos los CPOs integrados y reportando</td></tr>
+</table>
+
+<div class="wb">
+<strong>&#9888;&#65039; Fase actual (Febrero 2026):</strong> Construcci&oacute;n de la Gu&iacute;a T&eacute;cnica de Implementaci&oacute;n. La Gu&iacute;a requiere tener definidas ANTES de su publicaci&oacute;n: arquitectura completa, protocolos OCPI, seguridad, diagramas de secuencia, rate limiting y procedimientos de certificaci&oacute;n CPO.
+</div>
+
+<h3 id="s2-3">2.3 Actores y Stakeholders</h3>
+<table>
+<tr><th>Actor</th><th>Rol</th><th>Interacci&oacute;n con la Plataforma</th></tr>
+<tr><td><strong>UPME</strong></td><td>Administrador</td><td>Dise&ntilde;a, construye y opera la plataforma</td></tr>
+<tr><td><strong>CPO</strong> (Charge Point Operator)</td><td>Operador estaciones</td><td>Reporta datos OCPI en tiempo real (mTLS + OAuth 2.1)</td></tr>
+<tr><td><strong>MSP</strong></td><td>Proveedor servicios movilidad</td><td>Consulta red de estaciones (OAuth 2.1)</td></tr>
+<tr><td><strong>Ciudadanos</strong></td><td>Usuarios finales</td><td>Consulta p&uacute;blica (portal web + Open Data API)</td></tr>
+<tr><td><strong>MinEnerg&iacute;a</strong></td><td>Regulador</td><td>Vigilancia sobre integridad de datos</td></tr>
+<tr><td><strong>SIC</strong></td><td>Superintendencia</td><td>Auditor&iacute;a protecci&oacute;n consumidor, veracidad</td></tr>
+<tr><td><strong>C&aacute;rgame</strong></td><td>Sistema externo registro</td><td>Validaci&oacute;n CPOs registrados (VPN IPSec IKEv2)</td></tr>
+<tr><td><strong>CREG</strong></td><td>Regulaci&oacute;n energ&eacute;tica</td><td>Reportes tarifarios</td></tr>
+</table>
+
+<div class="g2">
+<div class="cd">
+<h4>&#128101; Equipo IT UPME (8 personas)</h4>
+<ul style="margin:4px 0;padding-left:18px">
+<li>2 Backend Senior (Go)</li>
+<li>2 Backend Junior</li>
+<li>1 Frontend Senior (React)</li>
+<li>1 DevOps Senior</li>
+<li>1 DevOps Junior</li>
+<li>1 Arquitecto de Soluciones</li>
+</ul>
+</div>
+<div class="cd">
+<h4>&#129309; Colaboraci&oacute;n Externa</h4>
+<ul style="margin:4px 0;padding-left:18px">
+<li>Legal/Jur&iacute;dica (UPME + MinEnerg&iacute;a)</li>
+<li>Seguridad IT UPME</li>
+<li>Entidad Externa Espa&ntilde;a (Red El&eacute;ctrica / SGV)</li>
+<li>CPOs Piloto (Enel X, Celsia, Terpel)</li>
+</ul>
+</div>
+</div>
+
+<!-- ==================== SECTION 3: DDD ARCHITECTURE ==================== -->
+<h1 id="s3"><span class="sn">3.</span> Arquitectura de Dominio (DDD)</h1>
+
+<h3 id="s3-1">3.1 Bounded Contexts</h3>
+<table>
+<tr><th>#</th><th>Bounded Context</th><th>Tipo</th><th>Responsabilidad</th></tr>
+<tr><td>BC1</td><td><strong>CPO Management</strong></td><td>Core</td><td>Registro, habilitaci&oacute;n, certificaci&oacute;n, ciclo de vida CPOs</td></tr>
+<tr><td>BC2</td><td><strong>OCPI Core</strong></td><td>Core Domain</td><td>Ingesta, validaci&oacute;n, procesamiento datos OCPI 2.2.1</td></tr>
+<tr><td>BC3</td><td><strong>Identity &amp; Access</strong></td><td>Generic</td><td>Autenticaci&oacute;n OAuth 2.1, autorizaci&oacute;n, certificados</td></tr>
+<tr><td>BC4</td><td><strong>Public Data</strong></td><td>Supporting</td><td>Exposici&oacute;n datos p&uacute;blicos RT (mandato 90 d&iacute;as)</td></tr>
+<tr><td>BC5</td><td><strong>Data Governance</strong></td><td>Supporting</td><td>Data Lake Medallion, ETL, cat&aacute;logo, calidad</td></tr>
+<tr><td>BC6</td><td><strong>Observability &amp; Audit</strong></td><td>Supporting</td><td>Monitoreo 4 capas, auditor&iacute;a SIC, anomal&iacute;as</td></tr>
+<tr><td>BC7</td><td><strong>Integration</strong></td><td>Generic (ACL)</td><td>C&aacute;rgame VPN, Webhooks, Notificaciones</td></tr>
+</table>
+
+<h3 id="s3-2">3.2 Context Map</h3>
+<div class="mermaid">
+graph TB
+    subgraph "Plataforma UPME"
+        BC1["BC1: CPO Management"]
+        BC2["BC2: OCPI Core\n(Core Domain)"]
+        BC3["BC3: Identity & Access"]
+        BC4["BC4: Public Data"]
+        BC5["BC5: Data Governance"]
+        BC6["BC6: Observability & Audit"]
+        BC7["BC7: Integration (ACL)"]
+    end
+    subgraph "Externos"
+        EXT1["Cárgame"]
+        EXT2["CPOs"]
+        EXT3["Ciudadanos"]
+        EXT4["SIC / MinEnergía"]
+    end
+    BC1 -->|"Published Language (CPO Events)"| BC2
+    BC1 -->|"Customer-Supplier"| BC3
+    BC2 -->|"Published Language (OCPI Events)"| BC4
+    BC2 -->|"Published Language (OCPI Events)"| BC5
+    BC2 -->|"Conformist"| BC6
+    BC3 -->|"Open Host Service (OAuth 2.1)"| BC2
+    BC3 -->|"OHS"| BC4
+    BC3 -->|"OHS"| BC1
+    BC5 -->|"Customer-Supplier"| BC4
+    BC5 -->|"Published Language (Quality Events)"| BC6
+    BC7 -->|"ACL"| BC1
+    EXT1 -.->|"VPN IPSec"| BC7
+    EXT2 -.->|"OCPI 2.2.1 mTLS+OAuth"| BC2
+    EXT3 -.->|"HTTPS"| BC4
+    EXT4 -.->|"Auditoría"| BC6
+</div>
+
+<h3 id="s3-3">3.3 Relaciones DDD</h3>
+<table>
+<tr><th>Upstream &rarr; Downstream</th><th>Patr&oacute;n</th><th>Descripci&oacute;n</th></tr>
+<tr><td>BC3 &rarr; BC2</td><td><strong>Open Host Service</strong></td><td>KeyCloak expone OAuth 2.1/JWT como servicio est&aacute;ndar</td></tr>
+<tr><td>BC1 &rarr; BC2</td><td><strong>Published Language</strong></td><td>Eventos CPOCertified, CPOSuspended v&iacute;a Kafka</td></tr>
+<tr><td>BC2 &rarr; BC4</td><td><strong>Published Language</strong></td><td>LocationUpdated, PriceChanged v&iacute;a Kafka</td></tr>
+<tr><td>BC2 &rarr; BC5</td><td><strong>Published Language</strong></td><td>Todos los eventos OCPI fluyen al Data Lake</td></tr>
+<tr><td>BC7 &rarr; BC1</td><td><strong>Anti-Corruption Layer</strong></td><td>Adapta modelo C&aacute;rgame al modelo interno CPO</td></tr>
+<tr><td>BC5 &rarr; BC6</td><td><strong>Published Language</strong></td><td>Eventos de calidad alimentan alertas</td></tr>
+</table>
+
+<!-- ==================== SECTION 4: C4 MODEL ==================== -->
+<h1 id="s4"><span class="sn">4.</span> Arquitectura C4 Model</h1>
+
+<h3 id="s4-1">4.1 Nivel 1 &mdash; System Context</h3>
+<p>Vista de m&aacute;ximo nivel mostrando la plataforma UPME y todos los actores/sistemas externos que interact&uacute;an con ella.</p>
+<div class="mermaid">
+graph TB
+    CPO["&#9889; CPO\nOperador Puntos de Carga"]
+    MSP["&#128664; MSP\nProveedor Servicios Movilidad"]
+    CIT["&#128100; Ciudadano\nUsuario Final"]
+    ADM["&#128187; Admin UPME\nEquipo IT 8 pers."]
+    MIN["&#127963; MinEnergía\nRegulador"]
+    SIC["&#127963; SIC\nSuperintendencia"]
+    CREG["&#127963; CREG\nRegulación Energía"]
+    UPME["&#9889; Plataforma Interoperabilidad UPME\nOCPI 2.2.1 | Res.40559 | 21.6M+ tx/mes"]
+    CARG["&#127970; Cárgame\nRegistro CPOs"]
+    LDAP["&#128193; LDAP/AD UPME\nDirectorio Corporativo"]
+    CPO -->|"HTTPS + mTLS + OAuth 2.1 + DPoP"| UPME
+    MSP -->|"HTTPS + OAuth 2.1"| UPME
+    CIT -->|"HTTPS Open Data"| UPME
+    ADM -->|"HTTPS + OAuth 2.1 + PKCE + MFA"| UPME
+    MIN -->|"HTTPS + OAuth 2.1"| UPME
+    SIC -->|"Auditoría HTTPS"| UPME
+    CREG -->|"SFTP / API"| UPME
+    UPME -->|"VPN IPSec IKEv2"| CARG
+    UPME -->|"LDAPS"| LDAP
+    CPO -->|"Pre-registro portal"| CARG
+    style UPME fill:#1d4ed8,color:#fff,stroke:#1e40af
+    style CARG fill:#6b7280,color:#fff
+    style LDAP fill:#6b7280,color:#fff
+</div>
+
+<h3 id="s4-2">4.2 Nivel 2 &mdash; Container Diagram</h3>
+<p>Descomposici&oacute;n interna de la plataforma en containers agrupados por Bounded Context.</p>
+<div class="mermaid">
+graph TB
+    subgraph "Actores"
+        CPO["&#9889; CPO"]
+        CIT["&#128100; Ciudadano"]
+        ADM["&#128187; Admin UPME"]
+        RSIC["&#127963; SIC"]
+    end
+    subgraph "Perímetro"
+        WAF["&#128737; WAF\nOCI WAF"]
+        GW["&#128682; API Gateway\nOCI API GW / Kong"]
+    end
+    subgraph "BC2: OCPI Core"
+        ING["&#128225; Ingesta Service\nGo 1.22+"]
+        VAL["&#9989; OCPI Validator\nPython 3.12+"]
+        QRY["&#128269; Query Service\nGo 1.22+"]
+        CMD["&#9889; Command Service\nGo 1.22+"]
+    end
+    subgraph "BC3: Identity"
+        KC["&#128274; KeyCloak\nOAuth 2.1 + mTLS"]
+        CERT["&#128220; Cert Manager\nGo + OCI Certs"]
+    end
+    subgraph "BC1: CPO Mgmt"
+        CPOSVC["&#127970; CPO Service\nGo 1.22+"]
+        DEVP["&#128203; Developer Portal\nReact 18"]
+    end
+    subgraph "BC4: Public Data"
+        PAPI["&#127760; Public API\nGo 1.22+"]
+        PPOR["&#128506; Portal Público\nReact + Leaflet"]
+    end
+    subgraph "BC5: Data Governance"
+        LAKE["&#128190; Data Lake\nOCI Object Storage"]
+        ETL["&#9881; ETL Pipeline\nSpark"]
+    end
+    subgraph "BC6: Observability"
+        MON["&#128200; Monitoring\nPrometheus+Grafana"]
+        AUD["&#128274; Audit Trail\nGo + WORM"]
+        DASH["&#128202; Dashboard\nReact"]
+    end
+    subgraph "Infra Compartida"
+        KFK["&#128232; Kafka\nOCI Streaming"]
+        RED["&#9889; Redis\nOCI Cache"]
+        DB[("&#128452; Autonomous DB\nOCI ATP")]
+        VLT["&#128273; Vault\nOCI HSM"]
+    end
+    subgraph "Externos"
+        CARG["&#127970; Cárgame"]
+    end
+    CPO -->|"mTLS+OAuth"| WAF
+    CIT -->|"HTTPS"| WAF
+    WAF --> GW
+    GW -->|"validate"| KC
+    GW --> ING
+    GW --> QRY
+    GW --> CMD
+    GW --> PAPI
+    GW -.->|"rate limit"| RED
+    ING --> KFK
+    ING --> DB
+    VAL --> KFK
+    VAL --> DB
+    QRY --> DB
+    QRY -.-> RED
+    CPOSVC --> KC
+    CPOSVC --> CERT
+    CPOSVC --> DB
+    CPOSVC --> KFK
+    DEVP --> CPOSVC
+    PAPI --> DB
+    PAPI -.-> RED
+    PPOR --> PAPI
+    KFK --> LAKE
+    ETL --> LAKE
+    ING --> MON
+    AUD --> KFK
+    AUD --> LAKE
+    ADM --> DASH
+    RSIC --> AUD
+    CPOSVC -->|"ACL"| CARG
+    KC --> VLT
+    CERT --> VLT
+</div>
+
+<h4>Inventario de Containers por Bounded Context</h4>
+<table>
+<tr><th>BC</th><th>Container</th><th>Tecnolog&iacute;a</th><th>Responsabilidad</th></tr>
+<tr><td rowspan="3">BC1</td><td><strong>CPO Management Service</strong></td><td>Go 1.22+</td><td>Ciclo de vida CPOs: registro, validaci&oacute;n, credenciales, certificaci&oacute;n</td></tr>
+<tr><td><strong>Developer Portal</strong></td><td>React 18 + TS</td><td>Portal CPOs: registro, Swagger UI, gesti&oacute;n credenciales</td></tr>
+<tr><td><strong>Compliance Test Suite</strong></td><td>Go + k6</td><td>Bater&iacute;a automatizada pruebas OCPI 2.2.1</td></tr>
+<tr><td rowspan="4">BC2</td><td><strong>API Gateway</strong></td><td>OCI API GW / Kong</td><td>mTLS, JWT/DPoP, rate limiting, routing</td></tr>
+<tr><td><strong>Ingesta Service</strong></td><td>Go 1.22+</td><td>Alta concurrencia, validaci&oacute;n schema, &lt;100ms P99</td></tr>
+<tr><td><strong>OCPI Validator</strong></td><td>Python 3.12+</td><td>Validaci&oacute;n profunda: business rules, cross-field, data quality</td></tr>
+<tr><td><strong>Query Service</strong></td><td>Go 1.22+</td><td>CQRS read-side: consultas CPOs, hist&oacute;ricos</td></tr>
+<tr><td rowspan="2">BC3</td><td><strong>KeyCloak</strong></td><td>KeyCloak 24+ (Quarkus)</td><td>IdP: OAuth 2.1 (PKCE, DPoP), mTLS cert-bound, multi-realm, RBAC</td></tr>
+<tr><td><strong>Certificate Manager</strong></td><td>Go + OCI Certs</td><td>Emisi&oacute;n, rotaci&oacute;n, revocaci&oacute;n certificados X.509</td></tr>
+<tr><td rowspan="2">BC4</td><td><strong>Public API Service</strong></td><td>Go 1.22+</td><td>Open Data API: estaciones, precios, disponibilidad RT</td></tr>
+<tr><td><strong>Portal P&uacute;blico</strong></td><td>React + Leaflet</td><td>Mapa interactivo estaciones, precios RT</td></tr>
+<tr><td rowspan="4">BC5</td><td><strong>Data Lake</strong></td><td>OCI Object Storage</td><td>Medallion: Bronze &rarr; Silver &rarr; Gold</td></tr>
+<tr><td><strong>ETL Pipeline</strong></td><td>OCI Data Flow (Spark)</td><td>Transformaciones batch/micro-batch</td></tr>
+<tr><td><strong>Data Catalog</strong></td><td>OCI Data Catalog</td><td>Clasificaci&oacute;n PII (Ley 1581), linaje, retenci&oacute;n</td></tr>
+<tr><td><strong>Data Quality Engine</strong></td><td>Python 3.12+</td><td>Freshness, volumen, schema, anomal&iacute;as</td></tr>
+<tr><td rowspan="4">BC6</td><td><strong>Monitoring &amp; Alerting</strong></td><td>Prometheus + Grafana</td><td>RED/USE m&eacute;tricas, SLO tracking, error budgets</td></tr>
+<tr><td><strong>Logging</strong></td><td>OCI Logging / ELK</td><td>Logs JSON, WORM para SIC, correlation ID</td></tr>
+<tr><td><strong>Distributed Tracing</strong></td><td>OCI APM / Jaeger + OTel</td><td>Trazas end-to-end, W3C TraceContext</td></tr>
+<tr><td><strong>Audit Trail Service</strong></td><td>Go + OCI WORM</td><td>Auditor&iacute;a inmutable, exportaci&oacute;n SIC</td></tr>
+<tr><td rowspan="3">BC7</td><td><strong>C&aacute;rgame Adapter (ACL)</strong></td><td>Go 1.22+</td><td>Anti-Corruption Layer: circuit breaker, retry, cache Redis 24h</td></tr>
+<tr><td><strong>Webhook Dispatcher</strong></td><td>Go + OCI Functions</td><td>Push notifications CPOs, retry exponencial, DLQ</td></tr>
+<tr><td><strong>Notification Service</strong></td><td>Go + OCI Notifications</td><td>Multi-canal: email, Slack, SMS, WebSocket</td></tr>
+</table>
+
+<!-- C4 Level 3: Component Diagrams -->
+<h3 id="s4-3">4.3 Nivel 3 &mdash; Component Diagrams</h3>
+
+<h4>4.3.1 Ingesta Service (Go) &mdash; Componentes Internos</h4>
+<div class="pv tech">
+<div class="rl" style="color:#10b981">L&iacute;der T&eacute;cnico &mdash; Dise&ntilde;o de Ingesta</div>
+<p>El servicio de ingesta es el componente de mayor rendimiento cr&iacute;tico. Procesa todas las escrituras OCPI con SLA &lt;100ms P99. Usa Go 1.22+ por su modelo de concurrencia nativo (goroutines) y bajo consumo de memoria.</p>
+</div>
+<div class="mermaid">
+graph TB
+    subgraph "Ingesta Service - Go 1.22+"
+        HTTP["HTTP Handler\nDeserialización + validación básica"]
+        AUTH["Auth Middleware\nExtrae CPO context del JWT"]
+        SCHEMA["Schema Validator\nOCPI 2.2.1 JSON Schema"]
+        ENRICH["Enricher\nMetadata: timestamp, CPO tier, correlation ID"]
+        IDEMP["Idempotency Guard\nRedis: request_id dedup"]
+        PROD["Kafka Producer\nPartición por CPO ID"]
+        STATE["State Writer\nActualiza estado en DB"]
+        METRIC["Metrics Emitter\nRED metrics + OTel spans"]
+    end
+    subgraph "APIs Expuestas"
+        A1["PUT /ocpi/2.2.1/locations"]
+        A2["PUT /ocpi/2.2.1/sessions"]
+        A3["POST /ocpi/2.2.1/cdrs"]
+        A4["PUT /ocpi/2.2.1/tariffs"]
+    end
+    A1 --> HTTP
+    A2 --> HTTP
+    A3 --> HTTP
+    A4 --> HTTP
+    HTTP --> AUTH
+    AUTH --> SCHEMA
+    SCHEMA --> IDEMP
+    IDEMP --> ENRICH
+    ENRICH --> PROD
+    ENRICH --> STATE
+    HTTP --> METRIC
+</div>
+
+<h4>4.3.2 OCPI Validator (Python) &mdash; Componentes</h4>
+<div class="mermaid">
+graph TB
+    subgraph "OCPI Validator - Python 3.12+"
+        CONS["Kafka Consumer\nConsumer group: ocpi-validator"]
+        SCHV["Schema Validator\nPydantic models OCPI 2.2.1"]
+        BIZ["Business Rules Engine\nCross-field, ranges, consistency"]
+        GEO["Geo Validator\nCoordenadas dentro de Colombia"]
+        PRICE["Price Validator\nRango razonable, no negativo"]
+        ENERGY["Energy Validator\nkWh &le; capacidad conector"]
+        RES["Result Publisher\nKafka: validation-results"]
+        DLQ["DLQ Publisher\nKafka: ocpi-dlq"]
+    end
+    CONS --> SCHV
+    SCHV -->|"pass"| BIZ
+    SCHV -->|"fail"| DLQ
+    BIZ --> GEO
+    BIZ --> PRICE
+    BIZ --> ENERGY
+    GEO -->|"pass"| RES
+    PRICE -->|"pass"| RES
+    GEO -->|"fail"| DLQ
+</div>
+
+<h4>4.3.3 Identity &amp; Access &mdash; KeyCloak Multi-Realm</h4>
+<div class="mermaid">
+graph TB
+    subgraph "KeyCloak Multi-Realm"
+        R1["Realm: upme-internal\nUsuarios UPME via LDAP"]
+        R2["Realm: upme-cpo\nCPOs + MSPs (client credentials)"]
+        R3["Realm: upme-public\nPortal público (anon + registro)"]
+        TOK["Token Service\nJWT RS256 + DPoP"]
+        MTLS["mTLS Verifier\nCertificate-Bound RFC 8705"]
+        RBAC["RBAC Engine\nScopes: cpo:*, admin:*, public:*, sic:*"]
+    end
+    subgraph "Certificate Manager - Go"
+        CA["CA Service\nCA raíz UPME"]
+        ISS["Certificate Issuer\nX.509 por CPO"]
+        REV["Revocation Service\nCRL + OCSP"]
+    end
+    R1 --> TOK
+    R2 --> MTLS
+    R2 --> TOK
+    R3 --> TOK
+    TOK --> RBAC
+    MTLS --> CA
+    ISS --> CA
+    REV --> CA
+</div>
+
+<!-- C4 Level 4: Domain Models -->
+<h3 id="s4-4">4.4 Nivel 4 &mdash; Domain Models</h3>
+
+<h4>4.4.1 CPO Aggregate (BC1)</h4>
+<div class="mermaid">
+classDiagram
+    class CPO {
+        +CPOID id
+        +NIT nit
+        +String name
+        +CPOStatus status
+        +CPOTier tier
+        +List~Credential~ credentials
+        +register() CPORegistered
+        +validate() CPOValidated
+        +certify() CPOCertified
+        +suspend(reason) CPOSuspended
+    }
+    class CPOStatus {
+        REGISTERED
+        VALIDATING
+        CREDENTIALED
+        TESTING_SANDBOX
+        CERTIFIED
+        PRODUCTION
+        SUSPENDED
+    }
+    class Credential {
+        +CredentialID id
+        +CredentialType type
+        +String hashedValue
+        +DateTime expiresAt
+        +rotate() CredentialRotated
+        +revoke() CredentialRevoked
+    }
+    CPO *-- Credential : has 1..*
+    CPO *-- CPOStatus : has 1
+</div>
+
+<h4>4.4.2 OCPI Core Aggregates (BC2)</h4>
+<div class="mermaid">
+classDiagram
+    class Location {
+        +LocationID id
+        +CPOID cpoId
+        +String name
+        +GeoCoordinate coordinate
+        +List~EVSE~ evses
+        +update() LocationUpdated
+    }
+    class EVSE {
+        +EVSEID id
+        +EVSEStatus status
+        +List~Connector~ connectors
+        +PowerCapacity maxPower
+    }
+    class Connector {
+        +ConnectorID id
+        +ConnectorType type
+        +PowerCapacity maxPower
+        +Tariff currentTariff
+    }
+    class Session {
+        +SessionID id
+        +CPOID cpoId
+        +Energy kwh
+        +SessionStatus status
+        +start() SessionStarted
+        +complete() SessionCompleted
+    }
+    class CDR {
+        +CDRID id
+        +SessionID sessionId
+        +Energy totalEnergy
+        +Money totalCost
+        +create() CDRCreated
+    }
+    Location *-- EVSE : has 1..*
+    EVSE *-- Connector : has 1..*
+</div>
+
+<!-- ==================== SECTION 5: INFRASTRUCTURE ==================== -->
+<h1 id="s5"><span class="sn">5.</span> Infraestructura &amp; Despliegue</h1>
+
+<h3 id="s5-1">5.1 Topolog&iacute;a H&iacute;brida (On-Premise + OCI)</h3>
+<div class="pv cto">
+<div class="rl" style="color:#3b82f6">CTO &mdash; Estrategia de Infraestructura</div>
+<p>La plataforma opera en un modelo <strong>h&iacute;brido</strong>: la infraestructura core reside en <strong>OCI Regi&oacute;n Bogot&aacute;</strong> (soberan&iacute;a de datos), con integraci&oacute;n on-premise al LDAP/AD corporativo de UPME y VPN site-to-site hacia C&aacute;rgame. DR en regi&oacute;n S&atilde;o Paulo solo para datos p&uacute;blicos no sensibles.</p>
+</div>
+
+<div class="mermaid">
+graph TB
+    subgraph "OCI Region: Bogotá - Primary"
+        subgraph "VCN: upme-production"
+            subgraph "Public Subnet"
+                WAFD["OCI WAF"]
+                LB["Load Balancer\nTLS 1.3 termination"]
+            end
+            subgraph "Private Subnet: App Tier"
+                subgraph "OKE Cluster 3+ nodes"
+                    NS1["NS: ocpi-core\nIngesta 3pods | Validator 2pods\nQuery 2pods | Command 1pod"]
+                    NS2["NS: cpo-mgmt\nCPO Service 2pods\nCompliance 1pod"]
+                    NS3["NS: identity\nKeyCloak 2pods\nCert Manager 1pod"]
+                    NS4["NS: public\nPublic API 2pods\nPortal 2pods"]
+                    NS5["NS: observability\nPrometheus | Grafana\nJaeger | Anomaly"]
+                    NS6["NS: integration\nCárgame Adapter 2pods\nWebhook | Notifications"]
+                end
+            end
+            subgraph "Private Subnet: Data Tier"
+                ATP["Autonomous DB ATP\n+ Data Guard"]
+                TSDB["TimescaleDB\n2 pods StatefulSet"]
+                REDISD["OCI Cache Redis HA"]
+            end
+            subgraph "Private Subnet: Streaming"
+                STR["OCI Streaming\n10 topics, 200+ partitions"]
+            end
+        end
+        subgraph "OCI Services"
+            OBJ["Object Storage\nData Lake + WORM"]
+            VAULTD["Vault HSM\nFIPS 140-2 L3"]
+            DEVOPS["OCI DevOps + ArgoCD"]
+            MOND["OCI Monitoring\n+ Logging Analytics"]
+            GG["GoldenGate CDC"]
+            DF["Data Flow Spark ETL"]
+        end
+    end
+    subgraph "OCI Region: São Paulo - DR"
+        DROKE["OKE Warm Standby"]
+        DRATP["Autonomous DB\nData Guard Standby"]
+        DROBJ["Object Storage\nCross-Region Replication"]
+    end
+    subgraph "On-Premise UPME"
+        VPNC["VPN IPSec\nCárgame"]
+        LDAPD["LDAP/AD\nDirectorio Corporativo"]
+    end
+    WAFD --> LB
+    LB --> NS1
+    LB --> NS4
+    NS1 --> ATP
+    NS1 --> REDISD
+    NS1 --> STR
+    NS3 --> VAULTD
+    NS6 --> VPNC
+    NS3 --> LDAPD
+    STR --> OBJ
+    GG --> ATP
+    GG --> OBJ
+    DF --> OBJ
+    ATP -.->|"Data Guard"| DRATP
+    OBJ -.->|"Replication"| DROBJ
+</div>
+
+<h3 id="s5-2">5.2 Arquitectura de Red (VCN)</h3>
+<table>
+<tr><th>Subnet</th><th>Tipo</th><th>Componentes</th><th>Acceso</th></tr>
+<tr><td><strong>Public Subnet</strong></td><td>P&uacute;blica</td><td>WAF, Load Balancer</td><td>Internet &rarr; WAF &rarr; LB</td></tr>
+<tr><td><strong>App Tier</strong></td><td>Privada</td><td>OKE (6 namespaces, 20+ pods)</td><td>Solo v&iacute;a LB, NSGs estrictos</td></tr>
+<tr><td><strong>Data Tier</strong></td><td>Privada</td><td>ATP, TimescaleDB, Redis</td><td>Solo desde App Tier, sin acceso externo</td></tr>
+<tr><td><strong>Streaming</strong></td><td>Privada</td><td>OCI Streaming (Kafka)</td><td>Solo desde App Tier</td></tr>
+</table>
+
+<h3 id="s5-3">5.3 Kubernetes (OKE) &mdash; Namespaces</h3>
+<table>
+<tr><th>Namespace</th><th>Pods</th><th>Recursos</th><th>HPA</th></tr>
+<tr><td><code>ocpi-core</code></td><td>Ingesta(3), Validator(2), Query(2), Command(1)</td><td>4 vCPU / 8 GB por pod</td><td>3&rarr;10 pods</td></tr>
+<tr><td><code>cpo-mgmt</code></td><td>CPO Service(2), Compliance(1)</td><td>2 vCPU / 4 GB</td><td>2&rarr;5 pods</td></tr>
+<tr><td><code>identity</code></td><td>KeyCloak(2), Cert Manager(1)</td><td>2 vCPU / 4 GB</td><td>2&rarr;4 pods</td></tr>
+<tr><td><code>public</code></td><td>Public API(2), Portal(2)</td><td>2 vCPU / 4 GB</td><td>2&rarr;8 pods</td></tr>
+<tr><td><code>observability</code></td><td>Prometheus(1), Grafana(1), Jaeger(1), Anomaly(1)</td><td>4 vCPU / 8 GB</td><td>Est&aacute;tico</td></tr>
+<tr><td><code>integration</code></td><td>C&aacute;rgame Adapter(2), Webhook(1), Notifications(1)</td><td>2 vCPU / 4 GB</td><td>2&rarr;4 pods</td></tr>
+</table>
+
+<h3 id="s5-4">5.4 DRP &amp; Alta Disponibilidad</h3>
+<div class="g2">
+<div class="cd">
+<h4>Regi&oacute;n Primaria &mdash; Bogot&aacute;</h4>
+<ul style="margin:4px 0;padding-left:18px">
+<li>OKE 3+ nodos worker (multi-AD)</li>
+<li>Autonomous DB con Data Guard (standy sync)</li>
+<li>Redis HA cluster (3 nodos)</li>
+<li>Object Storage replicaci&oacute;n cross-region</li>
+<li>Load Balancer activo-activo</li>
+</ul>
+</div>
+<div class="cd">
+<h4>Regi&oacute;n DR &mdash; S&atilde;o Paulo</h4>
+<ul style="margin:4px 0;padding-left:18px">
+<li>OKE warm standby (escalado a 0 pods en reposo)</li>
+<li>Autonomous DB standby (Data Guard async)</li>
+<li>Object Storage r&eacute;plica (solo datos p&uacute;blicos)</li>
+<li><strong>RPO:</strong> &lt; 1 hora</li>
+<li><strong>RTO:</strong> &lt; 30 minutos</li>
+</ul>
+</div>
+</div>
+<div class="cb">
+<strong>&#127464;&#127476; Soberan&iacute;a:</strong> Datos de gobierno, PII de CPOs y auditor&iacute;a SIC NO salen de Colombia (Ley 1581/2012, CONPES 3995). DR S&atilde;o Paulo solo contiene datos p&uacute;blicos anonimizados.
+</div>
+
+<!-- ==================== SECTION 6: DATA LAKE ==================== -->
+<h1 id="s6"><span class="sn">6.</span> Arquitectura Data Lake</h1>
+
+<h3 id="s6-1">6.1 Medallion Architecture</h3>
+<div class="pv data">
+<div class="rl" style="color:#06b6d4">Experto Data Lake &mdash; Dise&ntilde;o de Datos</div>
+<p>El Data Lake implementa la <strong>Medallion Architecture</strong> (Bronze&rarr;Silver&rarr;Gold) sobre OCI Object Storage, garantizando trazabilidad end-to-end requerida por la SIC. Cada capa tiene pol&iacute;ticas de retenci&oacute;n diferenciadas y clasificaci&oacute;n de datos seg&uacute;n Ley 1581/2012.</p>
+</div>
+
+<div class="mermaid">
+graph LR
+    subgraph "Fuentes"
+        K["Kafka\nOCPI Events"]
+        CDC["GoldenGate\nCDC"]
+    end
+    subgraph "Bronze Layer"
+        B["&#129513; Bronze\nDatos crudos inmutables\nPartición: date/cpo_id/module\nRetención: 7 años"]
+    end
+    subgraph "Silver Layer"
+        S["&#129514; Silver\nDatos validados, dedup\nenriquecidos, tipados\nRetención: 5 años"]
+    end
+    subgraph "Gold Layer"
+        G["&#129505; Gold\nAgregaciones, KPIs\nreportes regulatorios\nRetención: 10 años"]
+    end
+    subgraph "Consumidores"
+        REG["Reportes\nMinEnergía / SIC / CREG"]
+        BI["BI / Analytics\nGrafana Dashboards"]
+        ML["Anomaly Detection\nPython ML"]
+    end
+    K --> B
+    CDC --> B
+    B -->|"ETL Spark\nLimpieza, dedup, schema"| S
+    S -->|"ETL Spark\nAgregación horaria/diaria"| G
+    G --> REG
+    G --> BI
+    S --> ML
+    style B fill:#cd7f32,color:#fff
+    style S fill:#c0c0c0,color:#000
+    style G fill:#ffd700,color:#000
+</div>
+
+<h4>Capas del Data Lake &mdash; Detalle</h4>
+<table>
+<tr><th>Capa</th><th>Contenido</th><th>Formato</th><th>Partici&oacute;n</th><th>Retenci&oacute;n</th></tr>
+<tr><td><strong>Bronze</strong></td><td>Datos crudos inmutables (raw JSON OCPI)</td><td>JSON/Parquet</td><td>date/cpo_id/module</td><td>7 a&ntilde;os</td></tr>
+<tr><td><strong>Silver</strong></td><td>Validados, dedup, enriquecidos, tipados</td><td>Parquet columnar</td><td>date/cpo_id/entity</td><td>5 a&ntilde;os</td></tr>
+<tr><td><strong>Gold</strong></td><td>Agregaciones, KPIs, reportes regulatorios</td><td>Parquet + CSV</td><td>date/report_type</td><td>10 a&ntilde;os</td></tr>
+</table>
+
+<h3 id="s6-2">6.2 Gobernanza de Datos</h3>
+<div class="g2">
+<div class="cd">
+<h4>Data Quality Engine</h4>
+<ul style="margin:4px 0;padding-left:18px">
+<li><strong>Freshness:</strong> Datos &lt; 5 min</li>
+<li><strong>Volume:</strong> &plusmn;2&sigma; baseline</li>
+<li><strong>Schema:</strong> OCPI 2.2.1 compliance</li>
+<li><strong>Completeness:</strong> Campos obligatorios</li>
+<li><strong>Consistency:</strong> Hist&oacute;rico vs actual</li>
+<li><strong>Anomalies:</strong> Z-score + seasonal decomposition</li>
+</ul>
+</div>
+<div class="cd">
+<h4>Data Catalog (OCI)</h4>
+<ul style="margin:4px 0;padding-left:18px">
+<li><strong>Clasificaci&oacute;n PII:</strong> Ley 1581/2012</li>
+<li><strong>Linaje:</strong> Origen &rarr; transformaci&oacute;n &rarr; destino</li>
+<li><strong>Glossario:</strong> T&eacute;rminos OCPI + regulatorios</li>
+<li><strong>Retenci&oacute;n:</strong> Pol&iacute;ticas por capa y tipo</li>
+</ul>
+</div>
+</div>
+
+<h3 id="s6-3">6.3 Soberan&iacute;a de Datos</h3>
+<div class="cb">
+<strong>&#127464;&#127476; Obligaci&oacute;n Legal:</strong> UPME es entidad p&uacute;blica del orden nacional. Datos de gobierno, PII de CPOs y auditor&iacute;a SIC <strong>NO pueden salir de Colombia</strong> (Ley 1581/2012 Art.26, CONPES 3995, Decreto 1078/2015). Toda la infraestructura Data Lake reside en <strong>OCI Regi&oacute;n Bogot&aacute;</strong>.
+</div>
+<table>
+<tr><th>Tipo de Dato</th><th>Clasificaci&oacute;n</th><th>Ubicaci&oacute;n Permitida</th><th>Normativa</th></tr>
+<tr><td>PII de CPOs (NIT, contacto)</td><td>Dato Personal</td><td>Solo Bogot&aacute;</td><td>Ley 1581/2012</td></tr>
+<tr><td>Datos de auditor&iacute;a SIC</td><td>Regulatorio</td><td>Solo Bogot&aacute; (WORM)</td><td>Ley 1581 + SIC</td></tr>
+<tr><td>Precios y disponibilidad (p&uacute;blico)</td><td>Open Data</td><td>Bogot&aacute; + DR S&atilde;o Paulo</td><td>Ley 1712/2014</td></tr>
+<tr><td>M&eacute;tricas operacionales</td><td>Interno</td><td>Solo Bogot&aacute;</td><td>Pol&iacute;tica interna UPME</td></tr>
+<tr><td>Logs de seguridad</td><td>Cr&iacute;tico</td><td>Solo Bogot&aacute; (WORM)</td><td>CONPES 3995</td></tr>
+</table>
+
+<!-- ==================== SECTION 7: SECURITY ==================== -->
+<h1 id="s7"><span class="sn">7.</span> Arquitectura de Seguridad</h1>
+
+<h3 id="s7-1">7.1 Defensa en Profundidad</h3>
+<div class="pv sec">
+<div class="rl" style="color:#ef4444">Experto en Seguridad &mdash; Estrategia Zero-Trust</div>
+<p>La plataforma implementa <strong>defensa en profundidad</strong> con 6 capas de seguridad. Cada request de un CPO atraviesa WAF &rarr; IP Filtering &rarr; mTLS &rarr; JWT/DPoP &rarr; API Gateway (rate limiting) &rarr; microservicio. El principio es <strong>zero-trust</strong>: todo tr&aacute;fico se autentica y autoriza, incluso dentro del cluster.</p>
+</div>
+
+<div class="mermaid">
+graph LR
+    CPO["CPO Request"] --> W["1. WAF\nOWASP Top 10\nDDoS L7\nBot Detection"]
+    W --> IP["2. IP Filtering\nSecurity Lists\nNSGs"]
+    IP --> MT["3. mTLS\nCertificados X.509\nCA UPME"]
+    MT --> JWT["4. JWT + DPoP\nOAuth 2.1\nCert-Bound RFC 8705"]
+    JWT --> GW["5. API Gateway\nRate Limiting\nRouting"]
+    GW --> SVC["6. Microservicio\nValidación interna\nCorrelation ID"]
+    style W fill:#ef4444,color:#fff
+    style MT fill:#f97316,color:#fff
+    style JWT fill:#eab308,color:#000
+    style GW fill:#3b82f6,color:#fff
+    style SVC fill:#10b981,color:#fff
+</div>
+
+<h4>Componentes de Seguridad</h4>
+<table>
+<tr><th>Componente</th><th>Tecnolog&iacute;a</th><th>Funci&oacute;n</th></tr>
+<tr><td><strong>WAF</strong></td><td>OCI WAF</td><td>OWASP Top 10, DDoS L7, reglas custom por CPO, geo-IP</td></tr>
+<tr><td><strong>VPN</strong></td><td>OCI VPN Connect (IPSec IKEv2)</td><td>T&uacute;neles redundantes activo/activo hacia C&aacute;rgame</td></tr>
+<tr><td><strong>Certificados</strong></td><td>OCI Certificates + CA UPME</td><td>TLS autom&aacute;tico, rotaci&oacute;n sin downtime, CA propia</td></tr>
+<tr><td><strong>Firewall de Red</strong></td><td>OCI Network Firewall</td><td>DPI en tr&aacute;fico VPN</td></tr>
+<tr><td><strong>Bastion</strong></td><td>OCI Bastion</td><td>Acceso seguro a subnets privadas (sin SSH p&uacute;blico)</td></tr>
+<tr><td><strong>Vault</strong></td><td>OCI Vault (HSM FIPS 140-2 L3)</td><td>Secrets, API keys, claves JWT RSA, CA certs</td></tr>
+<tr><td><strong>SAST/DAST</strong></td><td>SonarQube + OWASP ZAP</td><td>An&aacute;lisis est&aacute;tico y din&aacute;mico en pipeline CI</td></tr>
+</table>
+
+<h3 id="s7-2">7.2 Autenticaci&oacute;n &amp; Autorizaci&oacute;n</h3>
+<h4>Flujo de Autenticaci&oacute;n CPO</h4>
+<div class="mermaid">
+sequenceDiagram
+    participant CPO as CPO (Machine)
+    participant WAF as OCI WAF
+    participant GW as API Gateway
+    participant KC as KeyCloak
+    participant ING as Ingesta (Go)
+    participant RED as Redis
+    participant KFK as Kafka
+    CPO->>WAF: PUT /ocpi/2.2.1/locations (mTLS + DPoP)
+    WAF->>WAF: OWASP rules + DDoS check
+    WAF->>GW: Forward filtered
+    GW->>KC: Validate JWT (RS256 + DPoP + cert-bound)
+    KC-->>GW: Valid (scopes: cpo:write, cpo_id: CPO-123)
+    GW->>RED: INCR rate:CPO-123 (TTL 60s)
+    RED-->>GW: 847/1000
+    GW->>ING: Forward + X-CPO-ID + X-Correlation-ID
+    ING->>RED: GET idempotency:{request_id}
+    RED-->>ING: null (not duplicate)
+    ING->>KFK: Publish ocpi-locations-events
+    ING-->>GW: 202 Accepted
+    GW-->>CPO: 202 Accepted + X-Correlation-ID
+</div>
+
+<h4>Protocolos de Comunicaci&oacute;n</h4>
+<table>
+<tr><th>Protocolo</th><th>Uso</th><th>Detalle</th></tr>
+<tr><td><strong>HTTPS/TLS 1.3</strong></td><td>Todas las comunicaciones</td><td>Cifrado en tr&aacute;nsito obligatorio</td></tr>
+<tr><td><strong>mTLS</strong></td><td>CPO &harr; Plataforma</td><td>Certificados X.509 mutuos, CA propia UPME</td></tr>
+<tr><td><strong>OAuth 2.1 (DPoP)</strong></td><td>Autenticaci&oacute;n CPOs</td><td>KeyCloak, tokens cert-bound (RFC 8705)</td></tr>
+<tr><td><strong>JWT RS256</strong></td><td>Tokens de acceso</td><td>Firmados con clave RSA, verificados en API Gateway</td></tr>
+<tr><td><strong>WebSocket (WSS)</strong></td><td>Notificaciones RT</td><td>Push de cambios de estado a CPOs suscritos</td></tr>
+<tr><td><strong>VPN IPSec IKEv2</strong></td><td>Integraci&oacute;n C&aacute;rgame</td><td>T&uacute;neles redundantes activo/activo</td></tr>
+</table>
+
+<h4>Rate Limiting por Tier de CPO</h4>
+<table>
+<tr><th>Tier</th><th>Estaciones</th><th>Rate Limit Global</th><th>Burst</th></tr>
+<tr><td>Peque&ntilde;o</td><td>1-20</td><td>500 req/min</td><td>2x por 30s</td></tr>
+<tr><td>Mediano</td><td>21-100</td><td>1,000 req/min</td><td>2x por 30s</td></tr>
+<tr><td>Grande</td><td>101-500</td><td>2,500 req/min</td><td>3x por 30s</td></tr>
+<tr><td>Enterprise</td><td>500+</td><td>5,000 req/min</td><td>3x por 60s</td></tr>
+</table>
+
+<h3 id="s7-3">7.3 Auditor&iacute;a SIC &amp; WORM</h3>
+<div class="wb">
+<strong>Requisito SIC:</strong> Logs inmutables (WORM &mdash; Write Once Read Many) de todas las transacciones. Exportaci&oacute;n en formato est&aacute;ndar para auditor&iacute;as. Detecci&oacute;n de anomal&iacute;as en datos reportados (precios inconsistentes, disponibilidad falsa, estaciones fantasma).
+</div>
+<div class="mermaid">
+graph LR
+    subgraph "Audit Pipeline"
+        KFK["Kafka\naudit-events\n365d retención"]
+        ENR["Audit Enricher\nContexto regulatorio"]
+        WORM["WORM Writer\nObject Storage inmutable"]
+        EXP["SIC Exporter\nFormato estándar"]
+        QRY["Audit Query API\nGET /audit/trail"]
+    end
+    KFK --> ENR
+    ENR --> WORM
+    WORM --> EXP
+    WORM --> QRY
+    style WORM fill:#ef4444,color:#fff
+</div>
+
+<!-- ==================== SECTION 8: TECH STACK ==================== -->
+<h1 id="s8"><span class="sn">8.</span> Stack Tecnol&oacute;gico</h1>
+
+<h4>Backend</h4>
+<table>
+<tr><th>Componente</th><th>Tecnolog&iacute;a</th><th>Justificaci&oacute;n</th></tr>
+<tr><td>Microservicio de Ingesta</td><td><strong>Go 1.22+</strong></td><td>Alta concurrencia, bajo consumo de memoria, ideal para I/O intensivo</td></tr>
+<tr><td>Validador OCPI</td><td><strong>Python 3.12+</strong></td><td>Ecosistema rico para validaci&oacute;n (Pydantic, jsonschema)</td></tr>
+<tr><td>API Gateway</td><td><strong>OCI API GW / Kong</strong></td><td>Rate limiting, JWT validation, routing nativo</td></tr>
+<tr><td>Event Streaming</td><td><strong>OCI Streaming (Kafka API)</strong></td><td>Managed, auto-scaling, compatible Apache Kafka clients</td></tr>
+<tr><td>Cach&eacute;</td><td><strong>Redis (OCI Cache)</strong></td><td>TTL validaciones C&aacute;rgame, session store, rate limiting</td></tr>
+</table>
+
+<h4>Frontend</h4>
+<table>
+<tr><th>Componente</th><th>Tecnolog&iacute;a</th><th>Justificaci&oacute;n</th></tr>
+<tr><td>Framework</td><td><strong>React 18+ TypeScript</strong></td><td>Ecosistema maduro, tipado est&aacute;tico, componentes reutilizables</td></tr>
+<tr><td>Build Tool</td><td><strong>Vite 5+</strong></td><td>Hot reload r&aacute;pido, bundling optimizado</td></tr>
+<tr><td>Estilos</td><td><strong>TailwindCSS 3+</strong></td><td>Utility-first, consistencia visual, responsive</td></tr>
+<tr><td>Mapas</td><td><strong>Leaflet / Mapbox GL</strong></td><td>Estaciones georreferenciadas</td></tr>
+</table>
+
+<h4>Data Layer</h4>
+<table>
+<tr><th>Componente</th><th>Tecnolog&iacute;a</th><th>Justificaci&oacute;n</th></tr>
+<tr><td>DB Principal</td><td><strong>OCI Autonomous DB (ATP)</strong></td><td>Auto-scaling, auto-patching, Data Guard incluido</td></tr>
+<tr><td>Time-series</td><td><strong>TimescaleDB sobre OKE</strong></td><td>Telemetr&iacute;a con retenci&oacute;n configurable</td></tr>
+<tr><td>Data Lake</td><td><strong>OCI Object Storage</strong></td><td>Tiers (Standard/Infrequent/Archive), replicaci&oacute;n cross-region</td></tr>
+<tr><td>ETL</td><td><strong>OCI Data Flow (Spark)</strong></td><td>Managed Spark para transformaciones batch</td></tr>
+<tr><td>CDC</td><td><strong>OCI GoldenGate</strong></td><td>Replicaci&oacute;n en tiempo real, zero-downtime</td></tr>
+</table>
+
+<!-- ==================== SECTION 9: DEVOPS ==================== -->
+<h1 id="s9"><span class="sn">9.</span> DevOps &amp; Observabilidad</h1>
+
+<h4>Pipeline CI/CD</h4>
+<div class="mermaid">
+graph LR
+    DEV["Developer\nPush to branch"] --> CI["OCI DevOps\nBuild + Test"]
+    CI --> SAST["SonarQube\nSAST Analysis"]
+    SAST --> IMG["OCIR\nContainer Build\nVulnerability Scan"]
+    IMG --> ARGO["ArgoCD\nGitOps Deploy"]
+    ARGO --> DEV_ENV["Dev (auto)"]
+    ARGO --> QA_ENV["QA (auto)"]
+    ARGO -->|"manual approval"| PROD_ENV["Production"]
+    style PROD_ENV fill:#ef4444,color:#fff
+</div>
+
+<h4>Observabilidad &mdash; 4 Capas</h4>
+<table>
+<tr><th>Capa</th><th>M&eacute;tricas</th><th>Herramientas</th><th>Alertas</th></tr>
+<tr><td><strong>Tr&aacute;fico</strong></td><td>Requests/s, latencia, errores 4xx/5xx, IPs bloqueadas</td><td>OCI Monitoring, WAF metrics</td><td>Picos inusuales, alta tasa errores</td></tr>
+<tr><td><strong>Servicios</strong></td><td>RED (Rate/Error/Duration) + USE (Utilization/Saturation/Errors)</td><td>Prometheus, Grafana, OTel</td><td>SLOs violados, saturaci&oacute;n &gt;80%</td></tr>
+<tr><td><strong>Datos</strong></td><td>Conexiones DB, latencia queries, consumer lag Kafka, cache hits</td><td>Prometheus Exporters</td><td>Latencia DB &gt;200ms, lag &gt;5min</td></tr>
+<tr><td><strong>Negocio</strong></td><td>Estaciones activas, precios, sesiones carga, SLA CPOs</td><td>Grafana, Python ML</td><td>Ca&iacute;da &gt;10% estaciones, anomal&iacute;as precios</td></tr>
+</table>
+
+<h4>SLOs (Service Level Objectives)</h4>
+<table>
+<tr><th>SLO</th><th>Objetivo</th><th>Medici&oacute;n</th></tr>
+<tr><td>Disponibilidad API Ingesta</td><td>99.9%</td><td>% solicitudes exitosas (HTTP 2xx) en 30 d&iacute;as</td></tr>
+<tr><td>Latencia API Ingesta</td><td>P99 &lt; 100ms</td><td>Per&iacute;odo de 30 d&iacute;as</td></tr>
+<tr><td>Freshness Datos P&uacute;blicos</td><td>&lt; 60 segundos</td><td>Tiempo actualizaci&oacute;n portal p&uacute;blico</td></tr>
+<tr><td>Tasa Validaci&oacute;n OCPI</td><td>99.5%</td><td>Mensajes v&aacute;lidos procesados correctamente</td></tr>
+<tr><td>Disponibilidad Portal P&uacute;blico</td><td>99.9%</td><td>Uptime mensual</td></tr>
+<tr><td>MTTR Incidentes P1</td><td>&lt; 1 hora</td><td>Tiempo recuperaci&oacute;n incidentes cr&iacute;ticos</td></tr>
+</table>
+
+<h4>Ambientes</h4>
+<table>
+<tr><th>Ambiente</th><th>Infraestructura</th><th>Prop&oacute;sito</th></tr>
+<tr><td><strong>Local</strong></td><td>Docker Compose + Minikube</td><td>Desarrollo individual, mocks C&aacute;rgame y Kafka</td></tr>
+<tr><td><strong>Dev</strong></td><td>OKE 2 nodos, Autonomous DB compartida</td><td>Integraci&oacute;n continua, auto-deploy desde develop</td></tr>
+<tr><td><strong>QA</strong></td><td>OKE 3 nodos, Autonomous DB dedicada</td><td>Pruebas aceptaci&oacute;n, compliance OCPI, performance</td></tr>
+<tr><td><strong>Sandbox</strong></td><td>OKE 3 nodos, datos sint&eacute;ticos</td><td>Ambiente p&uacute;blico para CPOs, certificaci&oacute;n</td></tr>
+<tr><td><strong>Producci&oacute;n</strong></td><td>OKE 3+ nodos HA, Autonomous DB con Data Guard</td><td>Operaci&oacute;n real, DRP activo, monitoreo 24/7</td></tr>
+<tr><td><strong>DR</strong></td><td>Regi&oacute;n S&atilde;o Paulo, warm standby</td><td>Failover autom&aacute;tico, RPO &lt;1h, RTO &lt;30min</td></tr>
+</table>
+
+<!-- ==================== SECTION 10: DOMAIN FLOWS ==================== -->
+<h1 id="s10"><span class="sn">10.</span> Flujos de Dominio</h1>
+
+<h3>10.1 Flujo Principal: CPO Reporta Location (Write Path)</h3>
+<div class="mermaid">
+sequenceDiagram
+    participant CPO as CPO (Machine)
+    participant WAF as OCI WAF
+    participant GW as API Gateway
+    participant KC as KeyCloak
+    participant ING as Ingesta (Go)
+    participant RED as Redis
+    participant KFK as Kafka
+    participant VAL as Validator (Python)
+    participant DB as Autonomous DB
+    participant LAKE as Data Lake
+    participant PUB as Public API
+    Note over CPO,PUB: PUT /ocpi/2.2.1/locations
+    CPO->>WAF: PUT /locations (mTLS + DPoP)
+    WAF->>GW: Forward
+    GW->>KC: Validate JWT
+    KC-->>GW: Valid (cpo:write)
+    GW->>RED: Rate limit check
+    GW->>ING: Forward + headers
+    ING->>RED: Idempotency check
+    ING->>KFK: Publish ocpi-locations-events
+    ING->>DB: UPDATE locations
+    ING-->>GW: 202 Accepted
+    GW-->>CPO: 202 Accepted
+    Note over KFK,LAKE: Async pipeline
+    KFK->>VAL: Consume event
+    VAL->>VAL: Pydantic + business rules
+    alt Validation passed
+        VAL->>KFK: validation-results (PASSED)
+        VAL->>DB: status = VALIDATED
+    else Validation failed
+        VAL->>KFK: ocpi-dlq (FAILED)
+    end
+    KFK->>LAKE: Persist Bronze (inmutable)
+    PUB->>RED: Invalidate cache
+</div>
+
+<h3>10.2 Flujo: Onboarding CPO (Registro a Producci&oacute;n)</h3>
+<div class="mermaid">
+sequenceDiagram
+    participant CPO as CPO
+    participant CARG as Cárgame
+    participant DEV as Developer Portal
+    participant SVC as CPO Service
+    participant ACL as Cárgame Adapter
+    participant KC as KeyCloak
+    participant SAND as Sandbox
+    participant COMP as Compliance Suite
+    Note over CPO,COMP: Flujo completo Registro a Producción
+    CPO->>CARG: 1. Registro como operador
+    CARG-->>CPO: Status ACTIVE
+    CPO->>DEV: 2. Solicita acceso
+    DEV->>SVC: POST /cpos/register
+    SVC->>ACL: Validate CPO (NIT)
+    ACL->>CARG: GET /cpo/status (VPN)
+    CARG-->>ACL: registered + ACTIVE
+    SVC->>KC: Create client
+    KC-->>SVC: client_id + client_secret
+    SVC-->>DEV: Credenciales Sandbox
+    CPO->>SAND: 4. Pruebas OCPI
+    CPO->>COMP: 5. Compliance suite (47 tests)
+    alt Todas pasan
+        COMP-->>SVC: passed 47/47
+        SVC->>KC: Upgrade scopes production
+        SVC-->>DEV: Credenciales Producción
+    else Fallan
+        COMP-->>DEV: Report fallos + guía
+    end
+</div>
+
+<h3>10.3 Flujo: Detecci&oacute;n de Anomal&iacute;a en Precio</h3>
+<div class="mermaid">
+sequenceDiagram
+    participant KFK as Kafka
+    participant VAL as Validator
+    participant DQ as Data Quality
+    participant ANOM as Anomaly Detector
+    participant PD as PagerDuty
+    participant AUD as Audit Service
+    participant NOTIF as Notification
+    participant CPO as CPO-456
+    Note over KFK,CPO: Precio 0.01 COP/kWh (baseline 850)
+    KFK->>VAL: TariffUpdated (price 0.01)
+    VAL->>KFK: ValidationPassed (schema OK)
+    KFK->>DQ: Consume result
+    DQ->>DQ: Z-score = -17.0 ANOMALY
+    DQ->>ANOM: PriceInconsistency
+    ANOM->>PD: P2 Alert
+    ANOM->>AUD: AuditEntry WORM
+    ANOM->>NOTIF: Trigger CPO notification
+    NOTIF->>CPO: Email anomalía detectada
+</div>
+
+<!-- ==================== SECTION 11: ADRs ==================== -->
+<h1 id="s11"><span class="sn">11.</span> Decisiones de Arquitectura (ADRs)</h1>
+<div class="pv arch">
+<div class="rl" style="color:#8b5cf6">Arquitecto &mdash; Registro de Decisiones</div>
+<p>Cada decisi&oacute;n se documenta como ADR (Architecture Decision Record) incluyendo: alternativas evaluadas, justificaci&oacute;n, e impacto regulatorio.</p>
+</div>
+<table>
+<tr><th>ADR</th><th>T&iacute;tulo</th><th>Decisi&oacute;n</th><th>Alternativas Descartadas</th><th>Impacto Regulatorio</th></tr>
+<tr><td>001</td><td><strong>Lenguaje de Ingesta</strong></td><td>Go 1.22+</td><td>Java (overhead GC), Rust (curva aprendizaje), Node.js (event loop blocking)</td><td>&lt;100ms P99 para SLA mandatorio</td></tr>
+<tr><td>002</td><td><strong>Validador OCPI</strong></td><td>Python 3.12+ (Pydantic)</td><td>Go (menos expresivo), Java (overhead)</td><td>Validaci&oacute;n schemas OCPI 2.2.1</td></tr>
+<tr><td>003</td><td><strong>Identity Provider</strong></td><td>KeyCloak 24+ (Quarkus)</td><td>Auth0 (lock-in), Ory Hydra (menos features), Custom (riesgo)</td><td>OAuth 2.1, RBAC para SIC/MinEnerg&iacute;a</td></tr>
+<tr><td>004</td><td><strong>Event Streaming</strong></td><td>OCI Streaming (Kafka API)</td><td>Self-hosted Kafka (ops), Pulsar, NATS</td><td>Retenci&oacute;n 7d auditor&iacute;a SIC</td></tr>
+<tr><td>005</td><td><strong>CQRS</strong></td><td>Command/Query separation</td><td>CRUD monol&iacute;tico, Full event sourcing</td><td>Consulta p&uacute;blica optimizada (mandato 90d)</td></tr>
+<tr><td>006</td><td><strong>Data Lake</strong></td><td>Medallion (Bronze&rarr;Silver&rarr;Gold)</td><td>Single-tier, Lambda architecture</td><td>Trazabilidad end-to-end SIC</td></tr>
+<tr><td>007</td><td><strong>API Gateway</strong></td><td>OCI API GW / Kong (PoC)</td><td>Apache APISIX, Traefik</td><td>Rate limiting por tier CPO</td></tr>
+<tr><td>008</td><td><strong>Auth Protocol</strong></td><td>OAuth 2.1 (PKCE + DPoP)</td><td>OAuth 2.0, API Key only</td><td>Est&aacute;ndares IETF, previene token theft</td></tr>
+<tr><td>009</td><td><strong>mTLS</strong></td><td>RFC 8705 cert-bound tokens</td><td>mTLS only, IP whitelist only</td><td>Defense-in-depth CPOs</td></tr>
+<tr><td>010</td><td><strong>Anomaly Detection</strong></td><td>Statistical (Z-score + seasonal)</td><td>ML complejo, Rule-only</td><td>Fraude en datos (SIC requirement)</td></tr>
+<tr><td>011</td><td><strong>Audit Storage</strong></td><td>WORM Object Storage</td><td>DB only, Blockchain</td><td>Logs inmutables mandatorios SIC</td></tr>
+<tr><td>012</td><td><strong>ACL C&aacute;rgame</strong></td><td>Dedicated Adapter</td><td>Direct integration, Shared library</td><td>A&iacute;sla modelo externo, circuit breaker</td></tr>
+<tr><td>013</td><td><strong>Frontend</strong></td><td>React 18 + TypeScript</td><td>Vue 3, Angular, Svelte</td><td>Portal p&uacute;blico mandato 90d</td></tr>
+<tr><td>014</td><td><strong>Observabilidad</strong></td><td>OTel + OCI APM + Grafana</td><td>Vendor-only, Custom</td><td>4 capas monitoreo</td></tr>
+</table>
+
+<!-- ==================== SECTION 12: INTEGRATIONS ==================== -->
+<h1 id="s12"><span class="sn">12.</span> Integraciones Externas</h1>
+
+<h4>12.1 C&aacute;rgame &mdash; Anti-Corruption Layer</h4>
+<div class="mermaid">
+graph LR
+    subgraph "Cárgame Adapter - ACL (Go)"
+        CLI["HTTP Client\nREST Cárgame API"]
+        CB["Circuit Breaker\nOpen tras 5 fallos\nhalf-open 30s"]
+        RET["Retry Handler\nExponential backoff\nmax 3"]
+        CACHE["Cache Manager\nRedis TTL 24h"]
+        TRANS["Model Translator\nCárgameDTO a CPODomain"]
+        HLTH["Health Probe\nPing cada 60s"]
+    end
+    CLI --> CB
+    CB --> RET
+    RET -->|"VPN IPSec"| CARG["Cárgame API"]
+    CLI --> CACHE
+    CLI --> TRANS
+    HLTH --> CARG
+</div>
+
+<h4>12.2 Kafka Topics &mdash; Event Mesh</h4>
+<table>
+<tr><th>Topic</th><th>Eventos</th><th>Particiones</th><th>Retenci&oacute;n</th><th>Consumer Groups</th></tr>
+<tr><td><code>cpo-events</code></td><td>CPORegistered, CPOCertified, CPOSuspended</td><td>12</td><td>7d</td><td>ocpi-core, audit, notification</td></tr>
+<tr><td><code>ocpi-locations-events</code></td><td>LocationUpdated, EVSEStatusChanged</td><td>24</td><td>7d</td><td>validator, public-data, datalake, audit</td></tr>
+<tr><td><code>ocpi-sessions-events</code></td><td>SessionStarted, SessionUpdated, SessionCompleted</td><td>24</td><td>7d</td><td>validator, datalake, audit</td></tr>
+<tr><td><code>ocpi-cdrs-events</code></td><td>CDRCreated</td><td>12</td><td>30d</td><td>validator, datalake, audit</td></tr>
+<tr><td><code>ocpi-tariffs-events</code></td><td>TariffUpdated</td><td>6</td><td>7d</td><td>validator, public-data, datalake</td></tr>
+<tr><td><code>validation-results</code></td><td>ValidationPassed, ValidationFailed</td><td>12</td><td>7d</td><td>state-updater, datalake, audit</td></tr>
+<tr><td><code>quality-events</code></td><td>AnomalyDetected, FreshnessViolation</td><td>6</td><td>30d</td><td>alerting, audit</td></tr>
+<tr><td><code>audit-events</code></td><td>AuditEntryCreated, AlertFired</td><td>12</td><td>365d (WORM)</td><td>audit-trail, SIC-exporter</td></tr>
+<tr><td><code>notification-events</code></td><td>Notificaciones</td><td>6</td><td>3d</td><td>webhook-dispatcher, notification-svc</td></tr>
+<tr><td><code>ocpi-dlq</code></td><td>Failed validations, poison pills</td><td>6</td><td>30d</td><td>dlq-handler (manual)</td></tr>
+</table>
+
+<!-- ==================== SECTION 13: ROADMAP ==================== -->
+<h1 id="s13"><span class="sn">13.</span> Roadmap &amp; Fases del Proyecto</h1>
+
+<table>
+<tr><th>Fase</th><th>Per&iacute;odo</th><th>Entregables Clave</th><th>Equipos Involucrados</th></tr>
+<tr><td><strong>F1 &mdash; Fundaci&oacute;n</strong></td><td>Mar-May 2026</td><td>IaC Terraform, OKE, VCN, KeyCloak, API Gateway, Ingesta Service v1</td><td>DevOps, Backend Sr, Arquitecto, Seguridad IT</td></tr>
+<tr><td><strong>F2 &mdash; Core OCPI</strong></td><td>May-Jul 2026</td><td>OCPI 2.2.1 completo (Locations, Sessions, CDRs, Tariffs), Validator, CPO Management, Sandbox</td><td>Backend, Legal, CPOs piloto</td></tr>
+<tr><td><strong>F3 &mdash; Data Lake</strong></td><td>Jul-Ago 2026</td><td>Medallion Bronze/Silver/Gold, ETL Spark, Data Quality Engine, Data Catalog</td><td>Backend, Data team</td></tr>
+<tr><td><strong>F4 &mdash; Portal</strong></td><td>Ago-Sep 2026</td><td>Portal p&uacute;blico (mapa RT), Developer Portal, Open Data API, documentaci&oacute;n</td><td>Frontend, Backend, CPOs piloto</td></tr>
+<tr><td><strong>F5 &mdash; Sandbox</strong></td><td>Sep-Oct 2026</td><td>Sandbox p&uacute;blico, compliance suite (47 tests), certificaci&oacute;n CPOs piloto</td><td>QA, CPOs piloto, Seguridad IT, Legal</td></tr>
+<tr><td><strong>F6 &mdash; Go-Live</strong></td><td>Oct-Nov 2026</td><td>Producci&oacute;n, DRP activo, monitoreo 24/7, pen testing, aprobaci&oacute;n final</td><td>Todos, Seguridad IT, Legal, Entidad Externa</td></tr>
+</table>
+
+<h4>Participaci&oacute;n de Colaboradores por Fase</h4>
+<table>
+<tr><th>&Aacute;rea</th><th>F1 Fundaci&oacute;n</th><th>F2 Core OCPI</th><th>F3 Data Lake</th><th>F4 Portal</th><th>F5 Sandbox</th><th>F6 Go-Live</th></tr>
+<tr><td>Legal/Jur&iacute;dica</td><td>Alta</td><td>Media</td><td>Baja</td><td>Media</td><td>Alta</td><td>Alta</td></tr>
+<tr><td>Seguridad IT</td><td>Alta</td><td>Alta</td><td>Baja</td><td>Baja</td><td>Alta</td><td>Alta</td></tr>
+<tr><td>Entidad Externa (Espa&ntilde;a)</td><td>Alta</td><td>Media</td><td>Baja</td><td>Baja</td><td>Media</td><td>Alta</td></tr>
+<tr><td>CPOs Piloto</td><td>Baja</td><td>Alta</td><td>Baja</td><td>Media</td><td>Alta</td><td>Alta</td></tr>
+</table>
+
+<!-- ==================== FOOTER ==================== -->
+<div style="margin-top:40px;padding-top:20px;border-top:2px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:0.78rem">
+<p><strong>Documento de Arquitectura de Software</strong> &mdash; Plataforma de Interoperabilidad de Electromovilidad UPME</p>
+<p>Versi&oacute;n 1.0 &mdash; L&iacute;nea Base &mdash; Febrero 2026</p>
+<p>Resoluci&oacute;n 40559/2025 del Ministerio de Minas y Energ&iacute;a &mdash; OCPI 2.2.1</p>
+<p>&copy; 2026 UPME &mdash; Unidad de Planeaci&oacute;n Minero-Energ&eacute;tica. Todos los derechos reservados.</p>
+</div>
+</div>
+</body>
+</html>

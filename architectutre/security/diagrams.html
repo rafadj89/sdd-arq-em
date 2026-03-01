@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguridad API: Electromovilidad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Cargando Mermaid JS -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'dark',
+                themeVariables: {
+                    fontFamily: 'Inter, sans-serif',
+                    primaryColor: '#38bdf8',
+                    primaryTextColor: '#f8fafc',
+                    primaryBorderColor: '#0284c7',
+                    lineColor: '#94a3b8',
+                    secondaryColor: '#1e293b',
+                    tertiaryColor: '#0f172a'
+                }
+            });
+        });
+    </script>
+
+    <style>
+        /* 1. THE SETUP */
+        * {
+            box-sizing: border-box;
+        }
+
+        p {
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        body {
+            background-color: #020617; /* Darkest Slate */
+            display: grid;
+            gap: 30px;
+            grid-template-columns: 1fr;
+            margin: 0;
+            min-height: 100vh;
+            padding: 40px 0;
+            place-items: center;
+        }
+
+        .slide-container {
+            align-items: center;
+            background-color: #0f172a; /* Slate 900 */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px;
+            position: relative;
+            width: 1280px;
+        }
+
+        /* Abstract Background Decoration */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .slide-container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 2. CONSISTENT TYPOGRAPHY */
+        .slide-container h1,
+        .slide-container h2,
+        .slide-container h3 {
+            color: #f8fafc;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .slide-container p,
+        .slide-container li,
+        .slide-container .subtitle {
+            color: #cbd5e1; /* Slate 300 */
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .slide-container h1 {
+            font-size: 64px;
+            line-height: 1.2;
+        }
+        
+        .slide-container h1 span, 
+        .slide-container h2 span, 
+        .slide-container .icon {
+            color: #38bdf8; /* Sky 400 */
+        }
+
+        .slide-container .slide-title {
+            font-size: 40px;
+            margin-bottom: 30px;
+            text-align: left;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .slide-container h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        /* 3. LAYOUT DEFINITIONS */
+        .title-layout {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .title-layout .subtitle {
+            font-size: 24px;
+            color: #94a3b8;
+            margin-top: 20px;
+            max-width: 900px;
+        }
+
+        .content-area {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            width: 100%;
+            min-height: 0;
+        }
+
+        .section-title-layout {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title-layout h2 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .section-title-layout p {
+            font-size: 24px;
+            margin: 0 auto;
+            max-width: 800px;
+            color: #94a3b8;
+        }
+
+        .section-title-layout hr {
+            background-color: #38bdf8;
+            border: none;
+            height: 6px;
+            margin: 30px auto;
+            width: 120px;
+            border-radius: 3px;
+        }
+
+        /* Bleed Image Right Layout */
+        .slide-container.bleed-image-layout {
+            align-items: start;
+            display: grid;
+            gap: 50px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            padding: 0;
+        }
+
+        .slide-container.bleed-image-layout > .content-container {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .slide-container.bleed-image-layout .image-container {
+            height: 100%;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slide-container.bleed-image-layout img.bleed-image-side {
+            display: block;
+            height: 720px;
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+            border-radius: 0;
+        }
+
+        /* Mermaid Container Layout Fix */
+        .mermaid-container {
+            width: 100%;
+            height: 540px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1e293b; /* Slate 800 */
+            border-radius: 16px;
+            border: 1px solid #334155;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: inset 0 4px 6px rgba(0,0,0,0.3);
+            overflow: auto;
+        }
+
+        /* Usamos pre para mantener los saltos de línea vitales para Mermaid */
+        pre.mermaid {
+            background-color: transparent !important;
+            border: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            font-family: inherit;
+        }
+
+        pre.mermaid svg {
+            max-width: 100%;
+            max-height: 100%; 
+        }
+
+        /* Tiled Content */
+        .tiled-content {
+            align-items: stretch;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tile {
+            align-items: center;
+            background-color: #1e293b;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: flex-start;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .tile .icon {
+            font-size: 56px;
+            margin-bottom: 24px;
+        }
+
+        /* Highlighted Numbers */
+        .two-column {
+            align-items: center;
+            display: flex;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .highlight-numbers-layout > div {
+            flex: 1;
+            text-align: center;
+            background: #1e293b;
+            padding: 50px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+        }
+
+        .highlight-numbers-layout .number {
+            color: #10b981; /* Emerald 500 */
+            font-size: 100px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .highlight-numbers-layout .number-label {
+            font-size: 24px;
+            font-weight: 600;
+            color: #f8fafc;
+        }
+
+        /* Q&A */
+        .qa-layout {
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+            align-self: center;
+        }
+
+        .qa-layout h2 {
+            font-size: 80px;
+            margin-bottom: 20px;
+            color: #38bdf8;
+        }
+
+        .qa-layout p {
+            font-size: 28px;
+        }
+        
+        .qa-layout .contact-info {
+            color: #94a3b8;
+            font-size: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1 -->
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <h1>Arquitectura de <span>Seguridad API</span></h1>
+        <p class="subtitle">Ecosistema OCPI 2.2.1 - Plataforma de Electromovilidad<br>Gobierno de Colombia</p>
+    </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide-container bleed-image-layout" id="slide2">
+    <div class="content-container">
+        <h2 class="slide-title">El Desafío de <span>Interoperabilidad</span></h2>
+        <div class="content-area" style="align-items: start; justify-content: start;">
+            <p>La integración del estándar <strong>OCPI 2.2.1</strong> transforma al Estado en el nodo central (Hub) de comunicaciones para el sector de recarga vehicular.</p>
+            <p>Esta centralización exige la implementación inmediata de una arquitectura <strong>Zero Trust</strong> (Confianza Cero) para orquestar la comunicación M2M (Máquina a Máquina).</p>
+            <p>Se requiere un filtrado estricto L3/L4, protección WAF avanzada contra inyecciones y validación rigurosa de tokens, garantizando que solo Proveedores (CPOs) autenticados consuman recursos del clúster.</p>
+        </div>
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Estación moderna de carga de vehículos eléctricos">
+    </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide-container" id="slide3">
+    <div class="section-title-layout">
+        <hr>
+        <h2>Modelado <span>C4</span></h2>
+        <p>Visión estructural de la Arquitectura Recomendada y el Stack Tecnológico desplegado en Kubernetes.</p>
+    </div>
+</div>
+
+<!-- Slide 4: C4 Context (Arreglado con <pre>) -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Contexto del Sistema (C4 Nivel 1)</h2>
+    <div class="content-area">
+        <div class="mermaid-container">
+<pre class="mermaid">
+C4Context
+title Arquitectura de Alto Nivel - Electromovilidad
+Person(cpo, "Operador (CPO)", "Infraestructura externa del proveedor de carga")
+System_Boundary(gob, "Infraestructura Gubernamental (MinTIC / MinEnergía)") {
+  System(waf, "OCI WAF Edge", "Bloqueo por Segmento/IP (L4/L7)")
+  System(k8s, "Plataforma Electromovilidad", "Microservicios OCPI (Cluster Kubernetes)")
+  System(idp, "Keycloak / ZITADEL", "Gestor de Identidades y Tokens OAuth 2.1")
+}
+Rel(cpo, idp, "1. Solicita Token JWT", "Client Credentials M2M")
+Rel(cpo, waf, "2. Envía telemetría de carga", "HTTPS (Bearer Token)")
+Rel(waf, k8s, "3. Enruta tráfico filtrado", "Proxy Interno")
+</pre>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: C4 Container (Arreglado con <pre>) -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Stack Tecnológico (C4 Nivel 2)</h2>
+    <div class="content-area">
+        <div class="mermaid-container">
+<pre class="mermaid">
+C4Container
+title Contenedores en Cluster Kubernetes (Híbrido / OCI)
+System_Boundary(k8s, "Red Privada del Cluster") {
+  Container(apisix, "API Gateway", "Apache APISIX / Kong", "Valida JWT y verifica Cuotas (Rate Limit)")
+  Container(coraza, "WAF Interno", "Coraza Wasm", "Inspección heurística OWASP CRS v4")
+  Container(backend, "Servicios Core", "Golang / Spring Boot", "Procesa lógica de negocio OCPI (CDRs, Locations)")
+  ContainerDb(pg, "Base de Datos", "PostgreSQL", "Almacenamiento Transaccional y Auditoría")
+}
+System_Ext(idp, "IAM (Keycloak)", "IdP")
+Rel(apisix, coraza, "Delega inspección de payload", "WebAssembly")
+Rel(apisix, backend, "Enruta peticiones limpias", "gRPC/HTTP")
+Rel(backend, pg, "Lee/Escribe estado de carga", "TCP")
+Rel(apisix, idp, "Verifica firmas (JWKS)", "HTTPS")
+</pre>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6 -->
+<div class="slide-container" id="slide6">
+    <div class="section-title-layout">
+        <hr>
+        <h2>Flujo de <span>Autenticación</span></h2>
+        <p>Integración del protocolo OCPI con flujos estandarizados B2B bajo OAuth 2.1 (Client Credentials).</p>
+    </div>
+</div>
+
+<!-- Slide 7: Diagrama de Secuencia (Arreglado con <pre>) -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Diagrama de Secuencia (M2M)</h2>
+    <div class="content-area">
+        <div class="mermaid-container">
+<pre class="mermaid">
+sequenceDiagram
+autonumber
+actor CPO as Infraestructura CPO
+participant IDP as Keycloak (IdP)
+participant WAF as OCI WAF / Firewall L4
+participant API as API Gateway (APISIX)
+participant GO as Backend (Microservicios)
+
+Note over CPO, IDP: Fase 1: Emisión de Credenciales M2M
+CPO->>IDP: POST /oauth/token (Client ID + Secret/PKI)
+IDP-->>CPO: Access Token (JWT válido por 15 min)
+
+Note over CPO, GO: Fase 2: Consumo Seguro de Plataforma OCPI
+CPO->>WAF: Request API (Header: Bearer Token)
+WAF->>WAF: Validar IP Whitelist (Drop si no coincide)
+WAF->>API: Forward (Tráfico de red lícito)
+
+API->>API: Validar firma del JWT (JWKS caché)
+API->>API: Inspección WAF Interno (Ataques Capa 7)
+API->>GO: Petición Sanitizada y Autenticada
+
+GO-->>API: 200 OK (Registro Procesado)
+API-->>WAF: 200 OK
+WAF-->>CPO: 200 OK
+</pre>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8 -->
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Pilares de la Capa de Seguridad</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-network-wired"></i></div>
+                <h3>1. IP Whitelisting (L4)</h3>
+                <p>Bloqueo físico en el perímetro. Se descartan las peticiones TCP que no provengan de las IPs estáticas declaradas por cada CPO, ahorrando procesamiento.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-key"></i></div>
+                <h3>2. Identidad Efímera</h3>
+                <p>Sustitución de las viejas API Keys de OCPI por tokens JWT rotativos vía OAuth 2.1 gestionados por Keycloak, reduciendo riesgo por fugas.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>3. Inspección en Proxy</h3>
+                <p>Protección WAF profunda embebida directamente en el API Gateway. Previene inyecciones SQL y ataques malformados sin latencia perceptible.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9 -->
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Métricas Proyectadas (PoC)</h2>
+    <div class="content-area">
+        <div class="two-column highlight-numbers-layout">
+            <div>
+                <div class="number">~1<span style="font-size:40px">ms</span></div>
+                <div class="number-label">Latencia de WAF Interno</div>
+                <p style="margin-top:15px">La inspección de seguridad en el borde (WebAssembly) elimina los cuellos de botella de los WAF tradicionales.</p>
+            </div>
+            <div>
+                <div class="number">100%</div>
+                <div class="number-label">Trazabilidad Criptográfica</div>
+                <p style="margin-top:15px">Cada token B2B emitido contiene el Party ID del operador, garantizando la auditoría inmutable exigida por MinTIC.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10 -->
+<div class="slide-container" id="slide10">
+    <div class="qa-layout">
+        <h2>¿Preguntas?</h2>
+        <p>Definiendo el estándar de interoperabilidad para Colombia.</p>
+        <div class="contact-info">
+            Arquitectura de Soluciones | ministerio.gov.co
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
