@@ -1,0 +1,273 @@
+﻿Id,Nombres,Apellidos,TipoID,Identificacion,Usuario,TipoUsuario,Estado,Correo,FechaCreacion,FechaExpira,Coordinacion
+1,admin,admin,CC,123456789,admin,Administrador,Activo,cavillalobos@minenergia.gov.co,2020-04-24,2039-12-31,
+2,Jairo,Lavado,CC,79812212,79812212,Empresa energía no convencional - Dosimetria,Activo,afacevedo@minenergia.gov.co,2020-12-14,2026-12-26,Prueba Gencan
+3,AES CHIVOR,,NIT,830025205,AMI830025205,Empresa energía convencional - AMI,Activo,aeschivor@aes.com,2020-12-14,2023-12-28,AES CHIVOR & CIA SCA ESP
+4,CEDENAR S.A.,,CC,891200200,AMI891200200,Empresa energía convencional - AMI,Activo,gerencia@cedenar.com.co,2020-12-14,2023-12-26,CENTRALES ELECTRICAS DE NARIÑO S.A. E.S.P.
+5,CELSIA TOLIMA S.A.,,NIT,901280981,AMI901280981,Empresa energía convencional - AMI,Activo,jhdelosrios@celsia.com,2020-12-14,2023-12-25,CELSIA TOLIMA S.A. E.S.P.
+6,CENS S.A.,,NIT,890500514,AMI890500514,Empresa energía convencional - AMI,Activo,notificacionesjudiciales@cens.com.co,2020-12-14,2023-12-29,CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP
+7,CETSA,,NIT,891900101,AMI891900101,Empresa energía convencional - AMI,Activo,jpgaitan@celsia.com,2020-12-14,2023-12-27,COMPAÑÍA DE ELECTRICIDAD DE TULUÁ S.A. E.S.P.
+8,CHEC S.A.,,NIT,890800128,AMI890800128,Empresa energía convencional - AMI,Activo,notificaciones.judiciales@chec.com.co,2020-12-14,2023-12-30,CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.
+9,CODENSA S.A.,,NIT,830037248,AMI830037248,Empresa energía convencional - AMI,Activo,servicioalclientecodensa@enel.com,2020-12-14,2023-12-29,CODENSA S.A. ESP
+10,COMPANIA ENERGETICA DE OCCIDENTE S.A.S. ,,NIT,900366010,AMI900366010,Empresa energía convencional - AMI,Activo,cia.energetica@ceoesp.com,2020-12-14,2023-12-29,COMPAÑIA ENERGETICA DE OCCIDENTE S.A.S.  E.S.P.
+11,DICEL S.A. ,,NIT,815000896,AMI815000896,Empresa energía convencional - AMI,Activo,dicelsa@dicel.com.co,2020-12-14,2023-12-29,DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA ELECTRICA S.A. E.S.P.
+12,DICELER S.A. ,,NIT,815001901,AMI815001901,Empresa energía convencional - AMI,Activo,dicelsa@dicel.com.co,2020-12-14,2023-12-29,DICELER S.A E.S.P.
+13,DISPAC S.A. ,,NIT,818001629,AMI818001629,Empresa energía convencional - AMI,Activo,dispac@dispac.com.co,2020-12-14,2023-12-27,EMPRESA DISTRIBUIDORA DEL PACIFICO S.A. E.S.P
+14,E.E.B.P.  S.A.  ,,NIT,846000553,AMI846000553,Empresa energía convencional - AMI,Activo,eebp@eebpsa.com.co,2020-12-14,2023-12-29,EMPRESA DE ENERGIA DEL BAJO PUTUMAYO  S.A.  E.S.P.
+15,E2 ENERGIA EFICIENTE S.A. ,,NIT,802025052,AMI802025052,Empresa energía convencional - AMI,Activo,correo@e2energiaeficiente.com,2020-12-14,2023-12-29,E2 ENERGIA EFICIENTE S.A. E.S.P.
+16,EBSA ,,NIT,891800219,AMI891800219,Empresa energía convencional - AMI,Activo,documentacion@ebsa.com.co,2020-12-14,2023-12-29,EMPRESA DE ENERGIA DE BOYACA S.A. ESP
+17,ECELCOS S.A.S ,,NIT,901225715,AMI901225715,Empresa energía convencional - AMI,Activo,infoecelcos01@gmail.com,2020-12-14,2023-12-29,EMPRESA COMERCIALIZADORA DE ENERGÍA ELÉCTRICA DE LA COSTA 
+18,ECO LOGICA S.A.S. ,,NIT,900729389,AMI900729389,Empresa energía convencional - AMI,Activo,comercial@ecologicaesp.com,2020-12-14,2023-12-29,Empresa Prestadora de Servicios Publicos ECO LOGICA S.A.S. E.S.P.
+19,ECOPETROL ENERGIA,,NIT,901165502,AMI901165502,Empresa energía convencional - AMI,Activo,juan.molinares@ecopetrolenergiaesp.com.co,2020-12-14,2023-12-29,ECOPETROL ENERGÍA S.A.S. E.S.P.
+20,EDEQ  S.A.,,NIT,800052640,AMI800052640,Empresa energía convencional - AMI,Activo,secretaria_general@edeq.com.co,2020-12-14,2023-12-29,EMPRESA DE ENERGIA DEL  QUINDIO S.A.E.S.P.
+21,EE.PP.M. ,,NIT,890904996,AMI890904996,Empresa energía convencional - AMI,Activo,Juan.franco.londono@epm.com.co,2020-12-14,2023-12-28,EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.
+22,EEPSA,,NIT,846000241,AMI846000241,Empresa energía convencional - AMI,Activo,secretaria@energiaputumayo.com,2020-12-14,2023-12-29,EMPRESA DE ENERGIA DEL PUTUMAYO S.A. ESP
+23,ELECTROCAQUETA S.A. ,,NIT,891190127,AMI891190127,Empresa energía convencional - AMI,Activo,infoelectrocaqueta@electrocaqueta.com.co,2020-12-14,2023-12-29,ELECTRIFICADORA DEL CAQUETA S.A. ESP
+24,ELECTROHUILA S.A. ,,NIT,891180001,AMI891180001,Empresa energía convencional - AMI,Activo,Carlos.PerdomoH@electrohuila.co,2020-12-14,2023-12-28,ELECTRIFICADORA DEL HUILA S.A. E.S.P.
+25,ELECTROVICHADA S.A ESP,,NIT,842000155,AMI842000155,Empresa energía convencional - AMI,Activo,gerenciaelec@gmail.com,2020-12-14,2023-12-28,EMPRESA DE ENERGIA ELECTRICA DEL DEPARTAMENTO DEL VICHADA S.A
+26,EMCALI EICE  ,,NIT,890399003,AMI890399003,Empresa energía convencional - AMI,Activo,ivsanclemente@emcali.com.co,2020-12-14,2023-12-27,EMPRESAS MUNICIPALES DE CALI   E.I.C.E  E.S.P
+27,EMCARTAGO  ,,NIT,836000349,AMI836000349,Empresa energía convencional - AMI,Activo,contactenos@emcartago.com,2020-12-14,2023-12-29,EMPRESAS MUNICIPALES DE CARTAGO E.S.P.
+28,EMEESA,,NIT,891500061,AMI891500061,Empresa energía convencional - AMI,Activo,gerencia@emeesaesp.com,2020-12-14,2023-12-29,EMPRESA MUNICIPAL DE ENERGÍA ELÉCTRICA S.A-E.S.P
+29,EMEVASI S.A. ,,NIT,846000060,AMI846000060,Empresa energía convencional - AMI,Activo,emevasi@emevasi.com,2020-12-14,2023-12-29,EMPRESA DE ENERGIA DEL VALLE DE SIBUNDOY S.A. E.S.P. 
+30,EMGESA S.A. ,,NIT,860063875,AMI860063875,Empresa energía convencional - AMI,Activo,emlinea@enel.com,2020-12-14,2023-12-29,EMGESA S.A. E.S.P.
+31,EMSA ,,NIT,892002210,AMI892002210,Empresa energía convencional - AMI,Activo,leonardo.restrepo@emsa-esp.com.co,2020-12-14,2023-12-26,ELECTRIFICADORA DEL META S.A. E.S.P.
+32,EMPRESA DE ENERGÍA DE ARAUCA,,NIT,892099499,AMI892099499,Empresa energía convencional - AMI,Activo,gerencia@enelar.com.co,2020-12-14,2023-12-28,EMPRESA DE ENERGIA DE ARAUCA  S.A. E.S.P.
+33,ENERCA SA,,NIT,844004576,AMI844004576,Empresa energía convencional - AMI,Activo, correspondencia@enerca.com.co,2020-12-14,2023-12-29,EMPRESA DE ENERGIA DE CASANARE SA ESP
+34,ENERCO S.A ,,NIT,805016928,AMI805016928,Empresa energía convencional - AMI,Activo,enerco@enercoesp.com,2020-12-14,2023-12-29,ENERCO S.A. E.S.P.
+35,ENERGETICOS S.A.S.  ,,NIT,830092965,AMI830092965,Empresa energía convencional - AMI,Activo,energeticossaesp@gmail.com.co,2020-12-14,2023-12-29,ENERGETICOS S.A.S.  E.S.P. DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA GAS E HIDROCARBUROS
+36,EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.,,NIT,816002019,AMI816002019,Empresa energía convencional - AMI,Activo,contactenoscartago@eep.com.co,2020-12-14,2023-12-22,EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.
+37,ENERGIA EMPRESARIAL DE LA COSTA S.A. ,,NIT,900044461,AMI900044461,Empresa energía convencional - AMI,Activo,serviciosjuridicoseca@electricaribe.co,2020-12-14,2023-12-29,ENERGIA EMPRESARIAL DE LA COSTA S.A. E.S.P.
+38,ENERGUAVIARE  SA ,,NIT,822004680,AMI822004680,Empresa energía convencional - AMI,Activo,gerencia@energuaviare.com.co,2020-12-14,2024-12-28,EMPRESA DE ENERGIA ELECTRICA DEL DEPARTAMENTO DEL GUAVIARE SA ESP
+39,ENERTOTAL S.A. ,,NIT,900039901,AMI900039901,Empresa energía convencional - AMI,Activo,enertotal@enertotalesp.com,2020-12-14,2023-12-29,ENERTOTAL S.A. E.S.P.
+40,ESANT SA.,,NIT,900648934,AMI900648934,Empresa energía convencional - AMI,Activo,esantoperaciones@esant.com.co,2020-12-14,2023-12-28,EMPRESA DE SERVICIOS PUBLICOS DE SANTANDER S.A.E.S.P.
+41,ESSA ,,NIT,890201230,AMI890201230,Empresa energía convencional - AMI,Activo,essa@essa.com.co,2020-12-14,2023-12-29,ELECTRIFICADORA DE SANTANDER S.A. E.S.P.
+42,ISA INTERCOLOMBIA,,NIT,900667590,AMI900667590,Empresa energía convencional - AMI,Activo,notificacionesjudiciales@intercolombia.com,2020-12-14,2023-12-29,ISA INTERCOLOMBIA S.A. E.S.P
+43,PEESA,,NIT, 900341483,AMI900341483,Empresa energía convencional - AMI,Activo,peesa@peesa.com.co,2020-12-14,2023-12-29,PROFESIONALES EN ENERGÍA S.A E.S.P
+44,QIENERGY,,NIT,900677732,AMI900677732,Empresa energía convencional - AMI,Activo,gerencia@qienergy.co,2020-12-14,2023-12-29,QI ENERGY SAS ESP
+45,RENOVATIO TRADING AMERICAS SAS,,NIT,900589503,AMI900589503,Empresa energía convencional - AMI,Activo,iarevalo@gruporenovatio.com,2020-12-14,2023-12-29,RENOVATIO TRADING AMERICAS SAS ESP
+46,RIOEN SAS ,,NIT,900652334,AMI900652334,Empresa energía convencional - AMI,Activo,notificaciones@riopailaenergia.com,2020-12-14,2023-12-29,RIOPAILA ENERGÍA SAS ESP
+47,RUITOQUE S.A. ,,NIT,804001062,AMI804001062,Empresa energía convencional - AMI,Activo,escribanos@ruitoqueesp.com,2020-12-14,2023-12-29,RUITOQUE S.A. E.S.P.
+48,TERPEL ENERGIA S.A.S ,,NIT,900433032,AMI900433032,Empresa energía convencional - AMI,Activo, infoterpel@terpel.com ,2020-12-14,2023-12-29,TERPEL ENERGIA S.A.S E.S.P
+49,VATIA,,NIT,817001892,AMI817001892,Empresa energía convencional - AMI,Activo,VATIA@VATIA.COM.CO,2020-12-14,2023-12-29,VATIA S.A. E.S.P.
+50,EMSERPCAR SAS ,,NIT,900943044,AMI900943044,Empresa energía convencional - AMI,Activo,alexremo_1980@hotmail.com,2020-12-14,2023-12-29,EMPRESA COMUNITARIA DE SERVICIOS PUBLICOS DOMICILIARIOS DE CARTAGENA DEL CHAIRA S.A.S E.S.P
+51,CELSIA COLOMBIA S.A. ,,NIT,800249860,AMI800249860,Empresa energía convencional - AMI,Activo,jpgaitan@celsia.com,2020-12-14,2023-12-26,CELSIA COLOMBIA S.A. E.S.P.
+52,PROELECTRICA & CIA. ,,NIT,800149537-6,ESP800149537,Empresa energía convencional - AMI,Activo,notificacionesjudiciales@proelectrica.com,2020-12-30,2022-12-30,PROELECTRICA & CIA. S.C.A. E.S.P.
+53,CHEC S.A.,,NIT,890800128-6,URL890800128,Empresa energía convencional - UsRural,Activo,notificaciones.judiciales@chec.com.co,2020-12-30,2022-12-28,CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.
+54,CENTRALES ELECTRICAS DE NARIÑO ,,NIT,891200200-8,ESP891200200,Empresa energía convencional - AMI,Activo,notificaciones.cedenar.sspd@cedenar.com.co,2020-12-30,2022-12-30,CENTRALES ELECTRICAS DE NARIÑO S.A. E.S.P.
+55,CENTRALES ELECTRICAS DEL CAUCA ,,NIT,891500025-2,ESP891500025,Empresa energía convencional - AMI,Activo,notificacionesjudiciales@cedelca.com.co,2020-12-30,2022-12-30,CENTRALES ELECTRICAS DEL CAUCA S.A. E.S.P.
+56,CENS S.A.,,NIT,890500514-9,URL890500514,Empresa energía convencional - UsRural,Activo,notificacionesjudiciales@cens.com.co,2020-12-30,2022-12-29,CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP
+57,CETSA,,NIT,891900101-0,URL891900101,Empresa energía convencional - UsRural,Activo,cetsa@celsia.com,2020-12-30,2022-12-28,COMPAÑÍA DE ELECTRICIDAD DE TULUÁ S.A. E.S.P.
+58,ELECTRIFICADORA DE SANTANDER ,,NIT,890201230-1,URL890201230,Empresa energía convencional - UsRural,Activo,essa@essa.com.co,2020-12-30,2022-12-29,ELECTRIFICADORA DE SANTANDER S.A. E.S.P.
+59,ELECTRIFICADORA DEL CAQUETA ,,NIT,891190127-3,URL891190127,Empresa energía convencional - UsRural,Activo,infoelectrocaqueta@electrocaqueta.com.co,2020-12-30,2022-12-29,ELECTRIFICADORA DEL CAQUETA S.A. ESP
+60,ELECTRIFICADORA DEL HUILA ,,NIT,891180001-1,URL891180001,Empresa energía convencional - UsRural,Activo,gerencia@electrohuila.co,2020-12-30,2022-12-29,ELECTRIFICADORA DEL HUILA S.A. E.S.P.
+61,EMSA ,,NIT,892002210-6,URL892002210,Empresa energía convencional - UsRural,Activo,gerencia@emsa-esp.com.co,2020-12-30,2022-12-29,ELECTRIFICADORA DEL META S.A. E.S.P.
+62,EMPRESA DE ENERGÍA DE ARAUCA ,,NIT,892099499-3,URL892099499,Empresa energía convencional - UsRural,Activo,gerencia@enelar.com.co,2020-12-30,2022-12-29,EMPRESA DE ENERGIA DE ARAUCA  S.A. E.S.P.
+63,EBSA,,NIT,891800219-1,URL891800219,Empresa energía convencional - UsRural,Activo,documentacion@ebsa.com.co,2020-12-30,2022-12-29,EMPRESA DE ENERGIA DE BOYACA S.A. ESP
+64,CELSIA COLOMBIA ,,NIT,800249860-1,ESP800249860,Empresa energía convencional - AMI,Activo,wareyes@celsia.com,2020-12-30,2022-12-30,CELSIA COLOMBIA S.A. E.S.P.
+65,EMPRESA DE ENERGIA DEL QUINDIO ,,NIT,800052640-9,ESP800052640,Empresa energía convencional - AMI,Activo,william.garcia@edeq.com.co,2020-12-30,2022-12-30,EMPRESA DE ENERGIA DEL  QUINDIO S.A.E.S.P.
+66,EMPRESAS MUNICIPALES DE CALI ,,NIT,890399003-4,URL890399003,Empresa energía convencional - UsRural,Activo,notificaciones@emcali.com.co,2020-12-30,2022-12-29,EMPRESAS MUNICIPALES DE CALI   E.I.C.E  E.S.P
+67,EMPRESAS MUNICIPALES DE CARTAGO ,,NIT,836000349-8,ESP836000349,Empresa energía convencional - AMI,Activo,contactenos@emcartago.com,2020-12-30,2022-12-30,EMPRESAS MUNICIPALES DE CARTAGO E.S.P.
+68,EMPRESAS PUBLICAS DE MEDELLIN ,,NIT,890904996-1,URL890904996,Empresa energía convencional - UsRural,Activo,epm@epm.com.co,2020-12-30,2022-12-28,EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.
+69,ISAGEN S.A. ,,NIT,811000740-4,ESP811000740,Empresa energía convencional - AMI,Activo,notificacionesenlinea@isagen.com.co,2020-12-30,2022-12-30,ISAGEN S.A. E.S.P.
+70,EMGESA S.A. ,,NIT,860063875-8,ESP860063875,Empresa energía convencional - AMI,Activo,emlinea@enel.com,2020-12-30,2022-12-30,EMGESA S.A. E.S.P.
+71,AES CHIVOR & CIA. ,,NIT,830025205-2,ESP830025205,Empresa energía convencional - AMI,Activo,aeschivor@aes.com,2020-12-30,2022-12-30,AES CHIVOR & CIA SCA ESP
+72,VATIA S.A. ,,NIT,817001892-1,ESP817001892,Empresa energía convencional - AMI,Activo,nmuvdi@vatia.com.co,2020-12-30,2022-12-30,VATIA S.A. E.S.P.
+73,DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA ELECTRICA ,,NIT,815000896-9,ESP815000896,Empresa energía convencional - AMI,Activo,dicelsa@dicel.com.co,2020-12-30,2022-12-30,DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA ELECTRICA S.A. E.S.P.
+74,EMPRESA DE ENERGIA DEL PUTUMAYO ,,NIT,846000241-8,ESP846000241,Empresa energía convencional - AMI,Activo,correspondencia@energiaputumayo.com,2020-12-30,2022-12-30,EMPRESA DE ENERGIA DEL PUTUMAYO S.A. ESP
+75,EMPRESA DE ENERGIA DE PEREIRA ,,NIT,816002019-9,URL816002019,Empresa energía convencional - UsRural,Activo,notificacionesjudiciales@eep.com.co,2020-12-30,2022-12-29,EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.
+76,CODENSA ,,NIT,830037248-0,URL830037248,Empresa energía convencional - UsRural,Activo,servicioalclientecodensa@enel.com,2020-12-30,2022-12-29,CODENSA S.A. ESP
+77,EMPRESA DE ENERGIA DEL VALLE DE SIBUNDOY ,,NIT,846000060-1,ESP846000060,Empresa energía convencional - AMI,Activo,dptecnico@emevasi.com,2020-12-30,2022-12-30,EMPRESA DE ENERGIA DEL VALLE DE SIBUNDOY S.A. E.S.P. 
+78,PROYECTOS ENERGETICOS DEL CAUCA ,,NIT,817000362-5,ESP817000362,Empresa energía convencional - AMI,Activo,mzuniga@ingeniolacabana.com,2020-12-30,2022-12-30,PROYECTOS ENERGETICOS DEL CAUCA S.A. E.S.P.
+79,DICELER ,,NIT,815001901-2,ESP815001901,Empresa energía convencional - AMI,Activo,dicelsa@dicel.com.co,2020-12-30,2022-12-30,DICELER S.A E.S.P.
+80,TERMOPIEDRAS ,,NIT,830058506-6,ESP830058506,Empresa energía convencional - AMI,Activo,administrativa@termopiedras.com,2020-12-30,2022-12-30,TERMOPIEDRAS S.A. E.S.P.
+81,EMEESA,,NIT,891500061-8,URL891500061,Empresa energía convencional - UsRural,Activo,gerencia@emeesaesp.com,2020-12-30,2022-12-29,EMPRESA MUNICIPAL DE ENERGÍA ELÉCTRICA S.A-E.S.P
+82,ENERGIA Y ALUMBRADO DE PEREIRA ,,NIT,816003858-6,ESP816003858,Empresa energía convencional - AMI,Activo,notificaciones.oficilaes@enelarpereira.com.co,2020-12-30,2022-12-29,EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.
+83,EEBP,,NIT,846000553-0,URL846000553,Empresa energía convencional - UsRural,Activo,eebp@eebpsa.com.co,2020-12-30,2022-12-29,EMPRESA DE ENERGIA DEL BAJO PUTUMAYO  S.A.  E.S.P.
+84,RUITOQUE ,,NIT,804001062-8,URL804001062,Empresa energía convencional - UsRural,Activo,escribanos@ruitoqueesp.com,2020-12-30,2022-12-29,RUITOQUE S.A. E.S.P.
+85,ENERCO ,,NIT,805016928-1,ESP805016928,Empresa energía convencional - AMI,Activo,enerco@enercoesp.com,2020-12-30,2022-12-30,ENERCO S.A. E.S.P.
+86,ENERGETICOS ,,NIT,830092965-7,ESP830092965,Empresa energía convencional - AMI,Activo,energeticossaesp@gmail.com.co,2020-12-30,2022-12-30,ENERGETICOS S.A.S.  E.S.P. DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA GAS E HIDROCARBUROS
+87,GESTION ENERGETICA ,,NIT,800194208-9,ESP800194208,Empresa energía convencional - AMI,Activo,controlinterno@gensa.com.co,2020-12-30,2022-12-30,GESTION ENERGETICA S.A. E.S.P.
+88,EMPRESA DISTRIBUIDORA DEL PACIFICO ,,NIT,ESP800194208,ESP818001629,Empresa energía convencional - AMI,Activo,gerenciagestor@dispacsaesp.com,2020-12-30,2022-12-28,EMPRESA DISTRIBUIDORA DEL PACIFICO S.A. E.S.P
+89,LISED KATHERINE,CHAVES ACOSTA,CC,1085277826,lkchaves,Asistente OARE,Inactivo,lkchaves@minenergia.gov.co,2020-12-30,2030-12-26,
+90,LINA MARCELA,VEGA BUELVAS,CC,1015404517,lmvega,Asistente OARE,Inactivo,lmvega@minenergia.gov.co,2020-12-30,2030-12-28,
+91,ENERGUAVIARE SA,,NIT,822004680-9,URL822004680,Empresa energía convencional - UsRural,Activo,gerencia@energuaviare.com.co,2020-12-30,2022-12-29,EMPRESA DE ENERGIA ELECTRICA DEL DEPARTAMENTO DEL GUAVIARE SA ESP
+92,GENERARCO ,,NIT,830107528-9,ESP830107528,Empresa energía convencional - AMI,Activo,info@generarco.com,2020-12-30,2022-12-30,GENERARCO S.A.S. E.S.P.
+93,EMPRESA MULTIPROPOSITO DE CALARCA ,,NIT,801004102-7,ESP801004102,Empresa energía convencional - AMI,Activo,notificaciones@multiproposito.com,2020-12-30,2022-12-30,EMPRESA MULTIPROPOSITO DE CALARCA S.A. E.S.P.
+94,A.S.C. INGENIERIA ,,NIT,814002979-7,ESP814002979,Empresa energía convencional - AMI,Activo,admin@ascingenieriasa.com,2020-12-30,2022-12-30,A.S.C. INGENIERIA S.A. E.S.P.
+95,COMPAÑIA ENERGETICA DEL TOLIMA ,,NIT,809011444-9,ESP809011444,Empresa energía convencional - AMI,Activo,gerencia.egetsa@tolima.gov.co,2020-12-30,2022-12-30,COMPAÑIA ENERGETICA DEL TOLIMA S.A. E.S.P.
+96,COMERCIALIZADORA DEL CAFE ,,NIT,830147341-1,ESP830147341,Empresa energía convencional - AMI,Activo,info@energiadelcafe.com,2020-12-30,2022-12-30,COMERCIALIZADORA DEL CAFE S.A.S E.S.P
+97,ENERCA SA,,NIT,844004576-0,URL844004576,Empresa energía convencional - UsRural,Activo,correspondencia@enerca.com.co,2020-12-30,2022-12-29,EMPRESA DE ENERGIA DE CASANARE SA ESP
+98,ENERGIA EMPRESARIAL DE LA COSTA ,,NIT,900044461-6,ESP900044461,Empresa energía convencional - AMI,Activo,serviciosjuridicoseca@electricaribe.co,2020-12-30,2022-12-30,ENERGIA EMPRESARIAL DE LA COSTA S.A. E.S.P.
+99,ENERTOTAL ,,NIT,900039901-5,ESP900039901,Empresa energía convencional - AMI,Activo,enertotal@enertotalesp.com,2020-12-30,2022-12-30,ENERTOTAL S.A. E.S.P.
+100,COENERSA ,,NIT,900076284-6,ESP900076284,Empresa energía convencional - AMI,Activo,info@coenersa.com,2020-12-30,2022-12-30,COENERSA S.A.S. E.S.P.
+101,HIDROTOLIMA ,,NIT,900097320-3,ESP900097320,Empresa energía convencional - AMI,Activo,hidrotolima@hidrotolima.com.co,2020-12-30,2022-12-30,HIDROTOLIMA S.A.S. E.S.P.
+102,GENERADORA Y COMERCIALIZADORA DE ENERGIA DEL CARIBE ,,NIT,900082143-0,ESP900082143,Empresa energía convencional - AMI,Activo,notificacionesjudiciales@gecelca.com.co,2020-12-30,2022-12-30,GENERADORA Y COMERCIALIZADORA DE ENERGIA DEL CARIBE S.A. E.S.P.
+103,AMERICANA DE ENERGIA ,,NIT,900154878-5,ESP900154878,Empresa energía convencional - AMI,Activo,info@americanaenergia.com,2020-12-30,2022-12-30,AMERICANA DE ENERGIA S.A.S. E.S.P.
+104,GENERSYS ,,NIT,900154879-2,ESP900154879,Empresa energía convencional - AMI,Activo,info@genersys.net,2020-12-30,2022-12-30,GENERSYS S.A.S. E.S.P.
+105,EMPRESA MUNICIPAL DE SERVICIOS PUBLICOS DE CARTAGENA DEL CHAIRA,,NIT,828000191-2,ESP828000191,Empresa energía convencional - AMI,Activo,alexremo_1980@hotmail.com,2020-12-30,2022-12-30,EMPRESA MUNICIPAL DE SERVICIOS PUBLICOS DE CARTAGENA DEL CHAIRA
+106,COLENERGIA ,,NIT,900282813-5,ESP900282813,Empresa energía convencional - AMI,Activo,colenergia.sa@hotmail.com,2020-12-30,2022-12-30,COLENERGIA S.A. E.S.P.
+107,E2 ENERGIA EFICIENTE ,,NIT,802025052-0,ESP802025052,Empresa energía convencional - AMI,Activo,correo@e2energiaeficiente.com,2020-12-30,2022-12-30,E2 ENERGIA EFICIENTE S.A. E.S.P.
+108,PROFESIONALES EN ENERGIA ,,NIT,900341483-1,ESP900341483,Empresa energía convencional - AMI,Activo,peesa@peesa.com.co,2020-12-30,2022-12-30,PROFESIONALES EN ENERGÍA S.A E.S.P
+109,COMPAÑIA ENERGETICA DE OCCIDENTE ,,NIT,900366010-1,URL900366010,Empresa energía convencional - UsRural,Activo,cia.energetica@ceoesp.com,2020-12-30,2022-12-29,COMPAÑIA ENERGETICA DE OCCIDENTE S.A.S.  E.S.P.
+110,HZ ENERGY ,,NIT,900358272-9,ESP900358272,Empresa energía convencional - AMI,Activo,info@hzenergy.com.co,2020-12-30,2022-12-30,HZ ENERGY S.A.S. E.S.P.
+111,FUENTES DE ENERGIAS RENOVABLES ,,NIT,900409371-1,ESP900409371,Empresa energía convencional - AMI,Activo,furesas@furesas.com.co,2020-12-30,2022-12-30,FUENTES DE ENERGIAS RENOVABLES S.A.S. E.S.P.
+112,FORCEFUL ENERGY ,,NIT,900431226-1,ESP900431226,Empresa energía convencional - AMI,Activo,info@forcefulenergy.com,2020-12-30,2022-12-30,FORCEFUL ENERGY S.A.S. E.S.P.
+113,ITALCOL ENERGIA ,,NIT,900428468-6,ESP900428468,Empresa energía convencional - AMI,Activo,monicavelandia@italcol.com,2020-12-30,2022-12-30,ITALCOL ENERGIA S.A. E.S.P.
+114,GENERSA ,,NIT,900475298-0,ESP900475298,Empresa energía convencional - AMI,Activo,contabilidad@genersa.com.co,2020-12-30,2022-12-30,GENERSA S.A.S. E.S.P.
+115,ENERGIA Y AGUA ,,NIT,900483036-1,ESP900483036,Empresa energía convencional - AMI,Activo,escribanos@energiayaguaesp.com,2020-12-30,2022-12-30,ENERGIA Y AGUA S.A.S. E.S.P.
+116,ECOMMERCIAL ,,NIT,900499252-6,ESP900499252,Empresa energía convencional - AMI,Activo,gerencia@ecommercial.com.co ,2020-12-30,2022-12-30,ECOMMERCIAL S.A.S. E.S.P.
+117,RENOVATIO TRADING AMERICAS ,,NIT,900589503-6,ESP900589503,Empresa energía convencional - AMI,Activo,Mlis@gruporenovatio.com,2020-12-30,2022-12-30,RENOVATIO TRADING AMERICAS SAS ESP
+118,QI ENERGY ,,NIT,900677732-3,ESP900677732,Empresa energía convencional - AMI,Activo,lcuadros@furesas.com.co,2020-12-30,2022-12-30,QI ENERGY SAS ESP
+119,EMPRESA DE SERVICIOS PUBLICOS DE SANTANDER ,,NIT,900648934-0,ESP900648934,Empresa energía convencional - AMI,Activo,esantoperaciones@esant.com.co,2020-12-30,2022-12-30,EMPRESA DE SERVICIOS PUBLICOS DE SANTANDER S.A.E.S.P.
+120,CEMEX ENERGY ,,NIT,900746422-1,ESP900746422,Empresa energía convencional - AMI,Activo,correo.juridica@cemex.com,2020-12-30,2022-12-30,CEMEX ENERGY S.A.S E.S.P.
+121,NITRO ENERGY COLOMBIA ,,NIT,900691280-4,ESP900691280,Empresa energía convencional - AMI,Activo,info@nitrogc.com,2020-12-30,2022-12-30,NITRO ENERGY COLOMBIA S.A.S. E.S.P.
+122,RIOPAILA ENERGÍA ,,NIT,900652334-7,ESP900652334,Empresa energía convencional - AMI,Activo,notificaciones@riopailaenergia.com,2020-12-30,2022-12-30,RIOPAILA ENERGÍA SAS ESP
+123,"INVERSIONES, SUMINISTROS  Y SERVICIOS SAFEANA ",,NIT,900842868-3,ESP900842868,Empresa energía convencional - AMI,Activo,safeanasas@hotmail.com,2020-12-30,2022-12-30,"INVERSIONES, SUMINISTROS  Y SERVICIOS SAFEANA S.A.S. E.S.P."
+124,IA ENERGÍA Y GESTIÓN ,,NIT,900344208-6,ESP900344208,Empresa energía convencional - AMI,Activo,info@iaenergy.com.co,2020-12-30,2022-12-28,IA ENERGÍA Y GESTIÓN S.A.S. E.S.P.
+125,CENTRAL HIDROELÉCTRICA CONCORDIA S.A.S. E.S.P.,,NIT,900759883-1,ESP900759883,Empresa energía convencional - AMI,Activo,CHCCONTABILIDAD@GRUPOCOLVIVA.COM,2020-12-30,2022-12-30,CENTRAL HIDROELÉCTRICA CONCORDIA S.A.S. E.S.P.
+126,AGENTE EXPERTO EN SERVICIOS PÚBLICOS ,,NIT,900325920-1,ESP900325920,Empresa energía convencional - AMI,Activo,gerencia@aesp.com.co,2020-12-30,2022-12-30,AGENTE EXPERTO EN SERVICIOS PÚBLICOS S.A.S E.S.P
+127,TERPEL ENERGÍA ,,NIT,900433032-9,ESP900433032,Empresa energía convencional - AMI,Activo,infoterpel@terpel.com,2020-12-30,2022-12-30,TERPEL ENERGIA S.A.S E.S.P
+128,AMPERIA ,,NIT,900932147-8,ESP900932147,Empresa energía convencional - AMI,Activo,amperiaenergia@gmail.com ,2020-12-30,2022-12-30,AMPERIA S.A. E.S.P.
+129,FRANCA ENERGIA,,NIT,900864051-8,ESP900864051,Empresa energía convencional - AMI,Activo,francaenergia@gmail.com,2020-12-30,2022-12-30,FRANCA ENERGIA SA ESP
+130,TERMO RUBIALES ,,NIT,900251464-5,ESP900251464,Empresa energía convencional - AMI,Activo,claudia.coy@soenergy.com.co,2020-12-30,2022-12-29,TERMO RUBIALES S.A. E.S.P. 
+131,MESSER ENERGY SERVICES ,,NIT,901033186-1,ESP901033186,Empresa energía convencional - AMI,Activo,ricardo.sebastian.gonzalez@messer-co.com,2020-12-30,2022-12-30,MESSER ENERGY SERVICES SAS ESP
+132,SOUTH32 ENERGY ,,NIT,900403943-5,ESP900403943,Empresa energía convencional - AMI,Activo,Zamir.O.Centanaro@south32.net,2020-12-30,2022-12-30,SOUTH32 ENERGY S.A.S E.S.P
+133,EMPRESA PRESTADORA DE SERVICIOS ECO LOGICA  ,,NIT,900729389-4,ESP900729389,Empresa energía convencional - AMI,Activo,comercial@ecologicaesp.com,2020-12-30,2022-12-30,Empresa Prestadora de Servicios Publicos ECO LOGICA S.A.S. E.S.P.
+134,JULIA - RD ,,NIT,901125404-8,ESP901125404,Empresa energía convencional - AMI,Activo,mromero@julia-rd.com.co,2020-12-30,2022-12-30,JULIA - RD S.A. E.S.P.
+135,AURES BAJO ,,NIT,900740329-7,ESP900740329,Empresa energía convencional - AMI,Activo,administracion@cpph.com.co,2020-12-30,2022-12-30,AURES BAJO S.A.S. E.S.P.
+136,EMPRESA DE GENERACION Y PROMOCION DE ENERGIA DE ANTIOQUIA ,,NIT,900251423-3,ESP900251423,Empresa energía convencional - AMI,Activo,INFO@GENMAS.COM.CO,2020-12-30,2022-12-30,EMPRESA DE GENERACION Y PROMOCION DE ENERGIA DE ANTIOQUIA S.A. E.S.P.
+137,ECOPETROL ENERGÍA ,,NIT,901165502-2,ESP901165502,Empresa energía convencional - AMI,Activo,juan.molinares@ecopetrolenergiaesp.com.co,2020-12-30,2022-12-30,ECOPETROL ENERGÍA S.A.S. E.S.P.
+138,ENEL GREEN POWER COLOMBIA ,,NIT,900509559-6,ESP900509559,Empresa energía convencional - AMI,Activo,adrianvasile.dugulan@enel.com,2020-12-30,2022-12-30,ENEL GREEN POWER COLOMBIA S.A.S. E.S.P.
+139,CH SAN MIGUEL ,,NIT,900460429-3,ESP900460429,Empresa energía convencional - AMI,Activo,INFO@LAREIF.COM,2020-12-30,2022-12-29,CH SAN MIGUEL S.A.S. E.S.P.
+140,PLUSENERGY ,,NIT,901043956-9,ESP901043956,Empresa energía convencional - AMI,Activo,amontoya@plusenergy.com.co,2020-12-30,2022-12-30,PLUSENERGY S.A.S. E.S.P.
+141,LATINOAMERICAN ENERGY ,,NIT,901199778-4,ESP901199778,Empresa energía convencional - AMI,Activo,latinoamericanenergy@gmail.com,2020-12-30,2022-12-30,LATINOAMERICAN ENERGY S.A.S E.S.P.
+142,SANTA FE ENERGY ZOMAC ,,NIT,901200248-6,ESP901200248,Empresa energía convencional - AMI,Activo,info@santafeenergy.com.co,2020-12-30,2022-12-30,SANTA FE ENERGY ZOMAC S.A.S. E.S.P.
+143,GENERADORA ALEJANDRIA ,,NIT,900493235-3,ESP900493235,Empresa energía convencional - AMI,Activo,agarcia@generadoralejandria.com,2020-12-30,2022-12-28,GENERADORA ALEJANDRIA S.A.S. E.S.P.
+144,COLOMBINA ENERGIA ,,NIT,901192478-8,ESP901192478,Empresa energía convencional - AMI,Activo,aochoa@colombina.com,2020-12-30,2022-12-29,COLOMBINA ENERGIA SAS ESP
+145,EMPRESA DE SERVICIOS PÚBLICOS DEL OCCIDENTE COLOMBIANO,,NIT,900662075-7,ESP900662075,Empresa energía convencional - AMI,Activo,emseroccidente@hotmail.com,2020-12-30,2022-12-30,EMPRESA DE SERVICIOS PÚBLICOS DEL OCCIDENTE COLOMBIANO
+146,ENERGIA DEL RIO PIEDRAS ,,NIT,811031656-6,ESP811031656,Empresa energía convencional - AMI,Activo,sortega@gunion.com,2020-12-30,2022-12-30,ENERGIA DEL RIO PIEDRAS S.A. E.S.P.
+147,ESPACIO PRODUCTIVO ,,NIT,900214588-2,ESP900214588,Empresa energía convencional - AMI,Activo,secretaria@esprod.co,2020-12-30,2022-12-29,ESPACIO PRODUCTIVO S.A.S. E.S.P.
+148,CELSIA TOLIMA ,,NIT,901280981-9,URL901280981,Empresa energía convencional - UsRural,Activo,notificacionesceltolima@celsia.com,2020-12-30,2022-12-28,CELSIA TOLIMA S.A. E.S.P.
+149,EMPRESA DE ENERGIA DE GUAPI ,,NIT,835000142-7,ESP835000142,Empresa energía convencional - AMI,Activo,energuapi@hotmail.com,2020-12-30,2022-12-30,EMPRESA DE ENERGIA DE GUAPI S.A. E.S.P.
+150,ENERMAS,,NIT,900148768-9,ESP900148768,Empresa energía convencional - AMI,Activo,info@enermas.com.co,2020-12-30,2022-12-30,ENERMAS SAS ESP
+151,DEPI ENERGY ,,NIT,901288781-9,ESP901288781,Empresa energía convencional - AMI,Activo,depienergy@depiltda.com,2020-12-30,2022-12-29,DEPI ENERGY S.A.S. E.S.P.
+152,SOUL ENERGY ,,NIT,901285410-8,ESP901285410,Empresa energía convencional - AMI,Activo,soulenergycol@gmail.com,2020-12-30,2022-12-30,SOUL ENERGY SAS ESP
+153,BEAM ENERGY ,,NIT,901284888-1,ESP901284888,Empresa energía convencional - AMI,Activo,info@beamenergy.co,2020-12-30,2022-12-30,BEAM ENERGY S.A.S E.S.P.
+154,EMPRESA COMERCIALIZADORA DE ENERGÍA ELÉCTRICA DE LA COSTA,,NIT,901225715-2,ESP901225715,Empresa energía convencional - AMI,Activo,infoecelcos01@gmail.com,2020-12-30,2022-12-30,EMPRESA COMERCIALIZADORA DE ENERGÍA ELÉCTRICA DE LA COSTA 
+155,ENERGY TRANSITIONS ,,NIT,90126331-76,ESP90126331,Empresa energía convencional - AMI,Activo,dangel@energytst.com,2020-12-30,2022-12-29,ENERGY TRANSITIONS S.A.S. E.S.P.
+156,NEU ENERGY ,,NIT,901302727-0,ESP901302727,Empresa energía convencional - AMI,Activo,info@neu.com.co,2020-12-30,2022-12-30,NEU ENERGY S.A.S E.S.P
+157,VOLTAJE EMPPRESARIAL ,,NIT,900654403-6,ESP900654403,Empresa energía convencional - AMI,Activo,hrodriguez@daabon.com.co,2020-12-30,2022-12-30,VOLTAJE EMPPRESARIAL S.A.S. E.S.P.
+158,PROENERGY ,,NIT,901326470-7,ESP901326470,Empresa energía convencional - AMI,Activo,gerencia@proenergy.com.co,2020-12-30,2022-12-29,PROENERGY S.A.S.E.S.P.
+159,SMARTEN ,,NIT,900949673-5,ESP900949673,Empresa energía convencional - AMI,Activo,tomas.lopez@smarten.com.co,2020-12-30,2022-12-29,SMARTEN S.A.S. E.S.P.
+160,LUIS ALEJANDRO,MARIN ARISTIZABAL,CC,1112128890,lamarin,Asistente OARE,Activo,lamarin@minenergia.gov.co,2020-12-30,2022-12-30,
+161,DANIEL FELIPE,ALDANA MAYORGA,CC,1013651427,dfaldana,Asistente Energía Eléctrica,Activo,dfaldana@minenergia.gov.co,2020-12-31,2022-12-28,
+162,Gabriel ,Puerta,CC,86065223,86065223,Administrador,Activo,inggapa@gmail.com,2021-01-08,2027-03-31,
+163,TestGabriel ,Usuario,CC,860652236,AMiGabriel,Empresa energía convencional - AMI,Activo,licgapa@gmail.com,2021-01-19,2025-06-02,OARE Prueba
+164,Lised ,Chaves,CC,1085277826,lkchaves2,Asistente OARE,Activo,lis1461@hotmail.com,2021-02-02,2025-02-02,
+165,AFINIA,,NIT,900445254,AMI900445254,Empresa energía convencional - AMI,Activo,serviciosjuridicos@afinia.com.co,2021-03-04,2023-02-25,AFINIA S.A. E.S.P.
+166,Air-e,,NIT,890402550,AMI890402550,Empresa energía convencional - AMI,Activo,ocastroc.est@air-e.com,2021-03-15,2023-03-12,AIR-E S.A. E.S.P
+167,Carlos Andres,Alvarez,CC,1128423531,OAR1128423531,Asistente OARE,Activo,caalvareza@minenergia.gov.co,2021-04-12,2026-12-31,
+168,PruebasGAN,2023,CC,1234512345,RND12345,Empresa energía no convencional - Dosimetria,Activo,inggapa@gmail.com,2021-08-13,2025-06-10,Prueba Gencan
+169,MARÍA FERNANDA,ROMERO MALDONADO,CC,1015450497,mfromero,Asistente Energía Eléctrica,Activo,mfromero@minenergia.gov.co,2021-08-17,2023-12-30,
+170,SERGIO IVÁN,SALAMANCA GAVIRIA,CC,1013605400,sisalamanca,Asistente Energía Eléctrica,Activo,sisalamanca@minenergia.gov.co,2021-08-17,2022-12-30,
+171,AIR-E,ESP,NIT,890402550,URL890402550,Empresa energía convencional - UsRural,Activo,notificaciones.judiciales@air-e.com,2021-09-14,2022-12-31,AIR-E S.A. E.S.P
+172,AFINIA,ESP,NIT,900445254,URL900445254,Empresa energía convencional - UsRural,Activo,buenaenergia@afinia.comco,2021-09-14,2023-12-31,AFINIA S.A. E.S.P.
+173,Carga Datos,OARE,CC,1111111,carga,Empresa energía convencional - UsRural,Activo,jairolh@yahoo.com,2021-11-08,2023-12-30,EMPRESA MUNICIPAL DE ENERGÍA ELÉCTRICA S.A-E.S.P
+174,Jhonatan Mauricio,Avila Orozco,CC,14135706,Jmavila,Empresa energía no convencional - Dosimetria,Inactivo,jmavila@minenergia.gov.co,2022-03-09,2025-01-26,Prueba Gencan
+175,ENERSINC,,CC,900463244,EV900463244,Empresa energía convencional - Estaciones Carga,Activo,jsierra@enersinc.com,2022-08-08,2032-08-08,ENERSINC
+176,ENEL COLOMBIA,,CE,5584233,EV5584233,Empresa energía convencional - Estaciones Carga,Activo,pablo.campos@enel.com,2022-07-29,2032-07-29,EMGESA S.A. E.S.P.
+177,Central Hidroeléctrica de Caldas CHEC S.A. E.S.P,,NIT,890800128,EV890800128,Empresa energía convencional - Estaciones Carga,Activo,elizabeth.salgado@chec.com.co,2022-07-29,2032-07-29,CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.
+178,Electrificadora de Santander,,NIT,890201230-1,EV890201230-1,Empresa energía convencional - Estaciones Carga,Activo,oscar.meneses@essa.com.co,2022-07-29,2032-07-29,ELECTRIFICADORA DE SANTANDER S.A. E.S.P.
+179,Empresa de Energía del Quindío S.A E.S.P,,NIT,800052640,EV800052640,Empresa energía convencional - Estaciones Carga,Activo,elberth.hurtado@edeq.com.co,2022-07-29,2032-07-29,EMPRESA DE ENERGIA DEL  QUINDIO S.A.E.S.P.
+181,Empresas Públicas de Medellín,EPM,CC,890904996-1,EV98700327,Empresa energía convencional - Estaciones Carga,Activo,miguel.cadavid@epm.com.co,2022-08-01,2032-07-31,EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.
+182,Organizacion Terpel S.A.,,NIT,8300952130,EV8300952130,Empresa energía convencional - Estaciones Carga,Activo,veronica.ramirez@terpel.com,2022-08-04,2032-08-04,Organizacion Terpel S.A.
+183,Empresa de Energía de Pereira,,NIT,816002019-9,EV816002019-9,Empresa energía convencional - Estaciones Carga,Activo,ntangarifer@eep.com.co,2022-08-05,2032-08-05,EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.
+184,Celsia Colombia S.A. E.S.P.,,NIT,800249860-1,EV800249860-1,Empresa energía convencional - Estaciones Carga,Activo,movilidad_electrica@celsia.com,2022-08-05,2032-08-05,CELSIA COLOMBIA S.A. E.S.P.
+185,Empresas Municipales de Cali EMCALI EICE ESP,,NIT,890399003-4,EV890399003-4,Empresa energía convencional - Estaciones Carga,Activo,gerojas@emcali.com.co,2022-08-05,2032-08-05,EMPRESAS MUNICIPALES DE CALI   E.I.C.E  E.S.P
+186,SISTEMAS INSEPET CIA LTDA,,NIT,830071049-5,EV830071049-5,Empresa energía convencional - Estaciones Carga,Activo,eliecer.garzon@insepet.com,2022-08-09,2032-08-09,SISTEMAS INSEPET CIA LTDA
+187,MinEnergía,Energía,CC,1128423531,EV1128423531,Empresa energía convencional - Estaciones Carga,Activo,caalvareza@minenergia.gov.co,2022-08-10,2032-08-06,MinEnergía
+188,CENTRALES ELÉCTRICAS DEL NORTE DE SANTANDER,,NIT,890500514-9,EV890500514-9,Empresa energía convencional - Estaciones Carga,Activo,Gerencia@cens.com.co,2022-08-13,2032-08-13,CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP
+189,Jhonatan,Marin,CC,80117453,jmarin,Empresa energía no convencional - Dosimetria,Activo,jmarin@minenergia.gov.co,2023-01-11,2025-01-09,Prueba Gencan
+190,Juan,Parra,CC,79843305,jpparra,Asistente GENCAN,Activo,jpparra@minenergia.gov.co,2023-01-11,2025-01-18,
+191,aspromedica,sas,NIT,900786049,RND900786049,Empresa energía no convencional - Dosimetria,Activo,dosimetria@aspromedica.com,2023-01-24,2025-06-10,ASPROMÉDICA DOSIMETRÍA S.A.S.
+192,saludocupacional,selig,NIT,830041730,RND830041730,Empresa energía no convencional - Dosimetria,Activo,saludocupacional@seligdecolombia.com,2023-01-24,2025-06-09,SELIG DE COLOMBIA S.A
+193,Care ,dosimetry,NIT,900565894,RND900565894,Empresa energía no convencional - Dosimetria,Activo,laboratoriotld@caredosimetry.com,2023-01-24,2025-06-07,CARE DOSIMETRY S.A.S.
+194,Control,Calidad,NIT,901392080,RND901392080,Empresa energía no convencional - Dosimetria,Activo,dosimetria@controlcalidadrx.com,2023-01-24,2025-06-10,CONTROL CALIDAD RX S.A.S
+195,DOSIMETRIA ,PERSONAL ,NIT,811021579,RND811021579,Empresa energía no convencional - Dosimetria,Activo,info@dosimetriapersonal.com,2023-01-24,2025-06-14,DOSIMETRÍA PERSONAL S.A.S.
+196,PR,Dosimetria,NIT,830045516,RND830045516,Empresa energía no convencional - Dosimetria,Activo,prdosimetria@hotmail.com,2023-01-24,2025-06-03,PRDDOSIMETRIA LTDA
+197,i secure,secure,NIT,900513665,RND900513665,Empresa energía no convencional - Dosimetria,Activo,gflorez@isecure.com.co,2023-01-24,2025-06-09,I SECURE S.A.S
+198,SIEVERT,Sievert,CC,900515350,RND900515350,Empresa energía no convencional - Dosimetria,Activo, gerente@sievert.com.co,2023-01-24,2025-06-10,SIEVERT S.A.S
+199,Radproct,SAS,NIT,800162425,RND800162425,Empresa energía no convencional - Dosimetria,Activo, logistica@radproct.com,2023-02-09,2025-02-15,RADPROCT S.A.S
+200,Gabriel,Puerta,CC,86065223,EV86065223,Consulta,Activo,zeusgapa@gmail.com,2023-05-02,2024-12-30,
+201,Marcela,Ochoa,CC,1098645918,mjochoa,Asistente Energía Eléctrica,Activo,mjochoa@minenergia.gov.co,2023-05-02,2023-12-30,
+202,Andres Felipe,Acevedo Monroy,CC,1014185255,EV1014185255,Consulta,Activo,afacevedo@minenergia.gov.co,2023-10-10,2033-10-06,
+203,MAO, ,CC,1037598707,EV1037598707,Consulta,Activo,andresalvarez678@gmail.com,2023-10-11,2033-10-10,
+204,GAN,OARE,CC,7114,gan,Administrador,Activo,asuntos.nucleares@minenergia.gov.co,2024-02-16,2030-12-23,
+205,Diego Mauricio,Arias,CC,1032404403,RND1032404403,Asistente GENCAN,Activo,dmarias@minenergia.gov.co,2024-02-16,2024-12-29,
+206,Viviana Paola,Gutierrez,CC,46456637,RND46456637,Administrador,Activo,vpgutierrez@minenergia.gov.co,2024-02-16,2027-01-31,
+207,John ,Lozano,CC,79296714,RND79296714,Asistente GENCAN,Activo,jflozano@minenergia.gov.co,2024-02-16,2024-12-31,
+208,Jose Libardo ,Manzano Valbuena,CC,1032432499,EV1032432499,Asistente OARE,Activo,jlmanzano@minenergia.gov.coo,2024-03-04,2034-03-03,
+209,Entidad Prueba, ,CC,1014185256,EV1014185256,Empresa energía convencional - Estaciones Carga,Activo,afacevedo@minenergia.gov.co,2024-03-08,2034-03-04,Entidad Prueba
+210,Jaider ,Ospina Navas,CC,17652534,17652534,Empresa energía no convencional - Dosimetria,Activo,jaider.ospina@gmail.com,2024-03-09,2026-01-30,ASPROMÉDICA DOSIMETRÍA S.A.S.
+211,Estación De Prueba TI,Pruebas,NIT,89027802,EV89027802,Administrador,Activo,jsromero@minenergia.gov.co,2024-03-20,2034-03-17,
+212,Andres Felipe,Acevedo Monroy,CC,1014185255,1014185255,Administrador,Activo,afacevedo@minenergia.gov.co,2024-04-02,2039-12-31,
+213,Jaider2,Ospina Navas,CC,176525342,176525342,Empresa energía no convencional - Dosimetria,Activo,jaider.ospina@gmail.com,2024-04-02,2025-07-14,DOSIMETRIX INTERNATIONAL TECHNOLOGIES LTDA
+214,Jaider,Ospina Navas,CC,176525343,176525343,Asistente GENCAN,Activo,jaider.ospina@gmail.com,2024-04-02,2024-07-24,
+215,Enerlink Colombia S.A.S.,,NIT,901575062-2,EV901575062-2,Empresa energía convencional - Estaciones Carga,Activo,jdussaillant@enerlink.com,2024-04-11,2034-04-11,Enerlink Colombia S.A.S.
+216,SMART INGENIERIA SAS,,NIT,900090874,EV900090874,Empresa energía convencional - Estaciones Carga,Activo,mgallegos@smart-ing.com,2024-04-12,2034-04-12,SMART INGENIERIA SAS
+217,L autos SAS,,NIT,901043622,EV901043622,Empresa energía convencional - Estaciones Carga,Activo,lautopartes@hotmail.com,2024-04-12,2034-04-12,L autos SAS
+218,Estacion de Prueba ,a,NIT,89092802,EV89092802,Consulta,Activo,jsebastianrsanchez@gmail.com,2024-04-18,2034-04-17,
+219,Insepet SAS,,NIT,830006334-3,EV830006334-3,Empresa energía convencional - Estaciones Carga,Activo,elliecer.garzon@insepet.com,2024-04-26,2034-04-26,Insepet SAS
+220,E-COLOMBIA POWER SAS,,NIT,901407815-2,EV901407815-2,Empresa energía convencional - Estaciones Carga,Activo,mespinosa@e-colombia.net,2024-05-03,2034-05-03,E-COLOMBIA POWER SAS
+221,ElectroLink Chargers Colombia SAS,,NIT,901790754,EV901790754,Empresa energía convencional - Estaciones Carga,Activo,ivonne@electrolinkchargers.com,2024-05-04,2034-05-04,ElectroLink Chargers Colombia SAS
+222,CENS S.A. E.S.P.,,NIT,890500514,EV890500514,Empresa energía convencional - Estaciones Carga,Activo,julian.mora.nossa@cens.com.co,2024-05-15,2034-05-15,CENS S.A. E.S.P.
+223,AUTOGERMANA SAS,,NIT,860509514-0,EV860509514-0,Empresa energía convencional - Estaciones Carga,Activo,santiago.morales@autogermana.com.co,2024-05-23,2034-05-23,AUTOGERMANA SAS
+224,OPERADORA DISTRITAL DE TRANSPORTE S.A.S.,,NIT,901526664-7,EV901526664-7,Empresa energía convencional - Estaciones Carga,Activo,radicacion@odt.gov.co,2024-06-04,2034-06-04,OPERADORA DISTRITAL DE TRANSPORTE S.A.S.
+225,IIL,,CC,0000000,EV0000000,Empresa energía convencional - Estaciones Carga,Activo,jero.sandher@gmail.com,2024-06-04,2034-06-04,IIL
+226,Viviana,Gutierrez,CC,1234567,Prueba_Vivi,Empresa energía no convencional - Dosimetria,Activo,fisica.ud@gmail.com,2024-07-08,2025-12-21,SIEVERT S.A.S
+227,Arley londono,,CC,98591964,EV98591964,Empresa energía convencional - Estaciones Carga,Activo,arleyj.londono@gmail.com,2024-07-12,2034-07-12,Arley londono
+228,Enel Colombia S.A. E.S.P,,NIT,8600638758,EV8600638758,Empresa energía convencional - Estaciones Carga,Activo,john.melo@enel.com,2024-07-15,2034-07-15,Enel Colombia S.A. E.S.P
+229,MUBON S.A.S,,NIT,901839827,EV901839827,Empresa energía convencional - Estaciones Carga,Activo,info@mubon.co,2024-07-21,2034-07-21,MUBON S.A.S
+230,176525344,Ospina Navas,CC,17652534,176525344,Empresa energía no convencional - Dosimetria,Activo,jaider.ospina@gmail.com,2024-08-02,2025-08-15,Prueba Gencan
+231,Grupo empresarial O&C SAS - OASIS,,NIT,900846875,EV900846875,Empresa energía convencional - Estaciones Carga,Activo,comercial@grupooyc.com,2024-08-12,2034-08-12,Grupo empresarial O&C SAS - OASIS
+232,Josehp Sebastian,Romero Sanchez,CC,1013580145,pruebas,Empresa energía no convencional - Dosimetria,Activo,jsromero@minenergia.gov.co,2024-08-15,2025-12-23,Prueba Gencan
+233,Ingeniería y productos eléctricos,,NIT,800191973,EV800191973,Empresa energía convencional - Estaciones Carga,Activo,jeraso@inpel.com.co,2024-08-20,2034-08-20,Ingeniería y productos eléctricos
+234,Universidad Católica de Oriente,,NIT,890984746,EV890984746,Empresa energía convencional - Estaciones Carga,Activo,mantenimiento.jefe@uco.edu.co,2024-09-30,2034-09-30,Universidad Católica de Oriente
+235,David Javier,Rincón Adarme,CC,1098687484,1098687484,Asistente OARE,Activo,djrincon@minenergia.gov.co,2024-10-09,2030-12-31,
+236,Universidad Catolica de oriente,,NIT,8909847467,EV8909847467,Empresa energía convencional - Estaciones Carga,Activo,calidad.lider@uco.edu.co,2024-10-29,2034-10-29,Universidad Catolica de oriente
+237,VATIA SAS ESP,,NIT,817001892,EV817001892,Empresa energía convencional - Estaciones Carga,Activo,lcbravo@vatia.com.co,2024-12-17,2034-12-17,VATIA SAS ESP
+238,Econtrol Systems SAS,,NIT,900733260-9,EV900733260-9,Empresa energía convencional - Estaciones Carga,Activo,soporte@econtrol.com.co,2025-01-22,2035-01-22,Econtrol Systems SAS
+239,Econtrol Systems SAS,,NIT,900733260,EV900733260,Empresa energía convencional - Estaciones Carga,Activo,soporte@econtrol.com.co,2025-01-22,2035-01-22,Econtrol Systems SAS
+240,VYGO ENERGIA SAS BIC,,NIT,901679933,EV901679933,Empresa energía convencional - Estaciones Carga,Activo,info@vygoenergia.com.co,2025-01-23,2035-01-23,VYGO ENERGIA SAS BIC
+241,Oscar,Moreno,CC,12341234,ojmoreno,Administrador,Activo,ojmoreno@minenergia.gov.co,2025-02-28,2030-12-31,
+242,David Santiago Londono Giraldo,,CC,1000414906,EV1000414906,Empresa energía convencional - Estaciones Carga,Activo,hlc.david327@gmail.com,2025-03-26,2035-03-26,David Santiago Londono Giraldo
+243,Pruebas ,Carga ME,CC,123456789,EV123456789,Empresa energía convencional - Estaciones Carga,Activo,cavillalobos@minenergia.gov.co,2025-04-03,2039-12-29,PRUEBA2026
+244,EMCALI EICE ESP,,NIT,890399003,EV890399003,Empresa energía convencional - Estaciones Carga,Activo,gerojas@emcali.com.co,2025-05-02,2035-05-02,EMCALI EICE ESP
+245,ERCO ENERGÍA SAS,,NIT,900570286,EV900570286,Empresa energía convencional - Estaciones Carga,Activo,emontoya@erco.energy,2025-05-20,2035-05-20,ERCO ENERGÍA SAS
+246,Estación De Prueba TI 2,,CC,10316539,EV10316539,Empresa energía convencional - Estaciones Carga,Activo,jsromero@minenergia.gov.co,2025-06-09,2035-06-09,Estación De Prueba TI 2
+247,EMPRESA URRÁ S.A. E.S.P.,,NIT,800175746-9,EV800175746-9,Empresa energía convencional - Estaciones Carga,Activo,jquintero@urra.com.co,2025-06-09,2035-06-09,EMPRESA URRÁ S.A. E.S.P.
+248,Ergenia S.A.S.,,NIT,901752457-7,EV901752457-7,Empresa energía convencional - Estaciones Carga,Activo,ergeniacolombia@gmail.com,2025-06-11,2035-06-11,Ergenia S.A.S.
+249,Entorno Silvestre SAS,,NIT,901037898,EV901037898,Empresa energía convencional - Estaciones Carga,Activo,info@entornosilvestre.com,2025-07-09,2035-07-09,Entorno Silvestre SAS
+250,Enerbit SAS ESP,,CC,53008790,EV53008790,Empresa energía convencional - Estaciones Carga,Activo,dmmurillom@enerbit.co,2025-07-22,2035-07-22,Enerbit SAS ESP
+251,Diland Castro,,PAS,F61579384,EVF61579384,Empresa energía convencional - Estaciones Carga,Activo,diland@cmsostenible.org,2025-09-03,2035-09-03,Diland Castro
+252,Hotel El Alfarero SAS,,NIT,901237957-1,EV901237957-1,Empresa energía convencional - Estaciones Carga,Activo,alfahar@humancraft.com.co,2025-09-11,2035-09-11,Hotel El Alfarero SAS
+253,VATIO EV ,,NIT,10407569843,EV10407569843,Empresa energía convencional - Estaciones Carga,Activo,coo@vatio.com.co,2025-10-24,2035-10-24,VATIO EV 
+254,Prueba,,NIT,90999999,EV90999999,Empresa energía convencional - Estaciones Carga,Activo,jsebastianrsanchez@gmail.com,2025-10-27,2035-10-27,Prueba
+255,Version 3.0 SAS,,NIT,900676602,EV900676602,Empresa energía convencional - Estaciones Carga,Activo,jruiseco@zolectrum.com,2025-11-17,2035-11-17,Version 3.0 SAS
+256,Polen Transiciones Justas ,,CC,1020738034,EV1020738034,Empresa energía convencional - Estaciones Carga,Activo,juan.diaz@polentj.org,2025-12-17,2035-12-17,Polen Transiciones Justas 
+257,Internacional de Eléctricos S.A.S.,,NIT,809002625,EV809002625,Empresa energía convencional - Estaciones Carga,Activo,leecheverri@iegrupo.co,2025-12-22,2035-12-22,Internacional de Eléctricos S.A.S.
+258,Carlos,Villalobos,CC,1026277669,cavillalobos,Administrador,Activo,cavillalobos@minenergia.gov.co,2025-12-22,2027-12-30,
+259,COPOWER LIMITADA,,NIT,804011804,EV804011804,Empresa energía convencional - Estaciones Carga,Activo,gerencia@copower.com.co,2025-12-22,2035-12-22,COPOWER LIMITADA
+260,SM CONSULTORÍA E INGENIERÍA S.A.S,,CC,901639610,EV901639610,Empresa energía convencional - Estaciones Carga,Activo,comercial@smcei.com,2026-01-13,2036-01-13,SM CONSULTORÍA E INGENIERÍA S.A.S
+261,Energia electrica de colombia SAS,,NIT,900551493,EV900551493,Empresa energía convencional - Estaciones Carga,Activo,obras.energecol@outlook.com,2026-01-28,2036-01-28,Energia electrica de colombia SAS
+262,ELECTRICAL CHARGE SAS,,NIT,901950098,EV901950098,Empresa energía convencional - Estaciones Carga,Activo,info@e-charge.com.co,2026-02-04,2036-02-04,ELECTRICAL CHARGE SAS
+263,HUB DE MOVILIDAD PLAZA CALLE 136 SAS,,NIT,901446446,EV901446446,Empresa energía convencional - Estaciones Carga,Activo,hubscalle136@gmail.com,2026-02-05,2036-02-05,HUB DE MOVILIDAD PLAZA CALLE 136 SAS
+264,CERAMICAS EL DORADO,,NIT,901299104,EV901299104,Empresa energía convencional - Estaciones Carga,Activo,eldorado@humancraft.com.co,2026-02-05,2036-02-05,CERAMICAS EL DORADO
+265,PAULO CESAR,GUILLEN ROJAS,CC,79865431,pcguillen,Administrador,Activo,pcguillen@minenergia.gov.co,2026-02-09,2027-01-01,
+266,EDWARD,GARCIA MANJARRES,CC,1016062127,egarciam,Administrador,Activo,egarciam@minenergia.gov.co,2026-02-09,2027-01-01,
+267,HUB DE MOVILIDAD PLAZA CALLE 136 SAS,,NIT,901446446-4,EV901446446-4,Empresa energía convencional - Estaciones Carga,Activo,hubscalle136@gmail.com,2026-02-13,2036-02-13,HUB DE MOVILIDAD PLAZA CALLE 136 SAS
+268,Carlos Arturo,Villalobos Izquierdo,CC,1026277669,EV1026277669,Administrador,Activo,cavillalobos@minenergia.gov.co,2026-02-13,2036-02-10,
+269,uae junta pruebas,,CC,1016062128,EV1016062128,Empresa energía convencional - Estaciones Carga,Activo,egarciam@minenergia.gov.co,2026-02-15,2036-02-15,uae junta pruebas
+270,Juan Nicolás Patiño Rodríguez,,CC,1013620260,EV1013620260,Empresa energía convencional - Estaciones Carga,Activo,juan.patino@servinformacion.com,2026-02-19,2036-02-19,Juan Nicolás Patiño Rodríguez
+271,CENTRO DE DIAGNOSTICO AUTOMOTRIZ DEL HUILA SAS,,NIT,900113252,EV900113252,Empresa energía convencional - Estaciones Carga,Activo,cdahuila@gmail.com,2026-02-19,2036-02-19,CENTRO DE DIAGNOSTICO AUTOMOTRIZ DEL HUILA SAS
+272,GREET ENERGY,,NIT,9013775031,EV9013775031,Empresa energía convencional - Estaciones Carga,Activo,evcharge@greetenergy.com,2026-02-28,2036-02-28,GREET ENERGY
+273,CENTRO-NET S.A.S. ,,NIT,8050204578,EV8050204578,Empresa energía convencional - Estaciones Carga,Activo,juridico@centronet.com.co,2026-03-02,2036-03-02,CENTRO-NET S.A.S. 

@@ -1,0 +1,894 @@
+[
+  {
+    "Filtro": "Acceso",
+    "Nombre": ""
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": " El precio de recarga es de 25"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "acceso  publico"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Acceso gratuito y sin suscripc"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "acceso publico"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "App Terpel"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "App Terpel. Acceso al club"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Carga con tarjeta registrada E"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Carga Rapida DC\r\n1 Conector ti"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Carga semirrapida\r\n2 conectore"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Cita previa 7kW AC"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "COBRO DE PARQUEADERO"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Conector Tipo 2 AC 7kW"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Cualquier tarjeta RFID "
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Debe estar inscrito en la ofer"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Debe ser cliente de carga publ"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Debe ser cliente de la oferta "
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Descarga App "
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Descarga la App/Vatio Ev en la"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Descargar aplicación para real"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "El precio de recarga es de 250"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Ingreso por el parqueadero AV "
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Los nuevos usuarios deberán re"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Los usuarios podrán cargar con"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Los usuarios, actualmente, no "
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "N/A"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "No se requiere membresía, ni i"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "No se requiere suscripción a n"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Pago tarjeta debito o crédito"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Pago tarjeta débito o crédito"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Parqueadero cubierto"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Parqueadero gratuito"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Quien tenga la tarjeta puede r"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Se debe solicitar a operario d"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "ser cliente del parqueadero, R"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Sin condiciones"
+  },
+  {
+    "Filtro": "Acceso",
+    "Nombre": "Usuarios con tarjeta de movili"
+  },
+  {
+    "Filtro": "Conectores",
+    "Nombre": "CCS Combo 1"
+  },
+  {
+    "Filtro": "Conectores",
+    "Nombre": "CCS Combo 2"
+  },
+  {
+    "Filtro": "Conectores",
+    "Nombre": "CHAdeMO"
+  },
+  {
+    "Filtro": "Conectores",
+    "Nombre": "ChaoJi"
+  },
+  {
+    "Filtro": "Conectores",
+    "Nombre": "GB-T AC"
+  },
+  {
+    "Filtro": "Conectores",
+    "Nombre": "GB-T DC"
+  },
+  {
+    "Filtro": "Conectores",
+    "Nombre": "Otro"
+  },
+  {
+    "Filtro": "Conectores",
+    "Nombre": "Schuko"
+  },
+  {
+    "Filtro": "Conectores",
+    "Nombre": "Tesla"
+  },
+  {
+    "Filtro": "Conectores",
+    "Nombre": "Tipo 1 - SAE J1772"
+  },
+  {
+    "Filtro": "Conectores",
+    "Nombre": "Tipo 2 - IEC 62196"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": " Electro-linera EEP  cuba"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "7 Autos"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Acapulco"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Acqua Power Center"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Alhambra"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Calle 97"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "CC Centro Chía"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "CDA"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Celsia Aeropuerto El Dorado"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Celsia AutoSura Cali"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Celsia Autosura Rio 10"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Celsia CC Del Este"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Celsia CC Oviedo"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Celsia La Estación Ibagué"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Celsia Mercacentro 10"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Celsia Nueva Terminal Tuluá"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Celsia Seniors mall La tebaida"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Celsia Serena del mar"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Celsia U CES"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Celsia Viva Envigado"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Centro Comercial Florida"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Centro Comercial Los Molinos"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Centro Comercial Mayorca "
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Centro Comercial Plaza Flora"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Centro Comercial Portal del Quindio"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Centro Comercial Unicentro"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Club Guaymaral"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Compensar Av 68"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Compensar bolera"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Compensar Cajicá"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Compensar Calle 220"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Compensar calle 94"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Compensar Lagomar"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Compensar Lagosol"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Compensar Suba"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "COOTRACAIME"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Eco Estación CC CACIQUE"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Eco Estación CC EL PUENTE SAN GIL"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Eco Estación CC La Florida"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Eco Estación CC SAN SILVESTRE Barrancabermeja"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Aeropuerto Jose Maria Cordoba"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Autopista Norte"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Av Boyacá"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Avenida Las vegas"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Báscula"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Cañasgordas"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Chusacá"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Cogua"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Colibrí - Exposiciones "
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Cruz Roja"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Dagota"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Diamante"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Doilgas"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS El Encierro"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS EL PEÑON DEL MAGDALENA"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS El Recreo"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS EL RETORNO SAN ALBERTO"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS El Sol"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Fátima"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS La Garota"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS La Juana"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS La Mesa"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS La Metro"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS La Paz"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Las Palmas de Aguachica"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Las Vegas"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Melgar"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Molinos II"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Montecarmelo"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Montecristo"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Nutibara"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Paso Ancho"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Pie del Cerro"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Piedecuesta"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Popalito"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Río Córdoba"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Sabaneta"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS SAN PABLO"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Santana"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Spinelis"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Vallemio"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EDS Via al Mar- Autogermana"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "El Tesoro"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Electro-corredor tambo el privilegio"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "ESTACIÓN 01"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "ESTACIÓN CRA 21"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Estación de Carga Ergenia Edificio Salvio "
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Estacion de Carga Ergenia Habitel"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Estación de Carga Ergenia Portobelo 93"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Estación La Pintada"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Estación Los Alamos"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Estación Ocaña"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Estación Unicentro"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Estación Ventura Plaza"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EVSE JAIRO VARELA"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EVSE UNICENTRO"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EVSE VERSALLES"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "EVSE WTC"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Éxito Laureles"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Éxito Poblado"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Fundadores"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "HUB DE MOVILIDAD PLAZA CALLE 136."
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Jardín Plaza Cali"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "L autos"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "LA GLORIETA"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "MALL EL TRANVIA - MARINILLA"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Mall Plaza"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Maloka"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Milla de Oro"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Modelia"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Nicolas de Federmann"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Olímpica Gourmet Barranquilla"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "OUTLET DE MODA"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Parque del Cafe "
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Plaza Mayor"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Primer Parque Laureles"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Puerta del Norte"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Punto de carga  Cerritos del Mar "
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Punto de carga Centro comercial nuestro Cartago"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Punto de Carga estación de servicio Univilla Texaco"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Punto de carga Mall Castilla Plaza"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "San Andresito de la 38"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Santa Fe"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Sao Paulo"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "SM MOVILIDAD ELÉCTRICA"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Tambo"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Tambo La Manuela"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Terminal Salitre"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Tres Esquinas"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Unicentro"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Unicentro 1"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Unicentro 2"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Unicentro Villavicencio"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Viva Palmas"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Wattia - Alfahar 01"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Wattia - Alfahar 02"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Wattia - Parqueadero BER 01 & 02"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Wattia Doradal 01"
+  },
+  {
+    "Filtro": "Estacion",
+    "Nombre": "Wattia La Perla 1 - El Carmen de Viboral"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "AUTOGERMANA SAS"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "CELSIA COLOMBIA S.A. E.S.P."
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P."
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "CENTRO DE DIAGNOSTICO AUTOMOTRIZ DEL HUILA SAS"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "CERAMICAS EL DORADO"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "COPOWER LIMITADA"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "David Santiago Londono Giraldo"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "ELECTRICAL CHARGE SAS"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "ELECTRIFICADORA DE SANTANDER S.A. E.S.P."
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "EMCALI EICE ESP"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP."
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "EMPRESA DE ENERGIA DEL  QUINDIO S.A.E.S.P."
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "EMPRESAS PÚBLICAS DE MEDELLIN E.S.P."
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "Enel Colombia S.A. E.S.P"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "ERCO ENERGÍA SAS"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "Ergenia S.A.S."
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "Hotel El Alfarero SAS"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "HUB DE MOVILIDAD PLAZA CALLE 136 SAS"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "L autos SAS"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "OPERADORA DISTRITAL DE TRANSPORTE S.A.S."
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "Organizacion Terpel S.A."
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "SM CONSULTORÍA E INGENIERÍA S.A.S"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "VATIA SAS ESP"
+  },
+  {
+    "Filtro": "Operador",
+    "Nombre": "VATIO EV "
+  },
+  {
+    "Filtro": "Ubicacion",
+    "Nombre": "Centro comercial"
+  },
+  {
+    "Filtro": "Ubicacion",
+    "Nombre": "Empresa"
+  },
+  {
+    "Filtro": "Ubicacion",
+    "Nombre": "Estación de Servicio"
+  },
+  {
+    "Filtro": "Ubicacion",
+    "Nombre": "Hospital"
+  },
+  {
+    "Filtro": "Ubicacion",
+    "Nombre": "Hotel"
+  },
+  {
+    "Filtro": "Ubicacion",
+    "Nombre": "Otro"
+  },
+  {
+    "Filtro": "Ubicacion",
+    "Nombre": "Parqueadero"
+  },
+  {
+    "Filtro": "Ubicacion",
+    "Nombre": "Restaurante"
+  },
+  {
+    "Filtro": "Ubicacion",
+    "Nombre": "Tienda - Comercio"
+  },
+  {
+    "Filtro": "Ubicacion",
+    "Nombre": "Universidad"
+  },
+  {
+    "Filtro": "Ubicacion",
+    "Nombre": "Vía Pública"
+  }
+]

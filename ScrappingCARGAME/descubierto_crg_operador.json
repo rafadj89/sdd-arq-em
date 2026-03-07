@@ -1,0 +1,8004 @@
+[
+  {
+    "Id": 1,
+    "Nombres": "OARE Prueba",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "1234567",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-24",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "",
+    "Direccion": "",
+    "Siglas": "OARE",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 2,
+    "Nombres": "Prueba Gencan",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "23456789",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-27",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "",
+    "Direccion": "",
+    "Siglas": "GENCAN",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 3,
+    "Nombres": "AES CHIVOR & CIA SCA ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "830025205-2",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "aeschivor@aes.com",
+    "Direccion": "CALLE 100 # 19-54 OFC 901",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 4,
+    "Nombres": "CENTRALES ELECTRICAS DE NARIÑO S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "891200200-8",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 52,
+      "NombreDepartamento": "NARINO"
+    },
+    "Municipio": {
+      "Id": 52001,
+      "NombreMunicipio": "PASTO"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "gerencia@cedenar.com.co",
+    "Direccion": "CALLE 20 No. 36 - 12",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 5,
+    "Nombres": "CELSIA TOLIMA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901280981-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 73,
+      "NombreDepartamento": "TOLIMA"
+    },
+    "Municipio": {
+      "Id": 73001,
+      "NombreMunicipio": "IBAGUE"
+    },
+    "Indicativo": "578",
+    "Telefonofijo": "2770822",
+    "Celular": "",
+    "Correo": "notificacionesceltolima@celsia.com",
+    "Direccion": "CALLE 39 A # 5 - 15 ",
+    "Siglas": "CELSIA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 6,
+    "Nombres": "CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "890500514-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 54,
+      "NombreDepartamento": "NORTE DE SANTANDER"
+    },
+    "Municipio": {
+      "Id": 54001,
+      "NombreMunicipio": "CUCUTA"
+    },
+    "Indicativo": "607",
+    "Telefonofijo": "5824444ext1005",
+    "Celular": "3153179682",
+    "Correo": "movilidadelectricacens@epm.com.co",
+    "Direccion": "AV 7N  5N-220",
+    "Siglas": "CENS",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "141039788283 RUT actualizado 10052024.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 731600,
+        "folder": "estacion/filelegal",
+        "rename": "6.pdf"
+      }
+    },
+    "Sitio": "https://www.cens.com.co"
+  },
+  {
+    "Id": 7,
+    "Nombres": "COMPAÑÍA DE ELECTRICIDAD DE TULUÁ S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "891900101-0",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76834,
+      "NombreMunicipio": "TULUA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "cetsa@celsia.com",
+    "Direccion": "Calle 29 No. 24-27 Barrio El Centro",
+    "Siglas": "CETSA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 8,
+    "Nombres": "CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "890800128-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 17,
+      "NombreDepartamento": "CALDAS"
+    },
+    "Municipio": {
+      "Id": 17001,
+      "NombreMunicipio": "MANIZALES"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "notificaciones.judiciales@chec.com.co",
+    "Direccion": "ESTACION URIBE KM.2 SALIDA A CHINCHINA",
+    "Siglas": "CHEC",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "Rut  P-1 impreso 29 jul-2022.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 719913,
+        "folder": "estacion/filelegal",
+        "rename": "8.pdf"
+      }
+    },
+    "Sitio": "https://www.chec.com.co"
+  },
+  {
+    "Id": 9,
+    "Nombres": "CODENSA S.A. ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "830037248-0",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "571",
+    "Telefonofijo": "6016060",
+    "Celular": "",
+    "Correo": "servicioalclientecodensa@enel.com",
+    "Direccion": "CRA. 13A No. 93-66",
+    "Siglas": "CODENSA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 10,
+    "Nombres": "COMPAÑIA ENERGETICA DE OCCIDENTE S.A.S.  E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900366010-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 19,
+      "NombreDepartamento": "CAUCA"
+    },
+    "Municipio": {
+      "Id": 19001,
+      "NombreMunicipio": "POPAYAN"
+    },
+    "Indicativo": "2",
+    "Telefonofijo": "8301000",
+    "Celular": "3208370365",
+    "Correo": "cia.energetica@ceoesp.com",
+    "Direccion": "Carrera 7 # 1N-28 edf Edgar Negret 4 Piso",
+    "Siglas": "CEO",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 11,
+    "Nombres": "DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA ELECTRICA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "815000896-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76520,
+      "NombreMunicipio": "PALMIRA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "dicelsa@dicel.com.co",
+    "Direccion": "carrera 24A No. 14A-25",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 12,
+    "Nombres": "DICELER S.A E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "815001901-2",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76606,
+      "NombreMunicipio": "RESTREPO"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "dicelsa@dicel.com.co",
+    "Direccion": "CARRERA 24A No. 14A-25",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 13,
+    "Nombres": "EMPRESA DISTRIBUIDORA DEL PACIFICO S.A. E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "818001629-4",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 27,
+      "NombreDepartamento": "CHOCO"
+    },
+    "Municipio": {
+      "Id": 27001,
+      "NombreMunicipio": "QUIBDO"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "dispac@dispac.com",
+    "Direccion": "CARRERA 7 N° 24 - 76",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 14,
+    "Nombres": "EMPRESA DE ENERGIA DEL BAJO PUTUMAYO  S.A.  E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "846000553-0",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 86,
+      "NombreDepartamento": "PUTUMAYO"
+    },
+    "Municipio": {
+      "Id": 86568,
+      "NombreMunicipio": "PUERTO ASIS"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "eebp@eebpsa.com.co",
+    "Direccion": "Cra 26 No. 10-68",
+    "Siglas": "EEBP",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 15,
+    "Nombres": "E2 ENERGIA EFICIENTE S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "802025052-0",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 8,
+      "NombreDepartamento": "ATLANTICO"
+    },
+    "Municipio": {
+      "Id": 8001,
+      "NombreMunicipio": "BARRANQUILLA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "correo@e2energiaeficiente.com",
+    "Direccion": "Calle 77B No. 59-61 Oficina 205",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 16,
+    "Nombres": "EMPRESA DE ENERGIA DE BOYACA S.A. ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "891800219-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 15,
+      "NombreDepartamento": "BOYACA"
+    },
+    "Municipio": {
+      "Id": 15001,
+      "NombreMunicipio": "TUNJA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "documentacion@ebsa.com.co",
+    "Direccion": "CARRERA 10 N. 15-87",
+    "Siglas": "EBSA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 17,
+    "Nombres": "EMPRESA COMERCIALIZADORA DE ENERGÍA ELÉCTRICA DE LA COSTA ",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901225715-2",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 52,
+      "NombreDepartamento": "NARINO"
+    },
+    "Municipio": {
+      "Id": 52250,
+      "NombreMunicipio": "EL CHARCO"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "infoecelcos01@gmail.com",
+    "Direccion": "BARRIO/ SAGRADO CORAZÓN DE JESÚS",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 18,
+    "Nombres": "Empresa Prestadora de Servicios Publicos ECO LOGICA S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900729389-4",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76520,
+      "NombreMunicipio": "PALMIRA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "comercial@ecologicaesp.com",
+    "Direccion": "calle 55 no. 26-53",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 19,
+    "Nombres": "ECOPETROL ENERGÍA S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901165502-2",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "juan.molinares@ecopetrolenergiaesp.com.co",
+    "Direccion": "Cra. 7 No. 37-69 Piso 6 Ed. Teusacá",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 20,
+    "Nombres": "EMPRESA DE ENERGIA DEL  QUINDIO S.A.E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "800052640-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 63,
+      "NombreDepartamento": "QUINDIO"
+    },
+    "Municipio": {
+      "Id": 63001,
+      "NombreMunicipio": "ARMENIA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "secretaria_general@edeq.com.co",
+    "Direccion": "Carrera 13 No.14-17/19",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "14786140681 RUT EDEQ S.A .E.S.P.-1 12012022.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 177035,
+        "folder": "estacion/filelegal",
+        "rename": "20.pdf"
+      }
+    },
+    "Sitio": "http://edeq-ws09/edeq.sig"
+  },
+  {
+    "Id": 21,
+    "Nombres": "EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "890904996-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "epm@epm.com.co",
+    "Direccion": "CRA 58 No 42-125 Edificio Inteligente",
+    "Siglas": "EPM",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "Rut EPM.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 897171,
+        "folder": "estacion/filelegal",
+        "rename": "21.pdf"
+      }
+    },
+    "Sitio": "https://www.epm.com.co"
+  },
+  {
+    "Id": 22,
+    "Nombres": "EMPRESA DE ENERGIA DEL PUTUMAYO S.A. ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "846000241-8",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 86,
+      "NombreDepartamento": "PUTUMAYO"
+    },
+    "Municipio": {
+      "Id": 86001,
+      "NombreMunicipio": "MOCOA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "secretaria@energiaputumayo.com",
+    "Direccion": "CARRERA 9 No. 8-10",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 23,
+    "Nombres": "ELECTRIFICADORA DEL CAQUETA S.A. ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "891190127-3",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 18,
+      "NombreDepartamento": "CAQUETA"
+    },
+    "Municipio": {
+      "Id": 18001,
+      "NombreMunicipio": "FLORENCIA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "infoelectrocaqueta@electrocaqueta.com.co",
+    "Direccion": "CARRERA 1 35 99",
+    "Siglas": "ELECTROCAQUETA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 24,
+    "Nombres": "ELECTRIFICADORA DEL HUILA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "891180001-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 41,
+      "NombreDepartamento": "HUILA"
+    },
+    "Municipio": {
+      "Id": 41001,
+      "NombreMunicipio": "NEIVA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "gerencia@electrohuila.co",
+    "Direccion": "EDIFICIO EL BOTE KM 1 VIA PALERMO",
+    "Siglas": "ELECTROHUILA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 25,
+    "Nombres": "EMPRESA DE ENERGIA ELECTRICA DEL DEPARTAMENTO DEL VICHADA S.A",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "842000155",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 99,
+      "NombreDepartamento": "VICHADA"
+    },
+    "Municipio": {
+      "Id": 99001,
+      "NombreMunicipio": "PUERTO CARRENO"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "gerenciaelec@gmail.com",
+    "Direccion": "calle 22 # 9-40",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 26,
+    "Nombres": "EMPRESAS MUNICIPALES DE CALI   E.I.C.E  E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "890399003-4",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "032",
+    "Telefonofijo": "8999999",
+    "Celular": "",
+    "Correo": "genergia@emcali.comco",
+    "Direccion": "Avenida 2 N  #10 - 65 Cam Torre Emcali",
+    "Siglas": "EMCALI",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT Emcali Vigente.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 899759,
+        "folder": "estacion/filelegal",
+        "rename": "26.pdf"
+      }
+    },
+    "Sitio": "https://www.emcali.com.co/"
+  },
+  {
+    "Id": 27,
+    "Nombres": "EMPRESAS MUNICIPALES DE CARTAGO E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "836000349-8",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76147,
+      "NombreMunicipio": "CARTAGO"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "contactenos@emcartago.com",
+    "Direccion": "CALLE 13 # 5A - 35 PISO 2",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 28,
+    "Nombres": "EMPRESA MUNICIPAL DE ENERGÍA ELÉCTRICA S.A-E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "891500061-8",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 19,
+      "NombreDepartamento": "CAUCA"
+    },
+    "Municipio": {
+      "Id": 19001,
+      "NombreMunicipio": "POPAYAN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "gerencia@emeesaesp.com",
+    "Direccion": "Carrera 9 # 5 41 oficina 103",
+    "Siglas": "EMEESA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 29,
+    "Nombres": "EMPRESA DE ENERGIA DEL VALLE DE SIBUNDOY S.A. E.S.P. ",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "846000060-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 86,
+      "NombreDepartamento": "PUTUMAYO"
+    },
+    "Municipio": {
+      "Id": 86749,
+      "NombreMunicipio": "SIBUNDOY"
+    },
+    "Indicativo": "8",
+    "Telefonofijo": "4260431",
+    "Celular": "3117209906",
+    "Correo": "emevasi@emevasi.com",
+    "Direccion": "CALLE 17 No. 15 - 46",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 30,
+    "Nombres": "EMGESA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "860063875-8",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "emlinea@enel.com",
+    "Direccion": "CARRERA 11 No. 82-76 PISO 4\\\\t",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 31,
+    "Nombres": "ELECTRIFICADORA DEL META S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "892002210-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 50,
+      "NombreDepartamento": "META"
+    },
+    "Municipio": {
+      "Id": 50001,
+      "NombreMunicipio": "VILLAVICENCIO"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "gerencia@emsa-esp.com.co",
+    "Direccion": "Calle 37 A No. 45 53 Barrio Barzal",
+    "Siglas": "EMSA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 32,
+    "Nombres": "EMPRESA DE ENERGIA DE ARAUCA  S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "892099499-3",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 81,
+      "NombreDepartamento": "ARAUCA"
+    },
+    "Municipio": {
+      "Id": 81001,
+      "NombreMunicipio": "ARAUCA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "gerencia@enelar.com.co",
+    "Direccion": "CRA 22 # 22 - 46",
+    "Siglas": "ENELAR",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 33,
+    "Nombres": "EMPRESA DE ENERGIA DE CASANARE SA ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "844004576-0",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 85,
+      "NombreDepartamento": "CASANARE"
+    },
+    "Municipio": {
+      "Id": 85001,
+      "NombreMunicipio": "YOPAL"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "correspondencia@enerca.com",
+    "Direccion": "Carrera 19 No 6-100 Edificio Emiro Sossa",
+    "Siglas": "ENERCA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 34,
+    "Nombres": "ENERCO S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "805016928-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "enerco@enercoesp.com",
+    "Direccion": "CL 22 N  NRO. 6 A N - 24 PISO 8",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 35,
+    "Nombres": "ENERGETICOS S.A.S.  E.S.P. DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA GAS E HIDROCARBUROS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "830092965-7",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "energeticossaesp@gmail.com.co",
+    "Direccion": "UNICENTRO CALI, CRA. 100 No 5-169 EDIF. OASIS OFICINA 612B\\\\t",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 36,
+    "Nombres": "EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "816002019-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 66,
+      "NombreDepartamento": "RISARALDA"
+    },
+    "Municipio": {
+      "Id": 66001,
+      "NombreMunicipio": "PEREIRA"
+    },
+    "Indicativo": "6",
+    "Telefonofijo": "3151515",
+    "Celular": "",
+    "Correo": "notificacionesjudiciales@eep.com.co",
+    "Direccion": "CARRERA 10 Nº 17-35 EDIFICIO TORRE CENTRAL  PISO 4",
+    "Siglas": "EEP",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT EEP.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 1066275,
+        "folder": "estacion/filelegal",
+        "rename": "36.pdf"
+      }
+    },
+    "Sitio": "https://eep.com.co/"
+  },
+  {
+    "Id": 37,
+    "Nombres": "ENERGIA EMPRESARIAL DE LA COSTA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900044461-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 8,
+      "NombreDepartamento": "ATLANTICO"
+    },
+    "Municipio": {
+      "Id": 8001,
+      "NombreMunicipio": "BARRANQUILLA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "serviciosjuridicoseca@electricaribe.co",
+    "Direccion": "CARRERA 59 B No. 77 B - 27",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 38,
+    "Nombres": "EMPRESA DE ENERGIA ELECTRICA DEL DEPARTAMENTO DEL GUAVIARE SA ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "822004680-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 95,
+      "NombreDepartamento": "GUAVIARE"
+    },
+    "Municipio": {
+      "Id": 95001,
+      "NombreMunicipio": "SAN JOSE DEL GUAVIARE"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "gerencia@energuaviare.com.co",
+    "Direccion": "Calle 8 No.23-55",
+    "Siglas": "ENERGUAVIARE",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 39,
+    "Nombres": "ENERTOTAL S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900039901-5",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "enertotal@enertotalesp.com",
+    "Direccion": "CALLE 22 NTE No. 6 AN24 PISO 8",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 40,
+    "Nombres": "EMPRESA DE SERVICIOS PUBLICOS DE SANTANDER S.A.E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900648934-0",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 68,
+      "NombreDepartamento": "SANTANDER"
+    },
+    "Municipio": {
+      "Id": 68001,
+      "NombreMunicipio": "BUCARAMANGA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "esantoperaciones@esant.com.co",
+    "Direccion": "CALLE 36 No. 31-39 OFIC 131 CENTRO EMPRESARIAL CHICAMOCHA  ",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 41,
+    "Nombres": "ELECTRIFICADORA DE SANTANDER S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "890201230-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 68,
+      "NombreDepartamento": "SANTANDER"
+    },
+    "Municipio": {
+      "Id": 68001,
+      "NombreMunicipio": "BUCARAMANGA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "essa@essa.com.co",
+    "Direccion": "Cra 19 N° 24 - 56",
+    "Siglas": "ESSA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT 24022022.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 181194,
+        "folder": "estacion/filelegal",
+        "rename": "41.pdf"
+      }
+    },
+    "Sitio": "https://www.essa.com.co"
+  },
+  {
+    "Id": 42,
+    "Nombres": "ISA INTERCOLOMBIA S.A. E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900667590",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "notificacionesjudiciales@intercolombia.com",
+    "Direccion": "CALLE 12 SUR 18-168",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 43,
+    "Nombres": "CELSIA COLOMBIA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "800249860-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76892,
+      "NombreMunicipio": "YUMBO"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "notificacionesjudicialesepsa@celsia.com",
+    "Direccion": "Calle 15 No. 29B-30 Autopista Cali - Yumbo",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "2.-RUT-Celsia-Colombia-SA-1-07-2022.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 183349,
+        "folder": "estacion/filelegal",
+        "rename": "43.pdf"
+      }
+    },
+    "Sitio": "https://www.celsia.com/"
+  },
+  {
+    "Id": 44,
+    "Nombres": "PROFESIONALES EN ENERGÍA S.A E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900341483-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "571",
+    "Telefonofijo": "4771515",
+    "Celular": "",
+    "Correo": "peesa@peesa.com",
+    "Direccion": "Trasversal 23 No 94 -33  oficina 801",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 45,
+    "Nombres": "QI ENERGY SAS ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900677732-3",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "gerencia@qienergy.co",
+    "Direccion": "CRA 100 5 - 169 OF. 611",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 46,
+    "Nombres": "RENOVATIO TRADING AMERICAS SAS ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900589503-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3126984268",
+    "Celular": "3126984268",
+    "Correo": "aarias@gruporenovatio.com",
+    "Direccion": "CALLE 94A No.11A-32 OFICINA 404",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 47,
+    "Nombres": "RIOPAILA ENERGÍA SAS ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900652334-7",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76895,
+      "NombreMunicipio": "ZARZAL"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "notificaciones@riopailaenergia.com",
+    "Direccion": "CORREG LA PAILA (ZARZAL) INGENIO RIOPAILA-CASTILLA",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 48,
+    "Nombres": "RUITOQUE S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "804001062-8",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 68,
+      "NombreDepartamento": "SANTANDER"
+    },
+    "Municipio": {
+      "Id": 68276,
+      "NombreMunicipio": "FLORIDABLANCA"
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "6185871",
+    "Celular": "",
+    "Correo": "escribanos@ruitoqueesp.com",
+    "Direccion": "Carrera 25 29-57 Local 2 La Cava - Centro Comercial Cañaveral",
+    "Siglas": "RUITOQUE",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 49,
+    "Nombres": "TERPEL ENERGIA S.A.S E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900433032-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "infoterpel@terpel.com",
+    "Direccion": "CRA 7 75 51 P 8",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 50,
+    "Nombres": "VATIA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "817001892-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "vatia@vatia.com.co",
+    "Direccion": "AVENIDA 6N # 47N-32",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 51,
+    "Nombres": "EMPRESA COMUNITARIA DE SERVICIOS PUBLICOS DOMICILIARIOS DE CARTAGENA DEL CHAIRA S.A.S E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900943044",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 18,
+      "NombreDepartamento": "CAQUETA"
+    },
+    "Municipio": {
+      "Id": 18150,
+      "NombreMunicipio": "CARTAGENA DEL CHAIRA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "alexremo_1980@hotmail.com",
+    "Direccion": "cra 1 No. 4A 43",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 52,
+    "Nombres": "PROELECTRICA & CIA. S.C.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "800149537-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 17,
+      "NombreDepartamento": "CALDAS"
+    },
+    "Municipio": {
+      "Id": 17001,
+      "NombreMunicipio": "MANIZALES"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "notificacionesjudiciales@proelectrica.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 54,
+    "Nombres": "CENTRALES ELECTRICAS DEL CAUCA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "891500025-2",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 19,
+      "NombreDepartamento": "CAUCA"
+    },
+    "Municipio": {
+      "Id": 19001,
+      "NombreMunicipio": "POPAYAN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "notificacionesjudiciales@cedelca.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 55,
+    "Nombres": "ISAGEN S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "811000740-4",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "notificacionesenlinea@isagen.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 56,
+    "Nombres": "PROYECTOS ENERGETICOS DEL CAUCA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "817000362-5",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 19,
+      "NombreDepartamento": "CAUCA"
+    },
+    "Municipio": {
+      "Id": 19001,
+      "NombreMunicipio": "POPAYAN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "mzuniga@ingeniolacabana.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 57,
+    "Nombres": "TERMOPIEDRAS S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "830058506-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "administrativa@termopiedras.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 58,
+    "Nombres": "ENERGIA Y ALUMBRADO DE PEREIRA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "816003858-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 66,
+      "NombreDepartamento": "RISARALDA"
+    },
+    "Municipio": {
+      "Id": 66001,
+      "NombreMunicipio": "PEREIRA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "notificaciones.oficilaes@enelarpereira.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 59,
+    "Nombres": "GESTION ENERGETICA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "800194208-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 17,
+      "NombreDepartamento": "CALDAS"
+    },
+    "Municipio": {
+      "Id": 17001,
+      "NombreMunicipio": "MANIZALES"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "controlinterno@gensa.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 60,
+    "Nombres": "GENERARCO S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "830107528-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 25,
+      "NombreDepartamento": "CUNDINAMARCA"
+    },
+    "Municipio": {
+      "Id": 25873,
+      "NombreMunicipio": "VILLAPINZON"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@generarco.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 61,
+    "Nombres": "EMPRESA MULTIPROPOSITO DE CALARCA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "801004102-7",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 63,
+      "NombreDepartamento": "QUINDIO"
+    },
+    "Municipio": {
+      "Id": 63130,
+      "NombreMunicipio": "CALARCA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "notificaciones@multiproposito.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 62,
+    "Nombres": "A.S.C. INGENIERIA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "814002979-7",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 52,
+      "NombreDepartamento": "NARINO"
+    },
+    "Municipio": {
+      "Id": 52001,
+      "NombreMunicipio": "PASTO"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "admin@ascingenieriasa.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 63,
+    "Nombres": "COMPAÑIA ENERGETICA DEL TOLIMA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "809011444-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 73,
+      "NombreDepartamento": "TOLIMA"
+    },
+    "Municipio": {
+      "Id": 73001,
+      "NombreMunicipio": "IBAGUE"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "gerencia.egetsa@tolima.gov.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 64,
+    "Nombres": "COMERCIALIZADORA DEL CAFE S.A.S E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "830147341-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 25,
+      "NombreDepartamento": "CUNDINAMARCA"
+    },
+    "Municipio": {
+      "Id": 25873,
+      "NombreMunicipio": "VILLAPINZON"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@energiadelcafe.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 65,
+    "Nombres": "COENERSA S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900076284-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 25,
+      "NombreDepartamento": "CUNDINAMARCA"
+    },
+    "Municipio": {
+      "Id": 25873,
+      "NombreMunicipio": "VILLAPINZON"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@coenersa.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 66,
+    "Nombres": "HIDROTOLIMA S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900097320-3",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 73,
+      "NombreDepartamento": "TOLIMA"
+    },
+    "Municipio": {
+      "Id": 73001,
+      "NombreMunicipio": "IBAGUE"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "hidrotolima@hidrotolima.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 67,
+    "Nombres": "GENERADORA Y COMERCIALIZADORA DE ENERGIA DEL CARIBE S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900082143-0",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 8,
+      "NombreDepartamento": "ATLANTICO"
+    },
+    "Municipio": {
+      "Id": 8001,
+      "NombreMunicipio": "BARRANQUILLA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "notificacionesjudiciales@gecelca.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 68,
+    "Nombres": "AMERICANA DE ENERGIA S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900154878-5",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 25,
+      "NombreDepartamento": "CUNDINAMARCA"
+    },
+    "Municipio": {
+      "Id": 25873,
+      "NombreMunicipio": "VILLAPINZON"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@americanaenergia.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 69,
+    "Nombres": "GENERSYS S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900154879-2",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 25,
+      "NombreDepartamento": "CUNDINAMARCA"
+    },
+    "Municipio": {
+      "Id": 25873,
+      "NombreMunicipio": "VILLAPINZON"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@genersys.net",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 70,
+    "Nombres": "EMPRESA MUNICIPAL DE SERVICIOS PUBLICOS DE CARTAGENA DEL CHAIRA",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "828000191-2",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 18,
+      "NombreDepartamento": "CAQUETA"
+    },
+    "Municipio": {
+      "Id": 18150,
+      "NombreMunicipio": "CARTAGENA DEL CHAIRA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "alexremo_1980@hotmail.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 71,
+    "Nombres": "COLENERGIA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900282813-5",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "colenergia.sa@hotmail.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 72,
+    "Nombres": "HZ ENERGY S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900358272-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@hzenergy.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 73,
+    "Nombres": "FUENTES DE ENERGIAS RENOVABLES S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900409371-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "furesas@furesas.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 74,
+    "Nombres": "FORCEFUL ENERGY S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900431226-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@forcefulenergy.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 75,
+    "Nombres": "ITALCOL ENERGIA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900428468-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 68,
+      "NombreDepartamento": "SANTANDER"
+    },
+    "Municipio": {
+      "Id": 68307,
+      "NombreMunicipio": "GIRON"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "monicavelandia@italcol.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 76,
+    "Nombres": "GENERSA S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900475298-0",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "contabilidad@genersa.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 77,
+    "Nombres": "ENERGIA Y AGUA S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900483036-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 68,
+      "NombreDepartamento": "SANTANDER"
+    },
+    "Municipio": {
+      "Id": 68276,
+      "NombreMunicipio": "FLORIDABLANCA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "escribanos@energiayaguaesp.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 78,
+    "Nombres": "ECOMMERCIAL S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900499252-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "gerencia@ecommercial.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 79,
+    "Nombres": "CEMEX ENERGY S.A.S E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900746422-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "correo.juridica@cemex.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 80,
+    "Nombres": "NITRO ENERGY COLOMBIA S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900691280-4",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@nitrogc.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 81,
+    "Nombres": "INVERSIONES, SUMINISTROS  Y SERVICIOS SAFEANA S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900842868-3",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76364,
+      "NombreMunicipio": "JAMUNDI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "safeanasas@hotmail.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 82,
+    "Nombres": "IA ENERGÍA Y GESTIÓN S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900344208-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@iaenergy.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 83,
+    "Nombres": "CENTRAL HIDROELÉCTRICA CONCORDIA S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900759883-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "chccontabilidad@grupocolviva.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 84,
+    "Nombres": "AGENTE EXPERTO EN SERVICIOS PÚBLICOS S.A.S E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900325920-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 68,
+      "NombreDepartamento": "SANTANDER"
+    },
+    "Municipio": {
+      "Id": 68001,
+      "NombreMunicipio": "BUCARAMANGA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "gerencia@aesp.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 85,
+    "Nombres": "AMPERIA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900932147-8",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "amperiaenergia@gmail.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 86,
+    "Nombres": "FRANCA ENERGIA SA ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900864051-8",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "francaenergia@gmail.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 87,
+    "Nombres": "TERMO RUBIALES S.A. E.S.P. ",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900251464-5",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "claudia.coy@soenergy.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 88,
+    "Nombres": "SMARTEN S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900949673-5",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "tomas.lopez@smarten.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 89,
+    "Nombres": "MESSER ENERGY SERVICES SAS ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901033186-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "ricardo.sebastian.gonzalez@messer-co.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 90,
+    "Nombres": "SOUTH32 ENERGY S.A.S E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900403943-5",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 23,
+      "NombreDepartamento": "CORDOBA"
+    },
+    "Municipio": {
+      "Id": 23001,
+      "NombreMunicipio": "MONTERIA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "Zamir.O.Centanaro@south32.net",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 91,
+    "Nombres": "JULIA - RD S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901125404-8",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "mromero@julia-rd.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 92,
+    "Nombres": "AURES BAJO S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900740329-7",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "administracion@cpph.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 93,
+    "Nombres": "EMPRESA DE GENERACION Y PROMOCION DE ENERGIA DE ANTIOQUIA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900251423-3",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5266,
+      "NombreMunicipio": "ENVIGADO"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@genmas.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 94,
+    "Nombres": "ENEL GREEN POWER COLOMBIA S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900509559-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "adrianvasile.dugulan@enel.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 95,
+    "Nombres": "CH SAN MIGUEL S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900460429-3",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@lareif.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 96,
+    "Nombres": "PLUSENERGY S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901043956-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "amontoya@plusenergy.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 97,
+    "Nombres": "LATINOAMERICAN ENERGY S.A.S E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901199778-4",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 25,
+      "NombreDepartamento": "CUNDINAMARCA"
+    },
+    "Municipio": {
+      "Id": 25214,
+      "NombreMunicipio": "COTA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "latinoamericanenergy@gmail.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 98,
+    "Nombres": "SANTA FE ENERGY ZOMAC S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901200248-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5042,
+      "NombreMunicipio": "SANTA FE DE ANTIOQUIA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@santafeenergy.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 99,
+    "Nombres": "GENERADORA ALEJANDRIA S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900493235-3",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "agarcia@generadoralejandria.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 100,
+    "Nombres": "COLOMBINA ENERGIA SAS ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901192478-8",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 25,
+      "NombreDepartamento": "CUNDINAMARCA"
+    },
+    "Municipio": {
+      "Id": 25001,
+      "NombreMunicipio": "AGUA DE DIOS"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "aochoa@colombina.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 101,
+    "Nombres": "EMPRESA DE SERVICIOS PÚBLICOS DEL OCCIDENTE COLOMBIANO",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900662075-7",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "emseroccidente@hotmail.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 102,
+    "Nombres": "ENERGIA DEL RIO PIEDRAS S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "811031656-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "sortega@gunion.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 103,
+    "Nombres": "ESPACIO PRODUCTIVO S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900214588-2",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "secretaria@esprod.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 104,
+    "Nombres": "ECO ENERGÍA DE COLOMBIA ESP SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901153797-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "correo@esp.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 105,
+    "Nombres": "EMPRESA DE ENERGIA DE GUAPI S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "835000142-7",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 19,
+      "NombreDepartamento": "CAUCA"
+    },
+    "Municipio": {
+      "Id": 19318,
+      "NombreMunicipio": "GUAPI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "energuapi@hotmail.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 106,
+    "Nombres": "ENERMAS SAS ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900148768-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@enermas.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 107,
+    "Nombres": "DEPI ENERGY S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901288781-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "depienergy@depiltda.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 108,
+    "Nombres": "SOUL ENERGY SAS ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901285410-8",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "soulenergycol@gmail.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 109,
+    "Nombres": "BEAM ENERGY S.A.S E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901284888-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@beamenergy.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 110,
+    "Nombres": "D2 ENERGIA S.A.S. ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901202801-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "correo@esp.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 111,
+    "Nombres": "ENERGY TRANSITIONS S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901263317-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "dangel@energytst.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 112,
+    "Nombres": "NEU ENERGY S.A.S E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901302727-0",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5631,
+      "NombreMunicipio": "SABANETA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "info@neu.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 113,
+    "Nombres": "VOLTAJE EMPPRESARIAL S.A.S. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900654403-6",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 47,
+      "NombreDepartamento": "MAGDALENA"
+    },
+    "Municipio": {
+      "Id": 47001,
+      "NombreMunicipio": "SANTA MARTA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "hrodriguez@daabon.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 114,
+    "Nombres": "XT ENERGIA S.A.S. E.S.P. ",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901334314-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5631,
+      "NombreMunicipio": "SABANETA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "correo@esp.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 115,
+    "Nombres": "PROENERGY S.A.S.E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901326470-7",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "gerencia@proenergy.com.co",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 116,
+    "Nombres": "GAS Y ENERGÍA DE COLOMBIA SAS ESP ",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901314752-7",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2020-12-29",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "",
+    "Correo": "correo@esp.com",
+    "Direccion": "",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 118,
+    "Nombres": "AFINIA S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900445254",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2021-03-04",
+    "Departamento": {
+      "Id": 13,
+      "NombreDepartamento": "BOLIVAR"
+    },
+    "Municipio": {
+      "Id": 13001,
+      "NombreMunicipio": "CARTAGENA DE INDIAS"
+    },
+    "Indicativo": "5",
+    "Telefonofijo": "3012249170",
+    "Celular": "3114350703",
+    "Correo": "buenaenergia@afinia.comco",
+    "Direccion": "Carrera 138 # 26-78 edificio Chambacu piso 3",
+    "Siglas": "AFINIA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 119,
+    "Nombres": "AIR-E S.A. E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "890402550",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2021-03-15",
+    "Departamento": {
+      "Id": 8,
+      "NombreDepartamento": "ATLANTICO"
+    },
+    "Municipio": {
+      "Id": 8001,
+      "NombreMunicipio": "BARRANQUILLA"
+    },
+    "Indicativo": "5",
+    "Telefonofijo": "361 10 00",
+    "Celular": "",
+    "Correo": "notificaciones.judiciales@air-e.com",
+    "Direccion": "",
+    "Siglas": "AIR-E",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 120,
+    "Nombres": "ASPROMÉDICA DOSIMETRÍA S.A.S.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900786049",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2021-08-25",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "6023872652",
+    "Celular": "3217206339",
+    "Correo": "dosimetria@aspromedica.com",
+    "Direccion": "Carrera 43 # 5C - 82",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": "https://www.aspromedica.com"
+  },
+  {
+    "Id": 121,
+    "Nombres": "CARE DOSIMETRY S.A.S.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900565894",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2021-08-26",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "572",
+    "Telefonofijo": "5143992",
+    "Celular": "",
+    "Correo": "gerencia@caredosimetry.com",
+    "Direccion": "Calle 13 A # 100 - 35, Of. 309",
+    "Siglas": "CARE",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 122,
+    "Nombres": "DOSIMETRÍA PERSONAL S.A.S.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "811021579",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2021-08-26",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "604",
+    "Telefonofijo": "3221320",
+    "Celular": "3006402817",
+    "Correo": "info@dosimetriapersonal.com",
+    "Direccion": "Carrera 43 # 50 - 51 Of. 206",
+    "Siglas": null,
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": "https://www.dosimetriapersonal.com"
+  },
+  {
+    "Id": 123,
+    "Nombres": "DOSIMETRIX INTERNATIONAL TECHNOLOGIES LTDA",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "830025839",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2021-08-27",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "571",
+    "Telefonofijo": "6956036 ext 113",
+    "Celular": "",
+    "Correo": "dosimetrix@hotmail.com",
+    "Direccion": "Calle 103 # 45 A - 11",
+    "Siglas": "DOSIMETRIX",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": null
+  },
+  {
+    "Id": 124,
+    "Nombres": "Organizacion Terpel S.A.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "8300952130",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2022-08-04",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "3267878",
+    "Celular": "",
+    "Correo": "veronica.ramirez@terpel.com",
+    "Direccion": "Cra. 7 No. 75-51",
+    "Siglas": "TERPEL VOLTEX",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT TERPEL.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 742454,
+        "folder": "estacion/filelegal",
+        "rename": "124.pdf"
+      }
+    },
+    "Sitio": "https://www.terpel.com"
+  },
+  {
+    "Id": 125,
+    "Nombres": "ENERSINC",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "900463244",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2022-08-08",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "571",
+    "Telefonofijo": "3008159593",
+    "Celular": "3008159593",
+    "Correo": "jsierra@enersinc.com",
+    "Direccion": "Carrera 77 ##34-49",
+    "Siglas": "ENERSINC",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "Rut_actualizado_20220418.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 675417,
+        "folder": "estacion/filelegal",
+        "rename": "125.pdf"
+      }
+    },
+    "Sitio": "http://www.enersinc.com"
+  },
+  {
+    "Id": 126,
+    "Nombres": "SISTEMAS INSEPET CIA LTDA",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "830071049-5",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2022-08-09",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "4222525",
+    "Celular": "",
+    "Correo": "eliecer.garzon@insepet.com",
+    "Direccion": "Cra 90 No 17B-81",
+    "Siglas": "sis",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT SISTEMAS 10 JUNIO.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 735645,
+        "folder": "estacion/filelegal",
+        "rename": "126.pdf"
+      }
+    },
+    "Sitio": "https://insepet.com/"
+  },
+  {
+    "Id": 127,
+    "Nombres": "MinEnergía",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "1128423531",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2022-08-10",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "4",
+    "Telefonofijo": "3217936646",
+    "Celular": "",
+    "Correo": "caalvareza@minenergia.gov.co",
+    "Direccion": "Carrera 46 # 22 A SUR 20",
+    "Siglas": "MME",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "Anexo técnico cotización EE-27-05-2020.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 255012,
+        "folder": "estacion/filelegal",
+        "rename": "127.pdf"
+      }
+    },
+    "Sitio": "https://www.minenergia.gov.co"
+  },
+  {
+    "Id": 128,
+    "Nombres": "CONTROL CALIDAD RX S.A.S",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901392080",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2023-01-11",
+    "Departamento": {
+      "Id": 68,
+      "NombreDepartamento": "SANTANDER"
+    },
+    "Municipio": {
+      "Id": 68001,
+      "NombreMunicipio": "BUCARAMANGA"
+    },
+    "Indicativo": "607",
+    "Telefonofijo": "3204437308",
+    "Celular": "3204437308",
+    "Correo": "dosimetria@controlcalidadrx.com",
+    "Direccion": "CRA 22 # 35 - 40 OFC 229A",
+    "Siglas": "CCRX",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": ""
+  },
+  {
+    "Id": 129,
+    "Nombres": "DOSIMETRICAL S.A.S",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901577531",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2023-01-11",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "7439447",
+    "Celular": "6017439447",
+    "Correo": "dosimetrical@outlook.com",
+    "Direccion": "CALLE 90 # 14 - 16 OFC 501",
+    "Siglas": "DSCL SAS",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": ""
+  },
+  {
+    "Id": 130,
+    "Nombres": "I SECURE S.A.S",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "9005136654",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2023-01-11",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "3084570",
+    "Celular": "6013084570",
+    "Correo": "gflorez@isecure.com.co",
+    "Direccion": "CR 51 # 79 -34 ",
+    "Siglas": "IS SAS",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": ""
+  },
+  {
+    "Id": 131,
+    "Nombres": "PRDDOSIMETRIA LTDA",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "830045516",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2023-01-11",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "4827546",
+    "Celular": "3144442835",
+    "Correo": "prdosimetria@hotmail.com",
+    "Direccion": "CR 38A # 25A - 16",
+    "Siglas": "PRDS LTDA",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": "",
+    "Sitio": ""
+  },
+  {
+    "Id": 132,
+    "Nombres": "RADPROCT S.A.S",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "800162425",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2023-01-11",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "23685543",
+    "Celular": "3165292700",
+    "Correo": "info@radproct.com",
+    "Direccion": "CR 14 # 87-60",
+    "Siglas": "RADP",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": ""
+  },
+  {
+    "Id": 133,
+    "Nombres": "SELIG DE COLOMBIA S.A",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "830041730",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2023-01-11",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "4902000",
+    "Celular": "6014902000",
+    "Correo": "saludocupacional@seligdecolobia.com",
+    "Direccion": "CR 69 # 78 -40 ",
+    "Siglas": "SELIG",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": ""
+  },
+  {
+    "Id": 134,
+    "Nombres": "SIEVERT S.A.S",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900515350",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2023-01-11",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "604",
+    "Telefonofijo": "3116065",
+    "Celular": "6043116065",
+    "Correo": "gerente@sievert.com.co",
+    "Direccion": "CR 50FF # 8 SUR - 27 OF 512",
+    "Siglas": "SIVT",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": ""
+  },
+  {
+    "Id": 135,
+    "Nombres": "Ministerio de Minas y Energia",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "1014185255",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2023-10-10",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "5388639",
+    "Celular": "",
+    "Correo": "afacevedo@minenergia.gov.co",
+    "Direccion": "Diagonal 80b 86a 35 piso 2",
+    "Siglas": "MME",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "dummy.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 13264,
+        "folder": "estacion/filelegal",
+        "rename": "135.pdf"
+      }
+    },
+    "Sitio": "https://minenergia.gov.co/"
+  },
+  {
+    "Id": 136,
+    "Nombres": "MAO",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "1037598707",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2023-10-11",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "4",
+    "Telefonofijo": "3217936646",
+    "Celular": "",
+    "Correo": "andresalvarez678@gmail.com",
+    "Direccion": "Carrera 46 C # 80 sur 155, Apto 2120, Amonte",
+    "Siglas": "MAO",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "Taller Interoperabilidad 4ta sesión.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 834024,
+        "folder": "estacion/filelegal",
+        "rename": "136.pdf"
+      }
+    },
+    "Sitio": "https://www.minenergia.gov.co"
+  },
+  {
+    "Id": 137,
+    "Nombres": "Jose Libardo Manzano Valbuena",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "1032432499",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-03-04",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3003656563",
+    "Celular": "",
+    "Correo": "jlmanzano@minenergia.gov.coo",
+    "Direccion": "Carrera 50 No. 26 - 20",
+    "Siglas": "BOG",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "01-RUT-JM.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 193039,
+        "folder": "estacion/filelegal",
+        "rename": "137.pdf"
+      }
+    },
+    "Sitio": ""
+  },
+  {
+    "Id": 138,
+    "Nombres": "Entidad Prueba",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "1014185256",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-03-08",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "6015388639",
+    "Celular": "",
+    "Correo": "afacevedo@minenergia.gov.co",
+    "Direccion": "Calle 123",
+    "Siglas": "EP SA",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "dummy.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 13264,
+        "folder": "estacion/filelegal",
+        "rename": "138.pdf"
+      }
+    },
+    "Sitio": "https://minenergia.gov.co/"
+  },
+  {
+    "Id": 139,
+    "Nombres": "Estación De Prueba TI",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "89027802",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-03-20",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "0000000",
+    "Celular": "",
+    "Correo": "jsromero@minenergia.gov.co",
+    "Direccion": "calle 43 #57-31",
+    "Siglas": "EPT",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "Rrr.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 241246,
+        "folder": "estacion/filelegal",
+        "rename": "139.pdf"
+      }
+    },
+    "Sitio": "https://www.minenergia.gov.co/es/"
+  },
+  {
+    "Id": 140,
+    "Nombres": "Enerlink Colombia S.A.S.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901575062-2",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-04-11",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "56",
+    "Telefonofijo": "934132549",
+    "Celular": "",
+    "Correo": "jdussaillant@enerlink.com",
+    "Direccion": "CL 93B 1230 OF 302, Bogotá D.C.",
+    "Siglas": "Enerlink",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT_Enerlink.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 728890,
+        "folder": "estacion/filelegal",
+        "rename": "140.pdf"
+      }
+    },
+    "Sitio": "https://www.enerlink.com"
+  },
+  {
+    "Id": 141,
+    "Nombres": "SMART INGENIERIA SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900090874",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-04-12",
+    "Departamento": {
+      "Id": 25,
+      "NombreDepartamento": "CUNDINAMARCA"
+    },
+    "Municipio": {
+      "Id": 25286,
+      "NombreMunicipio": "FUNZA"
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "8585070",
+    "Celular": "",
+    "Correo": "mgallegos@smart-ing.com",
+    "Direccion": "Km 7 autop medellin celta 155-4",
+    "Siglas": "SMART-ING",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT 2022.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 696354,
+        "folder": "estacion/filelegal",
+        "rename": "141.pdf"
+      }
+    },
+    "Sitio": "https://www.smart-ing.com"
+  },
+  {
+    "Id": 142,
+    "Nombres": "L autos SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901043622",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-04-12",
+    "Departamento": {
+      "Id": 25,
+      "NombreDepartamento": "CUNDINAMARCA"
+    },
+    "Municipio": {
+      "Id": 25290,
+      "NombreMunicipio": "FUSAGASUGA"
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "3138828201",
+    "Celular": "",
+    "Correo": "lautopartes@hotmail.com",
+    "Direccion": "Tranversal 12 N°18b-01",
+    "Siglas": "L Autos",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT L AUTOS 2023.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 673805,
+        "folder": "estacion/filelegal",
+        "rename": "142.pdf"
+      }
+    },
+    "Sitio": "https://lautosinternationalcorp.com"
+  },
+  {
+    "Id": 143,
+    "Nombres": "Estacion de Prueba ",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "89092802",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-04-18",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "4580102",
+    "Celular": "",
+    "Correo": "jsebastianrsanchez@gmail.com",
+    "Direccion": "calle10b #45-05",
+    "Siglas": "EDP",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "Rrr.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 241246,
+        "folder": "estacion/filelegal",
+        "rename": "143.pdf"
+      }
+    },
+    "Sitio": "https://www.minenergia.gov.co/es/"
+  },
+  {
+    "Id": 144,
+    "Nombres": "Insepet SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "830006334-3",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-04-26",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "4222525",
+    "Celular": "",
+    "Correo": "elliecer.garzon@insepet.com",
+    "Direccion": "CRA 90 N.17B-81 BG 20",
+    "Siglas": "Ins",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT MARZO 2024 INSEPET SAS..pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 790858,
+        "folder": "estacion/filelegal",
+        "rename": "144.pdf"
+      }
+    },
+    "Sitio": "https://insepet.com/"
+  },
+  {
+    "Id": 145,
+    "Nombres": "E-COLOMBIA POWER SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901407815-2",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-05-03",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3017710902",
+    "Celular": "",
+    "Correo": "mespinosa@e-colombia.net",
+    "Direccion": "Cr 4 68 12 AP 501",
+    "Siglas": "E-COLOMBIA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT E-COLOMBIA 2023.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 556569,
+        "folder": "estacion/filelegal",
+        "rename": "145.pdf"
+      }
+    },
+    "Sitio": "https://e-colombia.net"
+  },
+  {
+    "Id": 146,
+    "Nombres": "ElectroLink Chargers Colombia SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901790754",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-05-04",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "3507920675",
+    "Celular": "",
+    "Correo": "ivonne@electrolinkchargers.com",
+    "Direccion": "Carrera 24 a 19 03 sur",
+    "Siglas": "ElectroLink",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT ELECTROLINK CHARGERS COLOMBIA SAS 280224.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 443309,
+        "folder": "estacion/filelegal",
+        "rename": "146.pdf"
+      }
+    },
+    "Sitio": "https://www.electrolinkchargers.com"
+  },
+  {
+    "Id": 147,
+    "Nombres": "CENS S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "890500514",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-05-15",
+    "Departamento": {
+      "Id": 54,
+      "NombreDepartamento": "NORTE DE SANTANDER"
+    },
+    "Municipio": {
+      "Id": 54001,
+      "NombreMunicipio": "CUCUTA"
+    },
+    "Indicativo": "607",
+    "Telefonofijo": "3153179682",
+    "Celular": "",
+    "Correo": "julian.mora.nossa@cens.com.co",
+    "Direccion": "Avenida Aeropuerto 5N-220 Barrio Sevilla",
+    "Siglas": "CENS Grupo EPM",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT CENS SA ESP generado 18042024.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 193300,
+        "folder": "estacion/filelegal",
+        "rename": "147.pdf"
+      }
+    },
+    "Sitio": "https://www.cens.com.co/"
+  },
+  {
+    "Id": 148,
+    "Nombres": "CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "890800128",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-05-15",
+    "Departamento": {
+      "Id": 17,
+      "NombreDepartamento": "CALDAS"
+    },
+    "Municipio": {
+      "Id": 17001,
+      "NombreMunicipio": "MANIZALES"
+    },
+    "Indicativo": "606",
+    "Telefonofijo": "8899000",
+    "Celular": "",
+    "Correo": "notificaciones.judiciales@chec.com.co",
+    "Direccion": "KM 2 SALIDA A CHINCHINA ESTACION URIBE",
+    "Siglas": "CHEC",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT Chec.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 919845,
+        "folder": "estacion/filelegal",
+        "rename": "148.pdf"
+      }
+    },
+    "Sitio": "https://www.chec.com.co/"
+  },
+  {
+    "Id": 149,
+    "Nombres": "AUTOGERMANA SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "860509514-0",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-05-23",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "4 4 6 4 9 0 0",
+    "Celular": "",
+    "Correo": "santiago.morales@autogermana.com.co",
+    "Direccion": "CR 45 197 35 IN 1",
+    "Siglas": "AUTOGERMANA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT ABRIL AG 2.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 1474625,
+        "folder": "estacion/filelegal",
+        "rename": "149.pdf"
+      }
+    },
+    "Sitio": "https://www.autogermana.com.co/"
+  },
+  {
+    "Id": 150,
+    "Nombres": "OPERADORA DISTRITAL DE TRANSPORTE S.A.S.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901526664-7",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-06-04",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "(601) 2007640",
+    "Celular": "3162481906",
+    "Correo": "radicacion@odt.gov.co",
+    "Direccion": "CL 59 A SUR 76 A 82 BRR PERDOMO",
+    "Siglas": "ODT",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "141040056548 (1) (1).pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 681015,
+        "folder": "estacion/filelegal",
+        "rename": "150.pdf"
+      }
+    },
+    "Sitio": "https://odt.gov.co"
+  },
+  {
+    "Id": 151,
+    "Nombres": "OPERADORA DISTRITAL DE TRANSPORTE S.A.S.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901526664-7",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-06-04",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3162481906",
+    "Celular": "",
+    "Correo": "radicacion@odt.gov.co",
+    "Direccion": "CL 59 A SUR 76 A 82 BRR PERDOMO",
+    "Siglas": "ODT",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "141040056548 (1) (1).pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 681015,
+        "folder": "estacion/filelegal",
+        "rename": "151.pdf"
+      }
+    },
+    "Sitio": ""
+  },
+  {
+    "Id": 152,
+    "Nombres": "IIL",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "0000000",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-06-04",
+    "Departamento": {
+      "Id": 66,
+      "NombreDepartamento": "RISARALDA"
+    },
+    "Municipio": {
+      "Id": 66001,
+      "NombreMunicipio": "PEREIRA"
+    },
+    "Indicativo": "606",
+    "Telefonofijo": "00000000",
+    "Celular": "",
+    "Correo": "jero.sandher@gmail.com",
+    "Direccion": "Carrera 7",
+    "Siglas": "IIL",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "Evaluaciondepeligros_M1_Introduccion_jesusronaldo_sandoval.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 98590,
+        "folder": "estacion/filelegal",
+        "rename": "152.pdf"
+      }
+    },
+    "Sitio": "https://evl.org/"
+  },
+  {
+    "Id": 153,
+    "Nombres": "Arley londono",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "98591964",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-07-12",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "4",
+    "Telefonofijo": "6042182368",
+    "Celular": "",
+    "Correo": "arleyj.londono@gmail.com",
+    "Direccion": "Carrera 30 No 27a 21",
+    "Siglas": "AJL",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT 98591964.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 175695,
+        "folder": "estacion/filelegal",
+        "rename": "153.pdf"
+      }
+    },
+    "Sitio": "https://alondono.com.co"
+  },
+  {
+    "Id": 154,
+    "Nombres": "Enel Colombia S.A. E.S.P",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "8600638758",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-07-15",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "1",
+    "Telefonofijo": "5147000",
+    "Celular": "",
+    "Correo": "john.melo@enel.com",
+    "Direccion": "Calle 93 No 13-45 P1",
+    "Siglas": "ENEL",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT ENEL COLOMBIA  2024.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 1169782,
+        "folder": "estacion/filelegal",
+        "rename": "154.pdf"
+      }
+    },
+    "Sitio": ""
+  },
+  {
+    "Id": 155,
+    "Nombres": "MUBON S.A.S",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901839827",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-07-21",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "602",
+    "Telefonofijo": "3184908362",
+    "Celular": "",
+    "Correo": "info@mubon.co",
+    "Direccion": "Av. 5 Nte. #37A - 74",
+    "Siglas": "MUBON",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT-141057310822-MUBON.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 433640,
+        "folder": "estacion/filelegal",
+        "rename": "155.pdf"
+      }
+    },
+    "Sitio": "https://mubon.co/"
+  },
+  {
+    "Id": 156,
+    "Nombres": "Grupo empresarial O&C SAS - OASIS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900846875",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-08-12",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "3147724908",
+    "Celular": "",
+    "Correo": "comercial@grupooyc.com",
+    "Direccion": "Cr 48c #16 A sur - 50",
+    "Siglas": "OASIS",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT Oasis Abr 2024.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 553491,
+        "folder": "estacion/filelegal",
+        "rename": "156.pdf"
+      }
+    },
+    "Sitio": "https://oasisgroup.online/"
+  },
+  {
+    "Id": 157,
+    "Nombres": "Ingeniería y productos eléctricos",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "800191973",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-08-20",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "602",
+    "Telefonofijo": "3842985",
+    "Celular": "",
+    "Correo": "jeraso@inpel.com.co",
+    "Direccion": "Cra 12 #22A 34",
+    "Siglas": "INPEL",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT AGOSTO.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 917905,
+        "folder": "estacion/filelegal",
+        "rename": "157.pdf"
+      }
+    },
+    "Sitio": "https://www.inpel.com.co"
+  },
+  {
+    "Id": 158,
+    "Nombres": "Universidad Católica de Oriente",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "890984746",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-09-30",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5615,
+      "NombreMunicipio": "RIONEGRO"
+    },
+    "Indicativo": "05",
+    "Telefonofijo": "3228482107",
+    "Celular": "",
+    "Correo": "mantenimiento.jefe@uco.edu.co",
+    "Direccion": "SEC 3 CR 46 - 40 B 50",
+    "Siglas": "UCO",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT UCO 2024.8.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 919848,
+        "folder": "estacion/filelegal",
+        "rename": "158.pdf"
+      }
+    },
+    "Sitio": "https://www.uco.edu.co/"
+  },
+  {
+    "Id": 159,
+    "Nombres": "Universidad Catolica de oriente",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "8909847467",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-10-29",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5615,
+      "NombreMunicipio": "RIONEGRO"
+    },
+    "Indicativo": "604",
+    "Telefonofijo": "5699090",
+    "Celular": "",
+    "Correo": "calidad.lider@uco.edu.co",
+    "Direccion": "Sector 3, Carrera 46 No. 40B-50",
+    "Siglas": "UCO",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "1. RUT UCO 2024-01.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 938980,
+        "folder": "estacion/filelegal",
+        "rename": "159.pdf"
+      }
+    },
+    "Sitio": "https://www.uco.edu.co/"
+  },
+  {
+    "Id": 160,
+    "Nombres": "VATIA SAS ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "817001892",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2024-12-17",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3102280662",
+    "Celular": "",
+    "Correo": "lcbravo@vatia.com.co",
+    "Direccion": "AV 6n # 47n 32",
+    "Siglas": "VATIA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT VATIA.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 176601,
+        "folder": "estacion/filelegal",
+        "rename": "160.pdf"
+      }
+    },
+    "Sitio": "https://www.vatia.com.co"
+  },
+  {
+    "Id": 161,
+    "Nombres": "Econtrol Systems SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900733260-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-01-22",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5631,
+      "NombreMunicipio": "SABANETA"
+    },
+    "Indicativo": "4",
+    "Telefonofijo": "6042434284",
+    "Celular": "",
+    "Correo": "soporte@econtrol.com.co",
+    "Direccion": "Cl. 78 Sur #46 D 30, Sabaneta, Antioquia",
+    "Siglas": "Econtrol ",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT ECONTROL SYSTEMS SAS.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 306989,
+        "folder": "estacion/filelegal",
+        "rename": "161.pdf"
+      }
+    },
+    "Sitio": "https://www.econtrol.com.co"
+  },
+  {
+    "Id": 162,
+    "Nombres": "Econtrol Systems SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900733260",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-01-22",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5631,
+      "NombreMunicipio": "SABANETA"
+    },
+    "Indicativo": "4",
+    "Telefonofijo": "3192343905",
+    "Celular": "",
+    "Correo": "soporte@econtrol.com.co",
+    "Direccion": "Cra 46 # 75 Sur 150 Apto 1306",
+    "Siglas": "Econtrol ",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT ECONTROL SYSTEMS SAS.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 306989,
+        "folder": "estacion/filelegal",
+        "rename": "162.pdf"
+      }
+    },
+    "Sitio": "https://www.econtrol.com.co"
+  },
+  {
+    "Id": 163,
+    "Nombres": "VYGO ENERGIA SAS BIC",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901679933",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-01-23",
+    "Departamento": {
+      "Id": 19,
+      "NombreDepartamento": "CAUCA"
+    },
+    "Municipio": {
+      "Id": 19001,
+      "NombreMunicipio": "POPAYAN"
+    },
+    "Indicativo": "602",
+    "Telefonofijo": "8353364",
+    "Celular": "3159676569",
+    "Correo": "info@vygoenergia.com.co",
+    "Direccion": "Carrera 10 No.16N-08 local 101 Edificio Antonio Nariño",
+    "Siglas": "VYGO",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT VYGO enero 2025.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 274678,
+        "folder": "estacion/filelegal",
+        "rename": "163.pdf"
+      }
+    },
+    "Sitio": "https://vygoenergia.com.co"
+  },
+  {
+    "Id": 164,
+    "Nombres": "David Santiago Londono Giraldo",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "1000414906",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-03-26",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5148,
+      "NombreMunicipio": "EL CARMEN DE VIBORAL"
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3016623373",
+    "Celular": "",
+    "Correo": "hlc.david327@gmail.com",
+    "Direccion": "Cra 33 #32-11",
+    "Siglas": "Inversiones DSL",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT_David.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 121943,
+        "folder": "estacion/filelegal",
+        "rename": "164.pdf"
+      }
+    },
+    "Sitio": "https://humancraft.com.co"
+  },
+  {
+    "Id": 165,
+    "Nombres": "PRUEBA2026",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "123456789",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-04-03",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3177773377",
+    "Celular": "",
+    "Correo": "cavillalobos@minenergia.gov.co",
+    "Direccion": "prueba",
+    "Siglas": "Prueba2026",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "dummy.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 13264,
+        "folder": "estacion/filelegal",
+        "rename": "165.pdf"
+      }
+    },
+    "Sitio": ""
+  },
+  {
+    "Id": 166,
+    "Nombres": "EMCALI EICE ESP",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "890399003",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-05-02",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "602",
+    "Telefonofijo": "8997624",
+    "Celular": "",
+    "Correo": "gerojas@emcali.com.co",
+    "Direccion": "Avenida 2 Norte Calle 10",
+    "Siglas": "EMCALI",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT EMCALI.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 899759,
+        "folder": "estacion/filelegal",
+        "rename": "166.pdf"
+      }
+    },
+    "Sitio": "https://www.emcali.com.co"
+  },
+  {
+    "Id": 167,
+    "Nombres": "ERCO ENERGÍA SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900570286",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-05-20",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "5088663",
+    "Celular": "",
+    "Correo": "emontoya@erco.energy",
+    "Direccion": "Carrera 50 #14-285",
+    "Siglas": "ERCO",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT FEBRERO 2025 1.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 332219,
+        "folder": "estacion/filelegal",
+        "rename": "167.pdf"
+      }
+    },
+    "Sitio": "https://erco.energy"
+  },
+  {
+    "Id": 168,
+    "Nombres": "Estación De Prueba TI 2",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "10316539",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-06-09",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "1",
+    "Telefonofijo": "0000000",
+    "Celular": "",
+    "Correo": "jsromero@minenergia.gov.co",
+    "Direccion": "calle 43 #57-31",
+    "Siglas": "PTI2",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "Pruebas Fucionales SIFF Nacion.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 401768,
+        "folder": "estacion/filelegal",
+        "rename": "168.pdf"
+      }
+    },
+    "Sitio": "https://www.minenergia.gov.co/es/"
+  },
+  {
+    "Id": 169,
+    "Nombres": "EMPRESA URRÁ S.A. E.S.P.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "800175746-9",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-06-09",
+    "Departamento": {
+      "Id": 23,
+      "NombreDepartamento": "CORDOBA"
+    },
+    "Municipio": {
+      "Id": 23001,
+      "NombreMunicipio": "MONTERIA"
+    },
+    "Indicativo": "604",
+    "Telefonofijo": "7848991",
+    "Celular": "",
+    "Correo": "jquintero@urra.com.co",
+    "Direccion": "Carrera 2 #48 08",
+    "Siglas": "EMUG",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "14989586848 Rut actualizado 8032024 (4).pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 930364,
+        "folder": "estacion/filelegal",
+        "rename": "169.pdf"
+      }
+    },
+    "Sitio": "https://urra.com.co/"
+  },
+  {
+    "Id": 170,
+    "Nombres": "Ergenia S.A.S.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901752457-7",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-06-11",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "318 3309357",
+    "Celular": "",
+    "Correo": "ergeniacolombia@gmail.com",
+    "Direccion": "CL 117 6 A 60 OF 305",
+    "Siglas": "ERGENIA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT ERGENIA 2025.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 234291,
+        "folder": "estacion/filelegal",
+        "rename": "170.pdf"
+      }
+    },
+    "Sitio": "https://ergenia.com"
+  },
+  {
+    "Id": 171,
+    "Nombres": "Entorno Silvestre SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901037898",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-07-09",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5591,
+      "NombreMunicipio": "PUERTO TRIUNFO"
+    },
+    "Indicativo": "316",
+    "Telefonofijo": "4487169",
+    "Celular": "",
+    "Correo": "info@entornosilvestre.com",
+    "Direccion": "Kilometro 164 Autopista medellin Bogota",
+    "Siglas": "EntronoSilvestre",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "Rut 2025 1.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 326834,
+        "folder": "estacion/filelegal",
+        "rename": "171.pdf"
+      }
+    },
+    "Sitio": "https://www.paradordelgitano.com/"
+  },
+  {
+    "Id": 172,
+    "Nombres": "Enerbit SAS ESP",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "53008790",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-07-22",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "602",
+    "Telefonofijo": "3266600",
+    "Celular": "",
+    "Correo": "dmmurillom@enerbit.co",
+    "Direccion": "Carrera 43 A 1 A sur - 143",
+    "Siglas": "enerBit",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT ENERBIT S.A.S. E.S.P. FORMU 141181012239 3JUN2025 PAG 1.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 358516,
+        "folder": "estacion/filelegal",
+        "rename": "172.pdf"
+      }
+    },
+    "Sitio": "https://enerbit.co/"
+  },
+  {
+    "Id": 173,
+    "Nombres": "Diland Castro",
+    "Tipoidentificacion": {
+      "Id": 5,
+      "NombreIdentificacion": "PAS"
+    },
+    "Nroidentificacion": "F61579384",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-09-03",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "569",
+    "Telefonofijo": "64306715",
+    "Celular": "",
+    "Correo": "diland@cmsostenible.org",
+    "Direccion": "Medellín",
+    "Siglas": "DCC",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "Pasaporte_Diland.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 1400370,
+        "folder": "estacion/filelegal",
+        "rename": "173.pdf"
+      }
+    },
+    "Sitio": "https://cmsostenible.org/"
+  },
+  {
+    "Id": 174,
+    "Nombres": "Hotel El Alfarero SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901237957-1",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-09-11",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5148,
+      "NombreMunicipio": "EL CARMEN DE VIBORAL"
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3009128033",
+    "Celular": "",
+    "Correo": "alfahar@humancraft.com.co",
+    "Direccion": "Calle 45 #31-210",
+    "Siglas": "Alfahar Hotel",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT HOTEL EL ALFARERO 2023 (4).pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 460537,
+        "folder": "estacion/filelegal",
+        "rename": "174.pdf"
+      }
+    },
+    "Sitio": "http://alfaharhotel.com/"
+  },
+  {
+    "Id": 175,
+    "Nombres": "VATIO EV ",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "10407569843",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-10-24",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "3",
+    "Telefonofijo": "3206413400",
+    "Celular": "",
+    "Correo": "coo@vatio.com.co",
+    "Direccion": "Cl 78 sur n 46d 30 ",
+    "Siglas": "VATIO EV ",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT MELISSA BEDOYA-VATIO.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 122597,
+        "folder": "estacion/filelegal",
+        "rename": "175.pdf"
+      }
+    },
+    "Sitio": "https://www.vatio.com.co/"
+  },
+  {
+    "Id": 176,
+    "Nombres": "Prueba",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "90999999",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 2,
+      "NombreEstado": "Inactivo"
+    },
+    "Fechacreacion": "2025-10-27",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "56",
+    "Telefonofijo": "3177773377",
+    "Celular": "",
+    "Correo": "cavillalobos@minenergia.gov.co",
+    "Direccion": "calle10b #45-05",
+    "Siglas": "prt",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "Prueba.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 1832578,
+        "folder": "estacion/filelegal",
+        "rename": "176.pdf"
+      }
+    },
+    "Sitio": ""
+  },
+  {
+    "Id": 177,
+    "Nombres": "Version 3.0 SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900676602",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-11-17",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "310",
+    "Telefonofijo": "3073133",
+    "Celular": "",
+    "Correo": "jruiseco@zolectrum.com",
+    "Direccion": "Cra 43a #1-50 Torre 1 Oficina 652",
+    "Siglas": "Zolectrum",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT-V3-MDE.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 269231,
+        "folder": "estacion/filelegal",
+        "rename": "177.pdf"
+      }
+    },
+    "Sitio": "http://www.zolectrum.com"
+  },
+  {
+    "Id": 178,
+    "Nombres": "QA POSITRON SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "80115846",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-12-16",
+    "Departamento": {
+      "Id": 68,
+      "NombreDepartamento": "SANTANDER"
+    },
+    "Municipio": {
+      "Id": 68001,
+      "NombreMunicipio": "BUCARAMANGA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "3014495401",
+    "Correo": "diego.aponte@qapositron.com",
+    "Direccion": "CALLE 36 # 27-71",
+    "Siglas": "QAPOSITRON",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": ""
+  },
+  {
+    "Id": 179,
+    "Nombres": "Benoma Scientific S.A.S",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "16648216",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-12-16",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "3004948015",
+    "Correo": "ventasbenoma@gmail.com",
+    "Direccion": "Cra 68 H # 77-22",
+    "Siglas": "BENOMA",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": ""
+  },
+  {
+    "Id": 180,
+    "Nombres": "Radicontrol Dosimétrico LTDA.",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "91489405",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-12-16",
+    "Departamento": {
+      "Id": 8,
+      "NombreDepartamento": "ATLANTICO"
+    },
+    "Municipio": {
+      "Id": 8001,
+      "NombreMunicipio": "BARRANQUILLA"
+    },
+    "Indicativo": "",
+    "Telefonofijo": "",
+    "Celular": "3152255528",
+    "Correo": "radicontrol@yahoo.es",
+    "Direccion": "Calle 69 # 49-49, Local 1",
+    "Siglas": "RADICONTROL",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": ""
+  },
+  {
+    "Id": 181,
+    "Nombres": "Polen Transiciones Justas ",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "1020738034",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-12-17",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3204670508",
+    "Celular": "",
+    "Correo": "juan.diaz@polentj.org",
+    "Direccion": "Calle 111 # 45A - 70",
+    "Siglas": "PTJ",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT POLEN 141169287028.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 269504,
+        "folder": "estacion/filelegal",
+        "rename": "181.pdf"
+      }
+    },
+    "Sitio": "https://polentj.org/"
+  },
+  {
+    "Id": 182,
+    "Nombres": "Internacional de Eléctricos S.A.S.",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "809002625",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-12-22",
+    "Departamento": {
+      "Id": 73,
+      "NombreDepartamento": "TOLIMA"
+    },
+    "Municipio": {
+      "Id": 73001,
+      "NombreMunicipio": "IBAGUE"
+    },
+    "Indicativo": "608",
+    "Telefonofijo": "2771548",
+    "Celular": "",
+    "Correo": "leecheverri@iegrupo.co",
+    "Direccion": "Cl. 24 No 4A -26 Barrio El Carmen",
+    "Siglas": "IEgrupo",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT Internacional de Electricos.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 779951,
+        "folder": "estacion/filelegal",
+        "rename": "182.pdf"
+      }
+    },
+    "Sitio": "https://www.iegrupo.co/"
+  },
+  {
+    "Id": 183,
+    "Nombres": "COPOWER LIMITADA",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "804011804",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-12-22",
+    "Departamento": {
+      "Id": 68,
+      "NombreDepartamento": "SANTANDER"
+    },
+    "Municipio": {
+      "Id": 68001,
+      "NombreMunicipio": "BUCARAMANGA"
+    },
+    "Indicativo": "607",
+    "Telefonofijo": "6960767",
+    "Celular": "",
+    "Correo": "gerencia@copower.com.co",
+    "Direccion": "CR 21 8 10 BRR COMUNEROS",
+    "Siglas": "CPW",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "20250206 Rut Copower.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 365262,
+        "folder": "estacion/filelegal",
+        "rename": "183.pdf"
+      }
+    },
+    "Sitio": "https://copower.com.co/"
+  },
+  {
+    "Id": 184,
+    "Nombres": "Instituto Colombino de Geología y Minería",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "899999294-8",
+    "Tipooperador": {
+      "Id": 8,
+      "TipoOperador": "No convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2025-12-24",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "601",
+    "Telefonofijo": "2200200",
+    "Celular": "",
+    "Correo": "radicacioncorrespondencia@sgc.gov.co",
+    "Direccion": "Diagonal 53 # 34-53",
+    "Siglas": "Ingeominas",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": "",
+    "Sitio": ""
+  },
+  {
+    "Id": 185,
+    "Nombres": "SM CONSULTORÍA E INGENIERÍA S.A.S",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "901639610",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2026-01-13",
+    "Departamento": {
+      "Id": 41,
+      "NombreDepartamento": "HUILA"
+    },
+    "Municipio": {
+      "Id": 41001,
+      "NombreMunicipio": "NEIVA"
+    },
+    "Indicativo": "08",
+    "Telefonofijo": "3189321168",
+    "Celular": "",
+    "Correo": "comercial@smcei.com",
+    "Direccion": "Calle 32 Sur No. 22 - 81 (Zona Industrial)",
+    "Siglas": "SM CONSULTORÍA E ING",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT SM 13 ENERO 2026_compressed.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 257290,
+        "folder": "estacion/filelegal",
+        "rename": "185.pdf"
+      }
+    },
+    "Sitio": "https://smsolar.co/nosotros/"
+  },
+  {
+    "Id": 186,
+    "Nombres": "Energia electrica de colombia SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900551493",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2026-01-28",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "313 455 7754",
+    "Celular": "",
+    "Correo": "obras.energecol@outlook.com",
+    "Direccion": "Cra. 66b #13 A-152, Barrio El Limonar, Cali, Valle del Cauca",
+    "Siglas": "ENERGECOL SAS",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT ENERGECOL 5 DICIEMBRE 2025.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 675377,
+        "folder": "estacion/filelegal",
+        "rename": "186.pdf"
+      }
+    },
+    "Sitio": "https://energecol.com.co/"
+  },
+  {
+    "Id": 187,
+    "Nombres": "ELECTRICAL CHARGE SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901950098",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2026-02-04",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5001,
+      "NombreMunicipio": "MEDELLIN"
+    },
+    "Indicativo": "57",
+    "Telefonofijo": " 3332382149",
+    "Celular": "",
+    "Correo": "info@e-charge.com.co",
+    "Direccion": "Carrera 15  7 A  49",
+    "Siglas": "E-CHARGE",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "141227926111 RUT ACTUALIZADO REGIMEN ORDINARIO.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 271090,
+        "folder": "estacion/filelegal",
+        "rename": "187.pdf"
+      }
+    },
+    "Sitio": "https://www.e-charge.com.co/"
+  },
+  {
+    "Id": 188,
+    "Nombres": "HUB DE MOVILIDAD PLAZA CALLE 136 SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901446446",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2026-02-05",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3176436758",
+    "Celular": "",
+    "Correo": "hubscalle136@gmail.com",
+    "Direccion": "calle 136 18 88",
+    "Siglas": "HUB 136",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT HUB 136 03-10-2025.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 289681,
+        "folder": "estacion/filelegal",
+        "rename": "188.pdf"
+      }
+    },
+    "Sitio": "https://hubplazacalle136.com/"
+  },
+  {
+    "Id": 189,
+    "Nombres": "CERAMICAS EL DORADO",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901299104",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2026-02-05",
+    "Departamento": {
+      "Id": 5,
+      "NombreDepartamento": "ANTIOQUIA"
+    },
+    "Municipio": {
+      "Id": 5148,
+      "NombreMunicipio": "EL CARMEN DE VIBORAL"
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3127701000",
+    "Celular": "",
+    "Correo": "eldorado@humancraft.com.co",
+    "Direccion": "CR 31 42 64",
+    "Siglas": "EL DORADO",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT El Dorado.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 564980,
+        "folder": "estacion/filelegal",
+        "rename": "189.pdf"
+      }
+    },
+    "Sitio": "https://ceramicaseldorado.com/"
+  },
+  {
+    "Id": 190,
+    "Nombres": "HUB DE MOVILIDAD PLAZA CALLE 136 SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "901446446-4",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2026-02-13",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3176436758",
+    "Celular": "",
+    "Correo": "hubscalle136@gmail.com",
+    "Direccion": "Calle 136 #18 - 82",
+    "Siglas": "HUB",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT HUB 136 03-10-2025.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 289681,
+        "folder": "estacion/filelegal",
+        "rename": "190.pdf"
+      }
+    },
+    "Sitio": "https://hubplazacalle136.com/"
+  },
+  {
+    "Id": 191,
+    "Nombres": "MINISTERIO DE MINAS Y ENERGIA",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "1026277669",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2026-02-13",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3177773377",
+    "Celular": "",
+    "Correo": "cavillalobos@minenergia.gov.co",
+    "Direccion": "CAN",
+    "Siglas": "MME",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "arl.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 106052,
+        "folder": "estacion/filelegal",
+        "rename": "191.pdf"
+      }
+    },
+    "Sitio": "https://www.minenergia.gov.co/es/"
+  },
+  {
+    "Id": 192,
+    "Nombres": "uae junta pruebas",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "1016062128",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2026-02-15",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "1223222",
+    "Celular": "",
+    "Correo": "egarciam@minenergia.gov.co",
+    "Direccion": "Calle 185 # 45-03",
+    "Siglas": "jce",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "prueba.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 15160,
+        "folder": "estacion/filelegal",
+        "rename": "192.pdf"
+      }
+    },
+    "Sitio": "https://www.pruebas.gov.co/"
+  },
+  {
+    "Id": 193,
+    "Nombres": "Juan Nicolás Patiño Rodríguez",
+    "Tipoidentificacion": {
+      "Id": 3,
+      "NombreIdentificacion": "CC"
+    },
+    "Nroidentificacion": "1013620260",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2026-02-19",
+    "Departamento": {
+      "Id": 11,
+      "NombreDepartamento": "BOGOTA, D. C."
+    },
+    "Municipio": {
+      "Id": 11001,
+      "NombreMunicipio": "BOGOTA, D.C."
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3164358556",
+    "Celular": "",
+    "Correo": "juan.patino@servinformacion.com",
+    "Direccion": "Carrera 40a # 34 - 31 sur",
+    "Siglas": "JNPR",
+    "Tipopersona": {
+      "Id": 106,
+      "Nombre": "Natural"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT JNPR.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 8950,
+        "folder": "estacion/filelegal",
+        "rename": "193.pdf"
+      }
+    },
+    "Sitio": "https://servinformacion.com/"
+  },
+  {
+    "Id": 194,
+    "Nombres": "CENTRO DE DIAGNOSTICO AUTOMOTRIZ DEL HUILA SAS",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "900113252",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2026-02-19",
+    "Departamento": {
+      "Id": 41,
+      "NombreDepartamento": "HUILA"
+    },
+    "Municipio": {
+      "Id": 41001,
+      "NombreMunicipio": "NEIVA"
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3028405486",
+    "Celular": "",
+    "Correo": "cdahuila@gmail.com",
+    "Direccion": "Calle 4 sur 3a 80",
+    "Siglas": "EDS EL PEÑON ",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT ACTUALIZADO 2026.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 307308,
+        "folder": "estacion/filelegal",
+        "rename": "194.pdf"
+      }
+    },
+    "Sitio": ""
+  },
+  {
+    "Id": 195,
+    "Nombres": "GREET ENERGY",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "9013775031",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2026-02-28",
+    "Departamento": {
+      "Id": 8,
+      "NombreDepartamento": "ATLANTICO"
+    },
+    "Municipio": {
+      "Id": 8001,
+      "NombreMunicipio": "BARRANQUILLA"
+    },
+    "Indicativo": "57",
+    "Telefonofijo": "3153047037",
+    "Celular": "",
+    "Correo": "evcharge@greetenergy.com",
+    "Direccion": "CARRERA 60 # 75 -102",
+    "Siglas": "GREET",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "RUT GREET ENERGY 092025.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 1484950,
+        "folder": "estacion/filelegal",
+        "rename": "195.pdf"
+      }
+    },
+    "Sitio": "https://greetenergy.com/"
+  },
+  {
+    "Id": 196,
+    "Nombres": "CENTRO-NET S.A.S. ",
+    "Tipoidentificacion": {
+      "Id": 6,
+      "NombreIdentificacion": "NIT"
+    },
+    "Nroidentificacion": "8050204578",
+    "Tipooperador": {
+      "Id": 7,
+      "TipoOperador": "Convencional"
+    },
+    "Estadooperador": {
+      "Id": 1,
+      "NombreEstado": "Activo"
+    },
+    "Fechacreacion": "2026-03-02",
+    "Departamento": {
+      "Id": 76,
+      "NombreDepartamento": "VALLE DEL CAUCA"
+    },
+    "Municipio": {
+      "Id": 76001,
+      "NombreMunicipio": "CALI"
+    },
+    "Indicativo": "602",
+    "Telefonofijo": "4898560",
+    "Celular": "",
+    "Correo": "juridico@centronet.com.co",
+    "Direccion": "CALLE 24 #7-17",
+    "Siglas": "CENTRONET",
+    "Tipopersona": {
+      "Id": 107,
+      "Nombre": "Jurídica"
+    },
+    "Files": {
+      "File_legal": {
+        "name": "141215933442.pdf",
+        "mimetype": "application/pdf",
+        "type": ".pdf",
+        "size": 366326,
+        "folder": "estacion/filelegal",
+        "rename": "196.pdf"
+      }
+    },
+    "Sitio": "https://centronet.com.co/"
+  }
+]

@@ -1,0 +1,410 @@
+[
+  {
+    "id_tratamiento": "1",
+    "Operador": 1,
+    "Usuario": 2,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2020-12-26"
+  },
+  {
+    "id_tratamiento": "2",
+    "Operador": 2,
+    "Usuario": 2,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2020-12-27"
+  },
+  {
+    "id_tratamiento": "3",
+    "Operador": 10,
+    "Usuario": 10,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-08"
+  },
+  {
+    "id_tratamiento": "4",
+    "Operador": 16,
+    "Usuario": 16,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-08"
+  },
+  {
+    "id_tratamiento": "5",
+    "Operador": 27,
+    "Usuario": 27,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-12"
+  },
+  {
+    "id_tratamiento": "6",
+    "Operador": 8,
+    "Usuario": 8,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-12"
+  },
+  {
+    "id_tratamiento": "7",
+    "Operador": 20,
+    "Usuario": 20,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-13"
+  },
+  {
+    "id_tratamiento": "8",
+    "Operador": 5,
+    "Usuario": 5,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-13"
+  },
+  {
+    "id_tratamiento": "9",
+    "Operador": 30,
+    "Usuario": 30,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-14"
+  },
+  {
+    "id_tratamiento": "10",
+    "Operador": 4,
+    "Usuario": 4,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-15"
+  },
+  {
+    "id_tratamiento": "11",
+    "Operador": 13,
+    "Usuario": 13,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-15"
+  },
+  {
+    "id_tratamiento": "12",
+    "Operador": 22,
+    "Usuario": 22,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-18"
+  },
+  {
+    "id_tratamiento": "13",
+    "Operador": 44,
+    "Usuario": 43,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-19"
+  },
+  {
+    "id_tratamiento": "14",
+    "Operador": 36,
+    "Usuario": 36,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-19"
+  },
+  {
+    "id_tratamiento": "15",
+    "Operador": 9,
+    "Usuario": 9,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-19"
+  },
+  {
+    "id_tratamiento": "16",
+    "Operador": 19,
+    "Usuario": 19,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-19"
+  },
+  {
+    "id_tratamiento": "17",
+    "Operador": 41,
+    "Usuario": 41,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-20"
+  },
+  {
+    "id_tratamiento": "18",
+    "Operador": 6,
+    "Usuario": 6,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-20"
+  },
+  {
+    "id_tratamiento": "19",
+    "Operador": 11,
+    "Usuario": 11,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-21"
+  },
+  {
+    "id_tratamiento": "20",
+    "Operador": 12,
+    "Usuario": 12,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-21"
+  },
+  {
+    "id_tratamiento": "21",
+    "Operador": 21,
+    "Usuario": 21,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-21"
+  },
+  {
+    "id_tratamiento": "22",
+    "Operador": 33,
+    "Usuario": 33,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-01-28"
+  },
+  {
+    "id_tratamiento": "23",
+    "Operador": 48,
+    "Usuario": 47,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-02"
+  },
+  {
+    "id_tratamiento": "24",
+    "Operador": 48,
+    "Usuario": 47,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-02"
+  },
+  {
+    "id_tratamiento": "25",
+    "Operador": 39,
+    "Usuario": 39,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-02"
+  },
+  {
+    "id_tratamiento": "26",
+    "Operador": 46,
+    "Usuario": 45,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-03"
+  },
+  {
+    "id_tratamiento": "27",
+    "Operador": 28,
+    "Usuario": 28,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-03"
+  },
+  {
+    "id_tratamiento": "28",
+    "Operador": 118,
+    "Usuario": 165,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-04"
+  },
+  {
+    "id_tratamiento": "29",
+    "Operador": 26,
+    "Usuario": 26,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-05"
+  },
+  {
+    "id_tratamiento": "30",
+    "Operador": 31,
+    "Usuario": 31,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-08"
+  },
+  {
+    "id_tratamiento": "31",
+    "Operador": 24,
+    "Usuario": 24,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-09"
+  },
+  {
+    "id_tratamiento": "32",
+    "Operador": 25,
+    "Usuario": 25,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-09"
+  },
+  {
+    "id_tratamiento": "33",
+    "Operador": 29,
+    "Usuario": 29,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-11"
+  },
+  {
+    "id_tratamiento": "34",
+    "Operador": 23,
+    "Usuario": 23,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-17"
+  },
+  {
+    "id_tratamiento": "35",
+    "Operador": 43,
+    "Usuario": 51,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-23"
+  },
+  {
+    "id_tratamiento": "36",
+    "Operador": 7,
+    "Usuario": 7,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-03-23"
+  },
+  {
+    "id_tratamiento": "37",
+    "Operador": 119,
+    "Usuario": 166,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2021-07-07"
+  },
+  {
+    "id_tratamiento": "44",
+    "Operador": 120,
+    "Usuario": 191,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2023-01-24"
+  },
+  {
+    "id_tratamiento": "45",
+    "Operador": 128,
+    "Usuario": 194,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2023-01-24"
+  },
+  {
+    "id_tratamiento": "46",
+    "Operador": 133,
+    "Usuario": 192,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2023-01-24"
+  },
+  {
+    "id_tratamiento": "47",
+    "Operador": 133,
+    "Usuario": 192,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2023-01-24"
+  },
+  {
+    "id_tratamiento": "48",
+    "Operador": 131,
+    "Usuario": 196,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2023-01-24"
+  },
+  {
+    "id_tratamiento": "49",
+    "Operador": 121,
+    "Usuario": 193,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2023-01-24"
+  },
+  {
+    "id_tratamiento": "50",
+    "Operador": 134,
+    "Usuario": 198,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2023-01-24"
+  },
+  {
+    "id_tratamiento": "51",
+    "Operador": 130,
+    "Usuario": 197,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2023-01-24"
+  },
+  {
+    "id_tratamiento": "52",
+    "Operador": 122,
+    "Usuario": 195,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2023-01-24"
+  },
+  {
+    "id_tratamiento": "53",
+    "Operador": 127,
+    "Usuario": 187,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2023-02-06"
+  },
+  {
+    "id_tratamiento": "54",
+    "Operador": 132,
+    "Usuario": 199,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2023-02-10"
+  },
+  {
+    "id_tratamiento": "57",
+    "Operador": 135,
+    "Usuario": 202,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2023-10-19"
+  },
+  {
+    "id_tratamiento": "76",
+    "Operador": 123,
+    "Usuario": 213,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2024-10-24"
+  },
+  {
+    "id_tratamiento": "81",
+    "Operador": 139,
+    "Usuario": 211,
+    "Autorizo": "true",
+    "Estado": 1,
+    "Fecha": "2025-02-04"
+  }
+]

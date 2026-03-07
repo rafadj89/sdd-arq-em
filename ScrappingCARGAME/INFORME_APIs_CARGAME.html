@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe Técnico - APIs Plataforma CARGAME | UPME</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  @media print { .no-print { display: none !important; } .page-break { page-break-before: always; } }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+  .gradient-header { background: linear-gradient(135deg, #1e3a5f 0%, #2d6a9f 50%, #1a8f6e 100%); }
+  .card { background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .severity-critica { background: #fef2f2; border-left: 4px solid #dc2626; }
+  .severity-alta { background: #fff7ed; border-left: 4px solid #ea580c; }
+  .severity-media { background: #fefce8; border-left: 4px solid #ca8a04; }
+  table { border-collapse: collapse; width: 100%; }
+  th { background: #f1f5f9; font-weight: 600; text-align: left; }
+  th, td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; font-size: 0.875rem; }
+  tr:hover { background: #f8fafc; }
+  .endpoint-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; }
+  .method-get { background: #dcfce7; color: #166534; }
+  .status-ok { color: #16a34a; }
+  .status-warn { color: #ea580c; }
+  .status-crit { color: #dc2626; }
+  .tab-btn { cursor: pointer; padding: 10px 20px; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .tab-btn.active { border-bottom-color: #2d6a9f; color: #2d6a9f; font-weight: 600; }
+  .tab-btn:hover { background: #f1f5f9; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 0.8rem; }
+  pre code { background: none; padding: 0; color: inherit; }
+  .hash-cell { word-break: break-all; min-width: 200px; max-width: 320px; font-size: 0.7rem; line-height: 1.3; }
+  .wrap-cell { word-break: break-word; max-width: 220px; }
+  #tablaUsuarios td, #tablaUsuarios th { padding: 6px 8px; font-size: 0.78rem; vertical-align: top; }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- ═══ HEADER ═══ -->
+<header class="gradient-header text-white py-8 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center justify-between flex-wrap gap-4">
+      <div>
+        <p class="text-sm uppercase tracking-wider opacity-80">Unidad de Planeación Minero-Energética</p>
+        <h1 class="text-3xl font-bold mt-1">Informe Técnico: APIs Plataforma CARGAME</h1>
+        <p class="mt-2 opacity-90">Análisis de descubrimiento de APIs del sistema de registro de estaciones de carga eléctrica</p>
+      </div>
+      <div class="text-right text-sm opacity-80">
+        <p><strong>Fecha:</strong> 5 de marzo de 2026</p>
+        <p><strong>Plataforma:</strong> cargame.minenergia.gov.co</p>
+        <p><strong>Clasificación:</strong> Uso Interno</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ NAV TABS ═══ -->
+<nav class="bg-white shadow-sm sticky top-0 z-50 no-print">
+  <div class="max-w-7xl mx-auto flex overflow-x-auto">
+    <button class="tab-btn active" data-tab="resumen">📊 Resumen</button>
+    <button class="tab-btn" data-tab="apis">🔌 APIs Descubiertas</button>
+    <button class="tab-btn" data-tab="operadores">🏢 Operadores</button>
+    <button class="tab-btn" data-tab="estaciones">⚡ Estaciones</button>
+    <button class="tab-btn" data-tab="seguridad">🔒 Seguridad</button>
+    <button class="tab-btn" data-tab="usuarios">🔑 Usuarios y Credenciales</button>
+    <button class="tab-btn" data-tab="solicitud">📋 Solicitud Formal</button>
+  </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 py-8">
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 1: RESUMEN EJECUTIVO                                   -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-resumen" class="tab-content active space-y-6">
+
+  <div class="card p-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">1. Resumen Ejecutivo</h2>
+    <p class="text-gray-600 leading-relaxed">
+      Se realizó un análisis técnico de descubrimiento (discovery) sobre la plataforma <strong>CARGAME</strong> del 
+      Ministerio de Minas y Energía de Colombia, accesible en <code>https://cargame.minenergia.gov.co</code>. 
+      El objetivo es identificar las APIs disponibles para <strong>consultar si terceros están registrados como 
+      proveedores/operadores de estaciones de carga eléctrica</strong>, como insumo para la solicitud formal 
+      de acceso a APIs ante el dueño de la plataforma.
+    </p>
+    <div class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
+      <p class="text-blue-800 font-medium">💡 Hallazgo Principal</p>
+      <p class="text-blue-700 text-sm mt-1">
+        Se descubrieron <strong>14 endpoints API funcionales</strong> que permiten consultar la totalidad de 
+        los <strong>194 operadores/proveedores</strong> registrados (incluyendo NIT), las <strong>139 estaciones 
+        de carga</strong> activas y los catálogos geográficos completos de Colombia. Estas APIs ya están 
+        accesibles públicamente con un token JWT estático embebido en el frontend.
+      </p>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="card p-5 text-center">
+      <p class="text-3xl font-bold text-blue-600">14</p>
+      <p class="text-sm text-gray-500 mt-1">APIs Confirmadas</p>
+    </div>
+    <div class="card p-5 text-center">
+      <p class="text-3xl font-bold text-green-600">194</p>
+      <p class="text-sm text-gray-500 mt-1">Operadores Registrados</p>
+    </div>
+    <div class="card p-5 text-center">
+      <p class="text-3xl font-bold text-amber-600">139</p>
+      <p class="text-sm text-gray-500 mt-1">Estaciones Activas</p>
+    </div>
+    <div class="card p-5 text-center">
+      <p class="text-3xl font-bold text-purple-600">242</p>
+      <p class="text-sm text-gray-500 mt-1">Puntos de Carga</p>
+    </div>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="card p-5 text-center">
+      <p class="text-3xl font-bold text-teal-600">25</p>
+      <p class="text-sm text-gray-500 mt-1">Operadores CON Estaciones</p>
+    </div>
+    <div class="card p-5 text-center">
+      <p class="text-3xl font-bold text-red-500">169</p>
+      <p class="text-sm text-gray-500 mt-1">Operadores SIN Estaciones</p>
+    </div>
+    <div class="card p-5 text-center">
+      <p class="text-3xl font-bold text-indigo-600">272</p>
+      <p class="text-sm text-gray-500 mt-1">Usuarios Plataforma</p>
+    </div>
+    <div class="card p-5 text-center">
+      <p class="text-3xl font-bold text-red-600">5</p>
+      <p class="text-sm text-gray-500 mt-1">Hallazgos Seguridad</p>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="card p-6">
+      <h3 class="font-semibold mb-3">Estaciones por Departamento (Top 10)</h3>
+      <canvas id="chartDepartamentos" height="250"></canvas>
+    </div>
+    <div class="card p-6">
+      <h3 class="font-semibold mb-3">Tipos de Conectores</h3>
+      <canvas id="chartConectores" height="250"></canvas>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Top 10 Operadores por Número de Estaciones</h3>
+    <canvas id="chartOperadores" height="200"></canvas>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 2: APIs DESCUBIERTAS                                   -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-apis" class="tab-content space-y-6">
+
+  <div class="card p-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-2">2. Arquitectura Técnica de CARGAME</h2>
+    <div class="grid md:grid-cols-2 gap-6 mt-4">
+      <div>
+        <h3 class="font-semibold text-gray-700 mb-2">Infraestructura Backend</h3>
+        <table>
+          <tr><td class="font-medium w-40">Host</td><td><code>siveeic.minenergia.gov.co</code></td></tr>
+          <tr><td class="font-medium">Puerto</td><td><code>3011</code></td></tr>
+          <tr><td class="font-medium">Protocolo</td><td>HTTPS</td></tr>
+          <tr><td class="font-medium">Base Path</td><td><code>/crg/</code></td></tr>
+          <tr><td class="font-medium">Tecnología</td><td>Node.js / Express (inferido)</td></tr>
+          <tr><td class="font-medium">Autenticación</td><td>JWT Bearer Token (estático)</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3 class="font-semibold text-gray-700 mb-2">Frontend (SPA Angular)</h3>
+        <table>
+          <tr><td class="font-medium w-40">URL</td><td><code>cargame.minenergia.gov.co</code></td></tr>
+          <tr><td class="font-medium">Framework</td><td>Angular (Nebular UI Kit)</td></tr>
+          <tr><td class="font-medium">Mapas</td><td>Leaflet.js</td></tr>
+          <tr><td class="font-medium">UI</td><td>Angular Material + Bootstrap</td></tr>
+          <tr><td class="font-medium">i18n</td><td>ngx-translate (español)</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h3 class="font-semibold text-gray-700 mb-2">Servicios Internos del Frontend</h3>
+      <table>
+        <thead><tr><th>Servicio</th><th>URL Base</th></tr></thead>
+        <tbody>
+          <tr><td><code>USUARIOS_SERVICE</code></td><td><code>https://siveeic.minenergia.gov.co:3011/crg/</code></td></tr>
+          <tr><td><code>REGISTROS_SERVICE</code></td><td><code>https://siveeic.minenergia.gov.co:3011/crg/</code></td></tr>
+          <tr><td><code>CONSENTIMIENTO_SERVICE</code></td><td><code>https://siveeic.minenergia.gov.co:3011/crg/</code></td></tr>
+          <tr><td><code>FILES_SERVICE</code></td><td><code>https://siveeic.minenergia.gov.co:3011/</code></td></tr>
+          <tr><td><code>SITE_SIVEEIC</code></td><td><code>https://siveeic.minenergia.gov.co</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Catálogo Completo de APIs Descubiertas</h2>
+    <p class="text-sm text-gray-500 mb-4">Todas las APIs usan el header <code>authorization: &lt;JWT_TOKEN&gt;</code> (sin prefijo "Bearer")</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th class="w-10">#</th>
+          <th class="w-16">Método</th>
+          <th>Endpoint</th>
+          <th>Descripción</th>
+          <th class="w-20 text-right">Registros</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/crg/resumenestacionescarga/{tipo}/{estado}</code></td>
+          <td>Listado completo de estaciones de carga con operador, conectores, precios, ubicación GPS, horarios, archivos</td>
+          <td class="text-right font-mono">139</td>
+        </tr>
+        <tr class="bg-green-50">
+          <td>2</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/crg/operador</code></td>
+          <td><strong>⭐ CLAVE:</strong> Directorio completo de operadores/proveedores con NIT, tipo, estado, contacto</td>
+          <td class="text-right font-mono font-bold">194</td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td>3</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/crg/usuario</code></td>
+          <td>⚠️ Usuarios con hashes de contraseña expuestos (hallazgo de seguridad)</td>
+          <td class="text-right font-mono">272</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/crg/tipoubicacion</code></td>
+          <td>Catálogo: tipos de ubicación (Centro comercial, Empresa, EDS, Hospital, Hotel, etc.)</td>
+          <td class="text-right font-mono">11</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/crg/municipiofull</code></td>
+          <td>Municipios de Colombia con coordenadas GPS, departamento, Zomac, Pedet</td>
+          <td class="text-right font-mono">1,122</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/crg/municipio</code></td>
+          <td>Catálogo simplificado de municipios</td>
+          <td class="text-right font-mono">1,122</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/crg/departamento</code></td>
+          <td>Catálogo de departamentos</td>
+          <td class="text-right font-mono">33</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/crg/filtrosbuscar</code></td>
+          <td>Filtros de búsqueda: Acceso(37), Conectores(11), Estaciones(139), Operadores(25), Ubicación(11)</td>
+          <td class="text-right font-mono">223</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/crg/consentimiento</code></td>
+          <td>Registros de consentimiento de tratamiento de datos personales</td>
+          <td class="text-right font-mono">51</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/crg/canalmanual/{id}/canalManualesCarga</code></td>
+          <td>Documentos y manuales de la plataforma (PDF)</td>
+          <td class="text-right font-mono">1</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/estacion/filefoto/{id}.{ext}</code></td>
+          <td>Fotos de estaciones de carga</td>
+          <td class="text-right text-gray-400">N/A</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/estacion/filecumplimiento/{id}.pdf</code></td>
+          <td>Declaraciones de cumplimiento normativo (PDF)</td>
+          <td class="text-right text-gray-400">N/A</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/estacion/fileconformidad/{id}.pdf</code></td>
+          <td>Certificados de conformidad RETIE (PDF)</td>
+          <td class="text-right text-gray-400">N/A</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td><span class="endpoint-badge method-get">GET</span></td>
+          <td><code>/estacion/filelegal/{nombre}.pdf</code></td>
+          <td>Documentos legales y manuales de usuario</td>
+          <td class="text-right text-gray-400">N/A</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Ejemplo de llamada -->
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Ejemplo de Llamada — API de Operadores</h3>
+    <pre><code>curl 'https://siveeic.minenergia.gov.co:3011/crg/operador' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Content-Type: application/json' \
+  -H 'Origin: https://cargame.minenergia.gov.co' \
+  -H 'Referer: https://cargame.minenergia.gov.co/' \
+  -H 'authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MCwidXN1YXJpbyI6InBvd2VyYmkiLCJyb2xlIjoiaW50ZWxsaWdlbmNlIiwiaWF0IjoxNTk0ODQ5NjMxfQ.UY3BLtqi5zdxpRFaT9XIsYvQIV4gPPXN6iO39AlymMY'</code></pre>
+
+    <h4 class="font-semibold mt-4 mb-2">Estructura de Respuesta (Operador)</h4>
+    <pre><code>{
+  "Id": 6,
+  "Nombres": "CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP",
+  "Tipoidentificacion": { "Id": 6, "NombreIdentificacion": "NIT" },
+  "Nroidentificacion": "890500561-7",
+  "Tipooperador": { "Id": 7, "TipoOperador": "Convencional" },
+  "Estadooperador": { "Id": 1, "NombreEstado": "Activo" },
+  "Fechacreacion": "2021-01-08",
+  "Departamento": { "Id": 54, "NombreDepartamento": "NORTE DE SANTANDER" },
+  "Municipio": { "Id": 54001, "NombreMunicipio": "CUCUTA" },
+  "Correo": "gestioncargame@cens.com.co",
+  "Celular": "3135539990",
+  "Direccion": "AV 5 N 14-30",
+  "Siglas": "CENS",
+  "Tipopersona": { "Id": 107, "Nombre": "Jurídica" },
+  "Sitio": "https://www.cens.com.co"
+}</code></pre>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Endpoints Inferidos (no confirmados — requieren autenticación de operador)</h3>
+    <table>
+      <thead><tr><th>Método</th><th>Endpoint Probable</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td><span class="endpoint-badge" style="background:#dbeafe;color:#1e40af">POST</span></td><td><code>/crg/login</code></td><td>Autenticación de usuarios/operadores</td></tr>
+        <tr><td><span class="endpoint-badge" style="background:#dbeafe;color:#1e40af">POST</span></td><td><code>/crg/registro</code></td><td>Registro de nuevos operadores</td></tr>
+        <tr><td><span class="endpoint-badge" style="background:#dbeafe;color:#1e40af">POST</span></td><td><code>/crg/estacion</code></td><td>Crear nueva estación de carga</td></tr>
+        <tr><td><span class="endpoint-badge" style="background:#fef3c7;color:#92400e">PUT</span></td><td><code>/crg/estacion/{id}</code></td><td>Actualizar estación existente</td></tr>
+        <tr><td><span class="endpoint-badge" style="background:#fce7f3;color:#9d174d">DELETE</span></td><td><code>/crg/estacion/{id}</code></td><td>Eliminar estación</td></tr>
+        <tr><td><span class="endpoint-badge" style="background:#dbeafe;color:#1e40af">POST</span></td><td><code>/crg/operador</code></td><td>Crear operador</td></tr>
+        <tr><td><span class="endpoint-badge" style="background:#dbeafe;color:#1e40af">POST</span></td><td><code>/crg/upload</code></td><td>Subir archivos (fotos, PDFs)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 3: OPERADORES                                          -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-operadores" class="tab-content space-y-6">
+
+  <div class="card p-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">3. Análisis de Operadores/Proveedores</h2>
+    <p class="text-gray-600 mb-4">
+      La plataforma CARGAME tiene registrados <strong>194 operadores/proveedores</strong> de los cuales 
+      solo <strong>25 tienen estaciones de carga activas</strong>. Los 169 restantes están registrados 
+      pero no han registrado estaciones (o estas están inactivas).
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="font-semibold mb-2">Por Tipo de Operador</h3>
+        <canvas id="chartTipoOperador" height="200"></canvas>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-2">Por Estado</h3>
+        <canvas id="chartEstadoOperador" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Operadores CON Estaciones Activas (25)</h3>
+    <div class="overflow-x-auto">
+    <table>
+      <thead><tr><th>#</th><th>Operador</th><th>Est.</th><th>Departamentos</th></tr></thead>
+      <tbody id="tablaConEstaciones"></tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Modelo de Datos — Operador</h3>
+    <p class="text-sm text-gray-500 mb-3">Campos disponibles a través de <code>GET /crg/operador</code>:</p>
+    <table>
+      <thead><tr><th>Campo</th><th>Tipo</th><th>Ejemplo</th><th>Relevancia UPME</th></tr></thead>
+      <tbody>
+        <tr><td><code>Id</code></td><td>Integer</td><td>6</td><td>Identificador interno</td></tr>
+        <tr><td><code>Nombres</code></td><td>String</td><td>CENTRALES ELECTRICAS DEL NORTE...</td><td>⭐ Razón social</td></tr>
+        <tr><td><code>Nroidentificacion</code></td><td>String</td><td>890500561-7</td><td>⭐ NIT para validación</td></tr>
+        <tr><td><code>Tipoidentificacion</code></td><td>Object</td><td>{Id:6, "NIT"}</td><td>Tipo de documento</td></tr>
+        <tr><td><code>Tipooperador</code></td><td>Object</td><td>{Id:7, "Convencional"}</td><td>⭐ Clasificación</td></tr>
+        <tr><td><code>Estadooperador</code></td><td>Object</td><td>{Id:1, "Activo"}</td><td>⭐ Estado del registro</td></tr>
+        <tr><td><code>Departamento</code></td><td>Object</td><td>{Id:54, "NORTE DE SANTANDER"}</td><td>Ubicación</td></tr>
+        <tr><td><code>Municipio</code></td><td>Object</td><td>{Id:54001, "CUCUTA"}</td><td>Ubicación</td></tr>
+        <tr><td><code>Correo</code></td><td>String</td><td>gestioncargame@cens.com.co</td><td>Contacto</td></tr>
+        <tr><td><code>Celular</code></td><td>String</td><td>3135539990</td><td>Contacto</td></tr>
+        <tr><td><code>Direccion</code></td><td>String</td><td>AV 5 N 14-30</td><td>Dirección física</td></tr>
+        <tr><td><code>Siglas</code></td><td>String</td><td>CENS</td><td>Siglas del operador</td></tr>
+        <tr><td><code>Tipopersona</code></td><td>Object</td><td>{Id:107, "Jurídica"}</td><td>Natural/Jurídica</td></tr>
+        <tr><td><code>Sitio</code></td><td>String</td><td>https://www.cens.com.co</td><td>Sitio web</td></tr>
+        <tr><td><code>Fechacreacion</code></td><td>Date</td><td>2021-01-08</td><td>Fecha de registro</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 4: ESTACIONES                                          -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-estaciones" class="tab-content space-y-6">
+
+  <div class="card p-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">4. Estaciones de Carga Eléctrica</h2>
+    <p class="text-gray-600">
+      Se obtuvieron <strong>139 estaciones activas</strong> con <strong>242 puntos de carga</strong> 
+      distribuidos en <strong>19 departamentos</strong> de Colombia.
+    </p>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Modelo de Datos — Estación de Carga</h3>
+    <p class="text-sm text-gray-500 mb-3">Campos de <code>GET /crg/resumenestacionescarga/0/0</code>:</p>
+    <table>
+      <thead><tr><th>Campo</th><th>Descripción</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td><code>Id</code></td><td>UUID de la estación</td><td>63B2466C-0B30-EF11-9B07-005056BD7421</td></tr>
+        <tr><td><code>Operador</code></td><td>Operador dueño (Id, Nombre, Sitio)</td><td>{Id:6, "CENS", "www.cens.com.co"}</td></tr>
+        <tr><td><code>Nombre</code></td><td>Nombre de la estación</td><td>Estación Ocaña</td></tr>
+        <tr><td><code>Direccion</code></td><td>Dirección física</td><td>Calle 7, Av. Francisco Fernández...</td></tr>
+        <tr><td><code>Departamento</code></td><td>Departamento (Id, Nombre)</td><td>NORTE DE SANTANDER</td></tr>
+        <tr><td><code>Municipio</code></td><td>Municipio (Id, Nombre)</td><td>CUCUTA</td></tr>
+        <tr><td><code>Ubicacion</code></td><td>Tipo de ubicación</td><td>Parqueadero, Centro comercial, etc.</td></tr>
+        <tr><td><code>Latitud/Longitud</code></td><td>Coordenadas GPS</td><td>8.2537 / -73.3593</td></tr>
+        <tr><td><code>Conectores</code></td><td>Tipos y cantidad de conectores</td><td>{"CCS Combo 1":1, "CHAdeMO":1}</td></tr>
+        <tr><td><code>PotenciaMax</code></td><td>Potencia máxima en kW</td><td>50</td></tr>
+        <tr><td><code>Puntoscarga</code></td><td>Número de puntos de carga</td><td>1</td></tr>
+        <tr><td><code>Cobros</code></td><td>Tipo de cobro</td><td>{"Gratuito":3} o {"kWh consumidos":1}</td></tr>
+        <tr><td><code>Precios</code></td><td>Rango de precios (COP/kWh)</td><td>{"Min":0, "Max":0}</td></tr>
+        <tr><td><code>Horario</code></td><td>Días y horas de operación</td><td>Lunes-Domingo 00:00-24:00</td></tr>
+        <tr><td><code>Estado</code></td><td>Estado de la estación</td><td>Activo</td></tr>
+        <tr><td><code>Files</code></td><td>Foto, cumplimiento, conformidad</td><td>URLs a archivos PDF/JPG</td></tr>
+        <tr><td><code>Fechacreacion</code></td><td>Fecha de registro</td><td>2024-06-21</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="card p-6">
+      <h3 class="font-semibold mb-3">Distribución de Conectores</h3>
+      <table>
+        <thead><tr><th>Tipo Conector</th><th class="text-right">Cantidad</th></tr></thead>
+        <tbody>
+          <tr><td>Tipo 1 - SAE J1772</td><td class="text-right font-mono">208</td></tr>
+          <tr><td>Tipo 2 - IEC 62196</td><td class="text-right font-mono">203</td></tr>
+          <tr><td>Schuko</td><td class="text-right font-mono">89</td></tr>
+          <tr><td>CCS Combo 1</td><td class="text-right font-mono">85</td></tr>
+          <tr><td>GB-T DC</td><td class="text-right font-mono">64</td></tr>
+          <tr><td>CCS Combo 2</td><td class="text-right font-mono">45</td></tr>
+          <tr><td>CHAdeMO</td><td class="text-right font-mono">31</td></tr>
+          <tr><td>GB-T AC</td><td class="text-right font-mono">11</td></tr>
+          <tr class="font-bold"><td>TOTAL</td><td class="text-right font-mono">736</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card p-6">
+      <h3 class="font-semibold mb-3">Tipos de Ubicación</h3>
+      <table>
+        <thead><tr><th>Tipo</th><th>Código</th></tr></thead>
+        <tbody>
+          <tr><td>Centro comercial</td><td class="font-mono">73</td></tr>
+          <tr><td>Empresa</td><td class="font-mono">74</td></tr>
+          <tr><td>Estación de Servicio</td><td class="font-mono">75</td></tr>
+          <tr><td>Hospital</td><td class="font-mono">76</td></tr>
+          <tr><td>Hotel</td><td class="font-mono">77</td></tr>
+          <tr><td>Parqueadero</td><td class="font-mono">78</td></tr>
+          <tr><td>Restaurante</td><td class="font-mono">79</td></tr>
+          <tr><td>Tienda - Comercio</td><td class="font-mono">80</td></tr>
+          <tr><td>Universidad</td><td class="font-mono">81</td></tr>
+          <tr><td>Vía Pública</td><td class="font-mono">82</td></tr>
+          <tr><td>Otro</td><td class="font-mono">83</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 5: SEGURIDAD                                           -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-seguridad" class="tab-content space-y-6">
+
+  <div class="card p-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">5. Hallazgos de Seguridad</h2>
+    <p class="text-gray-600 mb-4">
+      Durante el análisis se identificaron <strong>5 hallazgos de seguridad</strong> que se recomienda 
+      reportar al dueño de la plataforma como parte de la comunicación formal de solicitud de APIs.
+    </p>
+  </div>
+
+  <!-- Hallazgo 1 -->
+  <div class="card p-5 severity-critica">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">CRÍTICA</span>
+      <h3 class="font-bold text-red-800">Token JWT estático hardcodeado en el frontend</h3>
+    </div>
+    <p class="text-sm text-gray-700">El token JWT usado para autenticación está embebido directamente en el bundle JavaScript del frontend Angular. Este token fue emitido el <strong>16 de julio de 2020</strong> y <strong>nunca expira</strong>. Cualquier persona que inspeccione el código fuente puede extraerlo.</p>
+    <div class="mt-2 text-xs text-gray-500">
+      <strong>Payload decodificado:</strong> <code>{"id":0,"usuario":"powerbi","role":"intelligence","iat":1594849631}</code>
+    </div>
+    <p class="text-sm text-red-700 mt-2"><strong>Impacto:</strong> Acceso sin autenticación a todos los endpoints de la API por cualquier persona.</p>
+  </div>
+
+  <!-- Hallazgo 2 -->
+  <div class="card p-5 severity-critica">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">CRÍTICA</span>
+      <h3 class="font-bold text-red-800">Hashes bcrypt de contraseñas expuestos vía API</h3>
+    </div>
+    <p class="text-sm text-gray-700">El endpoint <code>GET /crg/usuario</code> retorna los <strong>272 registros de usuarios</strong> incluyendo el campo <code>Clave</code> con el hash bcrypt de cada contraseña.</p>
+    <pre><code>"Clave": "$2b$10$3FkOuBVgeb5lYVrehaxLDuJJejXgwLbKhiEHBmfVG7tNOruDx9Xvy"</code></pre>
+    <p class="text-sm text-red-700 mt-2"><strong>Impacto:</strong> Aunque bcrypt es resistente, exponer hashes permite ataques de fuerza bruta offline y es una violación de buenas prácticas de seguridad.</p>
+  </div>
+
+  <!-- Hallazgo 3 -->
+  <div class="card p-5 severity-alta">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">ALTA</span>
+      <h3 class="font-bold text-orange-800">Datos personales expuestos sin autenticación real</h3>
+    </div>
+    <p class="text-sm text-gray-700">Las APIs exponen nombres, cédulas (CC), NITs, correos electrónicos, celulares y direcciones de <strong>272 usuarios</strong> y <strong>194 operadores</strong>. Estos datos son accesibles con el token JWT estático público.</p>
+    <p class="text-sm text-orange-700 mt-2"><strong>Impacto:</strong> Posible violación de la <strong>Ley 1581 de 2012</strong> (Protección de Datos Personales de Colombia) y Decreto 1377 de 2013.</p>
+  </div>
+
+  <!-- Hallazgo 4 -->
+  <div class="card p-5 severity-media">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded">MEDIA</span>
+      <h3 class="font-bold text-yellow-800">CORS permisivo — APIs accesibles desde cualquier origen</h3>
+    </div>
+    <p class="text-sm text-gray-700">Las APIs responden a peticiones cross-origin sin restricciones. Cualquier sitio web en internet podría hacer llamadas a las APIs de CARGAME.</p>
+  </div>
+
+  <!-- Hallazgo 5 -->
+  <div class="card p-5 severity-media">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded">MEDIA</span>
+      <h3 class="font-bold text-yellow-800">Sin rate limiting aparente</h3>
+    </div>
+    <p class="text-sm text-gray-700">No se detectaron headers de limitación de tasa (<code>X-RateLimit-*</code>) en las respuestas HTTP. Las APIs podrían ser abusadas con solicitudes masivas sin restricción.</p>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 6: USUARIOS Y CREDENCIALES                             -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-usuarios" class="tab-content space-y-6">
+
+  <div class="card p-6 severity-critica">
+    <h2 class="text-xl font-bold text-red-900 mb-3">🔑 Usuarios y Credenciales Detectados</h2>
+    <p class="text-gray-700">
+      El endpoint <code>GET /crg/usuario</code> expone los <strong>272 registros de usuarios</strong> de la plataforma CARGAME,
+      incluyendo el <strong>nombre de usuario (login)</strong> y el <strong>hash bcrypt de la contraseña</strong> de cada uno.
+      A continuación se listan TODOS los usuarios detectados con sus credenciales.
+    </p>
+    <div class="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg">
+      <p class="text-sm text-red-800">⚠️ <strong>DATOS REALES.</strong> Estos hashes son contraseñas reales de usuarios del sistema CARGAME del Ministerio de Minas y Energía. Su exposición pública representa una vulnerabilidad crítica.</p>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+    <div class="card p-4 text-center border-t-4 border-red-500">
+      <p class="text-2xl font-bold text-red-600" id="kpiTotal">272</p>
+      <p class="text-xs text-gray-500">Total Usuarios</p>
+    </div>
+    <div class="card p-4 text-center border-t-4 border-red-600">
+      <p class="text-2xl font-bold text-red-700" id="kpiAdmin">—</p>
+      <p class="text-xs text-gray-500">Administradores</p>
+    </div>
+    <div class="card p-4 text-center border-t-4 border-orange-500">
+      <p class="text-2xl font-bold text-orange-600" id="kpiActivos">—</p>
+      <p class="text-xs text-gray-500">Activos</p>
+    </div>
+    <div class="card p-4 text-center border-t-4 border-yellow-500">
+      <p class="text-2xl font-bold text-yellow-600" id="kpiExpirados">—</p>
+      <p class="text-xs text-gray-500">Cuenta Expirada</p>
+    </div>
+    <div class="card p-4 text-center border-t-4 border-purple-500">
+      <p class="text-2xl font-bold text-purple-600" id="kpiHashes">—</p>
+      <p class="text-xs text-gray-500">Hashes Expuestos</p>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="card p-4 no-print">
+    <div class="flex flex-wrap items-center gap-4">
+      <div>
+        <label class="text-xs font-semibold text-gray-500">Buscar:</label>
+        <input type="text" id="filterUsuarios" placeholder="Nombre, usuario, correo, NIT..." class="border rounded px-3 py-1.5 text-sm w-64" oninput="filtrarUsuarios()">
+      </div>
+      <div>
+        <label class="text-xs font-semibold text-gray-500">Tipo:</label>
+        <select id="filterTipo" class="border rounded px-2 py-1.5 text-sm" onchange="filtrarUsuarios()">
+          <option value="">Todos</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs font-semibold text-gray-500">Estado:</label>
+        <select id="filterEstado" class="border rounded px-2 py-1.5 text-sm" onchange="filtrarUsuarios()">
+          <option value="">Todos</option>
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+      </div>
+      <span class="text-xs text-gray-400" id="conteoFiltrado">Mostrando 272 de 272</span>
+    </div>
+  </div>
+
+  <!-- Tabla -->
+  <div class="card p-4">
+    <div class="overflow-x-auto" style="max-height:70vh; overflow-y:auto;">
+      <table id="tablaUsuarios">
+        <thead class="sticky top-0">
+          <tr>
+            <th class="w-10">#</th>
+            <th>Nombre</th>
+            <th>Doc</th>
+            <th>No. Identificación</th>
+            <th>Usuario (Login)</th>
+            <th>Hash Contraseña (bcrypt)</th>
+            <th>Riesgo Contraseña Predecible</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Correo</th>
+            <th>Celular</th>
+            <th>Creado</th>
+            <th>Expira</th>
+            <th>Operador Asociado</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyUsuarios"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Análisis de hashes -->
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Análisis Técnico de los Hashes</h3>
+    <table>
+      <thead><tr><th>Aspecto</th><th>Valor</th><th>Evaluación</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Algoritmo</td>
+          <td><code>bcrypt ($2b$)</code></td>
+          <td class="text-green-600">✅ Algoritmo robusto</td>
+        </tr>
+        <tr>
+          <td>Cost factor (rounds)</td>
+          <td><code>10</code> (2^10 = 1,024 iteraciones)</td>
+          <td class="text-yellow-600">⚠️ Mínimo recomendado. Debería ser ≥12</td>
+        </tr>
+        <tr>
+          <td>Longitud del hash</td>
+          <td>60 caracteres</td>
+          <td class="text-green-600">✅ Estándar bcrypt</td>
+        </tr>
+        <tr class="severity-critica">
+          <td><strong>Exposición</strong></td>
+          <td><strong>272 hashes accesibles vía API pública</strong></td>
+          <td class="text-red-600"><strong>🔴 CRÍTICO — Los hashes NUNCA deben exponerse</strong></td>
+        </tr>
+        <tr>
+          <td>Riesgo de cracking</td>
+          <td>Contraseñas simples vulnerables en horas</td>
+          <td class="text-red-600">🔴 Con GPU moderna: ~5,700 bcrypt/s (cost 10)</td>
+        </tr>
+        <tr>
+          <td>Patrón de usuario</td>
+          <td>Muchos usan NIT/CC como nombre de usuario</td>
+          <td class="text-orange-600">⚠️ Facilita correlación con otros sistemas</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Distribución por Tipo de Usuario</h3>
+    <canvas id="chartTipoUsuario" height="180"></canvas>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 7: SOLICITUD FORMAL                                    -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-solicitud" class="tab-content space-y-6">
+
+  <div class="card p-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">6. Propuesta de Solicitud Formal de APIs</h2>
+    <p class="text-gray-600 mb-4">
+      A continuación se presenta el borrador de comunicación formal para solicitar al Ministerio de Minas y Energía / 
+      administradores de CARGAME el acceso formal a las APIs necesarias para la validación de proveedores de 
+      estaciones de carga eléctrica.
+    </p>
+  </div>
+
+  <div class="card p-8 border-2 border-gray-300" style="font-family: 'Times New Roman', Georgia, serif;">
+    <p class="text-right text-sm">Bogotá D.C., ___ de __________ de 2026</p>
+    <br>
+    <p><strong>Señores</strong><br>
+    MINISTERIO DE MINAS Y ENERGÍA<br>
+    Dirección de Energía Eléctrica<br>
+    Administración Plataforma CARGAME<br>
+    Bogotá D.C.</p>
+    <br>
+    <p><strong>Asunto:</strong> Solicitud formal de acceso a APIs de la plataforma CARGAME para validación de proveedores de estaciones de carga eléctrica</p>
+    <br>
+    <p>Respetados señores,</p>
+    <br>
+    <p style="text-align:justify">
+      La Unidad de Planeación Minero-Energética (UPME), en ejercicio de sus funciones de planeación del sector energético 
+      colombiano y en el marco del desarrollo de la infraestructura de electromovilidad del país, solicita formalmente 
+      acceso programático (vía APIs) a la plataforma <strong>CARGAME</strong> 
+      (<code>https://cargame.minenergia.gov.co</code>) para los siguientes fines:
+    </p>
+    <br>
+    <p><strong>1. Objetivo Principal</strong></p>
+    <p style="text-align:justify">
+      Validar si terceros (personas jurídicas o naturales) se encuentran registrados como <strong>proveedores/operadores 
+      de estaciones de carga de energía eléctrica para vehículos</strong> en la plataforma CARGAME, como requisito para 
+      procesos de verificación y planeación energética a cargo de la UPME.
+    </p>
+    <br>
+    <p><strong>2. APIs Requeridas</strong></p>
+    <br>
+    <table style="width:100%;border-collapse:collapse;font-family:inherit">
+      <thead>
+        <tr style="background:#f5f5f5">
+          <th style="border:1px solid #ccc;padding:8px;text-align:left">#</th>
+          <th style="border:1px solid #ccc;padding:8px;text-align:left">API Requerida</th>
+          <th style="border:1px solid #ccc;padding:8px;text-align:left">Propósito</th>
+          <th style="border:1px solid #ccc;padding:8px;text-align:left">Prioridad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border:1px solid #ccc;padding:8px">1</td>
+          <td style="border:1px solid #ccc;padding:8px">Consulta de operadores por NIT</td>
+          <td style="border:1px solid #ccc;padding:8px">Verificar si un NIT está registrado como operador de estaciones de carga</td>
+          <td style="border:1px solid #ccc;padding:8px;color:red;font-weight:bold">Alta</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ccc;padding:8px">2</td>
+          <td style="border:1px solid #ccc;padding:8px">Listado de estaciones por operador</td>
+          <td style="border:1px solid #ccc;padding:8px">Conocer las estaciones registradas por un operador específico</td>
+          <td style="border:1px solid #ccc;padding:8px;color:red;font-weight:bold">Alta</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ccc;padding:8px">3</td>
+          <td style="border:1px solid #ccc;padding:8px">Catálogo general de estaciones</td>
+          <td style="border:1px solid #ccc;padding:8px">Análisis geográfico de la infraestructura de carga nacional</td>
+          <td style="border:1px solid #ccc;padding:8px;font-weight:bold">Media</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ccc;padding:8px">4</td>
+          <td style="border:1px solid #ccc;padding:8px">Estado de registro de operadores</td>
+          <td style="border:1px solid #ccc;padding:8px">Verificar si un operador está activo, inactivo o suspendido</td>
+          <td style="border:1px solid #ccc;padding:8px;color:red;font-weight:bold">Alta</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ccc;padding:8px">5</td>
+          <td style="border:1px solid #ccc;padding:8px">Estadísticas agregadas</td>
+          <td style="border:1px solid #ccc;padding:8px">Datos consolidados para informes de planeación energética</td>
+          <td style="border:1px solid #ccc;padding:8px">Baja</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <p><strong>3. Requerimientos Técnicos</strong></p>
+    <ul style="margin-left:20px;margin-top:8px">
+      <li>Documentación técnica de APIs (preferiblemente OpenAPI/Swagger)</li>
+      <li>Credenciales de acceso dedicadas para la UPME (API Key o OAuth2)</li>
+      <li>Ambiente de pruebas (sandbox) para desarrollo e integración</li>
+      <li>Especificación de límites de uso (rate limiting, cuotas)</li>
+      <li>SLA de disponibilidad del servicio</li>
+      <li>Punto de contacto técnico para soporte en la integración</li>
+    </ul>
+    <br>
+    <p><strong>4. Contexto Regulatorio</strong></p>
+    <p style="text-align:justify">
+      Esta solicitud se enmarca en las funciones de la UPME establecidas en el Decreto 1258 de 2013 y las políticas de 
+      promoción de la movilidad eléctrica contenidas en la Ley 1964 de 2019 y el Decreto 191 de 2021 del Ministerio de 
+      Transporte, así como la Resolución CREG relacionada con tarifas de carga eléctrica.
+    </p>
+    <br>
+    <p><strong>5. Compromiso de Uso</strong></p>
+    <p style="text-align:justify">
+      La UPME se compromete a:
+    </p>
+    <ul style="margin-left:20px;margin-top:8px">
+      <li>Usar los datos exclusivamente para los fines institucionales descritos</li>
+      <li>Cumplir con la Ley 1581 de 2012 de Protección de Datos Personales</li>
+      <li>No redistribuir los datos a terceros sin autorización</li>
+      <li>Respetar los límites de uso establecidos</li>
+    </ul>
+    <br>
+    <p>Agradecemos su atención y quedamos atentos a coordinar los aspectos técnicos de la integración.</p>
+    <br>
+    <p>Cordialmente,</p>
+    <br><br>
+    <p>______________________________<br>
+    <strong>[Nombre del Director/Subdirector]</strong><br>
+    Unidad de Planeación Minero-Energética — UPME<br>
+    [Cargo]<br>
+    [Correo institucional]</p>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Consideraciones Adicionales para la Solicitud</h3>
+    <div class="space-y-3">
+      <div class="p-3 bg-blue-50 rounded-lg">
+        <p class="font-medium text-blue-800">💡 Protocolo OCPI</p>
+        <p class="text-sm text-blue-700">Considerar solicitar la implementación del protocolo <strong>OCPI (Open Charge Point Interface)</strong> como estándar de intercambio de datos entre plataformas de electromovilidad. Es el estándar internacional más adoptado.</p>
+      </div>
+      <div class="p-3 bg-green-50 rounded-lg">
+        <p class="font-medium text-green-800">✅ Integración con la plataforma UPME</p>
+        <p class="text-sm text-green-700">Las APIs descubiertas son compatibles con la arquitectura de microservicios OCI diseñada para la plataforma UPME. El microservicio <strong>Validador (Python)</strong> podría consumir las APIs de CARGAME para validar registros de CPOs.</p>
+      </div>
+      <div class="p-3 bg-amber-50 rounded-lg">
+        <p class="font-medium text-amber-800">⚠️ Reporte de vulnerabilidades</p>
+        <p class="text-sm text-amber-700">Se recomienda incluir en la comunicación un <strong>reporte responsable de las vulnerabilidades de seguridad</strong> encontradas, como gesto de buena fe y para mejorar la seguridad de la plataforma nacional.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bg-gray-800 text-gray-400 py-6 px-4 mt-12 text-center text-sm">
+  <p>Informe generado automáticamente | UPME — Análisis de APIs CARGAME | Marzo 2026</p>
+  <p class="mt-1">Archivos de soporte disponibles en el directorio <code class="text-gray-300">ScrappingCARGAME/</code></p>
+</footer>
+
+<script>
+// ═══ TABS ═══
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ═══ CHART: Departamentos ═══
+new Chart(document.getElementById('chartDepartamentos'), {
+  type: 'bar',
+  data: {
+    labels: ['Antioquia','Bogotá','Valle del Cauca','Cundinamarca','Santander','Quindío','Tolima','Caldas','Risaralda','Norte Santander'],
+    datasets: [{
+      label: 'Estaciones',
+      data: [38, 24, 13, 12, 9, 8, 6, 5, 5, 3],
+      backgroundColor: '#3b82f6'
+    }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+});
+
+// ═══ CHART: Conectores ═══
+new Chart(document.getElementById('chartConectores'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Tipo 1 J1772','Tipo 2 IEC','Schuko','CCS Combo 1','GB-T DC','CCS Combo 2','CHAdeMO','GB-T AC'],
+    datasets: [{
+      data: [208, 203, 89, 85, 64, 45, 31, 11],
+      backgroundColor: ['#3b82f6','#10b981','#f59e0b','#ef4444','#8b5cf6','#ec4899','#06b6d4','#84cc16']
+    }]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'right', labels: { font: { size: 11 } } } } }
+});
+
+// ═══ CHART: Operadores ═══
+new Chart(document.getElementById('chartOperadores'), {
+  type: 'bar',
+  data: {
+    labels: ['Terpel','EPM','Celsia','EDEQ','E. Pereira','ESSA','Op. Distrital','CHEC','Emcali','CENS'],
+    datasets: [{
+      label: 'Estaciones',
+      data: [46, 21, 12, 6, 6, 6, 6, 5, 4, 3],
+      backgroundColor: ['#1e40af','#047857','#b45309','#7c3aed','#be185d','#0f766e','#4338ca','#a16207','#0e7490','#b91c1c']
+    }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true,
+    plugins: { legend: { display: false } },
+    scales: { x: { beginAtZero: true } }
+  }
+});
+
+// ═══ CHART: Tipo Operador ═══
+new Chart(document.getElementById('chartTipoOperador'), {
+  type: 'pie',
+  data: {
+    labels: ['Convencional', 'No convencional'],
+    datasets: [{ data: [161, 33], backgroundColor: ['#3b82f6', '#f59e0b'] }]
+  },
+  options: { responsive: true }
+});
+
+// ═══ CHART: Estado Operador ═══
+new Chart(document.getElementById('chartEstadoOperador'), {
+  type: 'pie',
+  data: {
+    labels: ['Activo', 'Inactivo'],
+    datasets: [{ data: [191, 3], backgroundColor: ['#10b981', '#ef4444'] }]
+  },
+  options: { responsive: true }
+});
+
+// ═══ Tabla operadores con estaciones ═══
+const operadoresConEst = [
+  {n:'Organizacion Terpel S.A.', e:46, d:'Tolima, Cundinamarca, Bogotá, Antioquia, Valle, Santander +9 más'},
+  {n:'EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.', e:21, d:'Antioquia'},
+  {n:'CELSIA COLOMBIA S.A. E.S.P.', e:12, d:'Bogotá, Valle del Cauca, Antioquia, Tolima, Quindío'},
+  {n:'EMPRESA DE ENERGIA DEL QUINDIO S.A.E.S.P.', e:6, d:'Quindío'},
+  {n:'EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.', e:6, d:'Risaralda, Valle del Cauca'},
+  {n:'ELECTRIFICADORA DE SANTANDER S.A. E.S.P.', e:6, d:'Santander, Cesar'},
+  {n:'OPERADORA DISTRITAL DE TRANSPORTE S.A.S.', e:6, d:'Bogotá'},
+  {n:'CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.', e:5, d:'Caldas'},
+  {n:'EMCALI EICE ESP', e:4, d:'Valle del Cauca'},
+  {n:'CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP', e:3, d:'Norte de Santander'},
+  {n:'ERCO ENERGÍA SAS', e:3, d:'Tolima, Valle del Cauca, Antioquia'},
+  {n:'Ergenia S.A.S.', e:3, d:'Bogotá'},
+  {n:'L autos SAS', e:2, d:'Cundinamarca'},
+  {n:'Enel Colombia S.A. E.S.P', e:2, d:'Bogotá'},
+  {n:'VATIA SAS ESP', e:2, d:'Valle del Cauca, Atlántico'},
+  {n:'David Santiago Londono Giraldo', e:2, d:'Antioquia'},
+  {n:'Hotel El Alfarero SAS', e:2, d:'Antioquia'},
+  {n:'AUTOGERMANA SAS', e:1, d:'Atlántico'},
+  {n:'VATIO EV', e:1, d:'Antioquia'},
+  {n:'COPOWER LIMITADA', e:1, d:'Santander'},
+  {n:'SM CONSULTORÍA E INGENIERÍA S.A.S', e:1, d:'Huila'},
+  {n:'ELECTRICAL CHARGE SAS', e:1, d:'Antioquia'},
+  {n:'HUB DE MOVILIDAD PLAZA CALLE 136 SAS', e:1, d:'Bogotá'},
+  {n:'CERAMICAS EL DORADO', e:1, d:'Antioquia'},
+  {n:'CENTRO DE DIAGNOSTICO AUTOMOTRIZ DEL HUILA SAS', e:1, d:'Huila'},
+];
+const tbody = document.getElementById('tablaConEstaciones');
+operadoresConEst.forEach((op, i) => {
+  tbody.innerHTML += `<tr><td>${i+1}</td><td>${op.n}</td><td class="text-center font-bold">${op.e}</td><td class="text-sm text-gray-600">${op.d}</td></tr>`;
+});
+
+// ═══ USUARIOS Y CREDENCIALES DATA ═══
+const allUsers=[
+{id:1,n:'admin',a:'admin',d:'CC',nid:'123456789',u:'admin',c:'$2b$10$3FkOuBVgeb5lYVrehaxLDuJJejXgwLbKhiEHBmfVG7tNOruDx9Xvy',t:'Administrador',e:'Activo',m:'cavillalobos@minenergia.gov.co',cel:'3177773377',fc:'2020-04-24',fx:'2039-12-31',co:''},
+{id:2,n:'Jairo',a:'Lavado',d:'CC',nid:'79812212',u:'79812212',c:'$2b$10$H0y9VkeEFuEqlurN9VmyWedJZVu1.yaDv9sNUx2C3jtl14fuH2P.O',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'afacevedo@minenergia.gov.co',cel:'',fc:'2020-12-14',fx:'2026-12-26',co:'Prueba Gencan'},
+{id:3,n:'AES CHIVOR',a:'',d:'NIT',nid:'830025205',u:'AMI830025205',c:'$2b$10$0it/fD6oiHuORBuPr.6UdO8HAHc9DvdeUCdwRa.Yf3WNf1twyR2..',t:'Empresa energía convencional - AMI',e:'Activo',m:'aeschivor@aes.com',cel:'',fc:'2020-12-14',fx:'2023-12-28',co:'AES CHIVOR & CIA SCA ESP'},
+{id:4,n:'CEDENAR S.A.',a:'',d:'CC',nid:'891200200',u:'AMI891200200',c:'$2b$10$cTnN77fSnI1shCp1L5k/7OSG/.YaEZcZ2CtTeuCUYB8pz/Pc6lUkW',t:'Empresa energía convencional - AMI',e:'Activo',m:'gerencia@cedenar.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-26',co:'CENTRALES ELECTRICAS DE NARIÑO S.A. E.S.P.'},
+{id:5,n:'CELSIA TOLIMA S.A.',a:'',d:'NIT',nid:'901280981',u:'AMI901280981',c:'$2b$10$cmbkhZyCmKXS9Ixhk7CtkusWqTP54.kPMnZxg3pS1adzWivwkjTri',t:'Empresa energía convencional - AMI',e:'Activo',m:'jhdelosrios@celsia.com',cel:'',fc:'2020-12-14',fx:'2023-12-25',co:'CELSIA TOLIMA S.A. E.S.P.'},
+{id:6,n:'CENS S.A.',a:'',d:'NIT',nid:'890500514',u:'AMI890500514',c:'$2b$10$YSLhDIDRtp81VTiyRVMc5O5GDXqt9QkeWMhbAVT4q2jZ090B05lMW',t:'Empresa energía convencional - AMI',e:'Activo',m:'notificacionesjudiciales@cens.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP'},
+{id:7,n:'CETSA',a:'',d:'NIT',nid:'891900101',u:'AMI891900101',c:'$2b$10$zSCiDnLhXHhiwfTZsU/zXeS3OZqVpICpX6GtjHU2dDucBwi4Qkc0W',t:'Empresa energía convencional - AMI',e:'Activo',m:'jpgaitan@celsia.com',cel:'',fc:'2020-12-14',fx:'2023-12-27',co:'COMPAÑÍA DE ELECTRICIDAD DE TULUÁ S.A. E.S.P.'},
+{id:8,n:'CHEC S.A.',a:'',d:'NIT',nid:'890800128',u:'AMI890800128',c:'$2b$10$DAYem1vrKHLTjmdgWN8Yl.eYragKmwCoiuPS9DU.KmrsZNAcebTo2',t:'Empresa energía convencional - AMI',e:'Activo',m:'notificaciones.judiciales@chec.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-30',co:'CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.'},
+{id:9,n:'CODENSA S.A.',a:'',d:'NIT',nid:'830037248',u:'AMI830037248',c:'$2b$10$S5rr5/7317fXCAP83l0eSOxc3AP837wK390.MSJaollhm60WOhFWe',t:'Empresa energía convencional - AMI',e:'Activo',m:'servicioalclientecodensa@enel.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'CODENSA S.A. ESP'},
+{id:10,n:'COMPANIA ENERGETICA DE OCCIDENTE S.A.S.',a:'',d:'NIT',nid:'900366010',u:'AMI900366010',c:'$2b$10$JOIogaWXlmjdgvEmSd7ak.uNl7nYMJt6d6epGyU/Fn0RIM/h1K3Hy',t:'Empresa energía convencional - AMI',e:'Activo',m:'cia.energetica@ceoesp.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'COMPAÑIA ENERGETICA DE OCCIDENTE S.A.S.  E.S.P.'},
+{id:11,n:'DICEL S.A.',a:'',d:'NIT',nid:'815000896',u:'AMI815000896',c:'$2b$10$OgUp4y8LMiS6MoIbeEmx/eCfP5Nj1Vs/hpQHcGhX8oqeILF69a8re',t:'Empresa energía convencional - AMI',e:'Activo',m:'dicelsa@dicel.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA ELECTRICA S.A. E.S.P.'},
+{id:12,n:'DICELER S.A.',a:'',d:'NIT',nid:'815001901',u:'AMI815001901',c:'$2b$10$/lqovTnnNOtgBhUufQtGlOihCuHlGdha.Pn6daxpiGaLXw7/ggXtq',t:'Empresa energía convencional - AMI',e:'Activo',m:'dicelsa@dicel.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'DICELER S.A E.S.P.'},
+{id:13,n:'DISPAC S.A.',a:'',d:'NIT',nid:'818001629',u:'AMI818001629',c:'$2b$10$AodAj4SllqAmrvX5ftw9fOsF56m0XAZ/2DVZVGFP2MJ/tYQPe7HcC',t:'Empresa energía convencional - AMI',e:'Activo',m:'dispac@dispac.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-27',co:'EMPRESA DISTRIBUIDORA DEL PACIFICO S.A. E.S.P'},
+{id:14,n:'E.E.B.P.  S.A.',a:'',d:'NIT',nid:'846000553',u:'AMI846000553',c:'$2b$10$tQERKPs2ebEnjebNYpNskO2KCSscdvhhm3DasVdAX20JIOPrnhnra',t:'Empresa energía convencional - AMI',e:'Activo',m:'eebp@eebpsa.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'EMPRESA DE ENERGIA DEL BAJO PUTUMAYO  S.A.  E.S.P.'},
+{id:15,n:'E2 ENERGIA EFICIENTE S.A.',a:'',d:'NIT',nid:'802025052',u:'AMI802025052',c:'$2b$10$WpUnziXkfZFc9XuNB5A7JuTIaE9BGvRgdrL/zs7VKcddgntplnZBm',t:'Empresa energía convencional - AMI',e:'Activo',m:'correo@e2energiaeficiente.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'E2 ENERGIA EFICIENTE S.A. E.S.P.'},
+{id:16,n:'EBSA',a:'',d:'NIT',nid:'891800219',u:'AMI891800219',c:'$2b$10$e/ZC1KsgBwGxYt1t0ZEO9ODmiixqRycurQSBKubzpCD5QOWawwTIu',t:'Empresa energía convencional - AMI',e:'Activo',m:'documentacion@ebsa.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'EMPRESA DE ENERGIA DE BOYACA S.A. ESP'},
+{id:17,n:'ECELCOS S.A.S',a:'',d:'NIT',nid:'901225715',u:'AMI901225715',c:'$2b$10$M1ZKav9D9GnkthzHOqiju.OkGy0Cmyplt7OAPiqB9x6qYvreNobG2',t:'Empresa energía convencional - AMI',e:'Activo',m:'infoecelcos01@gmail.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'EMPRESA COMERCIALIZADORA DE ENERGÍA ELÉCTRICA DE LA COSTA'},
+{id:18,n:'ECO LOGICA S.A.S.',a:'',d:'NIT',nid:'900729389',u:'AMI900729389',c:'$2b$10$hQMkthMV5LLM3f9RuEi4KOfUr2rZuotEnqoRwBnoV6tFC3EpGrnRO',t:'Empresa energía convencional - AMI',e:'Activo',m:'comercial@ecologicaesp.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'Empresa Prestadora de Servicios Publicos ECO LOGICA S.A.S. E.S.P.'},
+{id:19,n:'ECOPETROL ENERGIA',a:'',d:'NIT',nid:'901165502',u:'AMI901165502',c:'$2b$10$VBs0udUzhi5EEba1OZd8negVJcP5pKYdBTO5bh0UK/tMItZTCg476',t:'Empresa energía convencional - AMI',e:'Activo',m:'juan.molinares@ecopetrolenergiaesp.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'ECOPETROL ENERGÍA S.A.S. E.S.P.'},
+{id:20,n:'EDEQ  S.A.',a:'',d:'NIT',nid:'800052640',u:'AMI800052640',c:'$2b$10$ALUQQeF18DhkM056d.X4R.iMHihV.oP6KE3OE43BMS9IsHXg1M6La',t:'Empresa energía convencional - AMI',e:'Activo',m:'secretaria_general@edeq.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'EMPRESA DE ENERGIA DEL  QUINDIO S.A.E.S.P.'},
+{id:21,n:'EE.PP.M.',a:'',d:'NIT',nid:'890904996',u:'AMI890904996',c:'$2b$10$tyNSD6dTnICxqj6Jhtz1BuoBKEMrC.dPZxSEHVNoDauvfew6GhyaC',t:'Empresa energía convencional - AMI',e:'Activo',m:'Juan.franco.londono@epm.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-28',co:'EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.'},
+{id:22,n:'EEPSA',a:'',d:'NIT',nid:'846000241',u:'AMI846000241',c:'$2b$10$n.NxPNGJqOJhbho02ZsWhOKzA8cs/vynJ0sRz05aS2U8DneS8zVja',t:'Empresa energía convencional - AMI',e:'Activo',m:'secretaria@energiaputumayo.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'EMPRESA DE ENERGIA DEL PUTUMAYO S.A. ESP'},
+{id:23,n:'ELECTROCAQUETA S.A.',a:'',d:'NIT',nid:'891190127',u:'AMI891190127',c:'$2b$10$XF2eFvn53NjT4pCbrV8ZY.U67oOJ5sM5ZkGrqOW/al13Y8PcSS5Xa',t:'Empresa energía convencional - AMI',e:'Activo',m:'infoelectrocaqueta@electrocaqueta.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'ELECTRIFICADORA DEL CAQUETA S.A. ESP'},
+{id:24,n:'ELECTROHUILA S.A.',a:'',d:'NIT',nid:'891180001',u:'AMI891180001',c:'$2b$10$Vv/MML79gRlsUZ3XWesd1e6jLMyM5VzgysBsisYd2SUenyVn1buv6',t:'Empresa energía convencional - AMI',e:'Activo',m:'Carlos.PerdomoH@electrohuila.co',cel:'3176443476',fc:'2020-12-14',fx:'2023-12-28',co:'ELECTRIFICADORA DEL HUILA S.A. E.S.P.'},
+{id:25,n:'ELECTROVICHADA S.A ESP',a:'',d:'NIT',nid:'842000155',u:'AMI842000155',c:'$2b$10$rWDt4tbFfOeVKTR6LQ4qGOIMSYqpXE3sqfGk7uMZ/T2.8Hl05oMI6',t:'Empresa energía convencional - AMI',e:'Activo',m:'gerenciaelec@gmail.com',cel:'',fc:'2020-12-14',fx:'2023-12-28',co:'EMPRESA DE ENERGIA ELECTRICA DEL DEPARTAMENTO DEL VICHADA S.A'},
+{id:26,n:'EMCALI EICE',a:'',d:'NIT',nid:'890399003',u:'AMI890399003',c:'$2b$10$DCKeTZmBzhjYBtSXklVene.uJ/f5l7hCfHaSdAZXmR38R3Ji6FucG',t:'Empresa energía convencional - AMI',e:'Activo',m:'ivsanclemente@emcali.com.co',cel:'3163687975',fc:'2020-12-14',fx:'2023-12-27',co:'EMPRESAS MUNICIPALES DE CALI   E.I.C.E  E.S.P'},
+{id:27,n:'EMCARTAGO',a:'',d:'NIT',nid:'836000349',u:'AMI836000349',c:'$2b$10$d1Amsul0dG2CpnYedJZ02e1tAWDGdDsvpWqoWZDDCA3mIdOCjpRge',t:'Empresa energía convencional - AMI',e:'Activo',m:'contactenos@emcartago.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'EMPRESAS MUNICIPALES DE CARTAGO E.S.P.'},
+{id:28,n:'EMEESA',a:'',d:'NIT',nid:'891500061',u:'AMI891500061',c:'$2b$10$MOHrm91cGu9mSf7TjMOFj.CZJX3tHXBy51EJzQH62JH5W9mDxFAeG',t:'Empresa energía convencional - AMI',e:'Activo',m:'gerencia@emeesaesp.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'EMPRESA MUNICIPAL DE ENERGÍA ELÉCTRICA S.A-E.S.P'},
+{id:29,n:'EMEVASI S.A.',a:'',d:'NIT',nid:'846000060',u:'AMI846000060',c:'$2b$10$F4ShBM/oGPAIjLfRpgmObO/8I5o3yWV7UZOc3CBm3Xt8WdsDPl0JW',t:'Empresa energía convencional - AMI',e:'Activo',m:'emevasi@emevasi.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'EMPRESA DE ENERGIA DEL VALLE DE SIBUNDOY S.A. E.S.P.'},
+{id:30,n:'EMGESA S.A.',a:'',d:'NIT',nid:'860063875',u:'AMI860063875',c:'$2b$10$C3Sq1FaIVfyYWazEWEdQaOqmU51ZvjaE4oMk9l5r/JoH/C1aMKAva',t:'Empresa energía convencional - AMI',e:'Activo',m:'emlinea@enel.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'EMGESA S.A. E.S.P.'},
+{id:31,n:'EMSA',a:'',d:'NIT',nid:'892002210',u:'AMI892002210',c:'$2b$10$/qxY.t2ToBvCr93hg.o.quA.cOVwiAnY5soSFBlyuS6FBKHzX1zZ6',t:'Empresa energía convencional - AMI',e:'Activo',m:'leonardo.restrepo@emsa-esp.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-26',co:'ELECTRIFICADORA DEL META S.A. E.S.P.'},
+{id:32,n:'EMPRESA DE ENERGÍA DE ARAUCA',a:'',d:'NIT',nid:'892099499',u:'AMI892099499',c:'$2b$10$XFy07ToR35iD8lGj/YArTu3DeH4Xhhsc9Z/h7Sq.W1dg24of0LF4O',t:'Empresa energía convencional - AMI',e:'Activo',m:'gerencia@enelar.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-28',co:'EMPRESA DE ENERGIA DE ARAUCA  S.A. E.S.P.'},
+{id:33,n:'ENERCA SA',a:'',d:'NIT',nid:'844004576',u:'AMI844004576',c:'$2b$10$Yxf4cRQJxBPPadDrPKWxbOt/EgReP42Uoon9P546CDw/d7lu3akgi',t:'Empresa energía convencional - AMI',e:'Activo',m:'correspondencia@enerca.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'EMPRESA DE ENERGIA DE CASANARE SA ESP'},
+{id:34,n:'ENERCO S.A',a:'',d:'NIT',nid:'805016928',u:'AMI805016928',c:'$2b$10$hrnsac98GHeepHffSwiS1uHdWEyR31AQQbI6ZbcWzb2V061AysRjq',t:'Empresa energía convencional - AMI',e:'Activo',m:'enerco@enercoesp.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'ENERCO S.A. E.S.P.'},
+{id:35,n:'ENERGETICOS S.A.S.',a:'',d:'NIT',nid:'830092965',u:'AMI830092965',c:'$2b$10$mcZVvEU0PFWEgqsd2NINXOLQFI6vKLp8UM1GftuiTfhY8ryG4FUy2',t:'Empresa energía convencional - AMI',e:'Activo',m:'energeticossaesp@gmail.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'ENERGETICOS S.A.S.  E.S.P. DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA GAS E HIDROCARBUROS'},
+{id:36,n:'EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.',a:'',d:'NIT',nid:'816002019',u:'AMI816002019',c:'$2b$10$6j4mh6yuWQWFriDUCAG8t.vKMyViW7r6LoB2ggrgDd8r24Kl1kMZ2',t:'Empresa energía convencional - AMI',e:'Activo',m:'contactenoscartago@eep.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-22',co:'EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.'},
+{id:37,n:'ENERGIA EMPRESARIAL DE LA COSTA S.A.',a:'',d:'NIT',nid:'900044461',u:'AMI900044461',c:'$2b$10$pu1EL0cdc1xFVNAp2C5AJOxSoL9iqveKpLUV3DEz00QFl7bspw3GW',t:'Empresa energía convencional - AMI',e:'Activo',m:'serviciosjuridicoseca@electricaribe.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'ENERGIA EMPRESARIAL DE LA COSTA S.A. E.S.P.'},
+{id:38,n:'ENERGUAVIARE  SA',a:'',d:'NIT',nid:'822004680',u:'AMI822004680',c:'$2b$10$d7owQwUI3SkgjdSWXF7LcuHWqKG4fFCtYlvNIQP1KitU5sl2o4mm.',t:'Empresa energía convencional - AMI',e:'Activo',m:'gerencia@energuaviare.com.co',cel:'',fc:'2020-12-14',fx:'2024-12-28',co:'EMPRESA DE ENERGIA ELECTRICA DEL DEPARTAMENTO DEL GUAVIARE SA ESP'},
+{id:39,n:'ENERTOTAL S.A.',a:'',d:'NIT',nid:'900039901',u:'AMI900039901',c:'$2b$10$kP5YZdEV6tRFsC.WOrZdAuuMTe7gY0F/7aPdVUqaZotbOLgZPk0fW',t:'Empresa energía convencional - AMI',e:'Activo',m:'enertotal@enertotalesp.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'ENERTOTAL S.A. E.S.P.'},
+{id:40,n:'ESANT SA.',a:'',d:'NIT',nid:'900648934',u:'AMI900648934',c:'$2b$10$t6ZuJO8WvhYT8dbODNa1j.5hKn3lF1.4dVVyvUuu9G01d6.U4NDH6',t:'Empresa energía convencional - AMI',e:'Activo',m:'esantoperaciones@esant.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-28',co:'EMPRESA DE SERVICIOS PUBLICOS DE SANTANDER S.A.E.S.P.'},
+{id:41,n:'ESSA',a:'',d:'NIT',nid:'890201230',u:'AMI890201230',c:'$2b$10$M7kPXKkL1DXlwcALtOANKe0ptLWPjVhY4JLv1JYOdRwJyNAL6Z.Dm',t:'Empresa energía convencional - AMI',e:'Activo',m:'essa@essa.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'ELECTRIFICADORA DE SANTANDER S.A. E.S.P.'},
+{id:42,n:'ISA INTERCOLOMBIA',a:'',d:'NIT',nid:'900667590',u:'AMI900667590',c:'$2b$10$6l2JJtpGGelz13MLBlTXK.oZQGxsZetmyMRDLvRVPS12a5k8JbYtm',t:'Empresa energía convencional - AMI',e:'Activo',m:'notificacionesjudiciales@intercolombia.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'ISA INTERCOLOMBIA S.A. E.S.P'},
+{id:43,n:'PEESA',a:'',d:'NIT',nid:'900341483',u:'AMI900341483',c:'$2b$10$U4IUPRP7diGw38eK1.IX..peZ2LskavXey8wJxosRmuCWiBOz5UfC',t:'Empresa energía convencional - AMI',e:'Activo',m:'peesa@peesa.com.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'PROFESIONALES EN ENERGÍA S.A E.S.P'},
+{id:44,n:'QIENERGY',a:'',d:'NIT',nid:'900677732',u:'AMI900677732',c:'$2b$10$plD7pk8ErDBEoc/v8XnR9urHFYmZhDFUS4WAHqh73iS5iNgVjyPNG',t:'Empresa energía convencional - AMI',e:'Activo',m:'gerencia@qienergy.co',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'QI ENERGY SAS ESP'},
+{id:45,n:'RENOVATIO TRADING AMERICAS SAS',a:'',d:'NIT',nid:'900589503',u:'AMI900589503',c:'$2b$10$Bs1cEl0cd94iF1zI.JV7ZejDy3AzdjejEAx5DSzZIxmDtcQyjvOwi',t:'Empresa energía convencional - AMI',e:'Activo',m:'iarevalo@gruporenovatio.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'RENOVATIO TRADING AMERICAS SAS ESP'},
+{id:46,n:'RIOEN SAS',a:'',d:'NIT',nid:'900652334',u:'AMI900652334',c:'$2b$10$5lem2MA89PB.gasFqi9XheT7AbmpV7SxYe5eYVStClkzoUoEjekLS',t:'Empresa energía convencional - AMI',e:'Activo',m:'notificaciones@riopailaenergia.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'RIOPAILA ENERGÍA SAS ESP'},
+{id:47,n:'RUITOQUE S.A.',a:'',d:'NIT',nid:'804001062',u:'AMI804001062',c:'$2b$10$rjdJQdWquZZsyMss6Q2aDOTsB4yXOd2HogVZcnGuJRXlPows4N/Me',t:'Empresa energía convencional - AMI',e:'Activo',m:'escribanos@ruitoqueesp.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'RUITOQUE S.A. E.S.P.'},
+{id:48,n:'TERPEL ENERGIA S.A.S',a:'',d:'NIT',nid:'900433032',u:'AMI900433032',c:'$2b$10$3IsGbdEY8tzLf7YR5MvUKONfgP0j6h.H7BNT/uQaxsbACpjY2jAvi',t:'Empresa energía convencional - AMI',e:'Activo',m:'infoterpel@terpel.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'TERPEL ENERGIA S.A.S E.S.P'},
+{id:49,n:'VATIA',a:'',d:'NIT',nid:'817001892',u:'AMI817001892',c:'$2b$10$UTiCxlIuswl5j6u6ResYkeUaUCwrQRJBQCZjKW1ki.7a3cG1MtOMu',t:'Empresa energía convencional - AMI',e:'Activo',m:'VATIA@VATIA.COM.CO',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'VATIA S.A. E.S.P.'},
+{id:50,n:'EMSERPCAR SAS',a:'',d:'NIT',nid:'900943044',u:'AMI900943044',c:'$2b$10$fsOtXvpeapYfWo9ASu01bu64TeftSQrL4mWnakYZRV1bWSsTsESRi',t:'Empresa energía convencional - AMI',e:'Activo',m:'alexremo_1980@hotmail.com',cel:'',fc:'2020-12-14',fx:'2023-12-29',co:'EMPRESA COMUNITARIA DE SERVICIOS PUBLICOS DOMICILIARIOS DE CARTAGENA DEL CHAIRA S.A.S E.S.P'},
+{id:51,n:'CELSIA COLOMBIA S.A.',a:'',d:'NIT',nid:'800249860',u:'AMI800249860',c:'$2b$10$NcSu1wLpZ0u1X4A1z.1ccuPSv33zwwjft9CkNwccNRILN61LPLciu',t:'Empresa energía convencional - AMI',e:'Activo',m:'jpgaitan@celsia.com',cel:'',fc:'2020-12-14',fx:'2023-12-26',co:'CELSIA COLOMBIA S.A. E.S.P.'},
+{id:52,n:'PROELECTRICA & CIA.',a:'',d:'NIT',nid:'800149537-6',u:'ESP800149537',c:'$2b$10$f7yleWyq8rLUKa8s2uf9dOH7ANy.dDCaW9jjt.6zgG4H8USyOngwW',t:'Empresa energía convencional - AMI',e:'Activo',m:'notificacionesjudiciales@proelectrica.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'PROELECTRICA & CIA. S.C.A. E.S.P.'},
+{id:53,n:'CHEC S.A.',a:'',d:'NIT',nid:'890800128-6',u:'URL890800128',c:'$2b$10$0hPg6A.znv0jOC0VebRf.eJNtRDH9SjRAVeilmJBCKSbWYmj6JHlq',t:'Empresa energía convencional - UsRural',e:'Activo',m:'notificaciones.judiciales@chec.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-28',co:'CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.'},
+{id:54,n:'CENTRALES ELECTRICAS DE NARIÑO',a:'',d:'NIT',nid:'891200200-8',u:'ESP891200200',c:'$2b$10$YzwPMnIWThyzmI3pGjZbV.gVpfBzfQB3AASoqB6UVVgzYgq2xm18y',t:'Empresa energía convencional - AMI',e:'Activo',m:'notificaciones.cedenar.sspd@cedenar.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'CENTRALES ELECTRICAS DE NARIÑO S.A. E.S.P.'},
+{id:55,n:'CENTRALES ELECTRICAS DEL CAUCA',a:'',d:'NIT',nid:'891500025-2',u:'ESP891500025',c:'$2b$10$5Zx/Q4PejwE5bqBFY5Ey7ebYWUF.IqwxOCy1w5KSZPM5h7.DXMxru',t:'Empresa energía convencional - AMI',e:'Activo',m:'notificacionesjudiciales@cedelca.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'CENTRALES ELECTRICAS DEL CAUCA S.A. E.S.P.'},
+{id:56,n:'CENS S.A.',a:'',d:'NIT',nid:'890500514-9',u:'URL890500514',c:'$2b$10$CoSEjV6FHsG0wo3M78Kwl.Fa/q8alZpstaM6IjtQwif9Vx.5KbgrC',t:'Empresa energía convencional - UsRural',e:'Activo',m:'notificacionesjudiciales@cens.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP'},
+{id:57,n:'CETSA',a:'',d:'NIT',nid:'891900101-0',u:'URL891900101',c:'$2b$10$CVC64nLOwA8DeEhUGlK/V.PaVMogdEXquWF4YUwbTLsGLByVPAy3.',t:'Empresa energía convencional - UsRural',e:'Activo',m:'cetsa@celsia.com',cel:'',fc:'2020-12-30',fx:'2022-12-28',co:'COMPAÑÍA DE ELECTRICIDAD DE TULUÁ S.A. E.S.P.'},
+{id:58,n:'ELECTRIFICADORA DE SANTANDER',a:'',d:'NIT',nid:'890201230-1',u:'URL890201230',c:'$2b$10$wNP2NlAFdzc11udG.DcwAuf.MTXnYSuJh00Woau7DYNl1MuPuymOC',t:'Empresa energía convencional - UsRural',e:'Activo',m:'essa@essa.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'ELECTRIFICADORA DE SANTANDER S.A. E.S.P.'},
+{id:59,n:'ELECTRIFICADORA DEL CAQUETA',a:'',d:'NIT',nid:'891190127-3',u:'URL891190127',c:'$2b$10$xizvT.lHPiAfdiTncy8kbOCpdiXP5IW6Al3zonsKAKFv1L9dhDuEO',t:'Empresa energía convencional - UsRural',e:'Activo',m:'infoelectrocaqueta@electrocaqueta.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'ELECTRIFICADORA DEL CAQUETA S.A. ESP'},
+{id:60,n:'ELECTRIFICADORA DEL HUILA',a:'',d:'NIT',nid:'891180001-1',u:'URL891180001',c:'$2b$10$6guQobCglXc8.fHcreUkZOY26zcl5qSnN5aF.JunOLiJGs2x0eqgq',t:'Empresa energía convencional - UsRural',e:'Activo',m:'gerencia@electrohuila.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'ELECTRIFICADORA DEL HUILA S.A. E.S.P.'},
+{id:61,n:'EMSA',a:'',d:'NIT',nid:'892002210-6',u:'URL892002210',c:'$2b$10$2s/bYY9CvpEkVsNcjGtpI.suvRCaUq9vL4tiEQe3cKYfmEN76s5GK',t:'Empresa energía convencional - UsRural',e:'Activo',m:'gerencia@emsa-esp.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'ELECTRIFICADORA DEL META S.A. E.S.P.'},
+{id:62,n:'EMPRESA DE ENERGÍA DE ARAUCA',a:'',d:'NIT',nid:'892099499-3',u:'URL892099499',c:'$2b$10$W1NybQhhJVtoEFJWSqdtBOfViN/gjtjokiTBUeFKeQEJbcTTIybH2',t:'Empresa energía convencional - UsRural',e:'Activo',m:'gerencia@enelar.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'EMPRESA DE ENERGIA DE ARAUCA  S.A. E.S.P.'},
+{id:63,n:'EBSA',a:'',d:'NIT',nid:'891800219-1',u:'URL891800219',c:'$2b$10$By3sIUs1vn1k0a.p1ZVR0.UOvR.zg.1K/tIRLkKvMyzhIUNioUkv6',t:'Empresa energía convencional - UsRural',e:'Activo',m:'documentacion@ebsa.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'EMPRESA DE ENERGIA DE BOYACA S.A. ESP'},
+{id:64,n:'CELSIA COLOMBIA',a:'',d:'NIT',nid:'800249860-1',u:'ESP800249860',c:'$2b$10$uTA3G1.CvShBfj0v1jscVu0d5NtoJZ5HM3qsJeq5AmcUJFMLeKSKa',t:'Empresa energía convencional - AMI',e:'Activo',m:'wareyes@celsia.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'CELSIA COLOMBIA S.A. E.S.P.'},
+{id:65,n:'EMPRESA DE ENERGIA DEL QUINDIO',a:'',d:'NIT',nid:'800052640-9',u:'ESP800052640',c:'$2b$10$H6lo71rmamRVvlqJd/sYb.IEGHJzHwe5IVkw6/YmHPIAytYP2P8xO',t:'Empresa energía convencional - AMI',e:'Activo',m:'william.garcia@edeq.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'EMPRESA DE ENERGIA DEL  QUINDIO S.A.E.S.P.'},
+{id:66,n:'EMPRESAS MUNICIPALES DE CALI',a:'',d:'NIT',nid:'890399003-4',u:'URL890399003',c:'$2b$10$.KMvQXjAeLSx19EW4rpXFePF0vcaoD8TpFIEpbAAoJuFz6EaKclVy',t:'Empresa energía convencional - UsRural',e:'Activo',m:'notificaciones@emcali.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'EMPRESAS MUNICIPALES DE CALI   E.I.C.E  E.S.P'},
+{id:67,n:'EMPRESAS MUNICIPALES DE CARTAGO',a:'',d:'NIT',nid:'836000349-8',u:'ESP836000349',c:'$2b$10$.FWkrj6GrBupKxeOUi7fjOuduLQW2cBYl33I4JNm/8pp7cbZ.xNFW',t:'Empresa energía convencional - AMI',e:'Activo',m:'contactenos@emcartago.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'EMPRESAS MUNICIPALES DE CARTAGO E.S.P.'},
+{id:68,n:'EMPRESAS PUBLICAS DE MEDELLIN',a:'',d:'NIT',nid:'890904996-1',u:'URL890904996',c:'$2b$10$Pp1FPl8nrTxlT.7bDJNtSu9t0.Ow5Ledr8Vi2h25Qc3RwMbTnXZTK',t:'Empresa energía convencional - UsRural',e:'Activo',m:'epm@epm.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-28',co:'EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.'},
+{id:69,n:'ISAGEN S.A.',a:'',d:'NIT',nid:'811000740-4',u:'ESP811000740',c:'$2b$10$RVb18fsHaTU59iAsh4ed6uCOgaxbzKRR/2sth4FZKNxxxVV9uTvhS',t:'Empresa energía convencional - AMI',e:'Activo',m:'notificacionesenlinea@isagen.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'ISAGEN S.A. E.S.P.'},
+{id:70,n:'EMGESA S.A.',a:'',d:'NIT',nid:'860063875-8',u:'ESP860063875',c:'$2b$10$dv.LOcRHW7iGMC2YscwKn./l9ptZFMUcE/X4qgYoRE6gI9O7/eJwe',t:'Empresa energía convencional - AMI',e:'Activo',m:'emlinea@enel.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'EMGESA S.A. E.S.P.'},
+{id:71,n:'AES CHIVOR & CIA.',a:'',d:'NIT',nid:'830025205-2',u:'ESP830025205',c:'$2b$10$VnQUd1LG5EF/HmknAY541u7szoX4csCrnnHL7KaK928tvfgg64oXa',t:'Empresa energía convencional - AMI',e:'Activo',m:'aeschivor@aes.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'AES CHIVOR & CIA SCA ESP'},
+{id:72,n:'VATIA S.A.',a:'',d:'NIT',nid:'817001892-1',u:'ESP817001892',c:'$2b$10$/DPfYvtFtthz.n2lDTTFMOmN3OjUaLYB4463zuVjfHC.5SpbPqiOu',t:'Empresa energía convencional - AMI',e:'Activo',m:'nmuvdi@vatia.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'VATIA S.A. E.S.P.'},
+{id:73,n:'DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA ELECTRICA',a:'',d:'NIT',nid:'815000896-9',u:'ESP815000896',c:'$2b$10$EIzqA84jPiUR1K7Qw.m05OmN2KsTrS/G4yMeaH6MoeAUewAzXZjwq',t:'Empresa energía convencional - AMI',e:'Activo',m:'dicelsa@dicel.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA ELECTRICA S.A. E.S.P.'},
+{id:74,n:'EMPRESA DE ENERGIA DEL PUTUMAYO',a:'',d:'NIT',nid:'846000241-8',u:'ESP846000241',c:'$2b$10$FGn01KNrf2ez4Ps8U0YKuufa7cxfVb1t4OUrQ2FVwddtT9TgyERU2',t:'Empresa energía convencional - AMI',e:'Activo',m:'correspondencia@energiaputumayo.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'EMPRESA DE ENERGIA DEL PUTUMAYO S.A. ESP'},
+{id:75,n:'EMPRESA DE ENERGIA DE PEREIRA',a:'',d:'NIT',nid:'816002019-9',u:'URL816002019',c:'$2b$10$5Lp9dNtXJDfGzk9OvIqrse9FACZYDGBzt.UFX2th9whZiZdvxDgrO',t:'Empresa energía convencional - UsRural',e:'Activo',m:'notificacionesjudiciales@eep.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.'},
+{id:76,n:'CODENSA',a:'',d:'NIT',nid:'830037248-0',u:'URL830037248',c:'$2b$10$SRSjG8oCvXGD9Kq/MCYbPe1wteWD/6GwhM104TXfOZVrcSpX20ETa',t:'Empresa energía convencional - UsRural',e:'Activo',m:'servicioalclientecodensa@enel.com',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'CODENSA S.A. ESP'},
+{id:77,n:'EMPRESA DE ENERGIA DEL VALLE DE SIBUNDOY',a:'',d:'NIT',nid:'846000060-1',u:'ESP846000060',c:'$2b$10$uttCagAFmldE9F0vHmFive00aYyEG3XmuZzXzBMaTQLrk1KaMwEa6',t:'Empresa energía convencional - AMI',e:'Activo',m:'dptecnico@emevasi.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'EMPRESA DE ENERGIA DEL VALLE DE SIBUNDOY S.A. E.S.P.'},
+{id:78,n:'PROYECTOS ENERGETICOS DEL CAUCA',a:'',d:'NIT',nid:'817000362-5',u:'ESP817000362',c:'$2b$10$goxK9VKRT8RYCKuaRQUpMuzyCJuxeSBz34/gZ79JETQ6QlRO/ztpO',t:'Empresa energía convencional - AMI',e:'Activo',m:'mzuniga@ingeniolacabana.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'PROYECTOS ENERGETICOS DEL CAUCA S.A. E.S.P.'},
+{id:79,n:'DICELER',a:'',d:'NIT',nid:'815001901-2',u:'ESP815001901',c:'$2b$10$V40vnDG3OfZdjvCTUfl4zeVm8Y5XdwQ56vWFDUFiDQikI3N0oSpgy',t:'Empresa energía convencional - AMI',e:'Activo',m:'dicelsa@dicel.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'DICELER S.A E.S.P.'},
+{id:80,n:'TERMOPIEDRAS',a:'',d:'NIT',nid:'830058506-6',u:'ESP830058506',c:'$2b$10$07rGu8Pf.hNxmwd0mdhnj.O1CyUr6JHnMRyEBs5Ae2TLqzvxrwVjy',t:'Empresa energía convencional - AMI',e:'Activo',m:'administrativa@termopiedras.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'TERMOPIEDRAS S.A. E.S.P.'},
+{id:81,n:'EMEESA',a:'',d:'NIT',nid:'891500061-8',u:'URL891500061',c:'$2b$10$rcUEbs7ANz9TQyDJdhsxw.Zv.Ykl4aKw5y41OfVVflioS/HEHyEBC',t:'Empresa energía convencional - UsRural',e:'Activo',m:'gerencia@emeesaesp.com',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'EMPRESA MUNICIPAL DE ENERGÍA ELÉCTRICA S.A-E.S.P'},
+{id:82,n:'ENERGIA Y ALUMBRADO DE PEREIRA',a:'',d:'NIT',nid:'816003858-6',u:'ESP816003858',c:'$2b$10$Fcx0ai2231LHW7PpJk7C4O3Z0ZaoGAPKrLsogVdqkeACEtU1sigbi',t:'Empresa energía convencional - AMI',e:'Activo',m:'notificaciones.oficilaes@enelarpereira.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.'},
+{id:83,n:'EEBP',a:'',d:'NIT',nid:'846000553-0',u:'URL846000553',c:'$2b$10$RnMnhhjXofknmBiCVyTTTeZJdIR2xJ0oxro0AFmmow8bsqqGw.1b6',t:'Empresa energía convencional - UsRural',e:'Activo',m:'eebp@eebpsa.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'EMPRESA DE ENERGIA DEL BAJO PUTUMAYO  S.A.  E.S.P.'},
+{id:84,n:'RUITOQUE',a:'',d:'NIT',nid:'804001062-8',u:'URL804001062',c:'$2b$10$2rJYZH1UBtPdAKrBNJXY5eMaEiQsOLGloSSbe0yF7JiC/CGHcTn4i',t:'Empresa energía convencional - UsRural',e:'Activo',m:'escribanos@ruitoqueesp.com',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'RUITOQUE S.A. E.S.P.'},
+{id:85,n:'ENERCO',a:'',d:'NIT',nid:'805016928-1',u:'ESP805016928',c:'$2b$10$UkRH92/Fh72asM.TI.9ZR.8rELjg2N0slrBFO1MRpNqUnWekSXsOW',t:'Empresa energía convencional - AMI',e:'Activo',m:'enerco@enercoesp.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'ENERCO S.A. E.S.P.'},
+{id:86,n:'ENERGETICOS',a:'',d:'NIT',nid:'830092965-7',u:'ESP830092965',c:'$2b$10$Czy/khFqnCuiGvtYotWmu.OIlPjZb9MkEq5cCa95rtNaciHMmbG1S',t:'Empresa energía convencional - AMI',e:'Activo',m:'energeticossaesp@gmail.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'ENERGETICOS S.A.S.  E.S.P. DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA GAS E HIDROCARBUROS'},
+{id:87,n:'GESTION ENERGETICA',a:'',d:'NIT',nid:'800194208-9',u:'ESP800194208',c:'$2b$10$qSw4YS4qrvZ0G.EEy3seAOTct1H1FxvZ9Z4dUkErSgfd19x.wbdla',t:'Empresa energía convencional - AMI',e:'Activo',m:'controlinterno@gensa.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'GESTION ENERGETICA S.A. E.S.P.'},
+{id:88,n:'EMPRESA DISTRIBUIDORA DEL PACIFICO',a:'',d:'NIT',nid:'ESP800194208',u:'ESP818001629',c:'$2b$10$qQn3RMBj7afYMb26/ixK8uRDpsCXqkxXXbvJHvZ72f98biH/.cF3G',t:'Empresa energía convencional - AMI',e:'Activo',m:'gerenciagestor@dispacsaesp.com',cel:'',fc:'2020-12-30',fx:'2022-12-28',co:'EMPRESA DISTRIBUIDORA DEL PACIFICO S.A. E.S.P'},
+{id:89,n:'LISED KATHERINE',a:'CHAVES ACOSTA',d:'CC',nid:'1085277826',u:'lkchaves',c:'$2b$10$TKc1agp5o2cl.cct/X9AJeUYCCivJDvNPucyaToF7XwLdmFOouR/W',t:'Asistente OARE',e:'Inactivo',m:'lkchaves@minenergia.gov.co',cel:'3166145159',fc:'2020-12-30',fx:'2030-12-26',co:''},
+{id:90,n:'LINA MARCELA',a:'VEGA BUELVAS',d:'CC',nid:'1015404517',u:'lmvega',c:'$2b$10$g93PASjehMOwQVv/TxTGG.9urguCI4YvYkL3hFpV4CEoqClrbousG',t:'Asistente OARE',e:'Inactivo',m:'lmvega@minenergia.gov.co',cel:'',fc:'2020-12-30',fx:'2030-12-28',co:''},
+{id:91,n:'ENERGUAVIARE SA',a:'',d:'NIT',nid:'822004680-9',u:'URL822004680',c:'$2b$10$.uTqyujq2Hdy9.EmmHScpumk4QZbE5lw9JiZ04u5qATU6savcbsza',t:'Empresa energía convencional - UsRural',e:'Activo',m:'gerencia@energuaviare.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'EMPRESA DE ENERGIA ELECTRICA DEL DEPARTAMENTO DEL GUAVIARE SA ESP'},
+{id:92,n:'GENERARCO',a:'',d:'NIT',nid:'830107528-9',u:'ESP830107528',c:'$2b$10$VkR4qdYhVLWVBzkcwt5rPe5Iq5EMiXTvGebzJQ6vpOzMgyWclDdG6',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@generarco.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'GENERARCO S.A.S. E.S.P.'},
+{id:93,n:'EMPRESA MULTIPROPOSITO DE CALARCA',a:'',d:'NIT',nid:'801004102-7',u:'ESP801004102',c:'$2b$10$0VC/FEN/d3UIrjEUrILCl./7Dg2SpnIJqW7AvSaY8DU.tFitMZVHm',t:'Empresa energía convencional - AMI',e:'Activo',m:'notificaciones@multiproposito.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'EMPRESA MULTIPROPOSITO DE CALARCA S.A. E.S.P.'},
+{id:94,n:'A.S.C. INGENIERIA',a:'',d:'NIT',nid:'814002979-7',u:'ESP814002979',c:'$2b$10$arSGdT7Naa7fnzYnTaxOc.96nMviL6RHFmdBEkgyHIUPtl4pyiPci',t:'Empresa energía convencional - AMI',e:'Activo',m:'admin@ascingenieriasa.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'A.S.C. INGENIERIA S.A. E.S.P.'},
+{id:95,n:'COMPAÑIA ENERGETICA DEL TOLIMA',a:'',d:'NIT',nid:'809011444-9',u:'ESP809011444',c:'$2b$10$aND5o/de5lz3Zh5GtsuSGeQ1ywhj8hG97cNRdFMAeWX.u7qxxejSy',t:'Empresa energía convencional - AMI',e:'Activo',m:'gerencia.egetsa@tolima.gov.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'COMPAÑIA ENERGETICA DEL TOLIMA S.A. E.S.P.'},
+{id:96,n:'COMERCIALIZADORA DEL CAFE',a:'',d:'NIT',nid:'830147341-1',u:'ESP830147341',c:'$2b$10$XXxcgF7lDRGCWV5i3sryZezrCYKXsgIHdZbzIEzIrRbmrhDZWUd8C',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@energiadelcafe.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'COMERCIALIZADORA DEL CAFE S.A.S E.S.P'},
+{id:97,n:'ENERCA SA',a:'',d:'NIT',nid:'844004576-0',u:'URL844004576',c:'$2b$10$YNop2kTSxNCINX7zoOi6F.UYBU2ZJQiHbY.GVEIBi.nNnzB04fG2W',t:'Empresa energía convencional - UsRural',e:'Activo',m:'correspondencia@enerca.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'EMPRESA DE ENERGIA DE CASANARE SA ESP'},
+{id:98,n:'ENERGIA EMPRESARIAL DE LA COSTA',a:'',d:'NIT',nid:'900044461-6',u:'ESP900044461',c:'$2b$10$rQn5tYot/eyxp83Uek7xMe9SZCNxjH759QOpFZ3oWTHUVL2yyaMri',t:'Empresa energía convencional - AMI',e:'Activo',m:'serviciosjuridicoseca@electricaribe.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'ENERGIA EMPRESARIAL DE LA COSTA S.A. E.S.P.'},
+{id:99,n:'ENERTOTAL',a:'',d:'NIT',nid:'900039901-5',u:'ESP900039901',c:'$2b$10$yXld88wJSZi1KdST4mlereveCeyo5A2v1GmHIt21n5uInMATvSUUO',t:'Empresa energía convencional - AMI',e:'Activo',m:'enertotal@enertotalesp.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'ENERTOTAL S.A. E.S.P.'},
+{id:100,n:'COENERSA',a:'',d:'NIT',nid:'900076284-6',u:'ESP900076284',c:'$2b$10$PpbAfc14jTMAgPkWZ5X6ouFzB5l3FYOj9NSMQnjEoOpCvQ5zCmz0i',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@coenersa.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'COENERSA S.A.S. E.S.P.'},
+{id:101,n:'HIDROTOLIMA',a:'',d:'NIT',nid:'900097320-3',u:'ESP900097320',c:'$2b$10$i69b4re8v/iKlpSyfr6oYON0gBfWp09Yl9JYSV7ggujrvtVys56FC',t:'Empresa energía convencional - AMI',e:'Activo',m:'hidrotolima@hidrotolima.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'HIDROTOLIMA S.A.S. E.S.P.'},
+{id:102,n:'GENERADORA Y COMERCIALIZADORA DE ENERGIA DEL CARIBE',a:'',d:'NIT',nid:'900082143-0',u:'ESP900082143',c:'$2b$10$Ymh/u.R6fzham4JoeL70.e14AfniLD1SdKY2g9ylSXeQZM5wiNjqm',t:'Empresa energía convencional - AMI',e:'Activo',m:'notificacionesjudiciales@gecelca.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'GENERADORA Y COMERCIALIZADORA DE ENERGIA DEL CARIBE S.A. E.S.P.'},
+{id:103,n:'AMERICANA DE ENERGIA',a:'',d:'NIT',nid:'900154878-5',u:'ESP900154878',c:'$2b$10$GQ28OdUVH62XSsmH3yyCW.hiOI01CCK3kMhrJUumDOLg4Eo0QXehK',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@americanaenergia.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'AMERICANA DE ENERGIA S.A.S. E.S.P.'},
+{id:104,n:'GENERSYS',a:'',d:'NIT',nid:'900154879-2',u:'ESP900154879',c:'$2b$10$3v2XnWfIErYETc/qu2bmAuMOkr0RES/e0EjS042g6kA1ZpswR3ATC',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@genersys.net',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'GENERSYS S.A.S. E.S.P.'},
+{id:105,n:'EMPRESA MUNICIPAL DE SERVICIOS PUBLICOS DE CARTAGENA DEL CHAIRA',a:'',d:'NIT',nid:'828000191-2',u:'ESP828000191',c:'$2b$10$yzHk2CIirGYMMwhtQVCgDO5qJRnf8NOu4IaIkWh81e2sf82r26fyS',t:'Empresa energía convencional - AMI',e:'Activo',m:'alexremo_1980@hotmail.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'EMPRESA MUNICIPAL DE SERVICIOS PUBLICOS DE CARTAGENA DEL CHAIRA'},
+{id:106,n:'COLENERGIA',a:'',d:'NIT',nid:'900282813-5',u:'ESP900282813',c:'$2b$10$MqAkujCeP.iXWz8zjB0btufoErsudZ0PomsFQ3WyAW0X7qn5GNsri',t:'Empresa energía convencional - AMI',e:'Activo',m:'colenergia.sa@hotmail.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'COLENERGIA S.A. E.S.P.'},
+{id:107,n:'E2 ENERGIA EFICIENTE',a:'',d:'NIT',nid:'802025052-0',u:'ESP802025052',c:'$2b$10$9JsRckC4YIIj3vxOQIKMxevkJYauM6BLIlpzAg9FwgYJKv1jHVAo.',t:'Empresa energía convencional - AMI',e:'Activo',m:'correo@e2energiaeficiente.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'E2 ENERGIA EFICIENTE S.A. E.S.P.'},
+{id:108,n:'PROFESIONALES EN ENERGIA',a:'',d:'NIT',nid:'900341483-1',u:'ESP900341483',c:'$2b$10$WUGAdicXIX7VJBCa61ge3eHCnHGzNtdlG/iVKxoyCkSmlM4QR.ZlW',t:'Empresa energía convencional - AMI',e:'Activo',m:'peesa@peesa.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'PROFESIONALES EN ENERGÍA S.A E.S.P'},
+{id:109,n:'COMPAÑIA ENERGETICA DE OCCIDENTE',a:'',d:'NIT',nid:'900366010-1',u:'URL900366010',c:'$2b$10$AVj.SsNoUbLBWPjnwr/mKOGS02wwzdYYoD4316tEAGCMxrM46rUda',t:'Empresa energía convencional - UsRural',e:'Activo',m:'cia.energetica@ceoesp.com',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'COMPAÑIA ENERGETICA DE OCCIDENTE S.A.S.  E.S.P.'},
+{id:110,n:'HZ ENERGY',a:'',d:'NIT',nid:'900358272-9',u:'ESP900358272',c:'$2b$10$LnS7FywUXIZ1/Ditzo1Le.hrGYmbTEjuoAIGFA.xRt1iMM7aBs5x.',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@hzenergy.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'HZ ENERGY S.A.S. E.S.P.'},
+{id:111,n:'FUENTES DE ENERGIAS RENOVABLES',a:'',d:'NIT',nid:'900409371-1',u:'ESP900409371',c:'$2b$10$ZzPnpVHbVTO.KCM46e95uOdDno3sMa86bxYrq1O2ERc4GPveOOEf.',t:'Empresa energía convencional - AMI',e:'Activo',m:'furesas@furesas.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'FUENTES DE ENERGIAS RENOVABLES S.A.S. E.S.P.'},
+{id:112,n:'FORCEFUL ENERGY',a:'',d:'NIT',nid:'900431226-1',u:'ESP900431226',c:'$2b$10$Khk.ea0un4nILkEpP87c..nn0Y5aP8Xr9gTgv6V5lUQf3JhJFi8Rm',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@forcefulenergy.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'FORCEFUL ENERGY S.A.S. E.S.P.'},
+{id:113,n:'ITALCOL ENERGIA',a:'',d:'NIT',nid:'900428468-6',u:'ESP900428468',c:'$2b$10$VYktrByOFS37nOD7ZLjP8.p3zLej1A5GUf.wQLXD0fJ0HCH.NiDaC',t:'Empresa energía convencional - AMI',e:'Activo',m:'monicavelandia@italcol.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'ITALCOL ENERGIA S.A. E.S.P.'},
+{id:114,n:'GENERSA',a:'',d:'NIT',nid:'900475298-0',u:'ESP900475298',c:'$2b$10$xYxk42TQVf6sP13uo566VubtsMLF.3wLOSZEwZ2j22Wtw/iS.SYfq',t:'Empresa energía convencional - AMI',e:'Activo',m:'contabilidad@genersa.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'GENERSA S.A.S. E.S.P.'},
+{id:115,n:'ENERGIA Y AGUA',a:'',d:'NIT',nid:'900483036-1',u:'ESP900483036',c:'$2b$10$C4XEDrfGKTPyD6CfS9zPxe8MYav9LCTX.LPjkP4CJwhZcAjm5MqzC',t:'Empresa energía convencional - AMI',e:'Activo',m:'escribanos@energiayaguaesp.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'ENERGIA Y AGUA S.A.S. E.S.P.'},
+{id:116,n:'ECOMMERCIAL',a:'',d:'NIT',nid:'900499252-6',u:'ESP900499252',c:'$2b$10$cLFsLiri/pGnD8aumQsJ3uRVqDoGkyoW2TgBmLlQFPl4MWyKnUOcu',t:'Empresa energía convencional - AMI',e:'Activo',m:'gerencia@ecommercial.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'ECOMMERCIAL S.A.S. E.S.P.'},
+{id:117,n:'RENOVATIO TRADING AMERICAS',a:'',d:'NIT',nid:'900589503-6',u:'ESP900589503',c:'$2b$10$6wTz8i3GD1GhWfuNsi9eG.GzC8lSHNZ1Uzbce7SoypUx0a43FPynm',t:'Empresa energía convencional - AMI',e:'Activo',m:'Mlis@gruporenovatio.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'RENOVATIO TRADING AMERICAS SAS ESP'},
+{id:118,n:'QI ENERGY',a:'',d:'NIT',nid:'900677732-3',u:'ESP900677732',c:'$2b$10$XuQH64Z7gusG4MbdocNdRewkVJdiYb/C1YjqJYbtrOhi.rc/kwp4G',t:'Empresa energía convencional - AMI',e:'Activo',m:'lcuadros@furesas.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'QI ENERGY SAS ESP'},
+{id:119,n:'EMPRESA DE SERVICIOS PUBLICOS DE SANTANDER',a:'',d:'NIT',nid:'900648934-0',u:'ESP900648934',c:'$2b$10$UajHHJxsry8ABK4amX2.BexERR7G7FDwS1a8.RK88t41g/PHbBMim',t:'Empresa energía convencional - AMI',e:'Activo',m:'esantoperaciones@esant.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'EMPRESA DE SERVICIOS PUBLICOS DE SANTANDER S.A.E.S.P.'},
+{id:120,n:'CEMEX ENERGY',a:'',d:'NIT',nid:'900746422-1',u:'ESP900746422',c:'$2b$10$VcJyoLUvyV04jHUVJCgIhOxympdyrQy2tAChwPj3H6WLZHPBHq/bu',t:'Empresa energía convencional - AMI',e:'Activo',m:'correo.juridica@cemex.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'CEMEX ENERGY S.A.S E.S.P.'},
+{id:121,n:'NITRO ENERGY COLOMBIA',a:'',d:'NIT',nid:'900691280-4',u:'ESP900691280',c:'$2b$10$RXA61lr5Tnkc9zTiYPz1h.x9afKQnYEio14J.4N6qdDTXaoPyQfeu',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@nitrogc.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'NITRO ENERGY COLOMBIA S.A.S. E.S.P.'},
+{id:122,n:'RIOPAILA ENERGÍA',a:'',d:'NIT',nid:'900652334-7',u:'ESP900652334',c:'$2b$10$edBDKPuN2beBVPJ6f5qiue.yXQsxq5dMt4L/sAf0okwiz1rvbtAV6',t:'Empresa energía convencional - AMI',e:'Activo',m:'notificaciones@riopailaenergia.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'RIOPAILA ENERGÍA SAS ESP'},
+{id:123,n:'INVERSIONES, SUMINISTROS  Y SERVICIOS SAFEANA',a:'',d:'NIT',nid:'900842868-3',u:'ESP900842868',c:'$2b$10$anNJmTTD0BHbpCyf97WlMeHQN3RVzVlp3KKpdBktm9no6pQ3J.JCa',t:'Empresa energía convencional - AMI',e:'Activo',m:'safeanasas@hotmail.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'INVERSIONES, SUMINISTROS  Y SERVICIOS SAFEANA S.A.S. E.S.P.'},
+{id:124,n:'IA ENERGÍA Y GESTIÓN',a:'',d:'NIT',nid:'900344208-6',u:'ESP900344208',c:'$2b$10$Jin0ns7VKOrt5WLTwdC6XOnpcfd6pJ7V9mkigQXVwqSYm9H0LJ1nq',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@iaenergy.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-28',co:'IA ENERGÍA Y GESTIÓN S.A.S. E.S.P.'},
+{id:125,n:'CENTRAL HIDROELÉCTRICA CONCORDIA S.A.S. E.S.P.',a:'',d:'NIT',nid:'900759883-1',u:'ESP900759883',c:'$2b$10$vUh80PPxf2iexaV4dR3gJej12DqL2gtiH8o10xASUYSK8MeD/4.eO',t:'Empresa energía convencional - AMI',e:'Activo',m:'CHCCONTABILIDAD@GRUPOCOLVIVA.COM',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'CENTRAL HIDROELÉCTRICA CONCORDIA S.A.S. E.S.P.'},
+{id:126,n:'AGENTE EXPERTO EN SERVICIOS PÚBLICOS',a:'',d:'NIT',nid:'900325920-1',u:'ESP900325920',c:'$2b$10$6kqf1ydtIoIdWhPIsNptZ.i2kL9PQ.jS5BoyVBsCXJ5W3T61oCdfC',t:'Empresa energía convencional - AMI',e:'Activo',m:'gerencia@aesp.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'AGENTE EXPERTO EN SERVICIOS PÚBLICOS S.A.S E.S.P'},
+{id:127,n:'TERPEL ENERGÍA',a:'',d:'NIT',nid:'900433032-9',u:'ESP900433032',c:'$2b$10$W2rCPcVKOPZ./cbQ6UYzxOjj4zm81y2GCt7Gp.3OPk9TYR3593bAO',t:'Empresa energía convencional - AMI',e:'Activo',m:'infoterpel@terpel.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'TERPEL ENERGIA S.A.S E.S.P'},
+{id:128,n:'AMPERIA',a:'',d:'NIT',nid:'900932147-8',u:'ESP900932147',c:'$2b$10$mrOUBnm8FEVY3z1JTrj1R.2m0EMlCExUtlEx867G20qV8XmWh/TD6',t:'Empresa energía convencional - AMI',e:'Activo',m:'amperiaenergia@gmail.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'AMPERIA S.A. E.S.P.'},
+{id:129,n:'FRANCA ENERGIA',a:'',d:'NIT',nid:'900864051-8',u:'ESP900864051',c:'$2b$10$eMfjRukMCcGA9J3aWyZ.geDZLc4dotB/DRDAuZhAPQIAfcEOLvwFW',t:'Empresa energía convencional - AMI',e:'Activo',m:'francaenergia@gmail.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'FRANCA ENERGIA SA ESP'},
+{id:130,n:'TERMO RUBIALES',a:'',d:'NIT',nid:'900251464-5',u:'ESP900251464',c:'$2b$10$wv0SPQgxt/lSgw.MGX5bS.GtswcJHf3xTfAw7DftiBlt3gdR31.OS',t:'Empresa energía convencional - AMI',e:'Activo',m:'claudia.coy@soenergy.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'TERMO RUBIALES S.A. E.S.P.'},
+{id:131,n:'MESSER ENERGY SERVICES',a:'',d:'NIT',nid:'901033186-1',u:'ESP901033186',c:'$2b$10$6B7pkBmVy7MKEZWIw8zM..tQ3ycQFYT5TmuQ1tew3EXootrf5JDHS',t:'Empresa energía convencional - AMI',e:'Activo',m:'ricardo.sebastian.gonzalez@messer-co.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'MESSER ENERGY SERVICES SAS ESP'},
+{id:132,n:'SOUTH32 ENERGY',a:'',d:'NIT',nid:'900403943-5',u:'ESP900403943',c:'$2b$10$c29HZ4NYyGLgYesaJ1Jo2u5GqPql0uV.OjOys6ZYUk0Ka/HxjLIFi',t:'Empresa energía convencional - AMI',e:'Activo',m:'Zamir.O.Centanaro@south32.net',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'SOUTH32 ENERGY S.A.S E.S.P'},
+{id:133,n:'EMPRESA PRESTADORA DE SERVICIOS ECO LOGICA',a:'',d:'NIT',nid:'900729389-4',u:'ESP900729389',c:'$2b$10$tKVdG92f6BmDg3wwajQMl.QjW5bsAaijbCg46qB15fEVI3JbZ3WSK',t:'Empresa energía convencional - AMI',e:'Activo',m:'comercial@ecologicaesp.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'Empresa Prestadora de Servicios Publicos ECO LOGICA S.A.S. E.S.P.'},
+{id:134,n:'JULIA - RD',a:'',d:'NIT',nid:'901125404-8',u:'ESP901125404',c:'$2b$10$/dRAc9wYsoMBuoFbZ0ppSeh6fVTVLUpy/q1fQuXTVPg2/fh.5wbN2',t:'Empresa energía convencional - AMI',e:'Activo',m:'mromero@julia-rd.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'JULIA - RD S.A. E.S.P.'},
+{id:135,n:'AURES BAJO',a:'',d:'NIT',nid:'900740329-7',u:'ESP900740329',c:'$2b$10$CR1XLIuRsxmAfhnYsPjj6OK9a/6ONfbqtBPgwfpcg9qKhxKuAlI6u',t:'Empresa energía convencional - AMI',e:'Activo',m:'administracion@cpph.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'AURES BAJO S.A.S. E.S.P.'},
+{id:136,n:'EMPRESA DE GENERACION Y PROMOCION DE ENERGIA DE ANTIOQUIA',a:'',d:'NIT',nid:'900251423-3',u:'ESP900251423',c:'$2b$10$BEJ182VswbtWsZlnUSfzYugD3YtW22Xq0Z7Engs.lvWN0teXisEWC',t:'Empresa energía convencional - AMI',e:'Activo',m:'INFO@GENMAS.COM.CO',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'EMPRESA DE GENERACION Y PROMOCION DE ENERGIA DE ANTIOQUIA S.A. E.S.P.'},
+{id:137,n:'ECOPETROL ENERGÍA',a:'',d:'NIT',nid:'901165502-2',u:'ESP901165502',c:'$2b$10$kfOBhRU2FDxw8pUGfq6/AeMuNJfy1eiiVW5DrTrYI21Ny7kkZHzk2',t:'Empresa energía convencional - AMI',e:'Activo',m:'juan.molinares@ecopetrolenergiaesp.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'ECOPETROL ENERGÍA S.A.S. E.S.P.'},
+{id:138,n:'ENEL GREEN POWER COLOMBIA',a:'',d:'NIT',nid:'900509559-6',u:'ESP900509559',c:'$2b$10$zOJkNlmNaLUVnqMoNdzs2OFWBQ.mlPPmcFqWpJhsFySiNBn67R3Te',t:'Empresa energía convencional - AMI',e:'Activo',m:'adrianvasile.dugulan@enel.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'ENEL GREEN POWER COLOMBIA S.A.S. E.S.P.'},
+{id:139,n:'CH SAN MIGUEL',a:'',d:'NIT',nid:'900460429-3',u:'ESP900460429',c:'$2b$10$ZRiiv.tIgC0eTXL9PX4o6.ENJFflp111rcFKCTZxXldhx8IvOc5Qe',t:'Empresa energía convencional - AMI',e:'Activo',m:'INFO@LAREIF.COM',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'CH SAN MIGUEL S.A.S. E.S.P.'},
+{id:140,n:'PLUSENERGY',a:'',d:'NIT',nid:'901043956-9',u:'ESP901043956',c:'$2b$10$cgsVU4Z5BTPfN9OzX7l5fePjAZKPZvxhi6fT9zz6GTrMGw99NU/LW',t:'Empresa energía convencional - AMI',e:'Activo',m:'amontoya@plusenergy.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'PLUSENERGY S.A.S. E.S.P.'},
+{id:141,n:'LATINOAMERICAN ENERGY',a:'',d:'NIT',nid:'901199778-4',u:'ESP901199778',c:'$2b$10$zDYzilEFSPvwp0bH8fgqruUlifEPHjZvOK3yv4iBNli2Y0H4XivlK',t:'Empresa energía convencional - AMI',e:'Activo',m:'latinoamericanenergy@gmail.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'LATINOAMERICAN ENERGY S.A.S E.S.P.'},
+{id:142,n:'SANTA FE ENERGY ZOMAC',a:'',d:'NIT',nid:'901200248-6',u:'ESP901200248',c:'$2b$10$oBXIFc4RotHUnSrBgJJg4uDnsAF0Iw6h41AXztzymJ9vnE9/ULL4.',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@santafeenergy.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'SANTA FE ENERGY ZOMAC S.A.S. E.S.P.'},
+{id:143,n:'GENERADORA ALEJANDRIA',a:'',d:'NIT',nid:'900493235-3',u:'ESP900493235',c:'$2b$10$dPUQqmSuGcMZ.872Fq9yAOuYQfWXN9IcSNaxnAsWRiXs3ELDVU7/O',t:'Empresa energía convencional - AMI',e:'Activo',m:'agarcia@generadoralejandria.com',cel:'',fc:'2020-12-30',fx:'2022-12-28',co:'GENERADORA ALEJANDRIA S.A.S. E.S.P.'},
+{id:144,n:'COLOMBINA ENERGIA',a:'',d:'NIT',nid:'901192478-8',u:'ESP901192478',c:'$2b$10$qwF2eHhL35sGTpMb8IX..erEXFjfm3kikhBdAQLF4UvU9sxtTszRy',t:'Empresa energía convencional - AMI',e:'Activo',m:'aochoa@colombina.com',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'COLOMBINA ENERGIA SAS ESP'},
+{id:145,n:'EMPRESA DE SERVICIOS PÚBLICOS DEL OCCIDENTE COLOMBIANO',a:'',d:'NIT',nid:'900662075-7',u:'ESP900662075',c:'$2b$10$npJYcjEPh0HbyfsQ.artpuZ/RhEzPHWgbgEpwcOHkhnbr1GaEYbaG',t:'Empresa energía convencional - AMI',e:'Activo',m:'emseroccidente@hotmail.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'EMPRESA DE SERVICIOS PÚBLICOS DEL OCCIDENTE COLOMBIANO'},
+{id:146,n:'ENERGIA DEL RIO PIEDRAS',a:'',d:'NIT',nid:'811031656-6',u:'ESP811031656',c:'$2b$10$4cIQgFxRNU5hbUOcSRHPJ.XFi34oWiEW92.Mtr6ev2AhM9ulED7ni',t:'Empresa energía convencional - AMI',e:'Activo',m:'sortega@gunion.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'ENERGIA DEL RIO PIEDRAS S.A. E.S.P.'},
+{id:147,n:'ESPACIO PRODUCTIVO',a:'',d:'NIT',nid:'900214588-2',u:'ESP900214588',c:'$2b$10$Rhyogc3GmQ8E0y3XYSJVRuAQH7CeKdxsbp2XYu.2phdEBG6udIEeO',t:'Empresa energía convencional - AMI',e:'Activo',m:'secretaria@esprod.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'ESPACIO PRODUCTIVO S.A.S. E.S.P.'},
+{id:148,n:'CELSIA TOLIMA',a:'',d:'NIT',nid:'901280981-9',u:'URL901280981',c:'$2b$10$XM0qXujohlXbHdM.oOB2Fe6rvvDYz6OxEtN4QIOEqsz0OQz0Os.Vq',t:'Empresa energía convencional - UsRural',e:'Activo',m:'notificacionesceltolima@celsia.com',cel:'',fc:'2020-12-30',fx:'2022-12-28',co:'CELSIA TOLIMA S.A. E.S.P.'},
+{id:149,n:'EMPRESA DE ENERGIA DE GUAPI',a:'',d:'NIT',nid:'835000142-7',u:'ESP835000142',c:'$2b$10$XkDcI6X8P4xhGkVlo4Tqd.3CrxBd83fWxgNVlCHGg215F/lGmVHBS',t:'Empresa energía convencional - AMI',e:'Activo',m:'energuapi@hotmail.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'EMPRESA DE ENERGIA DE GUAPI S.A. E.S.P.'},
+{id:150,n:'ENERMAS',a:'',d:'NIT',nid:'900148768-9',u:'ESP900148768',c:'$2b$10$PbtcqBw6PmlphQpH2SDszudv/Tf6inHKPOEr24lLCfwtNT1NwX8ke',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@enermas.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'ENERMAS SAS ESP'},
+{id:151,n:'DEPI ENERGY',a:'',d:'NIT',nid:'901288781-9',u:'ESP901288781',c:'$2b$10$jA79Z9nzxqSeCBBtbpN5S.W32I5/wSQ4aQ4U4bXfVAMffsGxtn7Me',t:'Empresa energía convencional - AMI',e:'Activo',m:'depienergy@depiltda.com',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'DEPI ENERGY S.A.S. E.S.P.'},
+{id:152,n:'SOUL ENERGY',a:'',d:'NIT',nid:'901285410-8',u:'ESP901285410',c:'$2b$10$dq834g5u76V.HwxscjjMDeYFORFQnDzFFEvo988hrT1YjoWdJ0TY6',t:'Empresa energía convencional - AMI',e:'Activo',m:'soulenergycol@gmail.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'SOUL ENERGY SAS ESP'},
+{id:153,n:'BEAM ENERGY',a:'',d:'NIT',nid:'901284888-1',u:'ESP901284888',c:'$2b$10$lc1RzYQAo6t5tViAYC5HDeSXe3Rn5E8s9ZVsmj/Idhv9ngDNyb49.',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@beamenergy.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'BEAM ENERGY S.A.S E.S.P.'},
+{id:154,n:'EMPRESA COMERCIALIZADORA DE ENERGÍA ELÉCTRICA DE LA COSTA',a:'',d:'NIT',nid:'901225715-2',u:'ESP901225715',c:'$2b$10$Ln8h9S2HWzEqS7rzN4G8junTRmd3h.FAn60ELuUJFCWJ37KzVCEnO',t:'Empresa energía convencional - AMI',e:'Activo',m:'infoecelcos01@gmail.com',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'EMPRESA COMERCIALIZADORA DE ENERGÍA ELÉCTRICA DE LA COSTA'},
+{id:155,n:'ENERGY TRANSITIONS',a:'',d:'NIT',nid:'90126331-76',u:'ESP90126331',c:'$2b$10$AD/ACMUzsBQWulvakU1KTOgrWQrCSWWHeY2aDyjoPLWFGujQYfeT6',t:'Empresa energía convencional - AMI',e:'Activo',m:'dangel@energytst.com',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'ENERGY TRANSITIONS S.A.S. E.S.P.'},
+{id:156,n:'NEU ENERGY',a:'',d:'NIT',nid:'901302727-0',u:'ESP901302727',c:'$2b$10$4AIPYDJUwPDxlO8qv2o6jeyjelxUSGpcNJuACH9pEOEmwGWsUIX2a',t:'Empresa energía convencional - AMI',e:'Activo',m:'info@neu.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'NEU ENERGY S.A.S E.S.P'},
+{id:157,n:'VOLTAJE EMPPRESARIAL',a:'',d:'NIT',nid:'900654403-6',u:'ESP900654403',c:'$2b$10$iALNxoVwe4njrOlmc8E7C./RnuurL129PNcLFiQRw7b8jCWzxn632',t:'Empresa energía convencional - AMI',e:'Activo',m:'hrodriguez@daabon.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:'VOLTAJE EMPPRESARIAL S.A.S. E.S.P.'},
+{id:158,n:'PROENERGY',a:'',d:'NIT',nid:'901326470-7',u:'ESP901326470',c:'$2b$10$lSfthHmmzEjYkyEMT5X8GO3oyAnR/1QEZzlRmw/MBMAQrJVkAaMWC',t:'Empresa energía convencional - AMI',e:'Activo',m:'gerencia@proenergy.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'PROENERGY S.A.S.E.S.P.'},
+{id:159,n:'SMARTEN',a:'',d:'NIT',nid:'900949673-5',u:'ESP900949673',c:'$2b$10$JbH6paT55DGSHw2rrDeZze1DKatPodp6HCG5yVJx3myh34nsiP6Ta',t:'Empresa energía convencional - AMI',e:'Activo',m:'tomas.lopez@smarten.com.co',cel:'',fc:'2020-12-30',fx:'2022-12-29',co:'SMARTEN S.A.S. E.S.P.'},
+{id:160,n:'LUIS ALEJANDRO',a:'MARIN ARISTIZABAL',d:'CC',nid:'1112128890',u:'lamarin',c:'$2b$10$x18YjccIy9AgG2MLHyKPe.b23NGk64qw7HAKZdNgR7S8ITrZ8OF4.',t:'Asistente OARE',e:'Activo',m:'lamarin@minenergia.gov.co',cel:'',fc:'2020-12-30',fx:'2022-12-30',co:''},
+{id:161,n:'DANIEL FELIPE',a:'ALDANA MAYORGA',d:'CC',nid:'1013651427',u:'dfaldana',c:'$2b$10$VL2ItB50m3L4yuUpfdE28.TczO7EdBc9bNfLD2/FpjNYeV6jhAO7S',t:'Asistente Energía Eléctrica',e:'Activo',m:'dfaldana@minenergia.gov.co',cel:'3166181647',fc:'2020-12-31',fx:'2022-12-28',co:''},
+{id:162,n:'Gabriel',a:'Puerta',d:'CC',nid:'86065223',u:'86065223',c:'$2b$10$Vz1yVAeUQP1cbWz4DNHEB.FBpcJ6kN.aIbOyXDmdgbEdhaPO.q4i2',t:'Administrador',e:'Activo',m:'inggapa@gmail.com',cel:'3115987518',fc:'2021-01-08',fx:'2027-03-31',co:''},
+{id:163,n:'TestGabriel',a:'Usuario',d:'CC',nid:'860652236',u:'AMiGabriel',c:'$2b$10$BF8CJGVjdOHLHYdf3oMIEe5P0LDMmMVn94fEXWiI4qHY7aiYW9L3y',t:'Empresa energía convencional - AMI',e:'Activo',m:'licgapa@gmail.com',cel:'',fc:'2021-01-19',fx:'2025-06-02',co:'OARE Prueba'},
+{id:164,n:'Lised',a:'Chaves',d:'CC',nid:'1085277826',u:'lkchaves2',c:'$2b$10$U6JugefvwxLcxpdtISom5uuu.1UoNR9dYUHBBlAPjs2vYmKTi.b4W',t:'Asistente OARE',e:'Activo',m:'lis1461@hotmail.com',cel:'',fc:'2021-02-02',fx:'2025-02-02',co:''},
+{id:165,n:'AFINIA',a:'',d:'NIT',nid:'900445254',u:'AMI900445254',c:'$2b$10$yb6Ui2QNvT83EFfSvHlVvObTb56q19xLr1OMvbfSmFNG5X21neV8W',t:'Empresa energía convencional - AMI',e:'Activo',m:'serviciosjuridicos@afinia.com.co',cel:'3114350703',fc:'2021-03-04',fx:'2023-02-25',co:'AFINIA S.A. E.S.P.'},
+{id:166,n:'Air-e',a:'',d:'NIT',nid:'890402550',u:'AMI890402550',c:'$2b$10$0LdzTl5Y6/RhNCaekZ5tYeGBAMAnN.HHQ6tgArMo2aPQZyXchOZ76',t:'Empresa energía convencional - AMI',e:'Activo',m:'ocastroc.est@air-e.com',cel:'',fc:'2021-03-15',fx:'2023-03-12',co:'AIR-E S.A. E.S.P'},
+{id:167,n:'Carlos Andres',a:'Alvarez',d:'CC',nid:'1128423531',u:'OAR1128423531',c:'$2b$10$VNjyPuVsQqQimg0uXMYhOepRPSd5uDX5dKb5U/ARaIt/iQ9n8yrL.',t:'Asistente OARE',e:'Activo',m:'caalvareza@minenergia.gov.co',cel:'',fc:'2021-04-12',fx:'2026-12-31',co:''},
+{id:168,n:'PruebasGAN',a:'2023',d:'CC',nid:'1234512345',u:'RND12345',c:'$2b$10$pnpDbL4kJv90DRSY3uz/ke5l1JsWrpKuE8jMu5n5BjEBbzAe.UQpW',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'inggapa@gmail.com',cel:'',fc:'2021-08-13',fx:'2025-06-10',co:'Prueba Gencan'},
+{id:169,n:'MARÍA FERNANDA',a:'ROMERO MALDONADO',d:'CC',nid:'1015450497',u:'mfromero',c:'$2b$10$RtYDo7HPYb0Agp/WhNObruvKrn0ONEWy1/NsTIx8.lj5jQLqaoeCu',t:'Asistente Energía Eléctrica',e:'Activo',m:'mfromero@minenergia.gov.co',cel:'3195523234',fc:'2021-08-17',fx:'2023-12-30',co:''},
+{id:170,n:'SERGIO IVÁN',a:'SALAMANCA GAVIRIA',d:'CC',nid:'1013605400',u:'sisalamanca',c:'$2b$10$Yo.R0Ax.SLWe0KEb.gAdguvdFeEpePcLgAUtpuSyMWkbDa8teGjke',t:'Asistente Energía Eléctrica',e:'Activo',m:'sisalamanca@minenergia.gov.co',cel:'3144241433',fc:'2021-08-17',fx:'2022-12-30',co:''},
+{id:171,n:'AIR-E',a:'ESP',d:'NIT',nid:'890402550',u:'URL890402550',c:'$2b$10$SZi7K7MlBjlPbdi4Hrcia.7t8rvGIskZaj/zcWvMl9lNq2WKE/z6O',t:'Empresa energía convencional - UsRural',e:'Activo',m:'notificaciones.judiciales@air-e.com',cel:'',fc:'2021-09-14',fx:'2022-12-31',co:'AIR-E S.A. E.S.P'},
+{id:172,n:'AFINIA',a:'ESP',d:'NIT',nid:'900445254',u:'URL900445254',c:'$2b$10$q3Mc36Ij8LwHdwo6cmFfbuwz8umofOk81ChtCANIdGJkHmq3Eu3Me',t:'Empresa energía convencional - UsRural',e:'Activo',m:'buenaenergia@afinia.comco',cel:'',fc:'2021-09-14',fx:'2023-12-31',co:'AFINIA S.A. E.S.P.'},
+{id:173,n:'Carga Datos',a:'OARE',d:'CC',nid:'1111111',u:'carga',c:'$2b$10$P5Cx7yeL7JKhpC.vYuV5MuPQe2AWMPU0ZOaYVCajGY7CFy6wWpuei',t:'Empresa energía convencional - UsRural',e:'Activo',m:'jairolh@yahoo.com',cel:'',fc:'2021-11-08',fx:'2023-12-30',co:'EMPRESA MUNICIPAL DE ENERGÍA ELÉCTRICA S.A-E.S.P'},
+{id:174,n:'Jhonatan Mauricio',a:'Avila Orozco',d:'CC',nid:'14135706',u:'Jmavila',c:'$2b$10$oTmfJQOlZHn03kgsQIgD4OVDh3RmdLYZf0Fc5Jw1uHrxMRHwRPeyi',t:'Empresa energía no convencional - Dosimetria',e:'Inactivo',m:'jmavila@minenergia.gov.co',cel:'30046345407',fc:'2022-03-09',fx:'2025-01-26',co:'Prueba Gencan'},
+{id:175,n:'ENERSINC',a:'',d:'CC',nid:'900463244',u:'EV900463244',c:'$2b$10$6uG7/CMgeEyjWp8oZ9oyK.ss2Caybcmb0mE3RsV33PULCp0MmctW.',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'jsierra@enersinc.com',cel:'',fc:'2022-08-08',fx:'2032-08-08',co:'ENERSINC'},
+{id:176,n:'ENEL COLOMBIA',a:'',d:'CE',nid:'5584233',u:'EV5584233',c:'$2b$10$pDUI35FugANJcl2QvjCN1uP6OiDuOWCplmKkVPBAopHYvTlcUHzvu',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'pablo.campos@enel.com',cel:'',fc:'2022-07-29',fx:'2032-07-29',co:'EMGESA S.A. E.S.P.'},
+{id:177,n:'Central Hidroeléctrica de Caldas CHEC S.A. E.S.P',a:'',d:'NIT',nid:'890800128',u:'EV890800128',c:'$2b$10$5dHMmZ1Vhk1pp.fpfmcYxuAdowPW.UeZk7gkpYMRbktQHD0Y0ePFy',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'elizabeth.salgado@chec.com.co',cel:'',fc:'2022-07-29',fx:'2032-07-29',co:'CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.'},
+{id:178,n:'Electrificadora de Santander',a:'',d:'NIT',nid:'890201230-1',u:'EV890201230-1',c:'$2b$10$muWmoLoMWI33vfe.JKaqp.uOasOQ.v5v5gIGDV3oSDsCRLYv2MMha',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'oscar.meneses@essa.com.co',cel:'',fc:'2022-07-29',fx:'2032-07-29',co:'ELECTRIFICADORA DE SANTANDER S.A. E.S.P.'},
+{id:179,n:'Empresa de Energía del Quindío S.A E.S.P',a:'',d:'NIT',nid:'800052640',u:'EV800052640',c:'$2b$10$aDG3NGUkZBisuuYGevFWvecZRt2z6ANFCsxRoR3ZaqFZLgxpbD8jS',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'elberth.hurtado@edeq.com.co',cel:'',fc:'2022-07-29',fx:'2032-07-29',co:'EMPRESA DE ENERGIA DEL  QUINDIO S.A.E.S.P.'},
+{id:181,n:'Empresas Públicas de Medellín',a:'EPM',d:'CC',nid:'890904996-1',u:'EV98700327',c:'$2b$10$dGCOXPTnXWihXMO7pcUvjuHrqchs2UaH8KlY0WUzvWVZuMIJM5zuS',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'miguel.cadavid@epm.com.co',cel:'',fc:'2022-08-01',fx:'2032-07-31',co:'EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.'},
+{id:182,n:'Organizacion Terpel S.A.',a:'',d:'NIT',nid:'8300952130',u:'EV8300952130',c:'$2b$10$DFsrwVneG7DcaJj86VMg3eKeDU539gCdnE6/m/wrFIoh/jo0YgNIK',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'veronica.ramirez@terpel.com',cel:'',fc:'2022-08-04',fx:'2032-08-04',co:'Organizacion Terpel S.A.'},
+{id:183,n:'Empresa de Energía de Pereira',a:'',d:'NIT',nid:'816002019-9',u:'EV816002019-9',c:'$2b$10$jmSrkSjiqOswaQWPAJv29u9xbDBwqTh7sI034WDveYYdLyT1Amp9y',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'ntangarifer@eep.com.co',cel:'',fc:'2022-08-05',fx:'2032-08-05',co:'EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.'},
+{id:184,n:'Celsia Colombia S.A. E.S.P.',a:'',d:'NIT',nid:'800249860-1',u:'EV800249860-1',c:'$2b$10$evf3YeEchy8q.pABsz2gquN.BqbCvf3r0emYVIZBdNrNLGcaWoFqm',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'movilidad_electrica@celsia.com',cel:'',fc:'2022-08-05',fx:'2032-08-05',co:'CELSIA COLOMBIA S.A. E.S.P.'},
+{id:185,n:'Empresas Municipales de Cali EMCALI EICE ESP',a:'',d:'NIT',nid:'890399003-4',u:'EV890399003-4',c:'$2b$10$4bulKOA2oi7NnLWKoIXD0O5GOZjHj4i7WZNBa3sEWVfqbT2lqq5MW',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'gerojas@emcali.com.co',cel:'',fc:'2022-08-05',fx:'2032-08-05',co:'EMPRESAS MUNICIPALES DE CALI   E.I.C.E  E.S.P'},
+{id:186,n:'SISTEMAS INSEPET CIA LTDA',a:'',d:'NIT',nid:'830071049-5',u:'EV830071049-5',c:'$2b$10$2G8M9fd2mJlfO/sdtjBDEuIjVzkVi3a95e69NjFn1Vx2Bl0qcsW4W',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'eliecer.garzon@insepet.com',cel:'',fc:'2022-08-09',fx:'2032-08-09',co:'SISTEMAS INSEPET CIA LTDA'},
+{id:187,n:'MinEnergía',a:'Energía',d:'CC',nid:'1128423531',u:'EV1128423531',c:'$2b$10$dDXRPOzrgAWgp1akLEOam.YLAXCtwYfHjX6bbY9LAxfRtqBkhPKCi',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'caalvareza@minenergia.gov.co',cel:'',fc:'2022-08-10',fx:'2032-08-06',co:'MinEnergía'},
+{id:188,n:'CENTRALES ELÉCTRICAS DEL NORTE DE SANTANDER',a:'',d:'NIT',nid:'890500514-9',u:'EV890500514-9',c:'$2b$10$Zku07bSRt9CsfQbv3VHm9ePiJUSCHljiVW.D9YblJrSxzF7fn1Y9i',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'Gerencia@cens.com.co',cel:'',fc:'2022-08-13',fx:'2032-08-13',co:'CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP'},
+{id:189,n:'Jhonatan',a:'Marin',d:'CC',nid:'80117453',u:'jmarin',c:'$2b$10$/R3ELSuQXScH0fjucvvf4eP874Q5QdxmLK.M7K6PjxoatI7uOG2LS',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'jmarin@minenergia.gov.co',cel:'314155215',fc:'2023-01-11',fx:'2025-01-09',co:'Prueba Gencan'},
+{id:190,n:'Juan',a:'Parra',d:'CC',nid:'79843305',u:'jpparra',c:'$2b$10$KtA6XQiialX5MxE7oO29..Y..YHuF1kehwO2qcLkz2/8HucJ9EU7a',t:'Asistente GENCAN',e:'Activo',m:'jpparra@minenergia.gov.co',cel:'3004719921',fc:'2023-01-11',fx:'2025-01-18',co:''},
+{id:191,n:'aspromedica',a:'sas',d:'NIT',nid:'900786049',u:'RND900786049',c:'$2b$10$H0y9VkeEFuEqlurN9VmyWedJZVu1.yaDv9sNUx2C3jtl14fuH2P.O',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'dosimetria@aspromedica.com',cel:'',fc:'2023-01-24',fx:'2025-06-10',co:'ASPROMÉDICA DOSIMETRÍA S.A.S.'},
+{id:192,n:'saludocupacional',a:'selig',d:'NIT',nid:'830041730',u:'RND830041730',c:'$2b$10$H0y9VkeEFuEqlurN9VmyWedJZVu1.yaDv9sNUx2C3jtl14fuH2P.O',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'saludocupacional@seligdecolombia.com',cel:'1111111',fc:'2023-01-24',fx:'2025-06-09',co:'SELIG DE COLOMBIA S.A'},
+{id:193,n:'Care',a:'dosimetry',d:'NIT',nid:'900565894',u:'RND900565894',c:'$2b$10$H0y9VkeEFuEqlurN9VmyWedJZVu1.yaDv9sNUx2C3jtl14fuH2P.O',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'laboratoriotld@caredosimetry.com',cel:'',fc:'2023-01-24',fx:'2025-06-07',co:'CARE DOSIMETRY S.A.S.'},
+{id:194,n:'Control',a:'Calidad',d:'NIT',nid:'901392080',u:'RND901392080',c:'$2a$10$DMTvyyyAvruxuVRgKVRV3et4NpsS6a9.ByJU4lp1u217LfLW8qKiu',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'dosimetria@controlcalidadrx.com',cel:'',fc:'2023-01-24',fx:'2025-06-10',co:'CONTROL CALIDAD RX S.A.S'},
+{id:195,n:'DOSIMETRIA',a:'PERSONAL',d:'NIT',nid:'811021579',u:'RND811021579',c:'$2b$10$H0y9VkeEFuEqlurN9VmyWedJZVu1.yaDv9sNUx2C3jtl14fuH2P.O',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'info@dosimetriapersonal.com',cel:'',fc:'2023-01-24',fx:'2025-06-14',co:'DOSIMETRÍA PERSONAL S.A.S.'},
+{id:196,n:'PR',a:'Dosimetria',d:'NIT',nid:'830045516',u:'RND830045516',c:'$2b$10$3LHFe2hPaC.3QQeKA3maNOBnwyMrR4/.HWae6VeeaX5/BEM6ro2f6',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'prdosimetria@hotmail.com',cel:'',fc:'2023-01-24',fx:'2025-06-03',co:'PRDDOSIMETRIA LTDA'},
+{id:197,n:'i secure',a:'secure',d:'NIT',nid:'900513665',u:'RND900513665',c:'$2b$10$H0y9VkeEFuEqlurN9VmyWedJZVu1.yaDv9sNUx2C3jtl14fuH2P.O',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'gflorez@isecure.com.co',cel:'',fc:'2023-01-24',fx:'2025-06-09',co:'I SECURE S.A.S'},
+{id:198,n:'SIEVERT',a:'Sievert',d:'CC',nid:'900515350',u:'RND900515350',c:'$2b$10$H0y9VkeEFuEqlurN9VmyWedJZVu1.yaDv9sNUx2C3jtl14fuH2P.O',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'gerente@sievert.com.co',cel:'',fc:'2023-01-24',fx:'2025-06-10',co:'SIEVERT S.A.S'},
+{id:199,n:'Radproct',a:'SAS',d:'NIT',nid:'800162425',u:'RND800162425',c:'$2b$10$H0y9VkeEFuEqlurN9VmyWedJZVu1.yaDv9sNUx2C3jtl14fuH2P.O',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'logistica@radproct.com',cel:'',fc:'2023-02-09',fx:'2025-02-15',co:'RADPROCT S.A.S'},
+{id:200,n:'Gabriel',a:'Puerta',d:'CC',nid:'86065223',u:'EV86065223',c:'$2b$10$zUQBT5t5qiSnVpgxrdjmhuzIFD/HH.33M6jI8o.sN6aT6VxHyNLqi',t:'Consulta',e:'Activo',m:'zeusgapa@gmail.com',cel:'3115987518',fc:'2023-05-02',fx:'2024-12-30',co:''},
+{id:201,n:'Marcela',a:'Ochoa',d:'CC',nid:'1098645918',u:'mjochoa',c:'$2b$10$GfeGmyjwuf94SsywcRFFd.IsgjrfA1SHeJTnCiXVDsPkSCM1TGliG',t:'Asistente Energía Eléctrica',e:'Activo',m:'mjochoa@minenergia.gov.co',cel:'312200300',fc:'2023-05-02',fx:'2023-12-30',co:''},
+{id:202,n:'Andres Felipe',a:'Acevedo Monroy',d:'CC',nid:'1014185255',u:'EV1014185255',c:'$2b$10$v1KyqGBS8s2a8Hb4cZKRbOwokUX2LYytO3JV1lLvN9vFEXkCajmim',t:'Consulta',e:'Activo',m:'afacevedo@minenergia.gov.co',cel:'',fc:'2023-10-10',fx:'2033-10-06',co:''},
+{id:203,n:'MAO',a:'',d:'CC',nid:'1037598707',u:'EV1037598707',c:'$2b$10$/FoLRY/DV9gxezgt79IjI.FVPrC3C9iSzfqv/G9mew9Thg4iYqsjO',t:'Consulta',e:'Activo',m:'andresalvarez678@gmail.com',cel:'',fc:'2023-10-11',fx:'2033-10-10',co:''},
+{id:204,n:'GAN',a:'OARE',d:'CC',nid:'7114',u:'gan',c:'$2b$10$4MYkzqPr/ReEXbZdD8nyBO2o54o1FwYRgnrTjk5Ej6Bqzp1pXDcy6',t:'Administrador',e:'Activo',m:'asuntos.nucleares@minenergia.gov.co',cel:'1',fc:'2024-02-16',fx:'2030-12-23',co:''},
+{id:205,n:'Diego Mauricio',a:'Arias',d:'CC',nid:'1032404403',u:'RND1032404403',c:'$2b$10$ZOVeQF.Xhc4EpzL1iBbIruIYNeNx3jPVEkF94PU2t8NbZ8igRLQCK',t:'Asistente GENCAN',e:'Activo',m:'dmarias@minenergia.gov.co',cel:'3002666833',fc:'2024-02-16',fx:'2024-12-29',co:''},
+{id:206,n:'Viviana Paola',a:'Gutierrez',d:'CC',nid:'46456637',u:'RND46456637',c:'$2b$10$q2XGvjOBnuZWjXNxiWbwDuTK0eCTRAoO6JyT.eh4HimpfvAgZitGS',t:'Administrador',e:'Activo',m:'vpgutierrez@minenergia.gov.co',cel:'3194657427',fc:'2024-02-16',fx:'2027-01-31',co:''},
+{id:207,n:'John',a:'Lozano',d:'CC',nid:'79296714',u:'RND79296714',c:'$2b$10$YBWR6a8PMnMeBtd8vBItzuSjbE2/MlomiT6e39cLuMCYTi5mCtD2i',t:'Asistente GENCAN',e:'Activo',m:'jflozano@minenergia.gov.co',cel:'3157812505',fc:'2024-02-16',fx:'2024-12-31',co:''},
+{id:208,n:'Jose Libardo',a:'Manzano Valbuena',d:'CC',nid:'1032432499',u:'EV1032432499',c:'$2b$10$qJXMKjdoTvb3x9xk4gx1he7QFFQjirfnB/YYRSQPwX3eJsPhjOgM.',t:'Asistente OARE',e:'Activo',m:'jlmanzano@minenergia.gov.coo',cel:'',fc:'2024-03-04',fx:'2034-03-03',co:''},
+{id:209,n:'Entidad Prueba',a:'',d:'CC',nid:'1014185256',u:'EV1014185256',c:'$2b$10$qatjqVRan5OnAKMWD36sOO1pBz7fK4h3KE7CwEV9uIbX0ZEkqy8VK',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'afacevedo@minenergia.gov.co',cel:'',fc:'2024-03-08',fx:'2034-03-04',co:'Entidad Prueba'},
+{id:210,n:'Jaider',a:'Ospina Navas',d:'CC',nid:'17652534',u:'17652534',c:'$2b$10$Dxj64bFjjXov2odZQJ1CDO1JZYT1jM2HCaSunrXrAPv8w3MjaSToi',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'jaider.ospina@gmail.com',cel:'3168000221',fc:'2024-03-09',fx:'2026-01-30',co:'ASPROMÉDICA DOSIMETRÍA S.A.S.'},
+{id:211,n:'Estación De Prueba TI',a:'Pruebas',d:'NIT',nid:'89027802',u:'EV89027802',c:'$2a$10$g3u.iS.G04HkmUqVOCOdLezl0dj6zD0dqzmH6Y5xfILSghUo4QEt2',t:'Administrador',e:'Activo',m:'jsromero@minenergia.gov.co',cel:'',fc:'2024-03-20',fx:'2034-03-17',co:''},
+{id:212,n:'Andres Felipe',a:'Acevedo Monroy',d:'CC',nid:'1014185255',u:'1014185255',c:'$2b$10$qatjqVRan5OnAKMWD36sOO1pBz7fK4h3KE7CwEV9uIbX0ZEkqy8VK',t:'Administrador',e:'Activo',m:'afacevedo@minenergia.gov.co',cel:'',fc:'2024-04-02',fx:'2039-12-31',co:''},
+{id:213,n:'Jaider2',a:'Ospina Navas',d:'CC',nid:'176525342',u:'176525342',c:'$2b$10$bW6.ZC295qRp1AqDW6wLeu6F4NYTlxN3NgupX2qkMoKKf5dE3JfZi',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'jaider.ospina@gmail.com',cel:'3168000221',fc:'2024-04-02',fx:'2025-07-14',co:'DOSIMETRIX INTERNATIONAL TECHNOLOGIES LTDA'},
+{id:214,n:'Jaider',a:'Ospina Navas',d:'CC',nid:'176525343',u:'176525343',c:'$2b$10$CWFmX40AdmnvLLQvxUYdDeVHnYMrARSSfsK5k9477DNH9ZtDjwzZi',t:'Asistente GENCAN',e:'Activo',m:'jaider.ospina@gmail.com',cel:'3168000221',fc:'2024-04-02',fx:'2024-07-24',co:''},
+{id:215,n:'Enerlink Colombia S.A.S.',a:'',d:'NIT',nid:'901575062-2',u:'EV901575062-2',c:'$2b$10$jpqbiPkWvhGlYYuFcaZnY.68eS8r1UgPAilJSLTPS8tZjZlP2xuO.',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'jdussaillant@enerlink.com',cel:'',fc:'2024-04-11',fx:'2034-04-11',co:'Enerlink Colombia S.A.S.'},
+{id:216,n:'SMART INGENIERIA SAS',a:'',d:'NIT',nid:'900090874',u:'EV900090874',c:'$2b$10$/E.fTxyOZbZwpQi66c3F5u.i5/lcEZF6QSxbXy1ROJhZ.y0Y.NXwm',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'mgallegos@smart-ing.com',cel:'',fc:'2024-04-12',fx:'2034-04-12',co:'SMART INGENIERIA SAS'},
+{id:217,n:'L autos SAS',a:'',d:'NIT',nid:'901043622',u:'EV901043622',c:'$2b$10$rynog600w9xM4iKdJCKfKORpgmL8s8CRYrE3j6SPB.DL7akzNd1Zm',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'lautopartes@hotmail.com',cel:'',fc:'2024-04-12',fx:'2034-04-12',co:'L autos SAS'},
+{id:218,n:'Estacion de Prueba',a:'a',d:'NIT',nid:'89092802',u:'EV89092802',c:'$2b$10$KnX3BIl2acPDBQaA60Tqo./3ImX/FnSqMacK1VLPa5GsdePpu4MXa',t:'Consulta',e:'Activo',m:'jsebastianrsanchez@gmail.com',cel:'',fc:'2024-04-18',fx:'2034-04-17',co:''},
+{id:219,n:'Insepet SAS',a:'',d:'NIT',nid:'830006334-3',u:'EV830006334-3',c:'$2b$10$CFWUR54gijxIaOdd6SY/3u4er6LQZRUaoWYDGJFWHaakY5gxRO8Qy',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'elliecer.garzon@insepet.com',cel:'',fc:'2024-04-26',fx:'2034-04-26',co:'Insepet SAS'},
+{id:220,n:'E-COLOMBIA POWER SAS',a:'',d:'NIT',nid:'901407815-2',u:'EV901407815-2',c:'$2b$10$aUpxta3JzSkqB7k1LyHeVuholBSJCzwzJ9OWeb.a2vZU5eY8vVm2e',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'mespinosa@e-colombia.net',cel:'',fc:'2024-05-03',fx:'2034-05-03',co:'E-COLOMBIA POWER SAS'},
+{id:221,n:'ElectroLink Chargers Colombia SAS',a:'',d:'NIT',nid:'901790754',u:'EV901790754',c:'$2b$10$5KaXc9.YvDG8/eyU9r653uN/Jhy./vbJy1iEwg3poE5fSWSfFiJOK',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'ivonne@electrolinkchargers.com',cel:'',fc:'2024-05-04',fx:'2034-05-04',co:'ElectroLink Chargers Colombia SAS'},
+{id:222,n:'CENS S.A. E.S.P.',a:'',d:'NIT',nid:'890500514',u:'EV890500514',c:'$2b$10$XIIl4GXhyVhoFaWiTCwXNeKv/Jwe8MC09mhLagCEHJ0/S8D4477wO',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'julian.mora.nossa@cens.com.co',cel:'',fc:'2024-05-15',fx:'2034-05-15',co:'CENS S.A. E.S.P.'},
+{id:223,n:'AUTOGERMANA SAS',a:'',d:'NIT',nid:'860509514-0',u:'EV860509514-0',c:'$2b$10$a4Js1Ilt.dAH.MOTFTf0b.L7kdYn6Jc/pklYZRlQrzEvu2NkGJTAK',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'santiago.morales@autogermana.com.co',cel:'',fc:'2024-05-23',fx:'2034-05-23',co:'AUTOGERMANA SAS'},
+{id:224,n:'OPERADORA DISTRITAL DE TRANSPORTE S.A.S.',a:'',d:'NIT',nid:'901526664-7',u:'EV901526664-7',c:'$2b$10$7aYfTNnl9x/mE3XUjnlIzeE4MBmFggNJMvsN7JxyZ05m1h3ZS0Jxy',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'radicacion@odt.gov.co',cel:'',fc:'2024-06-04',fx:'2034-06-04',co:'OPERADORA DISTRITAL DE TRANSPORTE S.A.S.'},
+{id:225,n:'IIL',a:'',d:'CC',nid:'0000000',u:'EV0000000',c:'$2b$10$tb4HFnHbdXy7fAYgK4irgeSMLLQzkzEBTFUcLCSCngkJ/XfgV46Um',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'jero.sandher@gmail.com',cel:'',fc:'2024-06-04',fx:'2034-06-04',co:'IIL'},
+{id:226,n:'Viviana',a:'Gutierrez',d:'CC',nid:'1234567',u:'Prueba_Vivi',c:'$2b$10$RdIH36wNlFTcql96cJfBrurPggl/U5kb3zLw6aZsSwMs5Kz86x4Xe',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'fisica.ud@gmail.com',cel:'3194657427',fc:'2024-07-08',fx:'2025-12-21',co:'SIEVERT S.A.S'},
+{id:227,n:'Arley londono',a:'',d:'CC',nid:'98591964',u:'EV98591964',c:'$2b$10$5tWLMCicTeSjCAk25Ox8e.78NSNvVGZt.dUVtig0IiyTD3/V8AD/q',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'arleyj.londono@gmail.com',cel:'',fc:'2024-07-12',fx:'2034-07-12',co:'Arley londono'},
+{id:228,n:'Enel Colombia S.A. E.S.P',a:'',d:'NIT',nid:'8600638758',u:'EV8600638758',c:'$2b$10$w0spkMddS.DZWrxABVcKq.SdwcaXJGp5aVm7UlX...2fNyxvcfqDS',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'john.melo@enel.com',cel:'',fc:'2024-07-15',fx:'2034-07-15',co:'Enel Colombia S.A. E.S.P'},
+{id:229,n:'MUBON S.A.S',a:'',d:'NIT',nid:'901839827',u:'EV901839827',c:'$2b$10$er8uNXEqfBwbKV8HYlEygucFIjlt.TQxhtNkgLQvq.CIsT62S3hUm',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'info@mubon.co',cel:'',fc:'2024-07-21',fx:'2034-07-21',co:'MUBON S.A.S'},
+{id:230,n:'176525344',a:'Ospina Navas',d:'CC',nid:'17652534',u:'176525344',c:'$2b$10$/cnki6cXNwn6zodc1a7bMOnH1egNICBd6v/6493hu5uJGZJkvHODG',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'jaider.ospina@gmail.com',cel:'3168000221',fc:'2024-08-02',fx:'2025-08-15',co:'Prueba Gencan'},
+{id:231,n:'Grupo empresarial O&C SAS - OASIS',a:'',d:'NIT',nid:'900846875',u:'EV900846875',c:'$2b$10$2qmwPPeeoDimJg9LWCtvp.wW1rRVfvEBi9nbY6I53JIddCLUEKPnm',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'comercial@grupooyc.com',cel:'',fc:'2024-08-12',fx:'2034-08-12',co:'Grupo empresarial O&C SAS - OASIS'},
+{id:232,n:'Josehp Sebastian',a:'Romero Sanchez',d:'CC',nid:'1013580145',u:'pruebas',c:'$2b$10$71htxTZkAPJNQ8xtpb.dlu3Gu.SOXbLQXwMlKacytrUc6TPZjq2ii',t:'Empresa energía no convencional - Dosimetria',e:'Activo',m:'jsromero@minenergia.gov.co',cel:'',fc:'2024-08-15',fx:'2025-12-23',co:'Prueba Gencan'},
+{id:233,n:'Ingeniería y productos eléctricos',a:'',d:'NIT',nid:'800191973',u:'EV800191973',c:'$2b$10$Cs0U8WLk0Sq1fFVCSDHbFupAvnoFDodhOG0hV2eTMNPCeW9rW1cz.',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'jeraso@inpel.com.co',cel:'',fc:'2024-08-20',fx:'2034-08-20',co:'Ingeniería y productos eléctricos'},
+{id:234,n:'Universidad Católica de Oriente',a:'',d:'NIT',nid:'890984746',u:'EV890984746',c:'$2b$10$pDubSOBTdS1/dwfQI62doekrRl7Ev5VM.EcXn.ZiazbHLVi45u/..',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'mantenimiento.jefe@uco.edu.co',cel:'',fc:'2024-09-30',fx:'2034-09-30',co:'Universidad Católica de Oriente'},
+{id:235,n:'David Javier',a:'Rincón Adarme',d:'CC',nid:'1098687484',u:'1098687484',c:'$2b$10$DGQo9m3FAIrRrVyAflFTd.vS2PDsvptL9zV5ZMqdxvcxiabwclpcu',t:'Asistente OARE',e:'Activo',m:'djrincon@minenergia.gov.co',cel:'',fc:'2024-10-09',fx:'2030-12-31',co:''},
+{id:236,n:'Universidad Catolica de oriente',a:'',d:'NIT',nid:'8909847467',u:'EV8909847467',c:'$2b$10$jbja6GQ0XSrU7YpJX.Ap5.tBUgbhffDbLGRBzZhCynxFJ/r1xWIBm',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'calidad.lider@uco.edu.co',cel:'',fc:'2024-10-29',fx:'2034-10-29',co:'Universidad Catolica de oriente'},
+{id:237,n:'VATIA SAS ESP',a:'',d:'NIT',nid:'817001892',u:'EV817001892',c:'$2b$10$J4je/hEABdNP9/TpEEA9i..eKfxpDtOjkQqqJqmTmYENnuJJhQPy.',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'lcbravo@vatia.com.co',cel:'',fc:'2024-12-17',fx:'2034-12-17',co:'VATIA SAS ESP'},
+{id:238,n:'Econtrol Systems SAS',a:'',d:'NIT',nid:'900733260-9',u:'EV900733260-9',c:'$2b$10$GpyODJlp1H7uSut6hwtJGu0mQv/FRNBEvtT.pv9f9CAYPr.dFcXm2',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'soporte@econtrol.com.co',cel:'',fc:'2025-01-22',fx:'2035-01-22',co:'Econtrol Systems SAS'},
+{id:239,n:'Econtrol Systems SAS',a:'',d:'NIT',nid:'900733260',u:'EV900733260',c:'$2b$10$ts0XJqHlusTuijT66xnOF.AtnEJG85HbA..3fFpcyTTwGdH3uPb8O',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'soporte@econtrol.com.co',cel:'',fc:'2025-01-22',fx:'2035-01-22',co:'Econtrol Systems SAS'},
+{id:240,n:'VYGO ENERGIA SAS BIC',a:'',d:'NIT',nid:'901679933',u:'EV901679933',c:'$2b$10$PmqfbNomFpjJNTghitjK2.ZDiqspfQnc4rmenGB5LVqPkJrsq15bq',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'info@vygoenergia.com.co',cel:'',fc:'2025-01-23',fx:'2035-01-23',co:'VYGO ENERGIA SAS BIC'},
+{id:241,n:'Oscar',a:'Moreno',d:'CC',nid:'12341234',u:'ojmoreno',c:'$2b$10$hw5byGohCxZKzkkLPY9r0.6RZoUKwrUahppL2fbyY92E3qnVDwpTi',t:'Administrador',e:'Activo',m:'ojmoreno@minenergia.gov.co',cel:'341341422',fc:'2025-02-28',fx:'2030-12-31',co:''},
+{id:242,n:'David Santiago Londono Giraldo',a:'',d:'CC',nid:'1000414906',u:'EV1000414906',c:'$2b$10$1MI5NS32YJjiR7HVBwbwWebb8G2/VoGpADR8b3Rnf2fWXzKSEV9UK',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'hlc.david327@gmail.com',cel:'',fc:'2025-03-26',fx:'2035-03-26',co:'David Santiago Londono Giraldo'},
+{id:243,n:'Pruebas',a:'Carga ME',d:'CC',nid:'123456789',u:'EV123456789',c:'$2b$10$yGHC.1DJg9qbDhi9nknlh.jflUlTasngCjNkgx3G1QBT0zgPur6By',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'cavillalobos@minenergia.gov.co',cel:'',fc:'2025-04-03',fx:'2039-12-29',co:'PRUEBA2026'},
+{id:244,n:'EMCALI EICE ESP',a:'',d:'NIT',nid:'890399003',u:'EV890399003',c:'$2b$10$oQ62.5RRsqPFhFCvNYqM5.BEfXi0gj3TjLr4YMEAweiPuw6C9c2Te',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'gerojas@emcali.com.co',cel:'',fc:'2025-05-02',fx:'2035-05-02',co:'EMCALI EICE ESP'},
+{id:245,n:'ERCO ENERGÍA SAS',a:'',d:'NIT',nid:'900570286',u:'EV900570286',c:'$2b$10$Xjpru8PiTEa8QPfIH3EAV.HFUjntuw/0NA2HHUWXydOyKf.mh0Asi',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'emontoya@erco.energy',cel:'',fc:'2025-05-20',fx:'2035-05-20',co:'ERCO ENERGÍA SAS'},
+{id:246,n:'Estación De Prueba TI 2',a:'',d:'CC',nid:'10316539',u:'EV10316539',c:'$2b$10$Mswume9fPY3jgAurKgXDhupmCynSKz/9mQmhoSngxB6CeEqovnj4S',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'jsromero@minenergia.gov.co',cel:'',fc:'2025-06-09',fx:'2035-06-09',co:'Estación De Prueba TI 2'},
+{id:247,n:'EMPRESA URRÁ S.A. E.S.P.',a:'',d:'NIT',nid:'800175746-9',u:'EV800175746-9',c:'$2b$10$sieDg9MsvHOXDcKeW0Q1Eufz1xgMLF9lQrdsEGRsAidSlRyGHbK2W',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'jquintero@urra.com.co',cel:'',fc:'2025-06-09',fx:'2035-06-09',co:'EMPRESA URRÁ S.A. E.S.P.'},
+{id:248,n:'Ergenia S.A.S.',a:'',d:'NIT',nid:'901752457-7',u:'EV901752457-7',c:'$2b$10$s4sdUJFNNdUJXuf6A.aE9u9eQJU7DSGjfzl4Y9Hkc/.1UdkrdSEKq',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'ergeniacolombia@gmail.com',cel:'',fc:'2025-06-11',fx:'2035-06-11',co:'Ergenia S.A.S.'},
+{id:249,n:'Entorno Silvestre SAS',a:'',d:'NIT',nid:'901037898',u:'EV901037898',c:'$2b$10$TKoLc3tIUGFBy8Wi9IWUmeo1TgBfUZyDNdKIDPKMbpO7nPAxCGAXG',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'info@entornosilvestre.com',cel:'',fc:'2025-07-09',fx:'2035-07-09',co:'Entorno Silvestre SAS'},
+{id:250,n:'Enerbit SAS ESP',a:'',d:'CC',nid:'53008790',u:'EV53008790',c:'$2b$10$IAyJychD2mu/a1Ff2BfIjO0Z54z42BVkPSIyUkwtmPwbO8asGhEsm',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'dmmurillom@enerbit.co',cel:'',fc:'2025-07-22',fx:'2035-07-22',co:'Enerbit SAS ESP'},
+{id:251,n:'Diland Castro',a:'',d:'PAS',nid:'F61579384',u:'EVF61579384',c:'$2b$10$Rd3iHhXiJfWIjxSm/aY4ROr1j708snabNKvBgOCw4.sVa/T8UPx52',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'diland@cmsostenible.org',cel:'',fc:'2025-09-03',fx:'2035-09-03',co:'Diland Castro'},
+{id:252,n:'Hotel El Alfarero SAS',a:'',d:'NIT',nid:'901237957-1',u:'EV901237957-1',c:'$2b$10$7oUnf0o53oe9tv.hUJ9GLezf9IW/xNpLhluPeldJXUs8TSjAl7jFe',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'alfahar@humancraft.com.co',cel:'',fc:'2025-09-11',fx:'2035-09-11',co:'Hotel El Alfarero SAS'},
+{id:253,n:'VATIO EV',a:'',d:'NIT',nid:'10407569843',u:'EV10407569843',c:'$2b$10$SYYxEOWrQECBDIeVj7CXfedrlO2UxJX/dVgGoRwn1p1DeGnCrjyLm',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'coo@vatio.com.co',cel:'',fc:'2025-10-24',fx:'2035-10-24',co:'VATIO EV'},
+{id:254,n:'Prueba',a:'',d:'NIT',nid:'90999999',u:'EV90999999',c:'$2b$10$Rt8gtuaAE/0eNSH.GN1I3eIeqNRe2eoR1iQc4DWbDNYySvJOdF/c2',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'jsebastianrsanchez@gmail.com',cel:'',fc:'2025-10-27',fx:'2035-10-27',co:'Prueba'},
+{id:255,n:'Version 3.0 SAS',a:'',d:'NIT',nid:'900676602',u:'EV900676602',c:'$2b$10$hEG4DYdsVOlAWXhSkRRCI.CnURlP7qo97IsXo6YsfJQuXcVEzwJzq',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'jruiseco@zolectrum.com',cel:'',fc:'2025-11-17',fx:'2035-11-17',co:'Version 3.0 SAS'},
+{id:256,n:'Polen Transiciones Justas',a:'',d:'CC',nid:'1020738034',u:'EV1020738034',c:'$2b$10$T6t/OjRsoQOFJdXxXJBI/O5mU7l5pukZgUQhIZa/WuYssjHeIdeyG',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'juan.diaz@polentj.org',cel:'',fc:'2025-12-17',fx:'2035-12-17',co:'Polen Transiciones Justas'},
+{id:257,n:'Internacional de Eléctricos S.A.S.',a:'',d:'NIT',nid:'809002625',u:'EV809002625',c:'$2b$10$hiwAJ1hMZYuijQEkj8gIquu3WenioseWzO31hQKBDwwtWKsfL.Wgq',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'leecheverri@iegrupo.co',cel:'',fc:'2025-12-22',fx:'2035-12-22',co:'Internacional de Eléctricos S.A.S.'},
+{id:258,n:'Carlos',a:'Villalobos',d:'CC',nid:'1026277669',u:'cavillalobos',c:'$2b$10$d8wKy.bI8vT3kDL53JFgfeK3yWZ6Sw4tohaCX6KiwYXPPYA42gZtC',t:'Administrador',e:'Activo',m:'cavillalobos@minenergia.gov.co',cel:'3177773377',fc:'2025-12-22',fx:'2027-12-30',co:''},
+{id:259,n:'COPOWER LIMITADA',a:'',d:'NIT',nid:'804011804',u:'EV804011804',c:'$2b$10$KDwls1N1VltMt.y4P2Y.3edOb9NsWeVsB2cdoXPH7kEdU7clcbxzi',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'gerencia@copower.com.co',cel:'',fc:'2025-12-22',fx:'2035-12-22',co:'COPOWER LIMITADA'},
+{id:260,n:'SM CONSULTORÍA E INGENIERÍA S.A.S',a:'',d:'CC',nid:'901639610',u:'EV901639610',c:'$2b$10$iBq8uTtI7lzr7VzriI4uROVNP5S/ht0H7HB44QSBe3H3t.yX9p6bK',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'comercial@smcei.com',cel:'',fc:'2026-01-13',fx:'2036-01-13',co:'SM CONSULTORÍA E INGENIERÍA S.A.S'},
+{id:261,n:'Energia electrica de colombia SAS',a:'',d:'NIT',nid:'900551493',u:'EV900551493',c:'$2b$10$n3546f.CjzaaYu2ebrKl/OlKRSbHc.2FAYLcfoUa1SE/sc.plMaxy',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'obras.energecol@outlook.com',cel:'',fc:'2026-01-28',fx:'2036-01-28',co:'Energia electrica de colombia SAS'},
+{id:262,n:'ELECTRICAL CHARGE SAS',a:'',d:'NIT',nid:'901950098',u:'EV901950098',c:'$2b$10$3rxk3kQV.kRBPqj0mmYc4OUsKxM67QjysQTSzMulYX6sQsFtpnKCW',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'info@e-charge.com.co',cel:'',fc:'2026-02-04',fx:'2036-02-04',co:'ELECTRICAL CHARGE SAS'},
+{id:263,n:'HUB DE MOVILIDAD PLAZA CALLE 136 SAS',a:'',d:'NIT',nid:'901446446',u:'EV901446446',c:'$2b$10$xGQyicWp5.V1/trfZcSvw.8HuQGfNeZAz7m1pajbSeJa5k9kQ/Ui.',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'hubscalle136@gmail.com',cel:'',fc:'2026-02-05',fx:'2036-02-05',co:'HUB DE MOVILIDAD PLAZA CALLE 136 SAS'},
+{id:264,n:'CERAMICAS EL DORADO',a:'',d:'NIT',nid:'901299104',u:'EV901299104',c:'$2b$10$QOyOpIbsEdgYY74s5S6Hh.OVm7X76vU4OTMvuIT1QcKzMphKrA4OK',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'eldorado@humancraft.com.co',cel:'',fc:'2026-02-05',fx:'2036-02-05',co:'CERAMICAS EL DORADO'},
+{id:265,n:'PAULO CESAR',a:'GUILLEN ROJAS',d:'CC',nid:'79865431',u:'pcguillen',c:'$2b$10$oeN7of/HnxpLyfgBKcEokuqWM11EtDFQBdhzUgZZJfW1tzYkxlzFq',t:'Administrador',e:'Activo',m:'pcguillen@minenergia.gov.co',cel:'3014310396',fc:'2026-02-09',fx:'2027-01-01',co:''},
+{id:266,n:'EDWARD',a:'GARCIA MANJARRES',d:'CC',nid:'1016062127',u:'egarciam',c:'$2b$10$kuFKeflHO6QjB9pY/fK.m.QJonPp00q//pa2j2v00.JpFaiK0fD2W',t:'Administrador',e:'Activo',m:'egarciam@minenergia.gov.co',cel:'3024453653',fc:'2026-02-09',fx:'2027-01-01',co:''},
+{id:267,n:'HUB DE MOVILIDAD PLAZA CALLE 136 SAS',a:'',d:'NIT',nid:'901446446-4',u:'EV901446446-4',c:'$2b$10$nc7IyXimSlTW1Yynwqi8/OdlByLRTd5Xfs8c8oap2lyDxxyb70Mw6',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'hubscalle136@gmail.com',cel:'',fc:'2026-02-13',fx:'2036-02-13',co:'HUB DE MOVILIDAD PLAZA CALLE 136 SAS'},
+{id:268,n:'Carlos Arturo',a:'Villalobos Izquierdo',d:'CC',nid:'1026277669',u:'EV1026277669',c:'$2b$10$9JP6YJXs6BjpOvWO3d2q/e/aBWZuHXjhTs94oEuqPvan694t8V1X.',t:'Administrador',e:'Activo',m:'cavillalobos@minenergia.gov.co',cel:'',fc:'2026-02-13',fx:'2036-02-10',co:''},
+{id:269,n:'uae junta pruebas',a:'',d:'CC',nid:'1016062128',u:'EV1016062128',c:'$2b$10$LZxXNXpn.XoQ2LPOzYBeduQ9xPfKNBCYS/kXG0aeqCx9hRxcMiYr6',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'egarciam@minenergia.gov.co',cel:'',fc:'2026-02-15',fx:'2036-02-15',co:'uae junta pruebas'},
+{id:270,n:'Juan Nicolás Patiño Rodríguez',a:'',d:'CC',nid:'1013620260',u:'EV1013620260',c:'$2b$10$fjlBTjASMWAW/6TvoutNrusvKKlwgzOfktLW07o6HIYgSvA5pzH/S',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'juan.patino@servinformacion.com',cel:'',fc:'2026-02-19',fx:'2036-02-19',co:'Juan Nicolás Patiño Rodríguez'},
+{id:271,n:'CENTRO DE DIAGNOSTICO AUTOMOTRIZ DEL HUILA SAS',a:'',d:'NIT',nid:'900113252',u:'EV900113252',c:'$2b$10$1o6eVWvZ4BOa2ujTpJBiFOawuUEjEG8Qq1Io8uCRJZVgVwwrSDPGG',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'cdahuila@gmail.com',cel:'',fc:'2026-02-19',fx:'2036-02-19',co:'CENTRO DE DIAGNOSTICO AUTOMOTRIZ DEL HUILA SAS'},
+{id:272,n:'GREET ENERGY',a:'',d:'NIT',nid:'9013775031',u:'EV9013775031',c:'$2b$10$bdTT5CCvn4mu4830A/jjOunjyChph4BpcIofogP6qW8Fw4dzNbtiC',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'evcharge@greetenergy.com',cel:'',fc:'2026-02-28',fx:'2036-02-28',co:'GREET ENERGY'},
+{id:273,n:'CENTRO-NET S.A.S.',a:'',d:'NIT',nid:'8050204578',u:'EV8050204578',c:'$2b$10$OmRsBduW1FY1vY9kA5Vg.e4ppa0Yp.FRNZOADDJwPRvW707BOAJAy',t:'Empresa energía convencional - Estaciones Carga',e:'Activo',m:'juridico@centronet.com.co',cel:'',fc:'2026-03-02',fx:'2036-03-02',co:'CENTRO-NET S.A.S.'}
+];
+
+// Populate filter dropdown
+const tiposSet = new Set(allUsers.map(u=>u.t).filter(Boolean));
+const sel = document.getElementById('filterTipo');
+if(sel){[...tiposSet].sort().forEach(t => {
+  const o = document.createElement('option');
+  o.value = t; o.textContent = t;
+  sel.appendChild(o);
+});}
+
+// KPIs
+const hoy = new Date().toISOString().slice(0,10);
+const elTotal = document.getElementById('kpiTotal');
+if(elTotal) elTotal.textContent = allUsers.length;
+const elAdmin = document.getElementById('kpiAdmin');
+if(elAdmin) elAdmin.textContent = allUsers.filter(u=>u.t==='Administrador').length;
+const elActivos = document.getElementById('kpiActivos');
+if(elActivos) elActivos.textContent = allUsers.filter(u=>u.e==='Activo').length;
+const elExp = document.getElementById('kpiExpirados');
+if(elExp) elExp.textContent = allUsers.filter(u=>u.fx && u.fx < hoy).length;
+const elHash = document.getElementById('kpiHashes');
+if(elHash) elHash.textContent = allUsers.filter(u=>u.c).length;
+
+function filtrarUsuarios() {
+  const q = (document.getElementById('filterUsuarios').value||'').toLowerCase();
+  const tipo = document.getElementById('filterTipo').value;
+  const estado = document.getElementById('filterEstado').value;
+  const filtered = allUsers.filter(u => {
+    if (q && !(u.n+' '+u.a+' '+u.u+' '+u.m+' '+u.nid+' '+u.co).toLowerCase().includes(q)) return false;
+    if (tipo && u.t !== tipo) return false;
+    if (estado && u.e !== estado) return false;
+    return true;
+  });
+  renderUsuarios(filtered);
+  document.getElementById('conteoFiltrado').textContent = 'Mostrando '+filtered.length+' de '+allUsers.length;
+}
+
+function renderUsuarios(list) {
+  const tb = document.getElementById('tbodyUsuarios');
+  if(!tb) return;
+  tb.innerHTML = list.map(u => {
+    const isAdmin = u.t === 'Administrador';
+    const rowCls = isAdmin ? 'bg-red-50 font-semibold' : '';
+    const hashFull = u.c || '—';
+    const expCls = u.fx && u.fx < hoy ? 'text-red-500' : '';
+    const celStr = u.cel && u.cel !== 'null' && u.cel !== '0' ? u.cel : '';
+    // Análisis de predictibilidad de contraseña
+    let passRisk = '';
+    const nidClean = u.nid.replace(/[^0-9]/g,'');
+    const usrClean = u.u.replace(/[^0-9]/g,'');
+    const usrLower = u.u.toLowerCase();
+    const nLower = u.n.toLowerCase().trim();
+    if (isAdmin && usrLower === 'admin') {
+      passRisk = '<span class="bg-red-200 text-red-900 px-1 rounded font-bold text-xs">🔴 CRÍTICO — Login genérico "admin", alta probabilidad de contraseña débil (admin, admin123, Admin2020, etc.)<\/span>';
+    } else if (u.u === u.nid || usrClean === nidClean) {
+      passRisk = '<span class="bg-red-100 text-red-800 px-1 rounded text-xs">🔴 Login = NIT/CC → Alta probabilidad de que la contraseña sea el mismo NIT, NIT+año, o variación simple<\/span>';
+    } else if (u.u.startsWith('AMI') && u.u.substring(3) === nidClean) {
+      passRisk = '<span class="bg-orange-100 text-orange-800 px-1 rounded text-xs">🟠 Login = AMI+NIT → Patrón predecible. Contraseña probable: NIT, AMI+NIT, nombre empresa, 123456<\/span>';
+    } else if (u.u.startsWith('ESP') || u.u.startsWith('URL') || u.u.startsWith('EC_') || u.u.startsWith('DSM')) {
+      passRisk = '<span class="bg-orange-100 text-orange-800 px-1 rounded text-xs">🟠 Login con prefijo estándar ('+u.u.substring(0,3)+'+NIT) → Patrón predecible, probable contraseña = NIT o variación<\/span>';
+    } else if (/^[0-9]+$/.test(u.u)) {
+      passRisk = '<span class="bg-red-100 text-red-800 px-1 rounded text-xs">🔴 Login = número de documento → Muy alta probabilidad de contraseña = mismo documento o variación simple<\/span>';
+    } else {
+      passRisk = '<span class="bg-yellow-100 text-yellow-800 px-1 rounded text-xs">🟡 Patrón de login no estándar — riesgo medio de contraseña predecible<\/span>';
+    }
+    return '<tr class="'+rowCls+'">'+
+      '<td>'+u.id+'<\/td>'+
+      '<td>'+(u.n+(u.a?' '+u.a:''))+'<\/td>'+
+      '<td class="text-xs">'+u.d+'<\/td>'+
+      '<td class="font-mono text-xs">'+u.nid+'<\/td>'+
+      '<td class="font-mono text-red-700 font-bold">'+u.u+'<\/td>'+
+      '<td class="font-mono text-red-600 hash-cell">'+hashFull+'<\/td>'+
+      '<td class="text-xs" style="min-width:200px;max-width:280px;">'+passRisk+'<\/td>'+
+      '<td class="text-xs">'+(isAdmin?'<span class="bg-red-100 text-red-800 px-1 rounded text-xs font-bold">'+u.t+'<\/span>':u.t)+'<\/td>'+
+      '<td><span class="text-xs px-1 rounded '+(u.e==='Activo'?'bg-green-100 text-green-800':'bg-red-100 text-red-800')+'">'+u.e+'<\/span><\/td>'+
+      '<td class="text-xs wrap-cell">'+u.m+'<\/td>'+
+      '<td class="font-mono text-xs">'+celStr+'<\/td>'+
+      '<td class="text-xs">'+u.fc+'<\/td>'+
+      '<td class="text-xs '+expCls+'">'+u.fx+'<\/td>'+
+      '<td class="text-xs wrap-cell">'+u.co+'<\/td>'+
+      '<\/tr>';
+  }).join('');
+}
+
+// Initial render
+renderUsuarios(allUsers);
+
+// Chart: Tipo Usuario
+const chartEl = document.getElementById('chartTipoUsuario');
+if(chartEl){
+  const tipoCounts = {};
+  allUsers.forEach(u => { tipoCounts[u.t] = (tipoCounts[u.t]||0)+1; });
+  const tipoLabels = Object.keys(tipoCounts).sort((a,b) => tipoCounts[b]-tipoCounts[a]);
+  const tipoData = tipoLabels.map(l => tipoCounts[l]);
+  const tipoColors = ['#3b82f6','#10b981','#f59e0b','#ef4444','#8b5cf6','#ec4899','#06b6d4','#84cc16','#f97316','#14b8a6','#a855f7'];
+  new Chart(chartEl, {
+    type: 'bar',
+    data: {
+      labels: tipoLabels.map(l => l.length > 35 ? l.substring(0,35)+'...' : l),
+      datasets: [{ label: 'Usuarios', data: tipoData, backgroundColor: tipoColors }]
+    },
+    options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true } } }
+  });
+}
+
+</script>
+</body>
+</html>

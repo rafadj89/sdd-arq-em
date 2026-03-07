@@ -1,0 +1,46 @@
+[
+  {
+    "Id": 73,
+    "Nombre": "Centro comercial"
+  },
+  {
+    "Id": 74,
+    "Nombre": "Empresa"
+  },
+  {
+    "Id": 75,
+    "Nombre": "Estación de Servicio"
+  },
+  {
+    "Id": 76,
+    "Nombre": "Hospital"
+  },
+  {
+    "Id": 77,
+    "Nombre": "Hotel"
+  },
+  {
+    "Id": 78,
+    "Nombre": "Parqueadero"
+  },
+  {
+    "Id": 79,
+    "Nombre": "Restaurante"
+  },
+  {
+    "Id": 80,
+    "Nombre": "Tienda - Comercio"
+  },
+  {
+    "Id": 81,
+    "Nombre": "Universidad"
+  },
+  {
+    "Id": 82,
+    "Nombre": "Vía Pública"
+  },
+  {
+    "Id": 83,
+    "Nombre": "Otro"
+  }
+]

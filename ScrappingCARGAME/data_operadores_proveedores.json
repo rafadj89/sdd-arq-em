@@ -1,0 +1,2891 @@
+[
+  {
+    "Id": 124,
+    "Nombre": "Organizacion Terpel S.A.",
+    "Sitio": "https://www.terpel.com",
+    "TotalEstaciones": 46,
+    "Estaciones": [
+      {
+        "Nombre": "Acqua Power Center",
+        "Direccion": "Cl. 60 #8 (Avenida Guabinal) -37 ",
+        "Departamento": "TOLIMA",
+        "Municipio": "IBAGUE",
+        "Estado": "Activo",
+        "PuntosCarga": 4,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "4.439863891683666",
+        "Longitud": "-75.20429313188289",
+        "FechaCreacion": "2024-05-26"
+      },
+      {
+        "Nombre": "CC Centro Chía",
+        "Direccion": "Av. Pradilla # 9-00 East",
+        "Departamento": "CUNDINAMARCA",
+        "Municipio": "AGUA DE DIOS",
+        "Estado": "Activo",
+        "PuntosCarga": 4,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "4.866032726215681",
+        "Longitud": "-74.03712272644044",
+        "FechaCreacion": "2024-07-08"
+      },
+      {
+        "Nombre": "Club Guaymaral",
+        "Direccion": "Auto. Norte #245-01, Bogotá",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.8248551753600015",
+        "Longitud": "-74.04462218284608",
+        "FechaCreacion": "2025-11-02"
+      },
+      {
+        "Nombre": "Compensar Av 68",
+        "Direccion": "Av. 68 # 49A - 47",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.659679989918364",
+        "Longitud": "-74.09939825534822",
+        "FechaCreacion": "2025-07-21"
+      },
+      {
+        "Nombre": "Compensar bolera",
+        "Direccion": "Av. 68 #49a-47, Bogotá",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.662497242088394",
+        "Longitud": "-74.10092711383187",
+        "FechaCreacion": "2025-11-02"
+      },
+      {
+        "Nombre": "Compensar Cajicá",
+        "Direccion": " Kilómetro 4 Vía, Cajicá - Zipaquirá",
+        "Departamento": "CUNDINAMARCA",
+        "Municipio": "CAJICA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.956041438024583",
+        "Longitud": "-74.00878071697662",
+        "FechaCreacion": "2025-07-19"
+      },
+      {
+        "Nombre": "Compensar Calle 220",
+        "Direccion": "AK 7 - Cl 220",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.798832780796907",
+        "Longitud": "-74.03100013776567",
+        "FechaCreacion": "2025-07-17"
+      },
+      {
+        "Nombre": "Compensar calle 94",
+        "Direccion": "Cl. 94 #23-43",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.681221017737821",
+        "Longitud": "-74.05743598948902",
+        "FechaCreacion": "2025-07-19"
+      },
+      {
+        "Nombre": "Compensar Lagomar",
+        "Direccion": "El Peñon Vereda Portachuelo, Girardot, Cundinamarca",
+        "Departamento": "CUNDINAMARCA",
+        "Municipio": "GIRARDOT",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.322796896765075",
+        "Longitud": "-74.76757407188417",
+        "FechaCreacion": "2025-07-21"
+      },
+      {
+        "Nombre": "Compensar Lagosol",
+        "Direccion": " Calle 17 Sur #5a 38",
+        "Departamento": "CUNDINAMARCA",
+        "Municipio": "NILO",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.222836000561403",
+        "Longitud": "-74.69748616229482",
+        "FechaCreacion": "2025-07-21"
+      },
+      {
+        "Nombre": "Compensar Suba",
+        "Direccion": "Cl. 139 #94-13",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.737378803176745",
+        "Longitud": "-74.0874713660378",
+        "FechaCreacion": "2025-07-19"
+      },
+      {
+        "Nombre": "EDS Autopista Norte",
+        "Direccion": "Cra 64 Aa No.113A-34",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1,
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1
+        },
+        "Latitud": "6.308633668255152",
+        "Longitud": "-75.55986642706559",
+        "FechaCreacion": "2024-06-17"
+      },
+      {
+        "Nombre": "EDS Av Boyacá",
+        "Direccion": " Av. Boyacá #77a11",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 30,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.693868995205104",
+        "Longitud": "-74.09167885780336",
+        "FechaCreacion": "2025-07-21"
+      },
+      {
+        "Nombre": "EDS Báscula",
+        "Direccion": "Km.10 Autopista Bogotá-Medellín",
+        "Departamento": "CUNDINAMARCA",
+        "Municipio": "AGUA DE DIOS",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 60,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.788982526132663",
+        "Longitud": "-74.19546746360652",
+        "FechaCreacion": "2022-08-04"
+      },
+      {
+        "Nombre": "EDS Cañasgordas",
+        "Direccion": "Cl. 18 #114B-40",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "CALI",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 80,
+        "Conectores": {
+          "GB-T DC": 2,
+          "CCS Combo 1": 2,
+          "CCS Combo 2": 2
+        },
+        "Latitud": "3.352859480903076",
+        "Longitud": "-76.5304827696673",
+        "FechaCreacion": "2025-10-31"
+      },
+      {
+        "Nombre": "EDS Chusacá",
+        "Direccion": "Autop. Sur vía Soacha-Sibate, km 14 +300mts., Soacha, Cundinamarca",
+        "Departamento": "CUNDINAMARCA",
+        "Municipio": "AGUA DE DIOS",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.5502154829416765",
+        "Longitud": "-74.24083589389286",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "EDS Cogua",
+        "Direccion": "Autopista Zipaquirá-Ubaté Cogua, Cundinamarca",
+        "Departamento": "CUNDINAMARCA",
+        "Municipio": "AGUA DE DIOS",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "5.069093449726238",
+        "Longitud": "-73.94374708253356",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "EDS Cruz Roja",
+        "Direccion": "Av. 68 #67B-11, Bogotá",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 45,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.673772380753037",
+        "Longitud": "-74.08866047782796",
+        "FechaCreacion": "2025-11-02"
+      },
+      {
+        "Nombre": "EDS Dagota",
+        "Direccion": "km 70 vía Bucaramanga Barrancabermeja, Santander",
+        "Departamento": "SANTANDER",
+        "Municipio": "BUCARAMANGA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "7.1291406354523685",
+        "Longitud": "-73.56922115683402",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "EDS Diamante",
+        "Direccion": "Vía a Cuatro Vientos km 7 Loma Colorada",
+        "Departamento": "CESAR",
+        "Municipio": "VALLEDUPAR",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "Tipo 2 - IEC 62196": 1,
+          "CHAdeMO": 1
+        },
+        "Latitud": "9.951869234961585",
+        "Longitud": "-73.87271046627575",
+        "FechaCreacion": "2024-07-08"
+      },
+      {
+        "Nombre": "EDS Doilgas",
+        "Direccion": "Cl. 38 #6c-181",
+        "Departamento": "SUCRE",
+        "Municipio": "SINCELEJO",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "9.28014698817353",
+        "Longitud": "-75.40265321687913",
+        "FechaCreacion": "2025-07-21"
+      },
+      {
+        "Nombre": "EDS El Encierro",
+        "Direccion": "Cr43 A #24-30 ",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "GB-T DC": 4,
+          "CCS Combo 2": 4,
+          "CCS Combo 1": 4
+        },
+        "Latitud": "6.224279199482602",
+        "Longitud": "-75.5689322968101",
+        "FechaCreacion": "2024-07-29"
+      },
+      {
+        "Nombre": "EDS El Recreo",
+        "Direccion": "km. 18 vía Tuluá – Buga, Valle del Cauca",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "CALI",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 80,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.010870145443328",
+        "Longitud": "-76.22324473902388",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "EDS El Sol",
+        "Direccion": "VRD CHIA SECTOR EL PORTICO AUTOPISTA NORTE",
+        "Departamento": "CUNDINAMARCA",
+        "Municipio": "AGUA DE DIOS",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.844965641566229",
+        "Longitud": "-74.03052449160897",
+        "FechaCreacion": "2025-02-10"
+      },
+      {
+        "Nombre": "EDS Fátima",
+        "Direccion": "Ruta 25 Tramo 2513 Pr*500 Vía Caucasia",
+        "Departamento": "CORDOBA",
+        "Municipio": "MONTERIA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 60,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "Tipo 2 - IEC 62196": 1,
+          "GB-T DC": 1
+        },
+        "Latitud": "8.205445281618934",
+        "Longitud": "-75.47022521498549",
+        "FechaCreacion": "2024-06-17"
+      },
+      {
+        "Nombre": "EDS La Garota",
+        "Direccion": "km 19 autopista Medellín-Bogotá / Guarne, Antioquia",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.3023886833798235",
+        "Longitud": "-75.45690775304224",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "EDS La Juana",
+        "Direccion": "Avenida Carrera 7 No. 155-99",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.731048835269505",
+        "Longitud": "-74.02422666615166",
+        "FechaCreacion": "2024-05-26"
+      },
+      {
+        "Nombre": "EDS La Mesa",
+        "Direccion": "Lote el triángulo dg 4 5 150, La Mesa, Cundinamarca, Colombia.",
+        "Departamento": "CUNDINAMARCA",
+        "Municipio": "AGUA DE DIOS",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.635150296500632",
+        "Longitud": "-74.44961786313799",
+        "FechaCreacion": "2024-05-26"
+      },
+      {
+        "Nombre": "EDS La Metro",
+        "Direccion": "km. 2 vía al Valle. Calarcá, Quindío",
+        "Departamento": "QUINDIO",
+        "Municipio": "ARMENIA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 80,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.506595526201713",
+        "Longitud": "-75.6557724132901",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "EDS La Paz",
+        "Direccion": "El Placer, Puerto Parra, Santander",
+        "Departamento": "SANTANDER",
+        "Municipio": "PUERTO PARRA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.649631630067906",
+        "Longitud": "-73.94829153861794",
+        "FechaCreacion": "2025-11-02"
+      },
+      {
+        "Nombre": "EDS Las Palmas de Aguachica",
+        "Direccion": "km 7 vía Aguachica – San Martín, Cesar",
+        "Departamento": "CESAR",
+        "Municipio": "VALLEDUPAR",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "8.254206729142744",
+        "Longitud": "-73.6039384153001",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "EDS Las Vegas",
+        "Direccion": "Carrera 51 # 58D 17 Sur",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 60,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.580562853960831",
+        "Longitud": "-74.15476083777322",
+        "FechaCreacion": "2025-07-18"
+      },
+      {
+        "Nombre": "EDS Melgar",
+        "Direccion": "km 6 vía Melgar-Bogotá / Melgar, Tolima",
+        "Departamento": "TOLIMA",
+        "Municipio": "IBAGUE",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.253084937260327",
+        "Longitud": "-74.60977447793081",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "EDS Molinos II",
+        "Direccion": "Lote el molino no 2, Flandes, Tolima, Colombia.",
+        "Departamento": "TOLIMA",
+        "Municipio": "FLANDES",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1,
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1
+        },
+        "Latitud": "4.254731177100696",
+        "Longitud": "-74.84705329072314",
+        "FechaCreacion": "2024-10-16"
+      },
+      {
+        "Nombre": "EDS Montecarmelo",
+        "Direccion": "km 10 Via al Mar Puerto Colombia, Atlántico",
+        "Departamento": "ATLANTICO",
+        "Municipio": "BARRANQUILLA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "11.010304841097465",
+        "Longitud": "-74.91083777322",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "EDS Montecristo",
+        "Direccion": "km 48 sector II ruta del sol / Puerto Salgar, Cundinamarca",
+        "Departamento": "CUNDINAMARCA",
+        "Municipio": "AGUA DE DIOS",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 2": 1,
+          "CCS Combo 1": 1
+        },
+        "Latitud": "5.5764000225020025",
+        "Longitud": "-74.62318686671208",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "EDS Paso Ancho",
+        "Direccion": "Cl. 13 #80-11, Comuna 17, Cali",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "CALI",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 60,
+        "Conectores": {
+          "GB-T DC": 2,
+          "CCS Combo 1": 2,
+          "CCS Combo 2": 2
+        },
+        "Latitud": "3.385766848009648",
+        "Longitud": "-76.53821110687204",
+        "FechaCreacion": "2025-10-31"
+      },
+      {
+        "Nombre": "EDS Pie del Cerro",
+        "Direccion": "Carrera 14 No.30-14",
+        "Departamento": "BOLIVAR",
+        "Municipio": "CARTAGENA DE INDIAS",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "10.42154982392552",
+        "Longitud": "-75.54139316136572",
+        "FechaCreacion": "2024-06-17"
+      },
+      {
+        "Nombre": "EDS Piedecuesta",
+        "Direccion": "Entrada norte autopista Piedecuesta",
+        "Departamento": "SANTANDER",
+        "Municipio": "PIEDECUESTA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CHAdeMO": 1,
+          "CCS Combo 1": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.998209521401015",
+        "Longitud": "-73.05235505169549",
+        "FechaCreacion": "2024-07-08"
+      },
+      {
+        "Nombre": "EDS Popalito",
+        "Direccion": "Autopista al río Magdalena 1",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1,
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1
+        },
+        "Latitud": "6.47023781258171",
+        "Longitud": "-75.28804778910855",
+        "FechaCreacion": "2024-05-27"
+      },
+      {
+        "Nombre": "EDS Río Córdoba",
+        "Direccion": "Kilometro 19 Vía Ciénaga, Ciénaga, Magdalena",
+        "Departamento": "MAGDALENA",
+        "Municipio": "CIENAGA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CHAdeMO": 1,
+          "CCS Combo 1": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "11.02684386145191",
+        "Longitud": "-74.20613408186911",
+        "FechaCreacion": "2024-06-17"
+      },
+      {
+        "Nombre": "EDS Santana",
+        "Direccion": "km 1 Vía Santana-Barbosa Santana, Boyacá",
+        "Departamento": "BOYACA",
+        "Municipio": "TUNJA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.052388013709382",
+        "Longitud": "-73.48570304887163",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "EDS Spinelis",
+        "Direccion": "Km. 113 Vía Bogotá - Tunja",
+        "Departamento": "BOYACA",
+        "Municipio": "TUNJA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "5.490839850449304",
+        "Longitud": "-73.40243697166444",
+        "FechaCreacion": "2024-05-26"
+      },
+      {
+        "Nombre": "EDS Vallemio",
+        "Direccion": "Calle 15 # 27-33 Autopista Cali – Yumbo",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "CALI",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "3.523836731696337",
+        "Longitud": "-76.49768382316326",
+        "FechaCreacion": "2025-10-31"
+      },
+      {
+        "Nombre": "Maloka",
+        "Direccion": "Cra. 68d #24A - 51, Bogotá",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 4,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "4.655832814478031",
+        "Longitud": "-74.10900393719331",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Unicentro Villavicencio",
+        "Direccion": "Barrio Nuevo, Av 40, Puente El Maizaro #26C - 10, Villavicencio, Meta",
+        "Departamento": "META",
+        "Municipio": "VILLAVICENCIO",
+        "Estado": "Activo",
+        "PuntosCarga": 3,
+        "PotenciaMax": 60,
+        "Conectores": {
+          "GB-T AC": 1,
+          "Tipo 2 - IEC 62196": 2,
+          "Tipo 1 - SAE J1772": 1,
+          "GB-T DC": 1,
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.141547860720252",
+        "Longitud": "-73.6339348556794",
+        "FechaCreacion": "2025-11-02"
+      }
+    ],
+    "Departamentos": [
+      "TOLIMA",
+      "CUNDINAMARCA",
+      "BOGOTA, D. C.",
+      "ANTIOQUIA",
+      "VALLE DEL CAUCA",
+      "SANTANDER",
+      "CESAR",
+      "SUCRE",
+      "CORDOBA",
+      "QUINDIO",
+      "ATLANTICO",
+      "BOLIVAR",
+      "MAGDALENA",
+      "BOYACA",
+      "META"
+    ],
+    "Municipios": [
+      "IBAGUE",
+      "AGUA DE DIOS",
+      "BOGOTA, D.C.",
+      "CAJICA",
+      "GIRARDOT",
+      "NILO",
+      "MEDELLIN",
+      "CALI",
+      "BUCARAMANGA",
+      "VALLEDUPAR",
+      "SINCELEJO",
+      "MONTERIA",
+      "ARMENIA",
+      "PUERTO PARRA",
+      "FLANDES",
+      "BARRANQUILLA",
+      "CARTAGENA DE INDIAS",
+      "PIEDECUESTA",
+      "CIENAGA",
+      "TUNJA",
+      "VILLAVICENCIO"
+    ],
+    "Conectores": [
+      "Tipo 1 - SAE J1772",
+      "Tipo 2 - IEC 62196",
+      "CCS Combo 1",
+      "CHAdeMO",
+      "GB-T DC",
+      "CCS Combo 2",
+      "GB-T AC"
+    ],
+    "PotenciaMaxTotal": 80
+  },
+  {
+    "Id": 21,
+    "Nombre": "EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.",
+    "Sitio": "https://www.epm.com.co",
+    "TotalEstaciones": 21,
+    "Estaciones": [
+      {
+        "Nombre": "Centro Comercial Florida",
+        "Direccion": "Cra. 71 Nro. 65 – 150. ",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.2713032911172295",
+        "Longitud": "-75.57732830611691",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "Centro Comercial Los Molinos",
+        "Direccion": "Calle 30a Nro. 82 A-26",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2,
+          "Tipo 1 - SAE J1772": 2
+        },
+        "Latitud": "6.232060080212314",
+        "Longitud": "-75.60496102150621",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "Centro Comercial Mayorca ",
+        "Direccion": "Cl. 51 Sur Nro.48-57. Segundo Nivel parqueaderos entrada Cr 44",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.15650379250727",
+        "Longitud": "-75.60923183578677",
+        "FechaCreacion": "2022-08-02"
+      },
+      {
+        "Nombre": "EDS Aeropuerto Jose Maria Cordoba",
+        "Direccion": "Km 1 Glorieta Aeropuerto José María Córdova, Rionegro vía a Santa Elena ",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1
+        },
+        "Latitud": "6.179508480327888",
+        "Longitud": "-75.44210977283757",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "EDS Avenida Las vegas",
+        "Direccion": "Carrera 48 Nro. 30 S - 48 ",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.1788436016325425",
+        "Longitud": "-75.58804353583366",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "EDS Colibrí - Exposiciones ",
+        "Direccion": "Calle 36 Nro 54 - 55 Glorieta Exposiciones",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.237816271520947",
+        "Longitud": "-75.57566541522739",
+        "FechaCreacion": "2022-08-02"
+      },
+      {
+        "Nombre": "EDS Nutibara",
+        "Direccion": "Transversal 39 B Nro. 79 - 41",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.248238680892737",
+        "Longitud": "-75.59836735350756",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "EDS Sabaneta",
+        "Direccion": "CR 48 - AV LAS VEGAS, entre Calle 72 Sur y 73 Sur",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.153477923116654",
+        "Longitud": "-75.61928285513841",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "El Tesoro",
+        "Direccion": "Cra. 25 A Nro. 1a Sur – 45",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.196861613021281",
+        "Longitud": "-75.56010273259619",
+        "FechaCreacion": "2022-08-02"
+      },
+      {
+        "Nombre": "Estación La Pintada",
+        "Direccion": "CL. 28 # 30 B - 24, Mall Rafael Uribe Uribe",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "LA PINTADA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "5.741543785866927",
+        "Longitud": "-75.60665935279305",
+        "FechaCreacion": "2024-04-25"
+      },
+      {
+        "Nombre": "Estación Los Alamos",
+        "Direccion": "Carrera 52 # 65 – 07",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.263214271303456",
+        "Longitud": "-75.56671321397516",
+        "FechaCreacion": "2024-04-25"
+      },
+      {
+        "Nombre": "Éxito Laureles",
+        "Direccion": "Carrera 81 No. 37 - 100",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.24533465406657",
+        "Longitud": "-75.6020424453106",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "Éxito Poblado",
+        "Direccion": "Calle 10 No. 43E - 135",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.211924440570137",
+        "Longitud": "-75.57536996074862",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "Milla de Oro",
+        "Direccion": "Carrera 43 A Nro. 3 sur -130",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.199907650030389",
+        "Longitud": "-75.57205979777679",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "Plaza Mayor",
+        "Direccion": "Calle 41 Nro. 55 - 80",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.243060525395186",
+        "Longitud": "-75.57578343242405",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "Primer Parque Laureles",
+        "Direccion": "Circular 5 Nro. 73 - 15 ",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.245685410034073",
+        "Longitud": "-75.59296796107809",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "Puerta del Norte",
+        "Direccion": "Diagonal 55 Nro. 34 - 67",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.338889113249638",
+        "Longitud": "-75.542830446562",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "Santa Fe",
+        "Direccion": "Carrera 43A No. 7 Sur-170",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.196815226397389",
+        "Longitud": "-75.57428626735832",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "Sao Paulo",
+        "Direccion": "Carrera 43 A Nro. 18 sur-135",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.185260912801008",
+        "Longitud": "-75.57938391705865",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "Unicentro",
+        "Direccion": "Carrera 66 B Nro. 34 A - 76",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.24039566065355",
+        "Longitud": "-75.58682990017483",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "Viva Palmas",
+        "Direccion": "Km. 17 + 750 mts, Vía El Escobero Las Palmas, (Calle 36DS #27A-105, Envigado)",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.152926015651908",
+        "Longitud": "-75.54084171194236",
+        "FechaCreacion": "2022-08-03"
+      }
+    ],
+    "Departamentos": [
+      "ANTIOQUIA"
+    ],
+    "Municipios": [
+      "MEDELLIN",
+      "LA PINTADA"
+    ],
+    "Conectores": [
+      "Tipo 1 - SAE J1772",
+      "Schuko",
+      "Tipo 2 - IEC 62196",
+      "CCS Combo 1",
+      "CHAdeMO"
+    ],
+    "PotenciaMaxTotal": 50
+  },
+  {
+    "Id": 43,
+    "Nombre": "CELSIA COLOMBIA S.A. E.S.P.",
+    "Sitio": "https://www.celsia.com/",
+    "TotalEstaciones": 12,
+    "Estaciones": [
+      {
+        "Nombre": "Celsia Aeropuerto El Dorado",
+        "Direccion": "Av. El Dorado #103-9, Parqueadero C",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 3,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1,
+          "GB-T AC": 1
+        },
+        "Latitud": "4.6970681558696565",
+        "Longitud": "-74.14071178220827",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Celsia AutoSura Cali",
+        "Direccion": "Av. 2N n.° 3N-20 ",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "CALI",
+        "Estado": "Activo",
+        "PuntosCarga": 3,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1,
+          "Schuko": 1
+        },
+        "Latitud": "3.45186109015601",
+        "Longitud": "-76.53945206286313",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Celsia Autosura Rio 10",
+        "Direccion": "Calle 10 N.° 50-347, Mall Río 10",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 2,
+          "GB-T AC": 1
+        },
+        "Latitud": "6.214474564962057",
+        "Longitud": "-75.58139126624533",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Celsia CC Del Este",
+        "Direccion": "Transversal Superior Carrera 25 # 3-45",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Tipo 2 - IEC 62196": 1,
+          "GB-T AC": 1
+        },
+        "Latitud": "6.198779443029705",
+        "Longitud": "-75.55663905882228",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Celsia CC Oviedo",
+        "Direccion": "Av El Poblado Cr 43 A No 6 S-15 El Poblado",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "GB-T AC": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.198786307253062",
+        "Longitud": "-75.5747469015661",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Celsia La Estación Ibagué",
+        "Direccion": "Calle 60 No. 12-224",
+        "Departamento": "TOLIMA",
+        "Municipio": "IBAGUE",
+        "Estado": "Activo",
+        "PuntosCarga": 4,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Schuko": 2,
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.446078912907553",
+        "Longitud": "-75.20541478851642",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Celsia Mercacentro 10",
+        "Direccion": "Cra . 16 Sur No. 96-48 B/ El Poblado",
+        "Departamento": "TOLIMA",
+        "Municipio": "IBAGUE",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.416094516361226",
+        "Longitud": "-75.17593998324826",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Celsia Nueva Terminal Tuluá",
+        "Direccion": "Transversal 12# #39 A – 35",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "CALI",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 90,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.09888484238169",
+        "Longitud": "-76.17840506272543",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Celsia Seniors mall La tebaida",
+        "Direccion": "Kilómetro 1 vía La Tebaida – El Caimo",
+        "Departamento": "QUINDIO",
+        "Municipio": "LA TEBAIDA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 160,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.4700434640269044",
+        "Longitud": "-75.75432061218476",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Celsia Serena del mar",
+        "Direccion": "Km 8 vía al mar, Edificio Universidad de los Andes, Serena del Mar",
+        "Departamento": "BOLIVAR",
+        "Municipio": "CARTAGENA DE INDIAS",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "10.507186381688522",
+        "Longitud": "-75.47188941501734",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Celsia U CES",
+        "Direccion": "Calle 10A #22-04",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 3,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1,
+          "Schuko": 1
+        },
+        "Latitud": "6.209080479343415",
+        "Longitud": "-75.55371529320945",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Celsia Viva Envigado",
+        "Direccion": "Carrera 48 No. 32B Sur – 139",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "ENVIGADO",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Tipo 2 - IEC 62196": 1,
+          "GB-T AC": 1
+        },
+        "Latitud": "6.176636087819928",
+        "Longitud": "-75.59116178665823",
+        "FechaCreacion": "2022-08-05"
+      }
+    ],
+    "Departamentos": [
+      "BOGOTA, D. C.",
+      "VALLE DEL CAUCA",
+      "ANTIOQUIA",
+      "TOLIMA",
+      "QUINDIO",
+      "BOLIVAR"
+    ],
+    "Municipios": [
+      "BOGOTA, D.C.",
+      "CALI",
+      "MEDELLIN",
+      "IBAGUE",
+      "LA TEBAIDA",
+      "CARTAGENA DE INDIAS",
+      "ENVIGADO"
+    ],
+    "Conectores": [
+      "Tipo 1 - SAE J1772",
+      "Tipo 2 - IEC 62196",
+      "GB-T AC",
+      "Schuko",
+      "CCS Combo 1",
+      "CHAdeMO",
+      "CCS Combo 2"
+    ],
+    "PotenciaMaxTotal": 160
+  },
+  {
+    "Id": 20,
+    "Nombre": "EMPRESA DE ENERGIA DEL  QUINDIO S.A.E.S.P.",
+    "Sitio": "http://edeq-ws09/edeq.sig",
+    "TotalEstaciones": 6,
+    "Estaciones": [
+      {
+        "Nombre": "Centro Comercial Plaza Flora",
+        "Direccion": "Cra. 6 # 3-180, Armenia Av. Centenario CENTRO COMERCIAL CALIMA",
+        "Departamento": "QUINDIO",
+        "Municipio": "ARMENIA",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 2,
+          "Schuko": 4,
+          "Tipo 1 - SAE J1772": 2
+        },
+        "Latitud": "4.540705819901234",
+        "Longitud": "-75.66034197807313",
+        "FechaCreacion": "2022-08-01"
+      },
+      {
+        "Nombre": "Centro Comercial Portal del Quindio",
+        "Direccion": "Cra. 14 #19N-46",
+        "Departamento": "QUINDIO",
+        "Municipio": "ARMENIA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "4.5390141439438185",
+        "Longitud": "-75.68091273351456",
+        "FechaCreacion": "2024-09-11"
+      },
+      {
+        "Nombre": "Centro Comercial Unicentro",
+        "Direccion": "Cra. 14 #6-02, Armenia, Quindío",
+        "Departamento": "QUINDIO",
+        "Municipio": "ARMENIA",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 2,
+          "Schuko": 4,
+          "Tipo 1 - SAE J1772": 2
+        },
+        "Latitud": "4.540551575596711",
+        "Longitud": "-75.66558837890625",
+        "FechaCreacion": "2022-08-02"
+      },
+      {
+        "Nombre": "Parque del Cafe ",
+        "Direccion": "Km 6 vía Montenegro – Pueblo Tapao PARQUE DEL CAFÉ",
+        "Departamento": "QUINDIO",
+        "Municipio": "ARMENIA",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 2,
+          "Schuko": 4,
+          "Tipo 1 - SAE J1772": 2
+        },
+        "Latitud": "4.540028046989292",
+        "Longitud": "-75.77163387712899",
+        "FechaCreacion": "2022-08-02"
+      },
+      {
+        "Nombre": "Tambo",
+        "Direccion": "Vereda Cruces el Tambo",
+        "Departamento": "QUINDIO",
+        "Municipio": "FILANDIA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1,
+          "CHAdeMO": 1,
+          "CCS Combo 1": 1
+        },
+        "Latitud": "4.688829004713088",
+        "Longitud": "-75.60743685458426",
+        "FechaCreacion": "2022-08-02"
+      },
+      {
+        "Nombre": "Tres Esquinas",
+        "Direccion": "Cra. 18 #50-5 ARMENIA",
+        "Departamento": "QUINDIO",
+        "Municipio": "ARMENIA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1,
+          "CHAdeMO": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "4.51974327700195",
+        "Longitud": "-75.68864638348931",
+        "FechaCreacion": "2022-08-02"
+      }
+    ],
+    "Departamentos": [
+      "QUINDIO"
+    ],
+    "Municipios": [
+      "ARMENIA",
+      "FILANDIA"
+    ],
+    "Conectores": [
+      "Tipo 2 - IEC 62196",
+      "Schuko",
+      "Tipo 1 - SAE J1772",
+      "CHAdeMO",
+      "CCS Combo 1",
+      "CCS Combo 2"
+    ],
+    "PotenciaMaxTotal": 50
+  },
+  {
+    "Id": 36,
+    "Nombre": "EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.",
+    "Sitio": "https://eep.com.co/",
+    "TotalEstaciones": 6,
+    "Estaciones": [
+      {
+        "Nombre": " Electro-linera EEP  cuba",
+        "Direccion": "Av. la independencia calle 71  barrio cuba  ",
+        "Departamento": "RISARALDA",
+        "Municipio": "PEREIRA",
+        "Estado": "Activo",
+        "PuntosCarga": 3,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Schuko": 1,
+          "CHAdeMO": 1,
+          "CCS Combo 1": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.803432565399256",
+        "Longitud": "-75.73707487392647",
+        "FechaCreacion": "2022-08-16"
+      },
+      {
+        "Nombre": "Electro-corredor tambo el privilegio",
+        "Direccion": "via Pereira  a santa Rosa de Cabal  tambo el Privilegio",
+        "Departamento": "RISARALDA",
+        "Municipio": "PEREIRA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CHAdeMO": 1,
+          "CCS Combo 1": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.855667104851928",
+        "Longitud": "-75.63671769979668",
+        "FechaCreacion": "2022-08-16"
+      },
+      {
+        "Nombre": "Punto de carga  Cerritos del Mar ",
+        "Direccion": "vía Pereira - cerritos, a  200 mt de   la entrada 7",
+        "Departamento": "RISARALDA",
+        "Municipio": "PEREIRA",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "4.806975646622852",
+        "Longitud": "-75.81782788038254",
+        "FechaCreacion": "2024-09-30"
+      },
+      {
+        "Nombre": "Punto de carga Centro comercial nuestro Cartago",
+        "Direccion": "Cra 2 #3415 centro comercial Nuestro Cartago",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "CARTAGO",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "4.7571490910609295",
+        "Longitud": "-75.93316555023195",
+        "FechaCreacion": "2024-09-30"
+      },
+      {
+        "Nombre": "Punto de Carga estación de servicio Univilla Texaco",
+        "Direccion": "AV 30 de agosto, estación de servicio  Texaco ",
+        "Departamento": "RISARALDA",
+        "Municipio": "PEREIRA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "4.811144494336325",
+        "Longitud": "-75.75483351945877",
+        "FechaCreacion": "2024-09-30"
+      },
+      {
+        "Nombre": "Punto de carga Mall Castilla Plaza",
+        "Direccion": "km 10 vía Pereira - cerritos ",
+        "Departamento": "RISARALDA",
+        "Municipio": "PEREIRA",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "4.803610406048739",
+        "Longitud": "-75.83275437355042",
+        "FechaCreacion": "2024-09-30"
+      }
+    ],
+    "Departamentos": [
+      "RISARALDA",
+      "VALLE DEL CAUCA"
+    ],
+    "Municipios": [
+      "PEREIRA",
+      "CARTAGO"
+    ],
+    "Conectores": [
+      "Tipo 1 - SAE J1772",
+      "Schuko",
+      "CHAdeMO",
+      "CCS Combo 1",
+      "Tipo 2 - IEC 62196"
+    ],
+    "PotenciaMaxTotal": 50
+  },
+  {
+    "Id": 41,
+    "Nombre": "ELECTRIFICADORA DE SANTANDER S.A. E.S.P.",
+    "Sitio": "https://www.essa.com.co",
+    "TotalEstaciones": 6,
+    "Estaciones": [
+      {
+        "Nombre": "Eco Estación CC CACIQUE",
+        "Direccion": "Tv. 93 #34-99 Bucaramanga",
+        "Departamento": "SANTANDER",
+        "Municipio": "BUCARAMANGA",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "7.0992477743230245",
+        "Longitud": "-73.1073832511902",
+        "FechaCreacion": "2022-08-03"
+      },
+      {
+        "Nombre": "Eco Estación CC EL PUENTE SAN GIL",
+        "Direccion": "Cl. 12 # 12 - 123, San Gil, Santander",
+        "Departamento": "SANTANDER",
+        "Municipio": "SAN GIL",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "6.558405732955916",
+        "Longitud": "-73.13582539558412",
+        "FechaCreacion": "2026-01-28"
+      },
+      {
+        "Nombre": "Eco Estación CC La Florida",
+        "Direccion": "Cl. 31 #26A-19, Cañaveral, Floridablanca.    ",
+        "Departamento": "SANTANDER",
+        "Municipio": "FLORIDABLANCA",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "7.070745987032284",
+        "Longitud": "-73.10558885335924",
+        "FechaCreacion": "2026-01-28"
+      },
+      {
+        "Nombre": "Eco Estación CC SAN SILVESTRE Barrancabermeja",
+        "Direccion": "Carrera 19 Con Avenida 58 A, Esquina. Barrio Galán - Barrancabermeja, Barrancabermeja, Santander",
+        "Departamento": "SANTANDER",
+        "Municipio": "BUCARAMANGA",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 2,
+          "Schuko": 4,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "7.067404737204022",
+        "Longitud": "-73.85794579982759",
+        "FechaCreacion": "2026-01-28"
+      },
+      {
+        "Nombre": "EDS EL RETORNO SAN ALBERTO",
+        "Direccion": "Kilometro 1 vía al mar salida San Alberto (Cesar)",
+        "Departamento": "CESAR",
+        "Municipio": "SAN ALBERTO",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 53,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1,
+          "CCS Combo 2": 1,
+          "CHAdeMO": 1
+        },
+        "Latitud": "7.779635734519099",
+        "Longitud": "-73.40063452720644",
+        "FechaCreacion": "2026-01-28"
+      },
+      {
+        "Nombre": "ESTACIÓN CRA 21",
+        "Direccion": "CARRERA 21 45",
+        "Departamento": "SANTANDER",
+        "Municipio": "BUCARAMANGA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 53,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1,
+          "CCS Combo 2": 1,
+          "CHAdeMO": 1
+        },
+        "Latitud": "7.116489593886719",
+        "Longitud": "-73.12024712562562",
+        "FechaCreacion": "2022-08-03"
+      }
+    ],
+    "Departamentos": [
+      "SANTANDER",
+      "CESAR"
+    ],
+    "Municipios": [
+      "BUCARAMANGA",
+      "SAN GIL",
+      "FLORIDABLANCA",
+      "SAN ALBERTO"
+    ],
+    "Conectores": [
+      "Tipo 1 - SAE J1772",
+      "Schuko",
+      "Tipo 2 - IEC 62196",
+      "CCS Combo 2",
+      "CHAdeMO"
+    ],
+    "PotenciaMaxTotal": 53
+  },
+  {
+    "Id": 150,
+    "Nombre": "OPERADORA DISTRITAL DE TRANSPORTE S.A.S.",
+    "Sitio": "https://odt.gov.co",
+    "TotalEstaciones": 6,
+    "Estaciones": [
+      {
+        "Nombre": "Alhambra",
+        "Direccion": "CALLE 114A # 45-98",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 3,
+        "PotenciaMax": 150,
+        "Conectores": {
+          "GB-T DC": 2,
+          "CCS Combo 1": 2,
+          "CCS Combo 2": 2
+        },
+        "Latitud": "4.698872564227404",
+        "Longitud": "-74.05766844749452",
+        "FechaCreacion": "2024-06-14"
+      },
+      {
+        "Nombre": "Calle 97",
+        "Direccion": "Calle 96 N° 10 - 02",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 150,
+        "Conectores": {
+          "GB-T DC": 2,
+          "CCS Combo 1": 2
+        },
+        "Latitud": "4.679786365659423",
+        "Longitud": "-74.04417961835863",
+        "FechaCreacion": "2024-06-14"
+      },
+      {
+        "Nombre": "Modelia",
+        "Direccion": "KR 75 NO 23 F - 27",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 150,
+        "Conectores": {
+          "GB-T DC": 2,
+          "CCS Combo 1": 2
+        },
+        "Latitud": "4.665486913740018",
+        "Longitud": "-74.12025243043901",
+        "FechaCreacion": "2024-06-14"
+      },
+      {
+        "Nombre": "Nicolas de Federmann",
+        "Direccion": " CL 58 A BIS NO 37 - 28",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 3,
+        "PotenciaMax": 150,
+        "Conectores": {
+          "GB-T DC": 2,
+          "CCS Combo 1": 2,
+          "CCS Combo 2": 2
+        },
+        "Latitud": "4.649529675472513",
+        "Longitud": "-74.08148646354677",
+        "FechaCreacion": "2024-06-14"
+      },
+      {
+        "Nombre": "San Andresito de la 38",
+        "Direccion": "CALLE 9 # 37-60",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 150,
+        "Conectores": {
+          "GB-T DC": 2,
+          "CCS Combo 1": 2
+        },
+        "Latitud": "4.615097425990131",
+        "Longitud": "-74.10161375999452",
+        "FechaCreacion": "2024-06-14"
+      },
+      {
+        "Nombre": "Terminal Salitre",
+        "Direccion": "CALLE 22 C # 68 F - 34",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 3,
+        "PotenciaMax": 150,
+        "Conectores": {
+          "GB-T DC": 2,
+          "CCS Combo 1": 2,
+          "CCS Combo 2": 2
+        },
+        "Latitud": "4.65300949170951",
+        "Longitud": "-74.11296755075456",
+        "FechaCreacion": "2024-06-14"
+      }
+    ],
+    "Departamentos": [
+      "BOGOTA, D. C."
+    ],
+    "Municipios": [
+      "BOGOTA, D.C."
+    ],
+    "Conectores": [
+      "GB-T DC",
+      "CCS Combo 1",
+      "CCS Combo 2"
+    ],
+    "PotenciaMaxTotal": 150
+  },
+  {
+    "Id": 8,
+    "Nombre": "CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.",
+    "Sitio": "https://www.chec.com.co",
+    "TotalEstaciones": 5,
+    "Estaciones": [
+      {
+        "Nombre": "Acapulco",
+        "Direccion": "Virginia – Viterbo, kilómetro 13 (243R+FF)",
+        "Departamento": "CALDAS",
+        "Municipio": "BELALCAZAR",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1,
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1
+        },
+        "Latitud": "5.003247920066071",
+        "Longitud": "-75.85881626561195",
+        "FechaCreacion": "2023-10-24"
+      },
+      {
+        "Nombre": "CDA",
+        "Direccion": "Avenida Kevin Ángel, Calle 64 Esquina, Manizales, Caldas",
+        "Departamento": "CALDAS",
+        "Municipio": "MANIZALES",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1,
+          "CCS Combo 2": 1,
+          "CHAdeMO": 1
+        },
+        "Latitud": "5.059422735835086",
+        "Longitud": "-75.48342911366309",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Fundadores",
+        "Direccion": "Calle 33b #20-03, Manizales, Caldas",
+        "Departamento": "CALDAS",
+        "Municipio": "MANIZALES",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 4,
+          "Tipo 1 - SAE J1772": 2,
+          "GB-T AC": 2
+        },
+        "Latitud": "5.069341474244689",
+        "Longitud": "-75.50973951827476",
+        "FechaCreacion": "2025-07-21"
+      },
+      {
+        "Nombre": "Mall Plaza",
+        "Direccion": "Carrera 14, Av. Kevin Ángel #55D – 251, Manizales, Caldas",
+        "Departamento": "CALDAS",
+        "Municipio": "MANIZALES",
+        "Estado": "Activo",
+        "PuntosCarga": 4,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 2,
+          "Tipo 1 - SAE J1772": 2
+        },
+        "Latitud": "5.065678761722515",
+        "Longitud": "-75.49006462097168",
+        "FechaCreacion": "2022-08-05"
+      },
+      {
+        "Nombre": "Tambo La Manuela",
+        "Direccion": "EL ROSARIO, Manizales, Caldas",
+        "Departamento": "CALDAS",
+        "Municipio": "MANIZALES",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1,
+          "CHAdeMO": 1,
+          "CCS Combo 1": 1
+        },
+        "Latitud": "5.049941396971531",
+        "Longitud": "-75.56614011526109",
+        "FechaCreacion": "2022-08-05"
+      }
+    ],
+    "Departamentos": [
+      "CALDAS"
+    ],
+    "Municipios": [
+      "BELALCAZAR",
+      "MANIZALES"
+    ],
+    "Conectores": [
+      "Tipo 2 - IEC 62196",
+      "CCS Combo 1",
+      "CHAdeMO",
+      "CCS Combo 2",
+      "Tipo 1 - SAE J1772",
+      "GB-T AC"
+    ],
+    "PotenciaMaxTotal": 50
+  },
+  {
+    "Id": 166,
+    "Nombre": "EMCALI EICE ESP",
+    "Sitio": "https://www.emcali.com.co",
+    "TotalEstaciones": 4,
+    "Estaciones": [
+      {
+        "Nombre": "EVSE JAIRO VARELA",
+        "Direccion": "CL 10 NORTE AV 2 A 50 JV",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "CALI",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 7.4,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 6
+        },
+        "Latitud": "3.4549435222581772",
+        "Longitud": "-76.53513908386232",
+        "FechaCreacion": "2025-05-16"
+      },
+      {
+        "Nombre": "EVSE UNICENTRO",
+        "Direccion": "CARRERA 100   5-169",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "CALI",
+        "Estado": "Activo",
+        "PuntosCarga": 4,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 3,
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 1 - SAE J1772": 1
+        },
+        "Latitud": "3.3738807857666497",
+        "Longitud": "-76.53934478759767",
+        "FechaCreacion": "2025-05-15"
+      },
+      {
+        "Nombre": "EVSE VERSALLES",
+        "Direccion": "AV 5 A NORTE 23 D N 41",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "CALI",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 2,
+          "Tipo 1 - SAE J1772": 1
+        },
+        "Latitud": "3.4634787412666137",
+        "Longitud": "-76.5284362435341",
+        "FechaCreacion": "2025-05-16"
+      },
+      {
+        "Nombre": "EVSE WTC",
+        "Direccion": "CL 36 NORTE AV 6 A 55",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "CALI",
+        "Estado": "Activo",
+        "PuntosCarga": 3,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 4,
+          "Tipo 1 - SAE J1772": 1
+        },
+        "Latitud": "3.4741150483593284",
+        "Longitud": "-76.52846574783327",
+        "FechaCreacion": "2025-05-16"
+      }
+    ],
+    "Departamentos": [
+      "VALLE DEL CAUCA"
+    ],
+    "Municipios": [
+      "CALI"
+    ],
+    "Conectores": [
+      "Tipo 1 - SAE J1772",
+      "Tipo 2 - IEC 62196",
+      "CCS Combo 1",
+      "CHAdeMO"
+    ],
+    "PotenciaMaxTotal": 50
+  },
+  {
+    "Id": 6,
+    "Nombre": "CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP",
+    "Sitio": "https://www.cens.com.co",
+    "TotalEstaciones": 3,
+    "Estaciones": [
+      {
+        "Nombre": "Estación Ocaña",
+        "Direccion": "Calle 7, Av. Francisco Fernández de Contreras #29 183, Ocaña",
+        "Departamento": "NORTE DE SANTANDER",
+        "Municipio": "CUCUTA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "8.25377283201799",
+        "Longitud": "-73.35934963234457",
+        "FechaCreacion": "2024-06-21"
+      },
+      {
+        "Nombre": "Estación Unicentro",
+        "Direccion": "Avenida 4 # 2b Norte 81, 12N",
+        "Departamento": "NORTE DE SANTANDER",
+        "Municipio": "CUCUTA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "7.916801636473482",
+        "Longitud": "-72.4933022260666",
+        "FechaCreacion": "2022-08-25"
+      },
+      {
+        "Nombre": "Estación Ventura Plaza",
+        "Direccion": "Calle 10 y 11 con Diagonal Santander, Quinta velez ",
+        "Departamento": "NORTE DE SANTANDER",
+        "Municipio": "CUCUTA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 50,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CHAdeMO": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "7.887781075763113",
+        "Longitud": "-72.49625026886154",
+        "FechaCreacion": "2022-09-20"
+      }
+    ],
+    "Departamentos": [
+      "NORTE DE SANTANDER"
+    ],
+    "Municipios": [
+      "CUCUTA"
+    ],
+    "Conectores": [
+      "CCS Combo 1",
+      "CHAdeMO",
+      "Tipo 2 - IEC 62196",
+      "Tipo 1 - SAE J1772"
+    ],
+    "PotenciaMaxTotal": 50
+  },
+  {
+    "Id": 167,
+    "Nombre": "ERCO ENERGÍA SAS",
+    "Sitio": "https://erco.energy",
+    "TotalEstaciones": 3,
+    "Estaciones": [
+      {
+        "Nombre": "COOTRACAIME",
+        "Direccion": "40 #15-02",
+        "Departamento": "TOLIMA",
+        "Municipio": "CAJAMARCA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1,
+          "GB-T DC": 1
+        },
+        "Latitud": "4.4403380348898365",
+        "Longitud": "-75.43143790880966",
+        "FechaCreacion": "2025-05-21"
+      },
+      {
+        "Nombre": "LA GLORIETA",
+        "Direccion": "Carrera 24 a # 1BN - 04",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "GUADALAJARA DE BUGA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 40,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1,
+          "GB-T DC": 1
+        },
+        "Latitud": "3.895047768154037",
+        "Longitud": "-76.3118968379058",
+        "FechaCreacion": "2025-05-21"
+      },
+      {
+        "Nombre": "OUTLET DE MODA",
+        "Direccion": "CALLE 16 #55-129",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MEDELLIN",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 20,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "CCS Combo 2": 1
+        },
+        "Latitud": "6.219279875574981",
+        "Longitud": "-75.58363527065013",
+        "FechaCreacion": "2025-05-20"
+      }
+    ],
+    "Departamentos": [
+      "TOLIMA",
+      "VALLE DEL CAUCA",
+      "ANTIOQUIA"
+    ],
+    "Municipios": [
+      "CAJAMARCA",
+      "GUADALAJARA DE BUGA",
+      "MEDELLIN"
+    ],
+    "Conectores": [
+      "CCS Combo 1",
+      "CCS Combo 2",
+      "GB-T DC"
+    ],
+    "PotenciaMaxTotal": 40
+  },
+  {
+    "Id": 170,
+    "Nombre": "Ergenia S.A.S.",
+    "Sitio": "https://ergenia.com",
+    "TotalEstaciones": 3,
+    "Estaciones": [
+      {
+        "Nombre": "Estación de Carga Ergenia Edificio Salvio ",
+        "Direccion": "Calle 93A # 12 - 35",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 4,
+        "PotenciaMax": 30,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 2,
+          "Tipo 1 - SAE J1772": 2,
+          "CCS Combo 1": 2,
+          "CCS Combo 2": 2
+        },
+        "Latitud": "4.676461471300155",
+        "Longitud": "-74.04873608757869",
+        "FechaCreacion": "2025-08-05"
+      },
+      {
+        "Nombre": "Estacion de Carga Ergenia Habitel",
+        "Direccion": "AV CL 26 # 100 89",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 30,
+        "Conectores": {
+          "GB-T DC": 4
+        },
+        "Latitud": "4.688336706178033",
+        "Longitud": "-74.1308090396867",
+        "FechaCreacion": "2025-09-11"
+      },
+      {
+        "Nombre": "Estación de Carga Ergenia Portobelo 93",
+        "Direccion": "Calle 93B 11A 84 Sotano 1",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 4,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 4,
+          "Tipo 2 - IEC 62196": 4
+        },
+        "Latitud": "4.6766589180510465",
+        "Longitud": "-74.04820496998421",
+        "FechaCreacion": "2025-06-11"
+      }
+    ],
+    "Departamentos": [
+      "BOGOTA, D. C."
+    ],
+    "Municipios": [
+      "BOGOTA, D.C."
+    ],
+    "Conectores": [
+      "Tipo 2 - IEC 62196",
+      "Tipo 1 - SAE J1772",
+      "CCS Combo 1",
+      "CCS Combo 2",
+      "GB-T DC"
+    ],
+    "PotenciaMaxTotal": 30
+  },
+  {
+    "Id": 142,
+    "Nombre": "L autos SAS",
+    "Sitio": "https://lautosinternationalcorp.com",
+    "TotalEstaciones": 2,
+    "Estaciones": [
+      {
+        "Nombre": "7 Autos",
+        "Direccion": "Cl. 25  N°7a - 08",
+        "Departamento": "CUNDINAMARCA",
+        "Municipio": "GIRARDOT",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 7.5,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1,
+          "GB-T AC": 1
+        },
+        "Latitud": "4.301134728880063",
+        "Longitud": "-74.80131089687349",
+        "FechaCreacion": "2024-04-12"
+      },
+      {
+        "Nombre": "L autos",
+        "Direccion": "Transversal 12 N° 18b-01",
+        "Departamento": "CUNDINAMARCA",
+        "Municipio": "FUSAGASUGA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 7.5,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1,
+          "GB-T AC": 1
+        },
+        "Latitud": "4.33458590225835",
+        "Longitud": "-74.36855792999269",
+        "FechaCreacion": "2024-04-12"
+      }
+    ],
+    "Departamentos": [
+      "CUNDINAMARCA"
+    ],
+    "Municipios": [
+      "GIRARDOT",
+      "FUSAGASUGA"
+    ],
+    "Conectores": [
+      "Tipo 1 - SAE J1772",
+      "Tipo 2 - IEC 62196",
+      "GB-T AC"
+    ],
+    "PotenciaMaxTotal": 7.5
+  },
+  {
+    "Id": 154,
+    "Nombre": "Enel Colombia S.A. E.S.P",
+    "Sitio": "",
+    "TotalEstaciones": 2,
+    "Estaciones": [
+      {
+        "Nombre": "Unicentro 1",
+        "Direccion": "Cra. 15 #124-2",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 3,
+        "PotenciaMax": 60,
+        "Conectores": {
+          "CCS Combo 1": 3,
+          "CCS Combo 2": 3,
+          "GB-T DC": 3
+        },
+        "Latitud": "4.70262507808988",
+        "Longitud": "-74.04217457085906",
+        "FechaCreacion": "2024-07-15"
+      },
+      {
+        "Nombre": "Unicentro 2",
+        "Direccion": "Cra. 15 #124-30",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 13,
+        "PotenciaMax": 150,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 104,
+          "Tipo 2 - IEC 62196": 52,
+          "GB-T DC": 13
+        },
+        "Latitud": "4.700755516930968",
+        "Longitud": "-74.04126470872144",
+        "FechaCreacion": "2024-07-15"
+      }
+    ],
+    "Departamentos": [
+      "BOGOTA, D. C."
+    ],
+    "Municipios": [
+      "BOGOTA, D.C."
+    ],
+    "Conectores": [
+      "CCS Combo 1",
+      "CCS Combo 2",
+      "GB-T DC",
+      "Tipo 1 - SAE J1772",
+      "Tipo 2 - IEC 62196"
+    ],
+    "PotenciaMaxTotal": 150
+  },
+  {
+    "Id": 160,
+    "Nombre": "VATIA SAS ESP",
+    "Sitio": "https://www.vatia.com.co",
+    "TotalEstaciones": 2,
+    "Estaciones": [
+      {
+        "Nombre": "Jardín Plaza Cali",
+        "Direccion": " Cra. 98 #16-200 ",
+        "Departamento": "VALLE DEL CAUCA",
+        "Municipio": "CALI",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "GB-T AC": 1,
+          "Tipo 2 - IEC 62196": 2
+        },
+        "Latitud": "3.3695581209684047",
+        "Longitud": "-76.52702990064428",
+        "FechaCreacion": "2025-12-26"
+      },
+      {
+        "Nombre": "Olímpica Gourmet Barranquilla",
+        "Direccion": "Carrera 53 #82-77",
+        "Departamento": "ATLANTICO",
+        "Municipio": "BARRANQUILLA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 30,
+        "Conectores": {
+          "CCS Combo 1": 1,
+          "GB-T DC": 1
+        },
+        "Latitud": "11.005921355028034",
+        "Longitud": "-74.8137760179816",
+        "FechaCreacion": "2025-12-26"
+      }
+    ],
+    "Departamentos": [
+      "VALLE DEL CAUCA",
+      "ATLANTICO"
+    ],
+    "Municipios": [
+      "CALI",
+      "BARRANQUILLA"
+    ],
+    "Conectores": [
+      "Tipo 1 - SAE J1772",
+      "GB-T AC",
+      "Tipo 2 - IEC 62196",
+      "CCS Combo 1",
+      "GB-T DC"
+    ],
+    "PotenciaMaxTotal": 30
+  },
+  {
+    "Id": 164,
+    "Nombre": "David Santiago Londono Giraldo",
+    "Sitio": "https://humancraft.com.co",
+    "TotalEstaciones": 2,
+    "Estaciones": [
+      {
+        "Nombre": "Wattia Doradal 01",
+        "Direccion": "Santorini La Aldea, Doradal",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "PUERTO TRIUNFO",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "CCS Combo 2": 1
+        },
+        "Latitud": "5.901224854035986",
+        "Longitud": "-74.74039256572725",
+        "FechaCreacion": "2025-12-19"
+      },
+      {
+        "Nombre": "Wattia La Perla 1 - El Carmen de Viboral",
+        "Direccion": "Calle 30 #33-02",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "EL CARMEN DE VIBORAL",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 7.4,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1,
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.082073557617297",
+        "Longitud": "-75.3367602825165",
+        "FechaCreacion": "2025-05-08"
+      }
+    ],
+    "Departamentos": [
+      "ANTIOQUIA"
+    ],
+    "Municipios": [
+      "PUERTO TRIUNFO",
+      "EL CARMEN DE VIBORAL"
+    ],
+    "Conectores": [
+      "CCS Combo 2",
+      "Tipo 1 - SAE J1772",
+      "Tipo 2 - IEC 62196"
+    ],
+    "PotenciaMaxTotal": 22
+  },
+  {
+    "Id": 174,
+    "Nombre": "Hotel El Alfarero SAS",
+    "Sitio": "http://alfaharhotel.com/",
+    "TotalEstaciones": 2,
+    "Estaciones": [
+      {
+        "Nombre": "Wattia - Alfahar 01",
+        "Direccion": "Calle 45 #31-210",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "EL CARMEN DE VIBORAL",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.095200918802292",
+        "Longitud": "-75.34145414829256",
+        "FechaCreacion": "2025-09-15"
+      },
+      {
+        "Nombre": "Wattia - Alfahar 02",
+        "Direccion": "Calle 45 #31-210",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "EL CARMEN DE VIBORAL",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 22,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1
+        },
+        "Latitud": "6.095104745886579",
+        "Longitud": "-75.34154194770625",
+        "FechaCreacion": "2025-09-15"
+      }
+    ],
+    "Departamentos": [
+      "ANTIOQUIA"
+    ],
+    "Municipios": [
+      "EL CARMEN DE VIBORAL"
+    ],
+    "Conectores": [
+      "Tipo 2 - IEC 62196",
+      "Tipo 1 - SAE J1772"
+    ],
+    "PotenciaMaxTotal": 22
+  },
+  {
+    "Id": 149,
+    "Nombre": "AUTOGERMANA SAS",
+    "Sitio": "https://www.autogermana.com.co/",
+    "TotalEstaciones": 1,
+    "Estaciones": [
+      {
+        "Nombre": "EDS Via al Mar- Autogermana",
+        "Direccion": "Carrera 46, Sabanilla Montecarmelo, Barranquilla, Atlántico",
+        "Departamento": "ATLANTICO",
+        "Municipio": "BARRANQUILLA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 1 - SAE J1772": 1
+        },
+        "Latitud": "11.013388645203776",
+        "Longitud": "-74.88045215606691",
+        "FechaCreacion": "2024-07-02"
+      }
+    ],
+    "Departamentos": [
+      "ATLANTICO"
+    ],
+    "Municipios": [
+      "BARRANQUILLA"
+    ],
+    "Conectores": [
+      "Tipo 1 - SAE J1772"
+    ],
+    "PotenciaMaxTotal": 7
+  },
+  {
+    "Id": 175,
+    "Nombre": "VATIO EV ",
+    "Sitio": "https://www.vatio.com.co/",
+    "TotalEstaciones": 1,
+    "Estaciones": [
+      {
+        "Nombre": "ESTACIÓN 01",
+        "Direccion": "CL 78 SUR N 46D-30",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "SABANETA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "6.151016252530694",
+        "Longitud": "-75.61559379106257",
+        "FechaCreacion": "2025-10-24"
+      }
+    ],
+    "Departamentos": [
+      "ANTIOQUIA"
+    ],
+    "Municipios": [
+      "SABANETA"
+    ],
+    "Conectores": [
+      "Tipo 2 - IEC 62196"
+    ],
+    "PotenciaMaxTotal": 7
+  },
+  {
+    "Id": 183,
+    "Nombre": "COPOWER LIMITADA",
+    "Sitio": "https://copower.com.co/",
+    "TotalEstaciones": 1,
+    "Estaciones": [
+      {
+        "Nombre": "EDS SAN PABLO",
+        "Direccion": "KM 4 VIA LEBRIJA - BUCARAMANGA VDA SAN PABLO FINCA SAN PABLO",
+        "Departamento": "SANTANDER",
+        "Municipio": "LEBRIJA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 240,
+        "Conectores": {
+          "CCS Combo 1": 2,
+          "CCS Combo 2": 1,
+          "GB-T DC": 1
+        },
+        "Latitud": "7.103793205717566",
+        "Longitud": "-73.19384697056852",
+        "FechaCreacion": "2026-01-28"
+      }
+    ],
+    "Departamentos": [
+      "SANTANDER"
+    ],
+    "Municipios": [
+      "LEBRIJA"
+    ],
+    "Conectores": [
+      "CCS Combo 1",
+      "CCS Combo 2",
+      "GB-T DC"
+    ],
+    "PotenciaMaxTotal": 240
+  },
+  {
+    "Id": 185,
+    "Nombre": "SM CONSULTORÍA E INGENIERÍA S.A.S",
+    "Sitio": "https://smsolar.co/nosotros/",
+    "TotalEstaciones": 1,
+    "Estaciones": [
+      {
+        "Nombre": "SM MOVILIDAD ELÉCTRICA",
+        "Direccion": "Calle 32 Sur No. 22 - 81 (Zona Industrial)",
+        "Departamento": "HUILA",
+        "Municipio": "NEIVA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "2.899040396971206",
+        "Longitud": "-75.27714964761054",
+        "FechaCreacion": "2026-01-14"
+      }
+    ],
+    "Departamentos": [
+      "HUILA"
+    ],
+    "Municipios": [
+      "NEIVA"
+    ],
+    "Conectores": [
+      "Tipo 2 - IEC 62196"
+    ],
+    "PotenciaMaxTotal": 7
+  },
+  {
+    "Id": 187,
+    "Nombre": "ELECTRICAL CHARGE SAS",
+    "Sitio": "https://www.e-charge.com.co/",
+    "TotalEstaciones": 1,
+    "Estaciones": [
+      {
+        "Nombre": "MALL EL TRANVIA - MARINILLA",
+        "Direccion": "Vía Alcarabanes - 000",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "MARINILLA",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 23,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 4
+        },
+        "Latitud": "6.174443648039882",
+        "Longitud": "-75.3464698791504",
+        "FechaCreacion": "2026-02-05"
+      }
+    ],
+    "Departamentos": [
+      "ANTIOQUIA"
+    ],
+    "Municipios": [
+      "MARINILLA"
+    ],
+    "Conectores": [
+      "Tipo 2 - IEC 62196"
+    ],
+    "PotenciaMaxTotal": 23
+  },
+  {
+    "Id": 188,
+    "Nombre": "HUB DE MOVILIDAD PLAZA CALLE 136 SAS",
+    "Sitio": "https://hubplazacalle136.com/",
+    "TotalEstaciones": 1,
+    "Estaciones": [
+      {
+        "Nombre": "HUB DE MOVILIDAD PLAZA CALLE 136.",
+        "Direccion": "Calle 136 #18 - 82",
+        "Departamento": "BOGOTA, D. C.",
+        "Municipio": "BOGOTA, D.C.",
+        "Estado": "Activo",
+        "PuntosCarga": 5,
+        "PotenciaMax": 11,
+        "Conectores": {
+          "CCS Combo 1": 5
+        },
+        "Latitud": "4.720479245457918",
+        "Longitud": "-74.04604107557323",
+        "FechaCreacion": "2026-02-24"
+      }
+    ],
+    "Departamentos": [
+      "BOGOTA, D. C."
+    ],
+    "Municipios": [
+      "BOGOTA, D.C."
+    ],
+    "Conectores": [
+      "CCS Combo 1"
+    ],
+    "PotenciaMaxTotal": 11
+  },
+  {
+    "Id": 189,
+    "Nombre": "CERAMICAS EL DORADO",
+    "Sitio": "https://ceramicaseldorado.com/",
+    "TotalEstaciones": 1,
+    "Estaciones": [
+      {
+        "Nombre": "Wattia - Parqueadero BER 01 & 02",
+        "Direccion": "CR 31 42 64",
+        "Departamento": "ANTIOQUIA",
+        "Municipio": "EL CARMEN DE VIBORAL",
+        "Estado": "Activo",
+        "PuntosCarga": 2,
+        "PotenciaMax": 7.4,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 4
+        },
+        "Latitud": "6.092199316755889",
+        "Longitud": "-75.33784389495851",
+        "FechaCreacion": "2026-02-05"
+      }
+    ],
+    "Departamentos": [
+      "ANTIOQUIA"
+    ],
+    "Municipios": [
+      "EL CARMEN DE VIBORAL"
+    ],
+    "Conectores": [
+      "Tipo 2 - IEC 62196"
+    ],
+    "PotenciaMaxTotal": 7.4
+  },
+  {
+    "Id": 194,
+    "Nombre": "CENTRO DE DIAGNOSTICO AUTOMOTRIZ DEL HUILA SAS",
+    "Sitio": "",
+    "TotalEstaciones": 1,
+    "Estaciones": [
+      {
+        "Nombre": "EDS EL PEÑON DEL MAGDALENA",
+        "Direccion": "Calle 4 sur 3a 80",
+        "Departamento": "HUILA",
+        "Municipio": "NEIVA",
+        "Estado": "Activo",
+        "PuntosCarga": 1,
+        "PotenciaMax": 7,
+        "Conectores": {
+          "Tipo 2 - IEC 62196": 1
+        },
+        "Latitud": "2.9177339595090768",
+        "Longitud": "-75.28717696666719",
+        "FechaCreacion": "2026-02-20"
+      }
+    ],
+    "Departamentos": [
+      "HUILA"
+    ],
+    "Municipios": [
+      "NEIVA"
+    ],
+    "Conectores": [
+      "Tipo 2 - IEC 62196"
+    ],
+    "PotenciaMaxTotal": 7
+  }
+]

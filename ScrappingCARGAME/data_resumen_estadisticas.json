@@ -1,0 +1,133 @@
+{
+  "fecha": "2026-03-06T03:22:06.669Z",
+  "totalEstaciones": 139,
+  "totalOperadores": 25,
+  "totalPuntosCarga": 242,
+  "conectores": {
+    "CCS Combo 1": 85,
+    "CHAdeMO": 31,
+    "Tipo 2 - IEC 62196": 203,
+    "Tipo 1 - SAE J1772": 208,
+    "CCS Combo 2": 45,
+    "GB-T AC": 11,
+    "Schuko": 89,
+    "GB-T DC": 64
+  },
+  "departamentos": {
+    "NORTE DE SANTANDER": 3,
+    "CALDAS": 5,
+    "QUINDIO": 8,
+    "ANTIOQUIA": 38,
+    "RISARALDA": 5,
+    "VALLE DEL CAUCA": 13,
+    "SANTANDER": 9,
+    "CESAR": 3,
+    "BOGOTA, D. C.": 24,
+    "TOLIMA": 6,
+    "BOLIVAR": 2,
+    "CUNDINAMARCA": 12,
+    "SUCRE": 1,
+    "CORDOBA": 1,
+    "ATLANTICO": 3,
+    "MAGDALENA": 1,
+    "BOYACA": 2,
+    "META": 1,
+    "HUILA": 2
+  },
+  "estados": {
+    "Activo": 139
+  },
+  "top10Operadores": [
+    {
+      "Nombre": "Organizacion Terpel S.A.",
+      "TotalEstaciones": 46,
+      "Departamentos": [
+        "TOLIMA",
+        "CUNDINAMARCA",
+        "BOGOTA, D. C.",
+        "ANTIOQUIA",
+        "VALLE DEL CAUCA",
+        "SANTANDER",
+        "CESAR",
+        "SUCRE",
+        "CORDOBA",
+        "QUINDIO",
+        "ATLANTICO",
+        "BOLIVAR",
+        "MAGDALENA",
+        "BOYACA",
+        "META"
+      ]
+    },
+    {
+      "Nombre": "EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.",
+      "TotalEstaciones": 21,
+      "Departamentos": [
+        "ANTIOQUIA"
+      ]
+    },
+    {
+      "Nombre": "CELSIA COLOMBIA S.A. E.S.P.",
+      "TotalEstaciones": 12,
+      "Departamentos": [
+        "BOGOTA, D. C.",
+        "VALLE DEL CAUCA",
+        "ANTIOQUIA",
+        "TOLIMA",
+        "QUINDIO",
+        "BOLIVAR"
+      ]
+    },
+    {
+      "Nombre": "EMPRESA DE ENERGIA DEL  QUINDIO S.A.E.S.P.",
+      "TotalEstaciones": 6,
+      "Departamentos": [
+        "QUINDIO"
+      ]
+    },
+    {
+      "Nombre": "EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.",
+      "TotalEstaciones": 6,
+      "Departamentos": [
+        "RISARALDA",
+        "VALLE DEL CAUCA"
+      ]
+    },
+    {
+      "Nombre": "ELECTRIFICADORA DE SANTANDER S.A. E.S.P.",
+      "TotalEstaciones": 6,
+      "Departamentos": [
+        "SANTANDER",
+        "CESAR"
+      ]
+    },
+    {
+      "Nombre": "OPERADORA DISTRITAL DE TRANSPORTE S.A.S.",
+      "TotalEstaciones": 6,
+      "Departamentos": [
+        "BOGOTA, D. C."
+      ]
+    },
+    {
+      "Nombre": "CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.",
+      "TotalEstaciones": 5,
+      "Departamentos": [
+        "CALDAS"
+      ]
+    },
+    {
+      "Nombre": "EMCALI EICE ESP",
+      "TotalEstaciones": 4,
+      "Departamentos": [
+        "VALLE DEL CAUCA"
+      ]
+    },
+    {
+      "Nombre": "CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP",
+      "TotalEstaciones": 3,
+      "Departamentos": [
+        "NORTE DE SANTANDER"
+      ]
+    }
+  ]
+}

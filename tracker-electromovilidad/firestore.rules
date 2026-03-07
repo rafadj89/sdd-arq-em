@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Solo usuarios autenticados pueden leer datos del proyecto
+    match /projects/{projectId}/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+    
+    // Solo admins pueden gestionar usuarios
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Cada usuario puede leer su propio perfil
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}

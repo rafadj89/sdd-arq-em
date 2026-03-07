@@ -8,15 +8,15 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-*{font-family:'Inter',sans-serif}body{background:#0f172a;color:#e2e8f0}
-.gl{background:rgba(30,41,59,.7);backdrop-filter:blur(12px);border:1px solid rgba(100,116,139,.2)}
-.tb.act{background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;box-shadow:0 4px 15px rgba(249,115,22,.3)}
-.tb:not(.act):hover{background:rgba(249,115,22,.15)}
+*{font-family:'Inter',sans-serif}body{background:#ffffff;color:#1e293b}
+.gl{background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border:1px solid rgba(203,213,225,.6);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.tb.act{background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;box-shadow:0 4px 15px rgba(249,115,22,.25)}
+.tb:not(.act):hover{background:rgba(249,115,22,.1)}
 .tc{display:none;animation:fi .3s}.tc.act{display:block}
 @keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.mc:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.3);transition:.3s}
-.cr:hover{background:rgba(249,115,22,.06)}
-@media print{body{background:#fff;color:#000}.gl{background:#fff;border:1px solid #ddd}.np{display:none}.tc{display:block!important}}
+.mc:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.08);transition:.3s}
+.cr:hover{background:rgba(249,115,22,.04)}
+@media print{.np{display:none}.tc{display:block!important}}
 </style>
 </head>
 <body class="min-h-screen">
@@ -25,19 +25,19 @@
 // App init moved after all definitions — see bottom of script
 
 function HEADER(){return `
-<header class="gl sticky top-0 z-50 border-b border-slate-700/50">
+<header class="gl sticky top-0 z-50 border-b border-slate-200">
 <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
 <div class="flex items-center gap-4">
 <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold">DL</div>
-<div><h1 class="text-xl font-bold bg-gradient-to-r from-orange-400 to-purple-400 bg-clip-text text-transparent">Estimacion Data Lake OCI</h1>
-<p class="text-xs text-slate-400">Plataforma UPME Electromovilidad | Res. 40559/2025 | Feb 2026</p></div>
+<div><h1 class="text-xl font-bold bg-gradient-to-r from-orange-600 to-purple-600 bg-clip-text text-transparent">Estimacion Data Lake OCI</h1>
+<p class="text-xs text-slate-500">Plataforma UPME Electromovilidad | Res. 40559/2025 | Feb 2026</p></div>
 </div>
-<div class="flex gap-2"><span class="text-xs px-3 py-1 rounded-full bg-orange-500/20 text-orange-300 border border-orange-500/30">v1.0</span>
-<button onclick="window.print()" class="np text-xs px-3 py-1 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-300">Imprimir</button></div>
+<div class="flex gap-2"><span class="text-xs px-3 py-1 rounded-full bg-orange-100 text-orange-700 border border-orange-200">v1.0</span>
+<button onclick="window.print()" class="np text-xs px-3 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600">Imprimir</button></div>
 </div></header>`}
 
 function TABS_NAV(){return `
-<nav class="np gl border-b border-slate-700/30 sticky top-[72px] z-40">
+<nav class="np gl border-b border-slate-200 sticky top-[72px] z-40">
 <div class="max-w-7xl mx-auto px-4 py-2 flex gap-2 overflow-x-auto">
 ${['resumen:Resumen Ejecutivo','arq:Arquitectura OCI','soberania:Soberanía & Legal','medallion:Medallion Architecture','costos:Costos Detallados','dash:Tableros & KPIs','road:Roadmap & Riesgos'].map((t,i)=>{const[id,lb]=t.split(':');return `<button class="tb ${i===0?'act':''} px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" data-t="${id}">${lb}</button>`}).join('')}
 </div></nav>`}
@@ -61,7 +61,7 @@ const CONTENT = {};
 
 CONTENT.resumen = ()=> `
 <h2 class="text-2xl font-bold mb-1">Resumen Ejecutivo</h2>
-<p class="text-slate-400 text-sm mb-6">Estimacion integral del Data Lake en OCI para la Plataforma UPME de Electromovilidad</p>
+<p class="text-slate-500 text-sm mb-6">Estimacion integral del Data Lake en OCI para la Plataforma UPME de Electromovilidad</p>
 
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
 ${KPI('Costo Año 1','$142,956','USD — ~$11,913/mes','orange')}
@@ -72,37 +72,37 @@ ${KPI('Costo 3 Años','$509,008','USD — +30% crecimiento/año','green')}
 
 <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 mb-8"><div class="flex items-start gap-3">
 <div class="text-2xl">🇨🇴</div>
-<div><h3 class="font-bold text-red-300 mb-1">Soberanía de Datos: Región OCI Bogotá Obligatoria</h3>
-<p class="text-xs text-slate-300">UPME es entidad pública del orden nacional. Datos de gobierno, PII de CPOs y auditoría SIC <b class="text-white">NO pueden salir de Colombia</b> (Ley 1581/2012 Art.26, CONPES 3995, Decreto 1078/2015). Toda la infraestructura Data Lake debe residir en <b class="text-orange-300">OCI Región Bogotá</b>. DR São Paulo solo para datos públicos. Ver pestaña "Soberanía & Legal" para análisis completo con 12 normas, clasificación de 11 tipos de datos y 32 riesgos identificados.</p>
+<div><h3 class="font-bold text-red-700 mb-1">Soberanía de Datos: Región OCI Bogotá Obligatoria</h3>
+<p class="text-xs text-slate-600">UPME es entidad pública del orden nacional. Datos de gobierno, PII de CPOs y auditoría SIC <b class="text-slate-900">NO pueden salir de Colombia</b> (Ley 1581/2012 Art.26, CONPES 3995, Decreto 1078/2015). Toda la infraestructura Data Lake debe residir en <b class="text-orange-700">OCI Región Bogotá</b>. DR São Paulo solo para datos públicos. Ver pestaña "Soberanía & Legal" para análisis completo con 12 normas, clasificación de 11 tipos de datos y 32 riesgos identificados.</p>
 </div></div></div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
 <div class="gl rounded-xl p-6">
-<h3 class="font-semibold mb-3 text-orange-400">Vision del Data Lake</h3>
-<p class="text-sm text-slate-300 mb-4">El Data Lake transforma el dato operacional OCPI 2.2.1 en <b class="text-orange-300">datos de gobierno</b> para transparencia, supervision y planeacion energetica. <b class="text-red-300">100% alojado en OCI Bogotá.</b></p>
-<ul class="space-y-2 text-xs text-slate-300">
-<li><b class="text-orange-300">Transparencia:</b> Datos abiertos (precios, disponibilidad, ubicacion RT) — Ley 1712</li>
-<li><b class="text-purple-300">Supervision SIC:</b> Auditoria inmutable WORM, anomalias, veracidad</li>
-<li><b class="text-cyan-300">Planeacion UPME:</b> Patrones de demanda, proyecciones, politica energetica</li>
-<li><b class="text-green-300">Cumplimiento:</b> Reportes MinEnergia, CREG, SIC — datos en territorio CO</li>
-<li><b class="text-red-300">Soberanía:</b> Ley 1581, CONPES 3995, Circular SIC 005 — región Bogotá</li>
+<h3 class="font-semibold mb-4 text-orange-600">Vision del Data Lake</h3>
+<p class="text-sm text-slate-600 mb-4">El Data Lake transforma el dato operacional OCPI 2.2.1 en <b class="text-orange-700">datos de gobierno</b> para transparencia, supervision y planeacion energetica. <b class="text-red-700">100% alojado en OCI Bogotá.</b></p>
+<ul class="space-y-2 text-xs text-slate-600">
+<li><b class="text-orange-700">Transparencia:</b> Datos abiertos (precios, disponibilidad, ubicacion RT) — Ley 1712</li>
+<li><b class="text-purple-700">Supervision SIC:</b> Auditoria inmutable WORM, anomalias, veracidad</li>
+<li><b class="text-cyan-700">Planeacion UPME:</b> Patrones de demanda, proyecciones, politica energetica</li>
+<li><b class="text-green-700">Cumplimiento:</b> Reportes MinEnergia, CREG, SIC — datos en territorio CO</li>
+<li><b class="text-red-700">Soberanía:</b> Ley 1581, CONPES 3995, Circular SIC 005 — región Bogotá</li>
 </ul>
 </div>
 <div class="gl rounded-xl p-6">
-<h3 class="font-semibold mb-3 text-purple-400">Volumetria</h3>
+<h3 class="font-semibold mb-4 text-purple-600">Volumetria</h3>
 <div class="grid grid-cols-2 gap-3 mb-4">
-<div><div class="text-lg font-bold text-orange-400">~600</div><div class="text-xs text-slate-400">Estaciones</div></div>
-<div><div class="text-lg font-bold text-purple-400">~3,000</div><div class="text-xs text-slate-400">Conectores</div></div>
-<div><div class="text-lg font-bold text-cyan-400">~50/s</div><div class="text-xs text-slate-400">Reportes OCPI</div></div>
-<div><div class="text-lg font-bold text-green-400">+30%</div><div class="text-xs text-slate-400">Crecimiento/año</div></div>
+<div><div class="text-lg font-bold text-orange-600">~600</div><div class="text-xs text-slate-500">Estaciones</div></div>
+<div><div class="text-lg font-bold text-purple-600">~3,000</div><div class="text-xs text-slate-500">Conectores</div></div>
+<div><div class="text-lg font-bold text-cyan-600">~50/s</div><div class="text-xs text-slate-500">Reportes OCPI</div></div>
+<div><div class="text-lg font-bold text-green-600">+30%</div><div class="text-xs text-slate-500">Crecimiento/año</div></div>
 </div>
-<div class="bg-slate-800/50 rounded-lg p-3 text-xs space-y-1">
-<div class="font-semibold text-slate-300 mb-1">Ingesta Mensual:</div>
-<div class="flex justify-between"><span>Eventos OCPI raw</span><span class="font-mono text-orange-300">~43 GB</span></div>
-<div class="flex justify-between"><span>Logs + Auditoria</span><span class="font-mono text-purple-300">~25 GB</span></div>
-<div class="flex justify-between"><span>CDC GoldenGate</span><span class="font-mono text-cyan-300">~15 GB</span></div>
-<div class="flex justify-between"><span>Metricas</span><span class="font-mono text-green-300">~8 GB</span></div>
-<div class="border-t border-slate-700 pt-1 mt-1 flex justify-between font-semibold"><span>Total</span><span class="font-mono text-white">~91 GB/mes</span></div>
+<div class="bg-slate-50 rounded-lg p-3 text-xs space-y-1">
+<div class="font-semibold text-slate-600 mb-1">Ingesta Mensual:</div>
+<div class="flex justify-between"><span>Eventos OCPI raw</span><span class="font-mono text-orange-700">~43 GB</span></div>
+<div class="flex justify-between"><span>Logs + Auditoria</span><span class="font-mono text-purple-700">~25 GB</span></div>
+<div class="flex justify-between"><span>CDC GoldenGate</span><span class="font-mono text-cyan-700">~15 GB</span></div>
+<div class="flex justify-between"><span>Metricas</span><span class="font-mono text-green-700">~8 GB</span></div>
+<div class="border-t border-slate-200 pt-1 mt-1 flex justify-between font-semibold"><span>Total</span><span class="font-mono text-slate-900">~91 GB/mes</span></div>
 </div>
 </div>
 </div>
@@ -120,8 +120,8 @@ ${COST_LINE('green','Compute (Quality)','$10,800')}
 ${COST_LINE('sky','Object Storage','$7,200')}
 ${COST_LINE('indigo','Data Catalog','$6,000')}
 ${COST_LINE('slate','Network+Monitor','$7,200')}
-<div class="border-t border-slate-700 pt-2 mt-2 flex justify-between font-bold">
-<span class="text-white">Total Año 1</span><span class="text-orange-400 text-lg">$142,956 USD</span>
+<div class="border-t border-slate-200 pt-2 mt-2 flex justify-between font-bold">
+<span class="text-slate-900">Total Año 1</span><span class="text-orange-600 text-lg">$142,956 USD</span>
 </div>
 <div class="text-xs text-slate-500">~COP $571.8M/año | ~COP $47.7M/mes (TRM 4,000)</div>
 </div>
@@ -135,7 +135,7 @@ ${COST_LINE('slate','Network+Monitor','$7,200')}
 
 CONTENT.arq = ()=> `
 <h2 class="text-2xl font-bold mb-1">Arquitectura Data Lake — OCI</h2>
-<p class="text-slate-400 text-sm mb-6">Diagrama de alto nivel</p>
+<p class="text-slate-500 text-sm mb-6">Diagrama de alto nivel</p>
 
 <div class="gl rounded-xl p-6 mb-8 overflow-x-auto">
 <svg viewBox="0 0 1000 600" class="w-full min-w-[700px]" xmlns="http://www.w3.org/2000/svg">
@@ -144,12 +144,12 @@ CONTENT.arq = ()=> `
 <marker id="ap" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#a855f7"/></marker>
 <marker id="ag" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#94a3b8"/></marker>
 </defs>
-<rect x="5" y="5" width="990" height="590" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+<rect x="5" y="5" width="990" height="590" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
 <text x="20" y="28" font-size="12" font-weight="700" fill="#f97316">🇨🇴 OCI Region: Bogotá (PRIMARY) — Soberanía de Datos Garantizada</text>
 
 <!-- Sources -->
-<rect x="15" y="50" width="130" height="250" rx="8" fill="none" stroke="#475569" stroke-dasharray="4,4"/>
-<text x="80" y="68" font-size="9" font-weight="600" fill="#94a3b8" text-anchor="middle">FUENTES</text>
+<rect x="15" y="50" width="130" height="250" rx="8" fill="none" stroke="#94a3b8" stroke-dasharray="4,4"/>
+<text x="80" y="68" font-size="9" font-weight="600" fill="#475569" text-anchor="middle">FUENTES</text>
 ${BOX(22,80,116,40,'Ingesta Svc','Go OCPI','#3b82f6')}
 ${BOX(22,130,116,40,'Validator','Python 3.12','#8b5cf6')}
 ${BOX(22,180,116,40,'Autonomous DB','OCI ATP','#f97316')}
@@ -157,12 +157,12 @@ ${BOX(22,230,116,40,'Audit Trail','WORM Logs','#22c55e')}
 
 <!-- Streaming -->
 <rect x="170" y="60" width="110" height="180" rx="8" fill="rgba(168,85,247,.1)" stroke="#a855f7" stroke-width="1.5"/>
-<text x="225" y="80" font-size="9" font-weight="600" fill="#c4b5fd" text-anchor="middle">OCI Streaming</text>
-<text x="225" y="95" font-size="7" fill="#a78bfa" text-anchor="middle">(Kafka API)</text>
+<text x="225" y="80" font-size="9" font-weight="600" fill="#7c3aed" text-anchor="middle">OCI Streaming</text>
+<text x="225" y="95" font-size="7" fill="#8b5cf6" text-anchor="middle">(Kafka API)</text>
 <text x="225" y="115" font-size="6" fill="#94a3b8" text-anchor="middle">locations / sessions</text>
 <text x="225" y="128" font-size="6" fill="#94a3b8" text-anchor="middle">cdrs / tariffs / quality</text>
 <text x="225" y="141" font-size="6" fill="#94a3b8" text-anchor="middle">audit / validation</text>
-<text x="225" y="160" font-size="7" fill="#d8b4fe" text-anchor="middle">200+ particiones</text>
+<text x="225" y="160" font-size="7" fill="#7c3aed" text-anchor="middle">200+ particiones</text>
 <text x="225" y="175" font-size="6" fill="#94a3b8" text-anchor="middle">$1,681/mes</text>
 
 <!-- GoldenGate -->
@@ -170,22 +170,22 @@ ${BOX(170,260,110,40,'GoldenGate','CDC $3,942/mes','#f97316')}
 
 <!-- Medallion -->
 <rect x="310" y="50" width="150" height="120" rx="8" fill="rgba(180,83,9,.12)" stroke="#b45309" stroke-width="2"/>
-<text x="385" y="72" font-size="11" font-weight="800" fill="#fbbf24" text-anchor="middle">BRONZE</text>
-<text x="385" y="87" font-size="7" fill="#fde68a" text-anchor="middle">Raw / Inmutable / WORM</text>
+<text x="385" y="72" font-size="11" font-weight="800" fill="#b45309" text-anchor="middle">BRONZE</text>
+<text x="385" y="87" font-size="7" fill="#92400e" text-anchor="middle">Raw / Inmutable / WORM</text>
 <text x="385" y="105" font-size="6" fill="#d97706" text-anchor="middle">JSON crudo | Eventos Kafka</text>
 <text x="385" y="118" font-size="6" fill="#d97706" text-anchor="middle">Audit logs | CDC snapshots</text>
 <text x="385" y="135" font-size="6" fill="#92400e" text-anchor="middle">Retencion: 2 años | ~60 GB/mes</text>
 
 <rect x="310" y="185" width="150" height="120" rx="8" fill="rgba(100,116,139,.12)" stroke="#64748b" stroke-width="2"/>
-<text x="385" y="207" font-size="11" font-weight="800" fill="#e2e8f0" text-anchor="middle">SILVER</text>
-<text x="385" y="222" font-size="7" fill="#cbd5e1" text-anchor="middle">Validated / Enriched</text>
+<text x="385" y="207" font-size="11" font-weight="800" fill="#334155" text-anchor="middle">SILVER</text>
+<text x="385" y="222" font-size="7" fill="#475569" text-anchor="middle">Validated / Enriched</text>
 <text x="385" y="240" font-size="6" fill="#94a3b8" text-anchor="middle">Parquet | Schema enforced</text>
 <text x="385" y="253" font-size="6" fill="#94a3b8" text-anchor="middle">PII clasificado | Linaje E2E</text>
 <text x="385" y="270" font-size="6" fill="#64748b" text-anchor="middle">Retencion: 5 años | ~25 GB/mes</text>
 
 <rect x="310" y="320" width="150" height="120" rx="8" fill="rgba(202,138,4,.12)" stroke="#ca8a04" stroke-width="2"/>
-<text x="385" y="342" font-size="11" font-weight="800" fill="#fde047" text-anchor="middle">GOLD</text>
-<text x="385" y="357" font-size="7" fill="#fef08a" text-anchor="middle">Aggregated / Governance</text>
+<text x="385" y="342" font-size="11" font-weight="800" fill="#a16207" text-anchor="middle">GOLD</text>
+<text x="385" y="357" font-size="7" fill="#854d0e" text-anchor="middle">Aggregated / Governance</text>
 <text x="385" y="375" font-size="6" fill="#eab308" text-anchor="middle">KPIs | Reportes regulatorios</text>
 <text x="385" y="388" font-size="6" fill="#eab308" text-anchor="middle">Open Data | ML datasets</text>
 <text x="385" y="405" font-size="6" fill="#a16207" text-anchor="middle">Retencion: 10 años | ~5 GB/mes</text>
@@ -197,8 +197,8 @@ ${BOX(170,260,110,40,'GoldenGate','CDC $3,942/mes','#f97316')}
 <text x="400" y="314" font-size="5" fill="#f97316">ETL</text>
 
 <!-- Object Storage -->
-<rect x="320" y="460" width="130" height="30" rx="6" fill="#0e3a5f" stroke="#06b6d4" stroke-width="1.5"/>
-<text x="385" y="478" font-size="8" font-weight="600" fill="#67e8f9" text-anchor="middle">OCI Object Storage</text>
+<rect x="320" y="460" width="130" height="30" rx="6" fill="#ecfeff" stroke="#06b6d4" stroke-width="1.5"/>
+<text x="385" y="478" font-size="8" font-weight="600" fill="#0891b2" text-anchor="middle">OCI Object Storage</text>
 
 <!-- Processing -->
 ${BOX(500,60,140,45,'Data Flow (Spark)','ETL $2,190/mes','#f97316')}
@@ -208,8 +208,8 @@ ${BOX(500,240,140,45,'Quality Engine','Python OKE $900/mes','#22c55e')}
 ${BOX(500,300,140,45,'Anomaly Detector','Z-score $400/mes','#ef4444')}
 
 <!-- Consumers -->
-<rect x="680" y="50" width="300" height="340" rx="8" fill="none" stroke="#475569" stroke-dasharray="4,4"/>
-<text x="830" y="70" font-size="9" font-weight="600" fill="#94a3b8" text-anchor="middle">CONSUMIDORES</text>
+<rect x="680" y="50" width="300" height="340" rx="8" fill="none" stroke="#94a3b8" stroke-dasharray="4,4"/>
+<text x="830" y="70" font-size="9" font-weight="600" fill="#475569" text-anchor="middle">CONSUMIDORES</text>
 ${BOX(695,82,270,38,'Public API (Open Data)','Estaciones, precios, disponibilidad RT','#06b6d4')}
 ${BOX(695,130,270,38,'Admin Dashboard (Grafana)','KPIs, SLOs, CPOs, anomalias','#f97316')}
 ${BOX(695,178,270,38,'Reportes Regulatorios','MinEnergia | SIC | CREG','#8b5cf6')}
@@ -236,8 +236,8 @@ ${BOX(695,322,270,38,'Autonomous DW (ADW)','Analytics SQL | BI','#14b8a6')}
 <line x1="640" y1="322" x2="693" y2="340" stroke="#94a3b8" stroke-width="1" marker-end="url(#ag)"/>
 
 <!-- DR -->
-<rect x="15" y="460" width="280" height="80" rx="8" fill="none" stroke="#ef4444" stroke-dasharray="4,4"/>
-<text x="155" y="480" font-size="8" font-weight="600" fill="#fca5a5" text-anchor="middle">DR: Sao Paulo | Vault HSM | IAM | AES-256 | WORM SIC | Zero-Trust</text>
+<rect x="15" y="460" width="280" height="80" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-dasharray="4,4"/>
+<text x="155" y="480" font-size="8" font-weight="600" fill="#b91c1c" text-anchor="middle">DR: Sao Paulo | Vault HSM | IAM | AES-256 | WORM SIC | Zero-Trust</text>
 ${BOX(25,490,120,30,'Object Storage','Cross-Region Repl.','#ef4444')}
 ${BOX(160,490,120,30,'Autonomous DB','Data Guard Standby','#ef4444')}
 </svg>
@@ -255,19 +255,19 @@ ${ADR('green','ADR-DL-004','WORM para Audit SIC','SIC requiere logs inmutables',
 
 CONTENT.soberania = ()=> `
 <h2 class="text-2xl font-bold mb-1">Soberanía de Datos & Marco Legal</h2>
-<p class="text-slate-400 text-sm mb-6">Análisis de residencia de datos, región OCI Bogotá y cumplimiento normativo colombiano</p>
+<p class="text-slate-500 text-sm mb-6">Análisis de residencia de datos, región OCI Bogotá y cumplimiento normativo colombiano</p>
 
 <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5 mb-8"><div class="flex items-start gap-3">
 <div class="text-3xl">⚠️</div>
 <div>
-<h3 class="font-bold text-red-300 text-lg mb-2">Decisión Crítica: Residencia de Datos en Colombia</h3>
-<p class="text-sm text-slate-300 mb-3">La UPME es una <b class="text-red-300">entidad pública del orden nacional</b> adscrita al Ministerio de Minas y Energía. Los datos recolectados bajo la Resolución 40559/2025 incluyen <b class="text-red-300">información de gobierno, datos personales de operadores CPO y datos estratégicos del sector energético</b> que <b class="text-white">NO deben salir del territorio colombiano</b> sin autorización expresa de la SIC y concepto favorable del CSIRT de Gobierno.</p>
+<h3 class="font-bold text-red-700 text-lg mb-2">Decisión Crítica: Residencia de Datos en Colombia</h3>
+<p class="text-sm text-slate-600 mb-3">La UPME es una <b class="text-red-700">entidad pública del orden nacional</b> adscrita al Ministerio de Minas y Energía. Los datos recolectados bajo la Resolución 40559/2025 incluyen <b class="text-red-700">información de gobierno, datos personales de operadores CPO y datos estratégicos del sector energético</b> que <b class="text-slate-900">NO deben salir del territorio colombiano</b> sin autorización expresa de la SIC y concepto favorable del CSIRT de Gobierno.</p>
 <div class="flex flex-wrap gap-2 text-xs">
-<span class="px-3 py-1 rounded-full bg-red-500/20 text-red-300 border border-red-500/30">Ley 1581/2012 Habeas Data</span>
-<span class="px-3 py-1 rounded-full bg-red-500/20 text-red-300 border border-red-500/30">Decreto 1078/2015</span>
-<span class="px-3 py-1 rounded-full bg-red-500/20 text-red-300 border border-red-500/30">CONPES 3995/2020</span>
-<span class="px-3 py-1 rounded-full bg-red-500/20 text-red-300 border border-red-500/30">Circular SIC 005/2017</span>
-<span class="px-3 py-1 rounded-full bg-red-500/20 text-red-300 border border-red-500/30">Res. MinTIC 1519/2020</span>
+<span class="px-3 py-1 rounded-full bg-red-100 text-red-700 border border-red-200">Ley 1581/2012 Habeas Data</span>
+<span class="px-3 py-1 rounded-full bg-red-100 text-red-700 border border-red-200">Decreto 1078/2015</span>
+<span class="px-3 py-1 rounded-full bg-red-100 text-red-700 border border-red-200">CONPES 3995/2020</span>
+<span class="px-3 py-1 rounded-full bg-red-100 text-red-700 border border-red-200">Circular SIC 005/2017</span>
+<span class="px-3 py-1 rounded-full bg-red-100 text-red-700 border border-red-200">Res. MinTIC 1519/2020</span>
 </div></div></div></div>
 
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -278,19 +278,19 @@ ${KPI('Clasificaciones','4 Niveles','Público→Clasificado','cyan')}
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-<div class="gl rounded-xl p-6"><h3 class="font-semibold mb-4 text-orange-400">¿Por qué OCI Región Bogotá es Obligatorio?</h3>
+<div class="gl rounded-xl p-6"><h3 class="font-semibold mb-4 text-orange-600">¿Por qué OCI Región Bogotá es Obligatorio?</h3>
 <div class="space-y-3">
 ${[['Soberanía de datos de gobierno','UPME como entidad pública NO puede alojar datos sensibles fuera de Colombia. Ley 1581/2012 Art. 26 exige autorización SIC para transferencia internacional — proceso complejo y con riesgo de negación.','red'],
 ['Latencia operacional','< 5ms desde Bogotá vs ~50-80ms a São Paulo. Crítico para ingesta OCPI RT con SLA < 100ms P99. Cada ms cuenta en 21.6M+ transacciones/mes.','green'],
 ['Cumplimiento MinTIC Cloud','Res. MinTIC 1519/2020 establece lineamientos de adopción cloud para entidades públicas. Región local simplifica concepto de seguridad y viabilidad jurídica.','purple'],
 ['OCI Dedicated Region / Gov Cloud','Oracle ofrece regiones dedicadas para gobierno con aislamiento físico, certificaciones locales y soporte dedicado 24/7 en español.','cyan'],
 ['Auditoría SIC in-country','Logs WORM y evidencia digital deben ser accesibles para la SIC sin procedimientos de transferencia internacional ni trabas jurisdiccionales.','amber'],
-['Contratación pública','Presencia local de Oracle en Colombia simplifica procesos bajo Ley 80/1993 y Colombia Compra Eficiente. Facturación local en COP.','sky']].map(([t,d,c])=>`<div class="bg-slate-800/50 rounded-lg p-3"><div class="text-sm font-semibold text-${c}-300 mb-1">${t}</div><p class="text-xs text-slate-400">${d}</p></div>`).join('')}
+['Contratación pública','Presencia local de Oracle en Colombia simplifica procesos bajo Ley 80/1993 y Colombia Compra Eficiente. Facturación local en COP.','sky']].map(([t,d,c])=>`<div class="bg-slate-50 rounded-lg p-3"><div class="text-sm font-semibold text-${c}-600 mb-1">${t}</div><p class="text-xs text-slate-500">${d}</p></div>`).join('')}
 </div></div>
 
-<div class="gl rounded-xl p-6"><h3 class="font-semibold mb-4 text-purple-400">Comparativa: Bogotá vs São Paulo</h3>
+<div class="gl rounded-xl p-6"><h3 class="font-semibold mb-4 text-purple-600">Comparativa: Bogotá vs São Paulo</h3>
 <div class="overflow-x-auto"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-3 py-2 text-left bg-slate-800/50">Criterio</th><th class="px-3 py-2 text-left bg-slate-800/50">Bogotá (Primary)</th><th class="px-3 py-2 text-left bg-slate-800/50">São Paulo (DR)</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-3 py-2 text-left bg-slate-50">Criterio</th><th class="px-3 py-2 text-left bg-slate-50">Bogotá (Primary)</th><th class="px-3 py-2 text-left bg-slate-50">São Paulo (DR)</th></tr></thead>
 <tbody>${[
 ['Residencia datos gobierno','✅ Colombia','❌ Requiere Art.26 SIC'],
 ['Latencia desde Bogotá','< 5ms','~50-80ms'],
@@ -304,14 +304,14 @@ ${[['Soberanía de datos de gobierno','UPME como entidad pública NO puede aloja
 ['Costo relativo','Referencia base','Similar (±5%)'],
 ['Jurisdicción legal','Colombia — Ley 1581','Brasil — LGPD (diferente)'],
 ['Soporte Oracle','Equipo local Colombia','Equipo regional LATAM']
-].map(r=>`<tr class="border-b border-slate-800/50 cr"><td class="px-3 py-2 font-medium">${r[0]}</td><td class="px-3 py-2">${r[1]}</td><td class="px-3 py-2">${r[2]}</td></tr>`).join('')}</tbody></table></div>
-<div class="mt-3 bg-amber-500/10 border border-amber-500/20 rounded-lg p-3 text-xs text-amber-200"><b>⚡ Recomendación DR:</b> São Paulo como warm standby <b>SOLO</b> para datos públicos y anonimizados. Datos sensibles/PII/auditoría SIC permanecen exclusivamente en OCI Bogotá con backup intra-región (Fault Domains + Object Storage Replication local).</div>
+].map(r=>`<tr class="border-b border-slate-200 cr"><td class="px-3 py-2 font-medium">${r[0]}</td><td class="px-3 py-2">${r[1]}</td><td class="px-3 py-2">${r[2]}</td></tr>`).join('')}</tbody></table></div>
+<div class="mt-3 bg-amber-500/10 border border-amber-500/20 rounded-lg p-3 text-xs text-amber-700"><b>⚡ Recomendación DR:</b> São Paulo como warm standby <b>SOLO</b> para datos públicos y anonimizados. Datos sensibles/PII/auditoría SIC permanecen exclusivamente en OCI Bogotá con backup intra-región (Fault Domains + Object Storage Replication local).</div>
 </div></div>
 
 <div class="gl rounded-xl p-6 mb-8">
-<h3 class="font-semibold mb-4 text-red-400">Marco Legal Colombiano — Análisis Exhaustivo</h3>
+<h3 class="font-semibold mb-4 text-red-600">Marco Legal Colombiano — Análisis Exhaustivo</h3>
 <div class="overflow-x-auto"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-3 py-2 text-left bg-slate-800/50">Norma</th><th class="px-3 py-2 text-left bg-slate-800/50">Alcance</th><th class="px-3 py-2 text-left bg-slate-800/50">Impacto en Data Lake</th><th class="px-3 py-2 text-left bg-slate-800/50">OCI Bogotá</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-3 py-2 text-left bg-slate-50">Norma</th><th class="px-3 py-2 text-left bg-slate-50">Alcance</th><th class="px-3 py-2 text-left bg-slate-50">Impacto en Data Lake</th><th class="px-3 py-2 text-left bg-slate-50">OCI Bogotá</th></tr></thead>
 <tbody>${[
 ['Ley 1581/2012 (Habeas Data)','Protección datos personales. <b>Art. 26</b>: transferencia internacional requiere país con nivel adecuado o autorización SIC.','PII de CPOs (NIT, rep. legal, contactos, bancarios) debe permanecer en CO. Consentimiento explícito para cualquier transferencia.','✅ Elimina necesidad de Art.26'],
 ['Decreto 1377/2013','Reglamenta Ley 1581. Requisitos para encargados del tratamiento de datos.','OCI actúa como "encargado del tratamiento". Requiere contrato de transmisión con cláusulas de seguridad específicas.','✅ Oracle ofrece DPA para CO'],
@@ -325,12 +325,12 @@ ${[['Soberanía de datos de gobierno','UPME como entidad pública NO puede aloja
 ['Ley 1273/2009 (Delitos Informáticos)','Tipifica delitos informáticos: acceso abusivo, interceptación, daño informático.','Obligación legal de proteger datos contra acceso no autorizado. Negligencia puede ser punible.','✅ WAF, Firewall, Zero Trust'],
 ['Ley 1266/2008 (Habeas Data Financiero)','Datos financieros y crediticios. Aplica a CDRs con información de facturación.','CDRs con montos, tarifas y datos de pago requieren protección especial. Reporte a SIC obligatorio.','✅ Cifrado + acceso restringido'],
 ['Decreto 338/2022','Actualiza RNBD (Registro Nacional BD). Entidades deben registrar bases de datos ante SIC.','Data Lake (Bronze, Silver, Gold) debe registrarse en RNBD de la SIC como base de datos de UPME.','✅ Registro desde CO facilita']
-].map(r=>`<tr class="border-b border-slate-800/50 cr"><td class="px-3 py-2 font-medium text-orange-300" style="min-width:160px">${r[0]}</td><td class="px-3 py-2">${r[1]}</td><td class="px-3 py-2">${r[2]}</td><td class="px-3 py-2 text-green-300">${r[3]}</td></tr>`).join('')}</tbody></table></div></div>
+].map(r=>`<tr class="border-b border-slate-200 cr"><td class="px-3 py-2 font-medium text-orange-600" style="min-width:160px">${r[0]}</td><td class="px-3 py-2">${r[1]}</td><td class="px-3 py-2">${r[2]}</td><td class="px-3 py-2 text-green-600">${r[3]}</td></tr>`).join('')}</tbody></table></div></div>
 
 <div class="gl rounded-xl p-6 mb-8">
-<h3 class="font-semibold mb-4 text-cyan-400">Clasificación de Datos & Política de Residencia</h3>
+<h3 class="font-semibold mb-4 text-cyan-600">Clasificación de Datos & Política de Residencia</h3>
 <div class="overflow-x-auto"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-3 py-2 text-left bg-slate-800/50">Tipo de Dato</th><th class="px-3 py-2 text-left bg-slate-800/50">Clasificación</th><th class="px-3 py-2 text-left bg-slate-800/50">Ejemplos</th><th class="px-3 py-2 text-left bg-slate-800/50">Residencia</th><th class="px-3 py-2 text-left bg-slate-800/50">DR São Paulo</th><th class="px-3 py-2 text-left bg-slate-800/50">Norma Aplicable</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-3 py-2 text-left bg-slate-50">Tipo de Dato</th><th class="px-3 py-2 text-left bg-slate-50">Clasificación</th><th class="px-3 py-2 text-left bg-slate-50">Ejemplos</th><th class="px-3 py-2 text-left bg-slate-50">Residencia</th><th class="px-3 py-2 text-left bg-slate-50">DR São Paulo</th><th class="px-3 py-2 text-left bg-slate-50">Norma Aplicable</th></tr></thead>
 <tbody>${[
 ['PII Operadores CPO','Confidencial','NIT, rep. legal, email, teléfono, dirección, cuentas bancarias','🇨🇴 Solo Colombia','❌ No replica','Ley 1581 Art.26'],
 ['Credenciales & Keys','Clasificado','API keys, mTLS certs, OAuth secrets, HSM master keys, tokens','🇨🇴 Solo Colombia','❌ Keys locales','FIPS 140-2 + Vault'],
@@ -343,16 +343,16 @@ ${[['Soberanía de datos de gobierno','UPME como entidad pública NO puede aloja
 ['Disponibilidad RT','Público','Estado conectores, ocupación, tiempo real, queue','🇨🇴 Primary','✅ Puede replicar','Ley 1712 mandato'],
 ['Logs Operacionales','Interno','Application logs, metrics, traces, performance data','🇨🇴 Primary','✅ Réplica permitida','Decreto 1078'],
 ['Datos Anonimizados ML','Público','Datasets sin PII para forecasting, research, academia','🇨🇴 Primary','✅ Sin restricción','Ley 1712 + CONPES']
-].map(r=>`<tr class="border-b border-slate-800/50 cr"><td class="px-3 py-2 font-medium">${r[0]}</td><td class="px-3 py-2"><span class="px-2 py-0.5 rounded text-xs ${r[1]==='Clasificado'?'bg-red-500/20 text-red-300':r[1]==='Confidencial'?'bg-orange-500/20 text-orange-300':r[1]==='Reservado'?'bg-yellow-500/20 text-yellow-300':r[1]==='Interno'?'bg-blue-500/20 text-blue-300':'bg-green-500/20 text-green-300'}">${r[1]}</span></td><td class="px-3 py-2 text-xs">${r[2]}</td><td class="px-3 py-2">${r[3]}</td><td class="px-3 py-2">${r[4]}</td><td class="px-3 py-2 text-xs text-slate-500">${r[5]}</td></tr>`).join('')}</tbody></table></div>
+].map(r=>`<tr class="border-b border-slate-200 cr"><td class="px-3 py-2 font-medium">${r[0]}</td><td class="px-3 py-2"><span class="px-2 py-0.5 rounded text-xs ${r[1]==='Clasificado'?'bg-red-500/20 text-red-700':r[1]==='Confidencial'?'bg-orange-500/20 text-orange-700':r[1]==='Reservado'?'bg-yellow-500/20 text-yellow-700':r[1]==='Interno'?'bg-blue-500/20 text-blue-700':'bg-green-500/20 text-green-700'}">${r[1]}</span></td><td class="px-3 py-2 text-xs">${r[2]}</td><td class="px-3 py-2">${r[3]}</td><td class="px-3 py-2">${r[4]}</td><td class="px-3 py-2 text-xs text-slate-500">${r[5]}</td></tr>`).join('')}</tbody></table></div>
 <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
-<div class="bg-red-500/10 border border-red-500/20 rounded-lg p-3 text-xs"><b class="text-red-300">🔒 Clasificado + Confidencial:</b> <span class="text-slate-300">NUNCA abandonan OCI Bogotá. Backup solo intra-región. Acceso restringido por IAM + MFA. Cifrado doble capa (TDE + Object Storage).</span></div>
-<div class="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-3 text-xs"><b class="text-yellow-300">⚠️ Reservado:</b> <span class="text-slate-300">Permanece en Colombia. DR solo con anonimización certificada (k-anonymity + differential privacy). Requiere aprobación Oficial de Protección de Datos.</span></div>
-<div class="bg-green-500/10 border border-green-500/20 rounded-lg p-3 text-xs"><b class="text-green-300">✅ Público:</b> <span class="text-slate-300">Puede replicar a cualquier región. Mandato de Ley 1712 de transparencia activa. Open Data API disponible globalmente.</span></div>
-<div class="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 text-xs"><b class="text-blue-300">ℹ️ Interno:</b> <span class="text-slate-300">Logs operacionales sin PII. Réplica permitida para monitoreo y DR. Retención según política interna (90 días hot, 1 año archive).</span></div>
+<div class="bg-red-500/10 border border-red-500/20 rounded-lg p-3 text-xs"><b class="text-red-700">🔒 Clasificado + Confidencial:</b> <span class="text-slate-600">NUNCA abandonan OCI Bogotá. Backup solo intra-región. Acceso restringido por IAM + MFA. Cifrado doble capa (TDE + Object Storage).</span></div>
+<div class="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-3 text-xs"><b class="text-yellow-700">⚠️ Reservado:</b> <span class="text-slate-600">Permanece en Colombia. DR solo con anonimización certificada (k-anonymity + differential privacy). Requiere aprobación Oficial de Protección de Datos.</span></div>
+<div class="bg-green-500/10 border border-green-500/20 rounded-lg p-3 text-xs"><b class="text-green-700">✅ Público:</b> <span class="text-slate-600">Puede replicar a cualquier región. Mandato de Ley 1712 de transparencia activa. Open Data API disponible globalmente.</span></div>
+<div class="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 text-xs"><b class="text-blue-700">ℹ️ Interno:</b> <span class="text-slate-600">Logs operacionales sin PII. Réplica permitida para monitoreo y DR. Retención según política interna (90 días hot, 1 año archive).</span></div>
 </div></div>
 
 <div class="gl rounded-xl p-6 mb-8">
-<h3 class="font-semibold mb-4 text-green-400">Certificaciones OCI & Compliance</h3>
+<h3 class="font-semibold mb-4 text-green-600">Certificaciones OCI & Compliance</h3>
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
 ${[['ISO 27001','SGSI — Gestión seguridad información','Obligatorio MinTIC','green'],
 ['ISO 27017','Controles seguridad específicos cloud','Best practice gobierno','green'],
@@ -366,8 +366,8 @@ ${[['ISO 27001','SGSI — Gestión seguridad información','Obligatorio MinTIC',
 ['C5 (BSI)','Cloud Computing Compliance Controls','Estándar europeo referencia','purple'],
 ['FIPS 140-2 L3','Módulos criptográficos HSM','Vault keys UPME','red'],
 ['HIPAA','Health data (controles equivalentes)','Referencia controles datos sensibles','purple']
-].map(([t,d,r,c])=>`<div class="bg-slate-800/50 rounded-lg p-3"><div class="text-sm font-semibold text-${c}-300">${t}</div><p class="text-xs text-slate-400 mt-1">${d}</p><div class="text-xs text-${c}-400 mt-1">${r}</div></div>`).join('')}</div>
-<div class="bg-slate-800/50 rounded-lg p-3 text-xs text-slate-400"><b class="text-slate-300">Nota contractual:</b> El contrato con Oracle debe incluir: (1) DPA (Data Processing Agreement) específico para Colombia, (2) Cláusula de no-transferencia internacional sin consentimiento, (3) Derecho de auditoría por parte de UPME/SIC, (4) Notificación de incidentes en < 72h (Circular SIC), (5) Cláusula de portabilidad y exit plan, (6) SLA con penalidades financieras.</div>
+].map(([t,d,r,c])=>`<div class="bg-slate-50 rounded-lg p-3"><div class="text-sm font-semibold text-${c}-600">${t}</div><p class="text-xs text-slate-500 mt-1">${d}</p><div class="text-xs text-${c}-400 mt-1">${r}</div></div>`).join('')}</div>
+<div class="bg-slate-50 rounded-lg p-3 text-xs text-slate-500"><b class="text-slate-600">Nota contractual:</b> El contrato con Oracle debe incluir: (1) DPA (Data Processing Agreement) específico para Colombia, (2) Cláusula de no-transferencia internacional sin consentimiento, (3) Derecho de auditoría por parte de UPME/SIC, (4) Notificación de incidentes en < 72h (Circular SIC), (5) Cláusula de portabilidad y exit plan, (6) SLA con penalidades financieras.</div>
 </div>
 
 <div class="gl rounded-xl p-6 mb-8">
@@ -375,22 +375,22 @@ ${[['ISO 27001','SGSI — Gestión seguridad información','Obligatorio MinTIC',
 <svg viewBox="0 0 900 380" class="w-full" xmlns="http://www.w3.org/2000/svg">
 <defs><marker id="adr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#22c55e"/></marker>
 <marker id="ablock" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#ef4444"/></marker></defs>
-<rect x="5" y="5" width="890" height="370" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+<rect x="5" y="5" width="890" height="370" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
 <!-- Colombia Region -->
 <rect x="15" y="15" width="480" height="350" rx="10" fill="rgba(34,197,94,.05)" stroke="#22c55e" stroke-width="2"/>
 <text x="255" y="38" font-size="13" font-weight="800" fill="#22c55e" text-anchor="middle">🇨🇴 OCI Región Bogotá (PRIMARY)</text>
-<text x="255" y="52" font-size="8" fill="#86efac" text-anchor="middle">Todos los datos — Soberanía garantizada</text>
-<rect x="30" y="65" width="200" height="55" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
-<text x="130" y="82" font-size="8" font-weight="700" fill="#fca5a5" text-anchor="middle">CLASIFICADO + CONFIDENCIAL</text>
-<text x="130" y="95" font-size="6" fill="#fca5a5" text-anchor="middle">PII CPOs | Audit SIC | Keys HSM</text>
+<text x="255" y="52" font-size="8" fill="#16a34a" text-anchor="middle">Todos los datos — Soberanía garantizada</text>
+<rect x="30" y="65" width="200" height="55" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+<text x="130" y="82" font-size="8" font-weight="700" fill="#b91c1c" text-anchor="middle">CLASIFICADO + CONFIDENCIAL</text>
+<text x="130" y="95" font-size="6" fill="#dc2626" text-anchor="middle">PII CPOs | Audit SIC | Keys HSM</text>
 <text x="130" y="108" font-size="6" fill="#dc2626" text-anchor="middle">🔒 NO SALE DE COLOMBIA — NUNCA</text>
-<rect x="250" y="65" width="230" height="55" rx="6" fill="#422006" stroke="#f59e0b" stroke-width="1.5"/>
-<text x="365" y="82" font-size="8" font-weight="700" fill="#fde68a" text-anchor="middle">RESERVADO</text>
-<text x="365" y="95" font-size="6" fill="#fcd34d" text-anchor="middle">Sessions | CDRs | KPIs nacionales</text>
+<rect x="250" y="65" width="230" height="55" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+<text x="365" y="82" font-size="8" font-weight="700" fill="#92400e" text-anchor="middle">RESERVADO</text>
+<text x="365" y="95" font-size="6" fill="#b45309" text-anchor="middle">Sessions | CDRs | KPIs nacionales</text>
 <text x="365" y="108" font-size="6" fill="#d97706" text-anchor="middle">⚠️ DR solo anonimizado</text>
-<rect x="30" y="135" width="450" height="50" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-<text x="255" y="155" font-size="8" font-weight="700" fill="#86efac" text-anchor="middle">PÚBLICO + INTERNO</text>
-<text x="255" y="170" font-size="6" fill="#4ade80" text-anchor="middle">Ubicaciones | Precios | Disponibilidad RT | Logs operacionales | Open Data</text>
+<rect x="30" y="135" width="450" height="50" rx="6" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+<text x="255" y="155" font-size="8" font-weight="700" fill="#166534" text-anchor="middle">PÚBLICO + INTERNO</text>
+<text x="255" y="170" font-size="6" fill="#16a34a" text-anchor="middle">Ubicaciones | Precios | Disponibilidad RT | Logs operacionales | Open Data</text>
 ${BOX(30,200,140,40,'Object Storage','Bronze+Silver+Gold','#f97316')}
 ${BOX(185,200,140,40,'Autonomous DB','ATP + Data Guard local','#8b5cf6')}
 ${BOX(340,200,140,40,'Vault HSM','FIPS 140-2 L3 Keys','#ef4444')}
@@ -398,26 +398,26 @@ ${BOX(30,255,140,40,'Streaming','200+ particiones','#a855f7')}
 ${BOX(185,255,140,40,'GoldenGate CDC','Replicación RT','#f97316')}
 ${BOX(340,255,140,40,'Backup Local','FD cross-backup','#06b6d4')}
 <rect x="30" y="310" width="450" height="40" rx="6" fill="rgba(100,116,139,.1)" stroke="#64748b"/>
-<text x="255" y="328" font-size="7" font-weight="600" fill="#94a3b8" text-anchor="middle">Fault Domains (3) + Availability Domain — Resiliencia intra-región sin salir de CO</text>
+<text x="255" y="328" font-size="7" font-weight="600" fill="#475569" text-anchor="middle">Fault Domains (3) + Availability Domain — Resiliencia intra-región sin salir de CO</text>
 <text x="255" y="342" font-size="6" fill="#64748b" text-anchor="middle">RPO < 1h | RTO < 30min | Backup automático cada 6h | WORM inmutable</text>
 <!-- São Paulo DR -->
 <rect x="520" y="15" width="365" height="350" rx="10" fill="rgba(245,158,11,.05)" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,3"/>
 <text x="702" y="38" font-size="13" font-weight="800" fill="#f59e0b" text-anchor="middle">🇧🇷 OCI São Paulo (DR Limitado)</text>
-<text x="702" y="52" font-size="8" fill="#fcd34d" text-anchor="middle">Solo datos públicos y anonimizados</text>
-<rect x="535" y="70" width="335" height="50" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-<text x="702" y="90" font-size="8" font-weight="700" fill="#86efac" text-anchor="middle">✅ DATOS PÚBLICOS REPLICADOS</text>
-<text x="702" y="103" font-size="6" fill="#4ade80" text-anchor="middle">Ubicaciones | Precios | Disponibilidad | Open Data API</text>
-<rect x="535" y="135" width="335" height="50" rx="6" fill="#422006" stroke="#f59e0b" stroke-width="1.5"/>
-<text x="702" y="155" font-size="8" font-weight="700" fill="#fde68a" text-anchor="middle">⚠️ DATOS ANONIMIZADOS (k-anonymity)</text>
-<text x="702" y="168" font-size="6" fill="#fcd34d" text-anchor="middle">Sessions sin PII | CDRs agregados | KPIs públicos</text>
-<rect x="535" y="200" width="335" height="60" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="2"/>
-<text x="702" y="222" font-size="9" font-weight="800" fill="#fca5a5" text-anchor="middle">❌ PROHIBIDO — NO REPLICA</text>
-<text x="702" y="237" font-size="6" fill="#ef4444" text-anchor="middle">PII CPOs | Audit SIC | Keys HSM | Sessions raw | CDRs raw</text>
+<text x="702" y="52" font-size="8" fill="#b45309" text-anchor="middle">Solo datos públicos y anonimizados</text>
+<rect x="535" y="70" width="335" height="50" rx="6" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+<text x="702" y="90" font-size="8" font-weight="700" fill="#166534" text-anchor="middle">✅ DATOS PÚBLICOS REPLICADOS</text>
+<text x="702" y="103" font-size="6" fill="#16a34a" text-anchor="middle">Ubicaciones | Precios | Disponibilidad | Open Data API</text>
+<rect x="535" y="135" width="335" height="50" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+<text x="702" y="155" font-size="8" font-weight="700" fill="#92400e" text-anchor="middle">⚠️ DATOS ANONIMIZADOS (k-anonymity)</text>
+<text x="702" y="168" font-size="6" fill="#b45309" text-anchor="middle">Sessions sin PII | CDRs agregados | KPIs públicos</text>
+<rect x="535" y="200" width="335" height="60" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+<text x="702" y="222" font-size="9" font-weight="800" fill="#b91c1c" text-anchor="middle">❌ PROHIBIDO — NO REPLICA</text>
+<text x="702" y="237" font-size="6" fill="#dc2626" text-anchor="middle">PII CPOs | Audit SIC | Keys HSM | Sessions raw | CDRs raw</text>
 <text x="702" y="250" font-size="6" fill="#dc2626" text-anchor="middle">Ley 1581 Art.26 | Circular SIC 005/2017</text>
 ${BOX(535,275,155,40,'OKE Warm Standby','Public API failover','#06b6d4')}
 ${BOX(715,275,155,40,'Object Storage','Public data mirror','#22c55e')}
 <rect x="535" y="330" width="335" height="25" rx="4" fill="rgba(100,116,139,.1)" stroke="#64748b"/>
-<text x="702" y="346" font-size="6" fill="#94a3b8" text-anchor="middle">Failover automático SOLO para servicios públicos | RTO < 30min para Open Data API</text>
+<text x="702" y="346" font-size="6" fill="#475569" text-anchor="middle">Failover automático SOLO para servicios públicos | RTO < 30min para Open Data API</text>
 <!-- Arrows -->
 <line x1="480" y1="155" x2="533" y2="92" stroke="#22c55e" stroke-width="2" marker-end="url(#adr)"/>
 <text x="508" y="110" font-size="6" fill="#22c55e" transform="rotate(-20,508,110)">Replica</text>
@@ -428,7 +428,7 @@ ${BOX(715,275,155,40,'Object Storage','Public data mirror','#22c55e')}
 </svg></div>
 
 <div class="gl rounded-xl p-6 mb-8">
-<h3 class="font-semibold mb-4 text-amber-400">Riesgos Críticos de Soberanía</h3>
+<h3 class="font-semibold mb-4 text-amber-600">Riesgos Críticos de Soberanía</h3>
 <div class="space-y-3">
 ${[['Crítico','Región OCI Bogotá no disponible GA al momento del deployment','Si OCI no tiene GA la región Bogotá para la fecha requerida (Feb 2026), toda la estrategia de residencia de datos se compromete. Opciones: (a) OCI Dedicated Region @Customer en datacenter gobierno, (b) retrasar deployment, (c) Cloud@Customer on-premise UPME, (d) evaluar proveedor alternativo con región CO.','Validar inmediatamente roadmap OCI Colombia con Oracle Account Team. Solicitar carta de compromiso con fecha GA. Tener Plan B: OCI Dedicated Region con timeline y costos.'],
 ['Crítico','Transferencia internacional inadvertida por servicios OCI managed','Algunos servicios OCI managed podrían replicar metadatos, telemetría o logs de soporte a regiones externas (US/EU) como parte de su operación interna.','Contractualmente exigir cláusula de no-transferencia. Revisar DPA línea por línea. Deshabilitar telemetría Oracle no esencial. Auditoría de red para validar que no hay tráfico cross-border.'],
@@ -438,7 +438,7 @@ ${[['Crítico','Región OCI Bogotá no disponible GA al momento del deployment',
 ['Alto','Jurisdicción conflictiva — orden judicial extranjera sobre datos en OCI','Un tribunal extranjero (e.g., US CLOUD Act) podría ordenar a Oracle entregar datos alojados en Bogotá, creando conflicto con soberanía colombiana.','Cláusula contractual de notificación previa. Oracle debe resistir órdenes que violen ley colombiana. Cifrado donde UPME controla las keys (BYOK). Oracle no puede descifrar sin cooperación de UPME.'],
 ['Medio','Vendor lock-in excesivo en OCI','Dependencia de servicios managed propietarios (GoldenGate, Data Catalog, Data Flow) dificulta migración futura.','Usar abstracciones: Kafka API vs OCI Streaming directo, Spark API vs Data Flow directo. Documentar exit plan con estimación de costo y tiempo de migración. Revisión anual de alternativas.'],
 ['Medio','Fallo en clasificación automática de datos','Error en Data Catalog que clasifique datos Confidenciales como Públicos, permitiendo réplica indebida a São Paulo.','Testing exhaustivo de reglas de clasificación. Doble validación: automática + manual. Alertas en tiempo real si dato clasificado aparece fuera de compartment autorizado. Auditoría mensual.']
-].map(([sev,t,d,m])=>`<div class="bg-slate-800/50 rounded-lg p-4 border-l-4 ${sev==='Crítico'?'border-red-500':sev==='Alto'?'border-orange-500':'border-yellow-500'}"><div class="flex items-center gap-2 mb-2"><span class="text-xs px-2 py-0.5 rounded ${sev==='Crítico'?'bg-red-500/20 text-red-300':sev==='Alto'?'bg-orange-500/20 text-orange-300':'bg-yellow-500/20 text-yellow-300'}">${sev}</span><span class="text-sm font-semibold text-slate-200">${t}</span></div><p class="text-xs text-slate-400 mb-2">${d}</p><p class="text-xs text-green-400"><b>Mitigación:</b> ${m}</p></div>`).join('')}
+].map(([sev,t,d,m])=>`<div class="bg-slate-50 rounded-lg p-4 border-l-4 ${sev==='Crítico'?'border-red-500':sev==='Alto'?'border-orange-500':'border-yellow-500'}"><div class="flex items-center gap-2 mb-2"><span class="text-xs px-2 py-0.5 rounded ${sev==='Crítico'?'bg-red-500/20 text-red-700':sev==='Alto'?'bg-orange-500/20 text-orange-700':'bg-yellow-500/20 text-yellow-700'}">${sev}</span><span class="text-sm font-semibold text-slate-800">${t}</span></div><p class="text-xs text-slate-500 mb-2">${d}</p><p class="text-xs text-green-600"><b>Mitigación:</b> ${m}</p></div>`).join('')}
 </div></div>
 
 <div class="gl rounded-xl p-6">
@@ -454,12 +454,182 @@ ${[['Validar GA región OCI Bogotá','Confirmar disponibilidad de todos los serv
 ['Prueba de DR sin datos sensibles','Ejecutar failover a São Paulo validando que SOLO datos públicos y anonimizados se replican.','Mes 4'],
 ['Auditoría independiente de soberanía','Contratar auditoría externa que valide que ningún dato clasificado/confidencial abandona la región Bogotá.','Mes 6'],
 ['Revisión anual de compliance','Evaluar nuevas normas, circulares SIC, cambios MinTIC, actualizaciones DPA Oracle.','Anual']
-].map(([t,d,p])=>`<div class="bg-slate-800/50 rounded-lg p-3"><div class="flex justify-between mb-1"><span class="text-sm font-semibold text-slate-200">${t}</span><span class="text-xs px-2 py-0.5 rounded bg-orange-500/20 text-orange-300">${p}</span></div><p class="text-xs text-slate-400">${d}</p></div>`).join('')}
+].map(([t,d,p])=>`<div class="bg-slate-50 rounded-lg p-3"><div class="flex justify-between mb-1"><span class="text-sm font-semibold text-slate-800">${t}</span><span class="text-xs px-2 py-0.5 rounded bg-orange-500/20 text-orange-700">${p}</span></div><p class="text-xs text-slate-500">${d}</p></div>`).join('')}
+</div></div>
+
+<div class="gl rounded-xl p-6 mb-8">
+<h3 class="font-semibold mb-4">Roadmap de Implementación Data Lake</h3>
+<div class="space-y-4">
+${[
+['Fase 1: Foundation + Legal','Mar-Abr 2026','Validar GA región OCI Bogotá. Firmar DPA Oracle. Concepto jurídico UPME. Provisioning OCI Object Storage, Streaming topics, GoldenGate CDC. Medallion namespaces. IAM policies + compartments por clasificación. WORM retention rules. Registro RNBD ante SIC. Designar Oficial Protección de Datos.','orange','Blocker: GA región Bogotá'],
+['Fase 2: Ingesta + Soberanía','May-Jun 2026','Kafka Connect sink a Bronze. CDC ATP→Bronze. Audit trail WORM. Validación integridad raw data. Implementar políticas de clasificación en Data Catalog. Configurar compartments IAM por nivel de dato. Validar que CERO datos sensibles salen de CO.','purple','Dep: Fase 1 completa'],
+['Fase 3: ETL Core + Quality','Jul-Ago 2026','Data Flow pipelines B→S (locations, sessions, CDRs). Schema enforcement Parquet. PII classification automática Ley 1581. Quality Engine v1 con reglas colombianas. Notificar CSIRT Gobierno.','cyan','Dep: Fase 2 + Data Engineers'],
+['Fase 4: Gold + Reportes Regulatorios','Sep-Oct 2026','S→G aggregations. Reportes regulatorios MinEnergía/SIC/CREG formato oficial. Open Data API (Ley 1712). Dashboard Grafana operacional. KPIs nacionales electromovilidad.','green','Dep: Fase 3 + validación SIC'],
+['Fase 5: Advanced + DR','Nov-Dic 2026','Anomaly detection ML (Z-score + seasonal). Data Catalog completo con lineage E2E. Forecasting demand. DR São Paulo SOLO datos públicos. Prueba de failover. Auditoría de soberanía.','rose','Dep: Fase 4 + auditoría legal'],
+['Fase 6: Optimización + Compliance','Ene-Feb 2027','Lifecycle policies tuning. Cost optimization (reserved, preemptible). Performance tuning Spark. SLA review con CPOs. Auditoría independiente de soberanía. Revisión compliance anual planificada.','amber','Dep: todas las fases + auditoría']
+].map(([t,d,desc,c,dep])=>`<div class="flex gap-4"><div class="flex-shrink-0 w-2 rounded-full bg-${c}-500"></div><div class="flex-1 bg-slate-50 rounded-lg p-4"><div class="flex justify-between items-start mb-1"><span class="text-sm font-semibold text-${c}-600">${t}</span><span class="text-xs px-2 py-0.5 rounded bg-${c}-500/20 text-${c}-600">${d}</span></div><p class="text-xs text-slate-500 mb-2">${desc}</p><div class="text-xs text-slate-500 italic">${dep}</div></div></div>`).join('')}
+</div></div>
+
+<div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 mb-8">
+<h3 class="font-bold text-red-700 mb-1">⚠️ Blocker Fase 1: Disponibilidad Región OCI Bogotá</h3>
+<p class="text-xs text-slate-600">Si la región OCI Bogotá no está GA para Mar 2026, todo el roadmap se desplaza. Alternativas: (a) OCI Dedicated Region @Customer, (b) Oracle Cloud@Customer on-premise, (c) Retraso controlado. <b class="text-red-700">Acción inmediata:</b> Reunión con Oracle Account Team Colombia para confirmar fecha GA y obtener carta de compromiso.</p>
+</div>
+
+<div class="gl rounded-xl p-6 mb-8">
+<h3 class="font-semibold mb-2">Matriz Integral de Riesgos — 32 Riesgos en 6 Categorías</h3>
+<p class="text-xs text-slate-500 mb-4">Cada riesgo clasificado por Probabilidad (B/M/A) × Impacto (Medio/Alto/Crítico) con mitigación específica</p>
+
+<h4 class="text-sm font-bold text-red-600 mb-3 mt-4 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-500"></span> 1. Soberanía & Legal (7 riesgos)</h4>
+<div class="overflow-x-auto mb-6"><table class="w-full text-xs">
+<thead><tr class="border-b border-slate-200"><th class="px-2 py-2 text-left bg-red-500/5">ID</th><th class="px-2 py-2 text-left bg-red-500/5">Riesgo</th><th class="px-2 py-2 bg-red-500/5">Prob.</th><th class="px-2 py-2 bg-red-500/5">Impacto</th><th class="px-2 py-2 text-left bg-red-500/5">Mitigación</th></tr></thead>
+<tbody>${[
+['R-01','Región OCI Bogotá NO disponible GA para deployment','Alta','Crítico','Validar roadmap Oracle inmediato. Plan B: Dedicated Region / Cloud@Customer. Carta compromiso.'],
+['R-02','Transferencia internacional inadvertida de datos sensibles','Media','Crítico','Auditoría red, DPA estricto, deshabilitar telemetría Oracle, compartments IAM.'],
+['R-03','Sanción SIC por incumplimiento Ley 1581 Art.26 (hasta 2,000 SMLMV)','Baja','Crítico','Controles técnicos + Oficial de Protección Datos + auditorías trimestrales.'],
+['R-04','US CLOUD Act — orden judicial extranjera sobre datos en OCI','Baja','Alto','BYOK cifrado, Oracle no puede descifrar sin UPME. Cláusula contractual resistir órdenes.'],
+['R-05','Cambio regulatorio SIC/MinTIC restringe cloud pública gobierno','Media','Alto','Exit plan documentado. Arquitectura portátil: Kafka API, Spark, Parquet, S3-compat.'],
+['R-06','Fallo clasificación automática — dato sensible como público','Media','Crítico','Doble validación (auto+manual). Alertas RT. Auditoría mensual Data Catalog.'],
+['R-07','DPA Oracle incompleto o sin cláusulas Art.26 suficientes','Media','Alto','Revisar DPA con oficina jurídica UPME antes de firmar. Exigir cláusulas explícitas CO.']
+].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-200 cr"><td class="px-2 py-2 font-mono text-red-600">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-700':p==='Media'?'bg-yellow-500/20 text-yellow-700':'bg-green-500/20 text-green-700'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-700':'bg-orange-500/20 text-orange-700'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
+
+<h4 class="text-sm font-bold text-orange-600 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-orange-500"></span> 2. Técnicos / Infraestructura (7 riesgos)</h4>
+<div class="overflow-x-auto mb-6"><table class="w-full text-xs">
+<thead><tr class="border-b border-slate-200"><th class="px-2 py-2 text-left bg-orange-500/5">ID</th><th class="px-2 py-2 text-left bg-orange-500/5">Riesgo</th><th class="px-2 py-2 bg-orange-500/5">Prob.</th><th class="px-2 py-2 bg-orange-500/5">Impacto</th><th class="px-2 py-2 text-left bg-orange-500/5">Mitigación</th></tr></thead>
+<tbody>${[
+['R-08','GoldenGate CDC downtime prolongado','Baja','Crítico','HA config active-passive. Fallback batch CDC cada 15 min. Alertas PagerDuty < 5 min.'],
+['R-09','Fallo ETL en cascada (Bronze→Silver→Gold)','Baja','Alto','Circuit breaker entre capas. DLQ por pipeline. Retry exponencial. Rollback a Bronze.'],
+['R-10','OCI Streaming backpressure — lag > 30 min','Media','Alto','Auto-scaling particiones. Consumer groups paralelos. Alertas lag > 5 min. Buffer en DLQ.'],
+['R-11','Autonomous DB Data Guard failover no exitoso','Baja','Crítico','Test failover trimestral. Runbook documentado. RTO < 30 min validado. Alertas automáticas.'],
+['R-12','Network connectivity degradada en región Bogotá','Baja','Alto','Rutas redundantes. VCN peering. Monitoreo latencia continuo. Escalar con Oracle Support.'],
+['R-13','OKE cluster failure (Quality Engine, Anomaly pods)','Baja','Medio','Node auto-repair. Pod disruption budgets. Multi-AZ si disponible. Readiness probes estrictos.'],
+['R-14','Object Storage WORM corruption o inaccesibilidad','Baja','Crítico','Replicación intra-región. Checksum SHA-256 validación periódica. Backup a segundo bucket.']
+].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-200 cr"><td class="px-2 py-2 font-mono text-orange-600">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-700':p==='Media'?'bg-yellow-500/20 text-yellow-700':'bg-green-500/20 text-green-700'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-700':i==='Alto'?'bg-orange-500/20 text-orange-700':'bg-yellow-500/20 text-yellow-700'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
+
+<h4 class="text-sm font-bold text-purple-600 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-purple-500"></span> 3. Operacionales (6 riesgos)</h4>
+<div class="overflow-x-auto mb-6"><table class="w-full text-xs">
+<thead><tr class="border-b border-slate-200"><th class="px-2 py-2 text-left bg-purple-500/5">ID</th><th class="px-2 py-2 text-left bg-purple-500/5">Riesgo</th><th class="px-2 py-2 bg-purple-500/5">Prob.</th><th class="px-2 py-2 bg-purple-500/5">Impacto</th><th class="px-2 py-2 text-left bg-purple-500/5">Mitigación</th></tr></thead>
+<tbody>${[
+['R-15','Calidad de datos CPOs consistentemente baja','Alta','Alto','Quality Engine strict mode. DLQ con feedback automático a CPOs. Penalizaciones SLA. Ranking público.'],
+['R-16','Crecimiento datos > 30% proyectado (adopción acelerada EM)','Media','Alto','Auto-scaling OCI. Lifecycle policies agresivas. Monitoring proactivo. Budget alerts 80%.'],
+['R-17','DLQ overflow — mensajes sin procesar acumulados','Media','Medio','Alertas DLQ depth > 1000. Auto-scale consumers. Dead letter archive. Revisión diaria operacional.'],
+['R-18','Monitoring blind spots — incidentes no detectados','Media','Alto','4 capas monitoreo: tráfico, servicio, datos, negocio. Custom metrics. Runbooks por alerta.'],
+['R-19','Key rotation failure — expiración de certificados','Baja','Crítico','Cert Manager automático. Alertas 30/15/7 días antes. Runbook de emergencia. Vault key rotation 90d.'],
+['R-20','Schema evolution OCPI — cambio breaking en v2.3','Baja','Medio','Schema registry. Backward compatibility enforced. Migration scripts versionados. Canary deployment.']
+].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-200 cr"><td class="px-2 py-2 font-mono text-purple-600">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-700':p==='Media'?'bg-yellow-500/20 text-yellow-700':'bg-green-500/20 text-green-700'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-700':i==='Alto'?'bg-orange-500/20 text-orange-700':'bg-yellow-500/20 text-yellow-700'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
+
+<h4 class="text-sm font-bold text-green-600 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-green-500"></span> 4. Financieros (5 riesgos)</h4>
+<div class="overflow-x-auto mb-6"><table class="w-full text-xs">
+<thead><tr class="border-b border-slate-200"><th class="px-2 py-2 text-left bg-green-500/5">ID</th><th class="px-2 py-2 text-left bg-green-500/5">Riesgo</th><th class="px-2 py-2 bg-green-500/5">Prob.</th><th class="px-2 py-2 bg-green-500/5">Impacto</th><th class="px-2 py-2 text-left bg-green-500/5">Mitigación</th></tr></thead>
+<tbody>${[
+['R-21','Costos OCI exceden presupuesto aprobado','Media','Alto','OCI Budgets + alertas 70%/80%/90%. Reserved capacity para 24/7. Preemptible para batch. Revisión mensual.'],
+['R-22','Fluctuación TRM USD/COP > 15%','Media','Medio','Presupuesto con buffer 20%. Contrato en USD con techo COP. Hedging si política UPME lo permite.'],
+['R-23','Oracle modifica precios OCI unilateralmente','Baja','Medio','Contrato Annual Flex con precios fijos 1 año. Negociar lock-in de precios 3 años. Cláusula de no-aumento.'],
+['R-24','Costos storage inesperados por retención regulatoria','Media','Medio','Lifecycle Std→IA→Archive agresivo. WORM solo Bronze. Compresión Parquet Silver/Gold. Alertas growth rate.'],
+['R-25','Licenciamiento GoldenGate excede presupuesto','Baja','Alto','Evaluar Debezium (open source) como alternativa si costos GG escalan. PoC paralelo en Fase 2.']
+].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-200 cr"><td class="px-2 py-2 font-mono text-green-600">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-700':p==='Media'?'bg-yellow-500/20 text-yellow-700':'bg-green-500/20 text-green-700'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-700':i==='Alto'?'bg-orange-500/20 text-orange-700':'bg-yellow-500/20 text-yellow-700'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
+
+<h4 class="text-sm font-bold text-cyan-600 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-cyan-500"></span> 5. Organizacionales (4 riesgos)</h4>
+<div class="overflow-x-auto mb-6"><table class="w-full text-xs">
+<thead><tr class="border-b border-slate-200"><th class="px-2 py-2 text-left bg-cyan-500/5">ID</th><th class="px-2 py-2 text-left bg-cyan-500/5">Riesgo</th><th class="px-2 py-2 bg-cyan-500/5">Prob.</th><th class="px-2 py-2 bg-cyan-500/5">Impacto</th><th class="px-2 py-2 text-left bg-cyan-500/5">Mitigación</th></tr></thead>
+<tbody>${[
+['R-26','Escasez de Data Engineers en mercado colombiano','Alta','Alto','Contratar anticipado. Capacitación interna OCI. Considerar consultores Oracle. Remote hiring LATAM.'],
+['R-27','Concentración de conocimiento en 1-2 personas (bus factor)','Alta','Alto','Documentación exhaustiva. Pair programming. Runbooks operacionales. Cross-training obligatorio.'],
+['R-28','Vendor lock-in excesivo — dependencia de Oracle','Media','Alto','Abstracciones: Kafka API, Spark, Parquet, S3. Exit plan documentado. Revisión anual de alternativas.'],
+['R-29','Desalineación stakeholders UPME/MinEnergía/SIC sobre Data Lake','Media','Medio','Comité técnico mensual. Demos trimestrales. Alineación con oficina jurídica. Comunicación proactiva.']
+].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-200 cr"><td class="px-2 py-2 font-mono text-cyan-600">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-700':p==='Media'?'bg-yellow-500/20 text-yellow-700':'bg-green-500/20 text-green-700'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-700':i==='Alto'?'bg-orange-500/20 text-orange-700':'bg-yellow-500/20 text-yellow-700'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
+
+<h4 class="text-sm font-bold text-rose-600 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-rose-500"></span> 6. Seguridad & Ciberseguridad (3 riesgos)</h4>
+<div class="overflow-x-auto mb-4"><table class="w-full text-xs">
+<thead><tr class="border-b border-slate-200"><th class="px-2 py-2 text-left bg-rose-500/5">ID</th><th class="px-2 py-2 text-left bg-rose-500/5">Riesgo</th><th class="px-2 py-2 bg-rose-500/5">Prob.</th><th class="px-2 py-2 bg-rose-500/5">Impacto</th><th class="px-2 py-2 text-left bg-rose-500/5">Mitigación</th></tr></thead>
+<tbody>${[
+['R-30','Data breach — exfiltración de datos del Data Lake','Baja','Crítico','Zero Trust. Cifrado doble capa. DLP policies. Network segmentation. Incident response plan < 72h SIC.'],
+['R-31','DDoS en API de ingesta OCPI','Media','Alto','OCI WAF + DDoS Protection L3/L7. Rate limiting por CPO tier. Geo-fencing Colombia. Auto-scaling.'],
+['R-32','Ransomware en Object Storage / Autonomous DB','Baja','Crítico','WORM inmutable (no-delete). Backups aislados (air-gap lógico). Vault keys separadas. Recovery drill semestral.']
+].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-200 cr"><td class="px-2 py-2 font-mono text-rose-600">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-700':p==='Media'?'bg-yellow-500/20 text-yellow-700':'bg-green-500/20 text-green-700'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-700':'bg-orange-500/20 text-orange-700'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
+
+<div class="bg-slate-50 rounded-lg p-3 text-xs">
+<div class="grid grid-cols-3 gap-4">
+<div><b class="text-red-700">Críticos (5):</b> <span class="text-slate-500">R-01, R-06, R-08, R-30, R-32 — Requieren mitigación inmediata y plan de contingencia documentado.</span></div>
+<div><b class="text-orange-700">Altos (14):</b> <span class="text-slate-500">R-02→R-05, R-07, R-09→R-10, R-12, R-15→R-16, R-18, R-21, R-25→R-28, R-31 — Plan de mitigación en Fase 1-2.</span></div>
+<div><b class="text-yellow-700">Medios (6):</b> <span class="text-slate-500">R-13, R-17, R-20, R-22→R-24, R-29 — Monitoreo continuo, mitigación planificada.</span></div>
+</div></div>
+</div>
+
+<div class="gl rounded-xl p-6 mb-8">
+<h3 class="font-semibold mb-4">Heat Map de Riesgos</h3>
+<svg viewBox="0 0 600 300" class="w-full max-w-2xl mx-auto" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="600" height="300" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="300" y="22" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">Probabilidad × Impacto</text>
+<!-- Grid -->
+<rect x="120" y="35" width="150" height="80" fill="#fefce8" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="270" y="35" width="150" height="80" fill="#fee2e2" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="420" y="35" width="150" height="80" fill="#fecaca" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="120" y="115" width="150" height="80" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="270" y="115" width="150" height="80" fill="#fefce8" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="420" y="115" width="150" height="80" fill="#fee2e2" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="120" y="195" width="150" height="80" fill="#eff6ff" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="270" y="195" width="150" height="80" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="420" y="195" width="150" height="80" fill="#fefce8" stroke="#e2e8f0" stroke-width="1"/>
+<!-- Labels -->
+<text x="60" y="80" font-size="9" fill="#475569" text-anchor="middle">Alta</text>
+<text x="60" y="160" font-size="9" fill="#475569" text-anchor="middle">Media</text>
+<text x="60" y="240" font-size="9" fill="#475569" text-anchor="middle">Baja</text>
+<text x="10" y="155" font-size="9" fill="#64748b" text-anchor="middle" transform="rotate(-90,10,155)">PROBABILIDAD</text>
+<text x="195" y="288" font-size="9" fill="#475569" text-anchor="middle">Medio</text>
+<text x="345" y="288" font-size="9" fill="#475569" text-anchor="middle">Alto</text>
+<text x="495" y="288" font-size="9" fill="#475569" text-anchor="middle">Crítico</text>
+<text x="345" y="298" font-size="9" fill="#64748b" text-anchor="middle">IMPACTO →</text>
+<!-- Risk dots -->
+<text x="195" y="75" font-size="8" fill="#a16207" text-anchor="middle">R-20</text>
+<text x="345" y="65" font-size="8" fill="#dc2626" text-anchor="middle">R-15 R-26</text>
+<text x="345" y="80" font-size="8" fill="#dc2626" text-anchor="middle">R-27</text>
+<text x="495" y="75" font-size="8" fill="#b91c1c" text-anchor="middle" font-weight="700">R-01</text>
+<text x="195" y="145" font-size="8" fill="#16a34a" text-anchor="middle">R-13 R-17</text>
+<text x="195" y="160" font-size="8" fill="#16a34a" text-anchor="middle">R-22 R-24</text>
+<text x="195" y="175" font-size="8" fill="#16a34a" text-anchor="middle">R-29</text>
+<text x="345" y="140" font-size="8" fill="#a16207" text-anchor="middle">R-02 R-05 R-07</text>
+<text x="345" y="155" font-size="8" fill="#a16207" text-anchor="middle">R-10 R-16 R-18</text>
+<text x="345" y="170" font-size="8" fill="#a16207" text-anchor="middle">R-21 R-28 R-31</text>
+<text x="495" y="150" font-size="8" fill="#dc2626" text-anchor="middle" font-weight="700">R-06</text>
+<text x="345" y="235" font-size="8" fill="#16a34a" text-anchor="middle">R-04 R-09 R-12</text>
+<text x="345" y="250" font-size="8" fill="#16a34a" text-anchor="middle">R-23 R-25</text>
+<text x="495" y="225" font-size="8" fill="#a16207" text-anchor="middle">R-03 R-08 R-11</text>
+<text x="495" y="240" font-size="8" fill="#a16207" text-anchor="middle">R-14 R-19 R-30</text>
+<text x="495" y="255" font-size="8" fill="#a16207" text-anchor="middle">R-32</text>
+</svg></div>
+
+<div class="gl rounded-xl p-6 mb-8">
+<h3 class="font-semibold mb-4">Equipo Requerido</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+${[
+['Data Engineer Sr','1 FTE','Diseño pipelines ETL, Data Flow, quality rules, schema evolution. Experiencia OCI/Spark requerida.'],
+['Data Engineer Jr','1 FTE','Implementación ETL, monitoring pipelines, soporte operacional, testing.'],
+['DevOps/Infra OCI','0.5 FTE','Terraform OCI, GoldenGate config, Streaming, IAM compartments, network policies.'],
+['DBA Oracle','0.25 FTE','GoldenGate CDC config, ATP tuning, Data Guard validación, backup/recovery.'],
+['Data Governance / OPD','0.5 FTE','Data Catalog, PII classification, lineage E2E, compliance Ley 1581, RNBD, reportes SIC.'],
+['Arquitecto de Datos','0.25 FTE','Decisiones técnicas, ADRs, capacity planning, exit plan, vendor management Oracle.'],
+['Abogado / Legal','0.25 FTE','Revisión DPA, concepto jurídico, compliance normativo, interlocución SIC/MinTIC/MinMinas.']
+].map(([t,f,d])=>`<div class="bg-slate-50 rounded-lg p-3"><div class="flex justify-between mb-1"><span class="text-sm font-semibold text-slate-800">${t}</span><span class="text-xs px-2 py-0.5 rounded bg-purple-500/20 text-purple-700">${f}</span></div><p class="text-xs text-slate-500">${d}</p></div>`).join('')}
+</div>
+<div class="mt-4 bg-slate-50 rounded-lg p-3 text-xs text-slate-500">
+<b class="text-slate-600">Total: ~3.75 FTEs</b> dedicados al Data Lake. Del equipo IT existente de 8 personas, asignar: 2 developers (1 Sr data, 1 Jr) + tiempo parcial DevOps, DBA, Arquitecto. <b class="text-orange-700">Nuevo:</b> Rol de Data Governance/Oficial de Protección de Datos (0.5 FTE) y apoyo legal (0.25 FTE) son <b class="text-red-700">mandatorios</b> por Ley 1581 y CONPES 3995.
+</div>
+</div>
+
+<div class="gl rounded-xl p-6">
+<h3 class="font-semibold mb-4 text-amber-600">Plan de Contingencia — Top 5 Escenarios</h3>
+<div class="space-y-3">
+${[['🔴 Región Bogotá NO está GA','(1) Solicitar OCI Dedicated Region @Customer (~$500K setup, 8-12 semanas). (2) Evaluar Oracle Cloud@Customer en datacenter de gobierno. (3) Retrasar Data Lake 3-6 meses usando solo ATP + Object Storage básico. (4) Evaluar AWS Bogotá o Azure como alternativa (requiere re-arquitectura parcial).'],
+['🔴 Incidente de soberanía detectado','(1) Activar plan de respuesta a incidentes < 4h. (2) Notificar SIC < 72h (Circular SIC). (3) Aislar datos afectados. (4) Auditoría forense independiente. (5) Comunicado oficial UPME. (6) Remediación técnica + contractual con Oracle.'],
+['🟠 GoldenGate falla > 4 horas','(1) Activar batch CDC fallback (script Python cada 15 min). (2) Notificar equipo Data Lake + DBA. (3) Bronze acepta datos con lag. (4) Silver/Gold marcan datos como "delayed". (5) Escalar Oracle Support Severity 1.'],
+['🟠 Costos 20% sobre presupuesto','(1) Activar lifecycle policies agresivas (Std→IA 30d, Archive 90d). (2) Migrar ETL a preemptible OCPUs (–50%). (3) Reducir frecuencia ETL no-críticos. (4) Solicitar descuento Oracle. (5) Escalar a dirección UPME.'],
+['🟡 Calidad datos CPOs < 80%','(1) Quality Engine rechaza y envía a DLQ. (2) Notificación automática a CPO. (3) Si persiste > 7d: suspensión condicional. (4) Soporte técnico UPME al CPO. (5) Escalar a MinEnergía si reincidente.']
+].map(([t,d])=>`<div class="bg-slate-50 rounded-lg p-4"><div class="text-sm font-semibold text-slate-800 mb-2">${t}</div><p class="text-xs text-slate-500">${d}</p></div>`).join('')}
 </div></div>`;
 
 CONTENT.medallion = ()=> `
 <h2 class="text-2xl font-bold mb-1">Medallion Architecture — Detalle</h2>
-<p class="text-slate-400 text-sm mb-6">Flujo Bronze → Silver → Gold</p>
+<p class="text-slate-500 text-sm mb-6">Flujo Bronze → Silver → Gold</p>
 
 <div class="gl rounded-xl p-6 mb-8"><div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 ${MEDAL('Bronze','Raw / Inmutable','from-amber-700 to-amber-900','amber',
@@ -476,7 +646,7 @@ ${MEDAL('Gold','Aggregated / Governance','from-yellow-600 to-yellow-800','yellow
 <div class="gl rounded-xl p-6 mb-8">
 <h3 class="font-semibold mb-4">Pipelines ETL — OCI Data Flow (Spark)</h3>
 <div class="overflow-x-auto"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-3 py-2 text-left bg-slate-800/50">Pipeline</th><th class="px-3 py-2 text-left bg-slate-800/50">Frecuencia</th><th class="px-3 py-2 text-left bg-slate-800/50">OCPUs</th><th class="px-3 py-2 text-left bg-slate-800/50">Duracion</th><th class="px-3 py-2 text-left bg-slate-800/50">Transformaciones</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-3 py-2 text-left bg-slate-50">Pipeline</th><th class="px-3 py-2 text-left bg-slate-50">Frecuencia</th><th class="px-3 py-2 text-left bg-slate-50">OCPUs</th><th class="px-3 py-2 text-left bg-slate-50">Duracion</th><th class="px-3 py-2 text-left bg-slate-50">Transformaciones</th></tr></thead>
 <tbody>${[
 ['B→S Locations','5 min','2','~3 min','Schema enforce, dedup, geo-validate, PII'],
 ['B→S Sessions','5 min','2','~4 min','Dedup, energy validate, enrich CPO tier'],
@@ -484,23 +654,23 @@ ${MEDAL('Gold','Aggregated / Governance','from-yellow-600 to-yellow-800','yellow
 ['S→G KPIs','Horario','4','~10 min','Avg price, sessions/hr, energy/CPO'],
 ['S→G Reportes','Diario','4','~20 min','KPIs nacionales, regulatorios, anomalias'],
 ['S→G Mensual','Mensual','8','~45 min','Consolidacion nacional, tendencias']
-].map(r=>`<tr class="border-b border-slate-800/50 cr">${r.map(c=>`<td class="px-3 py-2">${c}</td>`).join('')}</tr>`).join('')}
+].map(r=>`<tr class="border-b border-slate-200 cr">${r.map(c=>`<td class="px-3 py-2">${c}</td>`).join('')}</tr>`).join('')}
 </tbody></table></div></div>
 
 <div class="gl rounded-xl p-6">
 <h3 class="font-semibold mb-4">Reglas de Calidad de Datos</h3>
 <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
-${[['orange','Freshness','Datos CPO < 5 min. Alerta > 15 min'],['purple','Volume','±2σ baseline. Detecta caidas/picos'],['cyan','Schema','100% Silver cumple OCPI 2.2.1'],['green','Completeness','Campos obligatorios OCPI presentes'],['rose','Consistency','Precios 50-5000 COP/kWh, energia ≤ cap'],['amber','Uniqueness','Dedup request_id + correlation_id']].map(([c,t,d])=>`<div class="bg-slate-800/50 rounded-lg p-3"><div class="text-sm font-semibold text-${c}-300 mb-1">${t}</div><p class="text-xs text-slate-400">${d}</p></div>`).join('')}
+${[['orange','Freshness','Datos CPO < 5 min. Alerta > 15 min'],['purple','Volume','±2σ baseline. Detecta caidas/picos'],['cyan','Schema','100% Silver cumple OCPI 2.2.1'],['green','Completeness','Campos obligatorios OCPI presentes'],['rose','Consistency','Precios 50-5000 COP/kWh, energia ≤ cap'],['amber','Uniqueness','Dedup request_id + correlation_id']].map(([c,t,d])=>`<div class="bg-slate-50 rounded-lg p-3"><div class="text-sm font-semibold text-${c}-600 mb-1">${t}</div><p class="text-xs text-slate-500">${d}</p></div>`).join('')}
 </div></div>`;
 
 CONTENT.costos = ()=> `
 <h2 class="text-2xl font-bold mb-1">Costos Detallados</h2>
-<p class="text-slate-400 text-sm mb-6">Precios lista OCI region LATAM — estimacion conservadora</p>
+<p class="text-slate-500 text-sm mb-6">Precios lista OCI region LATAM — estimacion conservadora</p>
 
 <div class="gl rounded-xl p-6 mb-8">
 <h3 class="font-semibold mb-4">Desglose Mensual — Año 1</h3>
 <div class="overflow-x-auto"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-3 py-2 text-left bg-slate-800/50">Servicio OCI</th><th class="px-3 py-2 text-left bg-slate-800/50">Configuracion</th><th class="px-3 py-2 text-left bg-slate-800/50">Precio Unitario</th><th class="px-3 py-2 text-left bg-slate-800/50">Cantidad</th><th class="px-3 py-2 text-right bg-slate-800/50">Mensual USD</th><th class="px-3 py-2 text-right bg-slate-800/50">Anual USD</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-3 py-2 text-left bg-slate-50">Servicio OCI</th><th class="px-3 py-2 text-left bg-slate-50">Configuracion</th><th class="px-3 py-2 text-left bg-slate-50">Precio Unitario</th><th class="px-3 py-2 text-left bg-slate-50">Cantidad</th><th class="px-3 py-2 text-right bg-slate-50">Mensual USD</th><th class="px-3 py-2 text-right bg-slate-50">Anual USD</th></tr></thead>
 <tbody>
 ${[
 ['OCI GoldenGate','2 OCPU Extract+Replicate 24/7','$0.658/OCPU-hr','2×730h','$3,942','$47,304'],
@@ -511,8 +681,8 @@ ${[
 ['OCI Object Storage','~500GB avg Y1 (Std+IA+Archive)','$0.0255/GB-mes','~500GB','$600','$7,200'],
 ['OCI Data Catalog','15K assets, API calls','$0.03/asset-mes','10K extra','$500','$6,000'],
 ['Network+Monitoring','VCN, LB share, custom metrics','Various','DL share','$600','$7,200']
-].map(r=>`<tr class="border-b border-slate-800/50 cr"><td class="px-3 py-2 font-medium">${r[0]}</td>${r.slice(1,4).map(c=>`<td class="px-3 py-2">${c}</td>`).join('')}<td class="px-3 py-2 text-right font-mono">${r[4]}</td><td class="px-3 py-2 text-right font-mono font-semibold">${r[5]}</td></tr>`).join('')}
-<tr class="bg-orange-500/10 font-bold"><td class="px-3 py-3 text-orange-300" colspan="4">TOTAL AÑO 1</td><td class="px-3 py-3 text-right font-mono text-orange-400">$11,913</td><td class="px-3 py-3 text-right font-mono text-orange-400">$142,956</td></tr>
+].map(r=>`<tr class="border-b border-slate-200 cr"><td class="px-3 py-2 font-medium">${r[0]}</td>${r.slice(1,4).map(c=>`<td class="px-3 py-2">${c}</td>`).join('')}<td class="px-3 py-2 text-right font-mono">${r[4]}</td><td class="px-3 py-2 text-right font-mono font-semibold">${r[5]}</td></tr>`).join('')}
+<tr class="bg-orange-500/10 font-bold"><td class="px-3 py-3 text-orange-700" colspan="4">TOTAL AÑO 1</td><td class="px-3 py-3 text-right font-mono text-orange-600">$11,913</td><td class="px-3 py-3 text-right font-mono text-orange-600">$142,956</td></tr>
 </tbody></table></div>
 <p class="text-xs text-slate-500 mt-2">* Descuentos Annual Flex/UCC pueden reducir 15-33%. Preemptible OCPUs para ETL batch reducen ~50% compute.</p>
 </div>
@@ -520,7 +690,7 @@ ${[
 <div class="gl rounded-xl p-6 mb-8">
 <h3 class="font-semibold mb-4">Proyeccion a 3 Años (+30% crecimiento anual)</h3>
 <div class="overflow-x-auto"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-3 py-2 text-left bg-slate-800/50">Servicio</th><th class="px-3 py-2 text-right bg-slate-800/50">Año 1</th><th class="px-3 py-2 text-right bg-slate-800/50">Año 2</th><th class="px-3 py-2 text-right bg-slate-800/50">Año 3</th><th class="px-3 py-2 text-right bg-slate-800/50">Total 3 Años</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-3 py-2 text-left bg-slate-50">Servicio</th><th class="px-3 py-2 text-right bg-slate-50">Año 1</th><th class="px-3 py-2 text-right bg-slate-50">Año 2</th><th class="px-3 py-2 text-right bg-slate-50">Año 3</th><th class="px-3 py-2 text-right bg-slate-50">Total 3 Años</th></tr></thead>
 <tbody>
 ${[
 ['GoldenGate','$47,304','$47,304','$47,304','$141,912'],
@@ -531,8 +701,8 @@ ${[
 ['Object Storage','$7,200','$12,960','$21,060','$41,220'],
 ['Data Catalog','$6,000','$7,200','$8,640','$21,840'],
 ['Network+Monitor','$7,200','$7,200','$7,200','$21,600']
-].map(r=>`<tr class="border-b border-slate-800/50 cr"><td class="px-3 py-2 font-medium">${r[0]}</td>${r.slice(1).map(c=>`<td class="px-3 py-2 text-right font-mono">${c}</td>`).join('')}</tr>`).join('')}
-<tr class="bg-orange-500/10 font-bold"><td class="px-3 py-3 text-orange-300">TOTAL</td><td class="px-3 py-3 text-right font-mono text-orange-400">$142,956</td><td class="px-3 py-3 text-right font-mono text-orange-400">$167,092</td><td class="px-3 py-3 text-right font-mono text-orange-400">$198,960</td><td class="px-3 py-3 text-right font-mono text-orange-400">$509,008</td></tr>
+].map(r=>`<tr class="border-b border-slate-200 cr"><td class="px-3 py-2 font-medium">${r[0]}</td>${r.slice(1).map(c=>`<td class="px-3 py-2 text-right font-mono">${c}</td>`).join('')}</tr>`).join('')}
+<tr class="bg-orange-500/10 font-bold"><td class="px-3 py-3 text-orange-700">TOTAL</td><td class="px-3 py-3 text-right font-mono text-orange-600">$142,956</td><td class="px-3 py-3 text-right font-mono text-orange-600">$167,092</td><td class="px-3 py-3 text-right font-mono text-orange-600">$198,960</td><td class="px-3 py-3 text-right font-mono text-orange-600">$509,008</td></tr>
 </tbody></table></div>
 </div>
 
@@ -544,12 +714,12 @@ ${[
 <div class="gl rounded-xl p-6 mb-8">
 <h3 class="font-semibold mb-4">Conversion COP (TRM ~4,000)</h3>
 <div class="overflow-x-auto"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-3 py-2 text-left bg-slate-800/50">Periodo</th><th class="px-3 py-2 text-right bg-slate-800/50">USD</th><th class="px-3 py-2 text-right bg-slate-800/50">COP Total</th><th class="px-3 py-2 text-right bg-slate-800/50">COP/Mes</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-3 py-2 text-left bg-slate-50">Periodo</th><th class="px-3 py-2 text-right bg-slate-50">USD</th><th class="px-3 py-2 text-right bg-slate-50">COP Total</th><th class="px-3 py-2 text-right bg-slate-50">COP/Mes</th></tr></thead>
 <tbody>
-<tr class="border-b border-slate-800/50"><td class="px-3 py-2">Año 1</td><td class="px-3 py-2 text-right font-mono">$142,956</td><td class="px-3 py-2 text-right font-mono text-orange-300">$571,824,000</td><td class="px-3 py-2 text-right font-mono">$47,652,000</td></tr>
-<tr class="border-b border-slate-800/50"><td class="px-3 py-2">Año 2</td><td class="px-3 py-2 text-right font-mono">$167,092</td><td class="px-3 py-2 text-right font-mono text-orange-300">$668,368,000</td><td class="px-3 py-2 text-right font-mono">$55,697,333</td></tr>
-<tr class="border-b border-slate-800/50"><td class="px-3 py-2">Año 3</td><td class="px-3 py-2 text-right font-mono">$198,960</td><td class="px-3 py-2 text-right font-mono text-orange-300">$795,840,000</td><td class="px-3 py-2 text-right font-mono">$66,320,000</td></tr>
-<tr class="bg-orange-500/10 font-bold"><td class="px-3 py-3 text-orange-300">Total 3 Años</td><td class="px-3 py-3 text-right font-mono text-orange-400">$509,008</td><td class="px-3 py-3 text-right font-mono text-orange-400">$2,036,032,000</td><td class="px-3 py-3 text-right">—</td></tr>
+<tr class="border-b border-slate-200"><td class="px-3 py-2">Año 1</td><td class="px-3 py-2 text-right font-mono">$142,956</td><td class="px-3 py-2 text-right font-mono text-orange-700">$571,824,000</td><td class="px-3 py-2 text-right font-mono">$47,652,000</td></tr>
+<tr class="border-b border-slate-200"><td class="px-3 py-2">Año 2</td><td class="px-3 py-2 text-right font-mono">$167,092</td><td class="px-3 py-2 text-right font-mono text-orange-700">$668,368,000</td><td class="px-3 py-2 text-right font-mono">$55,697,333</td></tr>
+<tr class="border-b border-slate-200"><td class="px-3 py-2">Año 3</td><td class="px-3 py-2 text-right font-mono">$198,960</td><td class="px-3 py-2 text-right font-mono text-orange-700">$795,840,000</td><td class="px-3 py-2 text-right font-mono">$66,320,000</td></tr>
+<tr class="bg-orange-500/10 font-bold"><td class="px-3 py-3 text-orange-700">Total 3 Años</td><td class="px-3 py-3 text-right font-mono text-orange-600">$509,008</td><td class="px-3 py-3 text-right font-mono text-orange-600">$2,036,032,000</td><td class="px-3 py-3 text-right">—</td></tr>
 </tbody></table></div>
 </div>
 
@@ -561,12 +731,12 @@ ${[
 ['Lifecycle Policies','Auto Std→IA→Archive reduce storage ~60% para Bronze historico.','~60% stg','$4K/año'],
 ['Preemptible OCPUs','ETL batch con preemptible reduce compute ~50%.','~50% comp','$13K/año'],
 ['Reserved Capacity','Para workloads 24/7 (GG, Streaming), descuento 20-40%.','20-40%','$13K-$27K/año']
-].map(([t,d,p,s])=>`<div class="bg-slate-800/50 rounded-lg p-3"><div class="flex justify-between mb-1"><span class="text-sm font-semibold text-green-300">${t}</span><span class="text-xs px-2 py-0.5 rounded bg-green-500/20 text-green-300">${p}</span></div><p class="text-xs text-slate-400">${d}</p><div class="mt-1 text-xs text-green-400 font-mono">Ahorro: ${s}</div></div>`).join('')}
+].map(([t,d,p,s])=>`<div class="bg-slate-50 rounded-lg p-3"><div class="flex justify-between mb-1"><span class="text-sm font-semibold text-green-600">${t}</span><span class="text-xs px-2 py-0.5 rounded bg-green-500/20 text-green-700">${p}</span></div><p class="text-xs text-slate-500">${d}</p><div class="mt-1 text-xs text-green-600 font-mono">Ahorro: ${s}</div></div>`).join('')}
 </div></div>`;
 
 CONTENT.dash = ()=> `
 <h2 class="text-2xl font-bold mb-1">Tableros & KPIs</h2>
-<p class="text-slate-400 text-sm mb-6">Metricas de monitoreo y operacion del Data Lake</p>
+<p class="text-slate-500 text-sm mb-6">Metricas de monitoreo y operacion del Data Lake</p>
 
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
 ${KPI('Freshness SLA','99.2%','Datos < 5 min latencia','green')}
@@ -590,7 +760,7 @@ ${[
 ['purple','Quality Scores','Completeness, consistency, ranking CPOs'],
 ['rose','Anomaly Tracker','Anomalias detectadas, severidad, investigacion'],
 ['amber','Regulatory Reports','Estado reportes MinEnergia/SIC/CREG, schedule']
-].map(([c,t,d])=>`<div class="bg-slate-800/50 rounded-lg p-3 border-l-4 border-${c}-500"><div class="text-sm font-semibold text-${c}-300 mb-1">${t}</div><p class="text-xs text-slate-400">${d}</p></div>`).join('')}
+].map(([c,t,d])=>`<div class="bg-slate-50 rounded-lg p-3 border-l-4 border-${c}-500"><div class="text-sm font-semibold text-${c}-600 mb-1">${t}</div><p class="text-xs text-slate-500">${d}</p></div>`).join('')}
 </div>
 </div>
 
@@ -604,12 +774,12 @@ ${[
 ['Sesiones/Dia','~18,000','Promedio, tendencia semanal'],
 ['Disponibilidad Red','~94.2%','Available vs Total'],
 ['CPOs en SLA','~87%','Reportan < 5 min']
-].map(([t,v,d])=>`<div class="bg-slate-800/50 rounded-lg p-3"><div class="text-xs text-slate-400">${t}</div><div class="text-lg font-bold text-orange-400">${v}</div><div class="text-xs text-slate-500">${d}</div></div>`).join('')}
+].map(([t,v,d])=>`<div class="bg-slate-50 rounded-lg p-3"><div class="text-xs text-slate-500">${t}</div><div class="text-lg font-bold text-orange-600">${v}</div><div class="text-xs text-slate-500">${d}</div></div>`).join('')}
 </div></div>`;
 
 CONTENT.road = ()=> `
 <h2 class="text-2xl font-bold mb-1">Roadmap & Riesgos</h2>
-<p class="text-slate-400 text-sm mb-6">Plan de implementación y análisis exhaustivo de riesgos — 30+ riesgos identificados en 6 categorías</p>
+<p class="text-slate-500 text-sm mb-6">Plan de implementación y análisis exhaustivo de riesgos — 30+ riesgos identificados en 6 categorías</p>
 
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
 ${KPI('Riesgos Identificados','32','En 6 categorías','red')}
@@ -628,21 +798,21 @@ ${[
 ['Fase 4: Gold + Reportes Regulatorios','Sep-Oct 2026','S→G aggregations. Reportes regulatorios MinEnergía/SIC/CREG formato oficial. Open Data API (Ley 1712). Dashboard Grafana operacional. KPIs nacionales electromovilidad.','green','Dep: Fase 3 + validación SIC'],
 ['Fase 5: Advanced + DR','Nov-Dic 2026','Anomaly detection ML (Z-score + seasonal). Data Catalog completo con lineage E2E. Forecasting demand. DR São Paulo SOLO datos públicos. Prueba de failover. Auditoría de soberanía.','rose','Dep: Fase 4 + auditoría legal'],
 ['Fase 6: Optimización + Compliance','Ene-Feb 2027','Lifecycle policies tuning. Cost optimization (reserved, preemptible). Performance tuning Spark. SLA review con CPOs. Auditoría independiente de soberanía. Revisión compliance anual planificada.','amber','Dep: todas las fases + auditoría']
-].map(([t,d,desc,c,dep])=>`<div class="flex gap-4"><div class="flex-shrink-0 w-2 rounded-full bg-${c}-500"></div><div class="flex-1 bg-slate-800/50 rounded-lg p-4"><div class="flex justify-between items-start mb-1"><span class="text-sm font-semibold text-${c}-300">${t}</span><span class="text-xs px-2 py-0.5 rounded bg-${c}-500/20 text-${c}-300">${d}</span></div><p class="text-xs text-slate-400 mb-2">${desc}</p><div class="text-xs text-slate-500 italic">${dep}</div></div></div>`).join('')}
+].map(([t,d,desc,c,dep])=>`<div class="flex gap-4"><div class="flex-shrink-0 w-2 rounded-full bg-${c}-500"></div><div class="flex-1 bg-slate-50 rounded-lg p-4"><div class="flex justify-between items-start mb-1"><span class="text-sm font-semibold text-${c}-600">${t}</span><span class="text-xs px-2 py-0.5 rounded bg-${c}-500/20 text-${c}-600">${d}</span></div><p class="text-xs text-slate-500 mb-2">${desc}</p><div class="text-xs text-slate-500 italic">${dep}</div></div></div>`).join('')}
 </div></div>
 
 <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 mb-8">
-<h3 class="font-bold text-red-300 mb-1">⚠️ Blocker Fase 1: Disponibilidad Región OCI Bogotá</h3>
-<p class="text-xs text-slate-300">Si la región OCI Bogotá no está GA para Mar 2026, todo el roadmap se desplaza. Alternativas: (a) OCI Dedicated Region @Customer, (b) Oracle Cloud@Customer on-premise, (c) Retraso controlado. <b class="text-red-300">Acción inmediata:</b> Reunión con Oracle Account Team Colombia para confirmar fecha GA y obtener carta de compromiso.</p>
+<h3 class="font-bold text-red-700 mb-1">⚠️ Blocker Fase 1: Disponibilidad Región OCI Bogotá</h3>
+<p class="text-xs text-slate-600">Si la región OCI Bogotá no está GA para Mar 2026, todo el roadmap se desplaza. Alternativas: (a) OCI Dedicated Region @Customer, (b) Oracle Cloud@Customer on-premise, (c) Retraso controlado. <b class="text-red-700">Acción inmediata:</b> Reunión con Oracle Account Team Colombia para confirmar fecha GA y obtener carta de compromiso.</p>
 </div>
 
 <div class="gl rounded-xl p-6 mb-8">
 <h3 class="font-semibold mb-2">Matriz Integral de Riesgos — 32 Riesgos en 6 Categorías</h3>
 <p class="text-xs text-slate-500 mb-4">Cada riesgo clasificado por Probabilidad (B/M/A) × Impacto (Medio/Alto/Crítico) con mitigación específica</p>
 
-<h4 class="text-sm font-bold text-red-400 mb-3 mt-4 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-500"></span> 1. Soberanía & Legal (7 riesgos)</h4>
+<h4 class="text-sm font-bold text-red-600 mb-3 mt-4 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-500"></span> 1. Soberanía & Legal (7 riesgos)</h4>
 <div class="overflow-x-auto mb-6"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-2 py-2 text-left bg-red-500/5">ID</th><th class="px-2 py-2 text-left bg-red-500/5">Riesgo</th><th class="px-2 py-2 bg-red-500/5">Prob.</th><th class="px-2 py-2 bg-red-500/5">Impacto</th><th class="px-2 py-2 text-left bg-red-500/5">Mitigación</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-2 py-2 text-left bg-red-500/5">ID</th><th class="px-2 py-2 text-left bg-red-500/5">Riesgo</th><th class="px-2 py-2 bg-red-500/5">Prob.</th><th class="px-2 py-2 bg-red-500/5">Impacto</th><th class="px-2 py-2 text-left bg-red-500/5">Mitigación</th></tr></thead>
 <tbody>${[
 ['R-01','Región OCI Bogotá NO disponible GA para deployment','Alta','Crítico','Validar roadmap Oracle inmediato. Plan B: Dedicated Region / Cloud@Customer. Carta compromiso.'],
 ['R-02','Transferencia internacional inadvertida de datos sensibles','Media','Crítico','Auditoría red, DPA estricto, deshabilitar telemetría Oracle, compartments IAM.'],
@@ -651,11 +821,11 @@ ${[
 ['R-05','Cambio regulatorio SIC/MinTIC restringe cloud pública gobierno','Media','Alto','Exit plan documentado. Arquitectura portátil: Kafka API, Spark, Parquet, S3-compat.'],
 ['R-06','Fallo clasificación automática — dato sensible como público','Media','Crítico','Doble validación (auto+manual). Alertas RT. Auditoría mensual Data Catalog.'],
 ['R-07','DPA Oracle incompleto o sin cláusulas Art.26 suficientes','Media','Alto','Revisar DPA con oficina jurídica UPME antes de firmar. Exigir cláusulas explícitas CO.']
-].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-800/50 cr"><td class="px-2 py-2 font-mono text-red-400">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-300':p==='Media'?'bg-yellow-500/20 text-yellow-300':'bg-green-500/20 text-green-300'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-300':'bg-orange-500/20 text-orange-300'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
+].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-200 cr"><td class="px-2 py-2 font-mono text-red-600">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-700':p==='Media'?'bg-yellow-500/20 text-yellow-700':'bg-green-500/20 text-green-700'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-700':'bg-orange-500/20 text-orange-700'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
 
-<h4 class="text-sm font-bold text-orange-400 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-orange-500"></span> 2. Técnicos / Infraestructura (7 riesgos)</h4>
+<h4 class="text-sm font-bold text-orange-600 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-orange-500"></span> 2. Técnicos / Infraestructura (7 riesgos)</h4>
 <div class="overflow-x-auto mb-6"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-2 py-2 text-left bg-orange-500/5">ID</th><th class="px-2 py-2 text-left bg-orange-500/5">Riesgo</th><th class="px-2 py-2 bg-orange-500/5">Prob.</th><th class="px-2 py-2 bg-orange-500/5">Impacto</th><th class="px-2 py-2 text-left bg-orange-500/5">Mitigación</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-2 py-2 text-left bg-orange-500/5">ID</th><th class="px-2 py-2 text-left bg-orange-500/5">Riesgo</th><th class="px-2 py-2 bg-orange-500/5">Prob.</th><th class="px-2 py-2 bg-orange-500/5">Impacto</th><th class="px-2 py-2 text-left bg-orange-500/5">Mitigación</th></tr></thead>
 <tbody>${[
 ['R-08','GoldenGate CDC downtime prolongado','Baja','Crítico','HA config active-passive. Fallback batch CDC cada 15 min. Alertas PagerDuty < 5 min.'],
 ['R-09','Fallo ETL en cascada (Bronze→Silver→Gold)','Baja','Alto','Circuit breaker entre capas. DLQ por pipeline. Retry exponencial. Rollback a Bronze.'],
@@ -664,11 +834,11 @@ ${[
 ['R-12','Network connectivity degradada en región Bogotá','Baja','Alto','Rutas redundantes. VCN peering. Monitoreo latencia continuo. Escalar con Oracle Support.'],
 ['R-13','OKE cluster failure (Quality Engine, Anomaly pods)','Baja','Medio','Node auto-repair. Pod disruption budgets. Multi-AZ si disponible. Readiness probes estrictos.'],
 ['R-14','Object Storage WORM corruption o inaccesibilidad','Baja','Crítico','Replicación intra-región. Checksum SHA-256 validación periódica. Backup a segundo bucket.']
-].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-800/50 cr"><td class="px-2 py-2 font-mono text-orange-400">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-300':p==='Media'?'bg-yellow-500/20 text-yellow-300':'bg-green-500/20 text-green-300'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-300':i==='Alto'?'bg-orange-500/20 text-orange-300':'bg-yellow-500/20 text-yellow-300'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
+].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-200 cr"><td class="px-2 py-2 font-mono text-orange-600">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-700':p==='Media'?'bg-yellow-500/20 text-yellow-700':'bg-green-500/20 text-green-700'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-700':i==='Alto'?'bg-orange-500/20 text-orange-700':'bg-yellow-500/20 text-yellow-700'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
 
-<h4 class="text-sm font-bold text-purple-400 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-purple-500"></span> 3. Operacionales (6 riesgos)</h4>
+<h4 class="text-sm font-bold text-purple-600 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-purple-500"></span> 3. Operacionales (6 riesgos)</h4>
 <div class="overflow-x-auto mb-6"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-2 py-2 text-left bg-purple-500/5">ID</th><th class="px-2 py-2 text-left bg-purple-500/5">Riesgo</th><th class="px-2 py-2 bg-purple-500/5">Prob.</th><th class="px-2 py-2 bg-purple-500/5">Impacto</th><th class="px-2 py-2 text-left bg-purple-500/5">Mitigación</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-2 py-2 text-left bg-purple-500/5">ID</th><th class="px-2 py-2 text-left bg-purple-500/5">Riesgo</th><th class="px-2 py-2 bg-purple-500/5">Prob.</th><th class="px-2 py-2 bg-purple-500/5">Impacto</th><th class="px-2 py-2 text-left bg-purple-500/5">Mitigación</th></tr></thead>
 <tbody>${[
 ['R-15','Calidad de datos CPOs consistentemente baja','Alta','Alto','Quality Engine strict mode. DLQ con feedback automático a CPOs. Penalizaciones SLA. Ranking público.'],
 ['R-16','Crecimiento datos > 30% proyectado (adopción acelerada EM)','Media','Alto','Auto-scaling OCI. Lifecycle policies agresivas. Monitoring proactivo. Budget alerts 80%.'],
@@ -676,87 +846,87 @@ ${[
 ['R-18','Monitoring blind spots — incidentes no detectados','Media','Alto','4 capas monitoreo: tráfico, servicio, datos, negocio. Custom metrics. Runbooks por alerta.'],
 ['R-19','Key rotation failure — expiración de certificados','Baja','Crítico','Cert Manager automático. Alertas 30/15/7 días antes. Runbook de emergencia. Vault key rotation 90d.'],
 ['R-20','Schema evolution OCPI — cambio breaking en v2.3','Baja','Medio','Schema registry. Backward compatibility enforced. Migration scripts versionados. Canary deployment.']
-].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-800/50 cr"><td class="px-2 py-2 font-mono text-purple-400">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-300':p==='Media'?'bg-yellow-500/20 text-yellow-300':'bg-green-500/20 text-green-300'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-300':i==='Alto'?'bg-orange-500/20 text-orange-300':'bg-yellow-500/20 text-yellow-300'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
+].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-200 cr"><td class="px-2 py-2 font-mono text-purple-600">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-700':p==='Media'?'bg-yellow-500/20 text-yellow-700':'bg-green-500/20 text-green-700'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-700':i==='Alto'?'bg-orange-500/20 text-orange-700':'bg-yellow-500/20 text-yellow-700'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
 
-<h4 class="text-sm font-bold text-green-400 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-green-500"></span> 4. Financieros (5 riesgos)</h4>
+<h4 class="text-sm font-bold text-green-600 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-green-500"></span> 4. Financieros (5 riesgos)</h4>
 <div class="overflow-x-auto mb-6"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-2 py-2 text-left bg-green-500/5">ID</th><th class="px-2 py-2 text-left bg-green-500/5">Riesgo</th><th class="px-2 py-2 bg-green-500/5">Prob.</th><th class="px-2 py-2 bg-green-500/5">Impacto</th><th class="px-2 py-2 text-left bg-green-500/5">Mitigación</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-2 py-2 text-left bg-green-500/5">ID</th><th class="px-2 py-2 text-left bg-green-500/5">Riesgo</th><th class="px-2 py-2 bg-green-500/5">Prob.</th><th class="px-2 py-2 bg-green-500/5">Impacto</th><th class="px-2 py-2 text-left bg-green-500/5">Mitigación</th></tr></thead>
 <tbody>${[
 ['R-21','Costos OCI exceden presupuesto aprobado','Media','Alto','OCI Budgets + alertas 70%/80%/90%. Reserved capacity para 24/7. Preemptible para batch. Revisión mensual.'],
 ['R-22','Fluctuación TRM USD/COP > 15%','Media','Medio','Presupuesto con buffer 20%. Contrato en USD con techo COP. Hedging si política UPME lo permite.'],
 ['R-23','Oracle modifica precios OCI unilateralmente','Baja','Medio','Contrato Annual Flex con precios fijos 1 año. Negociar lock-in de precios 3 años. Cláusula de no-aumento.'],
 ['R-24','Costos storage inesperados por retención regulatoria','Media','Medio','Lifecycle Std→IA→Archive agresivo. WORM solo Bronze. Compresión Parquet Silver/Gold. Alertas growth rate.'],
 ['R-25','Licenciamiento GoldenGate excede presupuesto','Baja','Alto','Evaluar Debezium (open source) como alternativa si costos GG escalan. PoC paralelo en Fase 2.']
-].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-800/50 cr"><td class="px-2 py-2 font-mono text-green-400">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-300':p==='Media'?'bg-yellow-500/20 text-yellow-300':'bg-green-500/20 text-green-300'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-300':i==='Alto'?'bg-orange-500/20 text-orange-300':'bg-yellow-500/20 text-yellow-300'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
+].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-200 cr"><td class="px-2 py-2 font-mono text-green-600">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-700':p==='Media'?'bg-yellow-500/20 text-yellow-700':'bg-green-500/20 text-green-700'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-700':i==='Alto'?'bg-orange-500/20 text-orange-700':'bg-yellow-500/20 text-yellow-700'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
 
-<h4 class="text-sm font-bold text-cyan-400 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-cyan-500"></span> 5. Organizacionales (4 riesgos)</h4>
+<h4 class="text-sm font-bold text-cyan-600 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-cyan-500"></span> 5. Organizacionales (4 riesgos)</h4>
 <div class="overflow-x-auto mb-6"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-2 py-2 text-left bg-cyan-500/5">ID</th><th class="px-2 py-2 text-left bg-cyan-500/5">Riesgo</th><th class="px-2 py-2 bg-cyan-500/5">Prob.</th><th class="px-2 py-2 bg-cyan-500/5">Impacto</th><th class="px-2 py-2 text-left bg-cyan-500/5">Mitigación</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-2 py-2 text-left bg-cyan-500/5">ID</th><th class="px-2 py-2 text-left bg-cyan-500/5">Riesgo</th><th class="px-2 py-2 bg-cyan-500/5">Prob.</th><th class="px-2 py-2 bg-cyan-500/5">Impacto</th><th class="px-2 py-2 text-left bg-cyan-500/5">Mitigación</th></tr></thead>
 <tbody>${[
 ['R-26','Escasez de Data Engineers en mercado colombiano','Alta','Alto','Contratar anticipado. Capacitación interna OCI. Considerar consultores Oracle. Remote hiring LATAM.'],
 ['R-27','Concentración de conocimiento en 1-2 personas (bus factor)','Alta','Alto','Documentación exhaustiva. Pair programming. Runbooks operacionales. Cross-training obligatorio.'],
 ['R-28','Vendor lock-in excesivo — dependencia de Oracle','Media','Alto','Abstracciones: Kafka API, Spark, Parquet, S3. Exit plan documentado. Revisión anual de alternativas.'],
 ['R-29','Desalineación stakeholders UPME/MinEnergía/SIC sobre Data Lake','Media','Medio','Comité técnico mensual. Demos trimestrales. Alineación con oficina jurídica. Comunicación proactiva.']
-].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-800/50 cr"><td class="px-2 py-2 font-mono text-cyan-400">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-300':p==='Media'?'bg-yellow-500/20 text-yellow-300':'bg-green-500/20 text-green-300'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-300':i==='Alto'?'bg-orange-500/20 text-orange-300':'bg-yellow-500/20 text-yellow-300'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
+].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-200 cr"><td class="px-2 py-2 font-mono text-cyan-600">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-700':p==='Media'?'bg-yellow-500/20 text-yellow-700':'bg-green-500/20 text-green-700'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-700':i==='Alto'?'bg-orange-500/20 text-orange-700':'bg-yellow-500/20 text-yellow-700'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
 
-<h4 class="text-sm font-bold text-rose-400 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-rose-500"></span> 6. Seguridad & Ciberseguridad (3 riesgos)</h4>
+<h4 class="text-sm font-bold text-rose-600 mb-3 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-rose-500"></span> 6. Seguridad & Ciberseguridad (3 riesgos)</h4>
 <div class="overflow-x-auto mb-4"><table class="w-full text-xs">
-<thead><tr class="border-b border-slate-700"><th class="px-2 py-2 text-left bg-rose-500/5">ID</th><th class="px-2 py-2 text-left bg-rose-500/5">Riesgo</th><th class="px-2 py-2 bg-rose-500/5">Prob.</th><th class="px-2 py-2 bg-rose-500/5">Impacto</th><th class="px-2 py-2 text-left bg-rose-500/5">Mitigación</th></tr></thead>
+<thead><tr class="border-b border-slate-200"><th class="px-2 py-2 text-left bg-rose-500/5">ID</th><th class="px-2 py-2 text-left bg-rose-500/5">Riesgo</th><th class="px-2 py-2 bg-rose-500/5">Prob.</th><th class="px-2 py-2 bg-rose-500/5">Impacto</th><th class="px-2 py-2 text-left bg-rose-500/5">Mitigación</th></tr></thead>
 <tbody>${[
 ['R-30','Data breach — exfiltración de datos del Data Lake','Baja','Crítico','Zero Trust. Cifrado doble capa. DLP policies. Network segmentation. Incident response plan < 72h SIC.'],
 ['R-31','DDoS en API de ingesta OCPI','Media','Alto','OCI WAF + DDoS Protection L3/L7. Rate limiting por CPO tier. Geo-fencing Colombia. Auto-scaling.'],
 ['R-32','Ransomware en Object Storage / Autonomous DB','Baja','Crítico','WORM inmutable (no-delete). Backups aislados (air-gap lógico). Vault keys separadas. Recovery drill semestral.']
-].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-800/50 cr"><td class="px-2 py-2 font-mono text-rose-400">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-300':p==='Media'?'bg-yellow-500/20 text-yellow-300':'bg-green-500/20 text-green-300'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-300':'bg-orange-500/20 text-orange-300'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
+].map(([id,r,p,i,m])=>`<tr class="border-b border-slate-200 cr"><td class="px-2 py-2 font-mono text-rose-600">${id}</td><td class="px-2 py-2 font-medium">${r}</td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${p==='Alta'?'bg-red-500/20 text-red-700':p==='Media'?'bg-yellow-500/20 text-yellow-700':'bg-green-500/20 text-green-700'}">${p}</span></td><td class="px-2 py-2 text-center"><span class="px-2 py-0.5 rounded ${i==='Crítico'?'bg-red-500/20 text-red-700':'bg-orange-500/20 text-orange-700'}">${i}</span></td><td class="px-2 py-2">${m}</td></tr>`).join('')}</tbody></table></div>
 
-<div class="bg-slate-800/50 rounded-lg p-3 text-xs">
+<div class="bg-slate-50 rounded-lg p-3 text-xs">
 <div class="grid grid-cols-3 gap-4">
-<div><b class="text-red-300">Críticos (5):</b> <span class="text-slate-400">R-01, R-06, R-08, R-30, R-32 — Requieren mitigación inmediata y plan de contingencia documentado.</span></div>
-<div><b class="text-orange-300">Altos (14):</b> <span class="text-slate-400">R-02→R-05, R-07, R-09→R-10, R-12, R-15→R-16, R-18, R-21, R-25→R-28, R-31 — Plan de mitigación en Fase 1-2.</span></div>
-<div><b class="text-yellow-300">Medios (6):</b> <span class="text-slate-400">R-13, R-17, R-20, R-22→R-24, R-29 — Monitoreo continuo, mitigación planificada.</span></div>
+<div><b class="text-red-700">Críticos (5):</b> <span class="text-slate-500">R-01, R-06, R-08, R-30, R-32 — Requieren mitigación inmediata y plan de contingencia documentado.</span></div>
+<div><b class="text-orange-700">Altos (14):</b> <span class="text-slate-500">R-02→R-05, R-07, R-09→R-10, R-12, R-15→R-16, R-18, R-21, R-25→R-28, R-31 — Plan de mitigación en Fase 1-2.</span></div>
+<div><b class="text-yellow-700">Medios (6):</b> <span class="text-slate-500">R-13, R-17, R-20, R-22→R-24, R-29 — Monitoreo continuo, mitigación planificada.</span></div>
 </div></div>
 </div>
 
 <div class="gl rounded-xl p-6 mb-8">
 <h3 class="font-semibold mb-4">Heat Map de Riesgos</h3>
 <svg viewBox="0 0 600 300" class="w-full max-w-2xl mx-auto" xmlns="http://www.w3.org/2000/svg">
-<rect x="0" y="0" width="600" height="300" rx="8" fill="#1e293b"/>
-<text x="300" y="22" font-size="10" font-weight="700" fill="#e2e8f0" text-anchor="middle">Probabilidad × Impacto</text>
+<rect x="0" y="0" width="600" height="300" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="300" y="22" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">Probabilidad × Impacto</text>
 <!-- Grid -->
-<rect x="120" y="35" width="150" height="80" fill="#422006" stroke="#334155" stroke-width="1"/>
-<rect x="270" y="35" width="150" height="80" fill="#450a0a" stroke="#334155" stroke-width="1"/>
-<rect x="420" y="35" width="150" height="80" fill="#7f1d1d" stroke="#334155" stroke-width="1"/>
-<rect x="120" y="115" width="150" height="80" fill="#1a2e05" stroke="#334155" stroke-width="1"/>
-<rect x="270" y="115" width="150" height="80" fill="#422006" stroke="#334155" stroke-width="1"/>
-<rect x="420" y="115" width="150" height="80" fill="#450a0a" stroke="#334155" stroke-width="1"/>
-<rect x="120" y="195" width="150" height="80" fill="#0a1628" stroke="#334155" stroke-width="1"/>
-<rect x="270" y="195" width="150" height="80" fill="#1a2e05" stroke="#334155" stroke-width="1"/>
-<rect x="420" y="195" width="150" height="80" fill="#422006" stroke="#334155" stroke-width="1"/>
+<rect x="120" y="35" width="150" height="80" fill="#fefce8" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="270" y="35" width="150" height="80" fill="#fee2e2" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="420" y="35" width="150" height="80" fill="#fecaca" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="120" y="115" width="150" height="80" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="270" y="115" width="150" height="80" fill="#fefce8" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="420" y="115" width="150" height="80" fill="#fee2e2" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="120" y="195" width="150" height="80" fill="#eff6ff" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="270" y="195" width="150" height="80" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="420" y="195" width="150" height="80" fill="#fefce8" stroke="#e2e8f0" stroke-width="1"/>
 <!-- Labels -->
-<text x="60" y="80" font-size="9" fill="#94a3b8" text-anchor="middle">Alta</text>
-<text x="60" y="160" font-size="9" fill="#94a3b8" text-anchor="middle">Media</text>
-<text x="60" y="240" font-size="9" fill="#94a3b8" text-anchor="middle">Baja</text>
+<text x="60" y="80" font-size="9" fill="#475569" text-anchor="middle">Alta</text>
+<text x="60" y="160" font-size="9" fill="#475569" text-anchor="middle">Media</text>
+<text x="60" y="240" font-size="9" fill="#475569" text-anchor="middle">Baja</text>
 <text x="10" y="155" font-size="9" fill="#64748b" text-anchor="middle" transform="rotate(-90,10,155)">PROBABILIDAD</text>
-<text x="195" y="288" font-size="9" fill="#94a3b8" text-anchor="middle">Medio</text>
-<text x="345" y="288" font-size="9" fill="#94a3b8" text-anchor="middle">Alto</text>
-<text x="495" y="288" font-size="9" fill="#94a3b8" text-anchor="middle">Crítico</text>
+<text x="195" y="288" font-size="9" fill="#475569" text-anchor="middle">Medio</text>
+<text x="345" y="288" font-size="9" fill="#475569" text-anchor="middle">Alto</text>
+<text x="495" y="288" font-size="9" fill="#475569" text-anchor="middle">Crítico</text>
 <text x="345" y="298" font-size="9" fill="#64748b" text-anchor="middle">IMPACTO →</text>
 <!-- Risk dots -->
-<text x="195" y="75" font-size="8" fill="#fde68a" text-anchor="middle">R-20</text>
-<text x="345" y="65" font-size="8" fill="#fca5a5" text-anchor="middle">R-15 R-26</text>
-<text x="345" y="80" font-size="8" fill="#fca5a5" text-anchor="middle">R-27</text>
-<text x="495" y="75" font-size="8" fill="#ff6b6b" text-anchor="middle" font-weight="700">R-01</text>
-<text x="195" y="145" font-size="8" fill="#86efac" text-anchor="middle">R-13 R-17</text>
-<text x="195" y="160" font-size="8" fill="#86efac" text-anchor="middle">R-22 R-24</text>
-<text x="195" y="175" font-size="8" fill="#86efac" text-anchor="middle">R-29</text>
-<text x="345" y="140" font-size="8" fill="#fde68a" text-anchor="middle">R-02 R-05 R-07</text>
-<text x="345" y="155" font-size="8" fill="#fde68a" text-anchor="middle">R-10 R-16 R-18</text>
-<text x="345" y="170" font-size="8" fill="#fde68a" text-anchor="middle">R-21 R-28 R-31</text>
-<text x="495" y="150" font-size="8" fill="#fca5a5" text-anchor="middle" font-weight="700">R-06</text>
-<text x="345" y="235" font-size="8" fill="#86efac" text-anchor="middle">R-04 R-09 R-12</text>
-<text x="345" y="250" font-size="8" fill="#86efac" text-anchor="middle">R-23 R-25</text>
-<text x="495" y="225" font-size="8" fill="#fde68a" text-anchor="middle">R-03 R-08 R-11</text>
-<text x="495" y="240" font-size="8" fill="#fde68a" text-anchor="middle">R-14 R-19 R-30</text>
-<text x="495" y="255" font-size="8" fill="#fde68a" text-anchor="middle">R-32</text>
+<text x="195" y="75" font-size="8" fill="#a16207" text-anchor="middle">R-20</text>
+<text x="345" y="65" font-size="8" fill="#dc2626" text-anchor="middle">R-15 R-26</text>
+<text x="345" y="80" font-size="8" fill="#dc2626" text-anchor="middle">R-27</text>
+<text x="495" y="75" font-size="8" fill="#b91c1c" text-anchor="middle" font-weight="700">R-01</text>
+<text x="195" y="145" font-size="8" fill="#16a34a" text-anchor="middle">R-13 R-17</text>
+<text x="195" y="160" font-size="8" fill="#16a34a" text-anchor="middle">R-22 R-24</text>
+<text x="195" y="175" font-size="8" fill="#16a34a" text-anchor="middle">R-29</text>
+<text x="345" y="140" font-size="8" fill="#a16207" text-anchor="middle">R-02 R-05 R-07</text>
+<text x="345" y="155" font-size="8" fill="#a16207" text-anchor="middle">R-10 R-16 R-18</text>
+<text x="345" y="170" font-size="8" fill="#a16207" text-anchor="middle">R-21 R-28 R-31</text>
+<text x="495" y="150" font-size="8" fill="#dc2626" text-anchor="middle" font-weight="700">R-06</text>
+<text x="345" y="235" font-size="8" fill="#16a34a" text-anchor="middle">R-04 R-09 R-12</text>
+<text x="345" y="250" font-size="8" fill="#16a34a" text-anchor="middle">R-23 R-25</text>
+<text x="495" y="225" font-size="8" fill="#a16207" text-anchor="middle">R-03 R-08 R-11</text>
+<text x="495" y="240" font-size="8" fill="#a16207" text-anchor="middle">R-14 R-19 R-30</text>
+<text x="495" y="255" font-size="8" fill="#a16207" text-anchor="middle">R-32</text>
 </svg></div>
 
 <div class="gl rounded-xl p-6 mb-8">
@@ -770,55 +940,55 @@ ${[
 ['Data Governance / OPD','0.5 FTE','Data Catalog, PII classification, lineage E2E, compliance Ley 1581, RNBD, reportes SIC.'],
 ['Arquitecto de Datos','0.25 FTE','Decisiones técnicas, ADRs, capacity planning, exit plan, vendor management Oracle.'],
 ['Abogado / Legal','0.25 FTE','Revisión DPA, concepto jurídico, compliance normativo, interlocución SIC/MinTIC/MinMinas.']
-].map(([t,f,d])=>`<div class="bg-slate-800/50 rounded-lg p-3"><div class="flex justify-between mb-1"><span class="text-sm font-semibold text-slate-200">${t}</span><span class="text-xs px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">${f}</span></div><p class="text-xs text-slate-400">${d}</p></div>`).join('')}
+].map(([t,f,d])=>`<div class="bg-slate-50 rounded-lg p-3"><div class="flex justify-between mb-1"><span class="text-sm font-semibold text-slate-800">${t}</span><span class="text-xs px-2 py-0.5 rounded bg-purple-500/20 text-purple-700">${f}</span></div><p class="text-xs text-slate-500">${d}</p></div>`).join('')}
 </div>
-<div class="mt-4 bg-slate-800/50 rounded-lg p-3 text-xs text-slate-400">
-<b class="text-slate-300">Total: ~3.75 FTEs</b> dedicados al Data Lake. Del equipo IT existente de 8 personas, asignar: 2 developers (1 Sr data, 1 Jr) + tiempo parcial DevOps, DBA, Arquitecto. <b class="text-orange-300">Nuevo:</b> Rol de Data Governance/Oficial de Protección de Datos (0.5 FTE) y apoyo legal (0.25 FTE) son <b class="text-red-300">mandatorios</b> por Ley 1581 y CONPES 3995.
+<div class="mt-4 bg-slate-50 rounded-lg p-3 text-xs text-slate-500">
+<b class="text-slate-600">Total: ~3.75 FTEs</b> dedicados al Data Lake. Del equipo IT existente de 8 personas, asignar: 2 developers (1 Sr data, 1 Jr) + tiempo parcial DevOps, DBA, Arquitecto. <b class="text-orange-700">Nuevo:</b> Rol de Data Governance/Oficial de Protección de Datos (0.5 FTE) y apoyo legal (0.25 FTE) son <b class="text-red-700">mandatorios</b> por Ley 1581 y CONPES 3995.
 </div>
 </div>
 
 <div class="gl rounded-xl p-6">
-<h3 class="font-semibold mb-4 text-amber-400">Plan de Contingencia — Top 5 Escenarios</h3>
+<h3 class="font-semibold mb-4 text-amber-600">Plan de Contingencia — Top 5 Escenarios</h3>
 <div class="space-y-3">
 ${[['🔴 Región Bogotá NO está GA','(1) Solicitar OCI Dedicated Region @Customer (~$500K setup, 8-12 semanas). (2) Evaluar Oracle Cloud@Customer en datacenter de gobierno. (3) Retrasar Data Lake 3-6 meses usando solo ATP + Object Storage básico. (4) Evaluar AWS Bogotá o Azure como alternativa (requiere re-arquitectura parcial).'],
 ['🔴 Incidente de soberanía detectado','(1) Activar plan de respuesta a incidentes < 4h. (2) Notificar SIC < 72h (Circular SIC). (3) Aislar datos afectados. (4) Auditoría forense independiente. (5) Comunicado oficial UPME. (6) Remediación técnica + contractual con Oracle.'],
 ['🟠 GoldenGate falla > 4 horas','(1) Activar batch CDC fallback (script Python cada 15 min). (2) Notificar equipo Data Lake + DBA. (3) Bronze acepta datos con lag. (4) Silver/Gold marcan datos como "delayed". (5) Escalar Oracle Support Severity 1.'],
 ['🟠 Costos 20% sobre presupuesto','(1) Activar lifecycle policies agresivas (Std→IA 30d, Archive 90d). (2) Migrar ETL a preemptible OCPUs (–50%). (3) Reducir frecuencia ETL no-críticos. (4) Solicitar descuento Oracle. (5) Escalar a dirección UPME.'],
 ['🟡 Calidad datos CPOs < 80%','(1) Quality Engine rechaza y envía a DLQ. (2) Notificación automática a CPO. (3) Si persiste > 7d: suspensión condicional. (4) Soporte técnico UPME al CPO. (5) Escalar a MinEnergía si reincidente.']
-].map(([t,d])=>`<div class="bg-slate-800/50 rounded-lg p-4"><div class="text-sm font-semibold text-slate-200 mb-2">${t}</div><p class="text-xs text-slate-400">${d}</p></div>`).join('')}
+].map(([t,d])=>`<div class="bg-slate-50 rounded-lg p-4"><div class="text-sm font-semibold text-slate-800 mb-2">${t}</div><p class="text-xs text-slate-500">${d}</p></div>`).join('')}
 </div></div>`;
 
 // Helper functions
-function KPI(l,v,s,c){return `<div class="mc gl rounded-xl p-4 transition-all"><div class="text-xs text-slate-400 mb-2">${l}</div><div class="text-2xl font-bold text-${c}-400">${v}</div><div class="text-xs text-slate-500 mt-1">${s}</div></div>`}
-function COST_LINE(c,n,v){return `<div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="w-3 h-3 rounded-sm bg-${c}-500"></div><span class="text-slate-300">${n}</span></div><span class="font-mono text-${c}-400">${v}</span></div>`}
-function BOX(x,y,w,h,t1,t2,c){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="#1e3a5f" stroke="${c}" stroke-width="1.2"/><text x="${x+w/2}" y="${y+h*.42}" font-size="8" font-weight="600" fill="${c}cc" text-anchor="middle">${t1}</text><text x="${x+w/2}" y="${y+h*.75}" font-size="6" fill="#94a3b8" text-anchor="middle">${t2}</text>`}
-function ADR(c,id,t,ctx,dec,alt){return `<div class="bg-slate-800/50 rounded-lg p-3 border-l-4 border-${c}-500"><div class="flex items-center gap-2 mb-1"><span class="text-xs px-2 py-0.5 rounded bg-${c}-500/20 text-${c}-300">${id}</span><span class="text-sm font-semibold text-slate-200">${t}</span></div><p class="text-xs text-slate-400"><b class="text-slate-300">Ctx:</b> ${ctx} | <b class="text-slate-300">Dec:</b> ${dec} | <b class="text-slate-300">Alt:</b> ${alt}</p></div>`}
-function MEDAL(n,s,g,c,items,meta){return `<div class="rounded-xl overflow-hidden"><div class="bg-gradient-to-br ${g} p-3"><h4 class="text-lg font-bold text-${c}-100">${n}</h4><p class="text-xs opacity-70">${s}</p></div><div class="bg-slate-800/30 border border-slate-700/30 p-3 space-y-2"><div class="text-xs font-semibold text-slate-300">Contenido:</div>${items.map(i=>`<div class="text-xs text-slate-300">&#9679; ${i}</div>`).join('')}<div class="border-t border-slate-700/30 pt-2 mt-2 space-y-1">${meta.map(([k,v])=>`<div class="flex justify-between text-xs"><span class="text-slate-400">${k}</span><span class="text-${c}-300">${v}</span></div>`).join('')}</div></div></div>`}
+function KPI(l,v,s,c){return `<div class="mc gl rounded-xl p-4 transition-all"><div class="text-xs text-slate-500 mb-2">${l}</div><div class="text-2xl font-bold text-${c}-600">${v}</div><div class="text-xs text-slate-500 mt-1">${s}</div></div>`}
+function COST_LINE(c,n,v){return `<div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="w-3 h-3 rounded-sm bg-${c}-500"></div><span class="text-slate-600">${n}</span></div><span class="font-mono text-${c}-600">${v}</span></div>`}
+function BOX(x,y,w,h,t1,t2,c){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="#f1f5f9" stroke="${c}" stroke-width="1.2"/><text x="${x+w/2}" y="${y+h*.42}" font-size="8" font-weight="600" fill="${c}" text-anchor="middle">${t1}</text><text x="${x+w/2}" y="${y+h*.75}" font-size="6" fill="#475569" text-anchor="middle">${t2}</text>`}
+function ADR(c,id,t,ctx,dec,alt){return `<div class="bg-slate-50 rounded-lg p-3 border-l-4 border-${c}-500"><div class="flex items-center gap-2 mb-1"><span class="text-xs px-2 py-0.5 rounded bg-${c}-500/20 text-${c}-700">${id}</span><span class="text-sm font-semibold text-slate-800">${t}</span></div><p class="text-xs text-slate-500"><b class="text-slate-600">Ctx:</b> ${ctx} | <b class="text-slate-600">Dec:</b> ${dec} | <b class="text-slate-600">Alt:</b> ${alt}</p></div>`}
+function MEDAL(n,s,g,c,items,meta){return `<div class="rounded-xl overflow-hidden"><div class="bg-gradient-to-br ${g} p-3"><h4 class="text-lg font-bold text-${c}-100">${n}</h4><p class="text-xs opacity-70">${s}</p></div><div class="bg-slate-50/80 border border-slate-200 p-3 space-y-2"><div class="text-xs font-semibold text-slate-600">Contenido:</div>${items.map(i=>`<div class="text-xs text-slate-600">&#9679; ${i}</div>`).join('')}<div class="border-t border-slate-200 pt-2 mt-2 space-y-1">${meta.map(([k,v])=>`<div class="flex justify-between text-xs"><span class="text-slate-500">${k}</span><span class="text-${c}-700">${v}</span></div>`).join('')}</div></div></div>`}
 
 // === APP INIT (must be after CONTENT + helpers are defined) ===
 document.getElementById('app').innerHTML = HEADER() + TABS_NAV() + '<main class="max-w-7xl mx-auto px-4 py-6">' + TAB('resumen',true) + TAB('arq',false) + TAB('soberania',false) + TAB('medallion',false) + TAB('costos',false) + TAB('dash',false) + TAB('road',false) + '</main>';
 initTabs(); setTimeout(initCharts,300);
 
 function initCharts(){
-const C=Chart;const dft={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',font:{size:10}}}}};
+const C=Chart;const dft={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#475569',font:{size:10}}}}};
 // Pie
 const p1=document.getElementById('pie1');
-if(p1&&!p1._ch){p1._ch=new C(p1,{type:'doughnut',data:{labels:['GoldenGate','Data Flow','Streaming','Data Integ.','Compute','Storage','Catalog','Network'],datasets:[{data:[47304,26280,20172,18000,10800,7200,6000,7200],backgroundColor:['#f97316','#f43f5e','#a855f7','#14b8a6','#22c55e','#06b6d4','#6366f1','#64748b']}]},options:{...dft,plugins:{...dft.plugins,title:{display:true,text:'Distribucion Anual USD',color:'#e2e8f0'}}}})}
+if(p1&&!p1._ch){p1._ch=new C(p1,{type:'doughnut',data:{labels:['GoldenGate','Data Flow','Streaming','Data Integ.','Compute','Storage','Catalog','Network'],datasets:[{data:[47304,26280,20172,18000,10800,7200,6000,7200],backgroundColor:['#f97316','#f43f5e','#a855f7','#14b8a6','#22c55e','#06b6d4','#6366f1','#64748b']}]},options:{...dft,plugins:{...dft.plugins,title:{display:true,text:'Distribucion Anual USD',color:'#1e293b'}}}})}
 // Bar comparison
 const b1=document.getElementById('bar1');
-if(b1&&!b1._ch){b1._ch=new C(b1,{type:'bar',data:{labels:['GoldenGate','Data Flow','Streaming','Data Integ.','Compute','Storage','Catalog','Network'],datasets:[{label:'Año 1',data:[47304,26280,20172,18000,10800,7200,6000,7200],backgroundColor:'#f9731680'},{label:'Año 2',data:[47304,34164,26224,18000,14040,12960,7200,7200],backgroundColor:'#a855f780'},{label:'Año 3',data:[47304,44413,34091,18000,18252,21060,8640,7200],backgroundColor:'#06b6d480'}]},options:{...dft,scales:{x:{ticks:{color:'#94a3b8',font:{size:8}}},y:{ticks:{color:'#94a3b8'},grid:{color:'#1e293b'}}}}})}
+if(b1&&!b1._ch){b1._ch=new C(b1,{type:'bar',data:{labels:['GoldenGate','Data Flow','Streaming','Data Integ.','Compute','Storage','Catalog','Network'],datasets:[{label:'Año 1',data:[47304,26280,20172,18000,10800,7200,6000,7200],backgroundColor:'#f9731680'},{label:'Año 2',data:[47304,34164,26224,18000,14040,12960,7200,7200],backgroundColor:'#a855f780'},{label:'Año 3',data:[47304,44413,34091,18000,18252,21060,8640,7200],backgroundColor:'#06b6d480'}]},options:{...dft,scales:{x:{ticks:{color:'#475569',font:{size:8}}},y:{ticks:{color:'#475569'},grid:{color:'#e2e8f0'}}}}})}
 // Storage
 const s1=document.getElementById('stg1');
-if(s1&&!s1._ch){s1._ch=new C(s1,{type:'line',data:{labels:['M1','M6','M12','M18','M24','M30','M36'],datasets:[{label:'Bronze TB',data:[0.06,0.36,0.72,1.02,1.4,1.86,2.42],borderColor:'#b45309',fill:false},{label:'Silver TB',data:[0.025,0.15,0.3,0.43,0.59,0.78,1.02],borderColor:'#64748b',fill:false},{label:'Gold TB',data:[0.005,0.03,0.06,0.084,0.115,0.153,0.2],borderColor:'#ca8a04',fill:false},{label:'Total TB',data:[0.09,0.54,1.08,1.53,2.11,2.79,3.64],borderColor:'#f97316',borderWidth:2,fill:false}]},options:{...dft,scales:{x:{ticks:{color:'#94a3b8'}},y:{title:{display:true,text:'TB',color:'#94a3b8'},ticks:{color:'#94a3b8'},grid:{color:'#1e293b'}}}}})}
+if(s1&&!s1._ch){s1._ch=new C(s1,{type:'line',data:{labels:['M1','M6','M12','M18','M24','M30','M36'],datasets:[{label:'Bronze TB',data:[0.06,0.36,0.72,1.02,1.4,1.86,2.42],borderColor:'#b45309',fill:false},{label:'Silver TB',data:[0.025,0.15,0.3,0.43,0.59,0.78,1.02],borderColor:'#64748b',fill:false},{label:'Gold TB',data:[0.005,0.03,0.06,0.084,0.115,0.153,0.2],borderColor:'#ca8a04',fill:false},{label:'Total TB',data:[0.09,0.54,1.08,1.53,2.11,2.79,3.64],borderColor:'#f97316',borderWidth:2,fill:false}]},options:{...dft,scales:{x:{ticks:{color:'#475569'}},y:{title:{display:true,text:'TB',color:'#475569'},ticks:{color:'#475569'},grid:{color:'#e2e8f0'}}}}})}
 // Cumulative cost
 const c1=document.getElementById('cum1');
-if(c1&&!c1._ch){c1._ch=new C(c1,{type:'line',data:{labels:['M1','M6','M12','M18','M24','M30','M36'],datasets:[{label:'Acumulado USD',data:[11913,71478,142956,214047,310048,405640,509008],borderColor:'#f97316',backgroundColor:'#f9731620',fill:true}]},options:{...dft,scales:{x:{ticks:{color:'#94a3b8'}},y:{title:{display:true,text:'USD',color:'#94a3b8'},ticks:{color:'#94a3b8',callback:v=>'$'+Math.round(v/1000)+'K'},grid:{color:'#1e293b'}}}}})}
+if(c1&&!c1._ch){c1._ch=new C(c1,{type:'line',data:{labels:['M1','M6','M12','M18','M24','M30','M36'],datasets:[{label:'Acumulado USD',data:[11913,71478,142956,214047,310048,405640,509008],borderColor:'#f97316',backgroundColor:'#f9731620',fill:true}]},options:{...dft,scales:{x:{ticks:{color:'#475569'}},y:{title:{display:true,text:'USD',color:'#475569'},ticks:{color:'#475569',callback:v=>'$'+Math.round(v/1000)+'K'},grid:{color:'#e2e8f0'}}}}})}
 // Ingesta
 const i1=document.getElementById('ing1');
-if(i1&&!i1._ch){i1._ch=new C(i1,{type:'bar',data:{labels:['OCPI Events','Logs/Audit','CDC','Metrics'],datasets:[{label:'GB/mes',data:[43,25,15,8],backgroundColor:['#f97316','#a855f7','#06b6d4','#22c55e']}]},options:{...dft,indexAxis:'y',scales:{x:{ticks:{color:'#94a3b8'},grid:{color:'#1e293b'}},y:{ticks:{color:'#94a3b8'}}}}})}
+if(i1&&!i1._ch){i1._ch=new C(i1,{type:'bar',data:{labels:['OCPI Events','Logs/Audit','CDC','Metrics'],datasets:[{label:'GB/mes',data:[43,25,15,8],backgroundColor:['#f97316','#a855f7','#06b6d4','#22c55e']}]},options:{...dft,indexAxis:'y',scales:{x:{ticks:{color:'#475569'},grid:{color:'#e2e8f0'}},y:{ticks:{color:'#475569'}}}}})}
 // Quality
 const q1=document.getElementById('ql1');
-if(q1&&!q1._ch){q1._ch=new C(q1,{type:'radar',data:{labels:['Freshness','Volume','Schema','Complete','Consistent','Unique'],datasets:[{label:'Bronze',data:[95,98,85,90,80,92],borderColor:'#b45309',backgroundColor:'#b4530920'},{label:'Silver',data:[99,99,100,99,97,99],borderColor:'#64748b',backgroundColor:'#64748b20'},{label:'Gold',data:[99,99,100,100,99,100],borderColor:'#ca8a04',backgroundColor:'#ca8a0420'}]},options:{...dft,scales:{r:{grid:{color:'#334155'},pointLabels:{color:'#94a3b8'},ticks:{display:false}}}}})}
+if(q1&&!q1._ch){q1._ch=new C(q1,{type:'radar',data:{labels:['Freshness','Volume','Schema','Complete','Consistent','Unique'],datasets:[{label:'Bronze',data:[95,98,85,90,80,92],borderColor:'#b45309',backgroundColor:'#b4530920'},{label:'Silver',data:[99,99,100,99,97,99],borderColor:'#64748b',backgroundColor:'#64748b20'},{label:'Gold',data:[99,99,100,100,99,100],borderColor:'#ca8a04',backgroundColor:'#ca8a0420'}]},options:{...dft,scales:{r:{grid:{color:'#e2e8f0'},pointLabels:{color:'#475569'},ticks:{display:false}}}}})}
 }
 </script>
 </body>

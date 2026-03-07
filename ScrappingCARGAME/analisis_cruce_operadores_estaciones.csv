@@ -1,0 +1,195 @@
+﻿Id,Nombre,NIT,TipoOperador,Estado,TieneEstaciones,NumEstaciones,Departamento,Municipio,Correo,FechaRegistro
+1,OARE Prueba,1234567,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",,2020-12-24
+2,Prueba Gencan,23456789,No convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",,2020-12-27
+3,AES CHIVOR & CIA SCA ESP,830025205-2,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",aeschivor@aes.com,2020-12-29
+4,CENTRALES ELECTRICAS DE NARIÑO S.A. E.S.P.,891200200-8,Convencional,Activo,NO,0,NARINO,PASTO,gerencia@cedenar.com.co,2020-12-29
+5,CELSIA TOLIMA S.A. E.S.P.,901280981-9,Convencional,Activo,NO,0,TOLIMA,IBAGUE,notificacionesceltolima@celsia.com,2020-12-29
+6,CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP,890500514-9,Convencional,Activo,SI,3,NORTE DE SANTANDER,CUCUTA,movilidadelectricacens@epm.com.co,2020-12-29
+7,COMPAÑÍA DE ELECTRICIDAD DE TULUÁ S.A. E.S.P.,891900101-0,Convencional,Activo,NO,0,VALLE DEL CAUCA,TULUA,cetsa@celsia.com,2020-12-29
+8,CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.,890800128-6,Convencional,Activo,SI,5,CALDAS,MANIZALES,notificaciones.judiciales@chec.com.co,2020-12-29
+9,CODENSA S.A. ESP,830037248-0,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",servicioalclientecodensa@enel.com,2020-12-29
+10,COMPAÑIA ENERGETICA DE OCCIDENTE S.A.S.  E.S.P.,900366010-1,Convencional,Activo,NO,0,CAUCA,POPAYAN,cia.energetica@ceoesp.com,2020-12-29
+11,DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA ELECTRICA S.A. E.S.P.,815000896-9,Convencional,Activo,NO,0,VALLE DEL CAUCA,PALMIRA,dicelsa@dicel.com.co,2020-12-29
+12,DICELER S.A E.S.P.,815001901-2,Convencional,Activo,NO,0,VALLE DEL CAUCA,RESTREPO,dicelsa@dicel.com.co,2020-12-29
+13,EMPRESA DISTRIBUIDORA DEL PACIFICO S.A. E.S.P,818001629-4,Convencional,Activo,NO,0,CHOCO,QUIBDO,dispac@dispac.com,2020-12-29
+14,EMPRESA DE ENERGIA DEL BAJO PUTUMAYO  S.A.  E.S.P.,846000553-0,Convencional,Activo,NO,0,PUTUMAYO,PUERTO ASIS,eebp@eebpsa.com.co,2020-12-29
+15,E2 ENERGIA EFICIENTE S.A. E.S.P.,802025052-0,Convencional,Activo,NO,0,ATLANTICO,BARRANQUILLA,correo@e2energiaeficiente.com,2020-12-29
+16,EMPRESA DE ENERGIA DE BOYACA S.A. ESP,891800219-1,Convencional,Activo,NO,0,BOYACA,TUNJA,documentacion@ebsa.com.co,2020-12-29
+17,EMPRESA COMERCIALIZADORA DE ENERGÍA ELÉCTRICA DE LA COSTA ,901225715-2,Convencional,Activo,NO,0,NARINO,EL CHARCO,infoecelcos01@gmail.com,2020-12-29
+18,Empresa Prestadora de Servicios Publicos ECO LOGICA S.A.S. E.S.P.,900729389-4,Convencional,Activo,NO,0,VALLE DEL CAUCA,PALMIRA,comercial@ecologicaesp.com,2020-12-29
+19,ECOPETROL ENERGÍA S.A.S. E.S.P.,901165502-2,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",juan.molinares@ecopetrolenergiaesp.com.co,2020-12-29
+20,EMPRESA DE ENERGIA DEL  QUINDIO S.A.E.S.P.,800052640-9,Convencional,Activo,SI,6,QUINDIO,ARMENIA,secretaria_general@edeq.com.co,2020-12-29
+21,EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.,890904996-1,Convencional,Activo,SI,21,ANTIOQUIA,MEDELLIN,epm@epm.com.co,2020-12-29
+22,EMPRESA DE ENERGIA DEL PUTUMAYO S.A. ESP,846000241-8,Convencional,Activo,NO,0,PUTUMAYO,MOCOA,secretaria@energiaputumayo.com,2020-12-29
+23,ELECTRIFICADORA DEL CAQUETA S.A. ESP,891190127-3,Convencional,Activo,NO,0,CAQUETA,FLORENCIA,infoelectrocaqueta@electrocaqueta.com.co,2020-12-29
+24,ELECTRIFICADORA DEL HUILA S.A. E.S.P.,891180001-1,Convencional,Activo,NO,0,HUILA,NEIVA,gerencia@electrohuila.co,2020-12-29
+25,EMPRESA DE ENERGIA ELECTRICA DEL DEPARTAMENTO DEL VICHADA S.A,842000155,Convencional,Activo,NO,0,VICHADA,PUERTO CARRENO,gerenciaelec@gmail.com,2020-12-29
+26,EMPRESAS MUNICIPALES DE CALI   E.I.C.E  E.S.P,890399003-4,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,genergia@emcali.comco,2020-12-29
+27,EMPRESAS MUNICIPALES DE CARTAGO E.S.P.,836000349-8,Convencional,Activo,NO,0,VALLE DEL CAUCA,CARTAGO,contactenos@emcartago.com,2020-12-29
+28,EMPRESA MUNICIPAL DE ENERGÍA ELÉCTRICA S.A-E.S.P,891500061-8,Convencional,Activo,NO,0,CAUCA,POPAYAN,gerencia@emeesaesp.com,2020-12-29
+29,EMPRESA DE ENERGIA DEL VALLE DE SIBUNDOY S.A. E.S.P. ,846000060-1,Convencional,Activo,NO,0,PUTUMAYO,SIBUNDOY,emevasi@emevasi.com,2020-12-29
+30,EMGESA S.A. E.S.P.,860063875-8,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",emlinea@enel.com,2020-12-29
+31,ELECTRIFICADORA DEL META S.A. E.S.P.,892002210-6,Convencional,Activo,NO,0,META,VILLAVICENCIO,gerencia@emsa-esp.com.co,2020-12-29
+32,EMPRESA DE ENERGIA DE ARAUCA  S.A. E.S.P.,892099499-3,Convencional,Activo,NO,0,ARAUCA,ARAUCA,gerencia@enelar.com.co,2020-12-29
+33,EMPRESA DE ENERGIA DE CASANARE SA ESP,844004576-0,Convencional,Activo,NO,0,CASANARE,YOPAL,correspondencia@enerca.com,2020-12-29
+34,ENERCO S.A. E.S.P.,805016928-1,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,enerco@enercoesp.com,2020-12-29
+35,ENERGETICOS S.A.S.  E.S.P. DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA GAS E HIDROCARBUROS,830092965-7,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,energeticossaesp@gmail.com.co,2020-12-29
+36,EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.,816002019-9,Convencional,Activo,SI,6,RISARALDA,PEREIRA,notificacionesjudiciales@eep.com.co,2020-12-29
+37,ENERGIA EMPRESARIAL DE LA COSTA S.A. E.S.P.,900044461-6,Convencional,Activo,NO,0,ATLANTICO,BARRANQUILLA,serviciosjuridicoseca@electricaribe.co,2020-12-29
+38,EMPRESA DE ENERGIA ELECTRICA DEL DEPARTAMENTO DEL GUAVIARE SA ESP,822004680-9,Convencional,Activo,NO,0,GUAVIARE,SAN JOSE DEL GUAVIARE,gerencia@energuaviare.com.co,2020-12-29
+39,ENERTOTAL S.A. E.S.P.,900039901-5,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,enertotal@enertotalesp.com,2020-12-29
+40,EMPRESA DE SERVICIOS PUBLICOS DE SANTANDER S.A.E.S.P.,900648934-0,Convencional,Activo,NO,0,SANTANDER,BUCARAMANGA,esantoperaciones@esant.com.co,2020-12-29
+41,ELECTRIFICADORA DE SANTANDER S.A. E.S.P.,890201230-1,Convencional,Activo,SI,6,SANTANDER,BUCARAMANGA,essa@essa.com.co,2020-12-29
+42,ISA INTERCOLOMBIA S.A. E.S.P,900667590,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,notificacionesjudiciales@intercolombia.com,2020-12-29
+43,CELSIA COLOMBIA S.A. E.S.P.,800249860-1,Convencional,Activo,SI,12,VALLE DEL CAUCA,YUMBO,notificacionesjudicialesepsa@celsia.com,2020-12-29
+44,PROFESIONALES EN ENERGÍA S.A E.S.P,900341483-1,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",peesa@peesa.com,2020-12-29
+45,QI ENERGY SAS ESP,900677732-3,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,gerencia@qienergy.co,2020-12-29
+46,RENOVATIO TRADING AMERICAS SAS ESP,900589503-6,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",aarias@gruporenovatio.com,2020-12-29
+47,RIOPAILA ENERGÍA SAS ESP,900652334-7,Convencional,Activo,NO,0,VALLE DEL CAUCA,ZARZAL,notificaciones@riopailaenergia.com,2020-12-29
+48,RUITOQUE S.A. E.S.P.,804001062-8,Convencional,Activo,NO,0,SANTANDER,FLORIDABLANCA,escribanos@ruitoqueesp.com,2020-12-29
+49,TERPEL ENERGIA S.A.S E.S.P,900433032-9,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",infoterpel@terpel.com,2020-12-29
+50,VATIA S.A. E.S.P.,817001892-1,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,vatia@vatia.com.co,2020-12-29
+51,EMPRESA COMUNITARIA DE SERVICIOS PUBLICOS DOMICILIARIOS DE CARTAGENA DEL CHAIRA S.A.S E.S.P,900943044,Convencional,Activo,NO,0,CAQUETA,CARTAGENA DEL CHAIRA,alexremo_1980@hotmail.com,2020-12-29
+52,PROELECTRICA & CIA. S.C.A. E.S.P.,800149537-6,Convencional,Activo,NO,0,CALDAS,MANIZALES,notificacionesjudiciales@proelectrica.com,2020-12-29
+54,CENTRALES ELECTRICAS DEL CAUCA S.A. E.S.P.,891500025-2,Convencional,Activo,NO,0,CAUCA,POPAYAN,notificacionesjudiciales@cedelca.com.co,2020-12-29
+55,ISAGEN S.A. E.S.P.,811000740-4,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,notificacionesenlinea@isagen.com.co,2020-12-29
+56,PROYECTOS ENERGETICOS DEL CAUCA S.A. E.S.P.,817000362-5,Convencional,Activo,NO,0,CAUCA,POPAYAN,mzuniga@ingeniolacabana.com,2020-12-29
+57,TERMOPIEDRAS S.A. E.S.P.,830058506-6,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",administrativa@termopiedras.com,2020-12-29
+58,ENERGIA Y ALUMBRADO DE PEREIRA S.A. E.S.P.,816003858-6,Convencional,Activo,NO,0,RISARALDA,PEREIRA,notificaciones.oficilaes@enelarpereira.com.co,2020-12-29
+59,GESTION ENERGETICA S.A. E.S.P.,800194208-9,Convencional,Activo,NO,0,CALDAS,MANIZALES,controlinterno@gensa.com.co,2020-12-29
+60,GENERARCO S.A.S. E.S.P.,830107528-9,Convencional,Activo,NO,0,CUNDINAMARCA,VILLAPINZON,info@generarco.com,2020-12-29
+61,EMPRESA MULTIPROPOSITO DE CALARCA S.A. E.S.P.,801004102-7,Convencional,Activo,NO,0,QUINDIO,CALARCA,notificaciones@multiproposito.com,2020-12-29
+62,A.S.C. INGENIERIA S.A. E.S.P.,814002979-7,Convencional,Activo,NO,0,NARINO,PASTO,admin@ascingenieriasa.com,2020-12-29
+63,COMPAÑIA ENERGETICA DEL TOLIMA S.A. E.S.P.,809011444-9,Convencional,Activo,NO,0,TOLIMA,IBAGUE,gerencia.egetsa@tolima.gov.co,2020-12-29
+64,COMERCIALIZADORA DEL CAFE S.A.S E.S.P,830147341-1,Convencional,Activo,NO,0,CUNDINAMARCA,VILLAPINZON,info@energiadelcafe.com,2020-12-29
+65,COENERSA S.A.S. E.S.P.,900076284-6,Convencional,Activo,NO,0,CUNDINAMARCA,VILLAPINZON,info@coenersa.com,2020-12-29
+66,HIDROTOLIMA S.A.S. E.S.P.,900097320-3,Convencional,Activo,NO,0,TOLIMA,IBAGUE,hidrotolima@hidrotolima.com.co,2020-12-29
+67,GENERADORA Y COMERCIALIZADORA DE ENERGIA DEL CARIBE S.A. E.S.P.,900082143-0,Convencional,Activo,NO,0,ATLANTICO,BARRANQUILLA,notificacionesjudiciales@gecelca.com.co,2020-12-29
+68,AMERICANA DE ENERGIA S.A.S. E.S.P.,900154878-5,Convencional,Activo,NO,0,CUNDINAMARCA,VILLAPINZON,info@americanaenergia.com,2020-12-29
+69,GENERSYS S.A.S. E.S.P.,900154879-2,Convencional,Activo,NO,0,CUNDINAMARCA,VILLAPINZON,info@genersys.net,2020-12-29
+70,EMPRESA MUNICIPAL DE SERVICIOS PUBLICOS DE CARTAGENA DEL CHAIRA,828000191-2,Convencional,Activo,NO,0,CAQUETA,CARTAGENA DEL CHAIRA,alexremo_1980@hotmail.com,2020-12-29
+71,COLENERGIA S.A. E.S.P.,900282813-5,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,colenergia.sa@hotmail.com,2020-12-29
+72,HZ ENERGY S.A.S. E.S.P.,900358272-9,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,info@hzenergy.com.co,2020-12-29
+73,FUENTES DE ENERGIAS RENOVABLES S.A.S. E.S.P.,900409371-1,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,furesas@furesas.com.co,2020-12-29
+74,FORCEFUL ENERGY S.A.S. E.S.P.,900431226-1,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,info@forcefulenergy.com,2020-12-29
+75,ITALCOL ENERGIA S.A. E.S.P.,900428468-6,Convencional,Activo,NO,0,SANTANDER,GIRON,monicavelandia@italcol.com,2020-12-29
+76,GENERSA S.A.S. E.S.P.,900475298-0,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",contabilidad@genersa.com.co,2020-12-29
+77,ENERGIA Y AGUA S.A.S. E.S.P.,900483036-1,Convencional,Activo,NO,0,SANTANDER,FLORIDABLANCA,escribanos@energiayaguaesp.com,2020-12-29
+78,ECOMMERCIAL S.A.S. E.S.P.,900499252-6,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,gerencia@ecommercial.com.co,2020-12-29
+79,CEMEX ENERGY S.A.S E.S.P.,900746422-1,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",correo.juridica@cemex.com,2020-12-29
+80,NITRO ENERGY COLOMBIA S.A.S. E.S.P.,900691280-4,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,info@nitrogc.com,2020-12-29
+81,"INVERSIONES, SUMINISTROS  Y SERVICIOS SAFEANA S.A.S. E.S.P.",900842868-3,Convencional,Activo,NO,0,VALLE DEL CAUCA,JAMUNDI,safeanasas@hotmail.com,2020-12-29
+82,IA ENERGÍA Y GESTIÓN S.A.S. E.S.P.,900344208-6,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",info@iaenergy.com.co,2020-12-29
+83,CENTRAL HIDROELÉCTRICA CONCORDIA S.A.S. E.S.P.,900759883-1,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,chccontabilidad@grupocolviva.com,2020-12-29
+84,AGENTE EXPERTO EN SERVICIOS PÚBLICOS S.A.S E.S.P,900325920-1,Convencional,Activo,NO,0,SANTANDER,BUCARAMANGA,gerencia@aesp.com.co,2020-12-29
+85,AMPERIA S.A. E.S.P.,900932147-8,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",amperiaenergia@gmail.com,2020-12-29
+86,FRANCA ENERGIA SA ESP,900864051-8,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",francaenergia@gmail.com,2020-12-29
+87,TERMO RUBIALES S.A. E.S.P. ,900251464-5,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",claudia.coy@soenergy.com.co,2020-12-29
+88,SMARTEN S.A.S. E.S.P.,900949673-5,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",tomas.lopez@smarten.com.co,2020-12-29
+89,MESSER ENERGY SERVICES SAS ESP,901033186-1,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",ricardo.sebastian.gonzalez@messer-co.com,2020-12-29
+90,SOUTH32 ENERGY S.A.S E.S.P,900403943-5,Convencional,Activo,NO,0,CORDOBA,MONTERIA,Zamir.O.Centanaro@south32.net,2020-12-29
+91,JULIA - RD S.A. E.S.P.,901125404-8,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",mromero@julia-rd.com.co,2020-12-29
+92,AURES BAJO S.A.S. E.S.P.,900740329-7,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,administracion@cpph.com.co,2020-12-29
+93,EMPRESA DE GENERACION Y PROMOCION DE ENERGIA DE ANTIOQUIA S.A. E.S.P.,900251423-3,Convencional,Activo,NO,0,ANTIOQUIA,ENVIGADO,info@genmas.com.co,2020-12-29
+94,ENEL GREEN POWER COLOMBIA S.A.S. E.S.P.,900509559-6,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",adrianvasile.dugulan@enel.com,2020-12-29
+95,CH SAN MIGUEL S.A.S. E.S.P.,900460429-3,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",info@lareif.com,2020-12-29
+96,PLUSENERGY S.A.S. E.S.P.,901043956-9,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",amontoya@plusenergy.com.co,2020-12-29
+97,LATINOAMERICAN ENERGY S.A.S E.S.P.,901199778-4,Convencional,Activo,NO,0,CUNDINAMARCA,COTA,latinoamericanenergy@gmail.com,2020-12-29
+98,SANTA FE ENERGY ZOMAC S.A.S. E.S.P.,901200248-6,Convencional,Activo,NO,0,ANTIOQUIA,SANTA FE DE ANTIOQUIA,info@santafeenergy.com.co,2020-12-29
+99,GENERADORA ALEJANDRIA S.A.S. E.S.P.,900493235-3,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,agarcia@generadoralejandria.com,2020-12-29
+100,COLOMBINA ENERGIA SAS ESP,901192478-8,Convencional,Activo,NO,0,CUNDINAMARCA,AGUA DE DIOS,aochoa@colombina.com,2020-12-29
+101,EMPRESA DE SERVICIOS PÚBLICOS DEL OCCIDENTE COLOMBIANO,900662075-7,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,emseroccidente@hotmail.com,2020-12-29
+102,ENERGIA DEL RIO PIEDRAS S.A. E.S.P.,811031656-6,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,sortega@gunion.com,2020-12-29
+103,ESPACIO PRODUCTIVO S.A.S. E.S.P.,900214588-2,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,secretaria@esprod.co,2020-12-29
+104,ECO ENERGÍA DE COLOMBIA ESP SAS,901153797-6,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",correo@esp.com,2020-12-29
+105,EMPRESA DE ENERGIA DE GUAPI S.A. E.S.P.,835000142-7,Convencional,Activo,NO,0,CAUCA,GUAPI,energuapi@hotmail.com,2020-12-29
+106,ENERMAS SAS ESP,900148768-9,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",info@enermas.com.co,2020-12-29
+107,DEPI ENERGY S.A.S. E.S.P.,901288781-9,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",depienergy@depiltda.com,2020-12-29
+108,SOUL ENERGY SAS ESP,901285410-8,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",soulenergycol@gmail.com,2020-12-29
+109,BEAM ENERGY S.A.S E.S.P.,901284888-1,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",info@beamenergy.co,2020-12-29
+110,D2 ENERGIA S.A.S. ESP,901202801-9,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",correo@esp.com,2020-12-29
+111,ENERGY TRANSITIONS S.A.S. E.S.P.,901263317-6,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",dangel@energytst.com,2020-12-29
+112,NEU ENERGY S.A.S E.S.P,901302727-0,Convencional,Activo,NO,0,ANTIOQUIA,SABANETA,info@neu.com.co,2020-12-29
+113,VOLTAJE EMPPRESARIAL S.A.S. E.S.P.,900654403-6,Convencional,Activo,NO,0,MAGDALENA,SANTA MARTA,hrodriguez@daabon.com.co,2020-12-29
+114,XT ENERGIA S.A.S. E.S.P. ,901334314-1,Convencional,Activo,NO,0,ANTIOQUIA,SABANETA,correo@esp.com,2020-12-29
+115,PROENERGY S.A.S.E.S.P.,901326470-7,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,gerencia@proenergy.com.co,2020-12-29
+116,GAS Y ENERGÍA DE COLOMBIA SAS ESP ,901314752-7,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",correo@esp.com,2020-12-29
+118,AFINIA S.A. E.S.P.,900445254,Convencional,Activo,NO,0,BOLIVAR,CARTAGENA DE INDIAS,buenaenergia@afinia.comco,2021-03-04
+119,AIR-E S.A. E.S.P,890402550,Convencional,Activo,NO,0,ATLANTICO,BARRANQUILLA,notificaciones.judiciales@air-e.com,2021-03-15
+120,ASPROMÉDICA DOSIMETRÍA S.A.S.,900786049,No convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,dosimetria@aspromedica.com,2021-08-25
+121,CARE DOSIMETRY S.A.S.,900565894,No convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,gerencia@caredosimetry.com,2021-08-26
+122,DOSIMETRÍA PERSONAL S.A.S.,811021579,No convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,info@dosimetriapersonal.com,2021-08-26
+123,DOSIMETRIX INTERNATIONAL TECHNOLOGIES LTDA,830025839,No convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",dosimetrix@hotmail.com,2021-08-27
+124,Organizacion Terpel S.A.,8300952130,Convencional,Activo,SI,46,"BOGOTA, D. C.","BOGOTA, D.C.",veronica.ramirez@terpel.com,2022-08-04
+125,ENERSINC,900463244,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,jsierra@enersinc.com,2022-08-08
+126,SISTEMAS INSEPET CIA LTDA,830071049-5,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",eliecer.garzon@insepet.com,2022-08-09
+127,MinEnergía,1128423531,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,caalvareza@minenergia.gov.co,2022-08-10
+128,CONTROL CALIDAD RX S.A.S,901392080,No convencional,Activo,NO,0,SANTANDER,BUCARAMANGA,dosimetria@controlcalidadrx.com,2023-01-11
+129,DOSIMETRICAL S.A.S,901577531,No convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",dosimetrical@outlook.com,2023-01-11
+130,I SECURE S.A.S,9005136654,No convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",gflorez@isecure.com.co,2023-01-11
+131,PRDDOSIMETRIA LTDA,830045516,No convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",prdosimetria@hotmail.com,2023-01-11
+132,RADPROCT S.A.S,800162425,No convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",info@radproct.com,2023-01-11
+133,SELIG DE COLOMBIA S.A,830041730,No convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",saludocupacional@seligdecolobia.com,2023-01-11
+134,SIEVERT S.A.S,900515350,No convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,gerente@sievert.com.co,2023-01-11
+135,Ministerio de Minas y Energia,1014185255,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",afacevedo@minenergia.gov.co,2023-10-10
+136,MAO,1037598707,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,andresalvarez678@gmail.com,2023-10-11
+137,Jose Libardo Manzano Valbuena,1032432499,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",jlmanzano@minenergia.gov.coo,2024-03-04
+138,Entidad Prueba,1014185256,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",afacevedo@minenergia.gov.co,2024-03-08
+139,Estación De Prueba TI,89027802,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",jsromero@minenergia.gov.co,2024-03-20
+140,Enerlink Colombia S.A.S.,901575062-2,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",jdussaillant@enerlink.com,2024-04-11
+141,SMART INGENIERIA SAS,900090874,Convencional,Activo,NO,0,CUNDINAMARCA,FUNZA,mgallegos@smart-ing.com,2024-04-12
+142,L autos SAS,901043622,Convencional,Activo,SI,2,CUNDINAMARCA,FUSAGASUGA,lautopartes@hotmail.com,2024-04-12
+143,Estacion de Prueba ,89092802,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",jsebastianrsanchez@gmail.com,2024-04-18
+144,Insepet SAS,830006334-3,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",elliecer.garzon@insepet.com,2024-04-26
+145,E-COLOMBIA POWER SAS,901407815-2,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",mespinosa@e-colombia.net,2024-05-03
+146,ElectroLink Chargers Colombia SAS,901790754,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",ivonne@electrolinkchargers.com,2024-05-04
+147,CENS S.A. E.S.P.,890500514,Convencional,Activo,NO,0,NORTE DE SANTANDER,CUCUTA,julian.mora.nossa@cens.com.co,2024-05-15
+148,CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P,890800128,Convencional,Activo,NO,0,CALDAS,MANIZALES,notificaciones.judiciales@chec.com.co,2024-05-15
+149,AUTOGERMANA SAS,860509514-0,Convencional,Activo,SI,1,"BOGOTA, D. C.","BOGOTA, D.C.",santiago.morales@autogermana.com.co,2024-05-23
+150,OPERADORA DISTRITAL DE TRANSPORTE S.A.S.,901526664-7,Convencional,Activo,SI,6,"BOGOTA, D. C.","BOGOTA, D.C.",radicacion@odt.gov.co,2024-06-04
+151,OPERADORA DISTRITAL DE TRANSPORTE S.A.S.,901526664-7,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",radicacion@odt.gov.co,2024-06-04
+152,IIL,0000000,Convencional,Activo,NO,0,RISARALDA,PEREIRA,jero.sandher@gmail.com,2024-06-04
+153,Arley londono,98591964,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,arleyj.londono@gmail.com,2024-07-12
+154,Enel Colombia S.A. E.S.P,8600638758,Convencional,Activo,SI,2,"BOGOTA, D. C.","BOGOTA, D.C.",john.melo@enel.com,2024-07-15
+155,MUBON S.A.S,901839827,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,info@mubon.co,2024-07-21
+156,Grupo empresarial O&C SAS - OASIS,900846875,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,comercial@grupooyc.com,2024-08-12
+157,Ingeniería y productos eléctricos,800191973,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,jeraso@inpel.com.co,2024-08-20
+158,Universidad Católica de Oriente,890984746,Convencional,Activo,NO,0,ANTIOQUIA,RIONEGRO,mantenimiento.jefe@uco.edu.co,2024-09-30
+159,Universidad Catolica de oriente,8909847467,Convencional,Activo,NO,0,ANTIOQUIA,RIONEGRO,calidad.lider@uco.edu.co,2024-10-29
+160,VATIA SAS ESP,817001892,Convencional,Activo,SI,2,VALLE DEL CAUCA,CALI,lcbravo@vatia.com.co,2024-12-17
+161,Econtrol Systems SAS,900733260-9,Convencional,Activo,NO,0,ANTIOQUIA,SABANETA,soporte@econtrol.com.co,2025-01-22
+162,Econtrol Systems SAS,900733260,Convencional,Activo,NO,0,ANTIOQUIA,SABANETA,soporte@econtrol.com.co,2025-01-22
+163,VYGO ENERGIA SAS BIC,901679933,Convencional,Activo,NO,0,CAUCA,POPAYAN,info@vygoenergia.com.co,2025-01-23
+164,David Santiago Londono Giraldo,1000414906,Convencional,Activo,SI,2,ANTIOQUIA,EL CARMEN DE VIBORAL,hlc.david327@gmail.com,2025-03-26
+165,PRUEBA2026,123456789,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",cavillalobos@minenergia.gov.co,2025-04-03
+166,EMCALI EICE ESP,890399003,Convencional,Activo,SI,4,VALLE DEL CAUCA,CALI,gerojas@emcali.com.co,2025-05-02
+167,ERCO ENERGÍA SAS,900570286,Convencional,Activo,SI,3,ANTIOQUIA,MEDELLIN,emontoya@erco.energy,2025-05-20
+168,Estación De Prueba TI 2,10316539,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",jsromero@minenergia.gov.co,2025-06-09
+169,EMPRESA URRÁ S.A. E.S.P.,800175746-9,Convencional,Activo,NO,0,CORDOBA,MONTERIA,jquintero@urra.com.co,2025-06-09
+170,Ergenia S.A.S.,901752457-7,Convencional,Activo,SI,3,"BOGOTA, D. C.","BOGOTA, D.C.",ergeniacolombia@gmail.com,2025-06-11
+171,Entorno Silvestre SAS,901037898,Convencional,Activo,NO,0,ANTIOQUIA,PUERTO TRIUNFO,info@entornosilvestre.com,2025-07-09
+172,Enerbit SAS ESP,53008790,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,dmmurillom@enerbit.co,2025-07-22
+173,Diland Castro,F61579384,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,diland@cmsostenible.org,2025-09-03
+174,Hotel El Alfarero SAS,901237957-1,Convencional,Activo,SI,2,ANTIOQUIA,EL CARMEN DE VIBORAL,alfahar@humancraft.com.co,2025-09-11
+175,VATIO EV ,10407569843,Convencional,Activo,SI,1,ANTIOQUIA,MEDELLIN,coo@vatio.com.co,2025-10-24
+176,Prueba,90999999,Convencional,Inactivo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",cavillalobos@minenergia.gov.co,2025-10-27
+177,Version 3.0 SAS,900676602,Convencional,Activo,NO,0,ANTIOQUIA,MEDELLIN,jruiseco@zolectrum.com,2025-11-17
+178,QA POSITRON SAS,80115846,No convencional,Activo,NO,0,SANTANDER,BUCARAMANGA,diego.aponte@qapositron.com,2025-12-16
+179,Benoma Scientific S.A.S,16648216,No convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",ventasbenoma@gmail.com,2025-12-16
+180,Radicontrol Dosimétrico LTDA.,91489405,No convencional,Activo,NO,0,ATLANTICO,BARRANQUILLA,radicontrol@yahoo.es,2025-12-16
+181,Polen Transiciones Justas ,1020738034,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",juan.diaz@polentj.org,2025-12-17
+182,Internacional de Eléctricos S.A.S.,809002625,Convencional,Activo,NO,0,TOLIMA,IBAGUE,leecheverri@iegrupo.co,2025-12-22
+183,COPOWER LIMITADA,804011804,Convencional,Activo,SI,1,SANTANDER,BUCARAMANGA,gerencia@copower.com.co,2025-12-22
+184,Instituto Colombino de Geología y Minería,899999294-8,No convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",radicacioncorrespondencia@sgc.gov.co,2025-12-24
+185,SM CONSULTORÍA E INGENIERÍA S.A.S,901639610,Convencional,Activo,SI,1,HUILA,NEIVA,comercial@smcei.com,2026-01-13
+186,Energia electrica de colombia SAS,900551493,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,obras.energecol@outlook.com,2026-01-28
+187,ELECTRICAL CHARGE SAS,901950098,Convencional,Activo,SI,1,ANTIOQUIA,MEDELLIN,info@e-charge.com.co,2026-02-04
+188,HUB DE MOVILIDAD PLAZA CALLE 136 SAS,901446446,Convencional,Activo,SI,1,"BOGOTA, D. C.","BOGOTA, D.C.",hubscalle136@gmail.com,2026-02-05
+189,CERAMICAS EL DORADO,901299104,Convencional,Activo,SI,1,ANTIOQUIA,EL CARMEN DE VIBORAL,eldorado@humancraft.com.co,2026-02-05
+190,HUB DE MOVILIDAD PLAZA CALLE 136 SAS,901446446-4,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",hubscalle136@gmail.com,2026-02-13
+191,MINISTERIO DE MINAS Y ENERGIA,1026277669,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",cavillalobos@minenergia.gov.co,2026-02-13
+192,uae junta pruebas,1016062128,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",egarciam@minenergia.gov.co,2026-02-15
+193,Juan Nicolás Patiño Rodríguez,1013620260,Convencional,Activo,NO,0,"BOGOTA, D. C.","BOGOTA, D.C.",juan.patino@servinformacion.com,2026-02-19
+194,CENTRO DE DIAGNOSTICO AUTOMOTRIZ DEL HUILA SAS,900113252,Convencional,Activo,SI,1,HUILA,NEIVA,cdahuila@gmail.com,2026-02-19
+195,GREET ENERGY,9013775031,Convencional,Activo,NO,0,ATLANTICO,BARRANQUILLA,evcharge@greetenergy.com,2026-02-28
+196,CENTRO-NET S.A.S. ,8050204578,Convencional,Activo,NO,0,VALLE DEL CAUCA,CALI,juridico@centronet.com.co,2026-03-02

@@ -1,0 +1,233 @@
+[
+  {
+    "Id": 5,
+    "Nombre": "ANTIOQUIA",
+    "TotalMunicipios": 125,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 8,
+    "Nombre": "ATLANTICO",
+    "TotalMunicipios": 23,
+    "TieneZomac": false,
+    "TienePedet": false
+  },
+  {
+    "Id": 11,
+    "Nombre": "BOGOTA, D. C.",
+    "TotalMunicipios": 1,
+    "TieneZomac": false,
+    "TienePedet": false
+  },
+  {
+    "Id": 13,
+    "Nombre": "BOLIVAR",
+    "TotalMunicipios": 46,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 15,
+    "Nombre": "BOYACA",
+    "TotalMunicipios": 123,
+    "TieneZomac": true,
+    "TienePedet": false
+  },
+  {
+    "Id": 17,
+    "Nombre": "CALDAS",
+    "TotalMunicipios": 27,
+    "TieneZomac": true,
+    "TienePedet": false
+  },
+  {
+    "Id": 18,
+    "Nombre": "CAQUETA",
+    "TotalMunicipios": 16,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 19,
+    "Nombre": "CAUCA",
+    "TotalMunicipios": 42,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 20,
+    "Nombre": "CESAR",
+    "TotalMunicipios": 25,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 23,
+    "Nombre": "CORDOBA",
+    "TotalMunicipios": 30,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 25,
+    "Nombre": "CUNDINAMARCA",
+    "TotalMunicipios": 116,
+    "TieneZomac": true,
+    "TienePedet": false
+  },
+  {
+    "Id": 27,
+    "Nombre": "CHOCO",
+    "TotalMunicipios": 30,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 41,
+    "Nombre": "HUILA",
+    "TotalMunicipios": 37,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 44,
+    "Nombre": "LA GUAJIRA",
+    "TotalMunicipios": 15,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 47,
+    "Nombre": "MAGDALENA",
+    "TotalMunicipios": 30,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 50,
+    "Nombre": "META",
+    "TotalMunicipios": 29,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 52,
+    "Nombre": "NARINO",
+    "TotalMunicipios": 64,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 54,
+    "Nombre": "NORTE DE SANTANDER",
+    "TotalMunicipios": 40,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 63,
+    "Nombre": "QUINDIO",
+    "TotalMunicipios": 12,
+    "TieneZomac": true,
+    "TienePedet": false
+  },
+  {
+    "Id": 66,
+    "Nombre": "RISARALDA",
+    "TotalMunicipios": 14,
+    "TieneZomac": true,
+    "TienePedet": false
+  },
+  {
+    "Id": 68,
+    "Nombre": "SANTANDER",
+    "TotalMunicipios": 87,
+    "TieneZomac": true,
+    "TienePedet": false
+  },
+  {
+    "Id": 70,
+    "Nombre": "SUCRE",
+    "TotalMunicipios": 26,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 73,
+    "Nombre": "TOLIMA",
+    "TotalMunicipios": 47,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 76,
+    "Nombre": "VALLE DEL CAUCA",
+    "TotalMunicipios": 42,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 81,
+    "Nombre": "ARAUCA",
+    "TotalMunicipios": 7,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 85,
+    "Nombre": "CASANARE",
+    "TotalMunicipios": 19,
+    "TieneZomac": true,
+    "TienePedet": false
+  },
+  {
+    "Id": 86,
+    "Nombre": "PUTUMAYO",
+    "TotalMunicipios": 13,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 88,
+    "Nombre": "ARCHIPIELAGO DE SAN ANDRES, PROVIDENCIA Y SANTA CATALINA",
+    "TotalMunicipios": 2,
+    "TieneZomac": false,
+    "TienePedet": false
+  },
+  {
+    "Id": 91,
+    "Nombre": "AMAZONAS",
+    "TotalMunicipios": 11,
+    "TieneZomac": false,
+    "TienePedet": false
+  },
+  {
+    "Id": 94,
+    "Nombre": "GUAINIA",
+    "TotalMunicipios": 9,
+    "TieneZomac": false,
+    "TienePedet": false
+  },
+  {
+    "Id": 95,
+    "Nombre": "GUAVIARE",
+    "TotalMunicipios": 4,
+    "TieneZomac": true,
+    "TienePedet": true
+  },
+  {
+    "Id": 97,
+    "Nombre": "VAUPES",
+    "TotalMunicipios": 6,
+    "TieneZomac": true,
+    "TienePedet": false
+  },
+  {
+    "Id": 99,
+    "Nombre": "VICHADA",
+    "TotalMunicipios": 4,
+    "TieneZomac": true,
+    "TienePedet": false
+  }
+]

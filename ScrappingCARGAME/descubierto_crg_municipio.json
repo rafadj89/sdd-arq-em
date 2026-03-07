@@ -1,0 +1,4490 @@
+[
+  {
+    "Id": 5001,
+    "NombreMunicipio": "MEDELLIN"
+  },
+  {
+    "Id": 5002,
+    "NombreMunicipio": "ABEJORRAL"
+  },
+  {
+    "Id": 5004,
+    "NombreMunicipio": "ABRIAQUI"
+  },
+  {
+    "Id": 5021,
+    "NombreMunicipio": "ALEJANDRIA"
+  },
+  {
+    "Id": 5030,
+    "NombreMunicipio": "AMAGA"
+  },
+  {
+    "Id": 5031,
+    "NombreMunicipio": "AMALFI"
+  },
+  {
+    "Id": 5034,
+    "NombreMunicipio": "ANDES"
+  },
+  {
+    "Id": 5036,
+    "NombreMunicipio": "ANGELOPOLIS"
+  },
+  {
+    "Id": 5038,
+    "NombreMunicipio": "ANGOSTURA"
+  },
+  {
+    "Id": 5040,
+    "NombreMunicipio": "ANORI"
+  },
+  {
+    "Id": 5042,
+    "NombreMunicipio": "SANTA FE DE ANTIOQUIA"
+  },
+  {
+    "Id": 5044,
+    "NombreMunicipio": "ANZA"
+  },
+  {
+    "Id": 5045,
+    "NombreMunicipio": "APARTADO"
+  },
+  {
+    "Id": 5051,
+    "NombreMunicipio": "ARBOLETES"
+  },
+  {
+    "Id": 5055,
+    "NombreMunicipio": "ARGELIA"
+  },
+  {
+    "Id": 5059,
+    "NombreMunicipio": "ARMENIA"
+  },
+  {
+    "Id": 5079,
+    "NombreMunicipio": "BARBOSA"
+  },
+  {
+    "Id": 5086,
+    "NombreMunicipio": "BELMIRA"
+  },
+  {
+    "Id": 5088,
+    "NombreMunicipio": "BELLO"
+  },
+  {
+    "Id": 5091,
+    "NombreMunicipio": "BETANIA"
+  },
+  {
+    "Id": 5093,
+    "NombreMunicipio": "BETULIA"
+  },
+  {
+    "Id": 5101,
+    "NombreMunicipio": "CIUDAD BOLIVAR"
+  },
+  {
+    "Id": 5107,
+    "NombreMunicipio": "BRICENO"
+  },
+  {
+    "Id": 5113,
+    "NombreMunicipio": "BURITICA"
+  },
+  {
+    "Id": 5120,
+    "NombreMunicipio": "CACERES"
+  },
+  {
+    "Id": 5125,
+    "NombreMunicipio": "CAICEDO"
+  },
+  {
+    "Id": 5129,
+    "NombreMunicipio": "CALDAS"
+  },
+  {
+    "Id": 5134,
+    "NombreMunicipio": "CAMPAMENTO"
+  },
+  {
+    "Id": 5138,
+    "NombreMunicipio": "CANASGORDAS"
+  },
+  {
+    "Id": 5142,
+    "NombreMunicipio": "CARACOLI"
+  },
+  {
+    "Id": 5145,
+    "NombreMunicipio": "CARAMANTA"
+  },
+  {
+    "Id": 5147,
+    "NombreMunicipio": "CAREPA"
+  },
+  {
+    "Id": 5148,
+    "NombreMunicipio": "EL CARMEN DE VIBORAL"
+  },
+  {
+    "Id": 5150,
+    "NombreMunicipio": "CAROLINA"
+  },
+  {
+    "Id": 5154,
+    "NombreMunicipio": "CAUCASIA"
+  },
+  {
+    "Id": 5172,
+    "NombreMunicipio": "CHIGORODO"
+  },
+  {
+    "Id": 5190,
+    "NombreMunicipio": "CISNEROS"
+  },
+  {
+    "Id": 5197,
+    "NombreMunicipio": "COCORNA"
+  },
+  {
+    "Id": 5206,
+    "NombreMunicipio": "CONCEPCION"
+  },
+  {
+    "Id": 5209,
+    "NombreMunicipio": "CONCORDIA"
+  },
+  {
+    "Id": 5212,
+    "NombreMunicipio": "COPACABANA"
+  },
+  {
+    "Id": 5234,
+    "NombreMunicipio": "DABEIBA"
+  },
+  {
+    "Id": 5237,
+    "NombreMunicipio": "DONMATIAS"
+  },
+  {
+    "Id": 5240,
+    "NombreMunicipio": "EBEJICO"
+  },
+  {
+    "Id": 5250,
+    "NombreMunicipio": "EL BAGRE"
+  },
+  {
+    "Id": 5264,
+    "NombreMunicipio": "ENTRERRIOS"
+  },
+  {
+    "Id": 5266,
+    "NombreMunicipio": "ENVIGADO"
+  },
+  {
+    "Id": 5282,
+    "NombreMunicipio": "FREDONIA"
+  },
+  {
+    "Id": 5284,
+    "NombreMunicipio": "FRONTINO"
+  },
+  {
+    "Id": 5306,
+    "NombreMunicipio": "GIRALDO"
+  },
+  {
+    "Id": 5308,
+    "NombreMunicipio": "GIRARDOTA"
+  },
+  {
+    "Id": 5310,
+    "NombreMunicipio": "GOMEZ PLATA"
+  },
+  {
+    "Id": 5313,
+    "NombreMunicipio": "GRANADA"
+  },
+  {
+    "Id": 5315,
+    "NombreMunicipio": "GUADALUPE"
+  },
+  {
+    "Id": 5318,
+    "NombreMunicipio": "GUARNE"
+  },
+  {
+    "Id": 5321,
+    "NombreMunicipio": "GUATAPE"
+  },
+  {
+    "Id": 5347,
+    "NombreMunicipio": "HELICONIA"
+  },
+  {
+    "Id": 5353,
+    "NombreMunicipio": "HISPANIA"
+  },
+  {
+    "Id": 5360,
+    "NombreMunicipio": "ITAGUI"
+  },
+  {
+    "Id": 5361,
+    "NombreMunicipio": "ITUANGO"
+  },
+  {
+    "Id": 5364,
+    "NombreMunicipio": "JARDIN"
+  },
+  {
+    "Id": 5368,
+    "NombreMunicipio": "JERICO"
+  },
+  {
+    "Id": 5376,
+    "NombreMunicipio": "LA CEJA"
+  },
+  {
+    "Id": 5380,
+    "NombreMunicipio": "LA ESTRELLA"
+  },
+  {
+    "Id": 5390,
+    "NombreMunicipio": "LA PINTADA"
+  },
+  {
+    "Id": 5400,
+    "NombreMunicipio": "LA UNION"
+  },
+  {
+    "Id": 5411,
+    "NombreMunicipio": "LIBORINA"
+  },
+  {
+    "Id": 5425,
+    "NombreMunicipio": "MACEO"
+  },
+  {
+    "Id": 5440,
+    "NombreMunicipio": "MARINILLA"
+  },
+  {
+    "Id": 5467,
+    "NombreMunicipio": "MONTEBELLO"
+  },
+  {
+    "Id": 5475,
+    "NombreMunicipio": "MURINDO"
+  },
+  {
+    "Id": 5480,
+    "NombreMunicipio": "MUTATA"
+  },
+  {
+    "Id": 5483,
+    "NombreMunicipio": "NARINO"
+  },
+  {
+    "Id": 5490,
+    "NombreMunicipio": "NECOCLI"
+  },
+  {
+    "Id": 5495,
+    "NombreMunicipio": "NECHI"
+  },
+  {
+    "Id": 5501,
+    "NombreMunicipio": "OLAYA"
+  },
+  {
+    "Id": 5541,
+    "NombreMunicipio": "PENOL"
+  },
+  {
+    "Id": 5543,
+    "NombreMunicipio": "PEQUE"
+  },
+  {
+    "Id": 5576,
+    "NombreMunicipio": "PUEBLORRICO"
+  },
+  {
+    "Id": 5579,
+    "NombreMunicipio": "PUERTO BERRIO"
+  },
+  {
+    "Id": 5585,
+    "NombreMunicipio": "PUERTO NARE"
+  },
+  {
+    "Id": 5591,
+    "NombreMunicipio": "PUERTO TRIUNFO"
+  },
+  {
+    "Id": 5604,
+    "NombreMunicipio": "REMEDIOS"
+  },
+  {
+    "Id": 5607,
+    "NombreMunicipio": "RETIRO"
+  },
+  {
+    "Id": 5615,
+    "NombreMunicipio": "RIONEGRO"
+  },
+  {
+    "Id": 5628,
+    "NombreMunicipio": "SABANALARGA"
+  },
+  {
+    "Id": 5631,
+    "NombreMunicipio": "SABANETA"
+  },
+  {
+    "Id": 5642,
+    "NombreMunicipio": "SALGAR"
+  },
+  {
+    "Id": 5647,
+    "NombreMunicipio": "SAN ANDRES DE CUERQUIA"
+  },
+  {
+    "Id": 5649,
+    "NombreMunicipio": "SAN CARLOS"
+  },
+  {
+    "Id": 5652,
+    "NombreMunicipio": "SAN FRANCISCO"
+  },
+  {
+    "Id": 5656,
+    "NombreMunicipio": "SAN JERONIMO"
+  },
+  {
+    "Id": 5658,
+    "NombreMunicipio": "SAN JOSE DE LA MONTANA"
+  },
+  {
+    "Id": 5659,
+    "NombreMunicipio": "SAN JUAN DE URABA"
+  },
+  {
+    "Id": 5660,
+    "NombreMunicipio": "SAN LUIS"
+  },
+  {
+    "Id": 5664,
+    "NombreMunicipio": "SAN PEDRO DE LOS MILAGROS"
+  },
+  {
+    "Id": 5665,
+    "NombreMunicipio": "SAN PEDRO DE URABA"
+  },
+  {
+    "Id": 5667,
+    "NombreMunicipio": "SAN RAFAEL"
+  },
+  {
+    "Id": 5670,
+    "NombreMunicipio": "SAN ROQUE"
+  },
+  {
+    "Id": 5674,
+    "NombreMunicipio": "SAN VICENTE FERRER"
+  },
+  {
+    "Id": 5679,
+    "NombreMunicipio": "SANTA BARBARA"
+  },
+  {
+    "Id": 5686,
+    "NombreMunicipio": "SANTA ROSA DE OSOS"
+  },
+  {
+    "Id": 5690,
+    "NombreMunicipio": "SANTO DOMINGO"
+  },
+  {
+    "Id": 5697,
+    "NombreMunicipio": "EL SANTUARIO"
+  },
+  {
+    "Id": 5736,
+    "NombreMunicipio": "SEGOVIA"
+  },
+  {
+    "Id": 5756,
+    "NombreMunicipio": "SONSON"
+  },
+  {
+    "Id": 5761,
+    "NombreMunicipio": "SOPETRAN"
+  },
+  {
+    "Id": 5789,
+    "NombreMunicipio": "TAMESIS"
+  },
+  {
+    "Id": 5790,
+    "NombreMunicipio": "TARAZA"
+  },
+  {
+    "Id": 5792,
+    "NombreMunicipio": "TARSO"
+  },
+  {
+    "Id": 5809,
+    "NombreMunicipio": "TITIRIBI"
+  },
+  {
+    "Id": 5819,
+    "NombreMunicipio": "TOLEDO"
+  },
+  {
+    "Id": 5837,
+    "NombreMunicipio": "TURBO"
+  },
+  {
+    "Id": 5842,
+    "NombreMunicipio": "URAMITA"
+  },
+  {
+    "Id": 5847,
+    "NombreMunicipio": "URRAO"
+  },
+  {
+    "Id": 5854,
+    "NombreMunicipio": "VALDIVIA"
+  },
+  {
+    "Id": 5856,
+    "NombreMunicipio": "VALPARAISO"
+  },
+  {
+    "Id": 5858,
+    "NombreMunicipio": "VEGACHI"
+  },
+  {
+    "Id": 5861,
+    "NombreMunicipio": "VENECIA"
+  },
+  {
+    "Id": 5873,
+    "NombreMunicipio": "VIGIA DEL FUERTE"
+  },
+  {
+    "Id": 5885,
+    "NombreMunicipio": "YALI"
+  },
+  {
+    "Id": 5887,
+    "NombreMunicipio": "YARUMAL"
+  },
+  {
+    "Id": 5890,
+    "NombreMunicipio": "YOLOMBO"
+  },
+  {
+    "Id": 5893,
+    "NombreMunicipio": "YONDO"
+  },
+  {
+    "Id": 5895,
+    "NombreMunicipio": "ZARAGOZA"
+  },
+  {
+    "Id": 8001,
+    "NombreMunicipio": "BARRANQUILLA"
+  },
+  {
+    "Id": 8078,
+    "NombreMunicipio": "BARANOA"
+  },
+  {
+    "Id": 8137,
+    "NombreMunicipio": "CAMPO DE LA CRUZ"
+  },
+  {
+    "Id": 8141,
+    "NombreMunicipio": "CANDELARIA"
+  },
+  {
+    "Id": 8296,
+    "NombreMunicipio": "GALAPA"
+  },
+  {
+    "Id": 8372,
+    "NombreMunicipio": "JUAN DE ACOSTA"
+  },
+  {
+    "Id": 8421,
+    "NombreMunicipio": "LURUACO"
+  },
+  {
+    "Id": 8433,
+    "NombreMunicipio": "MALAMBO"
+  },
+  {
+    "Id": 8436,
+    "NombreMunicipio": "MANATI"
+  },
+  {
+    "Id": 8520,
+    "NombreMunicipio": "PALMAR DE VARELA"
+  },
+  {
+    "Id": 8549,
+    "NombreMunicipio": "PIOJO"
+  },
+  {
+    "Id": 8558,
+    "NombreMunicipio": "POLONUEVO"
+  },
+  {
+    "Id": 8560,
+    "NombreMunicipio": "PONEDERA"
+  },
+  {
+    "Id": 8573,
+    "NombreMunicipio": "PUERTO COLOMBIA"
+  },
+  {
+    "Id": 8606,
+    "NombreMunicipio": "REPELON"
+  },
+  {
+    "Id": 8634,
+    "NombreMunicipio": "SABANAGRANDE"
+  },
+  {
+    "Id": 8638,
+    "NombreMunicipio": "SABANALARGA"
+  },
+  {
+    "Id": 8675,
+    "NombreMunicipio": "SANTA LUCIA"
+  },
+  {
+    "Id": 8685,
+    "NombreMunicipio": "SANTO TOMAS"
+  },
+  {
+    "Id": 8758,
+    "NombreMunicipio": "SOLEDAD"
+  },
+  {
+    "Id": 8770,
+    "NombreMunicipio": "SUAN"
+  },
+  {
+    "Id": 8832,
+    "NombreMunicipio": "TUBARA"
+  },
+  {
+    "Id": 8849,
+    "NombreMunicipio": "USIACURI"
+  },
+  {
+    "Id": 11001,
+    "NombreMunicipio": "BOGOTA, D.C."
+  },
+  {
+    "Id": 13001,
+    "NombreMunicipio": "CARTAGENA DE INDIAS"
+  },
+  {
+    "Id": 13006,
+    "NombreMunicipio": "ACHI"
+  },
+  {
+    "Id": 13030,
+    "NombreMunicipio": "ALTOS DEL ROSARIO"
+  },
+  {
+    "Id": 13042,
+    "NombreMunicipio": "ARENAL"
+  },
+  {
+    "Id": 13052,
+    "NombreMunicipio": "ARJONA"
+  },
+  {
+    "Id": 13062,
+    "NombreMunicipio": "ARROYOHONDO"
+  },
+  {
+    "Id": 13074,
+    "NombreMunicipio": "BARRANCO DE LOBA"
+  },
+  {
+    "Id": 13140,
+    "NombreMunicipio": "CALAMAR"
+  },
+  {
+    "Id": 13160,
+    "NombreMunicipio": "CANTAGALLO"
+  },
+  {
+    "Id": 13188,
+    "NombreMunicipio": "CICUCO"
+  },
+  {
+    "Id": 13212,
+    "NombreMunicipio": "CORDOBA"
+  },
+  {
+    "Id": 13222,
+    "NombreMunicipio": "CLEMENCIA"
+  },
+  {
+    "Id": 13244,
+    "NombreMunicipio": "EL CARMEN DE BOLIVAR"
+  },
+  {
+    "Id": 13248,
+    "NombreMunicipio": "EL GUAMO"
+  },
+  {
+    "Id": 13268,
+    "NombreMunicipio": "EL PENON"
+  },
+  {
+    "Id": 13300,
+    "NombreMunicipio": "HATILLO DE LOBA"
+  },
+  {
+    "Id": 13430,
+    "NombreMunicipio": "MAGANGUE"
+  },
+  {
+    "Id": 13433,
+    "NombreMunicipio": "MAHATES"
+  },
+  {
+    "Id": 13440,
+    "NombreMunicipio": "MARGARITA"
+  },
+  {
+    "Id": 13442,
+    "NombreMunicipio": "MARIA LA BAJA"
+  },
+  {
+    "Id": 13458,
+    "NombreMunicipio": "MONTECRISTO"
+  },
+  {
+    "Id": 13468,
+    "NombreMunicipio": "SANTA CRUZ DE MOMPOX"
+  },
+  {
+    "Id": 13473,
+    "NombreMunicipio": "MORALES"
+  },
+  {
+    "Id": 13490,
+    "NombreMunicipio": "NOROSI"
+  },
+  {
+    "Id": 13549,
+    "NombreMunicipio": "PINILLOS"
+  },
+  {
+    "Id": 13580,
+    "NombreMunicipio": "REGIDOR"
+  },
+  {
+    "Id": 13600,
+    "NombreMunicipio": "RIO VIEJO"
+  },
+  {
+    "Id": 13620,
+    "NombreMunicipio": "SAN CRISTOBAL"
+  },
+  {
+    "Id": 13647,
+    "NombreMunicipio": "SAN ESTANISLAO"
+  },
+  {
+    "Id": 13650,
+    "NombreMunicipio": "SAN FERNANDO"
+  },
+  {
+    "Id": 13654,
+    "NombreMunicipio": "SAN JACINTO"
+  },
+  {
+    "Id": 13655,
+    "NombreMunicipio": "SAN JACINTO DEL CAUCA"
+  },
+  {
+    "Id": 13657,
+    "NombreMunicipio": "SAN JUAN NEPOMUCENO"
+  },
+  {
+    "Id": 13667,
+    "NombreMunicipio": "SAN MARTIN DE LOBA"
+  },
+  {
+    "Id": 13670,
+    "NombreMunicipio": "SAN PABLO"
+  },
+  {
+    "Id": 13673,
+    "NombreMunicipio": "SANTA CATALINA"
+  },
+  {
+    "Id": 13683,
+    "NombreMunicipio": "SANTA ROSA"
+  },
+  {
+    "Id": 13688,
+    "NombreMunicipio": "SANTA ROSA DEL SUR"
+  },
+  {
+    "Id": 13744,
+    "NombreMunicipio": "SIMITI"
+  },
+  {
+    "Id": 13760,
+    "NombreMunicipio": "SOPLAVIENTO"
+  },
+  {
+    "Id": 13780,
+    "NombreMunicipio": "TALAIGUA NUEVO"
+  },
+  {
+    "Id": 13810,
+    "NombreMunicipio": "TIQUISIO"
+  },
+  {
+    "Id": 13836,
+    "NombreMunicipio": "TURBACO"
+  },
+  {
+    "Id": 13838,
+    "NombreMunicipio": "TURBANA"
+  },
+  {
+    "Id": 13873,
+    "NombreMunicipio": "VILLANUEVA"
+  },
+  {
+    "Id": 13894,
+    "NombreMunicipio": "ZAMBRANO"
+  },
+  {
+    "Id": 15001,
+    "NombreMunicipio": "TUNJA"
+  },
+  {
+    "Id": 15022,
+    "NombreMunicipio": "ALMEIDA"
+  },
+  {
+    "Id": 15047,
+    "NombreMunicipio": "AQUITANIA"
+  },
+  {
+    "Id": 15051,
+    "NombreMunicipio": "ARCABUCO"
+  },
+  {
+    "Id": 15087,
+    "NombreMunicipio": "BELEN"
+  },
+  {
+    "Id": 15090,
+    "NombreMunicipio": "BERBEO"
+  },
+  {
+    "Id": 15092,
+    "NombreMunicipio": "BETEITIVA"
+  },
+  {
+    "Id": 15097,
+    "NombreMunicipio": "BOAVITA"
+  },
+  {
+    "Id": 15104,
+    "NombreMunicipio": "BOYACA"
+  },
+  {
+    "Id": 15106,
+    "NombreMunicipio": "BRICENO"
+  },
+  {
+    "Id": 15109,
+    "NombreMunicipio": "BUENAVISTA"
+  },
+  {
+    "Id": 15114,
+    "NombreMunicipio": "BUSBANZA"
+  },
+  {
+    "Id": 15131,
+    "NombreMunicipio": "CALDAS"
+  },
+  {
+    "Id": 15135,
+    "NombreMunicipio": "CAMPOHERMOSO"
+  },
+  {
+    "Id": 15162,
+    "NombreMunicipio": "CERINZA"
+  },
+  {
+    "Id": 15172,
+    "NombreMunicipio": "CHINAVITA"
+  },
+  {
+    "Id": 15176,
+    "NombreMunicipio": "CHIQUINQUIRA"
+  },
+  {
+    "Id": 15180,
+    "NombreMunicipio": "CHISCAS"
+  },
+  {
+    "Id": 15183,
+    "NombreMunicipio": "CHITA"
+  },
+  {
+    "Id": 15185,
+    "NombreMunicipio": "CHITARAQUE"
+  },
+  {
+    "Id": 15187,
+    "NombreMunicipio": "CHIVATA"
+  },
+  {
+    "Id": 15189,
+    "NombreMunicipio": "CIENEGA"
+  },
+  {
+    "Id": 15204,
+    "NombreMunicipio": "COMBITA"
+  },
+  {
+    "Id": 15212,
+    "NombreMunicipio": "COPER"
+  },
+  {
+    "Id": 15215,
+    "NombreMunicipio": "CORRALES"
+  },
+  {
+    "Id": 15218,
+    "NombreMunicipio": "COVARACHIA"
+  },
+  {
+    "Id": 15223,
+    "NombreMunicipio": "CUBARA"
+  },
+  {
+    "Id": 15224,
+    "NombreMunicipio": "CUCAITA"
+  },
+  {
+    "Id": 15226,
+    "NombreMunicipio": "CUITIVA"
+  },
+  {
+    "Id": 15232,
+    "NombreMunicipio": "CHIQUIZA"
+  },
+  {
+    "Id": 15236,
+    "NombreMunicipio": "CHIVOR"
+  },
+  {
+    "Id": 15238,
+    "NombreMunicipio": "DUITAMA"
+  },
+  {
+    "Id": 15244,
+    "NombreMunicipio": "EL COCUY"
+  },
+  {
+    "Id": 15248,
+    "NombreMunicipio": "EL ESPINO"
+  },
+  {
+    "Id": 15272,
+    "NombreMunicipio": "FIRAVITOBA"
+  },
+  {
+    "Id": 15276,
+    "NombreMunicipio": "FLORESTA"
+  },
+  {
+    "Id": 15293,
+    "NombreMunicipio": "GACHANTIVA"
+  },
+  {
+    "Id": 15296,
+    "NombreMunicipio": "GAMEZA"
+  },
+  {
+    "Id": 15299,
+    "NombreMunicipio": "GARAGOA"
+  },
+  {
+    "Id": 15317,
+    "NombreMunicipio": "GUACAMAYAS"
+  },
+  {
+    "Id": 15322,
+    "NombreMunicipio": "GUATEQUE"
+  },
+  {
+    "Id": 15325,
+    "NombreMunicipio": "GUAYATA"
+  },
+  {
+    "Id": 15332,
+    "NombreMunicipio": "GUICAN DE LA SIERRA"
+  },
+  {
+    "Id": 15362,
+    "NombreMunicipio": "IZA"
+  },
+  {
+    "Id": 15367,
+    "NombreMunicipio": "JENESANO"
+  },
+  {
+    "Id": 15368,
+    "NombreMunicipio": "JERICO"
+  },
+  {
+    "Id": 15377,
+    "NombreMunicipio": "LABRANZAGRANDE"
+  },
+  {
+    "Id": 15380,
+    "NombreMunicipio": "LA CAPILLA"
+  },
+  {
+    "Id": 15401,
+    "NombreMunicipio": "LA VICTORIA"
+  },
+  {
+    "Id": 15403,
+    "NombreMunicipio": "LA UVITA"
+  },
+  {
+    "Id": 15407,
+    "NombreMunicipio": "VILLA DE LEYVA"
+  },
+  {
+    "Id": 15425,
+    "NombreMunicipio": "MACANAL"
+  },
+  {
+    "Id": 15442,
+    "NombreMunicipio": "MARIPI"
+  },
+  {
+    "Id": 15455,
+    "NombreMunicipio": "MIRAFLORES"
+  },
+  {
+    "Id": 15464,
+    "NombreMunicipio": "MONGUA"
+  },
+  {
+    "Id": 15466,
+    "NombreMunicipio": "MONGUI"
+  },
+  {
+    "Id": 15469,
+    "NombreMunicipio": "MONIQUIRA"
+  },
+  {
+    "Id": 15476,
+    "NombreMunicipio": "MOTAVITA"
+  },
+  {
+    "Id": 15480,
+    "NombreMunicipio": "MUZO"
+  },
+  {
+    "Id": 15491,
+    "NombreMunicipio": "NOBSA"
+  },
+  {
+    "Id": 15494,
+    "NombreMunicipio": "NUEVO COLON"
+  },
+  {
+    "Id": 15500,
+    "NombreMunicipio": "OICATA"
+  },
+  {
+    "Id": 15507,
+    "NombreMunicipio": "OTANCHE"
+  },
+  {
+    "Id": 15511,
+    "NombreMunicipio": "PACHAVITA"
+  },
+  {
+    "Id": 15514,
+    "NombreMunicipio": "PAEZ"
+  },
+  {
+    "Id": 15516,
+    "NombreMunicipio": "PAIPA"
+  },
+  {
+    "Id": 15518,
+    "NombreMunicipio": "PAJARITO"
+  },
+  {
+    "Id": 15522,
+    "NombreMunicipio": "PANQUEBA"
+  },
+  {
+    "Id": 15531,
+    "NombreMunicipio": "PAUNA"
+  },
+  {
+    "Id": 15533,
+    "NombreMunicipio": "PAYA"
+  },
+  {
+    "Id": 15537,
+    "NombreMunicipio": "PAZ DE RIO"
+  },
+  {
+    "Id": 15542,
+    "NombreMunicipio": "PESCA"
+  },
+  {
+    "Id": 15550,
+    "NombreMunicipio": "PISBA"
+  },
+  {
+    "Id": 15572,
+    "NombreMunicipio": "PUERTO BOYACA"
+  },
+  {
+    "Id": 15580,
+    "NombreMunicipio": "QUIPAMA"
+  },
+  {
+    "Id": 15599,
+    "NombreMunicipio": "RAMIRIQUI"
+  },
+  {
+    "Id": 15600,
+    "NombreMunicipio": "RAQUIRA"
+  },
+  {
+    "Id": 15621,
+    "NombreMunicipio": "RONDON"
+  },
+  {
+    "Id": 15632,
+    "NombreMunicipio": "SABOYA"
+  },
+  {
+    "Id": 15638,
+    "NombreMunicipio": "SACHICA"
+  },
+  {
+    "Id": 15646,
+    "NombreMunicipio": "SAMACA"
+  },
+  {
+    "Id": 15660,
+    "NombreMunicipio": "SAN EDUARDO"
+  },
+  {
+    "Id": 15664,
+    "NombreMunicipio": "SAN JOSE DE PARE"
+  },
+  {
+    "Id": 15667,
+    "NombreMunicipio": "SAN LUIS DE GACENO"
+  },
+  {
+    "Id": 15673,
+    "NombreMunicipio": "SAN MATEO"
+  },
+  {
+    "Id": 15676,
+    "NombreMunicipio": "SAN MIGUEL DE SEMA"
+  },
+  {
+    "Id": 15681,
+    "NombreMunicipio": "SAN PABLO DE BORBUR"
+  },
+  {
+    "Id": 15686,
+    "NombreMunicipio": "SANTANA"
+  },
+  {
+    "Id": 15690,
+    "NombreMunicipio": "SANTA MARIA"
+  },
+  {
+    "Id": 15693,
+    "NombreMunicipio": "SANTA ROSA DE VITERBO"
+  },
+  {
+    "Id": 15696,
+    "NombreMunicipio": "SANTA SOFIA"
+  },
+  {
+    "Id": 15720,
+    "NombreMunicipio": "SATIVANORTE"
+  },
+  {
+    "Id": 15723,
+    "NombreMunicipio": "SATIVASUR"
+  },
+  {
+    "Id": 15740,
+    "NombreMunicipio": "SIACHOQUE"
+  },
+  {
+    "Id": 15753,
+    "NombreMunicipio": "SOATA"
+  },
+  {
+    "Id": 15755,
+    "NombreMunicipio": "SOCOTA"
+  },
+  {
+    "Id": 15757,
+    "NombreMunicipio": "SOCHA"
+  },
+  {
+    "Id": 15759,
+    "NombreMunicipio": "SOGAMOSO"
+  },
+  {
+    "Id": 15761,
+    "NombreMunicipio": "SOMONDOCO"
+  },
+  {
+    "Id": 15762,
+    "NombreMunicipio": "SORA"
+  },
+  {
+    "Id": 15763,
+    "NombreMunicipio": "SOTAQUIRA"
+  },
+  {
+    "Id": 15764,
+    "NombreMunicipio": "SORACA"
+  },
+  {
+    "Id": 15774,
+    "NombreMunicipio": "SUSACON"
+  },
+  {
+    "Id": 15776,
+    "NombreMunicipio": "SUTAMARCHAN"
+  },
+  {
+    "Id": 15778,
+    "NombreMunicipio": "SUTATENZA"
+  },
+  {
+    "Id": 15790,
+    "NombreMunicipio": "TASCO"
+  },
+  {
+    "Id": 15798,
+    "NombreMunicipio": "TENZA"
+  },
+  {
+    "Id": 15804,
+    "NombreMunicipio": "TIBANA"
+  },
+  {
+    "Id": 15806,
+    "NombreMunicipio": "TIBASOSA"
+  },
+  {
+    "Id": 15808,
+    "NombreMunicipio": "TINJACA"
+  },
+  {
+    "Id": 15810,
+    "NombreMunicipio": "TIPACOQUE"
+  },
+  {
+    "Id": 15814,
+    "NombreMunicipio": "TOCA"
+  },
+  {
+    "Id": 15816,
+    "NombreMunicipio": "TOGUI"
+  },
+  {
+    "Id": 15820,
+    "NombreMunicipio": "TOPAGA"
+  },
+  {
+    "Id": 15822,
+    "NombreMunicipio": "TOTA"
+  },
+  {
+    "Id": 15832,
+    "NombreMunicipio": "TUNUNGUA"
+  },
+  {
+    "Id": 15835,
+    "NombreMunicipio": "TURMEQUE"
+  },
+  {
+    "Id": 15837,
+    "NombreMunicipio": "TUTA"
+  },
+  {
+    "Id": 15839,
+    "NombreMunicipio": "TUTAZA"
+  },
+  {
+    "Id": 15842,
+    "NombreMunicipio": "UMBITA"
+  },
+  {
+    "Id": 15861,
+    "NombreMunicipio": "VENTAQUEMADA"
+  },
+  {
+    "Id": 15879,
+    "NombreMunicipio": "VIRACACHA"
+  },
+  {
+    "Id": 15897,
+    "NombreMunicipio": "ZETAQUIRA"
+  },
+  {
+    "Id": 17001,
+    "NombreMunicipio": "MANIZALES"
+  },
+  {
+    "Id": 17013,
+    "NombreMunicipio": "AGUADAS"
+  },
+  {
+    "Id": 17042,
+    "NombreMunicipio": "ANSERMA"
+  },
+  {
+    "Id": 17050,
+    "NombreMunicipio": "ARANZAZU"
+  },
+  {
+    "Id": 17088,
+    "NombreMunicipio": "BELALCAZAR"
+  },
+  {
+    "Id": 17174,
+    "NombreMunicipio": "CHINCHINA"
+  },
+  {
+    "Id": 17272,
+    "NombreMunicipio": "FILADELFIA"
+  },
+  {
+    "Id": 17380,
+    "NombreMunicipio": "LA DORADA"
+  },
+  {
+    "Id": 17388,
+    "NombreMunicipio": "LA MERCED"
+  },
+  {
+    "Id": 17433,
+    "NombreMunicipio": "MANZANARES"
+  },
+  {
+    "Id": 17442,
+    "NombreMunicipio": "MARMATO"
+  },
+  {
+    "Id": 17444,
+    "NombreMunicipio": "MARQUETALIA"
+  },
+  {
+    "Id": 17446,
+    "NombreMunicipio": "MARULANDA"
+  },
+  {
+    "Id": 17486,
+    "NombreMunicipio": "NEIRA"
+  },
+  {
+    "Id": 17495,
+    "NombreMunicipio": "NORCASIA"
+  },
+  {
+    "Id": 17513,
+    "NombreMunicipio": "PACORA"
+  },
+  {
+    "Id": 17524,
+    "NombreMunicipio": "PALESTINA"
+  },
+  {
+    "Id": 17541,
+    "NombreMunicipio": "PENSILVANIA"
+  },
+  {
+    "Id": 17614,
+    "NombreMunicipio": "RIOSUCIO"
+  },
+  {
+    "Id": 17616,
+    "NombreMunicipio": "RISARALDA"
+  },
+  {
+    "Id": 17653,
+    "NombreMunicipio": "SALAMINA"
+  },
+  {
+    "Id": 17662,
+    "NombreMunicipio": "SAMANA"
+  },
+  {
+    "Id": 17665,
+    "NombreMunicipio": "SAN JOSE"
+  },
+  {
+    "Id": 17777,
+    "NombreMunicipio": "SUPIA"
+  },
+  {
+    "Id": 17867,
+    "NombreMunicipio": "VICTORIA"
+  },
+  {
+    "Id": 17873,
+    "NombreMunicipio": "VILLAMARIA"
+  },
+  {
+    "Id": 17877,
+    "NombreMunicipio": "VITERBO"
+  },
+  {
+    "Id": 18001,
+    "NombreMunicipio": "FLORENCIA"
+  },
+  {
+    "Id": 18029,
+    "NombreMunicipio": "ALBANIA"
+  },
+  {
+    "Id": 18094,
+    "NombreMunicipio": "BELEN DE LOS ANDAQUIES"
+  },
+  {
+    "Id": 18150,
+    "NombreMunicipio": "CARTAGENA DEL CHAIRA"
+  },
+  {
+    "Id": 18205,
+    "NombreMunicipio": "CURILLO"
+  },
+  {
+    "Id": 18247,
+    "NombreMunicipio": "EL DONCELLO"
+  },
+  {
+    "Id": 18256,
+    "NombreMunicipio": "EL PAUJIL"
+  },
+  {
+    "Id": 18410,
+    "NombreMunicipio": "LA MONTANITA"
+  },
+  {
+    "Id": 18460,
+    "NombreMunicipio": "MILAN"
+  },
+  {
+    "Id": 18479,
+    "NombreMunicipio": "MORELIA"
+  },
+  {
+    "Id": 18592,
+    "NombreMunicipio": "PUERTO RICO"
+  },
+  {
+    "Id": 18610,
+    "NombreMunicipio": "SAN JOSE DEL FRAGUA"
+  },
+  {
+    "Id": 18753,
+    "NombreMunicipio": "SAN VICENTE DEL CAGUAN"
+  },
+  {
+    "Id": 18756,
+    "NombreMunicipio": "SOLANO"
+  },
+  {
+    "Id": 18785,
+    "NombreMunicipio": "SOLITA"
+  },
+  {
+    "Id": 18860,
+    "NombreMunicipio": "VALPARAISO"
+  },
+  {
+    "Id": 19001,
+    "NombreMunicipio": "POPAYAN"
+  },
+  {
+    "Id": 19022,
+    "NombreMunicipio": "ALMAGUER"
+  },
+  {
+    "Id": 19050,
+    "NombreMunicipio": "ARGELIA"
+  },
+  {
+    "Id": 19075,
+    "NombreMunicipio": "BALBOA"
+  },
+  {
+    "Id": 19100,
+    "NombreMunicipio": "BOLIVAR"
+  },
+  {
+    "Id": 19110,
+    "NombreMunicipio": "BUENOS AIRES"
+  },
+  {
+    "Id": 19130,
+    "NombreMunicipio": "CAJIBIO"
+  },
+  {
+    "Id": 19137,
+    "NombreMunicipio": "CALDONO"
+  },
+  {
+    "Id": 19142,
+    "NombreMunicipio": "CALOTO"
+  },
+  {
+    "Id": 19212,
+    "NombreMunicipio": "CORINTO"
+  },
+  {
+    "Id": 19256,
+    "NombreMunicipio": "EL TAMBO"
+  },
+  {
+    "Id": 19290,
+    "NombreMunicipio": "FLORENCIA"
+  },
+  {
+    "Id": 19300,
+    "NombreMunicipio": "GUACHENE"
+  },
+  {
+    "Id": 19318,
+    "NombreMunicipio": "GUAPI"
+  },
+  {
+    "Id": 19355,
+    "NombreMunicipio": "INZA"
+  },
+  {
+    "Id": 19364,
+    "NombreMunicipio": "JAMBALO"
+  },
+  {
+    "Id": 19392,
+    "NombreMunicipio": "LA SIERRA"
+  },
+  {
+    "Id": 19397,
+    "NombreMunicipio": "LA VEGA"
+  },
+  {
+    "Id": 19418,
+    "NombreMunicipio": "LOPEZ DE MICAY"
+  },
+  {
+    "Id": 19450,
+    "NombreMunicipio": "MERCADERES"
+  },
+  {
+    "Id": 19455,
+    "NombreMunicipio": "MIRANDA"
+  },
+  {
+    "Id": 19473,
+    "NombreMunicipio": "MORALES"
+  },
+  {
+    "Id": 19513,
+    "NombreMunicipio": "PADILLA"
+  },
+  {
+    "Id": 19517,
+    "NombreMunicipio": "PAEZ"
+  },
+  {
+    "Id": 19532,
+    "NombreMunicipio": "PATIA"
+  },
+  {
+    "Id": 19533,
+    "NombreMunicipio": "PIAMONTE"
+  },
+  {
+    "Id": 19548,
+    "NombreMunicipio": "PIENDAMO - TUNIA"
+  },
+  {
+    "Id": 19573,
+    "NombreMunicipio": "PUERTO TEJADA"
+  },
+  {
+    "Id": 19585,
+    "NombreMunicipio": "PURACE"
+  },
+  {
+    "Id": 19622,
+    "NombreMunicipio": "ROSAS"
+  },
+  {
+    "Id": 19693,
+    "NombreMunicipio": "SAN SEBASTIAN"
+  },
+  {
+    "Id": 19698,
+    "NombreMunicipio": "SANTANDER DE QUILICHAO"
+  },
+  {
+    "Id": 19701,
+    "NombreMunicipio": "SANTA ROSA"
+  },
+  {
+    "Id": 19743,
+    "NombreMunicipio": "SILVIA"
+  },
+  {
+    "Id": 19760,
+    "NombreMunicipio": "SOTARA PAISPAMBA"
+  },
+  {
+    "Id": 19780,
+    "NombreMunicipio": "SUAREZ"
+  },
+  {
+    "Id": 19785,
+    "NombreMunicipio": "SUCRE"
+  },
+  {
+    "Id": 19807,
+    "NombreMunicipio": "TIMBIO"
+  },
+  {
+    "Id": 19809,
+    "NombreMunicipio": "TIMBIQUI"
+  },
+  {
+    "Id": 19821,
+    "NombreMunicipio": "TORIBIO"
+  },
+  {
+    "Id": 19824,
+    "NombreMunicipio": "TOTORO"
+  },
+  {
+    "Id": 19845,
+    "NombreMunicipio": "VILLA RICA"
+  },
+  {
+    "Id": 20001,
+    "NombreMunicipio": "VALLEDUPAR"
+  },
+  {
+    "Id": 20011,
+    "NombreMunicipio": "AGUACHICA"
+  },
+  {
+    "Id": 20013,
+    "NombreMunicipio": "AGUSTIN CODAZZI"
+  },
+  {
+    "Id": 20032,
+    "NombreMunicipio": "ASTREA"
+  },
+  {
+    "Id": 20045,
+    "NombreMunicipio": "BECERRIL"
+  },
+  {
+    "Id": 20060,
+    "NombreMunicipio": "BOSCONIA"
+  },
+  {
+    "Id": 20175,
+    "NombreMunicipio": "CHIMICHAGUA"
+  },
+  {
+    "Id": 20178,
+    "NombreMunicipio": "CHIRIGUANA"
+  },
+  {
+    "Id": 20228,
+    "NombreMunicipio": "CURUMANI"
+  },
+  {
+    "Id": 20238,
+    "NombreMunicipio": "EL COPEY"
+  },
+  {
+    "Id": 20250,
+    "NombreMunicipio": "EL PASO"
+  },
+  {
+    "Id": 20295,
+    "NombreMunicipio": "GAMARRA"
+  },
+  {
+    "Id": 20310,
+    "NombreMunicipio": "GONZALEZ"
+  },
+  {
+    "Id": 20383,
+    "NombreMunicipio": "LA GLORIA"
+  },
+  {
+    "Id": 20400,
+    "NombreMunicipio": "LA JAGUA DE IBIRICO"
+  },
+  {
+    "Id": 20443,
+    "NombreMunicipio": "MANAURE BALCON DEL CESAR"
+  },
+  {
+    "Id": 20517,
+    "NombreMunicipio": "PAILITAS"
+  },
+  {
+    "Id": 20550,
+    "NombreMunicipio": "PELAYA"
+  },
+  {
+    "Id": 20570,
+    "NombreMunicipio": "PUEBLO BELLO"
+  },
+  {
+    "Id": 20614,
+    "NombreMunicipio": "RIO DE ORO"
+  },
+  {
+    "Id": 20621,
+    "NombreMunicipio": "LA PAZ"
+  },
+  {
+    "Id": 20710,
+    "NombreMunicipio": "SAN ALBERTO"
+  },
+  {
+    "Id": 20750,
+    "NombreMunicipio": "SAN DIEGO"
+  },
+  {
+    "Id": 20770,
+    "NombreMunicipio": "SAN MARTIN"
+  },
+  {
+    "Id": 20787,
+    "NombreMunicipio": "TAMALAMEQUE"
+  },
+  {
+    "Id": 23001,
+    "NombreMunicipio": "MONTERIA"
+  },
+  {
+    "Id": 23068,
+    "NombreMunicipio": "AYAPEL"
+  },
+  {
+    "Id": 23079,
+    "NombreMunicipio": "BUENAVISTA"
+  },
+  {
+    "Id": 23090,
+    "NombreMunicipio": "CANALETE"
+  },
+  {
+    "Id": 23162,
+    "NombreMunicipio": "CERETE"
+  },
+  {
+    "Id": 23168,
+    "NombreMunicipio": "CHIMA"
+  },
+  {
+    "Id": 23182,
+    "NombreMunicipio": "CHINU"
+  },
+  {
+    "Id": 23189,
+    "NombreMunicipio": "CIENAGA DE ORO"
+  },
+  {
+    "Id": 23300,
+    "NombreMunicipio": "COTORRA"
+  },
+  {
+    "Id": 23350,
+    "NombreMunicipio": "LA APARTADA"
+  },
+  {
+    "Id": 23417,
+    "NombreMunicipio": "LORICA"
+  },
+  {
+    "Id": 23419,
+    "NombreMunicipio": "LOS CORDOBAS"
+  },
+  {
+    "Id": 23464,
+    "NombreMunicipio": "MOMIL"
+  },
+  {
+    "Id": 23466,
+    "NombreMunicipio": "MONTELIBANO"
+  },
+  {
+    "Id": 23500,
+    "NombreMunicipio": "MONITOS"
+  },
+  {
+    "Id": 23555,
+    "NombreMunicipio": "PLANETA RICA"
+  },
+  {
+    "Id": 23570,
+    "NombreMunicipio": "PUEBLO NUEVO"
+  },
+  {
+    "Id": 23574,
+    "NombreMunicipio": "PUERTO ESCONDIDO"
+  },
+  {
+    "Id": 23580,
+    "NombreMunicipio": "PUERTO LIBERTADOR"
+  },
+  {
+    "Id": 23586,
+    "NombreMunicipio": "PURISIMA DE LA CONCEPCION"
+  },
+  {
+    "Id": 23660,
+    "NombreMunicipio": "SAHAGUN"
+  },
+  {
+    "Id": 23670,
+    "NombreMunicipio": "SAN ANDRES DE SOTAVENTO"
+  },
+  {
+    "Id": 23672,
+    "NombreMunicipio": "SAN ANTERO"
+  },
+  {
+    "Id": 23675,
+    "NombreMunicipio": "SAN BERNARDO DEL VIENTO"
+  },
+  {
+    "Id": 23678,
+    "NombreMunicipio": "SAN CARLOS"
+  },
+  {
+    "Id": 23682,
+    "NombreMunicipio": "SAN JOSE DE URE"
+  },
+  {
+    "Id": 23686,
+    "NombreMunicipio": "SAN PELAYO"
+  },
+  {
+    "Id": 23807,
+    "NombreMunicipio": "TIERRALTA"
+  },
+  {
+    "Id": 23815,
+    "NombreMunicipio": "TUCHIN"
+  },
+  {
+    "Id": 23855,
+    "NombreMunicipio": "VALENCIA"
+  },
+  {
+    "Id": 25001,
+    "NombreMunicipio": "AGUA DE DIOS"
+  },
+  {
+    "Id": 25019,
+    "NombreMunicipio": "ALBAN"
+  },
+  {
+    "Id": 25035,
+    "NombreMunicipio": "ANAPOIMA"
+  },
+  {
+    "Id": 25040,
+    "NombreMunicipio": "ANOLAIMA"
+  },
+  {
+    "Id": 25053,
+    "NombreMunicipio": "ARBELAEZ"
+  },
+  {
+    "Id": 25086,
+    "NombreMunicipio": "BELTRAN"
+  },
+  {
+    "Id": 25095,
+    "NombreMunicipio": "BITUIMA"
+  },
+  {
+    "Id": 25099,
+    "NombreMunicipio": "BOJACA"
+  },
+  {
+    "Id": 25120,
+    "NombreMunicipio": "CABRERA"
+  },
+  {
+    "Id": 25123,
+    "NombreMunicipio": "CACHIPAY"
+  },
+  {
+    "Id": 25126,
+    "NombreMunicipio": "CAJICA"
+  },
+  {
+    "Id": 25148,
+    "NombreMunicipio": "CAPARRAPI"
+  },
+  {
+    "Id": 25151,
+    "NombreMunicipio": "CAQUEZA"
+  },
+  {
+    "Id": 25154,
+    "NombreMunicipio": "CARMEN DE CARUPA"
+  },
+  {
+    "Id": 25168,
+    "NombreMunicipio": "CHAGUANI"
+  },
+  {
+    "Id": 25175,
+    "NombreMunicipio": "CHIA"
+  },
+  {
+    "Id": 25178,
+    "NombreMunicipio": "CHIPAQUE"
+  },
+  {
+    "Id": 25181,
+    "NombreMunicipio": "CHOACHI"
+  },
+  {
+    "Id": 25183,
+    "NombreMunicipio": "CHOCONTA"
+  },
+  {
+    "Id": 25200,
+    "NombreMunicipio": "COGUA"
+  },
+  {
+    "Id": 25214,
+    "NombreMunicipio": "COTA"
+  },
+  {
+    "Id": 25224,
+    "NombreMunicipio": "CUCUNUBA"
+  },
+  {
+    "Id": 25245,
+    "NombreMunicipio": "EL COLEGIO"
+  },
+  {
+    "Id": 25258,
+    "NombreMunicipio": "EL PENON"
+  },
+  {
+    "Id": 25260,
+    "NombreMunicipio": "EL ROSAL"
+  },
+  {
+    "Id": 25269,
+    "NombreMunicipio": "FACATATIVA"
+  },
+  {
+    "Id": 25279,
+    "NombreMunicipio": "FOMEQUE"
+  },
+  {
+    "Id": 25281,
+    "NombreMunicipio": "FOSCA"
+  },
+  {
+    "Id": 25286,
+    "NombreMunicipio": "FUNZA"
+  },
+  {
+    "Id": 25288,
+    "NombreMunicipio": "FUQUENE"
+  },
+  {
+    "Id": 25290,
+    "NombreMunicipio": "FUSAGASUGA"
+  },
+  {
+    "Id": 25293,
+    "NombreMunicipio": "GACHALA"
+  },
+  {
+    "Id": 25295,
+    "NombreMunicipio": "GACHANCIPA"
+  },
+  {
+    "Id": 25297,
+    "NombreMunicipio": "GACHETA"
+  },
+  {
+    "Id": 25299,
+    "NombreMunicipio": "GAMA"
+  },
+  {
+    "Id": 25307,
+    "NombreMunicipio": "GIRARDOT"
+  },
+  {
+    "Id": 25312,
+    "NombreMunicipio": "GRANADA"
+  },
+  {
+    "Id": 25317,
+    "NombreMunicipio": "GUACHETA"
+  },
+  {
+    "Id": 25320,
+    "NombreMunicipio": "GUADUAS"
+  },
+  {
+    "Id": 25322,
+    "NombreMunicipio": "GUASCA"
+  },
+  {
+    "Id": 25324,
+    "NombreMunicipio": "GUATAQUI"
+  },
+  {
+    "Id": 25326,
+    "NombreMunicipio": "GUATAVITA"
+  },
+  {
+    "Id": 25328,
+    "NombreMunicipio": "GUAYABAL DE SIQUIMA"
+  },
+  {
+    "Id": 25335,
+    "NombreMunicipio": "GUAYABETAL"
+  },
+  {
+    "Id": 25339,
+    "NombreMunicipio": "GUTIERREZ"
+  },
+  {
+    "Id": 25368,
+    "NombreMunicipio": "JERUSALEN"
+  },
+  {
+    "Id": 25372,
+    "NombreMunicipio": "JUNIN"
+  },
+  {
+    "Id": 25377,
+    "NombreMunicipio": "LA CALERA"
+  },
+  {
+    "Id": 25386,
+    "NombreMunicipio": "LA MESA"
+  },
+  {
+    "Id": 25394,
+    "NombreMunicipio": "LA PALMA"
+  },
+  {
+    "Id": 25398,
+    "NombreMunicipio": "LA PENA"
+  },
+  {
+    "Id": 25402,
+    "NombreMunicipio": "LA VEGA"
+  },
+  {
+    "Id": 25407,
+    "NombreMunicipio": "LENGUAZAQUE"
+  },
+  {
+    "Id": 25426,
+    "NombreMunicipio": "MACHETA"
+  },
+  {
+    "Id": 25430,
+    "NombreMunicipio": "MADRID"
+  },
+  {
+    "Id": 25436,
+    "NombreMunicipio": "MANTA"
+  },
+  {
+    "Id": 25438,
+    "NombreMunicipio": "MEDINA"
+  },
+  {
+    "Id": 25473,
+    "NombreMunicipio": "MOSQUERA"
+  },
+  {
+    "Id": 25483,
+    "NombreMunicipio": "NARINO"
+  },
+  {
+    "Id": 25486,
+    "NombreMunicipio": "NEMOCON"
+  },
+  {
+    "Id": 25488,
+    "NombreMunicipio": "NILO"
+  },
+  {
+    "Id": 25489,
+    "NombreMunicipio": "NIMAIMA"
+  },
+  {
+    "Id": 25491,
+    "NombreMunicipio": "NOCAIMA"
+  },
+  {
+    "Id": 25506,
+    "NombreMunicipio": "VENECIA"
+  },
+  {
+    "Id": 25513,
+    "NombreMunicipio": "PACHO"
+  },
+  {
+    "Id": 25518,
+    "NombreMunicipio": "PAIME"
+  },
+  {
+    "Id": 25524,
+    "NombreMunicipio": "PANDI"
+  },
+  {
+    "Id": 25530,
+    "NombreMunicipio": "PARATEBUENO"
+  },
+  {
+    "Id": 25535,
+    "NombreMunicipio": "PASCA"
+  },
+  {
+    "Id": 25572,
+    "NombreMunicipio": "PUERTO SALGAR"
+  },
+  {
+    "Id": 25580,
+    "NombreMunicipio": "PULI"
+  },
+  {
+    "Id": 25592,
+    "NombreMunicipio": "QUEBRADANEGRA"
+  },
+  {
+    "Id": 25594,
+    "NombreMunicipio": "QUETAME"
+  },
+  {
+    "Id": 25596,
+    "NombreMunicipio": "QUIPILE"
+  },
+  {
+    "Id": 25599,
+    "NombreMunicipio": "APULO"
+  },
+  {
+    "Id": 25612,
+    "NombreMunicipio": "RICAURTE"
+  },
+  {
+    "Id": 25645,
+    "NombreMunicipio": "SAN ANTONIO DEL TEQUENDAMA"
+  },
+  {
+    "Id": 25649,
+    "NombreMunicipio": "SAN BERNARDO"
+  },
+  {
+    "Id": 25653,
+    "NombreMunicipio": "SAN CAYETANO"
+  },
+  {
+    "Id": 25658,
+    "NombreMunicipio": "SAN FRANCISCO"
+  },
+  {
+    "Id": 25662,
+    "NombreMunicipio": "SAN JUAN DE RIOSECO"
+  },
+  {
+    "Id": 25718,
+    "NombreMunicipio": "SASAIMA"
+  },
+  {
+    "Id": 25736,
+    "NombreMunicipio": "SESQUILE"
+  },
+  {
+    "Id": 25740,
+    "NombreMunicipio": "SIBATE"
+  },
+  {
+    "Id": 25743,
+    "NombreMunicipio": "SILVANIA"
+  },
+  {
+    "Id": 25745,
+    "NombreMunicipio": "SIMIJACA"
+  },
+  {
+    "Id": 25754,
+    "NombreMunicipio": "SOACHA"
+  },
+  {
+    "Id": 25758,
+    "NombreMunicipio": "SOPO"
+  },
+  {
+    "Id": 25769,
+    "NombreMunicipio": "SUBACHOQUE"
+  },
+  {
+    "Id": 25772,
+    "NombreMunicipio": "SUESCA"
+  },
+  {
+    "Id": 25777,
+    "NombreMunicipio": "SUPATA"
+  },
+  {
+    "Id": 25779,
+    "NombreMunicipio": "SUSA"
+  },
+  {
+    "Id": 25781,
+    "NombreMunicipio": "SUTATAUSA"
+  },
+  {
+    "Id": 25785,
+    "NombreMunicipio": "TABIO"
+  },
+  {
+    "Id": 25793,
+    "NombreMunicipio": "TAUSA"
+  },
+  {
+    "Id": 25797,
+    "NombreMunicipio": "TENA"
+  },
+  {
+    "Id": 25799,
+    "NombreMunicipio": "TENJO"
+  },
+  {
+    "Id": 25805,
+    "NombreMunicipio": "TIBACUY"
+  },
+  {
+    "Id": 25807,
+    "NombreMunicipio": "TIBIRITA"
+  },
+  {
+    "Id": 25815,
+    "NombreMunicipio": "TOCAIMA"
+  },
+  {
+    "Id": 25817,
+    "NombreMunicipio": "TOCANCIPA"
+  },
+  {
+    "Id": 25823,
+    "NombreMunicipio": "TOPAIPI"
+  },
+  {
+    "Id": 25839,
+    "NombreMunicipio": "UBALA"
+  },
+  {
+    "Id": 25841,
+    "NombreMunicipio": "UBAQUE"
+  },
+  {
+    "Id": 25843,
+    "NombreMunicipio": "VILLA DE SAN DIEGO DE UBATE"
+  },
+  {
+    "Id": 25845,
+    "NombreMunicipio": "UNE"
+  },
+  {
+    "Id": 25851,
+    "NombreMunicipio": "UTICA"
+  },
+  {
+    "Id": 25862,
+    "NombreMunicipio": "VERGARA"
+  },
+  {
+    "Id": 25867,
+    "NombreMunicipio": "VIANI"
+  },
+  {
+    "Id": 25871,
+    "NombreMunicipio": "VILLAGOMEZ"
+  },
+  {
+    "Id": 25873,
+    "NombreMunicipio": "VILLAPINZON"
+  },
+  {
+    "Id": 25875,
+    "NombreMunicipio": "VILLETA"
+  },
+  {
+    "Id": 25878,
+    "NombreMunicipio": "VIOTA"
+  },
+  {
+    "Id": 25885,
+    "NombreMunicipio": "YACOPI"
+  },
+  {
+    "Id": 25898,
+    "NombreMunicipio": "ZIPACON"
+  },
+  {
+    "Id": 25899,
+    "NombreMunicipio": "ZIPAQUIRA"
+  },
+  {
+    "Id": 27001,
+    "NombreMunicipio": "QUIBDO"
+  },
+  {
+    "Id": 27006,
+    "NombreMunicipio": "ACANDI"
+  },
+  {
+    "Id": 27025,
+    "NombreMunicipio": "ALTO BAUDO"
+  },
+  {
+    "Id": 27050,
+    "NombreMunicipio": "ATRATO"
+  },
+  {
+    "Id": 27073,
+    "NombreMunicipio": "BAGADO"
+  },
+  {
+    "Id": 27075,
+    "NombreMunicipio": "BAHIA SOLANO"
+  },
+  {
+    "Id": 27077,
+    "NombreMunicipio": "BAJO BAUDO"
+  },
+  {
+    "Id": 27099,
+    "NombreMunicipio": "BOJAYA"
+  },
+  {
+    "Id": 27135,
+    "NombreMunicipio": "EL CANTON DEL SAN PABLO"
+  },
+  {
+    "Id": 27150,
+    "NombreMunicipio": "CARMEN DEL DARIEN"
+  },
+  {
+    "Id": 27160,
+    "NombreMunicipio": "CERTEGUI"
+  },
+  {
+    "Id": 27205,
+    "NombreMunicipio": "CONDOTO"
+  },
+  {
+    "Id": 27245,
+    "NombreMunicipio": "EL CARMEN DE ATRATO"
+  },
+  {
+    "Id": 27250,
+    "NombreMunicipio": "EL LITORAL DEL SAN JUAN"
+  },
+  {
+    "Id": 27361,
+    "NombreMunicipio": "ISTMINA"
+  },
+  {
+    "Id": 27372,
+    "NombreMunicipio": "JURADO"
+  },
+  {
+    "Id": 27413,
+    "NombreMunicipio": "LLORO"
+  },
+  {
+    "Id": 27425,
+    "NombreMunicipio": "MEDIO ATRATO"
+  },
+  {
+    "Id": 27430,
+    "NombreMunicipio": "MEDIO BAUDO"
+  },
+  {
+    "Id": 27450,
+    "NombreMunicipio": "MEDIO SAN JUAN"
+  },
+  {
+    "Id": 27491,
+    "NombreMunicipio": "NOVITA"
+  },
+  {
+    "Id": 27495,
+    "NombreMunicipio": "NUQUI"
+  },
+  {
+    "Id": 27580,
+    "NombreMunicipio": "RIO IRO"
+  },
+  {
+    "Id": 27600,
+    "NombreMunicipio": "RIO QUITO"
+  },
+  {
+    "Id": 27615,
+    "NombreMunicipio": "RIOSUCIO"
+  },
+  {
+    "Id": 27660,
+    "NombreMunicipio": "SAN JOSE DEL PALMAR"
+  },
+  {
+    "Id": 27745,
+    "NombreMunicipio": "SIPI"
+  },
+  {
+    "Id": 27787,
+    "NombreMunicipio": "TADO"
+  },
+  {
+    "Id": 27800,
+    "NombreMunicipio": "UNGUIA"
+  },
+  {
+    "Id": 27810,
+    "NombreMunicipio": "UNION PANAMERICANA"
+  },
+  {
+    "Id": 41001,
+    "NombreMunicipio": "NEIVA"
+  },
+  {
+    "Id": 41006,
+    "NombreMunicipio": "ACEVEDO"
+  },
+  {
+    "Id": 41013,
+    "NombreMunicipio": "AGRADO"
+  },
+  {
+    "Id": 41016,
+    "NombreMunicipio": "AIPE"
+  },
+  {
+    "Id": 41020,
+    "NombreMunicipio": "ALGECIRAS"
+  },
+  {
+    "Id": 41026,
+    "NombreMunicipio": "ALTAMIRA"
+  },
+  {
+    "Id": 41078,
+    "NombreMunicipio": "BARAYA"
+  },
+  {
+    "Id": 41132,
+    "NombreMunicipio": "CAMPOALEGRE"
+  },
+  {
+    "Id": 41206,
+    "NombreMunicipio": "COLOMBIA"
+  },
+  {
+    "Id": 41244,
+    "NombreMunicipio": "ELIAS"
+  },
+  {
+    "Id": 41298,
+    "NombreMunicipio": "GARZON"
+  },
+  {
+    "Id": 41306,
+    "NombreMunicipio": "GIGANTE"
+  },
+  {
+    "Id": 41319,
+    "NombreMunicipio": "GUADALUPE"
+  },
+  {
+    "Id": 41349,
+    "NombreMunicipio": "HOBO"
+  },
+  {
+    "Id": 41357,
+    "NombreMunicipio": "IQUIRA"
+  },
+  {
+    "Id": 41359,
+    "NombreMunicipio": "ISNOS"
+  },
+  {
+    "Id": 41378,
+    "NombreMunicipio": "LA ARGENTINA"
+  },
+  {
+    "Id": 41396,
+    "NombreMunicipio": "LA PLATA"
+  },
+  {
+    "Id": 41483,
+    "NombreMunicipio": "NATAGA"
+  },
+  {
+    "Id": 41503,
+    "NombreMunicipio": "OPORAPA"
+  },
+  {
+    "Id": 41518,
+    "NombreMunicipio": "PAICOL"
+  },
+  {
+    "Id": 41524,
+    "NombreMunicipio": "PALERMO"
+  },
+  {
+    "Id": 41530,
+    "NombreMunicipio": "PALESTINA"
+  },
+  {
+    "Id": 41548,
+    "NombreMunicipio": "PITAL"
+  },
+  {
+    "Id": 41551,
+    "NombreMunicipio": "PITALITO"
+  },
+  {
+    "Id": 41615,
+    "NombreMunicipio": "RIVERA"
+  },
+  {
+    "Id": 41660,
+    "NombreMunicipio": "SALADOBLANCO"
+  },
+  {
+    "Id": 41668,
+    "NombreMunicipio": "SAN AGUSTIN"
+  },
+  {
+    "Id": 41676,
+    "NombreMunicipio": "SANTA MARIA"
+  },
+  {
+    "Id": 41770,
+    "NombreMunicipio": "SUAZA"
+  },
+  {
+    "Id": 41791,
+    "NombreMunicipio": "TARQUI"
+  },
+  {
+    "Id": 41797,
+    "NombreMunicipio": "TESALIA"
+  },
+  {
+    "Id": 41799,
+    "NombreMunicipio": "TELLO"
+  },
+  {
+    "Id": 41801,
+    "NombreMunicipio": "TERUEL"
+  },
+  {
+    "Id": 41807,
+    "NombreMunicipio": "TIMANA"
+  },
+  {
+    "Id": 41872,
+    "NombreMunicipio": "VILLAVIEJA"
+  },
+  {
+    "Id": 41885,
+    "NombreMunicipio": "YAGUARA"
+  },
+  {
+    "Id": 44001,
+    "NombreMunicipio": "RIOHACHA"
+  },
+  {
+    "Id": 44035,
+    "NombreMunicipio": "ALBANIA"
+  },
+  {
+    "Id": 44078,
+    "NombreMunicipio": "BARRANCAS"
+  },
+  {
+    "Id": 44090,
+    "NombreMunicipio": "DIBULLA"
+  },
+  {
+    "Id": 44098,
+    "NombreMunicipio": "DISTRACCION"
+  },
+  {
+    "Id": 44110,
+    "NombreMunicipio": "EL MOLINO"
+  },
+  {
+    "Id": 44279,
+    "NombreMunicipio": "FONSECA"
+  },
+  {
+    "Id": 44378,
+    "NombreMunicipio": "HATONUEVO"
+  },
+  {
+    "Id": 44420,
+    "NombreMunicipio": "LA JAGUA DEL PILAR"
+  },
+  {
+    "Id": 44430,
+    "NombreMunicipio": "MAICAO"
+  },
+  {
+    "Id": 44560,
+    "NombreMunicipio": "MANAURE"
+  },
+  {
+    "Id": 44650,
+    "NombreMunicipio": "SAN JUAN DEL CESAR"
+  },
+  {
+    "Id": 44847,
+    "NombreMunicipio": "URIBIA"
+  },
+  {
+    "Id": 44855,
+    "NombreMunicipio": "URUMITA"
+  },
+  {
+    "Id": 44874,
+    "NombreMunicipio": "VILLANUEVA"
+  },
+  {
+    "Id": 47001,
+    "NombreMunicipio": "SANTA MARTA"
+  },
+  {
+    "Id": 47030,
+    "NombreMunicipio": "ALGARROBO"
+  },
+  {
+    "Id": 47053,
+    "NombreMunicipio": "ARACATACA"
+  },
+  {
+    "Id": 47058,
+    "NombreMunicipio": "ARIGUANI"
+  },
+  {
+    "Id": 47161,
+    "NombreMunicipio": "CERRO DE SAN ANTONIO"
+  },
+  {
+    "Id": 47170,
+    "NombreMunicipio": "CHIVOLO"
+  },
+  {
+    "Id": 47189,
+    "NombreMunicipio": "CIENAGA"
+  },
+  {
+    "Id": 47205,
+    "NombreMunicipio": "CONCORDIA"
+  },
+  {
+    "Id": 47245,
+    "NombreMunicipio": "EL BANCO"
+  },
+  {
+    "Id": 47258,
+    "NombreMunicipio": "EL PINON"
+  },
+  {
+    "Id": 47268,
+    "NombreMunicipio": "EL RETEN"
+  },
+  {
+    "Id": 47288,
+    "NombreMunicipio": "FUNDACION"
+  },
+  {
+    "Id": 47318,
+    "NombreMunicipio": "GUAMAL"
+  },
+  {
+    "Id": 47460,
+    "NombreMunicipio": "NUEVA GRANADA"
+  },
+  {
+    "Id": 47541,
+    "NombreMunicipio": "PEDRAZA"
+  },
+  {
+    "Id": 47545,
+    "NombreMunicipio": "PIJINO DEL CARMEN"
+  },
+  {
+    "Id": 47551,
+    "NombreMunicipio": "PIVIJAY"
+  },
+  {
+    "Id": 47555,
+    "NombreMunicipio": "PLATO"
+  },
+  {
+    "Id": 47570,
+    "NombreMunicipio": "PUEBLOVIEJO"
+  },
+  {
+    "Id": 47605,
+    "NombreMunicipio": "REMOLINO"
+  },
+  {
+    "Id": 47660,
+    "NombreMunicipio": "SABANAS DE SAN ANGEL"
+  },
+  {
+    "Id": 47675,
+    "NombreMunicipio": "SALAMINA"
+  },
+  {
+    "Id": 47692,
+    "NombreMunicipio": "SAN SEBASTIAN DE BUENAVISTA"
+  },
+  {
+    "Id": 47703,
+    "NombreMunicipio": "SAN ZENON"
+  },
+  {
+    "Id": 47707,
+    "NombreMunicipio": "SANTA ANA"
+  },
+  {
+    "Id": 47720,
+    "NombreMunicipio": "SANTA BARBARA DE PINTO"
+  },
+  {
+    "Id": 47745,
+    "NombreMunicipio": "SITIONUEVO"
+  },
+  {
+    "Id": 47798,
+    "NombreMunicipio": "TENERIFE"
+  },
+  {
+    "Id": 47960,
+    "NombreMunicipio": "ZAPAYAN"
+  },
+  {
+    "Id": 47980,
+    "NombreMunicipio": "ZONA BANANERA"
+  },
+  {
+    "Id": 50001,
+    "NombreMunicipio": "VILLAVICENCIO"
+  },
+  {
+    "Id": 50006,
+    "NombreMunicipio": "ACACIAS"
+  },
+  {
+    "Id": 50110,
+    "NombreMunicipio": "BARRANCA DE UPIA"
+  },
+  {
+    "Id": 50124,
+    "NombreMunicipio": "CABUYARO"
+  },
+  {
+    "Id": 50150,
+    "NombreMunicipio": "CASTILLA LA NUEVA"
+  },
+  {
+    "Id": 50223,
+    "NombreMunicipio": "CUBARRAL"
+  },
+  {
+    "Id": 50226,
+    "NombreMunicipio": "CUMARAL"
+  },
+  {
+    "Id": 50245,
+    "NombreMunicipio": "EL CALVARIO"
+  },
+  {
+    "Id": 50251,
+    "NombreMunicipio": "EL CASTILLO"
+  },
+  {
+    "Id": 50270,
+    "NombreMunicipio": "EL DORADO"
+  },
+  {
+    "Id": 50287,
+    "NombreMunicipio": "FUENTEDEORO"
+  },
+  {
+    "Id": 50313,
+    "NombreMunicipio": "GRANADA"
+  },
+  {
+    "Id": 50318,
+    "NombreMunicipio": "GUAMAL"
+  },
+  {
+    "Id": 50325,
+    "NombreMunicipio": "MAPIRIPAN"
+  },
+  {
+    "Id": 50330,
+    "NombreMunicipio": "MESETAS"
+  },
+  {
+    "Id": 50350,
+    "NombreMunicipio": "LA MACARENA"
+  },
+  {
+    "Id": 50370,
+    "NombreMunicipio": "URIBE"
+  },
+  {
+    "Id": 50400,
+    "NombreMunicipio": "LEJANIAS"
+  },
+  {
+    "Id": 50450,
+    "NombreMunicipio": "PUERTO CONCORDIA"
+  },
+  {
+    "Id": 50568,
+    "NombreMunicipio": "PUERTO GAITAN"
+  },
+  {
+    "Id": 50573,
+    "NombreMunicipio": "PUERTO LOPEZ"
+  },
+  {
+    "Id": 50577,
+    "NombreMunicipio": "PUERTO LLERAS"
+  },
+  {
+    "Id": 50590,
+    "NombreMunicipio": "PUERTO RICO"
+  },
+  {
+    "Id": 50606,
+    "NombreMunicipio": "RESTREPO"
+  },
+  {
+    "Id": 50680,
+    "NombreMunicipio": "SAN CARLOS DE GUAROA"
+  },
+  {
+    "Id": 50683,
+    "NombreMunicipio": "SAN JUAN DE ARAMA"
+  },
+  {
+    "Id": 50686,
+    "NombreMunicipio": "SAN JUANITO"
+  },
+  {
+    "Id": 50689,
+    "NombreMunicipio": "SAN MARTIN"
+  },
+  {
+    "Id": 50711,
+    "NombreMunicipio": "VISTAHERMOSA"
+  },
+  {
+    "Id": 52001,
+    "NombreMunicipio": "PASTO"
+  },
+  {
+    "Id": 52019,
+    "NombreMunicipio": "ALBAN"
+  },
+  {
+    "Id": 52022,
+    "NombreMunicipio": "ALDANA"
+  },
+  {
+    "Id": 52036,
+    "NombreMunicipio": "ANCUYA"
+  },
+  {
+    "Id": 52051,
+    "NombreMunicipio": "ARBOLEDA"
+  },
+  {
+    "Id": 52079,
+    "NombreMunicipio": "BARBACOAS"
+  },
+  {
+    "Id": 52083,
+    "NombreMunicipio": "BELEN"
+  },
+  {
+    "Id": 52110,
+    "NombreMunicipio": "BUESACO"
+  },
+  {
+    "Id": 52203,
+    "NombreMunicipio": "COLON"
+  },
+  {
+    "Id": 52207,
+    "NombreMunicipio": "CONSACA"
+  },
+  {
+    "Id": 52210,
+    "NombreMunicipio": "CONTADERO"
+  },
+  {
+    "Id": 52215,
+    "NombreMunicipio": "CORDOBA"
+  },
+  {
+    "Id": 52224,
+    "NombreMunicipio": "CUASPUD CARLOSAMA"
+  },
+  {
+    "Id": 52227,
+    "NombreMunicipio": "CUMBAL"
+  },
+  {
+    "Id": 52233,
+    "NombreMunicipio": "CUMBITARA"
+  },
+  {
+    "Id": 52240,
+    "NombreMunicipio": "CHACHAGUI"
+  },
+  {
+    "Id": 52250,
+    "NombreMunicipio": "EL CHARCO"
+  },
+  {
+    "Id": 52254,
+    "NombreMunicipio": "EL PENOL"
+  },
+  {
+    "Id": 52256,
+    "NombreMunicipio": "EL ROSARIO"
+  },
+  {
+    "Id": 52258,
+    "NombreMunicipio": "EL TABLON DE GOMEZ"
+  },
+  {
+    "Id": 52260,
+    "NombreMunicipio": "EL TAMBO"
+  },
+  {
+    "Id": 52287,
+    "NombreMunicipio": "FUNES"
+  },
+  {
+    "Id": 52317,
+    "NombreMunicipio": "GUACHUCAL"
+  },
+  {
+    "Id": 52320,
+    "NombreMunicipio": "GUAITARILLA"
+  },
+  {
+    "Id": 52323,
+    "NombreMunicipio": "GUALMATAN"
+  },
+  {
+    "Id": 52352,
+    "NombreMunicipio": "ILES"
+  },
+  {
+    "Id": 52354,
+    "NombreMunicipio": "IMUES"
+  },
+  {
+    "Id": 52356,
+    "NombreMunicipio": "IPIALES"
+  },
+  {
+    "Id": 52378,
+    "NombreMunicipio": "LA CRUZ"
+  },
+  {
+    "Id": 52381,
+    "NombreMunicipio": "LA FLORIDA"
+  },
+  {
+    "Id": 52385,
+    "NombreMunicipio": "LA LLANADA"
+  },
+  {
+    "Id": 52390,
+    "NombreMunicipio": "LA TOLA"
+  },
+  {
+    "Id": 52399,
+    "NombreMunicipio": "LA UNION"
+  },
+  {
+    "Id": 52405,
+    "NombreMunicipio": "LEIVA"
+  },
+  {
+    "Id": 52411,
+    "NombreMunicipio": "LINARES"
+  },
+  {
+    "Id": 52418,
+    "NombreMunicipio": "LOS ANDES"
+  },
+  {
+    "Id": 52427,
+    "NombreMunicipio": "MAGUI"
+  },
+  {
+    "Id": 52435,
+    "NombreMunicipio": "MALLAMA"
+  },
+  {
+    "Id": 52473,
+    "NombreMunicipio": "MOSQUERA"
+  },
+  {
+    "Id": 52480,
+    "NombreMunicipio": "NARINO"
+  },
+  {
+    "Id": 52490,
+    "NombreMunicipio": "OLAYA HERRERA"
+  },
+  {
+    "Id": 52506,
+    "NombreMunicipio": "OSPINA"
+  },
+  {
+    "Id": 52520,
+    "NombreMunicipio": "FRANCISCO PIZARRO"
+  },
+  {
+    "Id": 52540,
+    "NombreMunicipio": "POLICARPA"
+  },
+  {
+    "Id": 52560,
+    "NombreMunicipio": "POTOSI"
+  },
+  {
+    "Id": 52565,
+    "NombreMunicipio": "PROVIDENCIA"
+  },
+  {
+    "Id": 52573,
+    "NombreMunicipio": "PUERRES"
+  },
+  {
+    "Id": 52585,
+    "NombreMunicipio": "PUPIALES"
+  },
+  {
+    "Id": 52612,
+    "NombreMunicipio": "RICAURTE"
+  },
+  {
+    "Id": 52621,
+    "NombreMunicipio": "ROBERTO PAYAN"
+  },
+  {
+    "Id": 52678,
+    "NombreMunicipio": "SAMANIEGO"
+  },
+  {
+    "Id": 52683,
+    "NombreMunicipio": "SANDONA"
+  },
+  {
+    "Id": 52685,
+    "NombreMunicipio": "SAN BERNARDO"
+  },
+  {
+    "Id": 52687,
+    "NombreMunicipio": "SAN LORENZO"
+  },
+  {
+    "Id": 52693,
+    "NombreMunicipio": "SAN PABLO"
+  },
+  {
+    "Id": 52694,
+    "NombreMunicipio": "SAN PEDRO DE CARTAGO"
+  },
+  {
+    "Id": 52696,
+    "NombreMunicipio": "SANTA BARBARA"
+  },
+  {
+    "Id": 52699,
+    "NombreMunicipio": "SANTACRUZ"
+  },
+  {
+    "Id": 52720,
+    "NombreMunicipio": "SAPUYES"
+  },
+  {
+    "Id": 52786,
+    "NombreMunicipio": "TAMINANGO"
+  },
+  {
+    "Id": 52788,
+    "NombreMunicipio": "TANGUA"
+  },
+  {
+    "Id": 52835,
+    "NombreMunicipio": "SAN ANDRES DE TUMACO"
+  },
+  {
+    "Id": 52838,
+    "NombreMunicipio": "TUQUERRES"
+  },
+  {
+    "Id": 52885,
+    "NombreMunicipio": "YACUANQUER"
+  },
+  {
+    "Id": 54001,
+    "NombreMunicipio": "CUCUTA"
+  },
+  {
+    "Id": 54003,
+    "NombreMunicipio": "ABREGO"
+  },
+  {
+    "Id": 54051,
+    "NombreMunicipio": "ARBOLEDAS"
+  },
+  {
+    "Id": 54099,
+    "NombreMunicipio": "BOCHALEMA"
+  },
+  {
+    "Id": 54109,
+    "NombreMunicipio": "BUCARASICA"
+  },
+  {
+    "Id": 54125,
+    "NombreMunicipio": "CACOTA"
+  },
+  {
+    "Id": 54128,
+    "NombreMunicipio": "CACHIRA"
+  },
+  {
+    "Id": 54172,
+    "NombreMunicipio": "CHINACOTA"
+  },
+  {
+    "Id": 54174,
+    "NombreMunicipio": "CHITAGA"
+  },
+  {
+    "Id": 54206,
+    "NombreMunicipio": "CONVENCION"
+  },
+  {
+    "Id": 54223,
+    "NombreMunicipio": "CUCUTILLA"
+  },
+  {
+    "Id": 54239,
+    "NombreMunicipio": "DURANIA"
+  },
+  {
+    "Id": 54245,
+    "NombreMunicipio": "EL CARMEN"
+  },
+  {
+    "Id": 54250,
+    "NombreMunicipio": "EL TARRA"
+  },
+  {
+    "Id": 54261,
+    "NombreMunicipio": "EL ZULIA"
+  },
+  {
+    "Id": 54313,
+    "NombreMunicipio": "GRAMALOTE"
+  },
+  {
+    "Id": 54344,
+    "NombreMunicipio": "HACARI"
+  },
+  {
+    "Id": 54347,
+    "NombreMunicipio": "HERRAN"
+  },
+  {
+    "Id": 54377,
+    "NombreMunicipio": "LABATECA"
+  },
+  {
+    "Id": 54385,
+    "NombreMunicipio": "LA ESPERANZA"
+  },
+  {
+    "Id": 54398,
+    "NombreMunicipio": "LA PLAYA"
+  },
+  {
+    "Id": 54405,
+    "NombreMunicipio": "LOS PATIOS"
+  },
+  {
+    "Id": 54418,
+    "NombreMunicipio": "LOURDES"
+  },
+  {
+    "Id": 54480,
+    "NombreMunicipio": "MUTISCUA"
+  },
+  {
+    "Id": 54498,
+    "NombreMunicipio": "OCANA"
+  },
+  {
+    "Id": 54518,
+    "NombreMunicipio": "PAMPLONA"
+  },
+  {
+    "Id": 54520,
+    "NombreMunicipio": "PAMPLONITA"
+  },
+  {
+    "Id": 54553,
+    "NombreMunicipio": "PUERTO SANTANDER"
+  },
+  {
+    "Id": 54599,
+    "NombreMunicipio": "RAGONVALIA"
+  },
+  {
+    "Id": 54660,
+    "NombreMunicipio": "SALAZAR"
+  },
+  {
+    "Id": 54670,
+    "NombreMunicipio": "SAN CALIXTO"
+  },
+  {
+    "Id": 54673,
+    "NombreMunicipio": "SAN CAYETANO"
+  },
+  {
+    "Id": 54680,
+    "NombreMunicipio": "SANTIAGO"
+  },
+  {
+    "Id": 54720,
+    "NombreMunicipio": "SARDINATA"
+  },
+  {
+    "Id": 54743,
+    "NombreMunicipio": "SILOS"
+  },
+  {
+    "Id": 54800,
+    "NombreMunicipio": "TEORAMA"
+  },
+  {
+    "Id": 54810,
+    "NombreMunicipio": "TIBU"
+  },
+  {
+    "Id": 54820,
+    "NombreMunicipio": "TOLEDO"
+  },
+  {
+    "Id": 54871,
+    "NombreMunicipio": "VILLA CARO"
+  },
+  {
+    "Id": 54874,
+    "NombreMunicipio": "VILLA DEL ROSARIO"
+  },
+  {
+    "Id": 63001,
+    "NombreMunicipio": "ARMENIA"
+  },
+  {
+    "Id": 63111,
+    "NombreMunicipio": "BUENAVISTA"
+  },
+  {
+    "Id": 63130,
+    "NombreMunicipio": "CALARCA"
+  },
+  {
+    "Id": 63190,
+    "NombreMunicipio": "CIRCASIA"
+  },
+  {
+    "Id": 63212,
+    "NombreMunicipio": "CORDOBA"
+  },
+  {
+    "Id": 63272,
+    "NombreMunicipio": "FILANDIA"
+  },
+  {
+    "Id": 63302,
+    "NombreMunicipio": "GENOVA"
+  },
+  {
+    "Id": 63401,
+    "NombreMunicipio": "LA TEBAIDA"
+  },
+  {
+    "Id": 63470,
+    "NombreMunicipio": "MONTENEGRO"
+  },
+  {
+    "Id": 63548,
+    "NombreMunicipio": "PIJAO"
+  },
+  {
+    "Id": 63594,
+    "NombreMunicipio": "QUIMBAYA"
+  },
+  {
+    "Id": 63690,
+    "NombreMunicipio": "SALENTO"
+  },
+  {
+    "Id": 66001,
+    "NombreMunicipio": "PEREIRA"
+  },
+  {
+    "Id": 66045,
+    "NombreMunicipio": "APIA"
+  },
+  {
+    "Id": 66075,
+    "NombreMunicipio": "BALBOA"
+  },
+  {
+    "Id": 66088,
+    "NombreMunicipio": "BELEN DE UMBRIA"
+  },
+  {
+    "Id": 66170,
+    "NombreMunicipio": "DOSQUEBRADAS"
+  },
+  {
+    "Id": 66318,
+    "NombreMunicipio": "GUATICA"
+  },
+  {
+    "Id": 66383,
+    "NombreMunicipio": "LA CELIA"
+  },
+  {
+    "Id": 66400,
+    "NombreMunicipio": "LA VIRGINIA"
+  },
+  {
+    "Id": 66440,
+    "NombreMunicipio": "MARSELLA"
+  },
+  {
+    "Id": 66456,
+    "NombreMunicipio": "MISTRATO"
+  },
+  {
+    "Id": 66572,
+    "NombreMunicipio": "PUEBLO RICO"
+  },
+  {
+    "Id": 66594,
+    "NombreMunicipio": "QUINCHIA"
+  },
+  {
+    "Id": 66682,
+    "NombreMunicipio": "SANTA ROSA DE CABAL"
+  },
+  {
+    "Id": 66687,
+    "NombreMunicipio": "SANTUARIO"
+  },
+  {
+    "Id": 68001,
+    "NombreMunicipio": "BUCARAMANGA"
+  },
+  {
+    "Id": 68013,
+    "NombreMunicipio": "AGUADA"
+  },
+  {
+    "Id": 68020,
+    "NombreMunicipio": "ALBANIA"
+  },
+  {
+    "Id": 68051,
+    "NombreMunicipio": "ARATOCA"
+  },
+  {
+    "Id": 68077,
+    "NombreMunicipio": "BARBOSA"
+  },
+  {
+    "Id": 68079,
+    "NombreMunicipio": "BARICHARA"
+  },
+  {
+    "Id": 68081,
+    "NombreMunicipio": "BARRANCABERMEJA"
+  },
+  {
+    "Id": 68092,
+    "NombreMunicipio": "BETULIA"
+  },
+  {
+    "Id": 68101,
+    "NombreMunicipio": "BOLIVAR"
+  },
+  {
+    "Id": 68121,
+    "NombreMunicipio": "CABRERA"
+  },
+  {
+    "Id": 68132,
+    "NombreMunicipio": "CALIFORNIA"
+  },
+  {
+    "Id": 68147,
+    "NombreMunicipio": "CAPITANEJO"
+  },
+  {
+    "Id": 68152,
+    "NombreMunicipio": "CARCASI"
+  },
+  {
+    "Id": 68160,
+    "NombreMunicipio": "CEPITA"
+  },
+  {
+    "Id": 68162,
+    "NombreMunicipio": "CERRITO"
+  },
+  {
+    "Id": 68167,
+    "NombreMunicipio": "CHARALA"
+  },
+  {
+    "Id": 68169,
+    "NombreMunicipio": "CHARTA"
+  },
+  {
+    "Id": 68176,
+    "NombreMunicipio": "CHIMA"
+  },
+  {
+    "Id": 68179,
+    "NombreMunicipio": "CHIPATA"
+  },
+  {
+    "Id": 68190,
+    "NombreMunicipio": "CIMITARRA"
+  },
+  {
+    "Id": 68207,
+    "NombreMunicipio": "CONCEPCION"
+  },
+  {
+    "Id": 68209,
+    "NombreMunicipio": "CONFINES"
+  },
+  {
+    "Id": 68211,
+    "NombreMunicipio": "CONTRATACION"
+  },
+  {
+    "Id": 68217,
+    "NombreMunicipio": "COROMORO"
+  },
+  {
+    "Id": 68229,
+    "NombreMunicipio": "CURITI"
+  },
+  {
+    "Id": 68235,
+    "NombreMunicipio": "EL CARMEN DE CHUCURI"
+  },
+  {
+    "Id": 68245,
+    "NombreMunicipio": "EL GUACAMAYO"
+  },
+  {
+    "Id": 68250,
+    "NombreMunicipio": "EL PENON"
+  },
+  {
+    "Id": 68255,
+    "NombreMunicipio": "EL PLAYON"
+  },
+  {
+    "Id": 68264,
+    "NombreMunicipio": "ENCINO"
+  },
+  {
+    "Id": 68266,
+    "NombreMunicipio": "ENCISO"
+  },
+  {
+    "Id": 68271,
+    "NombreMunicipio": "FLORIAN"
+  },
+  {
+    "Id": 68276,
+    "NombreMunicipio": "FLORIDABLANCA"
+  },
+  {
+    "Id": 68296,
+    "NombreMunicipio": "GALAN"
+  },
+  {
+    "Id": 68298,
+    "NombreMunicipio": "GAMBITA"
+  },
+  {
+    "Id": 68307,
+    "NombreMunicipio": "GIRON"
+  },
+  {
+    "Id": 68318,
+    "NombreMunicipio": "GUACA"
+  },
+  {
+    "Id": 68320,
+    "NombreMunicipio": "GUADALUPE"
+  },
+  {
+    "Id": 68322,
+    "NombreMunicipio": "GUAPOTA"
+  },
+  {
+    "Id": 68324,
+    "NombreMunicipio": "GUAVATA"
+  },
+  {
+    "Id": 68327,
+    "NombreMunicipio": "GUEPSA"
+  },
+  {
+    "Id": 68344,
+    "NombreMunicipio": "HATO"
+  },
+  {
+    "Id": 68368,
+    "NombreMunicipio": "JESUS MARIA"
+  },
+  {
+    "Id": 68370,
+    "NombreMunicipio": "JORDAN"
+  },
+  {
+    "Id": 68377,
+    "NombreMunicipio": "LA BELLEZA"
+  },
+  {
+    "Id": 68385,
+    "NombreMunicipio": "LANDAZURI"
+  },
+  {
+    "Id": 68397,
+    "NombreMunicipio": "LA PAZ"
+  },
+  {
+    "Id": 68406,
+    "NombreMunicipio": "LEBRIJA"
+  },
+  {
+    "Id": 68418,
+    "NombreMunicipio": "LOS SANTOS"
+  },
+  {
+    "Id": 68425,
+    "NombreMunicipio": "MACARAVITA"
+  },
+  {
+    "Id": 68432,
+    "NombreMunicipio": "MALAGA"
+  },
+  {
+    "Id": 68444,
+    "NombreMunicipio": "MATANZA"
+  },
+  {
+    "Id": 68464,
+    "NombreMunicipio": "MOGOTES"
+  },
+  {
+    "Id": 68468,
+    "NombreMunicipio": "MOLAGAVITA"
+  },
+  {
+    "Id": 68498,
+    "NombreMunicipio": "OCAMONTE"
+  },
+  {
+    "Id": 68500,
+    "NombreMunicipio": "OIBA"
+  },
+  {
+    "Id": 68502,
+    "NombreMunicipio": "ONZAGA"
+  },
+  {
+    "Id": 68522,
+    "NombreMunicipio": "PALMAR"
+  },
+  {
+    "Id": 68524,
+    "NombreMunicipio": "PALMAS DEL SOCORRO"
+  },
+  {
+    "Id": 68533,
+    "NombreMunicipio": "PARAMO"
+  },
+  {
+    "Id": 68547,
+    "NombreMunicipio": "PIEDECUESTA"
+  },
+  {
+    "Id": 68549,
+    "NombreMunicipio": "PINCHOTE"
+  },
+  {
+    "Id": 68572,
+    "NombreMunicipio": "PUENTE NACIONAL"
+  },
+  {
+    "Id": 68573,
+    "NombreMunicipio": "PUERTO PARRA"
+  },
+  {
+    "Id": 68575,
+    "NombreMunicipio": "PUERTO WILCHES"
+  },
+  {
+    "Id": 68615,
+    "NombreMunicipio": "RIONEGRO"
+  },
+  {
+    "Id": 68655,
+    "NombreMunicipio": "SABANA DE TORRES"
+  },
+  {
+    "Id": 68669,
+    "NombreMunicipio": "SAN ANDRES"
+  },
+  {
+    "Id": 68673,
+    "NombreMunicipio": "SAN BENITO"
+  },
+  {
+    "Id": 68679,
+    "NombreMunicipio": "SAN GIL"
+  },
+  {
+    "Id": 68682,
+    "NombreMunicipio": "SAN JOAQUIN"
+  },
+  {
+    "Id": 68684,
+    "NombreMunicipio": "SAN JOSE DE MIRANDA"
+  },
+  {
+    "Id": 68686,
+    "NombreMunicipio": "SAN MIGUEL"
+  },
+  {
+    "Id": 68689,
+    "NombreMunicipio": "SAN VICENTE DE CHUCURI"
+  },
+  {
+    "Id": 68705,
+    "NombreMunicipio": "SANTA BARBARA"
+  },
+  {
+    "Id": 68720,
+    "NombreMunicipio": "SANTA HELENA DEL OPON"
+  },
+  {
+    "Id": 68745,
+    "NombreMunicipio": "SIMACOTA"
+  },
+  {
+    "Id": 68755,
+    "NombreMunicipio": "SOCORRO"
+  },
+  {
+    "Id": 68770,
+    "NombreMunicipio": "SUAITA"
+  },
+  {
+    "Id": 68773,
+    "NombreMunicipio": "SUCRE"
+  },
+  {
+    "Id": 68780,
+    "NombreMunicipio": "SURATA"
+  },
+  {
+    "Id": 68820,
+    "NombreMunicipio": "TONA"
+  },
+  {
+    "Id": 68855,
+    "NombreMunicipio": "VALLE DE SAN JOSE"
+  },
+  {
+    "Id": 68861,
+    "NombreMunicipio": "VELEZ"
+  },
+  {
+    "Id": 68867,
+    "NombreMunicipio": "VETAS"
+  },
+  {
+    "Id": 68872,
+    "NombreMunicipio": "VILLANUEVA"
+  },
+  {
+    "Id": 68895,
+    "NombreMunicipio": "ZAPATOCA"
+  },
+  {
+    "Id": 70001,
+    "NombreMunicipio": "SINCELEJO"
+  },
+  {
+    "Id": 70110,
+    "NombreMunicipio": "BUENAVISTA"
+  },
+  {
+    "Id": 70124,
+    "NombreMunicipio": "CAIMITO"
+  },
+  {
+    "Id": 70204,
+    "NombreMunicipio": "COLOSO"
+  },
+  {
+    "Id": 70215,
+    "NombreMunicipio": "COROZAL"
+  },
+  {
+    "Id": 70221,
+    "NombreMunicipio": "COVENAS"
+  },
+  {
+    "Id": 70230,
+    "NombreMunicipio": "CHALAN"
+  },
+  {
+    "Id": 70233,
+    "NombreMunicipio": "EL ROBLE"
+  },
+  {
+    "Id": 70235,
+    "NombreMunicipio": "GALERAS"
+  },
+  {
+    "Id": 70265,
+    "NombreMunicipio": "GUARANDA"
+  },
+  {
+    "Id": 70400,
+    "NombreMunicipio": "LA UNION"
+  },
+  {
+    "Id": 70418,
+    "NombreMunicipio": "LOS PALMITOS"
+  },
+  {
+    "Id": 70429,
+    "NombreMunicipio": "MAJAGUAL"
+  },
+  {
+    "Id": 70473,
+    "NombreMunicipio": "MORROA"
+  },
+  {
+    "Id": 70508,
+    "NombreMunicipio": "OVEJAS"
+  },
+  {
+    "Id": 70523,
+    "NombreMunicipio": "PALMITO"
+  },
+  {
+    "Id": 70670,
+    "NombreMunicipio": "SAMPUES"
+  },
+  {
+    "Id": 70678,
+    "NombreMunicipio": "SAN BENITO ABAD"
+  },
+  {
+    "Id": 70702,
+    "NombreMunicipio": "SAN JUAN DE BETULIA"
+  },
+  {
+    "Id": 70708,
+    "NombreMunicipio": "SAN MARCOS"
+  },
+  {
+    "Id": 70713,
+    "NombreMunicipio": "SAN ONOFRE"
+  },
+  {
+    "Id": 70717,
+    "NombreMunicipio": "SAN PEDRO"
+  },
+  {
+    "Id": 70742,
+    "NombreMunicipio": "SAN LUIS DE SINCE"
+  },
+  {
+    "Id": 70771,
+    "NombreMunicipio": "SUCRE"
+  },
+  {
+    "Id": 70820,
+    "NombreMunicipio": "SANTIAGO DE TOLU"
+  },
+  {
+    "Id": 70823,
+    "NombreMunicipio": "SAN JOSE DE TOLUVIEJO"
+  },
+  {
+    "Id": 73001,
+    "NombreMunicipio": "IBAGUE"
+  },
+  {
+    "Id": 73024,
+    "NombreMunicipio": "ALPUJARRA"
+  },
+  {
+    "Id": 73026,
+    "NombreMunicipio": "ALVARADO"
+  },
+  {
+    "Id": 73030,
+    "NombreMunicipio": "AMBALEMA"
+  },
+  {
+    "Id": 73043,
+    "NombreMunicipio": "ANZOATEGUI"
+  },
+  {
+    "Id": 73055,
+    "NombreMunicipio": "ARMERO"
+  },
+  {
+    "Id": 73067,
+    "NombreMunicipio": "ATACO"
+  },
+  {
+    "Id": 73124,
+    "NombreMunicipio": "CAJAMARCA"
+  },
+  {
+    "Id": 73148,
+    "NombreMunicipio": "CARMEN DE APICALA"
+  },
+  {
+    "Id": 73152,
+    "NombreMunicipio": "CASABIANCA"
+  },
+  {
+    "Id": 73168,
+    "NombreMunicipio": "CHAPARRAL"
+  },
+  {
+    "Id": 73200,
+    "NombreMunicipio": "COELLO"
+  },
+  {
+    "Id": 73217,
+    "NombreMunicipio": "COYAIMA"
+  },
+  {
+    "Id": 73226,
+    "NombreMunicipio": "CUNDAY"
+  },
+  {
+    "Id": 73236,
+    "NombreMunicipio": "DOLORES"
+  },
+  {
+    "Id": 73268,
+    "NombreMunicipio": "ESPINAL"
+  },
+  {
+    "Id": 73270,
+    "NombreMunicipio": "FALAN"
+  },
+  {
+    "Id": 73275,
+    "NombreMunicipio": "FLANDES"
+  },
+  {
+    "Id": 73283,
+    "NombreMunicipio": "FRESNO"
+  },
+  {
+    "Id": 73319,
+    "NombreMunicipio": "GUAMO"
+  },
+  {
+    "Id": 73347,
+    "NombreMunicipio": "HERVEO"
+  },
+  {
+    "Id": 73349,
+    "NombreMunicipio": "HONDA"
+  },
+  {
+    "Id": 73352,
+    "NombreMunicipio": "ICONONZO"
+  },
+  {
+    "Id": 73408,
+    "NombreMunicipio": "LERIDA"
+  },
+  {
+    "Id": 73411,
+    "NombreMunicipio": "LIBANO"
+  },
+  {
+    "Id": 73443,
+    "NombreMunicipio": "SAN SEBASTIAN DE MARIQUITA"
+  },
+  {
+    "Id": 73449,
+    "NombreMunicipio": "MELGAR"
+  },
+  {
+    "Id": 73461,
+    "NombreMunicipio": "MURILLO"
+  },
+  {
+    "Id": 73483,
+    "NombreMunicipio": "NATAGAIMA"
+  },
+  {
+    "Id": 73504,
+    "NombreMunicipio": "ORTEGA"
+  },
+  {
+    "Id": 73520,
+    "NombreMunicipio": "PALOCABILDO"
+  },
+  {
+    "Id": 73547,
+    "NombreMunicipio": "PIEDRAS"
+  },
+  {
+    "Id": 73555,
+    "NombreMunicipio": "PLANADAS"
+  },
+  {
+    "Id": 73563,
+    "NombreMunicipio": "PRADO"
+  },
+  {
+    "Id": 73585,
+    "NombreMunicipio": "PURIFICACION"
+  },
+  {
+    "Id": 73616,
+    "NombreMunicipio": "RIOBLANCO"
+  },
+  {
+    "Id": 73622,
+    "NombreMunicipio": "RONCESVALLES"
+  },
+  {
+    "Id": 73624,
+    "NombreMunicipio": "ROVIRA"
+  },
+  {
+    "Id": 73671,
+    "NombreMunicipio": "SALDANA"
+  },
+  {
+    "Id": 73675,
+    "NombreMunicipio": "SAN ANTONIO"
+  },
+  {
+    "Id": 73678,
+    "NombreMunicipio": "SAN LUIS"
+  },
+  {
+    "Id": 73686,
+    "NombreMunicipio": "SANTA ISABEL"
+  },
+  {
+    "Id": 73770,
+    "NombreMunicipio": "SUAREZ"
+  },
+  {
+    "Id": 73854,
+    "NombreMunicipio": "VALLE DE SAN JUAN"
+  },
+  {
+    "Id": 73861,
+    "NombreMunicipio": "VENADILLO"
+  },
+  {
+    "Id": 73870,
+    "NombreMunicipio": "VILLAHERMOSA"
+  },
+  {
+    "Id": 73873,
+    "NombreMunicipio": "VILLARRICA"
+  },
+  {
+    "Id": 76001,
+    "NombreMunicipio": "CALI"
+  },
+  {
+    "Id": 76020,
+    "NombreMunicipio": "ALCALA"
+  },
+  {
+    "Id": 76036,
+    "NombreMunicipio": "ANDALUCIA"
+  },
+  {
+    "Id": 76041,
+    "NombreMunicipio": "ANSERMANUEVO"
+  },
+  {
+    "Id": 76054,
+    "NombreMunicipio": "ARGELIA"
+  },
+  {
+    "Id": 76100,
+    "NombreMunicipio": "BOLIVAR"
+  },
+  {
+    "Id": 76109,
+    "NombreMunicipio": "BUENAVENTURA"
+  },
+  {
+    "Id": 76111,
+    "NombreMunicipio": "GUADALAJARA DE BUGA"
+  },
+  {
+    "Id": 76113,
+    "NombreMunicipio": "BUGALAGRANDE"
+  },
+  {
+    "Id": 76122,
+    "NombreMunicipio": "CAICEDONIA"
+  },
+  {
+    "Id": 76126,
+    "NombreMunicipio": "CALIMA"
+  },
+  {
+    "Id": 76130,
+    "NombreMunicipio": "CANDELARIA"
+  },
+  {
+    "Id": 76147,
+    "NombreMunicipio": "CARTAGO"
+  },
+  {
+    "Id": 76233,
+    "NombreMunicipio": "DAGUA"
+  },
+  {
+    "Id": 76243,
+    "NombreMunicipio": "EL AGUILA"
+  },
+  {
+    "Id": 76246,
+    "NombreMunicipio": "EL CAIRO"
+  },
+  {
+    "Id": 76248,
+    "NombreMunicipio": "EL CERRITO"
+  },
+  {
+    "Id": 76250,
+    "NombreMunicipio": "EL DOVIO"
+  },
+  {
+    "Id": 76275,
+    "NombreMunicipio": "FLORIDA"
+  },
+  {
+    "Id": 76306,
+    "NombreMunicipio": "GINEBRA"
+  },
+  {
+    "Id": 76318,
+    "NombreMunicipio": "GUACARI"
+  },
+  {
+    "Id": 76364,
+    "NombreMunicipio": "JAMUNDI"
+  },
+  {
+    "Id": 76377,
+    "NombreMunicipio": "LA CUMBRE"
+  },
+  {
+    "Id": 76400,
+    "NombreMunicipio": "LA UNION"
+  },
+  {
+    "Id": 76403,
+    "NombreMunicipio": "LA VICTORIA"
+  },
+  {
+    "Id": 76497,
+    "NombreMunicipio": "OBANDO"
+  },
+  {
+    "Id": 76520,
+    "NombreMunicipio": "PALMIRA"
+  },
+  {
+    "Id": 76563,
+    "NombreMunicipio": "PRADERA"
+  },
+  {
+    "Id": 76606,
+    "NombreMunicipio": "RESTREPO"
+  },
+  {
+    "Id": 76616,
+    "NombreMunicipio": "RIOFRIO"
+  },
+  {
+    "Id": 76622,
+    "NombreMunicipio": "ROLDANILLO"
+  },
+  {
+    "Id": 76670,
+    "NombreMunicipio": "SAN PEDRO"
+  },
+  {
+    "Id": 76736,
+    "NombreMunicipio": "SEVILLA"
+  },
+  {
+    "Id": 76823,
+    "NombreMunicipio": "TORO"
+  },
+  {
+    "Id": 76828,
+    "NombreMunicipio": "TRUJILLO"
+  },
+  {
+    "Id": 76834,
+    "NombreMunicipio": "TULUA"
+  },
+  {
+    "Id": 76845,
+    "NombreMunicipio": "ULLOA"
+  },
+  {
+    "Id": 76863,
+    "NombreMunicipio": "VERSALLES"
+  },
+  {
+    "Id": 76869,
+    "NombreMunicipio": "VIJES"
+  },
+  {
+    "Id": 76890,
+    "NombreMunicipio": "YOTOCO"
+  },
+  {
+    "Id": 76892,
+    "NombreMunicipio": "YUMBO"
+  },
+  {
+    "Id": 76895,
+    "NombreMunicipio": "ZARZAL"
+  },
+  {
+    "Id": 81001,
+    "NombreMunicipio": "ARAUCA"
+  },
+  {
+    "Id": 81065,
+    "NombreMunicipio": "ARAUQUITA"
+  },
+  {
+    "Id": 81220,
+    "NombreMunicipio": "CRAVO NORTE"
+  },
+  {
+    "Id": 81300,
+    "NombreMunicipio": "FORTUL"
+  },
+  {
+    "Id": 81591,
+    "NombreMunicipio": "PUERTO RONDON"
+  },
+  {
+    "Id": 81736,
+    "NombreMunicipio": "SARAVENA"
+  },
+  {
+    "Id": 81794,
+    "NombreMunicipio": "TAME"
+  },
+  {
+    "Id": 85001,
+    "NombreMunicipio": "YOPAL"
+  },
+  {
+    "Id": 85010,
+    "NombreMunicipio": "AGUAZUL"
+  },
+  {
+    "Id": 85015,
+    "NombreMunicipio": "CHAMEZA"
+  },
+  {
+    "Id": 85125,
+    "NombreMunicipio": "HATO COROZAL"
+  },
+  {
+    "Id": 85136,
+    "NombreMunicipio": "LA SALINA"
+  },
+  {
+    "Id": 85139,
+    "NombreMunicipio": "MANI"
+  },
+  {
+    "Id": 85162,
+    "NombreMunicipio": "MONTERREY"
+  },
+  {
+    "Id": 85225,
+    "NombreMunicipio": "NUNCHIA"
+  },
+  {
+    "Id": 85230,
+    "NombreMunicipio": "OROCUE"
+  },
+  {
+    "Id": 85250,
+    "NombreMunicipio": "PAZ DE ARIPORO"
+  },
+  {
+    "Id": 85263,
+    "NombreMunicipio": "PORE"
+  },
+  {
+    "Id": 85279,
+    "NombreMunicipio": "RECETOR"
+  },
+  {
+    "Id": 85300,
+    "NombreMunicipio": "SABANALARGA"
+  },
+  {
+    "Id": 85315,
+    "NombreMunicipio": "SACAMA"
+  },
+  {
+    "Id": 85325,
+    "NombreMunicipio": "SAN LUIS DE PALENQUE"
+  },
+  {
+    "Id": 85400,
+    "NombreMunicipio": "TAMARA"
+  },
+  {
+    "Id": 85410,
+    "NombreMunicipio": "TAURAMENA"
+  },
+  {
+    "Id": 85430,
+    "NombreMunicipio": "TRINIDAD"
+  },
+  {
+    "Id": 85440,
+    "NombreMunicipio": "VILLANUEVA"
+  },
+  {
+    "Id": 86001,
+    "NombreMunicipio": "MOCOA"
+  },
+  {
+    "Id": 86219,
+    "NombreMunicipio": "COLON"
+  },
+  {
+    "Id": 86320,
+    "NombreMunicipio": "ORITO"
+  },
+  {
+    "Id": 86568,
+    "NombreMunicipio": "PUERTO ASIS"
+  },
+  {
+    "Id": 86569,
+    "NombreMunicipio": "PUERTO CAICEDO"
+  },
+  {
+    "Id": 86571,
+    "NombreMunicipio": "PUERTO GUZMAN"
+  },
+  {
+    "Id": 86573,
+    "NombreMunicipio": "PUERTO LEGUIZAMO"
+  },
+  {
+    "Id": 86749,
+    "NombreMunicipio": "SIBUNDOY"
+  },
+  {
+    "Id": 86755,
+    "NombreMunicipio": "SAN FRANCISCO"
+  },
+  {
+    "Id": 86757,
+    "NombreMunicipio": "SAN MIGUEL"
+  },
+  {
+    "Id": 86760,
+    "NombreMunicipio": "SANTIAGO"
+  },
+  {
+    "Id": 86865,
+    "NombreMunicipio": "VALLE DEL GUAMUEZ"
+  },
+  {
+    "Id": 86885,
+    "NombreMunicipio": "VILLAGARZON"
+  },
+  {
+    "Id": 88001,
+    "NombreMunicipio": "SAN ANDRES"
+  },
+  {
+    "Id": 88564,
+    "NombreMunicipio": "PROVIDENCIA"
+  },
+  {
+    "Id": 91001,
+    "NombreMunicipio": "LETICIA"
+  },
+  {
+    "Id": 91263,
+    "NombreMunicipio": "ANM. EL ENCANTO"
+  },
+  {
+    "Id": 91405,
+    "NombreMunicipio": "ANM. LA CHORRERA"
+  },
+  {
+    "Id": 91407,
+    "NombreMunicipio": "ANM. LA PEDRERA"
+  },
+  {
+    "Id": 91430,
+    "NombreMunicipio": "ANM. LA VICTORIA"
+  },
+  {
+    "Id": 91460,
+    "NombreMunicipio": "ANM. MIRITI-PARANA"
+  },
+  {
+    "Id": 91530,
+    "NombreMunicipio": "ANM.PUERTO ALEGRÍA"
+  },
+  {
+    "Id": 91536,
+    "NombreMunicipio": "ANM. PUERTO ARICA"
+  },
+  {
+    "Id": 91540,
+    "NombreMunicipio": "PUERTO NARINO"
+  },
+  {
+    "Id": 91669,
+    "NombreMunicipio": "ANM. PUERTO SANTANDER"
+  },
+  {
+    "Id": 91798,
+    "NombreMunicipio": "ANM. TARAPACA"
+  },
+  {
+    "Id": 94001,
+    "NombreMunicipio": "INIRIDA"
+  },
+  {
+    "Id": 94343,
+    "NombreMunicipio": "BARRANCOMINAS"
+  },
+  {
+    "Id": 94663,
+    "NombreMunicipio": "ANM. MAPIRIPANA"
+  },
+  {
+    "Id": 94883,
+    "NombreMunicipio": "ANM. SAN FELIPE"
+  },
+  {
+    "Id": 94884,
+    "NombreMunicipio": "ANM. PUERTO COLOMBIA"
+  },
+  {
+    "Id": 94885,
+    "NombreMunicipio": "ANM. LA GUADALUPE"
+  },
+  {
+    "Id": 94886,
+    "NombreMunicipio": "ANM. CACAHUAL"
+  },
+  {
+    "Id": 94887,
+    "NombreMunicipio": "ANM. PANA PANA Y OTROS"
+  },
+  {
+    "Id": 94888,
+    "NombreMunicipio": "ANM. MORICHAL NUEVO"
+  },
+  {
+    "Id": 95001,
+    "NombreMunicipio": "SAN JOSE DEL GUAVIARE"
+  },
+  {
+    "Id": 95015,
+    "NombreMunicipio": "CALAMAR"
+  },
+  {
+    "Id": 95025,
+    "NombreMunicipio": "EL RETORNO"
+  },
+  {
+    "Id": 95200,
+    "NombreMunicipio": "MIRAFLORES"
+  },
+  {
+    "Id": 97001,
+    "NombreMunicipio": "MITU"
+  },
+  {
+    "Id": 97161,
+    "NombreMunicipio": "CARURU"
+  },
+  {
+    "Id": 97511,
+    "NombreMunicipio": "ANM. PACOA"
+  },
+  {
+    "Id": 97666,
+    "NombreMunicipio": "TARAIRA"
+  },
+  {
+    "Id": 97777,
+    "NombreMunicipio": "ANM. PAPUNAUA"
+  },
+  {
+    "Id": 97889,
+    "NombreMunicipio": "ANM. YAVARATE"
+  },
+  {
+    "Id": 99001,
+    "NombreMunicipio": "PUERTO CARRENO"
+  },
+  {
+    "Id": 99524,
+    "NombreMunicipio": "LA PRIMAVERA"
+  },
+  {
+    "Id": 99624,
+    "NombreMunicipio": "SANTA ROSALIA"
+  },
+  {
+    "Id": 99773,
+    "NombreMunicipio": "CUMARIBO"
+  }
+]

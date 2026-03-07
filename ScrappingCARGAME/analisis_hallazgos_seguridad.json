@@ -1,0 +1,37 @@
+[
+  {
+    "severidad": "CRÍTICA",
+    "hallazgo": "Token JWT estático hardcodeado en el frontend",
+    "detalle": "El token JWT usado para autenticación está embebido en el bundle JS del frontend. Nunca expira (iat: 2020-07-16). Rol: \"intelligence\", usuario: \"powerbi\".",
+    "impacto": "Cualquier persona puede consumir las APIs sin autenticarse. El token es público.",
+    "endpoint": "Todos los endpoints /crg/*"
+  },
+  {
+    "severidad": "CRÍTICA",
+    "hallazgo": "Hashes bcrypt de contraseñas expuestos vía API",
+    "detalle": "El endpoint /crg/usuario devuelve 272 usuarios con sus hashes bcrypt de contraseña.",
+    "impacto": "Aunque bcrypt es resistente, exponer hashes es una vulnerabilidad grave. Permite ataques de fuerza bruta offline.",
+    "endpoint": "GET /crg/usuario"
+  },
+  {
+    "severidad": "ALTA",
+    "hallazgo": "Datos personales de usuarios expuestos sin autenticación real",
+    "detalle": "Nombres, cédulas, correos, celulares y direcciones de 272 usuarios y 194 operadores son accesibles.",
+    "impacto": "Posible violación de Ley de Protección de Datos Personales (Ley 1581 de 2012 - Colombia).",
+    "endpoint": "GET /crg/usuario, GET /crg/operador"
+  },
+  {
+    "severidad": "MEDIA",
+    "hallazgo": "APIs accesibles desde cualquier origen (CORS permisivo)",
+    "detalle": "Las APIs responden a peticiones cross-origin sin restricciones verificadas.",
+    "impacto": "Cualquier sitio web podría hacer peticiones a las APIs de CARGAME.",
+    "endpoint": "Todos los endpoints"
+  },
+  {
+    "severidad": "MEDIA",
+    "hallazgo": "Sin rate limiting aparente",
+    "detalle": "No se detectaron headers de rate limiting (X-RateLimit-*) en las respuestas.",
+    "impacto": "Las APIs podrían ser abusadas con solicitudes masivas.",
+    "endpoint": "Todos los endpoints"
+  }
+]

@@ -1,0 +1,195 @@
+﻿Id,Nombre,Siglas,TipoID,NIT,TipoOperador,Estado,TipoPersona,Departamento,Municipio,Correo,Celular,Telefono,Direccion,SitioWeb,FechaCreacion
+1,OARE Prueba,OARE,NIT,1234567,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",,,,,,2020-12-24
+2,Prueba Gencan,GENCAN,NIT,23456789,No convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",,,,,,2020-12-27
+3,AES CHIVOR & CIA SCA ESP,,NIT,830025205-2,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",aeschivor@aes.com,,,CALLE 100 # 19-54 OFC 901,,2020-12-29
+4,CENTRALES ELECTRICAS DE NARIÑO S.A. E.S.P.,,NIT,891200200-8,Convencional,Activo,Jurídica,NARINO,PASTO,gerencia@cedenar.com.co,,,CALLE 20 No. 36 - 12,,2020-12-29
+5,CELSIA TOLIMA S.A. E.S.P.,CELSIA,NIT,901280981-9,Convencional,Activo,Jurídica,TOLIMA,IBAGUE,notificacionesceltolima@celsia.com,,2770822,CALLE 39 A # 5 - 15 ,,2020-12-29
+6,CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP,CENS,NIT,890500514-9,Convencional,Activo,Jurídica,NORTE DE SANTANDER,CUCUTA,movilidadelectricacens@epm.com.co,3153179682,5824444ext1005,AV 7N  5N-220,https://www.cens.com.co,2020-12-29
+7,COMPAÑÍA DE ELECTRICIDAD DE TULUÁ S.A. E.S.P.,CETSA,NIT,891900101-0,Convencional,Activo,Jurídica,VALLE DEL CAUCA,TULUA,cetsa@celsia.com,,,Calle 29 No. 24-27 Barrio El Centro,,2020-12-29
+8,CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.,CHEC,NIT,890800128-6,Convencional,Activo,Jurídica,CALDAS,MANIZALES,notificaciones.judiciales@chec.com.co,,,ESTACION URIBE KM.2 SALIDA A CHINCHINA,https://www.chec.com.co,2020-12-29
+9,CODENSA S.A. ESP,CODENSA,NIT,830037248-0,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",servicioalclientecodensa@enel.com,,6016060,CRA. 13A No. 93-66,,2020-12-29
+10,COMPAÑIA ENERGETICA DE OCCIDENTE S.A.S.  E.S.P.,CEO,NIT,900366010-1,Convencional,Activo,Jurídica,CAUCA,POPAYAN,cia.energetica@ceoesp.com,3208370365,8301000,Carrera 7 # 1N-28 edf Edgar Negret 4 Piso,,2020-12-29
+11,DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA ELECTRICA S.A. E.S.P.,,NIT,815000896-9,Convencional,Activo,Jurídica,VALLE DEL CAUCA,PALMIRA,dicelsa@dicel.com.co,,,carrera 24A No. 14A-25,,2020-12-29
+12,DICELER S.A E.S.P.,,NIT,815001901-2,Convencional,Activo,Jurídica,VALLE DEL CAUCA,RESTREPO,dicelsa@dicel.com.co,,,CARRERA 24A No. 14A-25,,2020-12-29
+13,EMPRESA DISTRIBUIDORA DEL PACIFICO S.A. E.S.P,,NIT,818001629-4,Convencional,Activo,Jurídica,CHOCO,QUIBDO,dispac@dispac.com,,,CARRERA 7 N° 24 - 76,,2020-12-29
+14,EMPRESA DE ENERGIA DEL BAJO PUTUMAYO  S.A.  E.S.P.,EEBP,NIT,846000553-0,Convencional,Activo,Jurídica,PUTUMAYO,PUERTO ASIS,eebp@eebpsa.com.co,,,Cra 26 No. 10-68,,2020-12-29
+15,E2 ENERGIA EFICIENTE S.A. E.S.P.,,NIT,802025052-0,Convencional,Activo,Jurídica,ATLANTICO,BARRANQUILLA,correo@e2energiaeficiente.com,,,Calle 77B No. 59-61 Oficina 205,,2020-12-29
+16,EMPRESA DE ENERGIA DE BOYACA S.A. ESP,EBSA,NIT,891800219-1,Convencional,Activo,Jurídica,BOYACA,TUNJA,documentacion@ebsa.com.co,,,CARRERA 10 N. 15-87,,2020-12-29
+17,EMPRESA COMERCIALIZADORA DE ENERGÍA ELÉCTRICA DE LA COSTA ,,NIT,901225715-2,Convencional,Activo,Jurídica,NARINO,EL CHARCO,infoecelcos01@gmail.com,,,BARRIO/ SAGRADO CORAZÓN DE JESÚS,,2020-12-29
+18,Empresa Prestadora de Servicios Publicos ECO LOGICA S.A.S. E.S.P.,,NIT,900729389-4,Convencional,Activo,Jurídica,VALLE DEL CAUCA,PALMIRA,comercial@ecologicaesp.com,,,calle 55 no. 26-53,,2020-12-29
+19,ECOPETROL ENERGÍA S.A.S. E.S.P.,,NIT,901165502-2,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",juan.molinares@ecopetrolenergiaesp.com.co,,,Cra. 7 No. 37-69 Piso 6 Ed. Teusacá,,2020-12-29
+20,EMPRESA DE ENERGIA DEL  QUINDIO S.A.E.S.P.,,NIT,800052640-9,Convencional,Activo,Jurídica,QUINDIO,ARMENIA,secretaria_general@edeq.com.co,,,Carrera 13 No.14-17/19,http://edeq-ws09/edeq.sig,2020-12-29
+21,EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.,EPM,NIT,890904996-1,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,epm@epm.com.co,,,CRA 58 No 42-125 Edificio Inteligente,https://www.epm.com.co,2020-12-29
+22,EMPRESA DE ENERGIA DEL PUTUMAYO S.A. ESP,,NIT,846000241-8,Convencional,Activo,Jurídica,PUTUMAYO,MOCOA,secretaria@energiaputumayo.com,,,CARRERA 9 No. 8-10,,2020-12-29
+23,ELECTRIFICADORA DEL CAQUETA S.A. ESP,ELECTROCAQUETA,NIT,891190127-3,Convencional,Activo,Jurídica,CAQUETA,FLORENCIA,infoelectrocaqueta@electrocaqueta.com.co,,,CARRERA 1 35 99,,2020-12-29
+24,ELECTRIFICADORA DEL HUILA S.A. E.S.P.,ELECTROHUILA,NIT,891180001-1,Convencional,Activo,Jurídica,HUILA,NEIVA,gerencia@electrohuila.co,,,EDIFICIO EL BOTE KM 1 VIA PALERMO,,2020-12-29
+25,EMPRESA DE ENERGIA ELECTRICA DEL DEPARTAMENTO DEL VICHADA S.A,,NIT,842000155,Convencional,Activo,Jurídica,VICHADA,PUERTO CARRENO,gerenciaelec@gmail.com,,,calle 22 # 9-40,,2020-12-29
+26,EMPRESAS MUNICIPALES DE CALI   E.I.C.E  E.S.P,EMCALI,NIT,890399003-4,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,genergia@emcali.comco,,8999999,Avenida 2 N  #10 - 65 Cam Torre Emcali,https://www.emcali.com.co/,2020-12-29
+27,EMPRESAS MUNICIPALES DE CARTAGO E.S.P.,,NIT,836000349-8,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CARTAGO,contactenos@emcartago.com,,,CALLE 13 # 5A - 35 PISO 2,,2020-12-29
+28,EMPRESA MUNICIPAL DE ENERGÍA ELÉCTRICA S.A-E.S.P,EMEESA,NIT,891500061-8,Convencional,Activo,Jurídica,CAUCA,POPAYAN,gerencia@emeesaesp.com,,,Carrera 9 # 5 41 oficina 103,,2020-12-29
+29,EMPRESA DE ENERGIA DEL VALLE DE SIBUNDOY S.A. E.S.P. ,,NIT,846000060-1,Convencional,Activo,Jurídica,PUTUMAYO,SIBUNDOY,emevasi@emevasi.com,3117209906,4260431,CALLE 17 No. 15 - 46,,2020-12-29
+30,EMGESA S.A. E.S.P.,,NIT,860063875-8,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",emlinea@enel.com,,,CARRERA 11 No. 82-76 PISO 4\\t,,2020-12-29
+31,ELECTRIFICADORA DEL META S.A. E.S.P.,EMSA,NIT,892002210-6,Convencional,Activo,Jurídica,META,VILLAVICENCIO,gerencia@emsa-esp.com.co,,,Calle 37 A No. 45 53 Barrio Barzal,,2020-12-29
+32,EMPRESA DE ENERGIA DE ARAUCA  S.A. E.S.P.,ENELAR,NIT,892099499-3,Convencional,Activo,Jurídica,ARAUCA,ARAUCA,gerencia@enelar.com.co,,,CRA 22 # 22 - 46,,2020-12-29
+33,EMPRESA DE ENERGIA DE CASANARE SA ESP,ENERCA,NIT,844004576-0,Convencional,Activo,Jurídica,CASANARE,YOPAL,correspondencia@enerca.com,,,Carrera 19 No 6-100 Edificio Emiro Sossa,,2020-12-29
+34,ENERCO S.A. E.S.P.,,NIT,805016928-1,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,enerco@enercoesp.com,,,CL 22 N  NRO. 6 A N - 24 PISO 8,,2020-12-29
+35,ENERGETICOS S.A.S.  E.S.P. DISTRIBUIDORA Y COMERCIALIZADORA DE ENERGIA GAS E HIDROCARBUROS,,NIT,830092965-7,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,energeticossaesp@gmail.com.co,,,"UNICENTRO CALI, CRA. 100 No 5-169 EDIF. OASIS OFICINA 612B\\t",,2020-12-29
+36,EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.,EEP,NIT,816002019-9,Convencional,Activo,Jurídica,RISARALDA,PEREIRA,notificacionesjudiciales@eep.com.co,,3151515,CARRERA 10 Nº 17-35 EDIFICIO TORRE CENTRAL  PISO 4,https://eep.com.co/,2020-12-29
+37,ENERGIA EMPRESARIAL DE LA COSTA S.A. E.S.P.,,NIT,900044461-6,Convencional,Activo,Jurídica,ATLANTICO,BARRANQUILLA,serviciosjuridicoseca@electricaribe.co,,,CARRERA 59 B No. 77 B - 27,,2020-12-29
+38,EMPRESA DE ENERGIA ELECTRICA DEL DEPARTAMENTO DEL GUAVIARE SA ESP,ENERGUAVIARE,NIT,822004680-9,Convencional,Activo,Jurídica,GUAVIARE,SAN JOSE DEL GUAVIARE,gerencia@energuaviare.com.co,,,Calle 8 No.23-55,,2020-12-29
+39,ENERTOTAL S.A. E.S.P.,,NIT,900039901-5,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,enertotal@enertotalesp.com,,,CALLE 22 NTE No. 6 AN24 PISO 8,,2020-12-29
+40,EMPRESA DE SERVICIOS PUBLICOS DE SANTANDER S.A.E.S.P.,,NIT,900648934-0,Convencional,Activo,Jurídica,SANTANDER,BUCARAMANGA,esantoperaciones@esant.com.co,,,CALLE 36 No. 31-39 OFIC 131 CENTRO EMPRESARIAL CHICAMOCHA  ,,2020-12-29
+41,ELECTRIFICADORA DE SANTANDER S.A. E.S.P.,ESSA,NIT,890201230-1,Convencional,Activo,Jurídica,SANTANDER,BUCARAMANGA,essa@essa.com.co,,,Cra 19 N° 24 - 56,https://www.essa.com.co,2020-12-29
+42,ISA INTERCOLOMBIA S.A. E.S.P,,NIT,900667590,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,notificacionesjudiciales@intercolombia.com,,,CALLE 12 SUR 18-168,,2020-12-29
+43,CELSIA COLOMBIA S.A. E.S.P.,,NIT,800249860-1,Convencional,Activo,Jurídica,VALLE DEL CAUCA,YUMBO,notificacionesjudicialesepsa@celsia.com,,,Calle 15 No. 29B-30 Autopista Cali - Yumbo,https://www.celsia.com/,2020-12-29
+44,PROFESIONALES EN ENERGÍA S.A E.S.P,,NIT,900341483-1,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",peesa@peesa.com,,4771515,Trasversal 23 No 94 -33  oficina 801,,2020-12-29
+45,QI ENERGY SAS ESP,,NIT,900677732-3,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,gerencia@qienergy.co,,,CRA 100 5 - 169 OF. 611,,2020-12-29
+46,RENOVATIO TRADING AMERICAS SAS ESP,,NIT,900589503-6,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",aarias@gruporenovatio.com,3126984268,3126984268,CALLE 94A No.11A-32 OFICINA 404,,2020-12-29
+47,RIOPAILA ENERGÍA SAS ESP,,NIT,900652334-7,Convencional,Activo,Jurídica,VALLE DEL CAUCA,ZARZAL,notificaciones@riopailaenergia.com,,,CORREG LA PAILA (ZARZAL) INGENIO RIOPAILA-CASTILLA,,2020-12-29
+48,RUITOQUE S.A. E.S.P.,RUITOQUE,NIT,804001062-8,Convencional,Activo,Jurídica,SANTANDER,FLORIDABLANCA,escribanos@ruitoqueesp.com,,6185871,Carrera 25 29-57 Local 2 La Cava - Centro Comercial Cañaveral,,2020-12-29
+49,TERPEL ENERGIA S.A.S E.S.P,,NIT,900433032-9,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",infoterpel@terpel.com,,,CRA 7 75 51 P 8,,2020-12-29
+50,VATIA S.A. E.S.P.,,NIT,817001892-1,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,vatia@vatia.com.co,,,AVENIDA 6N # 47N-32,,2020-12-29
+51,EMPRESA COMUNITARIA DE SERVICIOS PUBLICOS DOMICILIARIOS DE CARTAGENA DEL CHAIRA S.A.S E.S.P,,NIT,900943044,Convencional,Activo,Jurídica,CAQUETA,CARTAGENA DEL CHAIRA,alexremo_1980@hotmail.com,,,cra 1 No. 4A 43,,2020-12-29
+52,PROELECTRICA & CIA. S.C.A. E.S.P.,,NIT,800149537-6,Convencional,Activo,Jurídica,CALDAS,MANIZALES,notificacionesjudiciales@proelectrica.com,,,,,2020-12-29
+54,CENTRALES ELECTRICAS DEL CAUCA S.A. E.S.P.,,NIT,891500025-2,Convencional,Activo,Jurídica,CAUCA,POPAYAN,notificacionesjudiciales@cedelca.com.co,,,,,2020-12-29
+55,ISAGEN S.A. E.S.P.,,NIT,811000740-4,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,notificacionesenlinea@isagen.com.co,,,,,2020-12-29
+56,PROYECTOS ENERGETICOS DEL CAUCA S.A. E.S.P.,,NIT,817000362-5,Convencional,Activo,Jurídica,CAUCA,POPAYAN,mzuniga@ingeniolacabana.com,,,,,2020-12-29
+57,TERMOPIEDRAS S.A. E.S.P.,,NIT,830058506-6,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",administrativa@termopiedras.com,,,,,2020-12-29
+58,ENERGIA Y ALUMBRADO DE PEREIRA S.A. E.S.P.,,NIT,816003858-6,Convencional,Activo,Jurídica,RISARALDA,PEREIRA,notificaciones.oficilaes@enelarpereira.com.co,,,,,2020-12-29
+59,GESTION ENERGETICA S.A. E.S.P.,,NIT,800194208-9,Convencional,Activo,Jurídica,CALDAS,MANIZALES,controlinterno@gensa.com.co,,,,,2020-12-29
+60,GENERARCO S.A.S. E.S.P.,,NIT,830107528-9,Convencional,Activo,Jurídica,CUNDINAMARCA,VILLAPINZON,info@generarco.com,,,,,2020-12-29
+61,EMPRESA MULTIPROPOSITO DE CALARCA S.A. E.S.P.,,NIT,801004102-7,Convencional,Activo,Jurídica,QUINDIO,CALARCA,notificaciones@multiproposito.com,,,,,2020-12-29
+62,A.S.C. INGENIERIA S.A. E.S.P.,,NIT,814002979-7,Convencional,Activo,Jurídica,NARINO,PASTO,admin@ascingenieriasa.com,,,,,2020-12-29
+63,COMPAÑIA ENERGETICA DEL TOLIMA S.A. E.S.P.,,NIT,809011444-9,Convencional,Activo,Jurídica,TOLIMA,IBAGUE,gerencia.egetsa@tolima.gov.co,,,,,2020-12-29
+64,COMERCIALIZADORA DEL CAFE S.A.S E.S.P,,NIT,830147341-1,Convencional,Activo,Jurídica,CUNDINAMARCA,VILLAPINZON,info@energiadelcafe.com,,,,,2020-12-29
+65,COENERSA S.A.S. E.S.P.,,NIT,900076284-6,Convencional,Activo,Jurídica,CUNDINAMARCA,VILLAPINZON,info@coenersa.com,,,,,2020-12-29
+66,HIDROTOLIMA S.A.S. E.S.P.,,NIT,900097320-3,Convencional,Activo,Jurídica,TOLIMA,IBAGUE,hidrotolima@hidrotolima.com.co,,,,,2020-12-29
+67,GENERADORA Y COMERCIALIZADORA DE ENERGIA DEL CARIBE S.A. E.S.P.,,NIT,900082143-0,Convencional,Activo,Jurídica,ATLANTICO,BARRANQUILLA,notificacionesjudiciales@gecelca.com.co,,,,,2020-12-29
+68,AMERICANA DE ENERGIA S.A.S. E.S.P.,,NIT,900154878-5,Convencional,Activo,Jurídica,CUNDINAMARCA,VILLAPINZON,info@americanaenergia.com,,,,,2020-12-29
+69,GENERSYS S.A.S. E.S.P.,,NIT,900154879-2,Convencional,Activo,Jurídica,CUNDINAMARCA,VILLAPINZON,info@genersys.net,,,,,2020-12-29
+70,EMPRESA MUNICIPAL DE SERVICIOS PUBLICOS DE CARTAGENA DEL CHAIRA,,NIT,828000191-2,Convencional,Activo,Jurídica,CAQUETA,CARTAGENA DEL CHAIRA,alexremo_1980@hotmail.com,,,,,2020-12-29
+71,COLENERGIA S.A. E.S.P.,,NIT,900282813-5,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,colenergia.sa@hotmail.com,,,,,2020-12-29
+72,HZ ENERGY S.A.S. E.S.P.,,NIT,900358272-9,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,info@hzenergy.com.co,,,,,2020-12-29
+73,FUENTES DE ENERGIAS RENOVABLES S.A.S. E.S.P.,,NIT,900409371-1,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,furesas@furesas.com.co,,,,,2020-12-29
+74,FORCEFUL ENERGY S.A.S. E.S.P.,,NIT,900431226-1,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,info@forcefulenergy.com,,,,,2020-12-29
+75,ITALCOL ENERGIA S.A. E.S.P.,,NIT,900428468-6,Convencional,Activo,Jurídica,SANTANDER,GIRON,monicavelandia@italcol.com,,,,,2020-12-29
+76,GENERSA S.A.S. E.S.P.,,NIT,900475298-0,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",contabilidad@genersa.com.co,,,,,2020-12-29
+77,ENERGIA Y AGUA S.A.S. E.S.P.,,NIT,900483036-1,Convencional,Activo,Jurídica,SANTANDER,FLORIDABLANCA,escribanos@energiayaguaesp.com,,,,,2020-12-29
+78,ECOMMERCIAL S.A.S. E.S.P.,,NIT,900499252-6,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,gerencia@ecommercial.com.co,,,,,2020-12-29
+79,CEMEX ENERGY S.A.S E.S.P.,,NIT,900746422-1,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",correo.juridica@cemex.com,,,,,2020-12-29
+80,NITRO ENERGY COLOMBIA S.A.S. E.S.P.,,NIT,900691280-4,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,info@nitrogc.com,,,,,2020-12-29
+81,"INVERSIONES, SUMINISTROS  Y SERVICIOS SAFEANA S.A.S. E.S.P.",,NIT,900842868-3,Convencional,Activo,Jurídica,VALLE DEL CAUCA,JAMUNDI,safeanasas@hotmail.com,,,,,2020-12-29
+82,IA ENERGÍA Y GESTIÓN S.A.S. E.S.P.,,NIT,900344208-6,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",info@iaenergy.com.co,,,,,2020-12-29
+83,CENTRAL HIDROELÉCTRICA CONCORDIA S.A.S. E.S.P.,,NIT,900759883-1,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,chccontabilidad@grupocolviva.com,,,,,2020-12-29
+84,AGENTE EXPERTO EN SERVICIOS PÚBLICOS S.A.S E.S.P,,NIT,900325920-1,Convencional,Activo,Jurídica,SANTANDER,BUCARAMANGA,gerencia@aesp.com.co,,,,,2020-12-29
+85,AMPERIA S.A. E.S.P.,,NIT,900932147-8,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",amperiaenergia@gmail.com,,,,,2020-12-29
+86,FRANCA ENERGIA SA ESP,,NIT,900864051-8,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",francaenergia@gmail.com,,,,,2020-12-29
+87,TERMO RUBIALES S.A. E.S.P. ,,NIT,900251464-5,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",claudia.coy@soenergy.com.co,,,,,2020-12-29
+88,SMARTEN S.A.S. E.S.P.,,NIT,900949673-5,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",tomas.lopez@smarten.com.co,,,,,2020-12-29
+89,MESSER ENERGY SERVICES SAS ESP,,NIT,901033186-1,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",ricardo.sebastian.gonzalez@messer-co.com,,,,,2020-12-29
+90,SOUTH32 ENERGY S.A.S E.S.P,,NIT,900403943-5,Convencional,Activo,Jurídica,CORDOBA,MONTERIA,Zamir.O.Centanaro@south32.net,,,,,2020-12-29
+91,JULIA - RD S.A. E.S.P.,,NIT,901125404-8,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",mromero@julia-rd.com.co,,,,,2020-12-29
+92,AURES BAJO S.A.S. E.S.P.,,NIT,900740329-7,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,administracion@cpph.com.co,,,,,2020-12-29
+93,EMPRESA DE GENERACION Y PROMOCION DE ENERGIA DE ANTIOQUIA S.A. E.S.P.,,NIT,900251423-3,Convencional,Activo,Jurídica,ANTIOQUIA,ENVIGADO,info@genmas.com.co,,,,,2020-12-29
+94,ENEL GREEN POWER COLOMBIA S.A.S. E.S.P.,,NIT,900509559-6,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",adrianvasile.dugulan@enel.com,,,,,2020-12-29
+95,CH SAN MIGUEL S.A.S. E.S.P.,,NIT,900460429-3,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",info@lareif.com,,,,,2020-12-29
+96,PLUSENERGY S.A.S. E.S.P.,,NIT,901043956-9,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",amontoya@plusenergy.com.co,,,,,2020-12-29
+97,LATINOAMERICAN ENERGY S.A.S E.S.P.,,NIT,901199778-4,Convencional,Activo,Jurídica,CUNDINAMARCA,COTA,latinoamericanenergy@gmail.com,,,,,2020-12-29
+98,SANTA FE ENERGY ZOMAC S.A.S. E.S.P.,,NIT,901200248-6,Convencional,Activo,Jurídica,ANTIOQUIA,SANTA FE DE ANTIOQUIA,info@santafeenergy.com.co,,,,,2020-12-29
+99,GENERADORA ALEJANDRIA S.A.S. E.S.P.,,NIT,900493235-3,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,agarcia@generadoralejandria.com,,,,,2020-12-29
+100,COLOMBINA ENERGIA SAS ESP,,NIT,901192478-8,Convencional,Activo,Jurídica,CUNDINAMARCA,AGUA DE DIOS,aochoa@colombina.com,,,,,2020-12-29
+101,EMPRESA DE SERVICIOS PÚBLICOS DEL OCCIDENTE COLOMBIANO,,NIT,900662075-7,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,emseroccidente@hotmail.com,,,,,2020-12-29
+102,ENERGIA DEL RIO PIEDRAS S.A. E.S.P.,,NIT,811031656-6,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,sortega@gunion.com,,,,,2020-12-29
+103,ESPACIO PRODUCTIVO S.A.S. E.S.P.,,NIT,900214588-2,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,secretaria@esprod.co,,,,,2020-12-29
+104,ECO ENERGÍA DE COLOMBIA ESP SAS,,NIT,901153797-6,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",correo@esp.com,,,,,2020-12-29
+105,EMPRESA DE ENERGIA DE GUAPI S.A. E.S.P.,,NIT,835000142-7,Convencional,Activo,Jurídica,CAUCA,GUAPI,energuapi@hotmail.com,,,,,2020-12-29
+106,ENERMAS SAS ESP,,NIT,900148768-9,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",info@enermas.com.co,,,,,2020-12-29
+107,DEPI ENERGY S.A.S. E.S.P.,,NIT,901288781-9,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",depienergy@depiltda.com,,,,,2020-12-29
+108,SOUL ENERGY SAS ESP,,NIT,901285410-8,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",soulenergycol@gmail.com,,,,,2020-12-29
+109,BEAM ENERGY S.A.S E.S.P.,,NIT,901284888-1,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",info@beamenergy.co,,,,,2020-12-29
+110,D2 ENERGIA S.A.S. ESP,,NIT,901202801-9,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",correo@esp.com,,,,,2020-12-29
+111,ENERGY TRANSITIONS S.A.S. E.S.P.,,NIT,901263317-6,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",dangel@energytst.com,,,,,2020-12-29
+112,NEU ENERGY S.A.S E.S.P,,NIT,901302727-0,Convencional,Activo,Jurídica,ANTIOQUIA,SABANETA,info@neu.com.co,,,,,2020-12-29
+113,VOLTAJE EMPPRESARIAL S.A.S. E.S.P.,,NIT,900654403-6,Convencional,Activo,Jurídica,MAGDALENA,SANTA MARTA,hrodriguez@daabon.com.co,,,,,2020-12-29
+114,XT ENERGIA S.A.S. E.S.P. ,,NIT,901334314-1,Convencional,Activo,Jurídica,ANTIOQUIA,SABANETA,correo@esp.com,,,,,2020-12-29
+115,PROENERGY S.A.S.E.S.P.,,NIT,901326470-7,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,gerencia@proenergy.com.co,,,,,2020-12-29
+116,GAS Y ENERGÍA DE COLOMBIA SAS ESP ,,NIT,901314752-7,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",correo@esp.com,,,,,2020-12-29
+118,AFINIA S.A. E.S.P.,AFINIA,NIT,900445254,Convencional,Activo,Jurídica,BOLIVAR,CARTAGENA DE INDIAS,buenaenergia@afinia.comco,3114350703,3012249170,Carrera 138 # 26-78 edificio Chambacu piso 3,,2021-03-04
+119,AIR-E S.A. E.S.P,AIR-E,NIT,890402550,Convencional,Activo,Jurídica,ATLANTICO,BARRANQUILLA,notificaciones.judiciales@air-e.com,,361 10 00,,,2021-03-15
+120,ASPROMÉDICA DOSIMETRÍA S.A.S.,,NIT,900786049,No convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,dosimetria@aspromedica.com,3217206339,6023872652,Carrera 43 # 5C - 82,https://www.aspromedica.com,2021-08-25
+121,CARE DOSIMETRY S.A.S.,CARE,NIT,900565894,No convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,gerencia@caredosimetry.com,,5143992,"Calle 13 A # 100 - 35, Of. 309",,2021-08-26
+122,DOSIMETRÍA PERSONAL S.A.S.,,NIT,811021579,No convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,info@dosimetriapersonal.com,3006402817,3221320,Carrera 43 # 50 - 51 Of. 206,https://www.dosimetriapersonal.com,2021-08-26
+123,DOSIMETRIX INTERNATIONAL TECHNOLOGIES LTDA,DOSIMETRIX,NIT,830025839,No convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",dosimetrix@hotmail.com,,6956036 ext 113,Calle 103 # 45 A - 11,,2021-08-27
+124,Organizacion Terpel S.A.,TERPEL VOLTEX,NIT,8300952130,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",veronica.ramirez@terpel.com,,3267878,Cra. 7 No. 75-51,https://www.terpel.com,2022-08-04
+125,ENERSINC,ENERSINC,CC,900463244,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,jsierra@enersinc.com,3008159593,3008159593,Carrera 77 ##34-49,http://www.enersinc.com,2022-08-08
+126,SISTEMAS INSEPET CIA LTDA,sis,NIT,830071049-5,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",eliecer.garzon@insepet.com,,4222525,Cra 90 No 17B-81,https://insepet.com/,2022-08-09
+127,MinEnergía,MME,CC,1128423531,Convencional,Activo,Natural,ANTIOQUIA,MEDELLIN,caalvareza@minenergia.gov.co,,3217936646,Carrera 46 # 22 A SUR 20,https://www.minenergia.gov.co,2022-08-10
+128,CONTROL CALIDAD RX S.A.S,CCRX,NIT,901392080,No convencional,Activo,Jurídica,SANTANDER,BUCARAMANGA,dosimetria@controlcalidadrx.com,3204437308,3204437308,CRA 22 # 35 - 40 OFC 229A,,2023-01-11
+129,DOSIMETRICAL S.A.S,DSCL SAS,NIT,901577531,No convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",dosimetrical@outlook.com,6017439447,7439447,CALLE 90 # 14 - 16 OFC 501,,2023-01-11
+130,I SECURE S.A.S,IS SAS,NIT,9005136654,No convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",gflorez@isecure.com.co,6013084570,3084570,CR 51 # 79 -34 ,,2023-01-11
+131,PRDDOSIMETRIA LTDA,PRDS LTDA,NIT,830045516,No convencional,Activo,Natural,"BOGOTA, D. C.","BOGOTA, D.C.",prdosimetria@hotmail.com,3144442835,4827546,CR 38A # 25A - 16,,2023-01-11
+132,RADPROCT S.A.S,RADP,NIT,800162425,No convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",info@radproct.com,3165292700,23685543,CR 14 # 87-60,,2023-01-11
+133,SELIG DE COLOMBIA S.A,SELIG,NIT,830041730,No convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",saludocupacional@seligdecolobia.com,6014902000,4902000,CR 69 # 78 -40 ,,2023-01-11
+134,SIEVERT S.A.S,SIVT,NIT,900515350,No convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,gerente@sievert.com.co,6043116065,3116065,CR 50FF # 8 SUR - 27 OF 512,,2023-01-11
+135,Ministerio de Minas y Energia,MME,CC,1014185255,Convencional,Activo,Natural,"BOGOTA, D. C.","BOGOTA, D.C.",afacevedo@minenergia.gov.co,,5388639,Diagonal 80b 86a 35 piso 2,https://minenergia.gov.co/,2023-10-10
+136,MAO,MAO,CC,1037598707,Convencional,Activo,Natural,ANTIOQUIA,MEDELLIN,andresalvarez678@gmail.com,,3217936646,"Carrera 46 C # 80 sur 155, Apto 2120, Amonte",https://www.minenergia.gov.co,2023-10-11
+137,Jose Libardo Manzano Valbuena,BOG,CC,1032432499,Convencional,Activo,Natural,"BOGOTA, D. C.","BOGOTA, D.C.",jlmanzano@minenergia.gov.coo,,3003656563,Carrera 50 No. 26 - 20,,2024-03-04
+138,Entidad Prueba,EP SA,CC,1014185256,Convencional,Activo,Natural,"BOGOTA, D. C.","BOGOTA, D.C.",afacevedo@minenergia.gov.co,,6015388639,Calle 123,https://minenergia.gov.co/,2024-03-08
+139,Estación De Prueba TI,EPT,NIT,89027802,Convencional,Activo,Natural,"BOGOTA, D. C.","BOGOTA, D.C.",jsromero@minenergia.gov.co,,0000000,calle 43 #57-31,https://www.minenergia.gov.co/es/,2024-03-20
+140,Enerlink Colombia S.A.S.,Enerlink,NIT,901575062-2,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",jdussaillant@enerlink.com,,934132549,"CL 93B 1230 OF 302, Bogotá D.C.",https://www.enerlink.com,2024-04-11
+141,SMART INGENIERIA SAS,SMART-ING,NIT,900090874,Convencional,Activo,Jurídica,CUNDINAMARCA,FUNZA,mgallegos@smart-ing.com,,8585070,Km 7 autop medellin celta 155-4,https://www.smart-ing.com,2024-04-12
+142,L autos SAS,L Autos,NIT,901043622,Convencional,Activo,Jurídica,CUNDINAMARCA,FUSAGASUGA,lautopartes@hotmail.com,,3138828201,Tranversal 12 N°18b-01,https://lautosinternationalcorp.com,2024-04-12
+143,Estacion de Prueba ,EDP,NIT,89092802,Convencional,Activo,Natural,"BOGOTA, D. C.","BOGOTA, D.C.",jsebastianrsanchez@gmail.com,,4580102,calle10b #45-05,https://www.minenergia.gov.co/es/,2024-04-18
+144,Insepet SAS,Ins,NIT,830006334-3,Convencional,Activo,Natural,"BOGOTA, D. C.","BOGOTA, D.C.",elliecer.garzon@insepet.com,,4222525,CRA 90 N.17B-81 BG 20,https://insepet.com/,2024-04-26
+145,E-COLOMBIA POWER SAS,E-COLOMBIA,NIT,901407815-2,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",mespinosa@e-colombia.net,,3017710902,Cr 4 68 12 AP 501,https://e-colombia.net,2024-05-03
+146,ElectroLink Chargers Colombia SAS,ElectroLink,NIT,901790754,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",ivonne@electrolinkchargers.com,,3507920675,Carrera 24 a 19 03 sur,https://www.electrolinkchargers.com,2024-05-04
+147,CENS S.A. E.S.P.,CENS Grupo EPM,NIT,890500514,Convencional,Activo,Jurídica,NORTE DE SANTANDER,CUCUTA,julian.mora.nossa@cens.com.co,,3153179682,Avenida Aeropuerto 5N-220 Barrio Sevilla,https://www.cens.com.co/,2024-05-15
+148,CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P,CHEC,NIT,890800128,Convencional,Activo,Jurídica,CALDAS,MANIZALES,notificaciones.judiciales@chec.com.co,,8899000,KM 2 SALIDA A CHINCHINA ESTACION URIBE,https://www.chec.com.co/,2024-05-15
+149,AUTOGERMANA SAS,AUTOGERMANA,NIT,860509514-0,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",santiago.morales@autogermana.com.co,,4 4 6 4 9 0 0,CR 45 197 35 IN 1,https://www.autogermana.com.co/,2024-05-23
+150,OPERADORA DISTRITAL DE TRANSPORTE S.A.S.,ODT,NIT,901526664-7,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",radicacion@odt.gov.co,3162481906,(601) 2007640,CL 59 A SUR 76 A 82 BRR PERDOMO,https://odt.gov.co,2024-06-04
+151,OPERADORA DISTRITAL DE TRANSPORTE S.A.S.,ODT,NIT,901526664-7,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",radicacion@odt.gov.co,,3162481906,CL 59 A SUR 76 A 82 BRR PERDOMO,,2024-06-04
+152,IIL,IIL,CC,0000000,Convencional,Activo,Natural,RISARALDA,PEREIRA,jero.sandher@gmail.com,,00000000,Carrera 7,https://evl.org/,2024-06-04
+153,Arley londono,AJL,CC,98591964,Convencional,Activo,Natural,ANTIOQUIA,MEDELLIN,arleyj.londono@gmail.com,,6042182368,Carrera 30 No 27a 21,https://alondono.com.co,2024-07-12
+154,Enel Colombia S.A. E.S.P,ENEL,NIT,8600638758,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",john.melo@enel.com,,5147000,Calle 93 No 13-45 P1,,2024-07-15
+155,MUBON S.A.S,MUBON,NIT,901839827,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,info@mubon.co,,3184908362,Av. 5 Nte. #37A - 74,https://mubon.co/,2024-07-21
+156,Grupo empresarial O&C SAS - OASIS,OASIS,NIT,900846875,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,comercial@grupooyc.com,,3147724908,Cr 48c #16 A sur - 50,https://oasisgroup.online/,2024-08-12
+157,Ingeniería y productos eléctricos,INPEL,NIT,800191973,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,jeraso@inpel.com.co,,3842985,Cra 12 #22A 34,https://www.inpel.com.co,2024-08-20
+158,Universidad Católica de Oriente,UCO,NIT,890984746,Convencional,Activo,Jurídica,ANTIOQUIA,RIONEGRO,mantenimiento.jefe@uco.edu.co,,3228482107,SEC 3 CR 46 - 40 B 50,https://www.uco.edu.co/,2024-09-30
+159,Universidad Catolica de oriente,UCO,NIT,8909847467,Convencional,Activo,Jurídica,ANTIOQUIA,RIONEGRO,calidad.lider@uco.edu.co,,5699090,"Sector 3, Carrera 46 No. 40B-50",https://www.uco.edu.co/,2024-10-29
+160,VATIA SAS ESP,VATIA,NIT,817001892,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,lcbravo@vatia.com.co,,3102280662,AV 6n # 47n 32,https://www.vatia.com.co,2024-12-17
+161,Econtrol Systems SAS,Econtrol ,NIT,900733260-9,Convencional,Activo,Jurídica,ANTIOQUIA,SABANETA,soporte@econtrol.com.co,,6042434284,"Cl. 78 Sur #46 D 30, Sabaneta, Antioquia",https://www.econtrol.com.co,2025-01-22
+162,Econtrol Systems SAS,Econtrol ,NIT,900733260,Convencional,Activo,Jurídica,ANTIOQUIA,SABANETA,soporte@econtrol.com.co,,3192343905,Cra 46 # 75 Sur 150 Apto 1306,https://www.econtrol.com.co,2025-01-22
+163,VYGO ENERGIA SAS BIC,VYGO,NIT,901679933,Convencional,Activo,Jurídica,CAUCA,POPAYAN,info@vygoenergia.com.co,3159676569,8353364,Carrera 10 No.16N-08 local 101 Edificio Antonio Nariño,https://vygoenergia.com.co,2025-01-23
+164,David Santiago Londono Giraldo,Inversiones DSL,CC,1000414906,Convencional,Activo,Natural,ANTIOQUIA,EL CARMEN DE VIBORAL,hlc.david327@gmail.com,,3016623373,Cra 33 #32-11,https://humancraft.com.co,2025-03-26
+165,PRUEBA2026,Prueba2026,NIT,123456789,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",cavillalobos@minenergia.gov.co,,3177773377,prueba,,2025-04-03
+166,EMCALI EICE ESP,EMCALI,NIT,890399003,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,gerojas@emcali.com.co,,8997624,Avenida 2 Norte Calle 10,https://www.emcali.com.co,2025-05-02
+167,ERCO ENERGÍA SAS,ERCO,NIT,900570286,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,emontoya@erco.energy,,5088663,Carrera 50 #14-285,https://erco.energy,2025-05-20
+168,Estación De Prueba TI 2,PTI2,CC,10316539,Convencional,Activo,Natural,"BOGOTA, D. C.","BOGOTA, D.C.",jsromero@minenergia.gov.co,,0000000,calle 43 #57-31,https://www.minenergia.gov.co/es/,2025-06-09
+169,EMPRESA URRÁ S.A. E.S.P.,EMUG,NIT,800175746-9,Convencional,Activo,Jurídica,CORDOBA,MONTERIA,jquintero@urra.com.co,,7848991,Carrera 2 #48 08,https://urra.com.co/,2025-06-09
+170,Ergenia S.A.S.,ERGENIA,NIT,901752457-7,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",ergeniacolombia@gmail.com,,318 3309357,CL 117 6 A 60 OF 305,https://ergenia.com,2025-06-11
+171,Entorno Silvestre SAS,EntronoSilvestre,NIT,901037898,Convencional,Activo,Jurídica,ANTIOQUIA,PUERTO TRIUNFO,info@entornosilvestre.com,,4487169,Kilometro 164 Autopista medellin Bogota,https://www.paradordelgitano.com/,2025-07-09
+172,Enerbit SAS ESP,enerBit,CC,53008790,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,dmmurillom@enerbit.co,,3266600,Carrera 43 A 1 A sur - 143,https://enerbit.co/,2025-07-22
+173,Diland Castro,DCC,PAS,F61579384,Convencional,Activo,Natural,ANTIOQUIA,MEDELLIN,diland@cmsostenible.org,,64306715,Medellín,https://cmsostenible.org/,2025-09-03
+174,Hotel El Alfarero SAS,Alfahar Hotel,NIT,901237957-1,Convencional,Activo,Jurídica,ANTIOQUIA,EL CARMEN DE VIBORAL,alfahar@humancraft.com.co,,3009128033,Calle 45 #31-210,http://alfaharhotel.com/,2025-09-11
+175,VATIO EV ,VATIO EV ,NIT,10407569843,Convencional,Activo,Natural,ANTIOQUIA,MEDELLIN,coo@vatio.com.co,,3206413400,Cl 78 sur n 46d 30 ,https://www.vatio.com.co/,2025-10-24
+176,Prueba,prt,NIT,90999999,Convencional,Inactivo,Natural,"BOGOTA, D. C.","BOGOTA, D.C.",cavillalobos@minenergia.gov.co,,3177773377,calle10b #45-05,,2025-10-27
+177,Version 3.0 SAS,Zolectrum,NIT,900676602,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,jruiseco@zolectrum.com,,3073133,Cra 43a #1-50 Torre 1 Oficina 652,http://www.zolectrum.com,2025-11-17
+178,QA POSITRON SAS,QAPOSITRON,NIT,80115846,No convencional,Activo,Jurídica,SANTANDER,BUCARAMANGA,diego.aponte@qapositron.com,3014495401,,CALLE 36 # 27-71,,2025-12-16
+179,Benoma Scientific S.A.S,BENOMA,NIT,16648216,No convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",ventasbenoma@gmail.com,3004948015,,Cra 68 H # 77-22,,2025-12-16
+180,Radicontrol Dosimétrico LTDA.,RADICONTROL,CC,91489405,No convencional,Activo,Jurídica,ATLANTICO,BARRANQUILLA,radicontrol@yahoo.es,3152255528,,"Calle 69 # 49-49, Local 1",,2025-12-16
+181,Polen Transiciones Justas ,PTJ,CC,1020738034,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",juan.diaz@polentj.org,,3204670508,Calle 111 # 45A - 70,https://polentj.org/,2025-12-17
+182,Internacional de Eléctricos S.A.S.,IEgrupo,NIT,809002625,Convencional,Activo,Jurídica,TOLIMA,IBAGUE,leecheverri@iegrupo.co,,2771548,Cl. 24 No 4A -26 Barrio El Carmen,https://www.iegrupo.co/,2025-12-22
+183,COPOWER LIMITADA,CPW,NIT,804011804,Convencional,Activo,Jurídica,SANTANDER,BUCARAMANGA,gerencia@copower.com.co,,6960767,CR 21 8 10 BRR COMUNEROS,https://copower.com.co/,2025-12-22
+184,Instituto Colombino de Geología y Minería,Ingeominas,NIT,899999294-8,No convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",radicacioncorrespondencia@sgc.gov.co,,2200200,Diagonal 53 # 34-53,,2025-12-24
+185,SM CONSULTORÍA E INGENIERÍA S.A.S,SM CONSULTORÍA E ING,CC,901639610,Convencional,Activo,Jurídica,HUILA,NEIVA,comercial@smcei.com,,3189321168,Calle 32 Sur No. 22 - 81 (Zona Industrial),https://smsolar.co/nosotros/,2026-01-13
+186,Energia electrica de colombia SAS,ENERGECOL SAS,NIT,900551493,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,obras.energecol@outlook.com,,313 455 7754,"Cra. 66b #13 A-152, Barrio El Limonar, Cali, Valle del Cauca",https://energecol.com.co/,2026-01-28
+187,ELECTRICAL CHARGE SAS,E-CHARGE,NIT,901950098,Convencional,Activo,Jurídica,ANTIOQUIA,MEDELLIN,info@e-charge.com.co,, 3332382149,Carrera 15  7 A  49,https://www.e-charge.com.co/,2026-02-04
+188,HUB DE MOVILIDAD PLAZA CALLE 136 SAS,HUB 136,NIT,901446446,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",hubscalle136@gmail.com,,3176436758,calle 136 18 88,https://hubplazacalle136.com/,2026-02-05
+189,CERAMICAS EL DORADO,EL DORADO,NIT,901299104,Convencional,Activo,Jurídica,ANTIOQUIA,EL CARMEN DE VIBORAL,eldorado@humancraft.com.co,,3127701000,CR 31 42 64,https://ceramicaseldorado.com/,2026-02-05
+190,HUB DE MOVILIDAD PLAZA CALLE 136 SAS,HUB,NIT,901446446-4,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",hubscalle136@gmail.com,,3176436758,Calle 136 #18 - 82,https://hubplazacalle136.com/,2026-02-13
+191,MINISTERIO DE MINAS Y ENERGIA,MME,CC,1026277669,Convencional,Activo,Jurídica,"BOGOTA, D. C.","BOGOTA, D.C.",cavillalobos@minenergia.gov.co,,3177773377,CAN,https://www.minenergia.gov.co/es/,2026-02-13
+192,uae junta pruebas,jce,CC,1016062128,Convencional,Activo,Natural,"BOGOTA, D. C.","BOGOTA, D.C.",egarciam@minenergia.gov.co,,1223222,Calle 185 # 45-03,https://www.pruebas.gov.co/,2026-02-15
+193,Juan Nicolás Patiño Rodríguez,JNPR,CC,1013620260,Convencional,Activo,Natural,"BOGOTA, D. C.","BOGOTA, D.C.",juan.patino@servinformacion.com,,3164358556,Carrera 40a # 34 - 31 sur,https://servinformacion.com/,2026-02-19
+194,CENTRO DE DIAGNOSTICO AUTOMOTRIZ DEL HUILA SAS,EDS EL PEÑON ,NIT,900113252,Convencional,Activo,Jurídica,HUILA,NEIVA,cdahuila@gmail.com,,3028405486,Calle 4 sur 3a 80,,2026-02-19
+195,GREET ENERGY,GREET,NIT,9013775031,Convencional,Activo,Jurídica,ATLANTICO,BARRANQUILLA,evcharge@greetenergy.com,,3153047037,CARRERA 60 # 75 -102,https://greetenergy.com/,2026-02-28
+196,CENTRO-NET S.A.S. ,CENTRONET,NIT,8050204578,Convencional,Activo,Jurídica,VALLE DEL CAUCA,CALI,juridico@centronet.com.co,,4898560,CALLE 24 #7-17,https://centronet.com.co/,2026-03-02

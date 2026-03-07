@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Tracker Electromovilidad — UPME</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body{font-family:'Inter',sans-serif;margin:0;overflow:hidden;height:100vh}
+        ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#475569;border-radius:3px}
+        .sidebar-item{transition:all .15s;border-radius:8px;padding:8px 12px;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:13px;color:#94a3b8}
+        .sidebar-item:hover{background:rgba(255,255,255,.08);color:#e2e8f0}
+        .sidebar-item.active{background:rgba(59,130,246,.2);color:#60a5fa;font-weight:600}
+        .kanban-col{min-width:280px;max-width:320px;background:#f1f5f9;border-radius:12px;display:flex;flex-direction:column;max-height:calc(100vh - 180px)}
+        .kanban-col-body{flex:1;overflow-y:auto;padding:8px;min-height:80px}
+        .kanban-card{background:#fff;border-radius:10px;padding:12px;margin-bottom:8px;cursor:grab;border:1px solid #e2e8f0;transition:all .15s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+        .kanban-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
+        .kanban-card.sortable-ghost{opacity:.4;transform:rotate(2deg)}
+        .kanban-card.sortable-chosen{box-shadow:0 8px 20px rgba(59,130,246,.2);border-color:#3b82f6}
+        .badge{font-size:10px;padding:2px 8px;border-radius:9999px;font-weight:600;white-space:nowrap}
+        .modal-overlay{background:rgba(0,0,0,.5);backdrop-filter:blur(3px)}
+        .fade-in{animation:fadeIn .2s ease-out}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        .view-panel{display:none}.view-panel.active{display:flex;flex-direction:column;flex:1;overflow:hidden}
+        .board-tab{padding:6px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s}
+        .board-tab.active-board{background:#3b82f6;color:#fff}.board-tab:not(.active-board){background:#f1f5f9;color:#64748b}
+        .avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+        .stat-card{background:#fff;border-radius:12px;border:1px solid #e2e8f0;padding:16px}
+        .p-alta{background:#ef4444}.p-media{background:#f59e0b}.p-baja{background:#3b82f6}
+        .priority-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+        @media print{.no-print{display:none!important}.print-only{display:block!important}body{overflow:auto;height:auto}}.print-only{display:none}
+    </style>
+</head>
+<body class="bg-slate-50">
+<!-- LOGIN -->
+<div id="login-screen" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div class="w-full max-w-md mx-4 fade-in">
+        <div class="text-center mb-8"><div class="text-5xl mb-3">⚡</div><h1 class="text-2xl font-bold text-white">Project Tracker</h1><p class="text-blue-300 text-sm mt-1">Electromovilidad — UPME</p></div>
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/10 space-y-4">
+            <button onclick="doGoogleLogin()" class="w-full bg-white hover:bg-slate-50 text-slate-700 font-semibold py-3 rounded-lg text-sm transition flex items-center justify-center gap-3 border border-slate-200">
+                <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                Iniciar sesión con Google
+            </button>
+            <div class="relative my-2"><div class="absolute inset-0 flex items-center"><div class="w-full border-t border-white/20"></div></div><div class="relative flex justify-center text-xs"><span class="px-2 bg-transparent text-blue-300/50">o</span></div></div>
+            <div><label class="block text-xs font-semibold text-blue-200 mb-1">Correo electrónico</label><input id="login-email" type="email" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-white placeholder-blue-300/50" placeholder="usuario@upme.gov.co"></div>
+            <div><label class="block text-xs font-semibold text-blue-200 mb-1">Contraseña</label><input id="login-password" type="password" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-white placeholder-blue-300/50" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
+            <div id="login-error" class="text-red-400 text-xs hidden"></div>
+            <button onclick="doLogin()" class="w-full bg-blue-600/50 hover:bg-blue-500 text-white font-semibold py-2.5 rounded-lg text-sm transition">Iniciar con contraseña</button>
+        </div>
+        <p class="text-center text-blue-400/40 text-[10px] mt-6">Solo cuentas @upme.gov.co autorizadas.</p>
+    </div>
+</div>
+<!-- APP SHELL -->
+<div id="app" class="hidden h-screen flex">
+<aside class="w-[240px] bg-slate-900 flex flex-col flex-shrink-0 no-print">
+    <div class="px-4 py-4 border-b border-slate-700/50"><div class="flex items-center gap-2"><span class="text-2xl">⚡</span><div><div class="text-sm font-bold text-white leading-tight">Electromovilidad</div><div class="text-[10px] text-slate-400">Project Tracker — UPME</div></div></div></div>
+    <div class="px-3 py-3 border-b border-slate-700/50"><div class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Tableros</div><div id="board-selector" class="space-y-1"></div></div>
+    <nav class="flex-1 px-3 py-3 space-y-1 overflow-y-auto">
+        <div class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Navegación</div>
+        <div class="sidebar-item active" onclick="showView('kanban')">📋 Tablero Kanban</div>
+        <div class="sidebar-item" onclick="showView('fases')">🎯 Fases / Épicas</div>
+        <div class="sidebar-item" onclick="showView('timeline')">📅 Timeline</div>
+        <div class="sidebar-item" onclick="showView('dashboard')">📊 Dashboard</div>
+        <div class="sidebar-item" onclick="showView('mytasks')">👤 Mi Trabajo</div>
+        <div class="sidebar-item" onclick="showView('compromisos')">🤝 Compromisos</div>
+        <div class="sidebar-item" onclick="showView('informes')">📄 Informes</div>
+        <div class="sidebar-item" onclick="showView('equipo')">👥 Equipo</div>
+        <div id="nav-admin" class="sidebar-item hidden" onclick="showView('admin')">⚙️ Administración</div>
+    </nav>
+    <div class="px-3 py-3 border-t border-slate-700/50"><div class="flex items-center gap-2"><div id="user-avatar" class="avatar bg-blue-600">AE</div><div class="flex-1 min-w-0"><div id="user-name" class="text-xs font-semibold text-white truncate">Admin</div><div id="user-role" class="text-[10px] text-slate-400">Admin</div></div><button onclick="doLogout()" class="text-slate-400 hover:text-red-400 text-xs p-1.5 rounded hover:bg-slate-800" title="Salir">🚪</button></div></div>
+</aside>
+<div class="flex-1 flex flex-col overflow-hidden">
+    <header class="bg-white border-b border-slate-200 px-6 py-3 flex items-center justify-between no-print flex-shrink-0">
+        <div class="flex items-center gap-3"><h2 id="view-title" class="text-lg font-bold text-slate-900">Tablero Kanban</h2><span id="view-subtitle" class="text-xs text-slate-400"></span></div>
+        <div class="flex items-center gap-2">
+            <input id="global-search" type="text" placeholder="Buscar tareas..." class="text-xs border border-slate-200 rounded-lg px-3 py-1.5 w-48" oninput="onSearch(this.value)">
+            <button onclick="openTaskModal()" class="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg font-semibold">+ Nueva Tarea</button>
+            <button onclick="exportAllData()" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg font-medium" title="Exportar">📥</button>
+        </div>
+    </header>
+    <div id="views-container" class="flex-1 overflow-hidden flex flex-col">
+        <!-- KANBAN -->
+        <div id="view-kanban" class="view-panel active">
+            <div class="px-6 py-3 bg-white border-b border-slate-100 flex items-center gap-3 flex-shrink-0">
+                <div id="kanban-board-tabs" class="flex gap-2"></div>
+                <div class="h-5 w-px bg-slate-200 mx-1"></div>
+                <select id="kf-assignee" onchange="renderKanban()" class="text-xs border border-slate-200 rounded-lg px-2 py-1"><option value="all">Todos</option></select>
+                <select id="kf-priority" onchange="renderKanban()" class="text-xs border border-slate-200 rounded-lg px-2 py-1"><option value="all">Prioridad</option><option value="alta">Alta</option><option value="media">Media</option><option value="baja">Baja</option></select>
+            </div>
+            <div id="kanban-container" class="flex gap-4 p-6 overflow-x-auto flex-1"></div>
+        </div>
+        <!-- FASES / ÉPICAS -->
+        <div id="view-fases" class="view-panel"><div class="flex-1 overflow-y-auto p-6"><div class="max-w-[1100px] mx-auto"><div class="flex items-center justify-between mb-4 flex-wrap gap-2"><div class="flex items-center gap-2"><label class="text-[10px] font-semibold text-slate-500">Desde</label><input id="phase-date-from" type="date" class="text-xs border border-slate-200 rounded-lg px-2 py-1" onchange="renderPhases()"><label class="text-[10px] font-semibold text-slate-500 ml-2">Hasta</label><input id="phase-date-to" type="date" class="text-xs border border-slate-200 rounded-lg px-2 py-1" onchange="renderPhases()"><button onclick="document.getElementById('phase-date-from').value='';document.getElementById('phase-date-to').value='';renderPhases()" class="text-[10px] text-slate-400 hover:text-slate-600 ml-1">✕ Limpiar</button></div><div class="text-[10px] text-slate-400">Clic en fase para expandir/colapsar · Doble clic en tarea para ver detalle</div></div><div id="phases-container"></div></div></div></div>
+        <!-- TIMELINE -->
+        <div id="view-timeline" class="view-panel"><div class="flex-1 overflow-y-auto p-4"><div class="flex items-center justify-between mb-3 flex-wrap gap-2"><div class="flex items-center gap-1"><button onclick="tlZoom('3m')" class="text-[10px] px-2.5 py-1 rounded-lg font-semibold border" id="tl-z-3m">3M</button><button onclick="tlZoom('6m')" class="text-[10px] px-2.5 py-1 rounded-lg font-semibold border" id="tl-z-6m">6M</button><button onclick="tlZoom('12m')" class="text-[10px] px-2.5 py-1 rounded-lg font-semibold border" id="tl-z-12m">12M</button><div class="h-4 w-px bg-slate-200 mx-1"></div><button onclick="tlNav(-1)" class="text-xs px-2 py-1 rounded hover:bg-slate-100" title="Anterior">◀</button><button onclick="tlToday()" class="text-[10px] px-2 py-1 rounded hover:bg-slate-100 font-semibold text-red-500" title="Hoy">HOY</button><button onclick="tlNav(1)" class="text-xs px-2 py-1 rounded hover:bg-slate-100" title="Siguiente">▶</button></div><div class="text-[10px] text-slate-400">Clic en fase para expandir · Doble clic en tarea para detalle · <span class="text-red-400 font-bold">|</span> = Hoy</div></div><div id="timeline-content"></div></div></div>
+        <!-- DASHBOARD -->
+        <div id="view-dashboard" class="view-panel"><div class="flex-1 overflow-y-auto p-6"><div class="max-w-[1200px] mx-auto"><div id="dash-kpis" class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6"></div><div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6"><div class="lg:col-span-2 stat-card"><h3 class="font-bold text-sm mb-3">Progreso por Fase</h3><div id="dash-phases"></div></div><div class="stat-card"><h3 class="font-bold text-sm mb-3">Por Estado</h3><div style="max-height:220px;display:flex;justify-content:center"><canvas id="chart-status"></canvas></div></div></div><div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6"><div class="stat-card"><h3 class="font-bold text-sm mb-3">Avance por Capa</h3><div style="max-height:260px"><canvas id="chart-capas"></canvas></div></div><div class="stat-card"><h3 class="font-bold text-sm mb-3">Carga por Responsable</h3><div id="dash-workload" class="space-y-2"></div></div></div></div></div></div>
+        <!-- MY TASKS -->
+        <div id="view-mytasks" class="view-panel"><div class="flex-1 overflow-y-auto p-6"><div class="max-w-[900px] mx-auto"><div id="mytasks-summary" class="grid grid-cols-4 gap-3 mb-6"></div><div id="mytasks-container" class="space-y-2"></div></div></div></div>
+        <!-- COMPROMISOS -->
+        <div id="view-compromisos" class="view-panel"><div class="flex-1 overflow-y-auto p-6"><div class="max-w-[900px] mx-auto"><div class="flex items-center justify-between mb-4"><select id="commit-filter" onchange="renderCommitments()" class="text-xs border border-slate-200 rounded-lg px-3 py-1.5"><option value="all">Todos</option><option value="pendiente">Pendientes</option><option value="cumplido">Cumplidos</option><option value="vencido">Vencidos</option></select><button onclick="openCommitModal()" class="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg font-semibold">+ Compromiso</button></div><div id="commits-container" class="space-y-3"></div></div></div></div>
+        <!-- INFORMES -->
+        <div id="view-informes" class="view-panel"><div class="flex-1 overflow-y-auto p-6"><div class="max-w-[900px] mx-auto"><div class="flex items-center justify-between mb-4 no-print flex-wrap gap-2"><div class="flex gap-2 flex-wrap"><select id="report-type" class="text-xs border border-slate-200 rounded-lg px-3 py-1.5"><option value="monthly">📅 Informe Mensual</option><option value="general">📊 Informe General</option></select><select id="report-board" class="text-xs border border-slate-200 rounded-lg px-3 py-1.5"><option value="all">Todos los tableros</option><option value="gerencial">Gerencial</option><option value="desarrollo">Desarrollo</option></select><select id="report-month" class="text-xs border border-slate-200 rounded-lg px-3 py-1.5"></select><select id="report-year" class="text-xs border border-slate-200 rounded-lg px-3 py-1.5"></select></div><div class="flex gap-2"><button onclick="generateReport()" class="text-xs bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold">Generar Informe</button><button onclick="window.print()" class="text-xs bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg">🖨️ Imprimir</button></div></div><div id="report-container" class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm"></div></div></div></div>
+        <!-- EQUIPO -->
+        <div id="view-equipo" class="view-panel"><div class="flex-1 overflow-y-auto p-6"><div class="max-w-[1200px] mx-auto" id="equipo-container"></div></div></div>
+        <!-- ADMIN -->
+        <div id="view-admin" class="view-panel"><div class="flex-1 overflow-y-auto p-6"><div class="max-w-[900px] mx-auto"><div class="flex items-center justify-between mb-6"><div><h3 class="font-bold text-lg">Gestión de Usuarios</h3><p class="text-xs text-slate-500">Solo el administrador puede gestionar accesos.</p></div><button onclick="openUserModal()" class="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg font-semibold">+ Usuario</button></div><div id="users-container" class="space-y-2 mb-8"></div><div class="border-t pt-6"><div class="flex items-center justify-between mb-4"><div><h3 class="font-bold text-lg text-red-700">🚫 Tareas Descartadas</h3><p class="text-xs text-slate-500">Tareas ocultas de los tableros. Solo el admin puede restaurarlas.</p></div></div><div id="discarded-container" class="space-y-2"></div></div></div></div></div>
+    </div>
+</div>
+</div>
+<!-- TASK MODAL -->
+<div id="task-modal" class="fixed inset-0 modal-overlay z-50 flex items-center justify-center hidden no-print">
+<div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto fade-in">
+    <div class="flex items-center justify-between p-5 border-b"><h3 id="tm-title-h" class="font-bold text-lg">Nueva Tarea</h3><button onclick="closeTaskModal()" class="text-slate-400 hover:text-slate-600 text-xl">&times;</button></div>
+    <div class="p-5 space-y-3">
+        <input type="hidden" id="tm-id">
+        <div><label class="block text-xs font-semibold text-slate-600 mb-1">Título *</label><input id="tm-title" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm" placeholder="Nombre de la tarea"></div>
+        <div><label class="block text-xs font-semibold text-slate-600 mb-1">Descripción</label><textarea id="tm-desc" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm h-16 resize-vertical" placeholder="Detalles..."></textarea></div>
+        <div class="grid grid-cols-2 gap-3">
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1">Tablero</label><select id="tm-board" onchange="updateColumnSelect()" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"><option value="gerencial">🏢 Gerencial</option><option value="desarrollo">💻 Desarrollo</option></select></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1">Columna</label><select id="tm-column" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"></select></div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1">Capa</label><select id="tm-capa" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"><option value="normativo">⚖️ Normativo</option><option value="contratacion">📋 Contratación</option><option value="arquitectura">🏗️ Arquitectura</option><option value="datos">📊 Datos</option><option value="seguridad">🔒 Seguridad</option><option value="infraestructura">🖥️ Infra</option><option value="devops">⚙️ DevOps</option><option value="desarrollo">💻 Desarrollo</option><option value="documentacion">📄 Doc</option><option value="delivery">🚀 Delivery</option><option value="integracion">🔗 Integración</option></select></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1">Fase</label><select id="tm-phase" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"><option value="phase-1">Fase 1</option><option value="phase-2">Fase 2</option><option value="phase-3">Fase 3</option><option value="phase-4">Fase 4</option><option value="phase-5">Fase 5</option><option value="phase-6">Fase 6</option></select></div>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1">Prioridad</label><select id="tm-priority" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"><option value="alta">🔴 Alta</option><option value="media">🟡 Media</option><option value="baja">🔵 Baja</option></select></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1">Tipo</label><select id="tm-tipo" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"><option value="tecnico">🔧 Técnico</option><option value="normativo">⚖️ Normativo</option></select></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1">Responsable</label><select id="tm-assignee" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"></select></div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1">Inicio</label><input id="tm-start" type="date" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1">Fin</label><input id="tm-end" type="date" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"></div>
+        </div>
+        <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">📎 Documentos / Enlaces</label>
+            <div id="tm-links-list" class="space-y-1 mb-2"></div>
+            <div class="flex gap-2">
+                <input id="tm-link-title" type="text" class="flex-1 border border-slate-200 rounded-lg px-3 py-1.5 text-xs" placeholder="Nombre del documento">
+                <input id="tm-link-url" type="url" class="flex-1 border border-slate-200 rounded-lg px-3 py-1.5 text-xs" placeholder="https://...">
+                <button type="button" onclick="addLinkToModal()" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg font-medium flex-shrink-0">+ Agregar</button>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-between p-5 border-t"><button id="tm-del-btn" onclick="discardTask(document.getElementById('tm-id').value)" class="text-xs text-red-500 hover:bg-red-50 px-3 py-1.5 rounded-lg hidden">� Descartar</button><div class="flex gap-2 ml-auto"><button onclick="closeTaskModal()" class="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg">Cancelar</button><button onclick="saveTask()" class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold">Guardar</button></div></div>
+</div></div>
+<!-- TASK DETAIL MODAL -->
+<div id="detail-modal" class="fixed inset-0 modal-overlay z-50 flex items-center justify-center hidden no-print">
+<div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto fade-in">
+    <div class="flex items-center justify-between p-5 border-b"><h3 class="font-bold text-lg">Detalle de Tarea</h3><button onclick="closeDetailModal()" class="text-slate-400 hover:text-slate-600 text-xl">&times;</button></div>
+    <div id="detail-content" class="p-5"></div>
+</div></div>
+<!-- USER MODAL -->
+<div id="user-modal" class="fixed inset-0 modal-overlay z-50 flex items-center justify-center hidden no-print">
+<div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 fade-in">
+    <div class="flex items-center justify-between p-5 border-b"><h3 id="um-title-h" class="font-bold text-lg">Nuevo Usuario</h3><button onclick="closeUserModal()" class="text-slate-400 hover:text-slate-600 text-xl">&times;</button></div>
+    <div class="p-5 space-y-3">
+        <input type="hidden" id="um-id">
+        <div><label class="block text-xs font-semibold text-slate-600 mb-1">Nombre *</label><input id="um-name" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"></div>
+        <div><label class="block text-xs font-semibold text-slate-600 mb-1">Email *</label><input id="um-email" type="email" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"></div>
+        <div><label class="block text-xs font-semibold text-slate-600 mb-1">Contraseña *</label><input id="um-pass" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"></div>
+        <div class="grid grid-cols-2 gap-3">
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1">Rol</label><select id="um-role" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"><option value="member">Miembro</option><option value="admin">Administrador</option></select><div class="text-[10px] text-slate-400 mt-0.5">Admin: acceso completo a todo</div></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1">Equipo</label><select id="um-team" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"><option value="gerencial">🏢 Gerencial</option><option value="desarrollo">💻 Desarrollo</option><option value="both">🔄 Ambos equipos</option></select><div class="text-[10px] text-slate-400 mt-0.5">Define qué tableros puede ver</div></div>
+        </div>
+        <label class="flex items-center gap-2 text-xs"><input id="um-active" type="checkbox" checked> Usuario activo</label>
+    </div>
+    <div class="flex justify-end gap-2 p-5 border-t"><button onclick="closeUserModal()" class="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg">Cancelar</button><button onclick="saveUser()" class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold">Guardar</button></div>
+</div></div>
+<!-- COMMIT MODAL -->
+<div id="commit-modal" class="fixed inset-0 modal-overlay z-50 flex items-center justify-center hidden no-print">
+<div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 fade-in">
+    <div class="flex items-center justify-between p-5 border-b"><h3 id="cm-title-h" class="font-bold text-lg">Nuevo Compromiso</h3><button onclick="closeCommitModal()" class="text-slate-400 hover:text-slate-600 text-xl">&times;</button></div>
+    <div class="p-5 space-y-3">
+        <input type="hidden" id="cm-id">
+        <div><label class="block text-xs font-semibold text-slate-600 mb-1">Descripción *</label><input id="cm-title" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"></div>
+        <div class="grid grid-cols-2 gap-3"><div><label class="block text-xs font-semibold text-slate-600 mb-1">Responsable</label><input id="cm-owner" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"></div><div><label class="block text-xs font-semibold text-slate-600 mb-1">Fecha</label><input id="cm-date" type="date" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"></div></div>
+        <div class="grid grid-cols-2 gap-3"><div><label class="block text-xs font-semibold text-slate-600 mb-1">Tipo</label><select id="cm-type" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"><option value="entregable">Entregable</option><option value="reunion">Reunión</option><option value="regulatorio">Regulatorio</option><option value="externo">Externo</option></select></div><div><label class="block text-xs font-semibold text-slate-600 mb-1">Estado</label><select id="cm-status" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"><option value="pendiente">Pendiente</option><option value="cumplido">Cumplido</option><option value="vencido">Vencido</option></select></div></div>
+        <div><label class="block text-xs font-semibold text-slate-600 mb-1">Observaciones</label><textarea id="cm-obs" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm h-16 resize-vertical"></textarea></div>
+    </div>
+    <div class="flex justify-end gap-2 p-5 border-t"><button onclick="closeCommitModal()" class="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg">Cancelar</button><button onclick="saveCommitment()" class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold">Guardar</button></div>
+</div></div>
+
+<script src="app.js"></script>
+</body>
+</html>

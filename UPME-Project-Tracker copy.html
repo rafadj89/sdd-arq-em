@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPME — Framework de Seguimiento del Proyecto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 3px; }
+        .tab-btn { transition: all 0.2s; }
+        .tab-btn.active { border-bottom: 3px solid #3b82f6; color: #3b82f6; background: rgba(59,130,246,0.05); }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+        .gantt-bar { transition: all 0.2s; cursor: grab; min-width: 20px; }
+        .gantt-bar:hover { filter: brightness(1.1); transform: scaleY(1.1); }
+        .gantt-bar:active { cursor: grabbing; }
+        .task-row:hover { background: #f8fafc; }
+        .task-check { transition: all 0.15s; }
+        .task-check:checked { accent-color: #10b981; }
+        .priority-high { border-left: 4px solid #ef4444; }
+        .priority-medium { border-left: 4px solid #f59e0b; }
+        .priority-low { border-left: 4px solid #3b82f6; }
+        .status-pill { font-size: 10px; padding: 2px 8px; border-radius: 9999px; font-weight: 600; }
+        .modal-overlay { background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); }
+        .fade-in { animation: fadeIn 0.2s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { font-size: 11px; }
+        }
+        .print-only { display: none; }
+        .obs-textarea { min-height: 60px; resize: vertical; }
+        .drag-over { background: #eff6ff; border: 2px dashed #3b82f6; }
+        .month-group-body { overflow: hidden; transition: max-height 0.3s ease-out; }
+        .month-group-body.collapsed { max-height: 0 !important; }
+        .month-chevron { transition: transform 0.2s; }
+        .month-chevron.collapsed { transform: rotate(-90deg); }
+        .month-header:hover { background: #f1f5f9; }
+        .month-badge { font-size: 9px; padding: 1px 6px; border-radius: 9999px; font-weight: 700; }
+        .normativo-card { border-top: 3px solid #d97706; background: linear-gradient(to right, #fffbeb 0%, #ffffff 20%); }
+        .capa-badge { font-size: 9px; padding: 1px 7px; border-radius: 9999px; font-weight: 700; letter-spacing: 0.3px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+<!-- ==================== TOP NAV ==================== -->
+<nav class="bg-white border-b border-slate-200 sticky top-0 z-50 no-print shadow-sm">
+    <div class="max-w-[1400px] mx-auto px-4">
+        <div class="flex items-center justify-between h-14">
+            <div class="flex items-center gap-3">
+                <span class="text-xl">⚡</span>
+                <div>
+                    <h1 class="text-sm font-bold text-slate-900 leading-tight">UPME Electromovilidad</h1>
+                    <p class="text-[10px] text-slate-500">Framework de Seguimiento — Resolución 40559/2025</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span id="lastSaved" class="text-[10px] text-slate-400"></span>
+                <button onclick="exportData()" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg font-medium transition">📥 Exportar</button>
+                <button onclick="document.getElementById('importFile').click()" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg font-medium transition">📤 Importar</button>
+                <input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(event)">
+                <button onclick="resetData()" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 px-3 py-1.5 rounded-lg font-medium transition">🔄 Reset</button>
+            </div>
+        </div>
+        <!-- Tab Navigation -->
+        <div class="flex gap-0 -mb-px overflow-x-auto">
+            <button class="tab-btn active px-4 py-2.5 text-xs font-semibold whitespace-nowrap" onclick="switchTab('dashboard')">📊 Dashboard</button>
+            <button class="tab-btn px-4 py-2.5 text-xs font-semibold whitespace-nowrap" onclick="switchTab('gantt')">📅 Gantt</button>
+            <button class="tab-btn px-4 py-2.5 text-xs font-semibold whitespace-nowrap" onclick="switchTab('tareas')">✅ Tareas</button>
+            <button class="tab-btn px-4 py-2.5 text-xs font-semibold whitespace-nowrap" onclick="switchTab('compromisos')">🤝 Compromisos</button>
+            <button class="tab-btn px-4 py-2.5 text-xs font-semibold whitespace-nowrap" onclick="switchTab('informes')">📄 Informes</button>
+        </div>
+    </div>
+</nav>
+
+<main class="max-w-[1400px] mx-auto px-4 py-6">
+
+<!-- ==================== TAB: DASHBOARD ==================== -->
+<div id="tab-dashboard" class="tab-panel active fade-in">
+    <div class="mb-6">
+        <h2 class="text-2xl font-bold text-slate-900">Panel General del Proyecto</h2>
+        <p class="text-sm text-slate-500">Vista ejecutiva del estado actual. Datos actualizados dinámicamente desde el storage local.</p>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+            <div class="text-xs text-slate-500 font-medium">Avance Global</div>
+            <div id="kpi-global" class="text-3xl font-bold text-blue-600 mt-1">0%</div>
+            <div class="w-full bg-slate-100 rounded-full h-2 mt-2">
+                <div id="kpi-global-bar" class="bg-blue-500 h-2 rounded-full transition-all" style="width:0%"></div>
+            </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+            <div class="text-xs text-slate-500 font-medium">Tareas Completadas</div>
+            <div id="kpi-tasks" class="text-3xl font-bold text-emerald-600 mt-1">0/0</div>
+            <div class="text-[10px] text-slate-400 mt-1">del total de tareas</div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+            <div class="text-xs text-slate-500 font-medium">Compromisos Pendientes</div>
+            <div id="kpi-commitments" class="text-3xl font-bold text-amber-600 mt-1">0</div>
+            <div class="text-[10px] text-slate-400 mt-1">por resolver</div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+            <div class="text-xs text-slate-500 font-medium">Items en Riesgo</div>
+            <div id="kpi-risk" class="text-3xl font-bold text-red-600 mt-1">0</div>
+            <div class="text-[10px] text-slate-400 mt-1">atrasados o bloqueados</div>
+        </div>
+    </div>
+
+    <!-- Phase Progress + Upcoming -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        <!-- Phase Progress -->
+        <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+            <h3 class="font-bold text-sm text-slate-800 mb-4">Progreso por Fase</h3>
+            <div id="phase-progress" class="space-y-3">
+                <!-- Rendered by JS -->
+            </div>
+        </div>
+        <!-- Upcoming Deadlines -->
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+            <h3 class="font-bold text-sm text-slate-800 mb-4">Próximos Vencimientos</h3>
+            <div id="upcoming-deadlines" class="space-y-2">
+                <!-- Rendered by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+            <h3 class="font-bold text-sm text-slate-800 mb-3">Distribución por Estado</h3>
+            <div style="max-height:250px; display:flex; justify-content:center;">
+                <canvas id="chartStatus"></canvas>
+            </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+            <h3 class="font-bold text-sm text-slate-800 mb-3">Avance por Área</h3>
+            <div style="max-height:250px;">
+                <canvas id="chartAreas"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TAB: GANTT ==================== -->
+<div id="tab-gantt" class="tab-panel fade-in">
+    <div class="flex items-center justify-between mb-4">
+        <div>
+            <h2 class="text-2xl font-bold text-slate-900">Diagrama de Gantt</h2>
+            <p class="text-sm text-slate-500">Arrastre las barras para ajustar fechas. Doble-clic para editar detalles.</p>
+        </div>
+        <div class="flex gap-2">
+            <select id="ganttFilter" onchange="renderGantt()" class="text-xs border border-slate-200 rounded-lg px-3 py-1.5">
+                <option value="all">Todas las Fases</option>
+                <option value="phase-1">Fase 1: Diseño & Contratación</option>
+                <option value="phase-2">Fase 2: Infra & Core OCPI</option>
+                <option value="phase-3">Fase 3: Data Lake & Seguridad</option>
+                <option value="phase-4">Fase 4: Portal & Integración</option>
+                <option value="phase-5">Fase 5: Testing & Pre-Prod</option>
+                <option value="phase-6">Fase 6: Go-Live & Operación</option>
+                <option value="regulatory">Hitos Regulatorios</option>
+            </select>
+        </div>
+    </div>
+    <!-- Gantt Legend -->
+    <div class="flex flex-wrap gap-3 mb-4 text-[10px]">
+        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-emerald-500 inline-block"></span> Completado</span>
+        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-blue-500 inline-block"></span> En Progreso</span>
+        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-slate-300 inline-block"></span> Pendiente</span>
+        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-red-500 inline-block"></span> Atrasado</span>
+        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-amber-500 inline-block"></span> Normativo / Gobierno</span>
+    </div>
+    <!-- Gantt Chart Container -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+        <div id="gantt-container" class="min-w-[900px]">
+            <!-- Rendered by JS -->
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TAB: TAREAS ==================== -->
+<div id="tab-tareas" class="tab-panel fade-in">
+    <div class="flex items-center justify-between mb-4">
+        <div>
+            <h2 class="text-2xl font-bold text-slate-900">Gestión de Tareas</h2>
+            <p class="text-sm text-slate-500">Agrupadas por mes. El mes actual se muestra expandido. Marque, actualice estado y agregue observaciones.</p>
+        </div>
+        <div class="flex gap-2 flex-wrap">
+            <button onclick="toggleAllMonths(true)" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg font-medium transition">▼ Expandir Todo</button>
+            <button onclick="toggleAllMonths(false)" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg font-medium transition">▲ Colapsar Todo</button>
+            <select id="taskFilterCapa" onchange="renderTasks()" class="text-xs border border-slate-200 rounded-lg px-3 py-1.5">
+                <option value="all">Todas las Capas</option>
+                <option value="normativo">⚖️ Normativo / Regulatorio</option>
+                <option value="contratacion">📋 Contratación & Legal</option>
+                <option value="arquitectura">🏗️ Arquitectura & Diseño</option>
+                <option value="datos">📊 Datos & Analítica</option>
+                <option value="seguridad">🔒 Seguridad & WAF</option>
+                <option value="infraestructura">🖥️ Infraestructura</option>
+                <option value="devops">⚙️ DevOps & Observabilidad</option>
+                <option value="desarrollo">💻 Desarrollo</option>
+                <option value="documentacion">📄 Documentación Técnica</option>
+                <option value="delivery">🚀 Delivery & Despliegue</option>
+                <option value="integracion">🔗 Integración & CPOs</option>
+            </select>
+            <select id="taskFilterTipo" onchange="renderTasks()" class="text-xs border border-slate-200 rounded-lg px-3 py-1.5">
+                <option value="all">Todos los Tipos</option>
+                <option value="normativo">⚖️ Normativo</option>
+                <option value="tecnico">🔧 Técnico</option>
+            </select>
+            <select id="taskFilterStatus" onchange="renderTasks()" class="text-xs border border-slate-200 rounded-lg px-3 py-1.5">
+                <option value="all">Todos los Estados</option>
+                <option value="completado">Completado</option>
+                <option value="en_progreso">En Progreso</option>
+                <option value="pendiente">Pendiente</option>
+                <option value="bloqueado">Bloqueado</option>
+            </select>
+            <button onclick="openTaskModal()" class="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg font-medium transition">+ Nueva Tarea</button>
+        </div>
+    </div>
+    <div id="tasks-container" class="space-y-2">
+        <!-- Rendered by JS -->
+    </div>
+</div>
+
+<!-- ==================== TAB: COMPROMISOS ==================== -->
+<div id="tab-compromisos" class="tab-panel fade-in">
+    <div class="flex items-center justify-between mb-4">
+        <div>
+            <h2 class="text-2xl font-bold text-slate-900">Compromisos & Reuniones</h2>
+            <p class="text-sm text-slate-500">Registre compromisos, actas de reunión y acciones de seguimiento.</p>
+        </div>
+        <div class="flex gap-2">
+            <select id="commitmentFilter" onchange="renderCommitments()" class="text-xs border border-slate-200 rounded-lg px-3 py-1.5">
+                <option value="all">Todos</option>
+                <option value="pendiente">Pendientes</option>
+                <option value="cumplido">Cumplidos</option>
+                <option value="vencido">Vencidos</option>
+            </select>
+            <button onclick="openCommitmentModal()" class="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg font-medium transition">+ Nuevo Compromiso</button>
+        </div>
+    </div>
+    <div id="commitments-container" class="space-y-3">
+        <!-- Rendered by JS -->
+    </div>
+</div>
+
+<!-- ==================== TAB: INFORMES ==================== -->
+<div id="tab-informes" class="tab-panel fade-in">
+    <div class="flex items-center justify-between mb-4 no-print">
+        <div>
+            <h2 class="text-2xl font-bold text-slate-900">Generador de Informes</h2>
+            <p class="text-sm text-slate-500">Informe auto-generado listo para entregar. Use Ctrl+P para imprimir.</p>
+        </div>
+        <div class="flex gap-2">
+            <button onclick="window.print()" class="text-xs bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition">🖨️ Imprimir Informe</button>
+        </div>
+    </div>
+    <div id="report-container" class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
+        <!-- Rendered by JS -->
+    </div>
+</div>
+
+</main>
+
+<!-- ==================== MODAL: TASK EDITOR ==================== -->
+<div id="taskModal" class="fixed inset-0 modal-overlay z-50 flex items-center justify-center hidden no-print">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between p-5 border-b border-slate-100">
+            <h3 id="taskModalTitle" class="font-bold text-lg text-slate-900">Nueva Tarea</h3>
+            <button onclick="closeTaskModal()" class="text-slate-400 hover:text-slate-600 text-xl">&times;</button>
+        </div>
+        <div class="p-5 space-y-4">
+            <input type="hidden" id="taskId">
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Título</label>
+                <input id="taskTitle" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="Nombre de la tarea">
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Capa</label>
+                    <select id="taskCapa" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm">
+                        <option value="normativo">⚖️ Normativo / Regulatorio</option>
+                        <option value="contratacion">📋 Contratación & Legal</option>
+                        <option value="arquitectura">🏗️ Arquitectura & Diseño</option>
+                        <option value="datos">📊 Datos & Analítica</option>
+                        <option value="seguridad">🔒 Seguridad & WAF</option>
+                        <option value="infraestructura">🖥️ Infraestructura</option>
+                        <option value="devops">⚙️ DevOps & Observabilidad</option>
+                        <option value="desarrollo">💻 Desarrollo</option>
+                        <option value="documentacion">📄 Documentación Técnica</option>
+                        <option value="delivery">🚀 Delivery & Despliegue</option>
+                        <option value="integracion">🔗 Integración & CPOs</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Tipo</label>
+                    <select id="taskTipo" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm">
+                        <option value="tecnico">🔧 Técnico</option>
+                        <option value="normativo">⚖️ Normativo / Regulatorio</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Fase</label>
+                    <select id="taskPhase" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm">
+                        <option value="phase-1">Fase 1: Fundación</option>
+                        <option value="phase-2">Fase 2: Core OCPI</option>
+                        <option value="phase-3">Fase 3: Data Lake</option>
+                        <option value="phase-4">Fase 4: Portal</option>
+                        <option value="phase-5">Fase 5: Sandbox</option>
+                        <option value="phase-6">Fase 6: DRP/Go-Live</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Área</label>
+                    <select id="taskArea" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm">
+                        <option value="backend">Backend</option>
+                        <option value="frontend">Frontend</option>
+                        <option value="devops">DevOps</option>
+                        <option value="arquitectura">Arquitectura</option>
+                        <option value="seguridad">Seguridad</option>
+                        <option value="legal">Legal</option>
+                        <option value="datos">Datos</option>
+                        <option value="integracion">Integración</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-3 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Estado</label>
+                    <select id="taskStatus" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm">
+                        <option value="pendiente">Pendiente</option>
+                        <option value="en_progreso">En Progreso</option>
+                        <option value="completado">Completado</option>
+                        <option value="bloqueado">Bloqueado</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Prioridad</label>
+                    <select id="taskPriority" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm">
+                        <option value="alta">Alta</option>
+                        <option value="media">Media</option>
+                        <option value="baja">Baja</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Responsable</label>
+                    <input id="taskOwner" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm" placeholder="Nombre">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Fecha Inicio</label>
+                    <input id="taskStart" type="date" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Fecha Fin</label>
+                    <input id="taskEnd" type="date" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm">
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Observaciones</label>
+                <textarea id="taskObs" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm obs-textarea" placeholder="Notas, detalles, bloqueantes..."></textarea>
+            </div>
+        </div>
+        <div class="flex justify-end gap-2 p-5 border-t border-slate-100">
+            <button onclick="closeTaskModal()" class="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg">Cancelar</button>
+            <button onclick="saveTask()" class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium">Guardar</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== MODAL: COMMITMENT EDITOR ==================== -->
+<div id="commitModal" class="fixed inset-0 modal-overlay z-50 flex items-center justify-center hidden no-print">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between p-5 border-b border-slate-100">
+            <h3 id="commitModalTitle" class="font-bold text-lg text-slate-900">Nuevo Compromiso</h3>
+            <button onclick="closeCommitmentModal()" class="text-slate-400 hover:text-slate-600 text-xl">&times;</button>
+        </div>
+        <div class="p-5 space-y-4">
+            <input type="hidden" id="commitId">
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Descripción del Compromiso</label>
+                <input id="commitTitle" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm" placeholder="¿Qué se comprometió?">
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Responsable</label>
+                    <input id="commitOwner" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm" placeholder="Nombre/Área">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Fecha Límite</label>
+                    <input id="commitDate" type="date" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Tipo</label>
+                    <select id="commitType" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm">
+                        <option value="entregable">Entregable</option>
+                        <option value="reunion">Reunión</option>
+                        <option value="decision">Decisión Pendiente</option>
+                        <option value="regulatorio">Regulatorio</option>
+                        <option value="externo">Dependencia Externa</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Estado</label>
+                    <select id="commitStatus" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm">
+                        <option value="pendiente">Pendiente</option>
+                        <option value="cumplido">Cumplido</option>
+                        <option value="vencido">Vencido</option>
+                        <option value="reprogramado">Reprogramado</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Observaciones / Acta</label>
+                <textarea id="commitObs" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm obs-textarea" placeholder="Notas de la reunión, decisiones tomadas, acuerdos..."></textarea>
+            </div>
+        </div>
+        <div class="flex justify-end gap-2 p-5 border-t border-slate-100">
+            <button onclick="closeCommitmentModal()" class="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg">Cancelar</button>
+            <button onclick="saveCommitment()" class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium">Guardar</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== JAVASCRIPT ENGINE ==================== -->
+<script>
+// ===================== STORAGE KEY =====================
+const STORAGE_KEY = 'upme-project-tracker-v1';
+
+// ===================== DEFAULT DATA =====================
+function getDefaultData() {
+    return {
+        version: 2,
+        lastUpdated: new Date().toISOString(),
+        phases: [
+            { id: 'phase-1', name: 'Fase 1: Diseño, Contratación & Fundación', weeks: 'Feb–May 2026', color: '#475569' },
+            { id: 'phase-2', name: 'Fase 2: Infraestructura & Core OCPI', weeks: 'May–Jul 2026', color: '#3b82f6' },
+            { id: 'phase-3', name: 'Fase 3: Data Lake, Analítica & Seguridad', weeks: 'Jun–Sep 2026', color: '#10b981' },
+            { id: 'phase-4', name: 'Fase 4: Portal, Sandbox & Integración CPOs', weeks: 'Jul–Oct 2026', color: '#f59e0b' },
+            { id: 'phase-5', name: 'Fase 5: Testing, Hardening & Pre-Producción', weeks: 'Ago–Oct 2026', color: '#8b5cf6' },
+            { id: 'phase-6', name: 'Fase 6: Go-Live & Operación', weeks: 'Oct–Dic 2026', color: '#ef4444' }
+        ],
+        tasks: [
+            // ═══════════ FEBRERO 2026 — Sprint Actual ═══════════
+            { id: 't31', title: 'Identificar y contactar CPO potencial para integración piloto', phase: 'phase-1', area: 'integracion', capa: 'integracion', tipo: 'tecnico', status: 'en_progreso', priority: 'alta', owner: 'Manager / Arquitecto', start: '2026-02-10', end: '2026-02-28', obs: 'Evaluar capacidad técnica, volumen de estaciones. Priorizar CPOs en ciudades principales.', created: '2026-02-01' },
+            { id: 't32', title: 'Reunión con empresa externa española — Marco OCPI', phase: 'phase-1', area: 'integracion', capa: 'integracion', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Arquitecto Senior / Manager', start: '2026-02-17', end: '2026-02-28', obs: 'Lecciones aprendidas UE, estándares adoptados, plazos integración CPOs.', created: '2026-02-01' },
+            { id: 't33', title: 'Definición estrategia de datos — Gobernanza y lineamientos', phase: 'phase-1', area: 'datos', capa: 'datos', tipo: 'tecnico', status: 'en_progreso', priority: 'alta', owner: 'Arquitecto Senior', start: '2026-02-03', end: '2026-02-28', obs: 'Clasificación, linaje, calidad, retención, RBAC. Alinear con Res. 40559 y SIC.', created: '2026-02-01' },
+            { id: 't34', title: 'Definición de infraestructura — On-Premise vs OCI Cloud', phase: 'phase-1', area: 'devops', capa: 'infraestructura', tipo: 'tecnico', status: 'en_progreso', priority: 'alta', owner: 'Arquitecto Senior / CTO', start: '2026-02-03', end: '2026-02-28', obs: 'Evaluar costos, tiempos, residencia de datos, escalabilidad, DRP.', created: '2026-02-01' },
+            { id: 't35', title: 'Guía de Implementación técnica (Resolución 40559)', phase: 'phase-1', area: 'legal', capa: 'normativo', tipo: 'normativo', status: 'en_progreso', priority: 'alta', owner: 'Arquitecto Senior', start: '2026-02-01', end: '2026-02-28', obs: 'Doc regulatorio obligatorio: OCPI 2.2.1, seguridad, flujos, requisitos CPOs, SLAs.', created: '2026-02-01' },
+            { id: 't36', title: 'Revisión y actualización de arquitectura C4 + DDD', phase: 'phase-1', area: 'arquitectura', capa: 'arquitectura', tipo: 'tecnico', status: 'en_progreso', priority: 'media', owner: 'Arquitecto Senior', start: '2026-02-10', end: '2026-02-28', obs: 'Actualizar diagramas C4 L1-L4. Validar bounded contexts y domain events.', created: '2026-02-01' },
+
+            // ═══════════ MARZO 2026 — Arranque Formal ═══════════
+            // NORMATIVO
+            { id: 't37', title: 'Análisis requisitos Resolución 40559 — Plazos y entregables', phase: 'phase-1', area: 'legal', capa: 'normativo', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Jurídico / Arquitecto', start: '2026-03-02', end: '2026-03-20', obs: 'Desglose artículos: plazos, entregables MinEnergía, responsabilidades UPME, sanciones SIC.', created: '2026-02-26' },
+            { id: 't38', title: 'Borrador términos de referencia regulatorios para CPOs', phase: 'phase-1', area: 'legal', capa: 'normativo', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Jurídico + Arquitecto', start: '2026-03-10', end: '2026-03-31', obs: 'Obligaciones CPOs: estándares OCPI, tiempos reporte, SLAs, penalidades.', created: '2026-02-26' },
+            // CONTRATACIÓN
+            { id: 't39', title: 'Estructuración contratación — Estudios previos y análisis sector TI', phase: 'phase-1', area: 'legal', capa: 'contratacion', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Oficina Contratación', start: '2026-03-02', end: '2026-03-20', obs: 'Ley 80/93, Ley 1150/07. Análisis proveedores cloud, Data Lake, consultoría. Estimación presupuesto.', created: '2026-02-26' },
+            { id: 't40', title: 'Definición modalidad contractual — Sel. Abreviada / Concurso / Directa', phase: 'phase-1', area: 'legal', capa: 'contratacion', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Jurídico + CTO', start: '2026-03-02', end: '2026-03-15', obs: 'Evaluar: Menor Cuantía (~30d), Concurso Méritos, Directa, Acuerdo Marco CCE.', created: '2026-02-26' },
+            { id: 't41', title: 'Análisis tipos de contrato — 1 año vs 3 años (recomendado)', phase: 'phase-1', area: 'legal', capa: 'contratacion', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Jurídico + CTO', start: '2026-03-05', end: '2026-03-20', obs: '3 AÑOS recomendado: 15-25% ahorro, continuidad, checkpoints anuales. Cláusulas: terminación anticipada, penalidades SLA, PI, NDA.', created: '2026-02-26' },
+            { id: 't42', title: 'Elaboración pliegos/TdR — Infraestructura Cloud y/o On-Premise', phase: 'phase-1', area: 'legal', capa: 'contratacion', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Contratación + CTO', start: '2026-03-15', end: '2026-03-31', obs: 'Sizing, networking, SLAs 99.9%, soporte 24/7, DRP, residencia datos Colombia.', created: '2026-02-26' },
+            { id: 't43', title: 'Elaboración pliegos/TdR — Data Lake y Analítica', phase: 'phase-1', area: 'legal', capa: 'contratacion', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Contratación + Arq. Datos', start: '2026-03-15', end: '2026-03-31', obs: 'Data Lake, motor analítico, catálogo datos. Proceso en PARALELO con infraestructura.', created: '2026-02-26' },
+            // ARQUITECTURA
+            { id: 't44', title: 'Arquitectura C4 final — Contexto, Contenedores, Componentes', phase: 'phase-1', area: 'arquitectura', capa: 'arquitectura', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Arquitecto Senior', start: '2026-03-02', end: '2026-03-25', obs: 'Formalizar L1-L4 con decisiones Feb. Diagramas PlantUML/Structurizr.', created: '2026-02-26' },
+            { id: 't45', title: 'Modelado DDD — Bounded Contexts, Aggregates, Domain Events', phase: 'phase-1', area: 'arquitectura', capa: 'arquitectura', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Arquitecto Senior', start: '2026-03-10', end: '2026-03-31', obs: 'Dominios: Ingesta, Validación, Query, Auth. Eventos: LocationUpdated, PriceChanged.', created: '2026-02-26' },
+            // SEGURIDAD
+            { id: 't46', title: 'Threat Modeling (STRIDE) — Superficie de ataque', phase: 'phase-1', area: 'seguridad', capa: 'seguridad', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Arq. Seguridad', start: '2026-03-10', end: '2026-03-31', obs: 'STRIDE por componente: API GW, microservicios, Data Lake, Portal.', created: '2026-02-26' },
+            // INFRAESTRUCTURA
+            { id: 'tm1', title: 'Diseño sizing y networking — Recursos, VLANs, firewalls', phase: 'phase-1', area: 'devops', capa: 'infraestructura', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Ingeniero Infra / CTO', start: '2026-03-02', end: '2026-03-25', obs: 'VLANs (DMZ, App, Data, Mgmt), firewalls, LB. 3 nodos K8s 16CPU/64GB, 2TB SSD.', created: '2026-02-26' },
+            // DEVOPS
+            { id: 'tm2', title: 'Definición estrategia DevOps — GitOps, branching, ambientes', phase: 'phase-1', area: 'devops', capa: 'devops', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'DevOps Lead', start: '2026-03-02', end: '2026-03-20', obs: 'Git flow: feature→develop→release→main. DEV auto-deploy, QA manual gate, PROD approval.', created: '2026-02-26' },
+            // DOCUMENTACIÓN
+            { id: 'tm3', title: 'Lineamientos de desarrollo — Coding standards, PR workflow', phase: 'phase-1', area: 'arquitectura', capa: 'documentacion', tipo: 'tecnico', status: 'pendiente', priority: 'media', owner: 'Tech Lead', start: '2026-03-10', end: '2026-03-31', obs: 'Go/Python coding standards, commit conventions, PR templates, coverage ≥80%.', created: '2026-02-26' },
+
+            // ═══════════ ABRIL 2026 — Diseño Detallado & Contratación ═══════════
+            // NORMATIVO
+            { id: 't47', title: 'Definición SLAs regulatorios — Disponibilidad 99.9%, tiempos respuesta', phase: 'phase-1', area: 'legal', capa: 'normativo', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Jurídico + Arquitecto', start: '2026-04-01', end: '2026-04-20', obs: 'SLAs Resolución: disponibilidad ≥99.9%, API ≤200ms P95, freshness ≤60s, portal ≥99.9%.', created: '2026-02-26' },
+            // CONTRATACIÓN
+            { id: 't48', title: 'Publicación pliegos y recepción propuestas — Infraestructura (SECOP II)', phase: 'phase-1', area: 'legal', capa: 'contratacion', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Oficina Contratación', start: '2026-04-01', end: '2026-04-20', obs: 'Publicación SECOP II. Plazo propuestas: 15-20 días hábiles. Audiencia aclaraciones.', created: '2026-02-26' },
+            { id: 't49', title: 'Publicación pliegos y recepción propuestas — Data Lake (SECOP II)', phase: 'phase-1', area: 'legal', capa: 'contratacion', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Oficina Contratación', start: '2026-04-01', end: '2026-04-20', obs: 'Proceso en PARALELO con infraestructura. Mismo cronograma publicación y evaluación.', created: '2026-02-26' },
+            { id: 't50', title: 'Evaluación propuestas técnicas y económicas — Infra + Data Lake', phase: 'phase-1', area: 'legal', capa: 'contratacion', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Comité Evaluador', start: '2026-04-20', end: '2026-04-30', obs: 'Criterios: experiencia (30%), precio (40%), SLAs ofrecidos (20%), soporte local (10%).', created: '2026-02-26' },
+            // ARQUITECTURA
+            { id: 't51', title: 'Diagramas de secuencia — Flujos Ingesta, Validación, Consulta, Auth', phase: 'phase-1', area: 'arquitectura', capa: 'arquitectura', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Arquitecto Senior', start: '2026-04-01', end: '2026-04-22', obs: 'CPO→API GW→Auth→Ingesta→Kafka→Validación→DL. Portal→CDN→Query→Cache→DB.', created: '2026-02-26' },
+            { id: 't52', title: 'Definición API Contracts (OpenAPI 3.0) por microservicio', phase: 'phase-1', area: 'arquitectura', capa: 'arquitectura', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Arquitecto + Backend Lead', start: '2026-04-15', end: '2026-04-30', obs: 'Contratos: Ingesta, Validation, Query, Admin, Auth APIs. Versionamiento /v1/.', created: '2026-02-26' },
+            // DATOS
+            { id: 't53', title: 'Modelo datos relacional — Diseño lógico y físico (PostgreSQL/ATP)', phase: 'phase-1', area: 'datos', capa: 'datos', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Arquitecto de Datos', start: '2026-04-01', end: '2026-04-20', obs: 'Tablas: locations, evses, connectors, tariffs, sessions, cpo_registry, audit_log.', created: '2026-02-26' },
+            // SEGURIDAD
+            { id: 't54', title: 'Gestión de secretos — Vault + RBAC KeyCloak Multi-Realm', phase: 'phase-1', area: 'seguridad', capa: 'seguridad', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Seguridad / Backend', start: '2026-04-01', end: '2026-04-25', obs: 'Rotación automática API keys 90d, certs mTLS 1yr. Realms: CPO, Admin, Public.', created: '2026-02-26' },
+            // INFRAESTRUCTURA
+            { id: 't55', title: 'Setup Kubernetes DEV On-Premise (k3s/RKE2) + Container Registry', phase: 'phase-1', area: 'devops', capa: 'infraestructura', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Ingeniero Infra', start: '2026-04-01', end: '2026-04-22', obs: 'k3s single-node DEV. Ubuntu 22.04 LTS. Storage: Longhorn. Registry: Harbor + Trivy.', created: '2026-02-26' },
+            // DEVOPS
+            { id: 't56', title: 'CI/CD Pipeline + ArgoCD GitOps deployment', phase: 'phase-1', area: 'devops', capa: 'devops', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'DevOps Lead', start: '2026-04-05', end: '2026-04-28', obs: 'Stages: lint→test→SAST→build→scan→push→deploy. ArgoCD app-of-apps. Helm charts.', created: '2026-02-26' },
+            // DOCUMENTACIÓN
+            { id: 'ta1', title: 'Documento de arquitectura de referencia — Visión técnica completa', phase: 'phase-1', area: 'arquitectura', capa: 'documentacion', tipo: 'tecnico', status: 'pendiente', priority: 'media', owner: 'Arquitecto Senior', start: '2026-04-15', end: '2026-04-30', obs: 'Consolidar C4, DDD, secuencias, API contracts, ADRs. Base para onboarding técnico.', created: '2026-02-26' },
+
+            // ═══════════ MAYO 2026 — Contratación Cierre & Desarrollo Arranque ═══════════
+            // NORMATIVO
+            { id: 't57', title: 'Revisión jurídica términos de servicio y responsabilidades CPOs', phase: 'phase-1', area: 'legal', capa: 'normativo', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Jurídico + Arquitecto', start: '2026-05-01', end: '2026-05-20', obs: 'Contrato tipo CPOs: obligaciones reporte, calidad datos, penalidades, Ley 1581.', created: '2026-02-26' },
+            // CONTRATACIÓN
+            { id: 't58', title: 'Negociación contractual — SLAs, penalidades, PI, confidencialidad', phase: 'phase-1', area: 'legal', capa: 'contratacion', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Jurídico + CTO', start: '2026-05-01', end: '2026-05-12', obs: 'ANS con penalidades automáticas, PI (código fuente es de UPME), NDA, escrow código.', created: '2026-02-26' },
+            { id: 't59', title: 'Firma contrato — Infraestructura plataforma (3 AÑOS recomendado)', phase: 'phase-2', area: 'legal', capa: 'contratacion', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Director UPME / Jurídico', start: '2026-05-12', end: '2026-05-22', obs: 'Provisión infra, soporte 24/7, SLAs 99.9%, checkpoint anual, renovación. SECOP II.', created: '2026-02-26' },
+            { id: 't60', title: 'Firma contrato — Data Lake y analítica (3 AÑOS en paralelo)', phase: 'phase-2', area: 'legal', capa: 'contratacion', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Director UPME / Jurídico', start: '2026-05-12', end: '2026-05-22', obs: 'Almacenamiento DL, motor analítico, soporte, capacitación equipo UPME.', created: '2026-02-26' },
+            // ARQUITECTURA
+            { id: 't61', title: 'Event-Driven Architecture — Kafka topics, schemas Avro/Protobuf', phase: 'phase-2', area: 'arquitectura', capa: 'arquitectura', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Arquitecto Senior', start: '2026-05-01', end: '2026-05-18', obs: 'Topics: ocpi.raw, ocpi.validated, ocpi.enriched, dq.alerts. Schema Registry BACKWARD.', created: '2026-02-26' },
+            // DATOS
+            { id: 't62', title: 'Diseño Data Lake zones — Raw, Curated, Analytical', phase: 'phase-2', area: 'datos', capa: 'datos', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Arquitecto de Datos', start: '2026-05-01', end: '2026-05-20', obs: 'Raw: Parquet por fecha/CPO, 5yr retención. Curated: normalizado. Analytical: vistas mat.', created: '2026-02-26' },
+            { id: 't63', title: 'Diseño capa de caché — Redis/Valkey, TTL policies', phase: 'phase-2', area: 'datos', capa: 'datos', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Backend Sr. / Arq. Datos', start: '2026-05-10', end: '2026-05-28', obs: 'Cache-aside locations TTL 60s, write-through precios TTL 30s. Redis Sentinel HA.', created: '2026-02-26' },
+            // SEGURIDAD
+            { id: 't64', title: 'Implementación mTLS + certificados X.509 inter-servicio', phase: 'phase-2', area: 'seguridad', capa: 'seguridad', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Seguridad / DevOps', start: '2026-05-01', end: '2026-05-18', obs: 'cert-manager K8s. CA interna. Rotación automática. mTLS obligatorio microservicios+CPOs.', created: '2026-02-26' },
+            { id: 't65', title: 'Configuración WAF + Rate Limiting por tier de CPO', phase: 'phase-2', area: 'seguridad', capa: 'seguridad', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Seguridad / Infra', start: '2026-05-10', end: '2026-05-28', obs: 'WAF: SQLi, XSS, CSRF, bots. Rate: T1 100rpm, T2 500rpm, T3 2000rpm. IP allowlist CPOs.', created: '2026-02-26' },
+            // INFRAESTRUCTURA
+            { id: 'tm4', title: 'Networking — VPN Site-to-Site, subnets, firewalls, LB', phase: 'phase-2', area: 'devops', capa: 'infraestructura', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Ingeniero Infra', start: '2026-05-05', end: '2026-05-25', obs: 'VLANs: DMZ, App, Data, Mgmt. VPN IPsec CPOs. LB: MetalLB/Traefik On-Premise.', created: '2026-02-26' },
+            { id: 'tm5', title: 'Cluster multi-nodo HA — 3 masters + 3 workers', phase: 'phase-2', area: 'devops', capa: 'infraestructura', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Ingeniero Infra', start: '2026-05-15', end: '2026-05-31', obs: 'Migrar single-node→cluster HA. etcd HA, Longhorn replicated, Calico networking.', created: '2026-02-26' },
+            // DEVOPS
+            { id: 'tm6', title: 'IaC Terraform/Pulumi — Módulos base + Monitoring stack', phase: 'phase-2', area: 'devops', capa: 'devops', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'DevOps Lead', start: '2026-05-01', end: '2026-05-28', obs: 'Módulos K8s, networking, storage. kube-prometheus-stack. Dashboards y alertas.', created: '2026-02-26' },
+            // DESARROLLO
+            { id: 't66', title: 'PoC Microservicio Ingesta OCPI (Go) — Endpoint + validación', phase: 'phase-2', area: 'backend', capa: 'desarrollo', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Backend Sr.', start: '2026-05-20', end: '2026-05-31', obs: 'PUT /ocpi/2.2.1/locations, validación schema, publish Kafka, healthcheck. Deploy DEV K8s.', created: '2026-02-26' },
+
+            // ═══════════ JUNIO 2026 — Desarrollo Core ═══════════
+            // NORMATIVO
+            { id: 't67', title: 'Informe de avance al Ministerio — Primer corte ejecutivo', phase: 'phase-3', area: 'legal', capa: 'normativo', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Director UPME / CTO', start: '2026-06-01', end: '2026-06-15', obs: 'Avance plataforma, estado contratación, cronograma, riesgos, próximos hitos.', created: '2026-02-26' },
+            // DATOS
+            { id: 't68', title: 'Flujos ETL/ELT — Pipelines Spark/dbt (Raw→Curated→Analytical)', phase: 'phase-3', area: 'datos', capa: 'datos', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Data Engineer', start: '2026-06-01', end: '2026-06-22', obs: 'Limpieza, normalización, deduplicación, agregaciones. Scheduler: Airflow/Dagster.', created: '2026-02-26' },
+            { id: 't69', title: 'Data Quality — Great Expectations + reglas OCPI', phase: 'phase-3', area: 'datos', capa: 'datos', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Data Engineer', start: '2026-06-10', end: '2026-06-30', obs: 'Checks: completitud OCPI, unicidad EVSE IDs, rangos válidos, consistencia temporal.', created: '2026-02-26' },
+            // SEGURIDAD
+            { id: 't70', title: 'Hardening contenedores — Pod Security, Trivy, Falco runtime', phase: 'phase-3', area: 'seguridad', capa: 'seguridad', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Seguridad / DevOps', start: '2026-06-01', end: '2026-06-18', obs: 'PSS restricted. Non-root, read-only rootfs. Trivy block CRITICAL. Falco alerts.', created: '2026-02-26' },
+            // INFRAESTRUCTURA
+            { id: 'tm7', title: 'Provisioning ambiente staging — Réplica de producción', phase: 'phase-3', area: 'devops', capa: 'infraestructura', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Ingeniero Infra', start: '2026-06-15', end: '2026-06-30', obs: 'Staging = réplica 1:1 PROD (sizing reducido). Misma topología y políticas. Datos anon.', created: '2026-02-26' },
+            // DEVOPS
+            { id: 'tm8', title: 'Log aggregation (Loki/ELK) + Trazabilidad distribuida (OpenTelemetry)', phase: 'phase-3', area: 'devops', capa: 'devops', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'DevOps Lead', start: '2026-06-05', end: '2026-06-25', obs: 'Logs centralizados JSON. OpenTelemetry SDK Go/Python. Jaeger trazas. Correlation ID.', created: '2026-02-26' },
+            // DESARROLLO
+            { id: 't71', title: 'Microservicio Ingesta OCPI — Desarrollo completo (Go)', phase: 'phase-3', area: 'backend', capa: 'desarrollo', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Backend Sr.', start: '2026-06-01', end: '2026-06-25', obs: 'Producción-ready: validación completa, Kafka, retry, circuit breaker, metrics.', created: '2026-02-26' },
+            { id: 't72', title: 'Microservicio Validación OCPI — Schemas y reglas negocio (Go)', phase: 'phase-3', area: 'backend', capa: 'desarrollo', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Backend Mid', start: '2026-06-10', end: '2026-06-30', obs: 'Validación schema OCPI 2.2.1, reglas negocio, DQ checks, dead letter queue.', created: '2026-02-26' },
+
+            // ═══════════ JULIO 2026 — Desarrollo Avanzado ═══════════
+            // DATOS
+            { id: 't73', title: 'Data Lineage y catalogación — Apache Atlas + metadata', phase: 'phase-3', area: 'datos', capa: 'datos', tipo: 'tecnico', status: 'pendiente', priority: 'media', owner: 'Data Engineer', start: '2026-07-01', end: '2026-07-20', obs: 'Catálogo de datos, linaje end-to-end, clasificación automática.', created: '2026-02-26' },
+            // SEGURIDAD
+            { id: 'tm9', title: 'Plan Pentesting — Alcance OWASP Top 10 + equipo externo', phase: 'phase-3', area: 'seguridad', capa: 'seguridad', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'CISO / Arq. Seguridad', start: '2026-07-01', end: '2026-07-15', obs: 'APIs externas, Portal, API GW, Auth. Contratar ethical hackers especializados.', created: '2026-02-26' },
+            // DESARROLLO
+            { id: 't74', title: 'Microservicio Query — API pública consulta (Go)', phase: 'phase-4', area: 'backend', capa: 'desarrollo', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Backend Sr.', start: '2026-07-01', end: '2026-07-22', obs: 'GET /locations, /tariffs, /sessions. Cache Redis. Paginación, filtros, geolocalización.', created: '2026-02-26' },
+            { id: 't75', title: 'API Gateway + Auth Server — OAuth 2.1, rate limiting, API keys', phase: 'phase-4', area: 'backend', capa: 'desarrollo', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Backend Sr.', start: '2026-07-05', end: '2026-07-25', obs: 'KeyCloak Multi-Realm. Client Credentials (CPO), Auth Code+PKCE (Admin), Public.', created: '2026-02-26' },
+            { id: 't76', title: 'Portal Público — Frontend consulta ciudadana (React/Next.js)', phase: 'phase-4', area: 'frontend', capa: 'desarrollo', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Frontend Lead', start: '2026-07-10', end: '2026-07-31', obs: 'Mapa interactivo, filtros, disponibilidad real-time, precios por conector.', created: '2026-02-26' },
+            // DOCUMENTACIÓN
+            { id: 'ta2', title: 'Documentación técnica microservicios — Ingesta + Validación', phase: 'phase-4', area: 'arquitectura', capa: 'documentacion', tipo: 'tecnico', status: 'pendiente', priority: 'media', owner: 'Backend Sr.', start: '2026-07-15', end: '2026-07-31', obs: 'Doc interna: arquitectura, flujos, API, configuración, troubleshooting.', created: '2026-02-26' },
+            // DELIVERY
+            { id: 'ta3', title: 'Estrategia de releases — Versionamiento semántico + changelog', phase: 'phase-4', area: 'devops', capa: 'delivery', tipo: 'tecnico', status: 'pendiente', priority: 'media', owner: 'DevOps Lead', start: '2026-07-15', end: '2026-07-31', obs: 'SemVer, changelog automático, release notes, rollback procedures.', created: '2026-02-26' },
+
+            // ═══════════ AGOSTO 2026 — Testing & Integración ═══════════
+            // SEGURIDAD
+            { id: 't77', title: 'Ejecución Pentesting — OWASP Top 10 por equipo especializado', phase: 'phase-5', area: 'seguridad', capa: 'seguridad', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'PenTesters Externos', start: '2026-08-01', end: '2026-08-20', obs: 'Injection, broken auth, SSRF, IDOR. Informe de hallazgos con severidad y recomendaciones.', created: '2026-02-26' },
+            { id: 't78', title: 'Remediación hallazgos de seguridad — Fix y verificación', phase: 'phase-5', area: 'seguridad', capa: 'seguridad', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Backend + Seguridad', start: '2026-08-15', end: '2026-08-31', obs: 'Priorizar CRITICAL/HIGH. Verificar fixes. Re-test parcial post-remediación.', created: '2026-02-26' },
+            // DESARROLLO
+            { id: 't79', title: 'Portal Administrativo — Dashboard interno gestión', phase: 'phase-4', area: 'frontend', capa: 'desarrollo', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Frontend Lead', start: '2026-08-01', end: '2026-08-20', obs: 'Dashboard KPIs, gestión CPOs, monitoreo estaciones, alertas, reportes.', created: '2026-02-26' },
+            { id: 't80', title: 'Sandbox Developer Portal — Auto-registro CPOs + Mock OCPI', phase: 'phase-4', area: 'frontend', capa: 'desarrollo', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Backend + Frontend', start: '2026-08-05', end: '2026-08-25', obs: 'Auto-registro, API keys, Swagger UI, Mock OCPI Server para validación payloads.', created: '2026-02-26' },
+            { id: 'ta4', title: 'PoC integración OCPI con CPO piloto — Sandbox end-to-end', phase: 'phase-4', area: 'integracion', capa: 'integracion', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Arquitecto + CPO', start: '2026-08-15', end: '2026-08-31', obs: 'Primera integración real. Validar flujo completo: auth→ingesta→validación→query.', created: '2026-02-26' },
+            // DOCUMENTACIÓN
+            { id: 'ta5', title: 'Runbooks operativos — Incidentes, escalamiento, procedimientos', phase: 'phase-5', area: 'devops', capa: 'documentacion', tipo: 'tecnico', status: 'pendiente', priority: 'media', owner: 'DevOps + Backend', start: '2026-08-10', end: '2026-08-28', obs: 'Runbook por servicio: troubleshooting, rollback, escalamiento, contactos.', created: '2026-02-26' },
+            // DELIVERY
+            { id: 'ta6', title: 'Feature flags + Blue/Green deployment en Kubernetes', phase: 'phase-5', area: 'devops', capa: 'delivery', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'DevOps Lead', start: '2026-08-01', end: '2026-08-20', obs: 'Toggles para despliegue gradual. Blue/Green para zero-downtime deployments.', created: '2026-02-26' },
+
+            // ═══════════ SEPTIEMBRE 2026 — Pre-Producción ═══════════
+            // NORMATIVO
+            { id: 't81', title: 'Entrega formal plataforma consulta pública al Ministerio', phase: 'phase-5', area: 'legal', capa: 'normativo', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Director UPME / CTO', start: '2026-09-01', end: '2026-09-15', obs: 'Demostración funcional, documentación regulatoria, evidencias de cumplimiento.', created: '2026-02-26' },
+            // INFRAESTRUCTURA
+            { id: 'tm10', title: 'DRP y alta disponibilidad — Diseño, configuración, pruebas', phase: 'phase-5', area: 'devops', capa: 'infraestructura', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Ingeniero Infra', start: '2026-09-01', end: '2026-09-20', obs: 'RPO<1h, RTO<30min. Backup automatizado. Failover testing. Documentar procedimientos.', created: '2026-02-26' },
+            // DEVOPS
+            { id: 'tm11', title: 'SLOs y Error Budgets — Definición y monitoreo automatizado', phase: 'phase-5', area: 'devops', capa: 'devops', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'DevOps + Arquitecto', start: '2026-09-01', end: '2026-09-18', obs: 'SLOs: API 99.9%, latencia P99<100ms, freshness<60s. Error budgets por servicio.', created: '2026-02-26' },
+            // DESARROLLO
+            { id: 't82', title: 'Integración end-to-end — Todos los microservicios conectados', phase: 'phase-5', area: 'backend', capa: 'desarrollo', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Backend Lead', start: '2026-09-01', end: '2026-09-20', obs: 'Ingesta→Validación→DL→Query→Portal. Auth end-to-end. Smoke tests automatizados.', created: '2026-02-26' },
+            { id: 't83', title: 'Onboarding CPOs piloto (3-5 CPOs) — Acompañamiento técnico', phase: 'phase-5', area: 'integracion', capa: 'integracion', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Arquitecto + Soporte', start: '2026-09-10', end: '2026-09-30', obs: 'Guía onboarding, soporte técnico dedicado, validación datos, SLAs.', created: '2026-02-26' },
+            // DELIVERY
+            { id: 't84', title: 'Pruebas de carga — k6/Locust — Simulación 5000 estaciones', phase: 'phase-5', area: 'devops', capa: 'delivery', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'QA + DevOps', start: '2026-09-05', end: '2026-09-22', obs: 'Stress test: 5000 estaciones, 100 CPOs concurrentes. Identificar bottlenecks.', created: '2026-02-26' },
+            // DOCUMENTACIÓN
+            { id: 'ta7', title: 'Documentación APIs — Swagger/OpenAPI en Developer Portal', phase: 'phase-5', area: 'arquitectura', capa: 'documentacion', tipo: 'tecnico', status: 'pendiente', priority: 'media', owner: 'Backend + Arquitecto', start: '2026-09-15', end: '2026-09-30', obs: 'APIs públicas documentadas, ejemplos, SDK, guía de integración CPOs.', created: '2026-02-26' },
+
+            // ═══════════ OCTUBRE 2026 — Go-Live ═══════════
+            // NORMATIVO
+            { id: 't85', title: 'Certificación cumplimiento regulatorio — Informe final evidencias', phase: 'phase-6', area: 'legal', capa: 'normativo', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Jurídico + CTO', start: '2026-10-01', end: '2026-10-15', obs: 'Informe: cumplimiento Res. 40559, evidencias técnicas, SLAs alcanzados, auditoría SIC.', created: '2026-02-26' },
+            // INFRAESTRUCTURA
+            { id: 'tm12', title: 'Provisioning ambiente producción final', phase: 'phase-6', area: 'devops', capa: 'infraestructura', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Ingeniero Infra', start: '2026-10-01', end: '2026-10-12', obs: 'PROD: cluster HA, networking final, storage, monitoring, backup, DRP activo.', created: '2026-02-26' },
+            // DELIVERY
+            { id: 't86', title: 'Go-Live — Despliegue a producción', phase: 'phase-6', area: 'devops', capa: 'delivery', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Todo el equipo', start: '2026-10-15', end: '2026-10-20', obs: 'Despliegue Blue/Green. Checklist pre-launch. Rollback plan documentado y probado.', created: '2026-02-26' },
+            { id: 't87', title: 'Monitoreo post-despliegue — War room 48h + dashboards', phase: 'phase-6', area: 'devops', capa: 'delivery', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'DevOps + Backend', start: '2026-10-20', end: '2026-10-25', obs: 'War room 48h. Dashboards dedicados. Alertas en tiempo real. Escalamiento rápido.', created: '2026-02-26' },
+
+            // ═══════════ NOVIEMBRE 2026 — Estabilización ═══════════
+            // NORMATIVO
+            { id: 't88', title: 'Supervisión SIC activa — Inicio período supervisión', phase: 'phase-6', area: 'legal', capa: 'normativo', tipo: 'normativo', status: 'pendiente', priority: 'alta', owner: 'Jurídico + CTO', start: '2026-11-01', end: '2026-11-15', obs: 'Inicio período supervisión SIC. Logs inmutables WORM. Informes periódicos.', created: '2026-02-26' },
+            // DEVOPS
+            { id: 'tm13', title: 'Chaos Engineering — Pruebas resiliencia (Litmus Chaos)', phase: 'phase-6', area: 'devops', capa: 'devops', tipo: 'tecnico', status: 'pendiente', priority: 'media', owner: 'DevOps + SRE', start: '2026-11-05', end: '2026-11-20', obs: 'Pod kill, network partition, disk pressure. Validar auto-recovery y alertas.', created: '2026-02-26' },
+            // DELIVERY
+            { id: 't89', title: 'Estabilización post-launch — Fixes, optimización, feedback', phase: 'phase-6', area: 'devops', capa: 'delivery', tipo: 'tecnico', status: 'pendiente', priority: 'alta', owner: 'Todo el equipo', start: '2026-11-01', end: '2026-11-30', obs: 'Bug fixes, performance tuning, feedback CPOs, documentación lecciones aprendidas.', created: '2026-02-26' },
+        ],
+        commitments: [
+            { id: 'c1', title: 'Entrega de Guía de Implementación técnica (Res. 40559)', owner: 'Arquitecto Senior', date: '2026-03-31', type: 'regulatorio', status: 'pendiente', obs: 'Documento regulatorio obligatorio. Plazo definido por resolución.' },
+            { id: 'c2', title: 'Publicación pliegos contratación en SECOP II', owner: 'Oficina Contratación', date: '2026-04-15', type: 'regulatorio', status: 'pendiente', obs: 'Pliegos infraestructura + Data Lake en paralelo.' },
+            { id: 'c3', title: 'Firma contratos infraestructura + Data Lake', owner: 'Director UPME / Jurídico', date: '2026-05-22', type: 'regulatorio', status: 'pendiente', obs: 'Contratos de 3 años recomendados. Registro SECOP II.' },
+            { id: 'c4', title: 'Informe de avance al Ministerio — Primer corte', owner: 'Director UPME / CTO', date: '2026-06-15', type: 'regulatorio', status: 'pendiente', obs: 'Avance plataforma, contratación, riesgos.' },
+            { id: 'c5', title: 'Portal público operativo (precios, ubicación, disponibilidad)', owner: 'Equipo IT', date: '2026-09-15', type: 'regulatorio', status: 'pendiente', obs: 'Plazo regulatorio post-guía.' },
+            { id: 'c6', title: 'Sandbox CPOs disponible + Developer Portal', owner: 'Equipo IT', date: '2026-08-25', type: 'entregable', status: 'pendiente', obs: 'Auto-registro, API keys, Mock OCPI, Swagger.' },
+            { id: 'c7', title: 'Go-Live plataforma de interoperabilidad', owner: 'Todo el equipo', date: '2026-10-20', type: 'entregable', status: 'pendiente', obs: 'Despliegue producción. War room 48h.' },
+            { id: 'c8', title: 'Reunión empresa española — Marco OCPI europeo', owner: 'Arquitecto Senior / Manager', date: '2026-02-28', type: 'externo', status: 'pendiente', obs: 'Lecciones aprendidas UE, estándares adoptados.' },
+        ],
+        regulatoryMilestones: [
+            { id: 'r1', title: 'Publicación Resolución 40559 de 2024', date: '2024-12-15', status: 'completado' },
+            { id: 'r2', title: 'Guía de Implementación técnica (plazo resolución)', date: '2026-03-31', status: 'en_progreso' },
+            { id: 'r3', title: 'Contratación infraestructura y Data Lake adjudicada', date: '2026-05-22', status: 'pendiente' },
+            { id: 'r4', title: 'Plataforma consulta pública operativa', date: '2026-09-15', status: 'pendiente' },
+            { id: 'r5', title: 'Integración CPOs obligatoria (180 días post-guía)', date: '2026-09-30', status: 'pendiente' },
+            { id: 'r6', title: 'Go-Live plataforma de interoperabilidad', date: '2026-10-20', status: 'pendiente' },
+            { id: 'r7', title: 'Supervisión SIC activa', date: '2026-11-15', status: 'pendiente' },
+        ]
+    };
+}
+
+// ===================== STATE =====================
+let DATA = {};
+
+function loadData() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+        try {
+            DATA = JSON.parse(stored);
+        } catch (e) {
+            DATA = getDefaultData();
+        }
+    } else {
+        DATA = getDefaultData();
+    }
+}
+
+function saveData() {
+    DATA.lastUpdated = new Date().toISOString();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(DATA));
+    document.getElementById('lastSaved').textContent = 'Guardado: ' + new Date().toLocaleTimeString('es-CO');
+}
+
+function exportData() {
+    const blob = new Blob([JSON.stringify(DATA, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `upme-tracker-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            DATA = JSON.parse(e.target.result);
+            saveData();
+            renderAll();
+            alert('Datos importados correctamente.');
+        } catch (err) {
+            alert('Error al importar: archivo JSON inválido.');
+        }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+}
+
+function resetData() {
+    if (confirm('¿Está seguro? Esto eliminará todos los datos y restaurará los valores por defecto.')) {
+        DATA = getDefaultData();
+        saveData();
+        renderAll();
+    }
+}
+
+// ===================== TAB SWITCHING =====================
+function switchTab(tabName) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tabName).classList.add('active');
+    const btns = document.querySelectorAll('.tab-btn');
+    const tabMap = ['dashboard', 'gantt', 'tareas', 'compromisos', 'informes'];
+    const idx = tabMap.indexOf(tabName);
+    if (idx >= 0 && btns[idx]) btns[idx].classList.add('active');
+    if (tabName === 'gantt') renderGantt();
+    if (tabName === 'informes') renderReport();
+    if (tabName === 'dashboard') renderDashboard();
+}
+
+// ===================== HELPERS =====================
+const PHASE_NAMES = {
+    'phase-1': 'Fase 1: Diseño & Contratación',
+    'phase-2': 'Fase 2: Infra & Core OCPI',
+    'phase-3': 'Fase 3: Data Lake & Seguridad',
+    'phase-4': 'Fase 4: Portal & Integración',
+    'phase-5': 'Fase 5: Testing & Pre-Prod',
+    'phase-6': 'Fase 6: Go-Live & Operación'
+};
+const STATUS_COLORS = {
+    'completado': 'bg-emerald-100 text-emerald-700',
+    'en_progreso': 'bg-blue-100 text-blue-700',
+    'pendiente': 'bg-slate-100 text-slate-600',
+    'bloqueado': 'bg-red-100 text-red-700',
+    'cumplido': 'bg-emerald-100 text-emerald-700',
+    'vencido': 'bg-red-100 text-red-700',
+    'reprogramado': 'bg-amber-100 text-amber-700'
+};
+const STATUS_LABELS = {
+    'completado': 'Completado', 'en_progreso': 'En Progreso', 'pendiente': 'Pendiente',
+    'bloqueado': 'Bloqueado', 'cumplido': 'Cumplido', 'vencido': 'Vencido', 'reprogramado': 'Reprogramado'
+};
+const PRIORITY_BORDERS = { 'alta': 'priority-high', 'media': 'priority-medium', 'baja': 'priority-low' };
+const CAPA_NAMES = {
+    'normativo': '⚖️ Normativo', 'contratacion': '📋 Contratación', 'arquitectura': '🏗️ Arquitectura',
+    'datos': '📊 Datos', 'seguridad': '🔒 Seguridad', 'infraestructura': '🖥️ Infraestructura',
+    'devops': '⚙️ DevOps', 'desarrollo': '💻 Desarrollo', 'documentacion': '📄 Documentación',
+    'delivery': '🚀 Delivery', 'integracion': '🔗 Integración'
+};
+const CAPA_COLORS = {
+    'normativo': 'bg-amber-100 text-amber-800', 'contratacion': 'bg-orange-100 text-orange-800',
+    'arquitectura': 'bg-blue-100 text-blue-800', 'datos': 'bg-emerald-100 text-emerald-800',
+    'seguridad': 'bg-red-100 text-red-800', 'infraestructura': 'bg-purple-100 text-purple-800',
+    'devops': 'bg-violet-100 text-violet-800', 'desarrollo': 'bg-sky-100 text-sky-800',
+    'documentacion': 'bg-teal-100 text-teal-800', 'delivery': 'bg-indigo-100 text-indigo-800',
+    'integracion': 'bg-cyan-100 text-cyan-800'
+};
+
+function uid() { return 'id-' + Date.now() + '-' + Math.random().toString(36).substr(2, 5); }
+function fmtDate(d) { if (!d) return '—'; return new Date(d + 'T00:00:00').toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' }); }
+function daysBetween(d1, d2) { return Math.ceil((new Date(d2) - new Date(d1)) / 86400000); }
+
+// ===================== DASHBOARD =====================
+let chartStatus = null, chartAreas = null;
+
+function renderDashboard() {
+    const tasks = DATA.tasks || [];
+    const commits = DATA.commitments || [];
+    const total = tasks.length;
+    const completed = tasks.filter(t => t.status === 'completado').length;
+    const inProgress = tasks.filter(t => t.status === 'en_progreso').length;
+    const blocked = tasks.filter(t => t.status === 'bloqueado').length;
+    const pending = tasks.filter(t => t.status === 'pendiente').length;
+    const pctGlobal = total > 0 ? Math.round((completed / total) * 100) : 0;
+    const pendingCommits = commits.filter(c => c.status === 'pendiente' || c.status === 'vencido').length;
+    const riskItems = blocked + tasks.filter(t => t.status !== 'completado' && t.end && new Date(t.end) < new Date()).length;
+
+    document.getElementById('kpi-global').textContent = pctGlobal + '%';
+    document.getElementById('kpi-global-bar').style.width = pctGlobal + '%';
+    document.getElementById('kpi-tasks').textContent = completed + '/' + total;
+    document.getElementById('kpi-commitments').textContent = pendingCommits;
+    document.getElementById('kpi-risk').textContent = riskItems;
+
+    // Phase progress
+    const phaseEl = document.getElementById('phase-progress');
+    phaseEl.innerHTML = DATA.phases.map(p => {
+        const pTasks = tasks.filter(t => t.phase === p.id);
+        const pDone = pTasks.filter(t => t.status === 'completado').length;
+        const pPct = pTasks.length > 0 ? Math.round((pDone / pTasks.length) * 100) : 0;
+        return `<div>
+            <div class="flex justify-between text-xs mb-1">
+                <span class="font-medium text-slate-700">${p.name}</span>
+                <span class="font-bold" style="color:${p.color}">${pPct}% (${pDone}/${pTasks.length})</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-2.5">
+                <div class="h-2.5 rounded-full transition-all" style="width:${pPct}%; background:${p.color}"></div>
+            </div>
+        </div>`;
+    }).join('');
+
+    // Upcoming deadlines
+    const upEl = document.getElementById('upcoming-deadlines');
+    const upcoming = [...tasks.filter(t => t.end && t.status !== 'completado'), ...commits.filter(c => c.status === 'pendiente')]
+        .map(item => ({ title: item.title, date: item.end || item.date, type: item.phase ? 'tarea' : (item.type || 'compromiso') }))
+        .filter(i => i.date)
+        .sort((a, b) => new Date(a.date) - new Date(b.date))
+        .slice(0, 8);
+    upEl.innerHTML = upcoming.length === 0 ? '<p class="text-xs text-slate-400">Sin vencimientos próximos</p>' :
+        upcoming.map(u => {
+            const days = daysBetween(new Date().toISOString().split('T')[0], u.date);
+            const urgency = days < 0 ? 'text-red-600 font-bold' : days <= 7 ? 'text-amber-600 font-semibold' : 'text-slate-600';
+            return `<div class="flex items-start gap-2 text-xs p-2 rounded-lg hover:bg-slate-50">
+                <span class="${urgency} min-w-[60px]">${fmtDate(u.date)}</span>
+                <span class="text-slate-700 flex-1">${u.title}</span>
+                <span class="text-[10px] text-slate-400">${days < 0 ? Math.abs(days) + 'd atrás' : days + 'd'}</span>
+            </div>`;
+        }).join('');
+
+    // Charts
+    renderCharts(completed, inProgress, pending, blocked, tasks);
+}
+
+function renderCharts(completed, inProgress, pending, blocked, tasks) {
+    const ctx1 = document.getElementById('chartStatus');
+    if (chartStatus) chartStatus.destroy();
+    chartStatus = new Chart(ctx1, {
+        type: 'doughnut',
+        data: {
+            labels: ['Completado', 'En Progreso', 'Pendiente', 'Bloqueado'],
+            datasets: [{
+                data: [completed, inProgress, pending, blocked],
+                backgroundColor: ['#10b981', '#3b82f6', '#94a3b8', '#ef4444'],
+                borderWidth: 0
+            }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } } }
+    });
+
+    const capas = Object.keys(CAPA_NAMES);
+    const capaData = capas.map(c => {
+        const ct = tasks.filter(t => t.capa === c);
+        return ct.length > 0 ? Math.round((ct.filter(t => t.status === 'completado').length / ct.length) * 100) : 0;
+    });
+    const ctx2 = document.getElementById('chartAreas');
+    if (chartAreas) chartAreas.destroy();
+    chartAreas = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: capas.map(c => (CAPA_NAMES[c] || c).replace(/^[^\s]+\s/, '')),
+            datasets: [{
+                label: '% Avance',
+                data: capaData,
+                backgroundColor: '#3b82f6',
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+            scales: { x: { max: 100, ticks: { font: { size: 10 } } }, y: { ticks: { font: { size: 10 } } } },
+            plugins: { legend: { display: false } }
+        }
+    });
+}
+
+// ===================== GANTT CHART =====================
+function renderGantt() {
+    const container = document.getElementById('gantt-container');
+    const filter = document.getElementById('ganttFilter').value;
+    let items = [];
+
+    if (filter === 'regulatory') {
+        items = (DATA.regulatoryMilestones || []).map(r => ({
+            ...r, phase: 'regulatory', start: r.date, end: r.date, isRegulatory: true
+        }));
+    } else {
+        items = DATA.tasks.filter(t => filter === 'all' || t.phase === filter);
+    }
+
+    if (items.length === 0) {
+        container.innerHTML = '<div class="p-8 text-center text-slate-400 text-sm">No hay items para mostrar.</div>';
+        return;
+    }
+
+    // Calculate date range
+    const allDates = items.flatMap(i => [i.start, i.end].filter(Boolean)).map(d => new Date(d));
+    const minDate = new Date(Math.min(...allDates));
+    const maxDate = new Date(Math.max(...allDates));
+    minDate.setDate(minDate.getDate() - 7);
+    maxDate.setDate(maxDate.getDate() + 14);
+    const totalDays = daysBetween(minDate.toISOString().split('T')[0], maxDate.toISOString().split('T')[0]);
+
+    // Generate month headers
+    const months = [];
+    let d = new Date(minDate);
+    while (d <= maxDate) {
+        const key = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+        if (!months.find(m => m.key === key)) {
+            const daysFromStart = daysBetween(minDate.toISOString().split('T')[0], d.toISOString().split('T')[0]);
+            months.push({ key, label: d.toLocaleDateString('es-CO', { month: 'short', year: 'numeric' }), offset: daysFromStart });
+        }
+        d.setDate(d.getDate() + 1);
+    }
+
+    // Today marker
+    const today = new Date().toISOString().split('T')[0];
+    const todayOffset = daysBetween(minDate.toISOString().split('T')[0], today);
+    const todayPct = (todayOffset / totalDays) * 100;
+
+    let html = `<div class="relative" style="min-height:${items.length * 40 + 60}px">`;
+
+    // Month headers
+    html += '<div class="flex border-b border-slate-200 sticky top-0 bg-slate-50 z-10" style="height:30px;">';
+    html += '<div class="flex-shrink-0" style="width:220px; padding:6px 12px;"><span class="text-[10px] font-bold text-slate-500 uppercase">Tarea</span></div>';
+    html += '<div class="flex-1 relative">';
+    months.forEach((m, i) => {
+        const left = (m.offset / totalDays) * 100;
+        const nextOffset = i < months.length - 1 ? months[i + 1].offset : totalDays;
+        const width = ((nextOffset - m.offset) / totalDays) * 100;
+        html += `<div class="absolute top-0 h-full border-l border-slate-200 text-[10px] text-slate-500 px-1 font-medium" style="left:${left}%; width:${width}%">${m.label}</div>`;
+    });
+    html += '</div></div>';
+
+    // Today line
+    if (todayPct >= 0 && todayPct <= 100) {
+        html += `<div class="absolute z-20 top-[30px] bottom-0" style="left:calc(220px + (100% - 220px) * ${todayPct / 100});">
+            <div class="w-0.5 h-full bg-red-400 opacity-60"></div>
+            <div class="absolute -top-0 -left-2 text-[8px] text-red-500 font-bold">HOY</div>
+        </div>`;
+    }
+
+    // Task rows
+    items.forEach((item, idx) => {
+        const startDays = item.start ? daysBetween(minDate.toISOString().split('T')[0], item.start) : 0;
+        const endDays = item.end ? daysBetween(minDate.toISOString().split('T')[0], item.end) : startDays + 1;
+        const leftPct = (startDays / totalDays) * 100;
+        const widthPct = Math.max(((endDays - startDays) / totalDays) * 100, 0.5);
+        const top = 30 + idx * 40;
+
+        const isNorm = item.isRegulatory || item.tipo === 'normativo' || item.capa === 'normativo' || item.capa === 'contratacion';
+        const barColor = item.isRegulatory ? 'bg-amber-500' :
+            isNorm ? (item.status === 'completado' ? 'bg-amber-400' : 'bg-amber-500') :
+            item.status === 'completado' ? 'bg-emerald-500' :
+            item.status === 'en_progreso' ? 'bg-blue-500' :
+            item.status === 'bloqueado' ? 'bg-red-500' : 'bg-slate-300';
+
+        html += `<div class="absolute flex items-center" style="top:${top}px; left:0; right:0; height:40px;">
+            <div class="flex-shrink-0 px-3 text-[11px] text-slate-700 truncate font-medium" style="width:220px;" title="${item.title}">${item.title}</div>
+            <div class="flex-1 relative h-full flex items-center">
+                <div class="gantt-bar ${barColor} rounded h-5 absolute text-[9px] text-white font-medium flex items-center px-1.5 shadow-sm"
+                     style="left:${leftPct}%; width:${widthPct}%;"
+                     title="${item.title}\n${fmtDate(item.start)} → ${fmtDate(item.end)}\nEstado: ${STATUS_LABELS[item.status] || item.status}"
+                     ondblclick="openTaskModal('${item.id}')">
+                    <span class="truncate">${item.isRegulatory ? '◆ ' + item.title : isNorm ? '⚖ ' + (item.title.length > 30 ? item.title.substring(0,30)+'…' : item.title) : ''}</span>
+                </div>
+            </div>
+        </div>`;
+    });
+
+    html += '</div>';
+    container.innerHTML = html;
+}
+
+// ===================== TASKS (Accordion by Month) =====================
+const MONTH_NAMES_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+function getTaskMonthKey(task) {
+    const d = task.start || task.end || task.created || '';
+    if (!d) return '0000-00';
+    return d.substring(0, 7); // 'YYYY-MM'
+}
+
+function getMonthLabel(key) {
+    const [y, m] = key.split('-');
+    const mi = parseInt(m, 10) - 1;
+    return MONTH_NAMES_ES[mi] + ' ' + y;
+}
+
+function getCurrentMonthKey() {
+    const now = new Date();
+    return now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+}
+
+function toggleMonth(monthKey) {
+    const body = document.getElementById('month-body-' + monthKey);
+    const chevron = document.getElementById('month-chevron-' + monthKey);
+    if (!body) return;
+    if (body.classList.contains('collapsed')) {
+        body.classList.remove('collapsed');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        if (chevron) chevron.classList.remove('collapsed');
+    } else {
+        body.classList.add('collapsed');
+        body.style.maxHeight = '0px';
+        if (chevron) chevron.classList.add('collapsed');
+    }
+}
+
+function toggleAllMonths(expand) {
+    document.querySelectorAll('.month-group-body').forEach(el => {
+        const key = el.id.replace('month-body-', '');
+        const chevron = document.getElementById('month-chevron-' + key);
+        if (expand) {
+            el.classList.remove('collapsed');
+            el.style.maxHeight = el.scrollHeight + 'px';
+            if (chevron) chevron.classList.remove('collapsed');
+        } else {
+            el.classList.add('collapsed');
+            el.style.maxHeight = '0px';
+            if (chevron) chevron.classList.add('collapsed');
+        }
+    });
+}
+
+function renderTaskCard(t) {
+    const isOverdue = t.status !== 'completado' && t.end && new Date(t.end) < new Date();
+    const borderClass = PRIORITY_BORDERS[t.priority] || '';
+    const statusClass = STATUS_COLORS[t.status] || '';
+    const isNormativo = t.tipo === 'normativo';
+    const normativoClass = isNormativo ? 'normativo-card' : '';
+    const capaColor = CAPA_COLORS[t.capa] || 'bg-slate-100 text-slate-700';
+    const capaLabel = CAPA_NAMES[t.capa] || t.capa || '';
+    return `<div class="bg-white rounded-lg border border-slate-200 shadow-sm p-4 ${borderClass} ${normativoClass} task-row fade-in" draggable="true">
+        <div class="flex items-start gap-3">
+            <input type="checkbox" class="task-check mt-1 w-4 h-4 cursor-pointer" ${t.status === 'completado' ? 'checked' : ''}
+                onchange="toggleTaskStatus('${t.id}', this.checked)">
+            <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span class="font-semibold text-sm text-slate-800 ${t.status === 'completado' ? 'line-through text-slate-400' : ''}">${t.title}</span>
+                    <span class="status-pill ${statusClass}">${STATUS_LABELS[t.status]}</span>
+                    ${capaLabel ? `<span class="capa-badge ${capaColor}">${capaLabel}</span>` : ''}
+                    ${isNormativo ? '<span class="capa-badge bg-amber-200 text-amber-900 ring-1 ring-amber-400">⚖️ REGULATORIO</span>' : ''}
+                    ${isOverdue ? '<span class="status-pill bg-red-100 text-red-700">⚠ Atrasado</span>' : ''}
+                </div>
+                <div class="flex items-center gap-3 mt-1.5 text-[11px] text-slate-500 flex-wrap">
+                    <span>👤 ${t.owner || '—'}</span>
+                    <span>📅 ${fmtDate(t.start)} → ${fmtDate(t.end)}</span>
+                    <span>🏷️ ${t.area || '—'}</span>
+                    <span>📁 ${PHASE_NAMES[t.phase] || t.phase || '—'}</span>
+                </div>
+                ${t.obs ? `<div class="mt-2 text-xs text-slate-500 ${isNormativo ? 'bg-amber-50 border-amber-200' : 'bg-slate-50 border-slate-100'} rounded p-2 border">${t.obs}</div>` : ''}
+            </div>
+            <div class="flex gap-1 flex-shrink-0">
+                <button onclick="openTaskModal('${t.id}')" class="text-xs text-blue-500 hover:text-blue-700 px-2 py-1 rounded hover:bg-blue-50">✏️</button>
+                <button onclick="deleteTask('${t.id}')" class="text-xs text-red-400 hover:text-red-600 px-2 py-1 rounded hover:bg-red-50">🗑️</button>
+            </div>
+        </div>
+    </div>`;
+}
+
+function renderTasks() {
+    const container = document.getElementById('tasks-container');
+    const capaFilter = document.getElementById('taskFilterCapa').value;
+    const tipoFilter = document.getElementById('taskFilterTipo').value;
+    const statusFilter = document.getElementById('taskFilterStatus').value;
+    let tasks = DATA.tasks || [];
+    if (capaFilter !== 'all') tasks = tasks.filter(t => t.capa === capaFilter);
+    if (tipoFilter !== 'all') tasks = tasks.filter(t => t.tipo === tipoFilter);
+    if (statusFilter !== 'all') tasks = tasks.filter(t => t.status === statusFilter);
+
+    if (tasks.length === 0) {
+        container.innerHTML = '<div class="p-8 text-center text-slate-400 text-sm">No hay tareas que coincidan con los filtros.</div>';
+        return;
+    }
+
+    // Group tasks by month (based on start date)
+    const groups = {};
+    tasks.forEach(t => {
+        const key = getTaskMonthKey(t);
+        if (!groups[key]) groups[key] = [];
+        groups[key].push(t);
+    });
+
+    // Sort month keys chronologically
+    const sortedKeys = Object.keys(groups).sort();
+    const currentKey = getCurrentMonthKey();
+
+    container.innerHTML = sortedKeys.map(key => {
+        const monthTasks = groups[key];
+        const isCurrentMonth = key === currentKey;
+        const collapsed = !isCurrentMonth;
+        const completedCount = monthTasks.filter(t => t.status === 'completado').length;
+        const inProgressCount = monthTasks.filter(t => t.status === 'en_progreso').length;
+        const normativoCount = monthTasks.filter(t => t.tipo === 'normativo').length;
+        const totalCount = monthTasks.length;
+        const pct = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+        // Count unique capas in this month
+        const capasInMonth = [...new Set(monthTasks.map(t => t.capa).filter(Boolean))];
+        const capaSummary = capasInMonth.map(c => `<span class="capa-badge ${CAPA_COLORS[c] || ''}" style="font-size:8px">${CAPA_NAMES[c] || c}</span>`).join(' ');
+
+        return `<div class="mb-3 rounded-xl border ${isCurrentMonth ? 'border-blue-300 shadow-md' : 'border-slate-200'} overflow-hidden">
+            <!-- Month Header -->
+            <div class="month-header flex items-center justify-between px-4 py-3 cursor-pointer select-none ${isCurrentMonth ? 'bg-blue-50' : 'bg-slate-50'}"
+                 onclick="toggleMonth('${key}')">
+                <div class="flex items-center gap-3">
+                    <span id="month-chevron-${key}" class="month-chevron text-slate-400 text-sm ${collapsed ? 'collapsed' : ''}">▼</span>
+                    <span class="font-bold text-sm ${isCurrentMonth ? 'text-blue-800' : 'text-slate-800'}">${getMonthLabel(key)}</span>
+                    ${isCurrentMonth ? '<span class="month-badge bg-blue-600 text-white">MES ACTUAL</span>' : ''}
+                    ${normativoCount > 0 ? `<span class="month-badge bg-amber-200 text-amber-900">⚖️ ${normativoCount} regulatorio${normativoCount > 1 ? 's' : ''}</span>` : ''}
+                </div>
+                <div class="flex items-center gap-2">
+                    ${inProgressCount > 0 ? `<span class="month-badge bg-blue-100 text-blue-700">${inProgressCount} en progreso</span>` : ''}
+                    ${completedCount > 0 ? `<span class="month-badge bg-emerald-100 text-emerald-700">${completedCount} completadas</span>` : ''}
+                    <span class="text-[10px] text-slate-500 font-medium">${totalCount} tarea${totalCount !== 1 ? 's' : ''}</span>
+                    <div class="w-16 bg-slate-200 rounded-full h-1.5 ml-1">
+                        <div class="h-1.5 rounded-full ${isCurrentMonth ? 'bg-blue-500' : 'bg-slate-400'}" style="width:${pct}%"></div>
+                    </div>
+                    <span class="text-[10px] font-bold ${isCurrentMonth ? 'text-blue-600' : 'text-slate-500'}">${pct}%</span>
+                </div>
+            </div>
+            <!-- Capa summary bar -->
+            <div class="px-4 py-1 bg-slate-50/50 border-t border-slate-100 flex flex-wrap gap-1 items-center">
+                <span class="text-[9px] text-slate-400 font-medium mr-1">Capas:</span>${capaSummary}
+            </div>
+            <!-- Month Body (tasks) -->
+            <div id="month-body-${key}" class="month-group-body ${collapsed ? 'collapsed' : ''}"
+                 style="max-height:${collapsed ? '0' : '9999'}px;">
+                <div class="p-3 space-y-2 bg-white">
+                    ${monthTasks.map(t => renderTaskCard(t)).join('')}
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function toggleTaskStatus(id, checked) {
+    const task = DATA.tasks.find(t => t.id === id);
+    if (task) {
+        task.status = checked ? 'completado' : 'pendiente';
+        saveData();
+        renderTasks();
+        renderDashboard();
+    }
+}
+
+function openTaskModal(editId) {
+    const modal = document.getElementById('taskModal');
+    if (editId && typeof editId === 'string') {
+        const t = DATA.tasks.find(x => x.id === editId);
+        if (t) {
+            document.getElementById('taskModalTitle').textContent = 'Editar Tarea';
+            document.getElementById('taskId').value = t.id;
+            document.getElementById('taskTitle').value = t.title;
+            document.getElementById('taskCapa').value = t.capa || 'arquitectura';
+            document.getElementById('taskTipo').value = t.tipo || 'tecnico';
+            document.getElementById('taskPhase').value = t.phase || 'phase-1';
+            document.getElementById('taskArea').value = t.area || 'arquitectura';
+            document.getElementById('taskStatus').value = t.status;
+            document.getElementById('taskPriority').value = t.priority;
+            document.getElementById('taskOwner').value = t.owner || '';
+            document.getElementById('taskStart').value = t.start || '';
+            document.getElementById('taskEnd').value = t.end || '';
+            document.getElementById('taskObs').value = t.obs || '';
+        }
+    } else {
+        document.getElementById('taskModalTitle').textContent = 'Nueva Tarea';
+        document.getElementById('taskId').value = '';
+        document.getElementById('taskTitle').value = '';
+        document.getElementById('taskCapa').value = 'arquitectura';
+        document.getElementById('taskTipo').value = 'tecnico';
+        document.getElementById('taskOwner').value = '';
+        document.getElementById('taskStart').value = '';
+        document.getElementById('taskEnd').value = '';
+        document.getElementById('taskObs').value = '';
+    }
+    modal.classList.remove('hidden');
+}
+
+function closeTaskModal() { document.getElementById('taskModal').classList.add('hidden'); }
+
+function saveTask() {
+    const id = document.getElementById('taskId').value;
+    const taskData = {
+        title: document.getElementById('taskTitle').value.trim(),
+        capa: document.getElementById('taskCapa').value,
+        tipo: document.getElementById('taskTipo').value,
+        phase: document.getElementById('taskPhase').value,
+        area: document.getElementById('taskArea').value,
+        status: document.getElementById('taskStatus').value,
+        priority: document.getElementById('taskPriority').value,
+        owner: document.getElementById('taskOwner').value.trim(),
+        start: document.getElementById('taskStart').value,
+        end: document.getElementById('taskEnd').value,
+        obs: document.getElementById('taskObs').value.trim()
+    };
+    if (!taskData.title) { alert('El título es requerido.'); return; }
+
+    if (id) {
+        const idx = DATA.tasks.findIndex(t => t.id === id);
+        if (idx >= 0) DATA.tasks[idx] = { ...DATA.tasks[idx], ...taskData };
+    } else {
+        DATA.tasks.push({ id: uid(), ...taskData, created: new Date().toISOString() });
+    }
+    saveData();
+    closeTaskModal();
+    renderTasks();
+    renderDashboard();
+}
+
+function deleteTask(id) {
+    if (confirm('¿Eliminar esta tarea?')) {
+        DATA.tasks = DATA.tasks.filter(t => t.id !== id);
+        saveData();
+        renderTasks();
+        renderDashboard();
+    }
+}
+
+// ===================== COMMITMENTS =====================
+function renderCommitments() {
+    const container = document.getElementById('commitments-container');
+    const filter = document.getElementById('commitmentFilter').value;
+    let commits = DATA.commitments || [];
+
+    // Auto-mark overdue
+    const today = new Date().toISOString().split('T')[0];
+    commits.forEach(c => {
+        if (c.status === 'pendiente' && c.date && c.date < today) c.status = 'vencido';
+    });
+
+    if (filter !== 'all') commits = commits.filter(c => c.status === filter);
+
+    if (commits.length === 0) {
+        container.innerHTML = '<div class="p-8 text-center text-slate-400 text-sm">No hay compromisos que mostrar.</div>';
+        return;
+    }
+
+    const typeIcons = { entregable: '📦', reunion: '📋', decision: '⚖️', regulatorio: '⚖️', externo: '🔗' };
+
+    container.innerHTML = commits.map(c => {
+        const statusClass = STATUS_COLORS[c.status] || '';
+        const days = daysBetween(today, c.date);
+        const urgency = c.status === 'cumplido' ? '' : days < 0 ? 'border-red-300 bg-red-50/30' : days <= 7 ? 'border-amber-300 bg-amber-50/30' : '';
+        return `<div class="bg-white rounded-lg border border-slate-200 shadow-sm p-4 ${urgency} fade-in">
+            <div class="flex items-start gap-3">
+                <input type="checkbox" class="task-check mt-1 w-4 h-4 cursor-pointer" ${c.status === 'cumplido' ? 'checked' : ''}
+                    onchange="toggleCommitStatus('${c.id}', this.checked)">
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="text-base">${typeIcons[c.type] || '📌'}</span>
+                        <span class="font-semibold text-sm text-slate-800 ${c.status === 'cumplido' ? 'line-through text-slate-400' : ''}">${c.title}</span>
+                        <span class="status-pill ${statusClass}">${STATUS_LABELS[c.status]}</span>
+                    </div>
+                    <div class="flex items-center gap-3 mt-1.5 text-[11px] text-slate-500">
+                        <span>👤 ${c.owner || '—'}</span>
+                        <span>📅 ${fmtDate(c.date)}</span>
+                        <span>${c.status !== 'cumplido' ? (days < 0 ? `⚠ ${Math.abs(days)} días de atraso` : `${days} días restantes`) : '✅ Cumplido'}</span>
+                    </div>
+                    ${c.obs ? `<div class="mt-2 text-xs text-slate-500 bg-slate-50 rounded p-2 border border-slate-100">${c.obs}</div>` : ''}
+                </div>
+                <div class="flex gap-1 flex-shrink-0">
+                    <button onclick="openCommitmentModal('${c.id}')" class="text-xs text-blue-500 hover:text-blue-700 px-2 py-1 rounded hover:bg-blue-50">✏️</button>
+                    <button onclick="deleteCommitment('${c.id}')" class="text-xs text-red-400 hover:text-red-600 px-2 py-1 rounded hover:bg-red-50">🗑️</button>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function toggleCommitStatus(id, checked) {
+    const c = DATA.commitments.find(x => x.id === id);
+    if (c) {
+        c.status = checked ? 'cumplido' : 'pendiente';
+        saveData();
+        renderCommitments();
+        renderDashboard();
+    }
+}
+
+function openCommitmentModal(editId) {
+    const modal = document.getElementById('commitModal');
+    if (editId && typeof editId === 'string') {
+        const c = DATA.commitments.find(x => x.id === editId);
+        if (c) {
+            document.getElementById('commitModalTitle').textContent = 'Editar Compromiso';
+            document.getElementById('commitId').value = c.id;
+            document.getElementById('commitTitle').value = c.title;
+            document.getElementById('commitOwner').value = c.owner || '';
+            document.getElementById('commitDate').value = c.date || '';
+            document.getElementById('commitType').value = c.type || 'entregable';
+            document.getElementById('commitStatus').value = c.status || 'pendiente';
+            document.getElementById('commitObs').value = c.obs || '';
+        }
+    } else {
+        document.getElementById('commitModalTitle').textContent = 'Nuevo Compromiso';
+        document.getElementById('commitId').value = '';
+        document.getElementById('commitTitle').value = '';
+        document.getElementById('commitOwner').value = '';
+        document.getElementById('commitDate').value = '';
+        document.getElementById('commitObs').value = '';
+    }
+    modal.classList.remove('hidden');
+}
+
+function closeCommitmentModal() { document.getElementById('commitModal').classList.add('hidden'); }
+
+function saveCommitment() {
+    const id = document.getElementById('commitId').value;
+    const cData = {
+        title: document.getElementById('commitTitle').value.trim(),
+        owner: document.getElementById('commitOwner').value.trim(),
+        date: document.getElementById('commitDate').value,
+        type: document.getElementById('commitType').value,
+        status: document.getElementById('commitStatus').value,
+        obs: document.getElementById('commitObs').value.trim()
+    };
+    if (!cData.title) { alert('La descripción es requerida.'); return; }
+
+    if (id) {
+        const idx = DATA.commitments.findIndex(c => c.id === id);
+        if (idx >= 0) DATA.commitments[idx] = { ...DATA.commitments[idx], ...cData };
+    } else {
+        DATA.commitments.push({ id: uid(), ...cData });
+    }
+    saveData();
+    closeCommitmentModal();
+    renderCommitments();
+    renderDashboard();
+}
+
+function deleteCommitment(id) {
+    if (confirm('¿Eliminar este compromiso?')) {
+        DATA.commitments = DATA.commitments.filter(c => c.id !== id);
+        saveData();
+        renderCommitments();
+        renderDashboard();
+    }
+}
+
+// ===================== REPORT GENERATOR =====================
+function renderReport() {
+    const container = document.getElementById('report-container');
+    const tasks = DATA.tasks || [];
+    const commits = DATA.commitments || [];
+    const total = tasks.length;
+    const completed = tasks.filter(t => t.status === 'completado').length;
+    const inProgress = tasks.filter(t => t.status === 'en_progreso').length;
+    const blocked = tasks.filter(t => t.status === 'bloqueado').length;
+    const pending = tasks.filter(t => t.status === 'pendiente').length;
+    const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+    const today = new Date().toISOString().split('T')[0];
+    const overdue = tasks.filter(t => t.status !== 'completado' && t.end && t.end < today);
+    const pendingCommits = commits.filter(c => c.status === 'pendiente' || c.status === 'vencido');
+
+    let html = `
+        <div class="print-only text-center mb-6">
+            <h1 class="text-2xl font-bold">UPME — Informe de Seguimiento del Proyecto</h1>
+            <p class="text-sm text-slate-500">Plataforma de Interoperabilidad de Electromovilidad — Resolución 40559/2025</p>
+        </div>
+        <div class="border-b border-slate-200 pb-4 mb-6">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-lg text-slate-900">Informe de Estado del Proyecto</h3>
+                <span class="text-sm text-slate-500">Generado: ${new Date().toLocaleDateString('es-CO', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-1">Plataforma de Interoperabilidad de Electromovilidad — Resolución 40559/2025</p>
+        </div>
+
+        <h4 class="font-bold text-sm text-slate-800 mb-3">1. Resumen Ejecutivo</h4>
+        <div class="grid grid-cols-4 gap-3 mb-6">
+            <div class="text-center p-3 bg-blue-50 rounded-lg"><div class="text-2xl font-bold text-blue-700">${pct}%</div><div class="text-[10px] text-blue-600">Avance Global</div></div>
+            <div class="text-center p-3 bg-emerald-50 rounded-lg"><div class="text-2xl font-bold text-emerald-700">${completed}/${total}</div><div class="text-[10px] text-emerald-600">Tareas Completadas</div></div>
+            <div class="text-center p-3 bg-amber-50 rounded-lg"><div class="text-2xl font-bold text-amber-700">${pendingCommits.length}</div><div class="text-[10px] text-amber-600">Compromisos Pendientes</div></div>
+            <div class="text-center p-3 bg-red-50 rounded-lg"><div class="text-2xl font-bold text-red-700">${overdue.length + blocked}</div><div class="text-[10px] text-red-600">Items en Riesgo</div></div>
+        </div>
+
+        <h4 class="font-bold text-sm text-slate-800 mb-3">2. Progreso por Fase</h4>
+        <table class="w-full text-xs mb-6 border border-slate-200">
+            <thead><tr class="bg-slate-100">
+                <th class="text-left p-2 font-semibold">Fase</th>
+                <th class="text-center p-2 font-semibold">Total</th>
+                <th class="text-center p-2 font-semibold">Completadas</th>
+                <th class="text-center p-2 font-semibold">En Progreso</th>
+                <th class="text-center p-2 font-semibold">Pendientes</th>
+                <th class="text-center p-2 font-semibold">% Avance</th>
+            </tr></thead>
+            <tbody>
+                ${DATA.phases.map(p => {
+                    const pt = tasks.filter(t => t.phase === p.id);
+                    const pc = pt.filter(t => t.status === 'completado').length;
+                    const pip = pt.filter(t => t.status === 'en_progreso').length;
+                    const pp = pt.filter(t => t.status === 'pendiente').length;
+                    const ppct = pt.length > 0 ? Math.round((pc / pt.length) * 100) : 0;
+                    return `<tr class="border-t border-slate-100"><td class="p-2 font-medium">${p.name}</td><td class="p-2 text-center">${pt.length}</td><td class="p-2 text-center text-emerald-600">${pc}</td><td class="p-2 text-center text-blue-600">${pip}</td><td class="p-2 text-center">${pp}</td><td class="p-2 text-center font-bold">${ppct}%</td></tr>`;
+                }).join('')}
+            </tbody>
+        </table>
+
+        ${overdue.length > 0 ? `
+        <h4 class="font-bold text-sm text-red-700 mb-3">3. Items Atrasados</h4>
+        <table class="w-full text-xs mb-6 border border-red-200">
+            <thead><tr class="bg-red-50">
+                <th class="text-left p-2 font-semibold">Tarea</th>
+                <th class="text-left p-2 font-semibold">Responsable</th>
+                <th class="text-center p-2 font-semibold">Fecha Límite</th>
+                <th class="text-center p-2 font-semibold">Días Atraso</th>
+                <th class="text-left p-2 font-semibold">Observaciones</th>
+            </tr></thead>
+            <tbody>
+                ${overdue.map(t => `<tr class="border-t border-red-100"><td class="p-2">${t.title}</td><td class="p-2">${t.owner || '—'}</td><td class="p-2 text-center">${fmtDate(t.end)}</td><td class="p-2 text-center text-red-600 font-bold">${Math.abs(daysBetween(today, t.end))}</td><td class="p-2 text-slate-500">${t.obs || '—'}</td></tr>`).join('')}
+            </tbody>
+        </table>` : '<h4 class="font-bold text-sm text-emerald-700 mb-3">3. Sin Items Atrasados ✅</h4><p class="text-xs text-slate-500 mb-6">Todas las tareas están dentro de los plazos establecidos.</p>'}
+
+        <h4 class="font-bold text-sm text-slate-800 mb-3">${overdue.length > 0 ? '4' : '3'}. Compromisos Pendientes</h4>
+        ${pendingCommits.length > 0 ? `
+        <table class="w-full text-xs mb-6 border border-slate-200">
+            <thead><tr class="bg-slate-100">
+                <th class="text-left p-2 font-semibold">Compromiso</th>
+                <th class="text-left p-2 font-semibold">Responsable</th>
+                <th class="text-center p-2 font-semibold">Fecha</th>
+                <th class="text-left p-2 font-semibold">Tipo</th>
+                <th class="text-left p-2 font-semibold">Estado</th>
+            </tr></thead>
+            <tbody>
+                ${pendingCommits.map(c => `<tr class="border-t border-slate-100"><td class="p-2">${c.title}</td><td class="p-2">${c.owner || '—'}</td><td class="p-2 text-center">${fmtDate(c.date)}</td><td class="p-2">${c.type}</td><td class="p-2"><span class="status-pill ${STATUS_COLORS[c.status]}">${STATUS_LABELS[c.status]}</span></td></tr>`).join('')}
+            </tbody>
+        </table>` : '<p class="text-xs text-emerald-600 mb-6">Todos los compromisos están al día. ✅</p>'}
+
+        <h4 class="font-bold text-sm text-slate-800 mb-3">${overdue.length > 0 ? '5' : '4'}. Hitos Regulatorios (Resolución 40559/2025)</h4>
+        <table class="w-full text-xs mb-6 border border-violet-200">
+            <thead><tr class="bg-violet-50">
+                <th class="text-left p-2 font-semibold">Hito</th>
+                <th class="text-center p-2 font-semibold">Fecha</th>
+                <th class="text-center p-2 font-semibold">Estado</th>
+            </tr></thead>
+            <tbody>
+                ${(DATA.regulatoryMilestones || []).map(r => `<tr class="border-t border-violet-100"><td class="p-2">${r.title}</td><td class="p-2 text-center">${fmtDate(r.date)}</td><td class="p-2 text-center"><span class="status-pill ${STATUS_COLORS[r.status]}">${STATUS_LABELS[r.status]}</span></td></tr>`).join('')}
+            </tbody>
+        </table>
+
+        <div class="border-t border-slate-200 pt-4 mt-6 text-[10px] text-slate-400 text-center">
+            UPME — Framework de Seguimiento del Proyecto — Generado automáticamente el ${new Date().toLocaleDateString('es-CO')} a las ${new Date().toLocaleTimeString('es-CO')}
+        </div>
+    `;
+    container.innerHTML = html;
+}
+
+// ===================== RENDER ALL =====================
+function renderAll() {
+    renderDashboard();
+    renderTasks();
+    renderCommitments();
+}
+
+// ===================== DATA MIGRATION =====================
+function migrateData() {
+    // v2: Full task replacement — remove old 2025 tasks, replace with comprehensive 2026 timeline
+    if (!DATA.version || DATA.version < 2) {
+        const defaults = getDefaultData();
+        // Preserve any user-created tasks (IDs starting with 'id-')
+        const userTasks = (DATA.tasks || []).filter(t => t.id && t.id.startsWith('id-'));
+        DATA.tasks = [...defaults.tasks, ...userTasks];
+        DATA.phases = defaults.phases;
+        DATA.commitments = defaults.commitments;
+        DATA.regulatoryMilestones = defaults.regulatoryMilestones;
+        DATA.version = 2;
+        saveData();
+        console.log('[UPME Migration] v1→v2: Timeline rebuilt from Mar 2026. Tasks:', DATA.tasks.length);
+    }
+}
+
+// ===================== INIT =====================
+document.addEventListener('DOMContentLoaded', () => {
+    loadData();
+    migrateData();
+    saveData();
+    renderAll();
+});
+</script>
+</body>
+</html>

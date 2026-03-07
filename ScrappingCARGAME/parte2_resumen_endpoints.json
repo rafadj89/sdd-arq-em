@@ -1,0 +1,188 @@
+{
+  "fecha": "2026-03-06T03:23:36.405Z",
+  "catalogos": {
+    "tipoubicacion": {
+      "ok": true,
+      "registros": 11
+    },
+    "municipiofull": {
+      "ok": true,
+      "registros": 1122
+    },
+    "filtrosbuscar": {
+      "ok": true,
+      "registros": 223
+    },
+    "canalmanual": {
+      "ok": true,
+      "registros": 1
+    }
+  },
+  "endpointsAdicionales": [
+    {
+      "endpoint": "/crg/resumenestacionescarga/1/0",
+      "label": "estaciones param1=1",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/resumenestacionescarga/0/1",
+      "label": "estaciones param2=1",
+      "activo": true
+    },
+    {
+      "endpoint": "/crg/resumenestacionescarga/1/1",
+      "label": "estaciones param1=1,param2=1",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/operador",
+      "label": "operadores",
+      "activo": true
+    },
+    {
+      "endpoint": "/crg/operadores",
+      "label": "operadores (plural)",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/estacion",
+      "label": "estacion",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/estaciones",
+      "label": "estaciones",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/conector",
+      "label": "conector",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/conectores",
+      "label": "conectores",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/tipoconector",
+      "label": "tipo conector",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/cargador",
+      "label": "cargador",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/cargadores",
+      "label": "cargadores",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/usuario",
+      "label": "usuario",
+      "activo": true
+    },
+    {
+      "endpoint": "/crg/usuarios",
+      "label": "usuarios",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/departamento",
+      "label": "departamento",
+      "activo": true
+    },
+    {
+      "endpoint": "/crg/departamentos",
+      "label": "departamentos",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/municipio",
+      "label": "municipio",
+      "activo": true
+    },
+    {
+      "endpoint": "/crg/persona",
+      "label": "persona",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/entidad",
+      "label": "entidad",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/registro",
+      "label": "registro",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/registros",
+      "label": "registros",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/consentimiento",
+      "label": "consentimiento",
+      "activo": true
+    },
+    {
+      "endpoint": "/crg/estadistica",
+      "label": "estadistica",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/estadisticas",
+      "label": "estadisticas",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/reporte",
+      "label": "reporte",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/reportes",
+      "label": "reportes",
+      "activo": false
+    },
+    {
+      "endpoint": "/estacion/filefoto/",
+      "label": "archivos foto",
+      "activo": false
+    },
+    {
+      "endpoint": "/estacion/filecumplimiento/",
+      "label": "archivos cumplimiento",
+      "activo": false
+    },
+    {
+      "endpoint": "/estacion/fileconformidad/",
+      "label": "archivos conformidad",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/login",
+      "label": "login",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/auth",
+      "label": "auth",
+      "activo": false
+    },
+    {
+      "endpoint": "/crg/",
+      "label": "raíz crg",
+      "activo": false
+    },
+    {
+      "endpoint": "/",
+      "label": "raíz servidor",
+      "activo": false
+    }
+  ]
+}

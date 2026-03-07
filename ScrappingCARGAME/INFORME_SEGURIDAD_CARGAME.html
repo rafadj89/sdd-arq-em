@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditoría de Seguridad y Datos Confidenciales — CARGAME | UPME</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  @media print { .no-print{display:none!important} .page-break{page-break-before:always} }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; }
+  .gradient-header { background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 40%, #b91c1c 100%); }
+  .card { background:white; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08); }
+  table { border-collapse:collapse; width:100%; }
+  th { background:#f1f5f9; font-weight:600; text-align:left; }
+  th,td { padding:10px 14px; border-bottom:1px solid #e2e8f0; font-size:0.85rem; }
+  tr:hover { background:#f8fafc; }
+  code { background:#f1f5f9; padding:2px 6px; border-radius:4px; font-size:0.85em; }
+  .sev-critico { background:#fef2f2; border-left:4px solid #dc2626; }
+  .sev-alto { background:#fff7ed; border-left:4px solid #ea580c; }
+  .sev-medio { background:#fefce8; border-left:4px solid #ca8a04; }
+  .sev-bajo { background:#f0fdf4; border-left:4px solid #16a34a; }
+  .sev-publico { background:#f8fafc; border-left:4px solid #94a3b8; }
+  .badge { display:inline-block; padding:2px 10px; border-radius:9999px; font-size:0.7rem; font-weight:700; text-transform:uppercase; }
+  .badge-crit { background:#fecaca; color:#991b1b; }
+  .badge-alto { background:#fed7aa; color:#9a3412; }
+  .badge-medio { background:#fef08a; color:#854d0e; }
+  .badge-bajo { background:#bbf7d0; color:#166534; }
+  .badge-pub { background:#e2e8f0; color:#475569; }
+  .badge-violado { background:#fecaca; color:#991b1b; }
+  .badge-probable { background:#fed7aa; color:#9a3412; }
+  .badge-parcial { background:#fef08a; color:#854d0e; }
+  .badge-conforme { background:#bbf7d0; color:#166534; }
+  .badge-ne { background:#e2e8f0; color:#475569; }
+  .tab-btn { cursor:pointer; padding:10px 18px; border-bottom:3px solid transparent; transition:all 0.2s; font-size:0.9rem; }
+  .tab-btn.active { border-bottom-color:#dc2626; color:#dc2626; font-weight:600; }
+  .tab-btn:hover { background:#fef2f2; }
+  .tab-content { display:none; }
+  .tab-content.active { display:block; }
+  .gauge-ring { stroke-dasharray: 251; stroke-linecap: round; transition: stroke-dashoffset 1s ease; }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- ═══ HEADER ═══ -->
+<header class="gradient-header text-white py-8 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center justify-between flex-wrap gap-4">
+      <div>
+        <p class="text-sm uppercase tracking-wider opacity-80">UPME — Auditoría de Seguridad</p>
+        <h1 class="text-3xl font-bold mt-1">🔒 Informe de Datos Confidenciales Expuestos</h1>
+        <p class="mt-2 opacity-90">Plataforma CARGAME — Ministerio de Minas y Energía de Colombia</p>
+      </div>
+      <div class="text-right text-sm opacity-80">
+        <p><strong>Fecha:</strong> 5 de marzo de 2026</p>
+        <p><strong>Clasificación:</strong> <span class="bg-red-900 px-2 py-0.5 rounded text-xs font-bold">CONFIDENCIAL</span></p>
+        <p><strong>Backend:</strong> siveeic.minenergia.gov.co:3011</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="bg-white shadow-sm sticky top-0 z-50 no-print">
+  <div class="max-w-7xl mx-auto flex overflow-x-auto">
+    <button class="tab-btn active" data-tab="resumen">📊 Resumen</button>
+    <button class="tab-btn" data-tab="prestadores">🏢 Datos Prestadores</button>
+    <button class="tab-btn" data-tab="campos">🔍 Campos por API</button>
+    <button class="tab-btn" data-tab="owasp">🛡️ OWASP</button>
+    <button class="tab-btn" data-tab="ley1581">📜 Ley 1581</button>
+    <button class="tab-btn" data-tab="iso">🏛️ ISO 27001</button>
+    <button class="tab-btn" data-tab="recomendaciones">✅ Recomendaciones</button>
+  </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 py-8">
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- TAB: RESUMEN                                    -->
+<!-- ═══════════════════════════════════════════════ -->
+<section id="tab-resumen" class="tab-content active space-y-6">
+
+  <div class="card p-6 sev-critico">
+    <h2 class="text-xl font-bold text-red-900 mb-3">Calificación Global: 🔴 CRÍTICA — NO CONFORME</h2>
+    <p class="text-gray-700 leading-relaxed">
+      La plataforma CARGAME expone <strong>datos confidenciales de prestadores de servicio de carga eléctrica</strong> 
+      a través de APIs sin autenticación real. Se identificaron <strong>2 campos críticos, 9 campos de alta sensibilidad 
+      y 13 campos con datos personales (PII)</strong> accesibles públicamente. La aplicación viola <strong>6 de 8 
+      controles OWASP API Top 10</strong>, <strong>9 de 10 artículos evaluados de la Ley 1581 de 2012</strong> y 
+      <strong>6 de 7 controles ISO 27001</strong>.
+    </p>
+  </div>
+
+  <!-- KPIs -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="card p-5 text-center border-t-4 border-red-500">
+      <p class="text-4xl font-bold text-red-600">192</p>
+      <p class="text-sm text-gray-500 mt-1">📧 Correos expuestos</p>
+    </div>
+    <div class="card p-5 text-center border-t-4 border-red-500">
+      <p class="text-4xl font-bold text-red-600">194</p>
+      <p class="text-sm text-gray-500 mt-1">🆔 NITs expuestos</p>
+    </div>
+    <div class="card p-5 text-center border-t-4 border-orange-500">
+      <p class="text-4xl font-bold text-orange-600">272</p>
+      <p class="text-sm text-gray-500 mt-1">🔑 Hashes contraseña</p>
+    </div>
+    <div class="card p-5 text-center border-t-4 border-orange-500">
+      <p class="text-4xl font-bold text-orange-600">127</p>
+      <p class="text-sm text-gray-500 mt-1">📍 Direcciones expuestas</p>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="card p-5 text-center border-t-4 border-yellow-500">
+      <p class="text-3xl font-bold text-yellow-600">20</p>
+      <p class="text-sm text-gray-500 mt-1">📱 Celulares expuestos</p>
+    </div>
+    <div class="card p-5 text-center border-t-4 border-purple-500">
+      <p class="text-3xl font-bold text-purple-600">13</p>
+      <p class="text-sm text-gray-500 mt-1">🔵 Campos PII total</p>
+    </div>
+    <div class="card p-5 text-center border-t-4 border-gray-500">
+      <p class="text-3xl font-bold text-gray-600">14</p>
+      <p class="text-sm text-gray-500 mt-1">🔌 APIs sin control de acceso</p>
+    </div>
+  </div>
+
+  <!-- Gauges -->
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="card p-6 text-center">
+      <h3 class="font-semibold mb-2 text-sm">OWASP API Top 10 (2023)</h3>
+      <canvas id="gaugeOwasp" height="160"></canvas>
+      <p class="text-2xl font-bold text-red-600 mt-2">6 / 8 VIOLADOS</p>
+      <p class="text-xs text-gray-400">(2 no evaluados)</p>
+    </div>
+    <div class="card p-6 text-center">
+      <h3 class="font-semibold mb-2 text-sm">Ley 1581 de 2012</h3>
+      <canvas id="gaugeLey" height="160"></canvas>
+      <p class="text-2xl font-bold text-red-600 mt-2">9 / 10 VIOLADOS</p>
+      <p class="text-xs text-gray-400">(1 cuestionable)</p>
+    </div>
+    <div class="card p-6 text-center">
+      <h3 class="font-semibold mb-2 text-sm">ISO 27001</h3>
+      <canvas id="gaugeIso" height="160"></canvas>
+      <p class="text-2xl font-bold text-red-600 mt-2">6 / 7 NO CONFORMES</p>
+      <p class="text-xs text-gray-400">(1 parcial)</p>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Resumen de Clasificación de Campos por Sensibilidad</h3>
+    <canvas id="chartCampos" height="100"></canvas>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- TAB: DATOS DE PRESTADORES                       -->
+<!-- ═══════════════════════════════════════════════ -->
+<section id="tab-prestadores" class="tab-content space-y-6">
+
+  <div class="card p-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Datos Confidenciales de Prestadores de Servicio Expuestos</h2>
+    <p class="text-gray-600 mb-4">
+      El endpoint <code>GET /crg/operador</code> expone los datos completos de los <strong>194 prestadores 
+      de servicio de carga eléctrica</strong> registrados en CARGAME. A continuación se muestra la evidencia 
+      de datos confidenciales accesibles sin autenticación real.
+    </p>
+    <div class="p-4 bg-red-50 border border-red-200 rounded-lg mb-4">
+      <p class="text-red-800 font-semibold">⚠️ Los datos mostrados a continuación son REALES y están siendo expuestos públicamente por las APIs de CARGAME</p>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Conteo de Datos Expuestos — Prestadores (<code>/crg/operador</code>)</h3>
+    <table>
+      <thead><tr><th>Tipo de Dato</th><th>Clasificación</th><th class="text-right">Cantidad Expuesta</th><th>Riesgo</th></tr></thead>
+      <tbody>
+        <tr class="sev-critico"><td>NITs / Cédulas</td><td><span class="badge badge-alto">ALTO</span></td><td class="text-right font-bold text-red-600">194</td><td>Suplantación, fraude tributario</td></tr>
+        <tr class="sev-alto"><td>Correos electrónicos</td><td><span class="badge badge-alto">ALTO</span></td><td class="text-right font-bold text-orange-600">192</td><td>Phishing, spam, ingeniería social</td></tr>
+        <tr class="sev-alto"><td>Direcciones físicas</td><td><span class="badge badge-alto">ALTO</span></td><td class="text-right font-bold text-orange-600">127</td><td>Ubicación de personas/empresas</td></tr>
+        <tr class="sev-alto"><td>Celulares</td><td><span class="badge badge-alto">ALTO</span></td><td class="text-right font-bold text-yellow-600">20</td><td>SIM swapping, vishing</td></tr>
+        <tr class="sev-medio"><td>Teléfonos fijos</td><td><span class="badge badge-medio">MEDIO</span></td><td class="text-right">~50</td><td>Contacto no autorizado</td></tr>
+        <tr class="sev-medio"><td>Razones sociales completas</td><td><span class="badge badge-medio">MEDIO</span></td><td class="text-right">194</td><td>Ingeniería social</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Muestra de Datos Reales Expuestos (Prestadores de Servicio)</h3>
+    <p class="text-xs text-gray-400 mb-3">Fuente: GET https://siveeic.minenergia.gov.co:3011/crg/operador — accesible con token JWT público</p>
+    <div class="overflow-x-auto">
+    <table id="tablaPrestadores">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Razón Social</th>
+          <th>NIT</th>
+          <th>Correo</th>
+          <th>Celular</th>
+          <th>Dirección</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    </div>
+    <p class="text-xs text-gray-400 mt-3">Mostrando 20 de 194 registros expuestos</p>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Conteo de Datos Expuestos — Usuarios (<code>/crg/usuario</code>)</h3>
+    <table>
+      <thead><tr><th>Tipo de Dato</th><th>Clasificación</th><th class="text-right">Cantidad</th><th>Riesgo</th></tr></thead>
+      <tbody>
+        <tr class="sev-critico"><td><strong>Hashes bcrypt de contraseñas</strong></td><td><span class="badge badge-crit">CRÍTICO</span></td><td class="text-right font-bold text-red-600">272</td><td>Ataques de fuerza bruta offline</td></tr>
+        <tr class="sev-critico"><td>Cédulas de ciudadanía / NIT</td><td><span class="badge badge-crit">CRÍTICO</span></td><td class="text-right font-bold text-red-600">272</td><td>Suplantación de identidad en otros sistemas</td></tr>
+        <tr class="sev-alto"><td>Nombres de usuario (login)</td><td><span class="badge badge-alto">ALTO</span></td><td class="text-right font-bold">272</td><td>Credential stuffing, enumeración</td></tr>
+        <tr class="sev-alto"><td>Nombres y apellidos completos</td><td><span class="badge badge-alto">ALTO</span></td><td class="text-right font-bold">272</td><td>Identificación directa de personas</td></tr>
+        <tr class="sev-alto"><td>Correos electrónicos</td><td><span class="badge badge-alto">ALTO</span></td><td class="text-right">~260</td><td>Phishing dirigido</td></tr>
+        <tr class="sev-medio"><td>Roles y tipos de usuario</td><td><span class="badge badge-medio">MEDIO</span></td><td class="text-right">272</td><td>Mapeo de privilegios para escalamiento</td></tr>
+        <tr class="sev-medio"><td>Fechas de expiración de cuentas</td><td><span class="badge badge-medio">MEDIO</span></td><td class="text-right">272</td><td>Identificar cuentas vulnerables</td></tr>
+      </tbody>
+    </table>
+    <div class="mt-4 p-4 bg-red-50 rounded-lg">
+      <p class="text-sm text-red-800"><strong>🔴 Dato más crítico:</strong> Los <strong>272 hashes bcrypt</strong> de contraseñas están expuestos. Aunque bcrypt es resistente, un atacante podría hacer ataques de diccionario offline contra contraseñas débiles. Combinado con los nombres de usuario (que frecuentemente son la cédula), permite intentar acceso directo a las cuentas.</p>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Tipos de Usuario Expuestos</h3>
+    <table>
+      <thead><tr><th>Tipo de Usuario</th><th class="text-right">Cantidad</th><th>Riesgo si se compromete</th></tr></thead>
+      <tbody>
+        <tr><td>Empresa energía convencional - AMI</td><td class="text-right font-mono">138</td><td>Acceso a datos de medidores avanzados</td></tr>
+        <tr><td>Empresa energía convencional - Estaciones Carga</td><td class="text-right font-mono">63</td><td>Gestión de estaciones de carga</td></tr>
+        <tr><td>Empresa energía convencional - UsRural</td><td class="text-right font-mono">23</td><td>Datos de usuarios rurales</td></tr>
+        <tr><td>Empresa energía no convencional - Dosimetria</td><td class="text-right font-mono">18</td><td>Datos de dosimetría</td></tr>
+        <tr class="bg-red-50"><td><strong>Administrador</strong></td><td class="text-right font-mono font-bold text-red-600">11</td><td><strong>Control total del sistema CARGAME</strong></td></tr>
+        <tr><td>Asistente OARE / GENCAN / Energía Eléctrica</td><td class="text-right font-mono">15</td><td>Operaciones del MinEnergía</td></tr>
+        <tr><td>Consulta</td><td class="text-right font-mono">4</td><td>Solo lectura</td></tr>
+      </tbody>
+    </table>
+    <div class="mt-3 p-3 bg-red-50 rounded">
+      <p class="text-sm text-red-700">⚠️ Las <strong>11 cuentas de Administrador</strong> están expuestas con sus hashes de contraseña, correos de <code>@minenergia.gov.co</code> y cédulas. Un atacante podría intentar descifrar las contraseñas y obtener control total de CARGAME.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- TAB: CAMPOS POR API                             -->
+<!-- ═══════════════════════════════════════════════ -->
+<section id="tab-campos" class="tab-content space-y-6">
+
+  <div class="card p-6">
+    <h2 class="text-xl font-bold mb-4">Clasificación Campo por Campo — Todas las APIs</h2>
+    <p class="text-gray-600 mb-2">Cada campo fue clasificado según su nivel de sensibilidad:</p>
+    <div class="flex flex-wrap gap-2 mb-4">
+      <span class="badge badge-crit">CRÍTICO — Compromete seguridad directamente</span>
+      <span class="badge badge-alto">ALTO — Dato personal sensible / PII</span>
+      <span class="badge badge-medio">MEDIO — Dato comercial o semi-privado</span>
+      <span class="badge badge-bajo">BAJO — Dato operativo interno</span>
+      <span class="badge badge-pub">PÚBLICO — Dato público legítimo</span>
+    </div>
+  </div>
+
+  <!-- /crg/operador -->
+  <div class="card p-6">
+    <h3 class="font-semibold mb-1">API: <code>GET /crg/operador</code></h3>
+    <p class="text-xs text-gray-400 mb-3">194 registros de prestadores de servicio</p>
+    <div class="overflow-x-auto">
+    <table>
+      <thead><tr><th>Campo</th><th>Clasificación</th><th>PII</th><th>Ejemplo Real</th><th>Riesgo</th><th>Ley 1581</th></tr></thead>
+      <tbody>
+        <tr class="sev-alto"><td><code>Nroidentificacion</code></td><td><span class="badge badge-alto">ALTO</span></td><td>✅</td><td>890500514-9</td><td>Suplantación, fraude tributario</td><td>Dato privado (Art. 3)</td></tr>
+        <tr class="sev-alto"><td><code>Correo</code></td><td><span class="badge badge-alto">ALTO</span></td><td>✅</td><td>gestioncargame@cens.com.co</td><td>Phishing, spam, ingeniería social</td><td>Dato privado (Art. 3)</td></tr>
+        <tr class="sev-alto"><td><code>Celular</code></td><td><span class="badge badge-alto">ALTO</span></td><td>✅</td><td>3153179682</td><td>SIM swapping, vishing, acoso</td><td>Dato privado (Art. 3)</td></tr>
+        <tr class="sev-alto"><td><code>Direccion</code></td><td><span class="badge badge-alto">ALTO</span></td><td>✅</td><td>AV 5 N 14-30</td><td>Ubicación de personas/empresas</td><td>Dato privado (Art. 3)</td></tr>
+        <tr class="sev-medio"><td><code>Nombres</code> (razón social)</td><td><span class="badge badge-medio">MEDIO</span></td><td>✅</td><td>CENTRALES ELECTRICAS DEL NORTE DE SANTANDER</td><td>Ingeniería social masiva</td><td>Dato semiprivado</td></tr>
+        <tr class="sev-medio"><td><code>Telefonofijo</code></td><td><span class="badge badge-medio">MEDIO</span></td><td>✅</td><td>5712345678</td><td>Contacto no autorizado</td><td>Dato semiprivado</td></tr>
+        <tr class="sev-medio"><td><code>Files</code></td><td><span class="badge badge-medio">MEDIO</span></td><td>❌</td><td>Archivos adjuntos</td><td>Acceso a documentos legales</td><td>Depende del contenido</td></tr>
+        <tr class="sev-bajo"><td><code>Id</code></td><td><span class="badge badge-bajo">BAJO</span></td><td>❌</td><td>6</td><td>Enumeración de registros</td><td>N/A</td></tr>
+        <tr class="sev-bajo"><td><code>Tipoidentificacion</code></td><td><span class="badge badge-bajo">BAJO</span></td><td>❌</td><td>NIT</td><td>Complementa suplantación</td><td>Semiprivado</td></tr>
+        <tr class="sev-bajo"><td><code>Estadooperador</code></td><td><span class="badge badge-bajo">BAJO</span></td><td>❌</td><td>Activo</td><td>Info de negocio</td><td>Semiprivado</td></tr>
+        <tr class="sev-bajo"><td><code>Departamento/Municipio</code></td><td><span class="badge badge-bajo">BAJO</span></td><td>❌</td><td>NORTE DE SANTANDER / CUCUTA</td><td>Público</td><td>Público</td></tr>
+        <tr class="sev-publico"><td><code>Siglas</code></td><td><span class="badge badge-pub">PÚBLICO</span></td><td>❌</td><td>CENS</td><td>Ninguno</td><td>Público</td></tr>
+        <tr class="sev-publico"><td><code>Tipooperador</code></td><td><span class="badge badge-pub">PÚBLICO</span></td><td>❌</td><td>Convencional</td><td>Ninguno</td><td>Público</td></tr>
+        <tr class="sev-publico"><td><code>Sitio</code></td><td><span class="badge badge-pub">PÚBLICO</span></td><td>❌</td><td>www.cens.com.co</td><td>Ninguno</td><td>Público</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- /crg/usuario -->
+  <div class="card p-6">
+    <h3 class="font-semibold mb-1">API: <code>GET /crg/usuario</code> <span class="badge badge-crit ml-2">ENDPOINT MÁS PELIGROSO</span></h3>
+    <p class="text-xs text-gray-400 mb-3">272 registros de usuarios del sistema</p>
+    <div class="overflow-x-auto">
+    <table>
+      <thead><tr><th>Campo</th><th>Clasificación</th><th>PII</th><th>Ejemplo</th><th>Riesgo</th><th>Ley 1581</th></tr></thead>
+      <tbody>
+        <tr class="sev-critico"><td><code>Clave</code> (hash bcrypt)</td><td><span class="badge badge-crit">CRÍTICO</span></td><td>❌</td><td>$2b$10$3FkOuBV...Dx9Xvy</td><td>Fuerza bruta offline, credential reuse</td><td>VIOLACIÓN Art. 5 y Art. 17</td></tr>
+        <tr class="sev-critico"><td><code>Nroidentificacion</code> (CC/NIT)</td><td><span class="badge badge-crit">CRÍTICO</span></td><td>✅</td><td>79812212</td><td>Suplantación en otros sistemas gov</td><td>Dato SENSIBLE — documento identidad</td></tr>
+        <tr class="sev-alto"><td><code>Nombres + Apellidos</code></td><td><span class="badge badge-alto">ALTO</span></td><td>✅</td><td>Jairo Lavado</td><td>Identificación directa</td><td>Dato privado (Art. 3)</td></tr>
+        <tr class="sev-alto"><td><code>Usuario</code> (login)</td><td><span class="badge badge-alto">ALTO</span></td><td>✅</td><td>79812212 (=CC)</td><td>Enumeración, credential stuffing</td><td>Dato privado</td></tr>
+        <tr class="sev-alto"><td><code>Correo</code></td><td><span class="badge badge-alto">ALTO</span></td><td>✅</td><td>afacevedo@minenergia.gov.co</td><td>Phishing a funcionarios del gobierno</td><td>Dato privado (Art. 3)</td></tr>
+        <tr class="sev-alto"><td><code>Celular</code></td><td><span class="badge badge-alto">ALTO</span></td><td>✅</td><td>3177773377</td><td>SIM swap, vishing a funcionarios</td><td>Dato privado (Art. 3)</td></tr>
+        <tr class="sev-medio"><td><code>Tipousuario</code></td><td><span class="badge badge-medio">MEDIO</span></td><td>❌</td><td>Administrador</td><td>Mapeo de roles para escalamiento</td><td>Dato operativo</td></tr>
+        <tr class="sev-medio"><td><code>Fechaexpira</code></td><td><span class="badge badge-medio">MEDIO</span></td><td>❌</td><td>2039-12-31</td><td>Identificar cuentas activas</td><td>Dato operativo</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- /crg/consentimiento -->
+  <div class="card p-6">
+    <h3 class="font-semibold mb-1">API: <code>GET /crg/consentimiento</code></h3>
+    <p class="text-xs text-gray-400 mb-3">51 registros de decisiones de consentimiento</p>
+    <div class="overflow-x-auto">
+    <table>
+      <thead><tr><th>Campo</th><th>Clasificación</th><th>PII</th><th>Riesgo</th><th>Ley 1581</th></tr></thead>
+      <tbody>
+        <tr class="sev-alto"><td><code>Autorizo</code> (decisión de consentimiento)</td><td><span class="badge badge-alto">ALTO</span></td><td>✅</td><td>Dato protegido — la decisión de consentimiento es en sí misma sensible</td><td>VIOLACIÓN Art. 6 y Art. 9</td></tr>
+        <tr class="sev-medio"><td><code>Operador</code> (ID)</td><td><span class="badge badge-medio">MEDIO</span></td><td>❌</td><td>Correlación con /crg/operador</td><td>Dato sensible (Art. 6)</td></tr>
+        <tr class="sev-medio"><td><code>Usuario</code> (ID)</td><td><span class="badge badge-medio">MEDIO</span></td><td>✅</td><td>Correlación con /crg/usuario</td><td>Dato sensible</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- /crg/resumenestacionescarga -->
+  <div class="card p-6">
+    <h3 class="font-semibold mb-1">API: <code>GET /crg/resumenestacionescarga/0/0</code></h3>
+    <p class="text-xs text-gray-400 mb-3">139 estaciones — Mayormente datos públicos</p>
+    <div class="overflow-x-auto">
+    <table>
+      <thead><tr><th>Campo</th><th>Clasificación</th><th>Observación</th></tr></thead>
+      <tbody>
+        <tr class="sev-medio"><td><code>Cobros / Precios</code></td><td><span class="badge badge-medio">MEDIO</span></td><td>Información comercial que podría ser confidencial para el operador</td></tr>
+        <tr class="sev-medio"><td><code>Files</code> (URLs a documentos)</td><td><span class="badge badge-medio">MEDIO</span></td><td>Acceso directo a certificados RETIE y declaraciones de cumplimiento</td></tr>
+        <tr class="sev-publico"><td><code>Nombre, Dirección, GPS, Conectores, Horario</code></td><td><span class="badge badge-pub">PÚBLICO</span></td><td>Datos legítimamente públicos para usuarios de vehículos eléctricos</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- TAB: OWASP                                      -->
+<!-- ═══════════════════════════════════════════════ -->
+<section id="tab-owasp" class="tab-content space-y-6">
+  <div class="card p-6">
+    <h2 class="text-xl font-bold mb-4">🛡️ Evaluación OWASP API Security Top 10 (2023)</h2>
+    <p class="text-gray-600 mb-4">Análisis contra el estándar internacional de seguridad en APIs de OWASP (Open Worldwide Application Security Project).</p>
+  </div>
+
+  <div class="space-y-4" id="owaspList">
+    <!-- API1 -->
+    <div class="card p-5 sev-critico">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="badge badge-violado">VIOLADO</span>
+        <h3 class="font-bold">API1:2023 — Broken Object Level Authorization (BOLA)</h3>
+      </div>
+      <p class="text-sm text-gray-700 mb-2"><strong>Evidencia:</strong> Todos los endpoints devuelven TODOS los registros sin filtro por usuario autenticado. El token JWT tiene rol "intelligence" con acceso total a toda la base de datos.</p>
+      <p class="text-sm text-green-800"><strong>Remediación:</strong> Implementar control de acceso por objeto. Cada usuario solo debe ver sus propios datos o datos autorizados.</p>
+    </div>
+    <!-- API2 -->
+    <div class="card p-5 sev-critico">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="badge badge-violado">VIOLADO</span>
+        <h3 class="font-bold">API2:2023 — Broken Authentication</h3>
+      </div>
+      <p class="text-sm text-gray-700 mb-2"><strong>Evidencia:</strong> Token JWT estático emitido el 16/07/2020, sin expiración, hardcodeado en el frontend. Hashes bcrypt de 272 usuarios expuestos. Sin rotación de tokens. Sin MFA.</p>
+      <p class="text-sm text-green-800"><strong>Remediación:</strong> OAuth2/OIDC con tokens de corta duración (15 min), refresh tokens, rotación. Nunca exponer hashes.</p>
+    </div>
+    <!-- API3 -->
+    <div class="card p-5 sev-critico">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="badge badge-violado">VIOLADO</span>
+        <h3 class="font-bold">API3:2023 — Broken Object Property Level Authorization</h3>
+      </div>
+      <p class="text-sm text-gray-700 mb-2"><strong>Evidencia:</strong> Las APIs devuelven TODOS los campos sin filtrar. <code>/crg/usuario</code> devuelve "Clave" (hash bcrypt). <code>/crg/operador</code> devuelve correos, celulares, direcciones privadas.</p>
+      <p class="text-sm text-green-800"><strong>Remediación:</strong> DTOs/ViewModels con solo campos necesarios. Projections a nivel de base de datos.</p>
+    </div>
+    <!-- API4 -->
+    <div class="card p-5 sev-alto">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="badge badge-probable">PROBABLE</span>
+        <h3 class="font-bold">API4:2023 — Unrestricted Resource Consumption</h3>
+      </div>
+      <p class="text-sm text-gray-700 mb-2"><strong>Evidencia:</strong> Sin rate limiting. Respuestas completas sin paginación (194 operadores, 272 usuarios, 1122 municipios en un solo request).</p>
+      <p class="text-sm text-green-800"><strong>Remediación:</strong> Rate limiting (X-RateLimit headers), paginación obligatoria, timeouts.</p>
+    </div>
+    <!-- API5 -->
+    <div class="card p-5 sev-critico">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="badge badge-violado">VIOLADO</span>
+        <h3 class="font-bold">API5:2023 — Broken Function Level Authorization</h3>
+      </div>
+      <p class="text-sm text-gray-700 mb-2"><strong>Evidencia:</strong> Un token con rol "intelligence" (BI/lectura) accede a endpoints administrativos como <code>/crg/usuario</code> que expone datos de administradores del sistema.</p>
+      <p class="text-sm text-green-800"><strong>Remediación:</strong> RBAC granular. Separar APIs públicas, de operador y administrativas.</p>
+    </div>
+    <!-- API6 -->
+    <div class="card p-5 sev-alto">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="badge badge-probable">PROBABLE</span>
+        <h3 class="font-bold">API6:2023 — Unrestricted Access to Sensitive Business Flows</h3>
+      </div>
+      <p class="text-sm text-gray-700 mb-2"><strong>Evidencia:</strong> Es posible descargar la base de datos completa de estaciones, operadores y usuarios en pocas llamadas HTTP, replicando toda la información del sistema.</p>
+      <p class="text-sm text-green-800"><strong>Remediación:</strong> Anti-scraping, CAPTCHA en endpoints masivos, monitoreo de patrones.</p>
+    </div>
+    <!-- API8 -->
+    <div class="card p-5 sev-critico">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="badge badge-violado">VIOLADO</span>
+        <h3 class="font-bold">API8:2023 — Security Misconfiguration</h3>
+      </div>
+      <p class="text-sm text-gray-700 mb-2"><strong>Evidencia:</strong> CORS permisivo, JWT sin expiración hardcodeado en frontend, servidor en puerto no estándar (3011), sin headers de seguridad (CSP, HSTS, X-Content-Type-Options).</p>
+      <p class="text-sm text-green-800"><strong>Remediación:</strong> CORS restrictivo, HSTS, CSP, API Gateway, secretos en vault.</p>
+    </div>
+    <!-- API9 -->
+    <div class="card p-5 sev-medio">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="badge badge-violado">VIOLADO</span>
+        <h3 class="font-bold">API9:2023 — Improper Inventory Management</h3>
+      </div>
+      <p class="text-sm text-gray-700 mb-2"><strong>Evidencia:</strong> Endpoints no documentados descubiertos por enumeración (<code>/crg/operador</code>, <code>/crg/usuario</code>, <code>/crg/consentimiento</code>). Sin documentación ni inventario público de APIs.</p>
+      <p class="text-sm text-green-800"><strong>Remediación:</strong> Documentar con OpenAPI/Swagger, implementar API Gateway con inventario.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- TAB: LEY 1581                                   -->
+<!-- ═══════════════════════════════════════════════ -->
+<section id="tab-ley1581" class="tab-content space-y-6">
+  <div class="card p-6">
+    <h2 class="text-xl font-bold mb-4">📜 Evaluación Ley 1581 de 2012 — Protección de Datos Personales</h2>
+    <p class="text-gray-600 mb-2">Ley Estatutaria de Colombia que regula el tratamiento de datos personales. Aplica a toda persona natural o jurídica que trate datos personales en Colombia.</p>
+    <p class="text-gray-600 mb-4"><strong>Responsable:</strong> Ministerio de Minas y Energía. <strong>Encargado:</strong> Administrador de CARGAME (SIVEEIC).</p>
+  </div>
+
+  <div class="overflow-x-auto">
+  <table class="card">
+    <thead>
+      <tr><th>Artículo</th><th>Principio / Deber</th><th>Estado</th><th>Evidencia</th></tr>
+    </thead>
+    <tbody>
+      <tr class="sev-critico"><td><strong>Art. 3</strong></td><td>Definiciones — Datos privados y sensibles</td><td><span class="badge badge-violado">VIOLADO</span></td><td>Se exponen datos privados (NIT, CC, correo, celular, dirección) y datos sensibles (hashes de contraseña) sin autorización del titular</td></tr>
+      <tr class="sev-critico"><td><strong>Art. 4</strong></td><td>Principio de Finalidad</td><td><span class="badge badge-violado">VIOLADO</span></td><td>Los datos se exponen más allá de la finalidad del sistema (registro de estaciones). No hay necesidad de exponer celulares, correos y contraseñas al público</td></tr>
+      <tr class="sev-critico"><td><strong>Art. 4</strong></td><td>Principio de Necesidad (Minimización)</td><td><span class="badge badge-violado">VIOLADO</span></td><td>Las APIs devuelven TODOS los campos sin filtrar. No se aplica el principio de mínimo dato necesario</td></tr>
+      <tr class="sev-critico"><td><strong>Art. 4</strong></td><td>Principio de Seguridad</td><td><span class="badge badge-violado">VIOLADO</span></td><td>Token JWT estático sin expiración desde 2020, sin CORS restrictivo, sin rate limiting, hashes de contraseña expuestos</td></tr>
+      <tr class="sev-critico"><td><strong>Art. 4</strong></td><td>Principio de Confidencialidad</td><td><span class="badge badge-violado">VIOLADO</span></td><td>Datos que deben ser confidenciales (contraseñas, datos de contacto privados) son accesibles públicamente por cualquier persona</td></tr>
+      <tr class="sev-critico"><td><strong>Art. 5</strong></td><td>Datos Sensibles</td><td><span class="badge badge-violado">VIOLADO</span></td><td>Los hashes de contraseña y datos de consentimiento son datos sensibles que requieren protección reforzada</td></tr>
+      <tr class="sev-medio"><td><strong>Art. 6</strong></td><td>Autorización del titular</td><td><span class="badge badge-parcial">CUESTIONABLE</span></td><td>No es verificable si los operadores autorizaron que sus datos de contacto fueran expuestos públicamente vía API sin control de acceso</td></tr>
+      <tr class="sev-critico"><td><strong>Art. 9</strong></td><td>Autorización datos sensibles</td><td><span class="badge badge-violado">VIOLADO</span></td><td>El endpoint /crg/consentimiento expone las decisiones de autorización de tratamiento de datos, que son en sí datos sensibles</td></tr>
+      <tr class="sev-critico"><td><strong>Art. 12</strong></td><td>Deberes del Responsable</td><td><span class="badge badge-violado">VIOLADO</span></td><td>El responsable (MinEnergía) debe garantizar la seguridad de los datos. La exposición pública sin control viola este deber</td></tr>
+      <tr class="sev-critico"><td><strong>Art. 17</strong></td><td>Deberes del Encargado</td><td><span class="badge badge-violado">VIOLADO</span></td><td>El encargado debe implementar medidas técnicas para proteger los datos. El JWT estático y la falta de autenticación real lo violan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="card p-6">
+    <h3 class="font-semibold mb-3">Implicaciones Legales</h3>
+    <div class="space-y-3">
+      <div class="p-3 bg-red-50 rounded-lg">
+        <p class="font-medium text-red-800">🔴 Superintendencia de Industria y Comercio (SIC)</p>
+        <p class="text-sm text-red-700">La SIC es la autoridad de protección de datos en Colombia. Estas violaciones podrían derivar en investigaciones y sanciones bajo la Ley 1581 de 2012 y el Decreto 1377 de 2013. Las multas pueden llegar hasta 2,000 SMLMV (aprox. COP 2,600 millones en 2026).</p>
+      </div>
+      <div class="p-3 bg-amber-50 rounded-lg">
+        <p class="font-medium text-amber-800">⚠️ Responsabilidad compartida</p>
+        <p class="text-sm text-amber-700">Tanto el <strong>Responsable</strong> (MinEnergía como titular de la plataforma) como el <strong>Encargado</strong> (equipo técnico de SIVEEIC) son responsables. La UPME, como entidad que descubre y reporta estas vulnerabilidades, actúa responsablemente al notificarlas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- TAB: ISO 27001                                  -->
+<!-- ═══════════════════════════════════════════════ -->
+<section id="tab-iso" class="tab-content space-y-6">
+  <div class="card p-6">
+    <h2 class="text-xl font-bold mb-4">🏛️ Evaluación ISO 27001 — Controles de Seguridad de la Información</h2>
+  </div>
+
+  <div class="overflow-x-auto">
+  <table class="card">
+    <thead><tr><th>Control ISO 27001</th><th>Estado</th><th>Detalle</th></tr></thead>
+    <tbody>
+      <tr class="sev-critico"><td><strong>A.8.2</strong> — Clasificación de la información</td><td><span class="badge badge-violado">NO CONFORME</span></td><td>No hay clasificación de datos. Datos públicos, privados y sensibles se mezclan en las mismas respuestas API sin distinción ni etiquetado.</td></tr>
+      <tr class="sev-critico"><td><strong>A.9.1</strong> — Control de acceso</td><td><span class="badge badge-violado">NO CONFORME</span></td><td>Token JWT estático sin autenticación real. Sin RBAC funcional. Sin Multi-Factor Authentication. Un solo nivel de acceso para todo.</td></tr>
+      <tr class="sev-critico"><td><strong>A.9.4</strong> — Control de acceso a sistemas y aplicaciones</td><td><span class="badge badge-violado">NO CONFORME</span></td><td>Hashes de contraseña de 272 usuarios expuestos. Usuarios, roles y privilegios enumerables. Nombres de usuario = cédulas de ciudadanía.</td></tr>
+      <tr class="sev-medio"><td><strong>A.10.1</strong> — Controles criptográficos</td><td><span class="badge badge-parcial">PARCIAL</span></td><td>✅ Se usa bcrypt para hashes (correcto). ❌ Pero se exponen los hashes vía API. ❌ JWT usa HS256 (simétrico) en lugar de RS256 (asimétrico).</td></tr>
+      <tr class="sev-critico"><td><strong>A.12.6</strong> — Gestión de vulnerabilidades técnicas</td><td><span class="badge badge-violado">NO CONFORME</span></td><td>Las vulnerabilidades descritas llevan presentes desde al menos julio de 2020 (fecha de emisión del JWT). Sin evidencia de escaneos de seguridad ni pentesting.</td></tr>
+      <tr class="sev-critico"><td><strong>A.14.1</strong> — Seguridad en procesos de desarrollo</td><td><span class="badge badge-violado">NO CONFORME</span></td><td>Secretos hardcodeados en frontend. Sin API Gateway. Sin revisión de seguridad en código. Sin documentación de seguridad.</td></tr>
+      <tr class="sev-critico"><td><strong>A.18.1</strong> — Cumplimiento legal y contractual</td><td><span class="badge badge-violado">NO CONFORME</span></td><td>Violaciones identificadas a la Ley 1581 de 2012 de Protección de Datos Personales de Colombia.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- TAB: RECOMENDACIONES                            -->
+<!-- ═══════════════════════════════════════════════ -->
+<section id="tab-recomendaciones" class="tab-content space-y-6">
+  <div class="card p-6">
+    <h2 class="text-xl font-bold mb-4">✅ Recomendaciones de Remediación</h2>
+    <p class="text-gray-600">Priorizadas por criticidad e impacto. Estas recomendaciones pueden incluirse en la comunicación formal al MinEnergía.</p>
+  </div>
+
+  <!-- Inmediatas -->
+  <div class="card p-6 border-l-4 border-red-500">
+    <h3 class="text-lg font-bold text-red-700 mb-3">🔴 INMEDIATAS (0-30 días)</h3>
+    <div class="space-y-4">
+      <div class="flex gap-3">
+        <span class="text-red-500 font-bold text-lg">1.</span>
+        <div>
+          <p class="font-semibold">Remover campo "Clave" de la respuesta de /crg/usuario</p>
+          <p class="text-sm text-gray-600">Nunca se deben exponer hashes de contraseña vía API. Implementar un DTO que excluya este campo. <strong>Esfuerzo estimado: 1 hora.</strong></p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-red-500 font-bold text-lg">2.</span>
+        <div>
+          <p class="font-semibold">Revocar el token JWT estático actual</p>
+          <p class="text-sm text-gray-600">Generar tokens dinámicos con expiración (15 min access + refresh token). Remover el token del código frontend.</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-red-500 font-bold text-lg">3.</span>
+        <div>
+          <p class="font-semibold">Restringir /crg/usuario y /crg/consentimiento solo a rol Administrador</p>
+          <p class="text-sm text-gray-600">Estos endpoints no deben ser accesibles con un token de lectura/BI. Implementar validación de rol en el backend.</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-red-500 font-bold text-lg">4.</span>
+        <div>
+          <p class="font-semibold">Filtrar campos sensibles de /crg/operador</p>
+          <p class="text-sm text-gray-600">La API pública solo debe devolver: Nombre, Siglas, TipoOperador, Estado, Departamento, Sitio. Remover: Correo, Celular, Dirección, NIT, Teléfono.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Corto plazo -->
+  <div class="card p-6 border-l-4 border-orange-500">
+    <h3 class="text-lg font-bold text-orange-700 mb-3">🟠 CORTO PLAZO (1-3 meses)</h3>
+    <div class="space-y-4">
+      <div class="flex gap-3">
+        <span class="text-orange-500 font-bold text-lg">5.</span>
+        <div>
+          <p class="font-semibold">Implementar OAuth2 / OpenID Connect</p>
+          <p class="text-sm text-gray-600">Reemplazar JWT estático por flujo OAuth2 con servidor de autorización. Tokens con expiración, refresh tokens, scopes por tipo de usuario.</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-orange-500 font-bold text-lg">6.</span>
+        <div>
+          <p class="font-semibold">Implementar RBAC (Role-Based Access Control) granular</p>
+          <p class="text-sm text-gray-600">Definir roles: Público (solo estaciones), Operador (sus datos), Admin (todo). Cada endpoint valida permisos.</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-orange-500 font-bold text-lg">7.</span>
+        <div>
+          <p class="font-semibold">Configurar CORS restrictivo</p>
+          <p class="text-sm text-gray-600">Solo permitir origin <code>https://cargame.minenergia.gov.co</code> y dominios autorizados de consumidores de API.</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-orange-500 font-bold text-lg">8.</span>
+        <div>
+          <p class="font-semibold">Rate limiting y paginación</p>
+          <p class="text-sm text-gray-600">Límite de requests por IP/token. Paginación obligatoria en endpoints masivos. Headers X-RateLimit-*.</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-orange-500 font-bold text-lg">9.</span>
+        <div>
+          <p class="font-semibold">Headers de seguridad HTTP</p>
+          <p class="text-sm text-gray-600">Implementar: Strict-Transport-Security, Content-Security-Policy, X-Content-Type-Options, X-Frame-Options.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mediano plazo -->
+  <div class="card p-6 border-l-4 border-yellow-500">
+    <h3 class="text-lg font-bold text-yellow-700 mb-3">🟡 MEDIANO PLAZO (3-6 meses)</h3>
+    <div class="space-y-4">
+      <div class="flex gap-3">
+        <span class="text-yellow-500 font-bold text-lg">10.</span>
+        <div>
+          <p class="font-semibold">Implementar API Gateway</p>
+          <p class="text-sm text-gray-600">Centralizar autenticación, rate limiting, logging, y documentación. Inventario de endpoints activos.</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-yellow-500 font-bold text-lg">11.</span>
+        <div>
+          <p class="font-semibold">Documentación OpenAPI/Swagger</p>
+          <p class="text-sm text-gray-600">Documentar todas las APIs formalmente. Permitir acceso controlado a consumidores autorizados como UPME.</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-yellow-500 font-bold text-lg">12.</span>
+        <div>
+          <p class="font-semibold">Auditoría de seguridad (Penetration Testing)</p>
+          <p class="text-sm text-gray-600">Contratar pentesting profesional para evaluar endpoints POST/PUT/DELETE, inyección SQL, XSS, y otros vectores no cubiertos en este análisis.</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-yellow-500 font-bold text-lg">13.</span>
+        <div>
+          <p class="font-semibold">Actualización de Política de Tratamiento de Datos</p>
+          <p class="text-sm text-gray-600">Revisar la política de protección de datos personales de CARGAME conforme a la Ley 1581 y registrar ante la SIC.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nota UPME -->
+  <div class="card p-6 bg-blue-50 border border-blue-200">
+    <h3 class="text-lg font-bold text-blue-800 mb-3">📋 Nota para la UPME</h3>
+    <p class="text-sm text-blue-700 mb-3">
+      Este informe de auditoría puede adjuntarse a la solicitud formal de APIs como <strong>Anexo Técnico de Seguridad</strong>. 
+      Se recomienda:
+    </p>
+    <ul class="text-sm text-blue-700 space-y-1 ml-4 list-disc">
+      <li>Presentar los hallazgos como <strong>"reporte responsable de vulnerabilidades"</strong> (responsible disclosure)</li>
+      <li>Solicitar que las APIs formales para UPME se implementen con las correcciones de seguridad</li>
+      <li>Proponer que la UPME pueda conectarse vía <strong>API Gateway con credenciales dedicadas</strong></li>
+      <li>Incluir la propuesta de uso de <strong>protocolo OCPI</strong> como estándar de interoperabilidad</li>
+    </ul>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="bg-gray-800 text-gray-400 py-6 px-4 mt-12 text-center text-sm">
+  <p>Informe de Seguridad generado automáticamente | UPME — Auditoría CARGAME | Marzo 2026</p>
+  <p class="mt-1">Clasificación: <strong class="text-red-400">CONFIDENCIAL — USO INTERNO</strong></p>
+</footer>
+
+<script>
+// ═══ TABS ═══
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ═══ GAUGES ═══
+function drawGauge(canvasId, value, total, color) {
+  const ctx = document.getElementById(canvasId);
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Violados', 'Conformes'],
+      datasets: [{ data: [value, total - value], backgroundColor: [color, '#e5e7eb'], borderWidth: 0 }]
+    },
+    options: {
+      responsive: true,
+      cutout: '70%',
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: true }
+      }
+    }
+  });
+}
+drawGauge('gaugeOwasp', 6, 8, '#dc2626');
+drawGauge('gaugeLey', 9, 10, '#dc2626');
+drawGauge('gaugeIso', 6, 7, '#dc2626');
+
+// ═══ CHART: Campos ═══
+new Chart(document.getElementById('chartCampos'), {
+  type: 'bar',
+  data: {
+    labels: ['CRÍTICO', 'ALTO', 'MEDIO', 'BAJO', 'PÚBLICO'],
+    datasets: [{
+      label: 'Campos',
+      data: [2, 9, 9, 7, 5],
+      backgroundColor: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#94a3b8']
+    }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true,
+    plugins: { legend: { display: false } },
+    scales: { x: { beginAtZero: true, title: { display: true, text: 'Número de campos' } } }
+  }
+});
+
+// ═══ TABLA PRESTADORES ═══
+const prestadores = [
+  {id:3, n:'AES CHIVOR & CIA SCA ESP', nit:'830025205-2', e:'aeschivor@aes.com', c:'', d:'', st:'Activo'},
+  {id:4, n:'CENTRALES ELECTRICAS DE NARIÑO S.A.', nit:'891200200-8', e:'gerencia@cedenar.com.co', c:'', d:'', st:'Activo'},
+  {id:5, n:'CELSIA TOLIMA S.A. E.S.P.', nit:'901280981-9', e:'notificacionesceltolima@celsia.com', c:'', d:'', st:'Activo'},
+  {id:6, n:'CENTRALES ELECTRICAS DEL NORTE DE SANTANDER S.A. ESP', nit:'890500514-9', e:'movilidadelectricacens@epm.com.co', c:'3153179682', d:'AV 5 N 14-30', st:'Activo'},
+  {id:7, n:'COMPAÑÍA DE ELECTRICIDAD DE TULUÁ S.A. E.S.P.', nit:'891900101-0', e:'cetsa@celsia.com', c:'', d:'', st:'Activo'},
+  {id:8, n:'CENTRAL HIDROELECTRICA DE CALDAS S.A. E.S.P.', nit:'890800128-6', e:'not.judiciales@chec.com.co', c:'', d:'', st:'Activo'},
+  {id:9, n:'CODENSA S.A. ESP', nit:'830037248-0', e:'sac.codensa@enel.com', c:'', d:'', st:'Activo'},
+  {id:10, n:'COMPAÑIA ENERGETICA DE OCCIDENTE S.A.S. E.S.P.', nit:'900366010-1', e:'cia.energetica@ceoesp.com', c:'3208370365', d:'Cr 5 No. 11-69', st:'Activo'},
+  {id:11, n:'DISTRIBUIDORA ELECTRICA DE CUNDINAMARCA', nit:'815000896-9', e:'dicelsa@dicel.com.co', c:'', d:'', st:'Activo'},
+  {id:13, n:'EMPRESA DISTRIBUIDORA DEL PACIFICO S.A. E.S.P', nit:'818001629-4', e:'edp@dispac.com.co', c:'', d:'Cra 6 No 25-19', st:'Activo'},
+  {id:14, n:'EMPRESA DE ENERGIA DEL BAJO PUTUMAYO S.A. E.S.P.', nit:'846000553-0', e:'eebp@eebp.com.co', c:'', d:'', st:'Activo'},
+  {id:15, n:'E2 ENERGIA EFICIENTE S.A. E.S.P.', nit:'802025052-0', e:'info@e2.com.co', c:'', d:'', st:'Activo'},
+  {id:16, n:'EMPRESA DE ENERGIA DE BOYACA S.A. ESP', nit:'891800219-1', e:'ebsa@ebsa.com.co', c:'', d:'', st:'Activo'},
+  {id:17, n:'EMPRESA COMERCIALIZADORA DE ENERGIA ELECTRICA DE LEBRIJA', nit:'901225715-2', e:'cedenar@cedenar.com.co', c:'', d:'', st:'Activo'},
+  {id:20, n:'ECOPETROL ENERGÍA S.A.S. E.S.P.', nit:'901165502-2', e:'contacto@ecopetrolenergia.com', c:'', d:'Cr 13 No 36-24', st:'Activo'},
+  {id:25, n:'EMPRESAS PÚBLICAS DE MEDELLIN E.S.P.', nit:'890904996-1', e:'movilidadelectrica@epm.com.co', c:'3136098718', d:'CRA 58 42-125', st:'Activo'},
+  {id:27, n:'ELECTRIFICADORA DE SANTANDER S.A. E.S.P.', nit:'890201213-0', e:'movilidadelectrica@essa.com.co', c:'3188520100', d:'Cr 19 #24-56', st:'Activo'},
+  {id:30, n:'EMPRESA DE ENERGÍA DE PEREIRA S.A. ESP.', nit:'891480014-4', e:'movilidade@eep.com.co', c:'3005510051', d:'Cr 10 17-47', st:'Activo'},
+  {id:40, n:'Organizacion Terpel S.A.', nit:'860002964-4', e:'cargamegas@terpel.com', c:'3208553093', d:'Cl 93 11A-28', st:'Activo'},
+  {id:50, n:'EMCALI EICE ESP', nit:'890399003-5', e:'emcali@emcali.com.co', c:'3164444555', d:'Av 2N #10-70', st:'Activo'},
+];
+const tb = document.querySelector('#tablaPrestadores tbody');
+prestadores.forEach(p => {
+  const c = p.c ? `<span class="text-red-600 font-mono">${p.c}</span>` : '<span class="text-gray-300">—</span>';
+  const d = p.d ? `<span class="text-red-600">${p.d}</span>` : '<span class="text-gray-300">—</span>';
+  tb.innerHTML += `<tr><td class="font-mono">${p.id}</td><td>${p.n}</td><td class="font-mono text-red-600">${p.nit}</td><td class="text-red-600">${p.e}</td><td>${c}</td><td>${d}</td><td><span class="badge badge-conforme">${p.st}</span></td></tr>`;
+});
+</script>
+</body>
+</html>

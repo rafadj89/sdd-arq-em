@@ -1,0 +1,139 @@
+{
+  "servidor": {
+    "host": "siveeic.minenergia.gov.co",
+    "puerto": 3011,
+    "protocolo": "HTTPS",
+    "basePath": "/crg/",
+    "autenticacion": "JWT Bearer Token (estático, hardcodeado en frontend)",
+    "tecnologia_backend": "Node.js/Express (inferido por formato de errores y headers)"
+  },
+  "servicios_frontend": {
+    "USUARIOS_SERVICE": "https://siveeic.minenergia.gov.co:3011/crg/",
+    "REGISTROS_SERVICE": "https://siveeic.minenergia.gov.co:3011/crg/",
+    "CONSENTIMIENTO_SERVICE": "https://siveeic.minenergia.gov.co:3011/crg/",
+    "FILES_SERVICE": "https://siveeic.minenergia.gov.co:3011/",
+    "SITE_SIVEEIC": "https://siveeic.minenergia.gov.co"
+  },
+  "endpoints_confirmados": [
+    {
+      "metodo": "GET",
+      "path": "/crg/resumenestacionescarga/{tipoOperador}/{estado}",
+      "descripcion": "Listado completo de estaciones de carga con todos los detalles",
+      "parametros": "tipoOperador: 0=todos, estado: 0=activos, 1=inactivos(?)",
+      "registros": 139,
+      "autenticacion": "JWT",
+      "datos_clave": "Id, Operador(Id,Nombre,Sitio), Nombre, Direccion, Departamento, Municipio, Ubicacion, Tipoestacion, Horario, Lat/Lng, Estado, Conectores, PotenciaMax, Cobros, Precios, Files"
+    },
+    {
+      "metodo": "GET",
+      "path": "/crg/operador",
+      "descripcion": "Directorio completo de operadores/proveedores registrados",
+      "registros": 194,
+      "autenticacion": "JWT",
+      "datos_clave": "Id, Nombres, NIT, TipoOperador(Convencional/NoConvencional), Estado, Departamento, Municipio, Contacto(correo,celular,telefono), Direccion, Sitio, FechaCreacion, Siglas"
+    },
+    {
+      "metodo": "GET",
+      "path": "/crg/usuario",
+      "descripcion": "⚠️ Lista completa de usuarios con hashes de contraseña",
+      "registros": 272,
+      "autenticacion": "JWT",
+      "datos_clave": "Id, Nombres, Apellidos, CC/NIT, Usuario, Clave(bcrypt!), TipoUsuario, Estado, Correo, Celular, FechaExpira, CoordinacionOperativa"
+    },
+    {
+      "metodo": "GET",
+      "path": "/crg/tipoubicacion",
+      "descripcion": "Catálogo de tipos de ubicación de estaciones",
+      "registros": 11,
+      "autenticacion": "JWT",
+      "datos_clave": "Id, Nombre"
+    },
+    {
+      "metodo": "GET",
+      "path": "/crg/municipiofull",
+      "descripcion": "Catálogo completo de municipios de Colombia con coordenadas",
+      "registros": 1122,
+      "autenticacion": "JWT",
+      "datos_clave": "Id, Nombremunicipio, Iddepartamento, Nombredepartamento, Longitud, Latitud, Zomac, Pedet"
+    },
+    {
+      "metodo": "GET",
+      "path": "/crg/municipio",
+      "descripcion": "Catálogo simplificado de municipios",
+      "registros": 1122,
+      "autenticacion": "JWT",
+      "datos_clave": "Id, Nombre, Iddepartamento"
+    },
+    {
+      "metodo": "GET",
+      "path": "/crg/departamento",
+      "descripcion": "Catálogo de departamentos",
+      "registros": 33,
+      "autenticacion": "JWT",
+      "datos_clave": "Id, Nombre"
+    },
+    {
+      "metodo": "GET",
+      "path": "/crg/filtrosbuscar",
+      "descripcion": "Filtros disponibles para búsqueda de estaciones",
+      "registros": 223,
+      "autenticacion": "JWT",
+      "datos_clave": "Filtro(Acceso|Conectores|Estacion|Operador|Ubicacion), Nombre"
+    },
+    {
+      "metodo": "GET",
+      "path": "/crg/consentimiento",
+      "descripcion": "Registros de consentimiento de tratamiento de datos",
+      "registros": 51,
+      "autenticacion": "JWT",
+      "datos_clave": "id_tratamiento, Operador, Usuario, Autorizo, Estado, Fecha"
+    },
+    {
+      "metodo": "GET",
+      "path": "/crg/canalmanual/{id}/canalManualesCarga",
+      "descripcion": "Documentos y manuales de la plataforma",
+      "registros": 1,
+      "autenticacion": "JWT",
+      "datos_clave": "Id, Nombre(URL al PDF)"
+    },
+    {
+      "metodo": "GET",
+      "path": "/estacion/filefoto/{id}.{ext}",
+      "descripcion": "Fotos de estaciones de carga (archivos estáticos)",
+      "autenticacion": "Posiblemente sin auth",
+      "datos_clave": "Imagen de la estación"
+    },
+    {
+      "metodo": "GET",
+      "path": "/estacion/filecumplimiento/{id}.pdf",
+      "descripcion": "Declaraciones de cumplimiento (PDF)",
+      "autenticacion": "Posiblemente sin auth",
+      "datos_clave": "PDF del documento legal"
+    },
+    {
+      "metodo": "GET",
+      "path": "/estacion/fileconformidad/{id}.pdf",
+      "descripcion": "Certificados de conformidad (PDF)",
+      "autenticacion": "Posiblemente sin auth",
+      "datos_clave": "PDF del certificado"
+    },
+    {
+      "metodo": "GET",
+      "path": "/estacion/filelegal/{nombre}.pdf",
+      "descripcion": "Documentos legales (manuales)",
+      "autenticacion": "Posiblemente sin auth",
+      "datos_clave": "PDF del manual"
+    }
+  ],
+  "endpoints_inferidos_no_confirmados": [
+    "POST /crg/login - Autenticación de usuarios (inferido del i18n)",
+    "POST /crg/registro - Registro de nuevos operadores (inferido del i18n)",
+    "POST /crg/estacion - Crear estación (inferido de flujo CRUD)",
+    "PUT /crg/estacion/{id} - Actualizar estación",
+    "DELETE /crg/estacion/{id} - Eliminar estación",
+    "POST /crg/operador - Crear operador",
+    "PUT /crg/operador/{id} - Actualizar operador",
+    "POST /crg/upload - Subir archivos (inferido de FILES_SERVICE)",
+    "GET /crg/resumenestacionescarga/{operadorId}/0 - Filtrar por operador (param1=operadorId, error 500 actual)"
+  ]
+}

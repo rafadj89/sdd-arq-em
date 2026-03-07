@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OCI Architecture Review — Plataforma Electromovilidad UPME (Min)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>{mermaid.initialize({startOnLoad:true,theme:'default',themeVariables:{fontFamily:'Inter,sans-serif'},securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true},sequence:{useMaxWidth:true}})});</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*{font-family:'Inter',sans-serif;box-sizing:border-box}
+body{background:#fff;color:#1e293b;line-height:1.7;margin:0}
+.doc{max-width:1100px;margin:0 auto;padding:20px 40px 60px}
+h1{font-size:1.6rem;font-weight:800;color:#0f172a;margin:0 0 8px;border-bottom:3px solid #c74634;padding-bottom:6px}
+h2{font-size:1.2rem;font-weight:700;color:#1e293b;margin:24px 0 8px;border-bottom:2px solid #e2e8f0;padding-bottom:5px}
+h3{font-size:1rem;font-weight:600;color:#334155;margin:16px 0 6px}
+h4{font-size:0.88rem;font-weight:600;color:#475569;margin:10px 0 4px}
+p,li{font-size:0.84rem}
+table{width:100%;border-collapse:collapse;margin:8px 0 14px;font-size:0.76rem}
+th{background:#312d2a;color:#fff;font-weight:600;text-align:left;padding:5px 8px;border:1px solid #312d2a}
+td{padding:4px 8px;border:1px solid #e2e8f0;vertical-align:top}
+tr:nth-child(even){background:#f8fafc}
+.mermaid{margin:10px 0;overflow-x:auto}
+.oci-diagram{margin:16px 0;overflow-x:auto;border:1px solid #dfdcd8;border-radius:8px;padding:8px;background:#fff}
+.oci-diagram svg{display:block;margin:0 auto}
+.cover{text-align:center;padding:36px 30px;background:linear-gradient(135deg,#1a1714 0%,#312d2a 30%,#c74634 70%,#a03828 100%);color:#fff;border-radius:12px;margin-bottom:24px}
+.cover h1{color:#fff;border:none;font-size:1.8rem;margin-bottom:4px}
+.badge{display:inline-block;padding:3px 9px;border-radius:14px;font-size:0.65rem;font-weight:600;margin:2px}
+.ob{background:#fef7f0;border:2px solid #c74634;border-radius:8px;padding:10px;margin:8px 0;font-size:0.8rem}
+.ib{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:0.8rem}
+.gb{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:0.8rem}
+.sn{color:#c74634;font-weight:700;margin-right:4px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cd{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px}
+.sc{display:inline-flex;align-items:center;font-weight:700;font-size:0.74rem;padding:2px 8px;border-radius:12px}
+.sh{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
+.sm{background:#fffbeb;color:#b45309;border:1px solid #fde68a}
+.mb{width:100%;height:8px;background:#e2e8f0;border-radius:4px;margin:4px 0}
+.mb-bar{height:100%;border-radius:4px}
+.toc a{color:#c74634;text-decoration:none;display:block;padding:1px 0;font-size:0.8rem}
+.toc a:hover{text-decoration:underline}
+.toc .s{padding-left:18px;font-size:0.76rem;color:#475569}
+.oci-legend{display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 14px;font-size:0.72rem;color:#312d2a}
+.oci-legend span{display:flex;align-items:center;gap:5px}
+.oci-legend .lbox{width:18px;height:12px;border-radius:2px;flex-shrink:0}
+@media print{body{font-size:9pt}.cover{page-break-after:always;page-break-inside:avoid;max-height:100vh;overflow:hidden}.cover h1{page-break-before:avoid!important;page-break-after:avoid!important}h1{page-break-before:always}h1#toc{page-break-before:avoid}.pdf-footer{page-break-before:always;page-break-inside:avoid;max-height:100vh;overflow:hidden}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<!-- COVER -->
+<div class="cover">
+<!-- UPME Logo -->
+<div style="margin-bottom:10px">
+<a href="https://www.upme.gov.co/" target="_blank" rel="noopener"><img src="logo-upme.png" alt="UPME - Unidad de Planeaci&oacute;n Minero-Energ&eacute;tica" style="height:80px;display:block;margin:0 auto;background:#fff;border-radius:10px;padding:6px 14px"></a>
+</div>
+<div style="font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:#ffb89a;margin-bottom:6px">Oracle Cloud Infrastructure</div>
+
+<h1>Plataforma Nacional de Interoperabilidad de Electromovilidad</h1>
+<p style="font-size:0.95rem;color:#ffcdb8;margin:4px 0">Well-Architected Framework Review</p>
+<p style="font-size:0.78rem;color:#e8b4a0;margin-bottom:10px"><a href="https://www.upme.gov.co/" target="_blank" rel="noopener" style="color:#e8b4a0;text-decoration:none;border-bottom:1px dotted #e8b4a0">UPME</a> &mdash; Unidad de Planeaci&oacute;n Minero-Energ&eacute;tica de Colombia</p>
+
+<div style="display:flex;justify-content:center;gap:5px;flex-wrap:wrap;margin-bottom:10px">
+<span class="badge" style="background:#fff2;color:#fff;border:1px solid #fff4">OCPI 2.2.1</span>
+<span class="badge" style="background:#fff2;color:#fff;border:1px solid #fff4">35 Servicios OCI</span>
+<span class="badge" style="background:#fff2;color:#fff;border:1px solid #fff4">OKE + Kafka + Functions</span>
+<span class="badge" style="background:#fff2;color:#fff;border:1px solid #fff4">Full Stack DR</span>
+<span class="badge" style="background:#fff2;color:#fff;border:1px solid #fff4">21.6M tx/mes</span>
+<span class="badge" style="background:#fff2;color:#fff;border:1px solid #fff4">WAF Score: 88%</span>
+</div>
+<div style="margin:0 auto 10px;max-width:780px;padding:6px 16px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);border-radius:8px;text-align:left;font-size:0.73rem;color:#ffcdb8;line-height:1.4">
+<strong style="color:#fff">Resoluci&oacute;n 40559/2025</strong> &mdash; MinEnerg&iacute;a (21 Nov 2025). Est&aacute;ndar <strong style="color:#fff">OCPI 2.2.1</strong>
+</div>
+<table style="width:auto;margin:0 auto;border:none;text-align:left;font-size:0.78rem;color:#ffcdb8">
+<tr style="background:transparent"><td style="border:none;padding:2px 14px 2px 0;color:#e8b4a0">Entidad</td><td style="border:none"><strong style="color:#fff"><a href="https://www.upme.gov.co/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;border-bottom:1px dotted #fff">UPME</a> &mdash; Unidad de Planeaci&oacute;n Minero-Energ&eacute;tica</strong></td></tr>
+<tr style="background:transparent"><td style="border:none;padding:2px 14px 2px 0;color:#e8b4a0">Assessment</td><td style="border:none"><strong style="color:#fff">Enterprise Cloud-Native &mdash; OCI WAF Deep Review</strong></td></tr>
+<tr style="background:transparent"><td style="border:none;padding:2px 14px 2px 0;color:#e8b4a0">Fecha</td><td style="border:none">Marzo 2026</td></tr>
+<tr style="background:transparent"><td style="border:none;padding:2px 14px 2px 0;color:#e8b4a0">Preparado para</td><td style="border:none"><strong style="color:#fff">Oracle Architecture Team</strong></td></tr>
+<tr style="background:transparent"><td style="border:none;padding:2px 14px 2px 0;color:#e8b4a0">Dise&ntilde;ado por</td><td style="border:none"><strong style="color:#fff"><a href="https://www.upme.gov.co/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;border-bottom:1px dotted #fff">UPME</a> &mdash; Software Architect Rafael Dom&iacute;nguez</strong><br>Subdirecci&oacute;n Gesti&oacute;n de Informaci&oacute;n</td></tr>
+</table>
+<div style="margin-top:12px;padding:6px 18px;background:rgba(0,0,0,0.35);border:1.5px solid #ff6b4a;border-radius:8px;display:inline-block">
+<div style="font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:#ff9a7a;font-weight:700;margin-bottom:2px">&#128274; Documento Confidencial</div>
+<div style="font-size:0.68rem;color:#ffcdb8;line-height:1.4">Manejo exclusivo para <strong style="color:#fff">Oracle Corporation</strong> &mdash; Assessment y validaci&oacute;n de arquitectura y adquisici&oacute;n de infraestructura <strong style="color:#fff">OCI</strong>. Reproducci&oacute;n prohibida sin autorizaci&oacute;n de <a href="https://www.upme.gov.co/" target="_blank" rel="noopener" style="color:#ffcdb8;text-decoration:none;border-bottom:1px dotted #ffcdb8">UPME</a>.</div>
+</div>
+</div>
+
+<!-- TOC -->
+<h1 id="toc">Contenido</h1>
+<div class="toc">
+<a href="#s1"><strong>1.</strong> Resumen Ejecutivo &amp; Perfil de Carga</a>
+<a href="#s2"><strong>2.</strong> Arquitectura OCI &mdash; Componentes &amp; Dise&ntilde;o</a>
+<div class="s"><a href="#s2-1">2.1 Principios &amp; ADRs</a></div>
+<div class="s"><a href="#s2-2">2.2 Stack de Servicios OCI por Capa</a></div>
+<div class="s"><a href="#s2-3">2.3 Microservicios en OKE</a></div>
+<div class="s"><a href="#s2-4">2.4 Event Streaming &amp; AI Data Platform</a></div>
+<div class="s"><a href="#s2-5">2.5 Diagrama de Arquitectura (Mermaid)</a></div>
+<div class="s"><a href="#s2-6">2.6 Diagrama OCI Convention (SVG)</a></div>
+<a href="#s3"><strong>3.</strong> DevOps, DR &amp; Ambientes</a>
+<a href="#s4"><strong>4.</strong> WAF Scorecard (4 Pilares)</a>
+<a href="#s5"><strong>5.</strong> Flujo Principal: Ingesta CPO</a>
+<a href="#s6"><strong>6.</strong> Arquitecturas de Referencia Oracle</a>
+<a href="#s7"><strong>7.</strong> Mapeo Servicios OCI (35 servicios)</a>
+<a href="#s8"><strong>8.</strong> Solicitud al Equipo Oracle</a>
+</div>
+
+<!-- S1: RESUMEN EJECUTIVO -->
+<h1 id="s1"><span class="sn">1.</span> Resumen Ejecutivo &amp; Perfil de Carga</h1>
+
+<div class="ob">
+<strong style="color:#c74634">Para Oracle Architecture:</strong> Plataforma cloud-native sobre OCI para la interoperabilidad de electromovilidad de Colombia (Res. 40559/2025, est&aacute;ndar OCPI 2.2.1). Dise&ntilde;ada para más de <strong>+500 CPOs reportando cada 60s</strong> = <strong>21.6M tx/mes</strong>. Utiliza <strong>35 servicios OCI</strong> con Full Stack DR cross-region.
+</div>
+
+<table>
+<tr><th>Dimensi&oacute;n</th><th>Valor</th><th>Componente OCI</th></tr>
+<tr><td><strong>CPOs concurrentes</strong></td><td>~500 operadores, cada 60s</td><td>OKE + API Gateway + mTLS + OAuth 2.1</td></tr>
+<tr><td><strong>Transacciones</strong></td><td>~8.3 req/s sostenido, 21.6M/mes</td><td>OCI Streaming (Kafka) + OKE autoscaling</td></tr>
+<tr><td><strong>Data</strong></td><td>~43.2 GB/mes raw OCPI</td><td>Object Storage (4 zonas) + ATP + Data Flow</td></tr>
+<tr><td><strong>Portal p&uacute;blico</strong></td><td>Acceso masivo ciudadanos</td><td>Redis Cache (opcional) + LB + read replicas</td></tr>
+<tr><td><strong>SLA / DR</strong></td><td>99.95%, RPO &lt;1h, RTO &lt;30min</td><td>Full Stack DR cross-region (OKE + Obj Storage repl.)</td></tr>
+<tr><td><strong>Seguridad</strong></td><td>Zero Trust, 9 capas defensa</td><td>WAF + Service Mesh mTLS + Vault (Default) + Cloud Guard</td></tr>
+<tr><td><strong>Ambientes</strong></td><td>DEV / QA / SANDBOX / PROD / DR</td><td>ArgoCD nativo en OKE + Terraform IaC</td></tr>
+<tr><td><strong>Regulaci&oacute;n</strong></td><td>Res. 40559/2025, Ley 1581, SIC</td><td>WORM audit + Data Catalog PII + OCI Audit</td></tr>
+</table>
+
+
+<!-- S2: ARQUITECTURA OCI -->
+<h1 id="s2"><span class="sn">2.</span> Arquitectura OCI &mdash; Componentes &amp; Dise&ntilde;o</h1>
+
+<div class="ob">
+<strong style="color:#c74634">Visi&oacute;n:</strong> Infraestructura cloud-native sobre OCI. Servicios gestionados para reducir carga operativa. GitOps (ArgoCD) multi-ambiente. Dise&ntilde;o event-driven para <strong>alta concurrencia</strong> (+500 CPOs / 21.6M tx/mes) con escalamiento horizontal autom&aacute;tico y DRP integrado desde d&iacute;a n.
+</div>
+
+<h3 id="s2-1">2.1 Principios &amp; Decisiones Arquitect&oacute;nicas</h3>
+<div class="g2">
+<div class="cd">
+<h4>Principios</h4>
+<ul style="margin:3px 0;padding-left:16px;font-size:0.8rem">
+<li><strong>Cloud-native:</strong> Microservicios en OKE, event-driven con Kafka</li>
+<li><strong>Managed first:</strong> OKE, Streaming, Functions, ATP managed por Oracle</li>
+<li><strong>Event-driven:</strong> OCI Streaming (Kafka API) desacople ingesta/procesamiento</li>
+<li><strong>CQRS + Event Sourcing:</strong> Separaci&oacute;n escritura/lectura, audit trail</li>
+<li><strong>GitOps:</strong> ArgoCD declarativo multi-ambiente</li>
+<li><strong>Security by design:</strong> Service Mesh mTLS, WAF, Vault Default (software keys), Zero Trust</li>
+<li><strong>DR by design:</strong> Full Stack DR cross-region desde d&iacute;a n</li>
+</ul>
+</div>
+<div class="cd">
+<h4>ADRs (Architecture Decision Records)</h4>
+<ul style="margin:3px 0;padding-left:16px;font-size:0.8rem">
+<li><strong>ADR-001:</strong> Microservicios Go (ingesta) + Python (validaci&oacute;n) en OKE</li>
+<li><strong>ADR-002:</strong> OCI Streaming (Kafka API) event-driven</li>
+<li><strong>ADR-003:</strong> OCI Functions serverless para webhooks y DLQ</li>
+<li><strong>ADR-004:</strong> OCI Service Mesh mTLS autom&aacute;tico inter-servicio</li>
+<li><strong>ADR-005:</strong> AI Data Platform: Object Storage medallion (Bronze/Silver/Gold) + Data Flow + Data Catalog + AI Services</li>
+<li><strong>ADR-006:</strong> Full Stack DR cross-region (RPO&lt;1h, RTO&lt;30min)</li>
+<li><strong>ADR-007:</strong> ArgoCD nativo en nodo OKE, CI/CD GitOps multi-ambiente + OCIR</li>
+<li><strong>ADR-008:</strong> CQRS + Event Sourcing + DLQ resiliencia</li>
+</ul>
+</div>
+</div>
+
+<h3 id="s2-2">2.2 Stack de Servicios OCI por Capa</h3>
+<table>
+<tr><th>Capa</th><th>Servicio OCI</th><th>Configuraci&oacute;n Clave</th></tr>
+<tr><td rowspan="3"><strong>Edge &amp; Security</strong></td><td><strong>OCI WAF</strong></td><td>OWASP Top 10, DDoS L7, rate limiting/CPO, geo-fencing Colombia</td></tr>
+<tr><td><strong>OCI DNS</strong></td><td>electromobility.upme.gov.co &mdash; Health Checks multi-regi&oacute;n, Traffic Steering DR</td></tr>
+<tr><td><strong>Redis Cache (Opcional)</strong></td><td>Cach&eacute; nativo en OKE para assets React y aceleraci&oacute;n portal p&uacute;blico. Se habilita seg&uacute;n demanda.</td></tr>
+<tr><td rowspan="4"><strong>Networking</strong></td><td><strong>VCN + Subnets</strong></td><td>CIDR /16, 4 subnets (public edge, private app, private streaming, private data)</td></tr>
+<tr><td><strong>OCI Load Balancer</strong></td><td>Flex shape (10Mbps-8Gbps), TLS 1.3, health checks</td></tr>
+<tr><td><strong>OCI API Gateway</strong></td><td>Rate limiting/CPO tier, Bearer Token Introspection (KeyCloak), CORS, caching</td></tr>
+<tr><td><strong>OCI Vault (Default)</strong></td><td>Software-protected keys (gratuito). CMK, rotaci&oacute;n autom&aacute;tica. Upgrade a HSM disponible si se requiere FIPS 140-2 L3.</td></tr>
+<tr><td rowspan="4"><strong>Compute (OKE Enhanced)</strong></td><td><strong>OKE Enhanced Cluster</strong></td><td>Cluster tipo <strong>Enhanced</strong>: Kubernetes API audit logging, cluster add-ons, workload identity. Control plane HA, 3 Fault Domains. Despliegue declarativo via <strong>Manifiestos YAML</strong>.</td></tr>
+<tr><td><strong>Managed Nodes E5</strong></td><td>VM.Standard.E5.Flex (AMD EPYC 9J14). <strong>Sizing recomendado: 2 OCPU, 16 GB RAM, 100 GB SSD por nodo.</strong> Autoscaling <strong>2&rarr;4 nodos</strong> (min 2 para HA). Total pico: 8 OCPU, 64 GB RAM. Soporta ~48 pods incluyendo observabilidad y DevOps nativos.</td></tr>
+<tr><td><strong>OCI Service Mesh</strong></td><td>mTLS auto inter-servicio con envoy sidecar proxy, canary 10%&rarr;50%&rarr;100%, observabilidad L7</td></tr>
+<tr><td><strong>OCIR</strong></td><td>Container Registry con vulnerability scan y signing</td></tr>
+<tr><td rowspan="3"><strong>Messaging</strong></td><td><strong>OCI Streaming (Kafka)</strong></td><td>5 t&oacute;picos, particiones auto-scale, retenci&oacute;n 7-30d</td></tr>
+<tr><td><strong>OCI Functions</strong></td><td>Serverless validators, webhooks, DLQ processing. Scale-to-zero.</td></tr>
+<tr><td><strong>OCI Queue</strong></td><td>DLQ managed, retry backoff exponencial, 7d retenci&oacute;n</td></tr>
+<tr><td rowspan="5"><strong>AI Data Platform</strong></td><td><strong>Autonomous DB (ATP)</strong></td><td>1 OCPU PROD auto-scaling, TDE + CMK. Sin Data Guard (costo-beneficio).</td></tr>
+<tr><td><strong>APEX</strong></td><td>Low-code sobre Autonomous DB. Dashboards, reportes, formularios internos.</td></tr>
+<tr><td><strong>Object Storage</strong></td><td>4 zonas medallion (Bronze/Silver/Gold/Audit WORM), lifecycle tiering, cross-region repl.</td></tr>
+<tr><td><strong>OCI Data Flow</strong></td><td>Elastic Spark: Bronze&rarr;Silver&rarr;Gold. Reportes <a href="https://www.upme.gov.co/" target="_blank" rel="noopener" style="color:#1d4ed8;text-decoration:none;border-bottom:1px dotted #1d4ed8">UPME</a>. AI Code Assist.</td></tr>
+<tr><td><strong>OCI Data Catalog</strong></td><td>Data Governance &amp; Security: metadata, clasificaci&oacute;n PII (Ley 1581), data lineage</td></tr>
+<tr><td rowspan="2"><strong>Integraci&oacute;n</strong></td><td><strong>VPN Site2Site + DRG</strong></td><td>IPSec IKEv2 Site-to-Site &rarr; C&aacute;rgame (MinEnerg&iacute;a). Dynamic Routing Gateway. REST API: GET /crg/cpo/{nit}</td></tr>
+<tr><td><strong>FastConnect (upgrade path)</strong></td><td>Conectividad dedicada opcional. Hub routing centralizado via DRG.</td></tr>
+<tr><td rowspan="4"><strong>Observabilidad (nativa en OKE)</strong></td><td><strong>Grafana</strong></td><td>Instalado dentro del cluster OKE. Dashboards centralizados, visualizaci&oacute;n de m&eacute;tricas y logs.</td></tr>
+<tr><td><strong>Prometheus + Loki</strong></td><td>Nativos en OKE. M&eacute;tricas infra/app (Prometheus) + logs agregados (Loki). Scraping autom&aacute;tico de pods.</td></tr>
+<tr><td><strong>AlertManager</strong></td><td>Nativo en OKE. Alertas: PagerDuty (P1), Slack (P2), email (P3). Routing y silencing.</td></tr>
+<tr><td><strong>OCI APM (Opcional)</strong></td><td>Tracing distribuido E2E. Pendiente evaluaci&oacute;n de costos. Habilitaci&oacute;n futura.</td></tr>
+<tr><td rowspan="3"><strong>Security</strong></td><td><strong>Cloud Guard</strong></td><td>Postura continua, auto-remediation, CIS recipes</td></tr>
+<tr><td><strong>Security Zones</strong></td><td>Protecci&oacute;n compartimento PROD</td></tr>
+<tr><td><strong>OCI Certificates</strong></td><td>CA <a href="https://www.upme.gov.co/" target="_blank" rel="noopener" style="color:#1d4ed8;text-decoration:none;border-bottom:1px dotted #1d4ed8">UPME</a>, certs X.509 por CPO para mTLS</td></tr>
+<tr><td rowspan="3"><strong>DevOps</strong></td><td><strong>ArgoCD (nativo en OKE)</strong></td><td>Instalado en worker nodes del cluster. Gestiona CI/CD desplegando cada branch por environment via pipelines. GitOps declarativo, canary, rollback &lt;2min. Integraci&oacute;n con OCIR.</td></tr>
+<tr><td><strong>OCIR</strong></td><td>Container Registry con vulnerability scan y signing. Push desde ArgoCD pipelines.</td></tr>
+<tr><td><strong>OCI Resource Manager</strong></td><td>Terraform state remoto, drift detection</td></tr>
+<tr><td><strong>DR</strong></td><td><strong>Full Stack DR</strong></td><td>Orquestaci&oacute;n failover cross-region: OKE Standby + Object Storage repl. ATP sin Data Guard (backup manual).</td></tr>
+</table>
+
+<h3 id="s2-3">2.3 Microservicios en OKE</h3>
+<table>
+<tr><th>Microservicio</th><th>Lenguaje</th><th>Responsabilidad</th><th>Pods PROD</th></tr>
+<tr><td><strong>Ingesta Service</strong></td><td>Go</td><td>Recepci&oacute;n OCPI de +500 CPOs. Alta concurrencia. Produce a Kafka.</td><td>3-6 (HPA)</td></tr>
+<tr><td><strong>Validador OCPI</strong></td><td>Python</td><td>Consume Kafka. Validaci&oacute;n schema OCPI 2.2.1 + business rules. Escribe ATP.</td><td>2-4 (HPA)</td></tr>
+<tr><td><strong>CPO Manager</strong></td><td>Go/Python</td><td>Registro CPOs, validaci&oacute;n vs C&aacute;rgame (VPN), gesti&oacute;n credenciales.</td><td>2</td></tr>
+<tr><td><strong>Portal API</strong></td><td>APIs</td><td>API portal p&uacute;blico, Open Data, reportes SIC, dashboards.</td><td>2-4 (HPA)</td></tr>
+<tr><td><strong>Frontend</strong></td><td>React+TS</td><td>SPA: mapas Leaflet, dashboards Chart.js, admin panel.</td><td>2</td></tr>
+<tr><td><strong>KeyCloak</strong></td><td>Java</td><td>IdP: OAuth 2.1, Bearer Token opaco, PKCE, Token Introspection (RFC 7662), RBAC, MFA admin.</td><td>2 (HA)</td></tr>
+<tr><td><strong>ArgoCD</strong></td><td>Go</td><td>GitOps controller multi-ambiente.</td><td>2 (HA)</td></tr>
+</table>
+
+<h3 id="s2-3b">2.3b Sizing OKE &mdash; An&aacute;lisis de Recursos (PROD)</h3>
+
+<div class="ob">
+<strong style="color:#c74634">Cluster tipo Enhanced</strong> con <strong>Managed Nodes E5</strong> (VM.Standard.E5.Flex). Despliegue declarativo via <strong>Manifiestos YAML</strong>. Opci&oacute;n Enhanced habilitada: Kubernetes API audit logging, cluster add-ons management, workload identity.
+</div>
+
+<table>
+<tr><th>Componente</th><th>Pods (pico)</th><th>CPU request</th><th>RAM request</th><th>Notas</th></tr>
+<tr><td><strong>Ingesta (Go)</strong></td><td>6</td><td>200m &times; 6 = 1.2</td><td>256Mi &times; 6 = 1.5 Gi</td><td>Go ultra-eficiente, alto throughput</td></tr>
+<tr><td><strong>Validador (Python)</strong></td><td>4</td><td>500m &times; 4 = 2.0</td><td>512Mi &times; 4 = 2.0 Gi</td><td>CPU-bound validaci&oacute;n schema</td></tr>
+<tr><td><strong>Portal APIs</strong></td><td>4</td><td>250m &times; 4 = 1.0</td><td>256Mi &times; 4 = 1.0 Gi</td><td>Async APIs</td></tr>
+<tr><td><strong>Frontend (React)</strong></td><td>2</td><td>100m &times; 2 = 0.2</td><td>128Mi &times; 2 = 256 Mi</td><td>Nginx + static assets</td></tr>
+<tr><td><strong>KeyCloak HA (Java)</strong></td><td>2</td><td>500m &times; 2 = 1.0</td><td>1 Gi &times; 2 = 2.0 Gi</td><td>Java heap. Cr&iacute;tico para auth.</td></tr>
+<tr><td><strong>CPO Manager</strong></td><td>2</td><td>200m &times; 2 = 0.4</td><td>256Mi &times; 2 = 512 Mi</td><td>Validaci&oacute;n vs C&aacute;rgame</td></tr>
+<tr><td><strong>ArgoCD (server+repo+ctrl)</strong></td><td>3</td><td>250m &times; 3 = 0.75</td><td>512Mi &times; 3 = 1.5 Gi</td><td>Nativo en OKE</td></tr>
+<tr><td><strong>Grafana</strong></td><td>1</td><td>200m</td><td>512 Mi</td><td>Dashboards centralizados</td></tr>
+<tr><td><strong>Prometheus</strong></td><td>1</td><td>300m</td><td>1.5 Gi</td><td>Scraping ~48 pods</td></tr>
+<tr><td><strong>Loki</strong></td><td>1</td><td>200m</td><td>1.0 Gi</td><td>Log aggregation</td></tr>
+<tr><td><strong>AlertManager</strong></td><td>1</td><td>100m</td><td>128 Mi</td><td>Routing alertas</td></tr>
+<tr><td><strong>envoy sidecars (Service Mesh)</strong></td><td>~18</td><td>50m &times; 18 = 0.9</td><td>64Mi &times; 18 = 1.1 Gi</td><td>Sidecar por pod app</td></tr>
+<tr><td><strong>kube-system (CoreDNS, proxy)</strong></td><td>~6</td><td>0.5</td><td>1.0 Gi</td><td>Overhead K8s</td></tr>
+<tr style="background:#fef7f0;font-weight:700">
+<td><strong>TOTAL PICO</strong></td><td><strong>~48 pods</strong></td><td><strong>~8.5 OCPU</strong></td><td><strong>~14 Gi</strong></td><td>+ 25% headroom scheduling</td></tr>
+<tr style="background:#fef7f0;font-weight:700">
+<td><strong>CON HEADROOM (25%)</strong></td><td></td><td><strong>~10.6 OCPU</strong></td><td><strong>~17.5 Gi</strong></td><td>Capacidad m&iacute;nima requerida</td></tr>
+</table>
+
+<div class="ib">
+<strong>Sizing recomendado por nodo (PROD):</strong> VM.Standard.<strong>E5</strong>.Flex &mdash; <strong>2 OCPU</strong>, <strong>16 GB RAM</strong>, <strong>100 GB SSD</strong> (Boot Volume).<br>
+<strong>Autoscaling:</strong> M&iacute;nimo <strong>2 nodos</strong> (HA), m&aacute;ximo <strong>4 nodos</strong>. Total pico: 8 OCPU, 64 GB RAM.<br>
+<strong>Justificaci&oacute;n:</strong> Con 2 nodos (4 OCPU, 32 GB) se cubre la carga sostenida. Con 3-4 nodos (6-8 OCPU, 48-64 GB) se absorben picos, HPA burst, y mantenimiento rolling update sin degradaci&oacute;n.<br>
+<strong>Enhanced features:</strong> API audit logging, cluster add-ons, workload identity, Kubernetes dashboard nativo.
+</div>
+
+<h3 id="s2-4">2.4 Event Streaming &amp; AI Data Platform</h3>
+<div class="g2">
+<div class="cd">
+<h4>OCI Streaming (Kafka Managed) &mdash; +5 T&oacute;picos</h4>
+<table style="margin:4px 0">
+<tr><th>T&oacute;pico</th><th>Flujo</th><th>Ret.</th></tr>
+<tr><td><strong>raw-reports</strong></td><td>Ingesta(Go) &rarr; Validador(Py)</td><td>7d</td></tr>
+<tr><td><strong>cpo-validations</strong></td><td>CPO Mgr &rarr; Validador + Audit</td><td>7d</td></tr>
+<tr><td><strong>cargame-responses</strong></td><td>C&aacute;rgame &rarr; CPO Manager</td><td>3d</td></tr>
+<tr><td><strong>audit-events</strong></td><td>Todos &rarr; Audit Logger &rarr; WORM</td><td>30d</td></tr>
+<tr><td><strong>dlq-errors</strong></td><td>Rechazados &rarr; DLQ Processor</td><td>30d</td></tr>
+</table>
+</div>
+<div class="cd">
+<h4>AI Data Platform &mdash; Medallion Architecture (Object Storage)</h4>
+<table style="margin:4px 0">
+<tr><th>Zona (Medallion)</th><th>Contenido</th><th>Tier</th></tr>
+<tr><td><strong>Bronze</strong></td><td>JSON OCPI brutos de CPOs (raw ingest)</td><td>Standard</td></tr>
+<tr><td><strong>Silver</strong></td><td>Datos validados, Parquet normalizado, enriquecidos</td><td>Standard</td></tr>
+<tr><td><strong>Gold</strong></td><td>Agregaciones, reportes <a href="https://www.upme.gov.co/" target="_blank" rel="noopener" style="color:#1d4ed8;text-decoration:none;border-bottom:1px dotted #1d4ed8">UPME</a>, vistas anal&iacute;ticas</td><td>Infrequent</td></tr>
+<tr><td><strong>Audit</strong></td><td>Logs inmutables (WORM lock)</td><td>Archive</td></tr>
+</table>
+<p style="font-size:0.74rem;margin:4px 0"><strong>ETL:</strong> OCI Data Flow (Elastic Spark) Bronze&rarr;Silver&rarr;Gold. AI Code Assist.<br><strong>Data Integration:</strong> OCI Data Integration para pipelines de datos, conectores nativos, transformaciones.<br><strong>AI Services:</strong> GenAI, Agentic AI, Analytics, Document Understanding.<br><strong>Data Governance &amp; Security:</strong> OCI Data Catalog (metadata, PII classification, data lineage, security)</p>
+</div>
+</div>
+
+<!-- S2.5: MERMAID ARCHITECTURE DIAGRAM -->
+<h3 id="s2-5">2.5 Diagrama de Arquitectura (Mermaid)</h3>
+
+<div class="mermaid">
+graph TB
+    subgraph "Internet - Acceso Masivo"
+        CPO["+500 CPOs<br/>mTLS+OAuth2.1 cada 60s"]
+        CIT["Ciudadanos<br/>Consulta Masiva"]
+        ADM["Admin UPME"]
+    end
+    subgraph "OCI Region: Bogota - PRIMARIA"
+        subgraph "Edge & Security"
+            WAF["OCI WAF<br/>OWASP+DDoS+GeoFence"]
+            DNS["OCI DNS<br/>electromobility.upme.gov.co"]
+            REDIS["Redis Cache<br/>(Opcional)"]
+        end
+        subgraph "VCN: upme-prod /16"
+            subgraph "Public Subnet"
+                LB["OCI Load Balancer<br/>TLS 1.3 Flex Shape"]
+                APIGW["OCI API Gateway<br/>Rate Limit+Introspection+CORS"]
+            end
+            subgraph "Private Subnet: App - OKE Enhanced (3 Fault Domains)"
+                OKE["Managed Nodes E5<br/>2 OCPU 16GB × 2-4 nodos<br/>Enhanced + Manifiestos"]
+                SM["OCI Service Mesh<br/>mTLS auto + envoy Proxy"]
+                KC["KeyCloak HA<br/>OAuth2.1+Bearer+RBAC"]
+                ARGO["ArgoCD nativo<br/>CI/CD por branch/env"]
+                GRAF["Grafana+Prometheus<br/>+Loki (nativo OKE)"]
+                ING["Ingesta Go<br/>3-6 pods HPA"]
+                VAL["Validador Python<br/>2-4 pods HPA"]
+                PORTAL["Portal API<br/>2-4 pods"]
+                FE["React Frontend<br/>2 pods"]
+            end
+            subgraph "Private Subnet: Streaming"
+                KFK["OCI Streaming<br/>Kafka API +5 topics"]
+                FN["OCI Functions<br/>Serverless Validators"]
+                QUE["OCI Queue<br/>DLQ + Retry"]
+            end
+            subgraph "Private Subnet: Data"
+                ATP["Autonomous DB<br/>1 OCPU (sin Data Guard)"]
+                APEX["APEX<br/>Low-Code Dashboards"]
+            end
+        end
+        subgraph "Platform Services"
+            VLT["OCI Vault Default<br/>Software Keys (Free)"]
+            CG["Cloud Guard<br/>Security Posture"]
+            OCIR["OCIR Registry<br/>Vuln Scan + Signing"]
+        end
+        subgraph "Integration"
+            VPN["VPN Site2Site<br/>+ DRG"]
+        end
+        subgraph "Data Platform AI"
+            OBJ["Object Storage<br/>Bronze/Silver/Gold/Audit WORM"]
+            DF["OCI Data Flow<br/>Elastic Spark ETL"]
+            DC["OCI Data Catalog<br/>Governance+PII+Lineage"]
+            DI["Data Integration<br/>+ AI Services"]
+        end
+    end
+    subgraph "OCI DR Region"
+        DR["Full Stack DR<br/>OKE Standby + Obj Repl.<br/>RPO1h RTO30min"]
+    end
+    CARG["Cargame MinEnergia<br/>GET /crg/cpo/{nit}"]
+    CPO -->|"mTLS+OAuth2.1 8.3 req/s"| WAF
+    CIT -->|"HTTPS masivo"| WAF
+    REDIS -.->|"cache opcional"| PORTAL
+    ADM -->|"MFA"| WAF
+    WAF --> DNS
+    DNS --> LB
+    LB --> APIGW
+    APIGW --> KC
+    APIGW --> ING
+    ING -->|"produce"| KFK
+    KFK -->|"consume"| VAL
+    VAL --> ATP
+    VAL --> OBJ
+    KFK --> FN
+    FN --> QUE
+    PORTAL --> ATP
+    FE --> PORTAL
+    SM -.->|"mTLS mesh"| ING
+    SM -.->|"mTLS mesh"| VAL
+    VPN --> CARG
+    ING --> VPN
+    DF --> OBJ
+    DC --> OBJ
+    APEX --> ATP
+    ATP -.->|"Backup"| DR
+    OBJ -.->|"Replication"| DR
+    OKE -.->|"Full Stack DR"| DR
+    ARGO --> OCIR
+    KFK -->|"Producer/Consumer"| APEX
+    DI --> OBJ
+    style WAF fill:#c74634,color:#fff
+    style OKE fill:#1d4ed8,color:#fff
+    style KFK fill:#7c3aed,color:#fff
+    style ATP fill:#312d2a,color:#fff
+    style DR fill:#991b1b,color:#fff
+    style CG fill:#c74634,color:#fff
+    style SM fill:#0891b2,color:#fff
+    style REDIS fill:#dc2626,color:#fff
+    style ARGO fill:#ef6c00,color:#fff
+    style GRAF fill:#f9a825,color:#000
+    style APEX fill:#312d2a,color:#fff
+</div>
+
+<!-- S2.5b: DRAW.IO ARCHITECTURE DIAGRAM -->
+<h3 id="s2-5b">2.5b Diagrama de Arquitectura To-Be (Draw.io &mdash; Vista Detallada)</h3>
+
+<div class="ob">
+<strong style="color:#c74634">Diagrama detallado:</strong> Vista completa de la arquitectura OCI To-Be, incluyendo Edge Security, VCN con subnets p&uacute;blica y privada, OKE Cluster con 3 Fault Domains, Worker Nodes (AMD EPYC 9J14), Service Mesh con envoy proxies, integraci&oacute;n C&aacute;rgame via VPN Site2Site + DRG, Autonomous DB + APEX, OCI Streaming (Kafka), y la capa Data Platform AI (Integrations, Analytics, Data Catalog, Data Integration, AI &mdash; GenAI, Agentic AI).
+</div>
+
+<div style="text-align:center;margin:16px 0;padding:12px;background:#FCFBFA;border:1px solid #9E9892;border-radius:8px">
+<iframe src="Arq%20UPME-To%20Be.drawio.html" style="width:100%;height:650px;border:1px solid #e2e8f0;border-radius:4px;background:#fff" title="Arquitectura OCI To-Be" sandbox="allow-scripts allow-same-origin"></iframe>
+<p style="font-size:0.72rem;color:#6b7280;margin:8px 0 0">Arq UPME-To Be &mdash; OCI Primary Region Bogot&aacute; &mdash; Availability Domain &mdash; 3 Fault Domains</p>
+</div>
+
+<!-- S2.6: SVG OCI CONVENTION DIAGRAMS -->
+<h3 id="s2-6">2.6 Diagramas OCI Convention (Redwood Design System)</h3>
+
+<div class="oci-legend">
+<span><span class="lbox" style="background:#FCFBFA;border:1px solid #312D2A"></span> Location Group</span>
+<span><span class="lbox" style="background:none;border:2px dashed #AE562C"></span> Network Group (VCN/Subnet)</span>
+<span><span class="lbox" style="background:#759C6C"></span> OCI Component (Ivy)</span>
+<span><span class="lbox" style="background:#2C5967"></span> OCI Icon (Ocean)</span>
+<span><span class="lbox" style="background:#AE562C"></span> Network / Sienna</span>
+<span><span class="lbox" style="background:#C74634"></span> Oracle Red</span>
+<span><span class="lbox" style="background:#312D2A"></span> Bark (Connectors)</span>
+</div>
+
+<h4>Diagrama 1: Arquitectura L&oacute;gica OCI &mdash; Regi&oacute;n Primaria</h4>
+<div class="oci-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 700" font-family="Inter, Arial, sans-serif" font-size="10">
+<!-- On-Premises (Cárgame) -->
+<rect x="10" y="10" width="120" height="680" rx="4" fill="#F5F4F2" stroke="#9E9892" stroke-width="1"/>
+<text x="70" y="28" text-anchor="middle" font-weight="700" font-size="10" fill="#312D2A">On-Premises</text>
+<rect x="22" y="280" width="96" height="80" rx="3" fill="#FCFBFA" stroke="#C74634" stroke-width="1.5"/>
+<text x="70" y="310" text-anchor="middle" font-weight="600" font-size="9" fill="#C74634">C&aacute;rgame</text>
+<text x="70" y="324" text-anchor="middle" font-size="7.5" fill="#312D2A">Registro CPOs</text>
+<text x="70" y="336" text-anchor="middle" font-size="7.5" fill="#312D2A">MinTransporte</text>
+<circle cx="70" cy="355" r="4" fill="none" stroke="#2C5967" stroke-width="1"/>
+<line x1="66" y1="355" x2="74" y2="355" stroke="#2C5967" stroke-width="0.8"/>
+<line x1="70" y1="351" x2="70" y2="359" stroke="#2C5967" stroke-width="0.8"/>
+<text x="70" y="368" text-anchor="middle" font-size="6.5" fill="#312D2A">CPE</text>
+
+<!-- OCI Region -->
+<rect x="145" y="10" width="730" height="680" rx="4" fill="#F5F4F2" stroke="#9E9892" stroke-width="1"/>
+<text x="510" y="28" text-anchor="middle" font-weight="700" font-size="11" fill="#312D2A">OCI Region: Bogot&aacute; (sa-bogota-1)</text>
+
+<!-- VCN -->
+<rect x="160" y="40" width="700" height="440" rx="3" fill="none" stroke="#AE562C" stroke-width="1.5" stroke-dasharray="6,3"/>
+<text x="172" y="56" font-weight="700" font-size="9" fill="#AE562C">VCN</text>
+<text x="200" y="56" font-size="7.5" fill="#AE562C">upme-prod-vcn 10.0.0.0/16</text>
+
+<!-- Subnet A: Public -->
+<rect x="175" y="65" width="670" height="90" rx="2" fill="none" stroke="#AE562C" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="185" y="78" font-weight="700" font-size="8" fill="#AE562C">Subnet A (Public)</text>
+<text x="290" y="78" font-size="7" fill="#AE562C">10.0.1.0/24 &mdash; Edge &amp; Security</text>
+<rect x="190" y="88" width="80" height="55" rx="3" fill="#759C6C" stroke="none"/>
+<text x="230" y="108" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">OCI WAF</text>
+<text x="230" y="120" text-anchor="middle" font-size="6.5" fill="#fff">OWASP + DDoS</text>
+<text x="230" y="130" text-anchor="middle" font-size="6.5" fill="#fff">GeoFence CO</text>
+<rect x="290" y="88" width="90" height="55" rx="3" fill="#759C6C" stroke="none"/>
+<text x="335" y="108" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">Load Balancer</text>
+<text x="335" y="120" text-anchor="middle" font-size="6.5" fill="#fff">TLS 1.3 Flex</text>
+<text x="335" y="130" text-anchor="middle" font-size="6.5" fill="#fff">Health Checks</text>
+<rect x="400" y="88" width="90" height="55" rx="3" fill="#759C6C" stroke="none"/>
+<text x="445" y="108" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">API Gateway</text>
+<text x="445" y="120" text-anchor="middle" font-size="6.5" fill="#fff">Rate Limit/CPO</text>
+<text x="445" y="130" text-anchor="middle" font-size="6.5" fill="#fff">Bearer + CORS</text>
+<rect x="510" y="88" width="75" height="55" rx="3" fill="#759C6C" stroke="none"/>
+<text x="547" y="108" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">OCI DNS</text>
+<text x="547" y="118" text-anchor="middle" font-size="5.5" fill="#fff">electromobility</text>
+<text x="547" y="127" text-anchor="middle" font-size="5.5" fill="#fff">.upme.gov.co</text>
+<text x="547" y="137" text-anchor="middle" font-size="6" fill="#fff">Traffic Steering</text>
+<rect x="605" y="88" width="65" height="55" rx="3" fill="#759C6C" stroke="none" stroke-dasharray="4,2" opacity="0.7"/>
+<text x="637" y="105" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Redis Cache</text>
+<text x="637" y="117" text-anchor="middle" font-size="6.5" fill="#fff">(Opcional)</text>
+<text x="637" y="130" text-anchor="middle" font-size="6" fill="#fff">Cache nativo OKE</text>
+<rect x="760" y="90" width="50" height="50" rx="2" fill="none" stroke="#AE562C" stroke-width="1"/>
+<text x="785" y="112" text-anchor="middle" font-size="7" fill="#AE562C">Internet</text>
+<text x="785" y="122" text-anchor="middle" font-size="7" fill="#AE562C">Gateway</text>
+
+<!-- Subnet B: Private App OKE -->
+<rect x="175" y="165" width="670" height="155" rx="2" fill="none" stroke="#AE562C" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="185" y="178" font-weight="700" font-size="8" fill="#AE562C">Subnet B (Private)</text>
+<text x="296" y="178" font-size="7" fill="#AE562C">10.0.2.0/24 &mdash; App Tier: OKE Cluster</text>
+<rect x="190" y="186" width="640" height="125" rx="3" fill="#FCFBFA" stroke="#312D2A" stroke-width="1" stroke-dasharray="5,2"/>
+<text x="510" y="200" text-anchor="middle" font-weight="700" font-size="8" fill="#759C6C">OKE Enhanced &mdash; Managed Nodes E5 (AMD EPYC 9J14) &mdash; 2 OCPU 16GB &times; 2&rarr;4 nodos &mdash; 3 Fault Domains &mdash; Manifiestos</text>
+<rect x="200" y="208" width="100" height="48" rx="3" fill="#759C6C" stroke="none"/>
+<text x="250" y="226" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Service Mesh</text>
+<text x="250" y="238" text-anchor="middle" font-size="6.5" fill="#fff">mTLS + Canary</text>
+<rect x="310" y="208" width="90" height="48" rx="3" fill="#759C6C" stroke="none"/>
+<text x="355" y="226" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">KeyCloak HA</text>
+<text x="355" y="238" text-anchor="middle" font-size="6.5" fill="#fff">OAuth2.1 Bearer+RBAC</text>
+<rect x="410" y="208" width="90" height="48" rx="3" fill="#759C6C" stroke="none"/>
+<text x="455" y="226" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Ingesta (Go)</text>
+<text x="455" y="238" text-anchor="middle" font-size="6.5" fill="#fff">3-6 pods HPA</text>
+<rect x="510" y="208" width="100" height="48" rx="3" fill="#759C6C" stroke="none"/>
+<text x="560" y="226" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Validador (Py)</text>
+<text x="560" y="238" text-anchor="middle" font-size="6.5" fill="#fff">2-4 pods HPA</text>
+<rect x="620" y="208" width="90" height="48" rx="3" fill="#759C6C" stroke="none"/>
+<text x="665" y="226" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Portal API</text>
+<text x="665" y="238" text-anchor="middle" font-size="6.5" fill="#fff">APIs 2-4p</text>
+<rect x="720" y="208" width="100" height="48" rx="3" fill="#759C6C" stroke="none"/>
+<text x="770" y="226" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Frontend React</text>
+<text x="770" y="238" text-anchor="middle" font-size="6.5" fill="#fff">SPA + Leaflet</text>
+<rect x="200" y="262" width="90" height="38" rx="3" fill="#759C6C" stroke="none"/>
+<text x="245" y="276" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">ArgoCD nativo</text>
+<text x="245" y="287" text-anchor="middle" font-size="6" fill="#fff">CI/CD branch/env</text>
+<rect x="300" y="262" width="90" height="38" rx="3" fill="#f9a825" stroke="none"/>
+<text x="345" y="276" text-anchor="middle" font-weight="600" font-size="7" fill="#000">Grafana+Prom</text>
+<text x="345" y="287" text-anchor="middle" font-size="6" fill="#000">+Loki (nativo)</text>
+
+<!-- Subnet C: Streaming -->
+<rect x="175" y="330" width="360" height="140" rx="2" fill="none" stroke="#AE562C" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="185" y="343" font-weight="700" font-size="8" fill="#AE562C">Subnet C (Private)</text>
+<text x="300" y="343" font-size="7" fill="#AE562C">10.0.3.0/24 &mdash; Streaming &amp; Serverless</text>
+<rect x="190" y="352" width="100" height="55" rx="3" fill="#759C6C" stroke="none"/>
+<text x="240" y="372" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">OCI Streaming</text>
+<text x="240" y="384" text-anchor="middle" font-size="6.5" fill="#fff">Kafka API</text>
+<text x="240" y="395" text-anchor="middle" font-size="6.5" fill="#fff">5 Topics</text>
+<rect x="300" y="352" width="100" height="55" rx="3" fill="#759C6C" stroke="none"/>
+<text x="350" y="372" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">OCI Functions</text>
+<text x="350" y="384" text-anchor="middle" font-size="6.5" fill="#fff">Serverless</text>
+<text x="350" y="395" text-anchor="middle" font-size="6.5" fill="#fff">Validators</text>
+<rect x="410" y="352" width="100" height="55" rx="3" fill="#759C6C" stroke="none"/>
+<text x="460" y="372" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">OCI Queue</text>
+<text x="460" y="384" text-anchor="middle" font-size="6.5" fill="#fff">DLQ + Retry</text>
+<text x="460" y="395" text-anchor="middle" font-size="6.5" fill="#fff">7d retention</text>
+
+<!-- Subnet D: Data -->
+<rect x="545" y="330" width="315" height="140" rx="2" fill="none" stroke="#AE562C" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="555" y="343" font-weight="700" font-size="8" fill="#AE562C">Subnet D (Private)</text>
+<text x="660" y="343" font-size="7" fill="#AE562C">10.0.4.0/24 &mdash; Data Tier</text>
+<rect x="560" y="352" width="100" height="55" rx="3" fill="#759C6C" stroke="none"/>
+<text x="610" y="372" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">Autonomous DB</text>
+<text x="610" y="384" text-anchor="middle" font-size="6.5" fill="#fff">ATP 1 OCPU</text>
+<text x="610" y="395" text-anchor="middle" font-size="6.5" fill="#fff">Sin Data Guard</text>
+<rect x="560" y="415" width="100" height="40" rx="3" fill="#312D2A" stroke="none"/>
+<text x="610" y="433" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">APEX</text>
+<text x="610" y="445" text-anchor="middle" font-size="6" fill="#fff">Low-Code Dashboards</text>
+<rect x="670" y="352" width="90" height="55" rx="3" fill="#759C6C" stroke="none"/>
+<text x="715" y="372" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">Object Storage</text>
+<text x="715" y="384" text-anchor="middle" font-size="6.5" fill="#fff">AI Data Platform</text>
+<text x="715" y="395" text-anchor="middle" font-size="6.5" fill="#fff">WORM Audit</text>
+<rect x="770" y="352" width="80" height="55" rx="3" fill="#759C6C" stroke="none"/>
+<text x="810" y="372" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">Data Flow</text>
+<text x="810" y="384" text-anchor="middle" font-size="6.5" fill="#fff">Spark ETL</text>
+<text x="810" y="395" text-anchor="middle" font-size="6.5" fill="#fff">Bronze&rarr;Gold</text>
+<rect x="760" y="420" width="50" height="40" rx="2" fill="none" stroke="#AE562C" stroke-width="1"/>
+<text x="785" y="438" text-anchor="middle" font-size="7" fill="#AE562C">Service</text>
+<text x="785" y="448" text-anchor="middle" font-size="7" fill="#AE562C">Gateway</text>
+
+<!-- DRG -->
+<rect x="140" y="290" width="30" height="30" rx="15" fill="none" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="148" y1="305" x2="162" y2="305" stroke="#2C5967" stroke-width="1"/>
+<line x1="155" y1="298" x2="155" y2="312" stroke="#2C5967" stroke-width="1"/>
+<text x="155" y="330" text-anchor="middle" font-size="7" fill="#312D2A">DRG</text>
+
+<!-- Oracle Services Network -->
+<rect x="160" y="490" width="700" height="90" rx="3" fill="none" stroke="#9E9892" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="510" y="506" text-anchor="middle" font-weight="700" font-size="9" fill="#AE562C">Oracle Services Network</text>
+<rect x="175" y="515" width="80" height="50" rx="3" fill="#2C5967" stroke="none"/>
+<text x="215" y="537" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">OCI Vault</text>
+<text x="215" y="549" text-anchor="middle" font-size="6.5" fill="#fff">Default (Free)</text>
+<rect x="265" y="515" width="80" height="50" rx="3" fill="#2C5967" stroke="none"/>
+<text x="305" y="537" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">IAM</text>
+<text x="305" y="549" text-anchor="middle" font-size="6.5" fill="#fff">Policies + MFA</text>
+<rect x="355" y="515" width="80" height="50" rx="3" fill="#2C5967" stroke="none"/>
+<text x="395" y="537" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Monitoring</text>
+<text x="395" y="549" text-anchor="middle" font-size="6.5" fill="#fff">Alarmas SLO</text>
+<rect x="445" y="515" width="90" height="50" rx="3" fill="#2C5967" stroke="none"/>
+<text x="490" y="537" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Logging</text>
+<text x="490" y="549" text-anchor="middle" font-size="6.5" fill="#fff">Analytics</text>
+<rect x="545" y="515" width="80" height="50" rx="3" fill="#2C5967" stroke="none"/>
+<text x="585" y="537" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Cloud Guard</text>
+<text x="585" y="549" text-anchor="middle" font-size="6.5" fill="#fff">Posture Mgmt</text>
+<rect x="635" y="515" width="80" height="50" rx="3" fill="#2C5967" stroke="none"/>
+<text x="675" y="537" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">OCIR</text>
+<text x="675" y="549" text-anchor="middle" font-size="6.5" fill="#fff">Registry+Scan</text>
+<rect x="725" y="515" width="80" height="50" rx="3" fill="#2C5967" stroke="none"/>
+<text x="765" y="537" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Data Catalog</text>
+<text x="765" y="549" text-anchor="middle" font-size="6.5" fill="#fff">PII + Lineage</text>
+
+<!-- DevOps -->
+<rect x="160" y="590" width="700" height="60" rx="3" fill="none" stroke="#312D2A" stroke-width="1" stroke-dasharray="5,2"/>
+<text x="230" y="608" font-weight="700" font-size="9" fill="#312D2A">DevOps &amp; CI/CD</text>
+<rect x="320" y="600" width="90" height="38" rx="3" fill="#759C6C" stroke="none"/>
+<text x="365" y="620" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">ArgoCD</text>
+<text x="365" y="631" text-anchor="middle" font-size="6.5" fill="#fff">Nativo en OKE</text>
+<rect x="420" y="600" width="100" height="38" rx="3" fill="#759C6C" stroke="none"/>
+<text x="470" y="620" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Resource Mgr</text>
+<text x="470" y="631" text-anchor="middle" font-size="6.5" fill="#fff">Terraform State</text>
+<rect x="530" y="600" width="90" height="38" rx="3" fill="#759C6C" stroke="none"/>
+<text x="575" y="620" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Notifications</text>
+<text x="575" y="631" text-anchor="middle" font-size="6.5" fill="#fff">PagerDuty+Slack</text>
+<rect x="630" y="600" width="80" height="38" rx="3" fill="#759C6C" stroke="none"/>
+<text x="670" y="620" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Grafana</text>
+<text x="670" y="631" text-anchor="middle" font-size="6.5" fill="#fff">Prom+Loki</text>
+
+<!-- DR Region -->
+<rect x="160" y="660" width="700" height="25" rx="3" fill="#F5F4F2" stroke="#9E9892" stroke-width="1"/>
+<text x="510" y="676" text-anchor="middle" font-weight="700" font-size="8" fill="#312D2A">DR Region: Vinhedo / Ashburn &mdash; OKE Standby + Object Storage Repl. &mdash; Full Stack DR &mdash; RPO&lt;1h RTO&lt;30min</text>
+
+<!-- Internet -->
+<rect x="890" y="10" width="200" height="430" rx="4" fill="#F5F4F2" stroke="#9E9892" stroke-width="1"/>
+<text x="990" y="28" text-anchor="middle" font-weight="700" font-size="10" fill="#312D2A">Internet</text>
+<circle cx="940" cy="80" r="12" fill="none" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="940" y1="92" x2="940" y2="115" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="925" y1="100" x2="955" y2="100" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="940" y1="115" x2="928" y2="135" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="940" y1="115" x2="952" y2="135" stroke="#2C5967" stroke-width="1.5"/>
+<text x="940" y="148" text-anchor="middle" font-weight="600" font-size="8" fill="#312D2A">+500 CPOs</text>
+<text x="940" y="159" text-anchor="middle" font-size="7" fill="#312D2A">mTLS + OAuth2.1</text>
+<text x="940" y="170" text-anchor="middle" font-size="7" fill="#312D2A">OCPI 2.2.1</text>
+<circle cx="1040" cy="80" r="12" fill="none" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="1040" y1="92" x2="1040" y2="115" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="1025" y1="100" x2="1055" y2="100" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="1040" y1="115" x2="1028" y2="135" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="1040" y1="115" x2="1052" y2="135" stroke="#2C5967" stroke-width="1.5"/>
+<text x="1040" y="148" text-anchor="middle" font-weight="600" font-size="8" fill="#312D2A">Ciudadanos</text>
+<text x="1040" y="159" text-anchor="middle" font-size="7" fill="#312D2A">Consulta Masiva</text>
+<circle cx="990" cy="210" r="12" fill="none" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="990" y1="222" x2="990" y2="245" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="975" y1="230" x2="1005" y2="230" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="990" y1="245" x2="978" y2="265" stroke="#2C5967" stroke-width="1.5"/>
+<line x1="990" y1="245" x2="1002" y2="265" stroke="#2C5967" stroke-width="1.5"/>
+<text x="990" y="278" text-anchor="middle" font-weight="600" font-size="8" fill="#312D2A">Admin UPME</text>
+<text x="990" y="289" text-anchor="middle" font-size="7" fill="#312D2A">MFA + Dashboard</text>
+
+<!-- Connectors -->
+<line x1="890" y1="120" x2="810" y2="115" stroke="#312D2A" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arrow)"/>
+<line x1="890" y1="100" x2="670" y2="115" stroke="#312D2A" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arrow)"/>
+<line x1="890" y1="250" x2="270" y2="143" stroke="#312D2A" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arrow)"/>
+<line x1="270" y1="115" x2="290" y2="115" stroke="#312D2A" stroke-width="1" marker-end="url(#arrow)"/>
+<line x1="380" y1="115" x2="400" y2="115" stroke="#312D2A" stroke-width="1" marker-end="url(#arrow)"/>
+<line x1="445" y1="143" x2="445" y2="186" stroke="#312D2A" stroke-width="1" marker-end="url(#arrow)"/>
+<line x1="455" y1="256" x2="240" y2="352" stroke="#312D2A" stroke-width="1" marker-end="url(#arrow)"/>
+<text x="330" y="300" font-size="7" fill="#312D2A" transform="rotate(-30,330,300)">produce</text>
+<line x1="290" y1="380" x2="510" y2="256" stroke="#312D2A" stroke-width="1" marker-end="url(#arrow)"/>
+<text x="420" y="330" font-size="7" fill="#312D2A" transform="rotate(-30,420,330)">consume</text>
+<line x1="560" y1="256" x2="610" y2="352" stroke="#312D2A" stroke-width="1" marker-end="url(#arrow)"/>
+<line x1="580" y1="256" x2="715" y2="352" stroke="#312D2A" stroke-width="1" marker-end="url(#arrow)"/>
+<line x1="118" y1="305" x2="140" y2="305" stroke="#312D2A" stroke-width="1" marker-end="url(#arrow)"/>
+<rect x="108" y="276" width="40" height="12" rx="1" fill="#FCFBFA"/>
+<text x="128" y="285" text-anchor="middle" font-size="6.5" fill="#312D2A">Site-to-Site VPN</text>
+<line x1="785" y1="460" x2="785" y2="490" stroke="#312D2A" stroke-width="1" marker-end="url(#arrow)"/>
+<defs>
+<marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+<path d="M0,0 L0,6 L8,3 z" fill="#312D2A"/>
+</marker>
+</defs>
+<circle cx="195" cy="95" r="7" fill="#AE562C"/><text x="195" y="98" text-anchor="middle" font-weight="700" font-size="7" fill="#fff">1</text>
+<circle cx="295" cy="95" r="7" fill="#AE562C"/><text x="295" y="98" text-anchor="middle" font-weight="700" font-size="7" fill="#fff">2</text>
+<circle cx="405" cy="95" r="7" fill="#AE562C"/><text x="405" y="98" text-anchor="middle" font-weight="700" font-size="7" fill="#fff">3</text>
+<circle cx="455" cy="215" r="7" fill="#AE562C"/><text x="455" y="218" text-anchor="middle" font-weight="700" font-size="7" fill="#fff">4</text>
+<circle cx="240" cy="359" r="7" fill="#AE562C"/><text x="240" y="362" text-anchor="middle" font-weight="700" font-size="7" fill="#fff">5</text>
+<circle cx="610" cy="359" r="7" fill="#AE562C"/><text x="610" y="362" text-anchor="middle" font-weight="700" font-size="7" fill="#fff">6</text>
+</svg>
+</div>
+
+<h4>Diagrama 2: Arquitectura de Seguridad (9 Capas)</h4>
+<div class="oci-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="Inter, Arial, sans-serif" font-size="10">
+<defs>
+<marker id="arr2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+<path d="M0,0 L0,6 L8,3 z" fill="#312D2A"/>
+</marker>
+</defs>
+<rect x="10" y="10" width="880" height="45" rx="4" fill="#F5F4F2" stroke="#9E9892" stroke-width="1"/>
+<text x="450" y="32" text-anchor="middle" font-weight="700" font-size="10" fill="#312D2A">Internet &mdash;+500 CPOs + Ciudadanos + Admin UPME</text>
+<text x="450" y="45" text-anchor="middle" font-size="7" fill="#6b7280">mTLS + OAuth 2.1 Bearer Token (opaco) + Token Introspection &mdash; ~8.3 req/s sostenido, picos ~50 req/s</text>
+<line x1="450" y1="55" x2="450" y2="68" stroke="#312D2A" stroke-width="1" marker-end="url(#arr2)"/>
+<!-- L1: Edge -->
+<rect x="30" y="70" width="840" height="48" rx="3" fill="none" stroke="#C74634" stroke-width="1.5"/>
+<text x="42" y="86" font-weight="700" font-size="8.5" fill="#C74634">L1: EDGE / PERIMETRAL</text>
+<rect x="250" y="78" width="80" height="32" rx="3" fill="#759C6C"/><text x="290" y="98" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">OCI WAF</text>
+<rect x="340" y="78" width="80" height="32" rx="3" fill="#759C6C"/><text x="380" y="98" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">OCI DNS</text>
+<rect x="430" y="78" width="60" height="32" rx="3" fill="#759C6C" opacity="0.7"/><text x="460" y="98" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Redis</text>
+<text x="530" y="98" font-size="7" fill="#312D2A">OWASP Top 10, DDoS L7, GeoFence CO, Bot Mgmt</text>
+<line x1="450" y1="118" x2="450" y2="127" stroke="#312D2A" stroke-width="1" marker-end="url(#arr2)"/>
+<!-- L2: Network -->
+<rect x="30" y="129" width="840" height="48" rx="3" fill="none" stroke="#AE562C" stroke-width="1.5" stroke-dasharray="6,3"/>
+<text x="42" y="145" font-weight="700" font-size="8.5" fill="#AE562C">L2: RED / VCN</text>
+<rect x="250" y="137" width="80" height="32" rx="3" fill="#759C6C"/><text x="290" y="157" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">VCN + NSGs</text>
+<rect x="340" y="137" width="95" height="32" rx="3" fill="#759C6C"/><text x="387" y="157" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Load Balancer</text>
+<rect x="445" y="137" width="80" height="32" rx="3" fill="#759C6C"/><text x="485" y="157" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Subnets</text>
+<text x="545" y="157" font-size="7" fill="#312D2A">Segmentaci&oacute;n pub/priv, NSGs, Flow Logs, NW Firewall (DPI)</text>
+<line x1="450" y1="177" x2="450" y2="186" stroke="#312D2A" stroke-width="1" marker-end="url(#arr2)"/>
+<!-- L3: API / Identity -->
+<rect x="30" y="188" width="840" height="48" rx="3" fill="none" stroke="#2C5967" stroke-width="1.5"/>
+<text x="42" y="204" font-weight="700" font-size="8.5" fill="#2C5967">L3: API / IDENTIDAD</text>
+<rect x="250" y="196" width="90" height="32" rx="3" fill="#759C6C"/><text x="295" y="216" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">API Gateway</text>
+<rect x="350" y="196" width="90" height="32" rx="3" fill="#759C6C"/><text x="395" y="216" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">KeyCloak HA</text>
+<rect x="450" y="196" width="80" height="32" rx="3" fill="#2C5967"/><text x="490" y="216" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">OCI Vault</text>
+<text x="545" y="216" font-size="7" fill="#312D2A">OAuth 2.1 + PKCE, Bearer Token opaco, Token Introspection (RFC 7662), RBAC</text>
+<line x1="450" y1="236" x2="450" y2="245" stroke="#312D2A" stroke-width="1" marker-end="url(#arr2)"/>
+<!-- L4: mTLS -->
+<rect x="30" y="247" width="840" height="48" rx="3" fill="none" stroke="#759C6C" stroke-width="1.5"/>
+<text x="42" y="263" font-weight="700" font-size="8.5" fill="#759C6C">L4: mTLS / TRANSPORTE</text>
+<rect x="250" y="255" width="105" height="32" rx="3" fill="#759C6C"/><text x="302" y="275" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">OCI Certificates</text>
+<rect x="365" y="255" width="100" height="32" rx="3" fill="#759C6C"/><text x="415" y="275" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Service Mesh</text>
+<text x="485" y="275" font-size="7" fill="#312D2A">mTLS CPO&harr;UPME (X.509/CPO), mTLS auto inter-servicio. Zero Trust.</text>
+<line x1="450" y1="295" x2="450" y2="304" stroke="#312D2A" stroke-width="1" marker-end="url(#arr2)"/>
+<!-- L5: Data at rest -->
+<rect x="30" y="306" width="840" height="48" rx="3" fill="none" stroke="#312D2A" stroke-width="1"/>
+<text x="42" y="322" font-weight="700" font-size="8.5" fill="#312D2A">L5: DATOS EN REPOSO</text>
+<rect x="250" y="314" width="100" height="32" rx="3" fill="#2C5967"/><text x="300" y="334" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">Vault Default</text>
+<rect x="360" y="314" width="80" height="32" rx="3" fill="#759C6C"/><text x="400" y="334" text-anchor="middle" font-weight="600" font-size="7.5" fill="#fff">ATP TDE</text>
+<text x="460" y="334" font-size="7" fill="#312D2A">Software-protected Keys, rotaci&oacute;n 90d, TDE. Upgrade HSM opcional.</text>
+<line x1="450" y1="354" x2="450" y2="363" stroke="#312D2A" stroke-width="1" marker-end="url(#arr2)"/>
+<!-- L6: Audit -->
+<rect x="30" y="365" width="410" height="48" rx="3" fill="none" stroke="#312D2A" stroke-width="1"/>
+<text x="42" y="381" font-weight="700" font-size="8.5" fill="#312D2A">L6: AUDIT / COMPLIANCE</text>
+<rect x="230" y="373" width="90" height="32" rx="3" fill="#759C6C"/><text x="275" y="393" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">Obj Storage WORM</text>
+<rect x="330" y="373" width="80" height="32" rx="3" fill="#2C5967"/><text x="370" y="393" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">OCI Audit</text>
+<!-- L7: Posture -->
+<rect x="460" y="365" width="410" height="48" rx="3" fill="none" stroke="#C74634" stroke-width="1"/>
+<text x="472" y="381" font-weight="700" font-size="8.5" fill="#C74634">L7: POSTURA CONTINUA</text>
+<rect x="650" y="373" width="90" height="32" rx="3" fill="#2C5967"/><text x="695" y="393" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">Cloud Guard</text>
+<rect x="750" y="373" width="100" height="32" rx="3" fill="#2C5967"/><text x="800" y="393" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">Security Zones</text>
+<line x1="450" y1="413" x2="450" y2="422" stroke="#312D2A" stroke-width="1" marker-end="url(#arr2)"/>
+<!-- L8: Vulnerability -->
+<rect x="30" y="424" width="410" height="48" rx="3" fill="none" stroke="#312D2A" stroke-width="1"/>
+<text x="42" y="440" font-weight="700" font-size="8.5" fill="#312D2A">L8: VULNERABILIDADES</text>
+<rect x="230" y="432" width="80" height="32" rx="3" fill="#759C6C"/><text x="270" y="452" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">SonarQube</text>
+<rect x="320" y="432" width="90" height="32" rx="3" fill="#759C6C"/><text x="365" y="452" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">OWASP ZAP</text>
+<!-- L9: VPN -->
+<rect x="460" y="424" width="410" height="48" rx="3" fill="none" stroke="#AE562C" stroke-width="1"/>
+<text x="472" y="440" font-weight="700" font-size="8.5" fill="#AE562C">L9: VPN / INTEGRACI&Oacute;N</text>
+<rect x="650" y="432" width="90" height="32" rx="3" fill="#759C6C"/><text x="695" y="452" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">VPN Connect</text>
+<rect x="750" y="432" width="90" height="32" rx="3" fill="#759C6C"/><text x="795" y="452" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">FastConnect</text>
+<!-- Compliance footer -->
+<rect x="30" y="480" width="840" height="30" rx="3" fill="#312D2A"/>
+<text x="450" y="499" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">Res. 40559/2025 &bull; Ley 1581/2012 &bull; CONPES 3995 &bull; SIC &bull; CIS OCI Benchmark &bull; Zero Trust &bull; Defense in Depth</text>
+</svg>
+</div>
+
+<h4>Diagrama 3: Arquitectura DR Cross-Region</h4>
+<div class="oci-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 480" font-family="Inter, Arial, sans-serif" font-size="10">
+<defs>
+<marker id="arr3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+<path d="M0,0 L0,6 L8,3 z" fill="#312D2A"/>
+</marker>
+<marker id="arr3r" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+<path d="M0,0 L0,6 L8,3 z" fill="#C74634"/>
+</marker>
+</defs>
+<!-- Internet -->
+<rect x="380" y="5" width="290" height="40" rx="4" fill="#F5F4F2" stroke="#9E9892" stroke-width="1"/>
+<text x="525" y="22" text-anchor="middle" font-weight="700" font-size="10" fill="#312D2A">Internet</text>
+<text x="525" y="35" text-anchor="middle" font-size="7.5" fill="#312D2A">+500 CPOs + Ciudadanos + Admin</text>
+<rect x="470" y="55" width="110" height="35" rx="3" fill="#759C6C"/>
+<text x="525" y="72" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">OCI DNS</text>
+<text x="525" y="83" text-anchor="middle" font-size="6.5" fill="#fff">Traffic Steering + Health Checks</text>
+<line x1="525" y1="45" x2="525" y2="55" stroke="#312D2A" stroke-width="1" marker-end="url(#arr3)"/>
+<line x1="470" y1="75" x2="280" y2="110" stroke="#312D2A" stroke-width="1.2" marker-end="url(#arr3)"/>
+<text x="370" y="88" font-size="7" fill="#312D2A" font-weight="600">Active Route</text>
+<line x1="580" y1="75" x2="770" y2="110" stroke="#C74634" stroke-width="1.2" stroke-dasharray="5,3" marker-end="url(#arr3r)"/>
+<text x="680" y="88" font-size="7" fill="#C74634" font-weight="600">Failover Route</text>
+<!-- PRIMARY REGION -->
+<rect x="15" y="105" width="480" height="365" rx="4" fill="#F5F4F2" stroke="#9E9892" stroke-width="1"/>
+<text x="255" y="122" text-anchor="middle" font-weight="700" font-size="11" fill="#312D2A">OCI Region: Bogot&aacute; (sa-bogota-1)</text>
+<rect x="200" y="112" width="55" height="14" rx="7" fill="#15803d"/>
+<text x="227" y="122" text-anchor="middle" font-weight="700" font-size="7" fill="#fff">ACTIVE</text>
+<rect x="30" y="132" width="450" height="325" rx="3" fill="none" stroke="#AE562C" stroke-width="1.5" stroke-dasharray="6,3"/>
+<text x="42" y="147" font-weight="700" font-size="8" fill="#AE562C">VCN upme-prod-vcn</text>
+<!-- Edge -->
+<rect x="40" y="155" width="430" height="50" rx="2" fill="none" stroke="#AE562C" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="50" y="167" font-weight="700" font-size="7" fill="#AE562C">Public Subnet 10.0.1.0/24</text>
+<rect x="50" y="173" width="65" height="26" rx="3" fill="#759C6C"/><text x="82" y="190" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">WAF</text>
+<rect x="125" y="173" width="85" height="26" rx="3" fill="#759C6C"/><text x="167" y="190" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">Load Balancer</text>
+<rect x="220" y="173" width="85" height="26" rx="3" fill="#759C6C"/><text x="262" y="190" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">API Gateway</text>
+<!-- App -->
+<rect x="40" y="212" width="430" height="70" rx="2" fill="none" stroke="#AE562C" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="50" y="224" font-weight="700" font-size="7" fill="#AE562C">Private Subnet &mdash; OKE Cluster</text>
+<rect x="50" y="232" width="80" height="26" rx="3" fill="#759C6C"/><text x="90" y="249" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">Ingesta (Go)</text>
+<rect x="140" y="232" width="90" height="26" rx="3" fill="#759C6C"/><text x="185" y="249" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">Validador (Py)</text>
+<rect x="240" y="232" width="80" height="26" rx="3" fill="#759C6C"/><text x="280" y="249" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">Portal API</text>
+<rect x="330" y="232" width="80" height="26" rx="3" fill="#759C6C"/><text x="370" y="249" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">KeyCloak HA</text>
+<text x="50" y="275" font-size="7" fill="#759C6C" font-weight="600">3+ Nodes HA &bull; HPA &bull; Service Mesh &bull; Autoscaler 3-8</text>
+<!-- Streaming -->
+<rect x="40" y="288" width="210" height="55" rx="2" fill="none" stroke="#AE562C" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="50" y="300" font-weight="700" font-size="7" fill="#AE562C">Streaming</text>
+<rect x="50" y="308" width="85" height="26" rx="3" fill="#759C6C"/><text x="92" y="325" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">OCI Streaming</text>
+<rect x="145" y="308" width="80" height="26" rx="3" fill="#759C6C"/><text x="185" y="325" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">OCI Queue</text>
+<!-- Data -->
+<rect x="260" y="288" width="210" height="55" rx="2" fill="none" stroke="#AE562C" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="270" y="300" font-weight="700" font-size="7" fill="#AE562C">Data Tier</text>
+<rect x="270" y="308" width="95" height="26" rx="3" fill="#759C6C"/><text x="317" y="325" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">ATP 4 OCPU</text>
+<rect x="375" y="308" width="85" height="26" rx="3" fill="#759C6C"/><text x="417" y="325" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">Object Storage</text>
+<!-- Oracle Services -->
+<rect x="40" y="350" width="430" height="40" rx="3" fill="none" stroke="#9E9892" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="50" y="362" font-weight="700" font-size="7" fill="#AE562C">Oracle Services Network</text>
+<rect x="50" y="368" width="70" height="18" rx="2" fill="#2C5967"/><text x="85" y="380" text-anchor="middle" font-size="6.5" fill="#fff">Vault</text>
+<rect x="128" y="368" width="70" height="18" rx="2" fill="#2C5967"/><text x="163" y="380" text-anchor="middle" font-size="6.5" fill="#fff">Monitoring</text>
+<rect x="206" y="368" width="70" height="18" rx="2" fill="#2C5967"/><text x="241" y="380" text-anchor="middle" font-size="6.5" fill="#fff">Logging</text>
+<rect x="284" y="368" width="70" height="18" rx="2" fill="#2C5967"/><text x="319" y="380" text-anchor="middle" font-size="6.5" fill="#fff">OCIR</text>
+<rect x="362" y="368" width="90" height="18" rx="2" fill="#2C5967"/><text x="407" y="380" text-anchor="middle" font-size="6.5" fill="#fff">Cloud Guard</text>
+<!-- Full Stack DR Primary -->
+<rect x="40" y="396" width="430" height="22" rx="3" fill="#759C6C"/>
+<text x="255" y="411" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">Full Stack DR &mdash; OCI DR Orchestration (Automated Failover)</text>
+<!-- Cárgame -->
+<rect x="40" y="425" width="130" height="35" rx="3" fill="#FCFBFA" stroke="#C74634" stroke-width="1.5"/>
+<text x="105" y="442" text-anchor="middle" font-weight="600" font-size="8" fill="#C74634">C&aacute;rgame</text>
+<text x="105" y="453" text-anchor="middle" font-size="6.5" fill="#312D2A">VPN IPSec IKEv2</text>
+<line x1="170" y1="442" x2="195" y2="442" stroke="#312D2A" stroke-width="1"/>
+<rect x="195" y="433" width="18" height="18" rx="9" fill="none" stroke="#2C5967" stroke-width="1.2"/>
+<line x1="200" y1="442" x2="208" y2="442" stroke="#2C5967" stroke-width="0.8"/>
+<line x1="204" y1="438" x2="204" y2="446" stroke="#2C5967" stroke-width="0.8"/>
+<text x="204" y="462" text-anchor="middle" font-size="6" fill="#312D2A">DRG</text>
+<line x1="213" y1="442" x2="260" y2="345" stroke="#312D2A" stroke-width="1" marker-end="url(#arr3)"/>
+<!-- DR REGION -->
+<rect x="555" y="105" width="480" height="365" rx="4" fill="#F5F4F2" stroke="#9E9892" stroke-width="1"/>
+<text x="795" y="122" text-anchor="middle" font-weight="700" font-size="11" fill="#312D2A">OCI Region: Vinhedo / Ashburn</text>
+<rect x="738" y="112" width="70" height="14" rx="7" fill="#dc2626"/>
+<text x="773" y="122" text-anchor="middle" font-weight="700" font-size="7" fill="#fff">STANDBY</text>
+<rect x="570" y="132" width="450" height="210" rx="3" fill="none" stroke="#AE562C" stroke-width="1.5" stroke-dasharray="6,3"/>
+<text x="582" y="147" font-weight="700" font-size="8" fill="#AE562C">VCN upme-dr-vcn</text>
+<!-- OKE Standby -->
+<rect x="580" y="155" width="430" height="55" rx="2" fill="none" stroke="#AE562C" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="590" y="167" font-weight="700" font-size="7" fill="#AE562C">Private Subnet &mdash; OKE Standby</text>
+<rect x="590" y="175" width="110" height="26" rx="3" fill="#759C6C" opacity="0.6"/><text x="645" y="192" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">OKE (Warm)</text>
+<rect x="710" y="175" width="90" height="26" rx="3" fill="#759C6C" opacity="0.6"/><text x="755" y="192" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">KeyCloak</text>
+<rect x="810" y="175" width="90" height="26" rx="3" fill="#759C6C" opacity="0.6"/><text x="855" y="192" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">Microservices</text>
+<text x="590" y="207" font-size="6.5" fill="#759C6C">Escala autom&aacute;tica en failover &bull; Misma config Terraform</text>
+<!-- Data DR -->
+<rect x="580" y="218" width="430" height="55" rx="2" fill="none" stroke="#AE562C" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="590" y="230" font-weight="700" font-size="7" fill="#AE562C">Data Tier &mdash; Replicas</text>
+<rect x="590" y="238" width="120" height="26" rx="3" fill="#759C6C" opacity="0.6"/><text x="650" y="255" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">ATP Backup</text>
+<rect x="720" y="238" width="130" height="26" rx="3" fill="#759C6C" opacity="0.6"/><text x="785" y="255" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">Object Storage Replica</text>
+<rect x="860" y="238" width="95" height="26" rx="3" fill="#2C5967" opacity="0.6"/><text x="907" y="255" text-anchor="middle" font-weight="600" font-size="7" fill="#fff">Vault Replica</text>
+<text x="590" y="270" font-size="6.5" fill="#759C6C">Sync continuo &bull; Read-only hasta failover</text>
+<!-- Oracle Services DR -->
+<rect x="580" y="290" width="430" height="40" rx="3" fill="none" stroke="#9E9892" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="590" y="302" font-weight="700" font-size="7" fill="#AE562C">Oracle Services Network (DR)</text>
+<rect x="590" y="308" width="70" height="18" rx="2" fill="#2C5967" opacity="0.6"/><text x="625" y="320" text-anchor="middle" font-size="6.5" fill="#fff">Vault DR</text>
+<rect x="668" y="308" width="80" height="18" rx="2" fill="#2C5967" opacity="0.6"/><text x="708" y="320" text-anchor="middle" font-size="6.5" fill="#fff">Monitoring</text>
+<rect x="756" y="308" width="70" height="18" rx="2" fill="#2C5967" opacity="0.6"/><text x="791" y="320" text-anchor="middle" font-size="6.5" fill="#fff">Logging</text>
+<!-- Full Stack DR Standby -->
+<rect x="580" y="340" width="430" height="22" rx="3" fill="#dc2626"/>
+<text x="795" y="355" text-anchor="middle" font-weight="600" font-size="8" fill="#fff">Full Stack DR Standby &mdash; RPO &lt; 1h &bull; RTO &lt; 30min &bull; SLA 99.95%</text>
+<!-- KPIs -->
+<rect x="580" y="375" width="430" height="85" rx="3" fill="#FCFBFA" stroke="#312D2A" stroke-width="1"/>
+<text x="795" y="392" text-anchor="middle" font-weight="700" font-size="9" fill="#312D2A">KPIs Disaster Recovery</text>
+<text x="640" y="410" font-size="8" fill="#312D2A"><tspan font-weight="600">RPO:</tspan> &lt; 1 hora (ATP Backup + Obj Storage replication)</text>
+<text x="640" y="425" font-size="8" fill="#312D2A"><tspan font-weight="600">RTO:</tspan> &lt; 30 min (Full Stack DR orchestration + DNS switch)</text>
+<text x="640" y="440" font-size="8" fill="#312D2A"><tspan font-weight="600">SLA:</tspan> 99.95% compuesto (multi-AD + cross-region)</text>
+<text x="640" y="455" font-size="8" fill="#312D2A"><tspan font-weight="600">Drill:</tspan> Simulacro trimestral documentado con runbook</text>
+<!-- Replication arrows -->
+<line x1="480" y1="321" x2="590" y2="251" stroke="#C74634" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arr3r)"/>
+<rect x="500" y="275" width="75" height="14" rx="2" fill="#FCFBFA" stroke="#C74634" stroke-width="0.5"/>
+<text x="537" y="285" text-anchor="middle" font-size="6.5" fill="#C74634" font-weight="600">ATP Backup</text>
+<line x1="480" y1="335" x2="720" y2="251" stroke="#C74634" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arr3r)"/>
+<rect x="570" y="300" width="85" height="14" rx="2" fill="#FCFBFA" stroke="#C74634" stroke-width="0.5"/>
+<text x="612" y="310" text-anchor="middle" font-size="6.5" fill="#C74634" font-weight="600">Cross-Region Repl.</text>
+<line x1="480" y1="380" x2="590" y2="317" stroke="#C74634" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arr3r)"/>
+<line x1="470" y1="407" x2="580" y2="351" stroke="#C74634" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arr3r)"/>
+<rect x="488" y="365" width="100" height="16" rx="3" fill="#C74634"/>
+<text x="538" y="376" text-anchor="middle" font-weight="700" font-size="7" fill="#fff">Full Stack DR</text>
+</svg>
+</div>
+
+<!-- S3: DEVOPS, DR & AMBIENTES -->
+<h1 id="s3"><span class="sn">3.</span> DevOps, DR &amp; Ambientes</h1>
+
+<div class="g2">
+<div class="cd">
+<h4>Ambientes (ArgoCD GitOps)</h4>
+<table style="margin:4px 0">
+<tr><th>Ambiente</th><th>OKE</th><th>Sync</th></tr>
+<tr><td><strong>DEV</strong></td><td>2 nodos</td><td>Auto-sync on push develop</td></tr>
+<tr><td><strong>QA</strong></td><td>3 nodos</td><td>Manual + QA Lead approval</td></tr>
+<tr><td><strong>SANDBOX</strong></td><td>2 nodos</td><td>Auto CPO testing</td></tr>
+<tr><td><strong>PROD</strong></td><td>2&rarr;4 Managed E5 HA</td><td>Manual + 2 approvals + canary 10&rarr;50&rarr;100%</td></tr>
+<tr><td><strong>DR</strong></td><td>Warm standby</td><td>Full Stack DR failover</td></tr>
+</table>
+</div>
+<div class="cd">
+<h4>DR Cross-Region</h4>
+<table style="margin:4px 0">
+<tr><th>KPI</th><th>Objetivo</th><th>Mecanismo OCI</th></tr>
+<tr><td><strong>RPO</strong></td><td>&lt; 1 hora</td><td>ATP Backup + Obj Storage repl.</td></tr>
+<tr><td><strong>RTO</strong></td><td>&lt; 30 min</td><td>Full Stack DR + DNS Traffic Steering</td></tr>
+<tr><td><strong>SLA</strong></td><td>99.95%</td><td>Multi-AD + cross-region compuesto</td></tr>
+<tr><td><strong>Drill</strong></td><td>Trimestral</td><td>Runbook documentado + simulacro</td></tr>
+</table>
+<p style="font-size:0.74rem;margin:4px 0"><strong>CI/CD:</strong> ArgoCD nativo en nodo OKE (lint, tests, SAST/SonarQube, Docker&rarr;OCIR, GitOps declarativo multi-ambiente)<br>
+<strong>Observabilidad:</strong> Grafana + Prometheus + Loki + AlertManager (en OKE)<br>
+<strong>IaC:</strong> Terraform + OCI Resource Manager (state remoto, drift detection)</p>
+</div>
+</div>
+
+<!-- S4: WAF SCORECARD -->
+<h1 id="s4"><span class="sn">4.</span> WAF Scorecard (4 Pilares)</h1>
+
+<table>
+<tr><th>Pilar</th><th>Madurez</th><th>Score</th><th>Fortalezas Principales</th><th>Gaps Principales</th></tr>
+<tr>
+<td><strong style="color:#c74634">Security &amp; Compliance</strong></td>
+<td><div class="mb"><div class="mb-bar" style="width:88%;background:#c74634"></div></div></td>
+<td><span class="sc sh">88%</span></td>
+<td>9 capas defensa, Zero Trust, mTLS E2E, WORM audit, Vault Default (software keys)</td>
+<td>Cloud Guard + Security Zones pendientes. Network Firewall DPI.</td>
+</tr>
+<tr>
+<td><strong style="color:#3b82f6">Reliability &amp; Resilience</strong></td>
+<td><div class="mb"><div class="mb-bar" style="width:90%;background:#3b82f6"></div></div></td>
+<td><span class="sc sh">90%</span></td>
+<td>Full Stack DR, OKE HA (3 Fault Domains), DLQ, circuit breaker, event sourcing</td>
+<td>DR drill pendiente. Runbooks formales.</td>
+</tr>
+<tr>
+<td><strong style="color:#10b981">Performance &amp; Cost</strong></td>
+<td><div class="mb"><div class="mb-bar" style="width:87%;background:#10b981"></div></div></td>
+<td><span class="sc sh">87%</span></td>
+<td>Go ingesta, Kafka desacople, HPA + autoscaler, Virtual Nodes burst, flex shapes</td>
+<td>Load testing 21.6M tx/mes pendiente. Grafana dashboards SLO.</td>
+</tr>
+<tr>
+<td><strong style="color:#8b5cf6">Operational Efficiency</strong></td>
+<td><div class="mb"><div class="mb-bar" style="width:85%;background:#8b5cf6"></div></div></td>
+<td><span class="sc sh">85%</span></td>
+<td>~71h/sem operaci&oacute;n eliminada (managed), GitOps, IaC, CI/CD enterprise</td>
+<td>Incident playbooks, Grafana+Prometheus tuning, AlertManager routing.</td>
+</tr>
+<tr style="background:#fef7f0;font-weight:700">
+<td><strong style="color:#c74634">GLOBAL WAF SCORE</strong></td>
+<td><div class="mb"><div class="mb-bar" style="width:88%;background:linear-gradient(90deg,#c74634,#3b82f6,#10b981,#8b5cf6)"></div></div></td>
+<td><span class="sc" style="background:#fef7f0;color:#c74634;border:2px solid #c74634;font-size:0.85rem">88%</span></td>
+<td colspan="2"><strong>Arquitectura enterprise cloud-native madura.</strong> Bien alineada con Oracle WAF. Gaps son operativos (runbooks, drills, observabilidad) no arquitect&oacute;nicos.</td>
+</tr>
+</table>
+
+<!-- S5: FLUJO PRINCIPAL -->
+<h1 id="s5"><span class="sn">5.</span> Flujo Principal: Ingesta CPO (+500 CPOs / 60s)</h1>
+
+<div class="mermaid">
+sequenceDiagram
+    participant CPO as +500 CPOs
+    participant WAF as OCI WAF
+    participant LB as Load Balancer
+    participant GW as API Gateway
+    participant KC as KeyCloak
+    participant ING as Ingesta (Go)
+    participant KFK as OCI Streaming<br/>(Kafka)
+    participant VAL as Validador (Python)
+    participant ATP as Autonomous DB
+    participant OBJ as Object Storage
+    participant DLQ as OCI Queue (DLQ)
+    
+    CPO->>WAF: PUT /ocpi/2.2.1/locations<br/>(mTLS + OAuth 2.1 Bearer Token, ~8.3 req/s)
+    WAF->>WAF: OWASP rules + DDoS + GeoFence
+    WAF->>LB: Forward (TLS 1.3)
+    LB->>GW: Route + Rate Limit (tier CPO)
+    GW->>KC: Token Introspection (RFC 7662)
+    KC-->>GW: active=true + scopes + client_id
+    GW->>ING: Forward validated request
+    ING->>ING: Parse + idempotency check
+    ING->>KFK: Produce → raw-reports topic
+    ING-->>CPO: 202 Accepted (async)
+    KFK->>VAL: Consume (6-12 particiones)
+    VAL->>VAL: Schema OCPI 2.2.1 + business rules
+    alt Válido
+        VAL->>ATP: INSERT/UPDATE locations
+        VAL->>OBJ: Store raw JSON (Zona Raw)
+        VAL->>KFK: Produce → audit-events
+    else Inválido
+        VAL->>DLQ: Send to Dead Letter Queue
+        VAL->>KFK: Produce → dlq-errors
+    end
+</div>
+
+<h3>Flujo: ETL AI Data Platform (Batch)</h3>
+<div class="mermaid">
+graph LR
+    RAW["Object Storage<br/>Zona Bronze<br/>(JSON OCPI)"] -->|"OCI Data Flow<br/>(Elastic Spark)"| CUR["Object Storage<br/>Zona Silver<br/>(Parquet normalizado)"]
+    CUR -->|"Agregaciones"| ANA["Object Storage<br/>Zona Gold<br/>(Reportes UPME)"]
+    CUR -->|"Vistas materializadas"| ATP["Autonomous DB<br/>Read Replicas"]
+    RAW --> DC["OCI Data Catalog<br/>Metadata + PII + Lineage"]
+    CUR --> DC
+    ANA --> DC
+    style RAW fill:#fbbf24,color:#000
+    style CUR fill:#3b82f6,color:#fff
+    style ANA fill:#10b981,color:#fff
+    style DC fill:#8b5cf6,color:#fff
+</div>
+
+<!-- S6: REFERENCE ARCHITECTURES -->
+<h1 id="s6"><span class="sn">6.</span> Arquitecturas de Referencia Oracle</h1>
+
+<div class="ob">
+<strong style="color:#c74634">Oracle Architecture Center:</strong> La arquitectura UPME se alinea con las siguientes arquitecturas de referencia publicadas por Oracle. Se solicita al equipo Oracle Architecture validaci&oacute;n de la implementaci&oacute;n propuesta contra estos patrones.
+</div>
+
+<table>
+<tr><th>#</th><th>Referencia Oracle Architecture Center</th><th>Aplicaci&oacute;n en UPME</th><th>Componentes OCI</th></tr>
+<tr><td><strong>1</strong></td><td><strong>Deploy microservices on OKE</strong></td><td>Go + Python en OKE, HPA, Service Mesh, namespaces/env</td><td>OKE, OCIR, Service Mesh, API GW</td></tr>
+<tr><td><strong>2</strong></td><td><strong>Stream messages with OCI Streaming (Kafka)</strong></td><td>Event-driven: +5 t&oacute;picos para ingesta, validaci&oacute;n, audit, DLQ</td><td>Streaming, Functions, Queue</td></tr>
+<tr><td><strong>3</strong></td><td><strong>Deploy HA web applications on OCI</strong></td><td>Portal masivo: Redis Cache (opcional) + LB + OKE multi-AD + ATP</td><td>LB, Redis, OKE, ATP, DNS</td></tr>
+<tr><td><strong>4</strong></td><td><strong>Landing zone CIS OCI Benchmark</strong></td><td>Terraform Landing Zone, compartimentos, IAM, Cloud Guard</td><td>IAM, Cloud Guard, Security Zones</td></tr>
+<tr><td><strong>5</strong></td><td><strong>Disaster recovery on OCI</strong></td><td>Full Stack DR cross-region: OKE Standby + Obj Storage repl. ATP backup manual.</td><td>Full Stack DR, DNS, Obj Storage</td></tr>
+<tr><td><strong>6</strong></td><td><strong>Build a data lake on OCI</strong></td><td>AI Data Platform medallion (Bronze/Silver/Gold) + Data Flow (Spark) + Data Catalog</td><td>Obj Storage, Data Flow, Data Catalog, AI Services</td></tr>
+<tr><td><strong>7</strong></td><td><strong>Manage APIs with OCI API Gateway</strong></td><td>Rate limiting/CPO, Bearer Token Introspection, CORS, caching</td><td>API GW, WAF, Vault, KeyCloak</td></tr>
+<tr><td><strong>8</strong></td><td><strong>GitOps with ArgoCD and OKE</strong></td><td>ArgoCD nativo en nodo OKE, multi-ambiente con canary via Service Mesh</td><td>OKE, ArgoCD (nativo), OCIR</td></tr>
+<tr><td><strong>9</strong></td><td><strong>Connect on-premises to OCI</strong></td><td>VPN Site2Site IPSec + DRG para C&aacute;rgame (GET /crg/cpo/{nit}). FastConnect upgrade path.</td><td>VPN Site2Site, DRG, FastConnect</td></tr>
+<tr><td><strong>10</strong></td><td><strong>Observability with Grafana Stack</strong></td><td>Grafana + Prometheus + Loki + AlertManager en OKE. OCI APM opcional (pendiente costos).</td><td>Grafana, Prometheus, Loki, AlertManager</td></tr>
+</table>
+
+<!-- S7: OCI SERVICES MAP -->
+<h1 id="s7"><span class="sn">7.</span> Mapeo Servicios OCI (35 servicios)</h1>
+
+<table>
+<tr><th>Capa</th><th>Servicio</th><th>Ambientes</th><th>Estado</th></tr>
+<tr><td rowspan="3"><strong>Edge</strong></td><td>OCI WAF &mdash; OWASP+DDoS+GeoFence</td><td>PROD</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCI DNS &mdash; Traffic Steering + Health Checks</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>Redis Cache (Opcional) &mdash; Cach&eacute; nativo en OKE, habilitaci&oacute;n seg&uacute;n demanda</td><td>PROD</td><td><span class="sc sm">Opcional</span></td></tr>
+<tr><td rowspan="4"><strong>Network</strong></td><td>VCN + Subnets + NSGs &mdash; Segmentaci&oacute;n 4 subnets</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCI Load Balancer &mdash; Flex TLS 1.3</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCI API Gateway &mdash; Rate limit/CPO, Bearer Introspection, CORS</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>VPN Site2Site + DRG &mdash; C&aacute;rgame (GET /crg/cpo/{nit}). FastConnect upgrade path.</td><td>PROD</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td rowspan="4"><strong>Compute</strong></td><td>OKE Enhanced Cluster &mdash; Managed Nodes E5 (VM.Standard.E5.Flex, AMD EPYC 9J14). 2 OCPU, 16 GB RAM, 100 GB SSD/nodo. 3 Fault Domains. Autoscaling 2&rarr;4. Manifiestos YAML.</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCI Service Mesh &mdash; mTLS auto, canary</td><td>QA, PROD</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCI Functions &mdash; Serverless validators, webhooks</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCIR &mdash; Container Registry + vuln scan</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td rowspan="2"><strong>Messaging</strong></td><td>OCI Streaming (Kafka) &mdash; +5 t&oacute;picos</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCI Queue &mdash; DLQ + retry backoff</td><td>PROD</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td rowspan="5"><strong>Data</strong></td><td>Autonomous DB (ATP) &mdash; 1 OCPU, auto-scaling, TDE + CMK. Sin Data Guard.</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>APEX &mdash; Low-code sobre Autonomous DB. Dashboards, reportes, formularios.</td><td>PROD</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>Object Storage &mdash; AI Data Platform medallion (Bronze/Silver/Gold/Audit WORM)</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCI Data Flow &mdash; Spark ETL Raw&rarr;Curated&rarr;Analytics</td><td>PROD</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCI Data Catalog &mdash; Metadata, PII, lineage</td><td>PROD</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td rowspan="5"><strong>Security</strong></td><td>OCI Vault Default &mdash; Software-protected keys (gratuito). Upgrade HSM opcional.</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCI Certificates &mdash; mTLS X.509/CPO</td><td>PROD</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>Cloud Guard &mdash; Postura continua, auto-remediation</td><td>PROD</td><td><span class="sc sm">Pendiente</span></td></tr>
+<tr><td>Security Zones &mdash; Protecci&oacute;n compartimento PROD</td><td>PROD</td><td><span class="sc sm">Pendiente</span></td></tr>
+<tr><td>OCI Bastion &mdash; Acceso admin auditado</td><td>Todos</td><td><span class="sc sm">Roadmap</span></td></tr>
+<tr><td rowspan="5"><strong>Observability</strong></td><td>Grafana (en OKE) &mdash; Dashboards centralizados, m&eacute;tricas y logs</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>Prometheus (en OKE) &mdash; M&eacute;tricas infra/app, scraping, alertas</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>Loki (en OKE) &mdash; Logs agregados, full-text search</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>AlertManager (en OKE) &mdash; Routing alertas PagerDuty, Slack, email</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCI APM (Opcional) &mdash; Tracing distribuido E2E. Pendiente evaluaci&oacute;n de costos.</td><td>QA, PROD</td><td><span class="sc sm">Pendiente</span></td></tr>
+<tr><td rowspan="3"><strong>DevOps</strong></td><td>ArgoCD (nativo en worker nodes OKE) &mdash; CI/CD GitOps: despliega branches por environment via pipelines, canary, rollback. Integrado con OCIR.</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCIR &mdash; Container Registry + vulnerability scan + signing</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td>OCI Resource Manager &mdash; Terraform state, drift</td><td>Todos</td><td><span class="sc sh">Activo</span></td></tr>
+<tr><td><strong>DR</strong></td><td>OCI Full Stack DR &mdash; Failover: OKE Standby + Obj Storage repl. ATP backup manual.</td><td>PROD&rarr;DR</td><td><span class="sc sh">Activo</span></td></tr>
+</table>
+<div class="gb"><strong>Total servicios OCI mapeados:</strong> 34 servicios. 27 activos, 4 pendientes (quick wins), 3 en roadmap.</div>
+
+<!-- S8: SOLICITUD ORACLE -->
+<h1 id="s8"><span class="sn">8.</span> Solicitud al Equipo Oracle</h1>
+
+<div class="ob" style="border-width:3px">
+<h4 style="color:#c74634;margin:0 0 10px">&Aacute;reas de Colaboraci&oacute;n Solicitadas</h4>
+
+<p>La UPME busca establecer una <strong>partnership estrat&eacute;gica con Oracle</strong> para la plataforma nacional de interoperabilidad de electromovilidad. Solicitamos al equipo Oracle Architecture su apoyo en:</p>
+
+<h4>A. Validaci&oacute;n de Arquitectura Enterprise</h4>
+<ul style="padding-left:16px;font-size:0.82rem">
+<li>Review del dise&ntilde;o OKE (node pools, autoscaling, namespaces, Service Mesh)</li>
+<li>Validaci&oacute;n de la configuraci&oacute;n OCI Streaming (particionamiento, retenci&oacute;n, consumer groups)</li>
+<li>Review del modelo de seguridad Zero Trust (9 capas)</li>
+<li>Validaci&oacute;n de la estrategia Full Stack DR (RPO &lt;1h, RTO &lt;30min)</li>
+<li>Feedback sobre el dise&ntilde;o de AI Data Platform (Object Storage medallion + Data Flow + Data Catalog + AI Services)</li>
+</ul>
+
+<h4>B. Acompa&ntilde;amiento en Implementaci&oacute;n</h4>
+<ul style="padding-left:16px;font-size:0.82rem">
+<li>Asesor&iacute;a en configuraci&oacute;n Landing Zone CIS Benchmark</li>
+<li>Best practices OKE producci&oacute;n: HA multi-AD, Virtual Nodes, node pool sizing</li>
+<li>Optimizaci&oacute;n Autonomous DB + APEX para carga OCPI (1 OCPU auto-scaling, Performance Hub)</li>
+<li>Configuraci&oacute;n Cloud Guard + Security Zones + Vulnerability Scanning</li>
+<li>Asesor&iacute;a en OCI Service Mesh para canary deployments</li>
+<li>Review de ArgoCD nativo en OKE + OCIR integraci&oacute;n</li>
+</ul>
+
+<h4>C. Soporte Enterprise</h4>
+<ul style="padding-left:16px;font-size:0.82rem">
+<li>Sesiones de architecture review: pre-Sandbox (Jul 2026) y pre-Go-Live (Oct 2026)</li>
+<li>Canal directo con Oracle Architecture LATAM</li>
+<li>Acceso a Oracle Architecture Center para consultas de referencia</li>
+<li>Programa Oracle Customer Success para seguimiento post Go-Live</li>
+<li>Participaci&oacute;n en DR Drill como observadores (Sep 2026)</li>
+</ul>
+</div>
+
+<!-- FOOTER -->
+<div class="pdf-footer" style="margin-top:50px;padding:28px;background:linear-gradient(135deg,#1a1714,#312d2a,#c74634);color:#e8b4a0;border-radius:12px;text-align:center">
+<!-- UPME Logo Footer -->
+<div style="margin-bottom:14px">
+<a href="https://www.upme.gov.co/" target="_blank" rel="noopener"><img src="logo-upme.png" alt="UPME" style="height:70px;display:block;margin:0 auto;background:#fff;border-radius:8px;padding:6px 14px"></a>
+</div>
+<div style="font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px">Oracle Well-Architected Framework &mdash; Review</div>
+<div style="font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:3px">Plataforma Nacional de Interoperabilidad de Electromovilidad</div>
+<div style="font-size:0.78rem;margin-bottom:14px"><a href="https://www.upme.gov.co/" target="_blank" rel="noopener" style="color:#e8b4a0;text-decoration:none;border-bottom:1px dotted #e8b4a0">UPME</a> &mdash; Unidad de Planeaci&oacute;n Minero-Energ&eacute;tica de Colombia</div>
+<div style="display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:14px">
+<span class="badge" style="background:#fff2;color:#fff;border:1px solid #fff3;font-size:0.65rem">OKE + Kafka + Functions</span>
+<span class="badge" style="background:#fff2;color:#fff;border:1px solid #fff3;font-size:0.65rem">Full Stack DR</span>
+<span class="badge" style="background:#fff2;color:#fff;border:1px solid #fff3;font-size:0.65rem">ArgoCD GitOps</span>
+<span class="badge" style="background:#fff2;color:#fff;border:1px solid #fff3;font-size:0.65rem">21.6M tx/mes</span>
+<span class="badge" style="background:#fff2;color:#fff;border:1px solid #fff3;font-size:0.65rem">35 servicios OCI</span>
+<span class="badge" style="background:#fff2;color:#fff;border:1px solid #fff3;font-size:0.65rem">WAF Score: 88%</span>
+</div>
+<div style="font-size:0.68rem;color:#a09080">
+Versi&oacute;n &mdash; Marzo 2026 &mdash; Confidencial Oracle + <a href="https://www.upme.gov.co/" target="_blank" rel="noopener" style="color:#a09080;text-decoration:none;border-bottom:1px dotted #a09080">UPME</a><br>
+Dise&ntilde;ado por: <a href="https://www.upme.gov.co/" target="_blank" rel="noopener" style="color:#a09080;text-decoration:none;border-bottom:1px dotted #a09080">UPME</a> &mdash; Software Architect Rafael Dom&iacute;nguez &mdash; Subdirecci&oacute;n Gesti&oacute;n de Informaci&oacute;n<br>
+Preparado para: Oracle Architecture Team<br>
+&copy; 2026 <a href="https://www.upme.gov.co/" target="_blank" rel="noopener" style="color:#a09080;text-decoration:none;border-bottom:1px dotted #a09080">UPME</a>
+</div>
+<div style="margin-top:12px;padding:8px 18px;background:rgba(0,0,0,0.3);border:1px solid #ff6b4a;border-radius:6px;display:inline-block;font-size:0.65rem;color:#ffcdb8">
+&#128274; Documento confidencial de manejo exclusivo para Oracle Corporation en el marco del assessment de arquitectura y adquisici&oacute;n de infraestructura OCI.
+</div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+[
+  {
+    "Id": 5,
+    "NombreDepartamento": "ANTIOQUIA"
+  },
+  {
+    "Id": 8,
+    "NombreDepartamento": "ATLANTICO"
+  },
+  {
+    "Id": 11,
+    "NombreDepartamento": "BOGOTA, D. C."
+  },
+  {
+    "Id": 13,
+    "NombreDepartamento": "BOLIVAR"
+  },
+  {
+    "Id": 15,
+    "NombreDepartamento": "BOYACA"
+  },
+  {
+    "Id": 17,
+    "NombreDepartamento": "CALDAS"
+  },
+  {
+    "Id": 18,
+    "NombreDepartamento": "CAQUETA"
+  },
+  {
+    "Id": 19,
+    "NombreDepartamento": "CAUCA"
+  },
+  {
+    "Id": 20,
+    "NombreDepartamento": "CESAR"
+  },
+  {
+    "Id": 23,
+    "NombreDepartamento": "CORDOBA"
+  },
+  {
+    "Id": 25,
+    "NombreDepartamento": "CUNDINAMARCA"
+  },
+  {
+    "Id": 27,
+    "NombreDepartamento": "CHOCO"
+  },
+  {
+    "Id": 41,
+    "NombreDepartamento": "HUILA"
+  },
+  {
+    "Id": 44,
+    "NombreDepartamento": "LA GUAJIRA"
+  },
+  {
+    "Id": 47,
+    "NombreDepartamento": "MAGDALENA"
+  },
+  {
+    "Id": 50,
+    "NombreDepartamento": "META"
+  },
+  {
+    "Id": 52,
+    "NombreDepartamento": "NARINO"
+  },
+  {
+    "Id": 54,
+    "NombreDepartamento": "NORTE DE SANTANDER"
+  },
+  {
+    "Id": 63,
+    "NombreDepartamento": "QUINDIO"
+  },
+  {
+    "Id": 66,
+    "NombreDepartamento": "RISARALDA"
+  },
+  {
+    "Id": 68,
+    "NombreDepartamento": "SANTANDER"
+  },
+  {
+    "Id": 70,
+    "NombreDepartamento": "SUCRE"
+  },
+  {
+    "Id": 73,
+    "NombreDepartamento": "TOLIMA"
+  },
+  {
+    "Id": 76,
+    "NombreDepartamento": "VALLE DEL CAUCA"
+  },
+  {
+    "Id": 81,
+    "NombreDepartamento": "ARAUCA"
+  },
+  {
+    "Id": 85,
+    "NombreDepartamento": "CASANARE"
+  },
+  {
+    "Id": 86,
+    "NombreDepartamento": "PUTUMAYO"
+  },
+  {
+    "Id": 88,
+    "NombreDepartamento": "ARCHIPIELAGO DE SAN ANDRES, PROVIDENCIA Y SANTA CATALINA"
+  },
+  {
+    "Id": 91,
+    "NombreDepartamento": "AMAZONAS"
+  },
+  {
+    "Id": 94,
+    "NombreDepartamento": "GUAINIA"
+  },
+  {
+    "Id": 95,
+    "NombreDepartamento": "GUAVIARE"
+  },
+  {
+    "Id": 97,
+    "NombreDepartamento": "VAUPES"
+  },
+  {
+    "Id": 99,
+    "NombreDepartamento": "VICHADA"
+  }
+]
