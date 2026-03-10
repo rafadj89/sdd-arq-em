@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Diagramas de Seguridad — Plataforma Electromovilidad UPME</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{font-family:'Inter',sans-serif;box-sizing:border-box}
+body{background:#f8fafc;color:#1e293b;margin:0}
+.doc{max-width:1200px;margin:0 auto;padding:20px 40px 80px}
+.cover{text-align:center;padding:48px 40px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 40%,#334155 100%);color:#fff;border-radius:16px;margin-bottom:32px;position:relative;overflow:hidden}
+.cover::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 70% 30%,rgba(56,189,248,0.08) 0%,transparent 50%);pointer-events:none}
+.cover h1{font-size:2rem;font-weight:800;margin:0 0 8px;position:relative}
+.cover h1 span{color:#38bdf8}
+.cover .sub{font-size:1rem;color:#94a3b8;margin:4px 0}
+.cover .badges{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.cover .badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.7rem;font-weight:600;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#e2e8f0}
+.nav-tabs{display:flex;gap:4px;background:#1e293b;border-radius:12px;padding:6px;margin-bottom:24px;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+.nav-tab{padding:10px 18px;font-size:0.78rem;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:all 0.2s;background:transparent;color:#94a3b8}
+.nav-tab:hover{color:#e2e8f0;background:rgba(255,255,255,0.05)}
+.nav-tab.active{background:#38bdf8;color:#0f172a}
+.section{display:none}.section.active{display:block}
+.section.mermaid-init{display:block!important;position:absolute;left:-9999px;visibility:hidden}
+h2{font-size:1.4rem;font-weight:800;color:#0f172a;margin:0 0 6px;display:flex;align-items:center;gap:10px}
+h2 .icon{color:#38bdf8;font-size:1.2rem}
+h3{font-size:1.1rem;font-weight:700;color:#1e293b;margin:20px 0 8px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin:12px 0;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.card-header{font-weight:700;font-size:0.95rem;color:#1e293b;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.info-box{border-radius:10px;padding:14px 18px;margin:10px 0;font-size:0.82rem;line-height:1.6}
+.info-blue{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af}
+.info-green{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534}
+.info-amber{background:#fffbeb;border:1px solid #fde68a;color:#92400e}
+.info-purple{background:#faf5ff;border:1px solid #e9d5ff;color:#6b21a8}
+.mermaid-container{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:16px 0;overflow-x:auto;min-height:200px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.78rem}
+th{background:#1e293b;color:#fff;font-weight:600;text-align:left;padding:8px 12px}
+td{padding:6px 12px;border:1px solid #e2e8f0;vertical-align:top}
+tr:nth-child(even){background:#f8fafc}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+.flow-steps{display:flex;gap:0;align-items:stretch;margin:16px 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:180px;background:#fff;border:2px solid #e2e8f0;border-radius:12px;padding:16px;text-align:center;position:relative}
+.flow-step:not(:last-child)::after{content:'→';position:absolute;right:-16px;top:50%;transform:translateY(-50%);font-size:1.2rem;color:#38bdf8;font-weight:700;z-index:1}
+.flow-step .step-num{background:#0f172a;color:#38bdf8;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;margin:0 auto 8px}
+.flow-step .step-title{font-weight:700;font-size:0.85rem;color:#1e293b;margin-bottom:4px}
+.flow-step .step-desc{font-size:0.72rem;color:#64748b;line-height:1.4}
+.kc-realm{background:linear-gradient(135deg,#faf5ff,#f5f3ff);border:2px solid #c4b5fd;border-radius:12px;padding:16px;margin:8px 0}
+.kc-realm-title{font-weight:700;color:#6d28d9;font-size:0.9rem;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.kc-config{font-size:0.76rem;color:#4c1d95;line-height:1.5}
+.st{display:inline-block;padding:2px 8px;border-radius:12px;font-size:0.65rem;font-weight:600;margin:1px}
+.st-atp{background:#fef7f0;color:#c74634;border:1px solid #f5c6b8}
+.st-vault{background:#ede9fe;color:#6d28d9;border:1px solid #c4b5fd}
+.st-obj{background:#e0f2fe;color:#0369a1;border:1px solid #7dd3fc}
+.st-kc{background:#f0fdf4;color:#15803d;border:1px solid #86efac}
+.st-redis{background:#fef2f2;color:#dc2626;border:1px solid #fca5a5}
+@media print{.nav-tabs{display:none}.section{display:block!important;page-break-before:always}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<!-- COVER -->
+<div class="cover">
+<div style="font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:#38bdf8;margin-bottom:8px">Arquitectura de Seguridad</div>
+<h1>Diagramas de <span>Secuencia y Contexto</span></h1>
+<h1 style="font-size:1.3rem;font-weight:600;color:#94a3b8">Plataforma Nacional de Interoperabilidad de Electromovilidad</h1>
+<p class="sub">OCPI 2.2.1 &middot; OAuth 2.1 &middot; KeyCloak &middot; mTLS &middot; OCI Cloud-Native</p>
+<div class="badges">
+<span class="badge">Resoluci&oacute;n 40559/2025</span>
+<span class="badge">KeyCloak 24+ HA</span>
+<span class="badge">OAuth 2.1 + DPoP</span>
+<span class="badge">mTLS RFC 8705</span>
+<span class="badge">+500 CPOs</span>
+<span class="badge">Zero Trust</span>
+</div>
+<table style="width:auto;margin:20px auto 0;border:none;text-align:left;font-size:0.78rem;color:#94a3b8">
+<tr style="background:transparent"><td style="border:none;padding:2px 14px 2px 0;color:#64748b">Entidad</td><td style="border:none"><strong style="color:#fff">UPME &mdash; Unidad de Planeaci&oacute;n Minero-Energ&eacute;tica</strong></td></tr>
+<tr style="background:transparent"><td style="border:none;padding:2px 14px 2px 0;color:#64748b">Fecha</td><td style="border:none">Marzo 2026</td></tr>
+<tr style="background:transparent"><td style="border:none;padding:2px 14px 2px 0;color:#64748b">Arquitecto</td><td style="border:none"><strong style="color:#fff">Rafael Dom&iacute;nguez</strong></td></tr>
+</table>
+</div>
+
+<!-- NAV -->
+<div class="nav-tabs" id="mainNav">
+<button class="nav-tab active" onclick="showSection('overview')"><i class="fa-solid fa-shield-halved"></i> Visi&oacute;n General</button>
+<button class="nav-tab" onclick="showSection('d1')"><i class="fa-solid fa-user-plus"></i> 2.1 Registro CPO</button>
+<button class="nav-tab" onclick="showSection('d2')"><i class="fa-solid fa-key"></i> 2.2 Login + API KEY</button>
+<button class="nav-tab" onclick="showSection('d3')"><i class="fa-solid fa-link"></i> 2.3 CARGAME</button>
+<button class="nav-tab" onclick="showSection('d4')"><i class="fa-solid fa-lock"></i> 2.4 Seguridad APIs</button>
+<button class="nav-tab" onclick="showSection('kc')"><i class="fa-solid fa-fingerprint"></i> KeyCloak</button>
+<button class="nav-tab" onclick="showSection('storage')"><i class="fa-solid fa-database"></i> Almacenamiento</button>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION: OVERVIEW -->
+<!-- ============================================================ -->
+<div class="section active" id="overview">
+<h2><span class="icon"><i class="fa-solid fa-shield-halved"></i></span> Visi&oacute;n General de Seguridad</h2>
+<p style="color:#64748b;font-size:0.88rem;margin-bottom:16px">Modelo de seguridad Zero Trust para la plataforma de interoperabilidad de electromovilidad. Flujo completo desde registro de CPO hasta consumo seguro de APIs OCPI 2.2.1.</p>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-sitemap" style="color:#6d28d9"></i> Diagrama de Contexto (C4 Nivel 1) &mdash; Ecosistema de Seguridad</div>
+<div class="mermaid-container"><pre class="mermaid">
+graph TB
+    subgraph "Actores Externos"
+        CPO["&lt;b&gt;CPO (Operador)&lt;/b&gt;&lt;br/&gt;+500 operadores&lt;br/&gt;OCPI 2.2.1 cada 60s"]
+        ADMIN["&lt;b&gt;Admin UPME&lt;/b&gt;&lt;br/&gt;8 personas&lt;br/&gt;MFA + PKCE"]
+        CITIZEN["&lt;b&gt;Ciudadano&lt;/b&gt;&lt;br/&gt;Consulta p&uacute;blica RT"]
+    end
+    subgraph "OCI Edge &amp; Seguridad Perimetral"
+        WAF["&lt;b&gt;OCI WAF&lt;/b&gt;&lt;br/&gt;OWASP + DDoS + GeoFence CO"]
+        DNS["&lt;b&gt;OCI DNS&lt;/b&gt;&lt;br/&gt;electromobility.upme.gov.co"]
+        LB["&lt;b&gt;Load Balancer&lt;/b&gt;&lt;br/&gt;TLS 1.3 Flex"]
+    end
+    subgraph "OKE Cluster &mdash; Plataforma UPME"
+        APIGW["&lt;b&gt;API Gateway&lt;/b&gt;&lt;br/&gt;Rate Limit + Bearer Introspection"]
+        KC["&lt;b&gt;KeyCloak HA&lt;/b&gt;&lt;br/&gt;OAuth 2.1 &middot; Multi-Realm&lt;br/&gt;Token Introspection (RFC 7662)"]
+        MESH["&lt;b&gt;Service Mesh&lt;/b&gt;&lt;br/&gt;mTLS auto inter-servicio"]
+        ING["&lt;b&gt;Ingesta (Go)&lt;/b&gt;&lt;br/&gt;3-6 pods HPA"]
+        VAL["&lt;b&gt;Validador (Python)&lt;/b&gt;&lt;br/&gt;2-4 pods HPA"]
+        CPOMGR["&lt;b&gt;CPO Manager&lt;/b&gt;&lt;br/&gt;Registro + Credenciales"]
+        PORTAL["&lt;b&gt;Developer Portal&lt;/b&gt;&lt;br/&gt;React 18 + TS"]
+    end
+    subgraph "Integraci&oacute;n"
+        VPN["&lt;b&gt;VPN Site2Site&lt;/b&gt;&lt;br/&gt;IPSec IKEv2 + DRG"]
+        CARG["&lt;b&gt;C&aacute;rgame (MinEnerg&iacute;a)&lt;/b&gt;&lt;br/&gt;Registro oficial CPOs"]
+    end
+    subgraph "Data &amp; Security"
+        VAULT["&lt;b&gt;OCI Vault&lt;/b&gt;&lt;br/&gt;CMK + JWT Keys + API Keys"]
+        ATP["&lt;b&gt;Autonomous DB&lt;/b&gt;&lt;br/&gt;1 OCPU, TDE + CMK"]
+        OBJ["&lt;b&gt;Object Storage&lt;/b&gt;&lt;br/&gt;Medallion + WORM Audit"]
+        KFK["&lt;b&gt;OCI Streaming&lt;/b&gt;&lt;br/&gt;Kafka API, 5 topics"]
+    end
+
+    CPO -->|"mTLS + Bearer Token"| WAF
+    CITIZEN -->|"HTTPS"| WAF
+    ADMIN -->|"MFA + PKCE"| WAF
+    WAF --> DNS --> LB --> APIGW
+    APIGW -->|"Token Introspection RFC 7662"| KC
+    APIGW --> ING
+    APIGW --> PORTAL
+    KC --> VAULT
+    MESH -.-> ING
+    MESH -.-> VAL
+    ING --> KFK
+    KFK --> VAL
+    VAL --> ATP
+    VAL --> OBJ
+    CPOMGR -->|"VPN IPSec"| VPN --> CARG
+    CPOMGR --> KC
+    CPOMGR --> ATP
+
+    style WAF fill:#dc2626,color:#fff
+    style KC fill:#7c3aed,color:#fff
+    style VAULT fill:#1e293b,color:#fff
+    style ATP fill:#c74634,color:#fff
+    style KFK fill:#6d28d9,color:#fff
+    style MESH fill:#0891b2,color:#fff
+    style VPN fill:#1e293b,color:#fff
+</pre></div>
+</div>
+
+<!-- 4-Step Flow -->
+<h3>Flujo de Conexi&oacute;n en 4 Pasos &mdash; Seguridad y Habilitaci&oacute;n</h3>
+<div class="flow-steps">
+<div class="flow-step"><div class="step-num">1</div><div class="step-title">Registro (C&aacute;rgame)</div><div class="step-desc">Reporte inicial de infraestructura en la plataforma del Ministerio. CPO queda registrado con NIT y estado ACTIVE.</div></div>
+<div class="flow-step"><div class="step-num">2</div><div class="step-title">Notificaci&oacute;n UPME</div><div class="step-desc">MME valida y notifica oficialmente a la UPME v&iacute;a API webhook. Se crea registro preliminar del CPO.</div></div>
+<div class="flow-step"><div class="step-num">3</div><div class="step-title">Emisi&oacute;n API Key</div><div class="step-desc">UPME genera credenciales &uacute;nicas con alcances asignados v&iacute;a canal seguro. KeyCloak crea OAuth Client.</div></div>
+<div class="flow-step"><div class="step-num">4</div><div class="step-title">Generaci&oacute;n Token JWT</div><div class="step-desc">El CPO usa el API Key para solicitar un token de vida corta (OAuth 2.1 / mTLS) para iniciar el reporte.</div></div>
+</div>
+<div class="info-blue"><strong><i class="fa-solid fa-shield-halved"></i> Principio:</strong> Autenticaci&oacute;n mutua y cifrado en tr&aacute;nsito/reposo garantizan integridad, trazabilidad y no repudio. Toda la gesti&oacute;n de identidad se centraliza en <strong>KeyCloak HA</strong> (2 pods en OKE, realm dedicado por tipo de actor).</div>
+
+<h3>9 Capas de Defensa &mdash; Zero Trust</h3>
+<div class="grid-3">
+<div class="card" style="border-left:4px solid #ef4444"><div class="card-header" style="font-size:0.82rem"><i class="fa-solid fa-globe" style="color:#ef4444"></i> L1-L3: Per&iacute;metro</div><ul style="font-size:0.76rem;padding-left:16px;margin:4px 0;color:#475569;line-height:1.6"><li><strong>OCI WAF:</strong> OWASP Top 10, DDoS L7, GeoFence CO</li><li><strong>OCI DNS:</strong> Traffic Steering, Health Checks</li><li><strong>VCN + NSGs:</strong> Segmentaci&oacute;n pub/priv, Flow Logs</li><li><strong>Load Balancer:</strong> TLS 1.3 termination</li></ul></div>
+<div class="card" style="border-left:4px solid #3b82f6"><div class="card-header" style="font-size:0.82rem"><i class="fa-solid fa-fingerprint" style="color:#3b82f6"></i> L4-L6: Identidad</div><ul style="font-size:0.76rem;padding-left:16px;margin:4px 0;color:#475569;line-height:1.6"><li><strong>API Gateway:</strong> Rate Limit + Token Introspection</li><li><strong>KeyCloak HA:</strong> OAuth 2.1, RBAC, Multi-Realm</li><li><strong>OCI Certificates:</strong> mTLS X.509 por CPO</li><li><strong>Service Mesh:</strong> mTLS auto inter-servicio</li></ul></div>
+<div class="card" style="border-left:4px solid #10b981"><div class="card-header" style="font-size:0.82rem"><i class="fa-solid fa-database" style="color:#10b981"></i> L7-L9: Datos &amp; Audit</div><ul style="font-size:0.76rem;padding-left:16px;margin:4px 0;color:#475569;line-height:1.6"><li><strong>OCI Vault:</strong> CMK, rotaci&oacute;n 90d, JWT signing keys</li><li><strong>ATP TDE:</strong> Cifrado transparente datos</li><li><strong>WORM Audit:</strong> Logs inmutables (SIC)</li><li><strong>Cloud Guard:</strong> Postura continua, auto-remediation</li></ul></div>
+</div>
+</div>
+<!-- SECTION 2.1: REGISTRO CPO -->
+<div class="section" id="d1">
+<h2><span class="icon"><i class="fa-solid fa-user-plus"></i></span> 2.1 Registro para Interoperabilidad</h2>
+<p style="color:#64748b;font-size:0.85rem;margin-bottom:16px">Flujo completo desde registro en C&aacute;rgame hasta habilitaci&oacute;n del CPO con credenciales OAuth 2.1 en KeyCloak.</p>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Arquitectura &mdash; Registro CPO</div>
+<div class="mermaid-container"><pre class="mermaid">
+graph TB
+    subgraph "MinEnerg&iacute;a"
+        CARG["C&aacute;rgame&lt;br/&gt;Registro CPOs"]
+        CARG_API["API C&aacute;rgame&lt;br/&gt;GET /crg/cpo/nit"]
+        CARG_WH["Webhook&lt;br/&gt;Notifica nuevo CPO"]
+    end
+    subgraph "OCI Edge"
+        WAF["OCI WAF"] --> LB["Load Balancer"] --> APIGW["API Gateway"]
+    end
+    subgraph "OKE - Identity"
+        KC["KeyCloak HA&lt;br/&gt;Realm: upme-cpo"]
+        KC_CL["OAuth Client&lt;br/&gt;client_credentials"]
+        KC_SC["Scopes&lt;br/&gt;cpo:sandbox cpo:write"]
+    end
+    subgraph "OKE - CPO Mgmt"
+        REG["Registration Handler"]
+        CRED["Credential Issuer"]
+        LIFE["Lifecycle Manager"]
+    end
+    subgraph "OKE - Integration"
+        ACL["C&aacute;rgame Adapter ACL&lt;br/&gt;Circuit Breaker + Cache"]
+    end
+    subgraph "Storage"
+        ATP[("Autonomous DB")]
+        VAULT["OCI Vault"]
+        OBJ["Obj Storage WORM"]
+        KFK["OCI Streaming"]
+        REDIS["Redis Cache 24h"]
+    end
+    VPN["VPN Site2Site + DRG"]
+    CARG -->|"2. Notifica"| CARG_WH -->|"HTTPS"| WAF
+    APIGW -->|"Introspect"| KC
+    APIGW --> REG
+    REG --> ACL -->|"VPN IPSec"| VPN --> CARG_API
+    ACL --> REDIS
+    REG -->|"3. Crea client"| KC --> KC_CL --> KC_SC
+    REG --> CRED -->|"Encrypt"| VAULT
+    REG --> LIFE --> ATP
+    LIFE --> KFK --> OBJ
+    style KC fill:#7c3aed,color:#fff
+    style VAULT fill:#1e293b,color:#fff
+    style ATP fill:#c74634,color:#fff
+    style WAF fill:#dc2626,color:#fff
+</pre></div></div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-arrow-right-arrow-left" style="color:#0369a1"></i> Secuencia &mdash; Registro Completo CPO</div>
+<div class="mermaid-container"><pre class="mermaid">
+sequenceDiagram
+    autonumber
+    actor CPO as CPO (Operador)
+    participant CARG as Cargame
+    participant WAF as OCI WAF
+    participant GW as API Gateway
+    participant KC as KeyCloak HA
+    participant SVC as CPO Manager
+    participant ACL as Cargame Adapter
+    participant VPN as VPN Site2Site
+    participant VAULT as OCI Vault
+    participant DB as Autonomous DB
+    participant KFK as OCI Streaming
+    Note over CPO,CARG: FASE 1: Pre-registro en Cargame
+    CPO->>CARG: Registro infraestructura (NIT, estaciones)
+    CARG->>CARG: Validacion documental
+    CARG-->>CPO: Estado ACTIVE + NIT registrado
+    Note over CARG,KFK: FASE 2: Notificacion Cargame a UPME
+    CARG->>WAF: POST /webhooks/cargame/cpo-registered
+    Note right of CARG: X-Cargame-Signature HMAC-SHA256
+    WAF->>WAF: IP Whitelist + OWASP
+    WAF->>GW: Forward
+    GW->>SVC: Route webhook
+    SVC->>SVC: Verificar HMAC-SHA256 (secret Vault)
+    SVC->>DB: INSERT cpo status REGISTERED
+    Note over SVC,VPN: FASE 3: Doble verificacion VPN
+    SVC->>ACL: ValidateCPO(nit)
+    ACL->>VPN: GET /crg/cpo/nit/status
+    VPN->>CARG: Red privada IPSec
+    CARG-->>VPN: registered true, status ACTIVE
+    VPN-->>ACL: Respuesta
+    ACL-->>SVC: CPO verificado
+    SVC->>SVC: status REGISTERED a CREDENTIALED
+    rect rgb(245, 243, 255)
+        Note over SVC,VAULT: KeyCloak: Crear identidad OAuth
+        SVC->>KC: POST /admin/realms/upme-cpo/clients
+        Note right of KC: grant_type client_credentials - scopes cpo:sandbox - tls_client_auth
+        KC->>VAULT: Almacenar client_secret AES-256
+        KC-->>SVC: client_id + client_secret
+    end
+    rect rgb(240, 253, 244)
+        Note over SVC,VAULT: Generacion API Key
+        SVC->>SVC: Generar upme_sandbox_UUID
+        SVC->>SVC: Hash SHA-256
+        SVC->>VAULT: Encrypt API Key AES-256-GCM + CMK
+        SVC->>DB: INSERT credential hash env SANDBOX
+    end
+    SVC->>KFK: Publish CPORegistered + CredentialsIssued
+    Note over CPO,KFK: FASE 4: Entrega segura credenciales
+    SVC-->>CPO: Email link one-time TTL 24h
+    CPO->>SVC: GET /cpos/id/credentials/retrieve
+    SVC->>VAULT: Retrieve API Key one-time
+    SVC-->>CPO: client_id + client_secret + api_key + sandbox_url
+    SVC->>KFK: CredentialsDelivered
+</pre></div></div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-list-check" style="color:#10b981"></i> Ciclo de Vida del CPO</div>
+<table>
+<tr><th>Estado</th><th>Descripcion</th><th>Transicion</th><th>Storage</th></tr>
+<tr><td><strong>REGISTERED</strong></td><td>Por webhook Cargame. Pendiente validacion.</td><td>CREDENTIALED / REJECTED</td><td><span class="st st-atp">ATP</span></td></tr>
+<tr><td><strong>CREDENTIALED</strong></td><td>Credenciales OAuth + API Key emitidas. Solo Sandbox.</td><td>TESTING_SANDBOX</td><td><span class="st st-atp">ATP</span> <span class="st st-vault">Vault</span> <span class="st st-kc">KC</span></td></tr>
+<tr><td><strong>TESTING_SANDBOX</strong></td><td>Pruebas OCPI 2.2.1 en Sandbox.</td><td>CERTIFIED (47/47)</td><td><span class="st st-atp">ATP</span></td></tr>
+<tr><td><strong>CERTIFIED</strong></td><td>Suite compliance aprobada.</td><td>PRODUCTION</td><td><span class="st st-atp">ATP</span> <span class="st st-obj">ObjStore</span></td></tr>
+<tr><td><strong>PRODUCTION</strong></td><td>Operando. Reportando RT.</td><td>SUSPENDED</td><td><span class="st st-atp">ATP</span> <span class="st st-kc">KC prod</span></td></tr>
+<tr><td><strong>SUSPENDED</strong></td><td>Credenciales revocadas. 403.</td><td>PRODUCTION (react.)</td><td><span class="st st-atp">ATP</span> <span class="st st-obj">WORM</span></td></tr>
+</table></div>
+
+<div class="kc-realm">
+<div class="kc-realm-title"><i class="fa-solid fa-fingerprint"></i> KeyCloak &mdash; Registro CPO</div>
+<div class="kc-config">
+<strong>Realm:</strong> <code>upme-cpo</code> &bull; <strong>Grant:</strong> client_credentials (M2M) &bull; <strong>Auth:</strong> tls_client_auth (mTLS) + client_secret_post (fallback Sandbox)<br>
+<strong>Scopes iniciales:</strong> <code>cpo:sandbox</code> &bull; <strong>Token:</strong> Access 15min, no refresh (client_credentials)<br>
+<strong>Custom Attrs:</strong> nit, company_name, tier, cargame_status &bull; <strong>Policy:</strong> Max 10 tokens simultaneos<br>
+<strong>Event Listener SPI:</strong> Publica eventos login/token a OCI Streaming audit-events
+</div></div>
+</div>
+
+<!-- SECTION 2.2: LOGIN + API KEY -->
+<div class="section" id="d2">
+<h2><span class="icon"><i class="fa-solid fa-key"></i></span> 2.2 Login + Configuracion API KEY por Ambiente</h2>
+<p style="color:#64748b;font-size:0.85rem;margin-bottom:16px">Login del CPO en Developer Portal para configurar API Keys por ambiente, registrar IPs publicas e iniciar pruebas REST.</p>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Arquitectura &mdash; Developer Portal + API Key</div>
+<div class="mermaid-container"><pre class="mermaid">
+graph TB
+    subgraph "CPO"
+        BROWSER["Browser CPO&lt;br/&gt;developer.upme.gov.co"]
+        SERVER["Servidor CPO&lt;br/&gt;IP Publica"]
+    end
+    subgraph "OCI Edge"
+        WAF["OCI WAF"] --> LB["Load Balancer"] --> APIGW["API Gateway"]
+    end
+    subgraph "KeyCloak HA - upme-cpo"
+        KC_LOGIN["Login Flow&lt;br/&gt;Auth Code + PKCE S256"]
+        KC_MFA["MFA TOTP / WebAuthn"]
+        KC_SESSION["Session Manager&lt;br/&gt;Infinispan"]
+        KC_CLIMGR["Client Management&lt;br/&gt;Admin API"]
+        KC_IPPOL["IP Policy SPI"]
+    end
+    subgraph "Developer Portal React 18"
+        PORTAL["Dashboard CPO"]
+        APIKEY_UI["API Key Manager"]
+        IP_UI["IP Whitelist Manager"]
+        ENV_UI["Env Selector Sandbox/Prod"]
+        SWAGGER["Swagger UI Redoc"]
+        TEST_UI["Test Console"]
+    end
+    subgraph "CPO Manager Service"
+        APIKEY_SVC["API Key Service"]
+        IP_SVC["IP Whitelist Service"]
+        ENV_SVC["Environment Service"]
+    end
+    subgraph "Storage"
+        VAULT["OCI Vault"]
+        ATP[("Autonomous DB")]
+        REDIS["Redis Cache"]
+        KFK["OCI Streaming"]
+    end
+    BROWSER -->|"HTTPS"| WAF
+    APIGW --> KC_LOGIN --> KC_MFA --> KC_SESSION
+    KC_SESSION -->|"Access + ID Token"| PORTAL
+    PORTAL --> APIKEY_UI & IP_UI & ENV_UI & SWAGGER & TEST_UI
+    APIKEY_UI --> APIKEY_SVC
+    IP_UI --> IP_SVC
+    ENV_UI --> ENV_SVC
+    APIKEY_SVC --> VAULT & ATP & KC_CLIMGR
+    IP_SVC --> ATP & REDIS & KC_IPPOL
+    ENV_SVC --> KC_CLIMGR & ATP
+    APIKEY_SVC & IP_SVC --> KFK
+    SERVER -->|"Pruebas API"| WAF
+    style KC_LOGIN fill:#7c3aed,color:#fff
+    style KC_MFA fill:#7c3aed,color:#fff
+    style KC_SESSION fill:#7c3aed,color:#fff
+    style KC_CLIMGR fill:#7c3aed,color:#fff
+    style KC_IPPOL fill:#7c3aed,color:#fff
+    style VAULT fill:#1e293b,color:#fff
+    style ATP fill:#c74634,color:#fff
+</pre></div></div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-arrow-right-arrow-left" style="color:#0369a1"></i> Secuencia &mdash; Login + API KEY + IP Whitelist</div>
+<div class="mermaid-container"><pre class="mermaid">
+sequenceDiagram
+    autonumber
+    actor CPO as CPO (Browser)
+    participant WAF as OCI WAF
+    participant GW as API Gateway
+    participant KC as KeyCloak HA
+    participant PORTAL as Developer Portal
+    participant SVC as CPO Manager
+    participant VAULT as OCI Vault
+    participant DB as Autonomous DB
+    participant REDIS as Redis Cache
+    participant KFK as OCI Streaming
+    Note over CPO,KFK: FASE 1: Login OAuth 2.1 + PKCE
+    CPO->>WAF: GET developer.upme.gov.co
+    WAF->>GW: Forward
+    GW->>PORTAL: Serve React SPA
+    CPO->>KC: GET /auth?code_challenge=xxx scope=openid+cpo:manage
+    KC->>CPO: Render login form
+    CPO->>KC: POST login (email + password)
+    KC->>KC: Validar credenciales
+    alt MFA habilitado (obligatorio Produccion)
+        KC->>CPO: Solicitar TOTP
+        CPO->>KC: Codigo TOTP
+        KC->>KC: Validar TOTP
+    end
+    KC-->>CPO: 302 Redirect callback?code=xxx
+    CPO->>KC: POST /token code + code_verifier + client_id
+    Note right of KC: access_token 15min - id_token perfil - refresh_token 8h rotacion
+    KC-->>CPO: access_token + id_token + refresh_token
+    CPO->>PORTAL: Almacena tokens en memory
+    PORTAL->>SVC: GET /api/v1/cpos/me Bearer token
+    SVC->>DB: SELECT cpo data
+    SVC-->>PORTAL: nit company status tier envs
+    Note over CPO,KFK: FASE 2: Generar API Key por Ambiente
+    CPO->>PORTAL: Generar API Key SANDBOX
+    PORTAL->>SVC: POST /api/v1/cpos/id/api-keys env sandbox
+    rect rgb(245, 243, 255)
+        Note over SVC,VAULT: Generacion segura API Key
+        SVC->>SVC: Generar upme_sandbox_UUID
+        SVC->>SVC: SHA-256 hash
+        SVC->>VAULT: Encrypt AES-256-GCM + CMK
+        SVC->>DB: INSERT api_key hash env expires +365d
+        SVC->>KC: Asociar scope cpo:sandbox al client
+    end
+    SVC->>KFK: audit-events APIKeyCreated
+    SVC-->>PORTAL: api_key + expires_at
+    PORTAL-->>CPO: Mostrar API Key una sola vez
+    Note over CPO,KFK: FASE 3: Registrar IP Publica
+    CPO->>PORTAL: Registrar IP 203.0.113.50/32
+    PORTAL->>SVC: POST /cpos/id/ip-whitelist cidr env sandbox
+    SVC->>SVC: Validar CIDR max /28 max 10 IPs
+    SVC->>DB: INSERT ip_whitelist
+    alt Sandbox
+        SVC->>DB: status ACTIVE auto-aprobacion
+        SVC->>REDIS: SET ip_whitelist:sandbox:cpo_id
+    else Production
+        SVC->>DB: status PENDING
+        SVC->>KFK: notification-events IPWhitelistPending
+    end
+    SVC->>KFK: audit-events IPRegistered
+    Note over CPO,KFK: FASE 4: Prueba en Sandbox
+    CPO->>WAF: PUT /ocpi/2.2.1/locations X-API-Key
+    WAF->>GW: Forward
+    GW->>GW: SHA-256 api_key lookup
+    GW->>KC: POST /token client_credentials + api_key
+    KC-->>GW: Bearer Token interno 5min cpo:sandbox
+    GW->>SVC: Request autenticado
+    SVC-->>CPO: 200 OK + X-RateLimit headers
+</pre></div></div>
+
+<div class="grid-2">
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-network-wired" style="color:#0369a1"></i> IPs por Ambiente</div>
+<table>
+<tr><th>Ambiente</th><th>IP Requerida</th><th>Aprobacion</th><th>Max</th></tr>
+<tr><td><strong>SANDBOX</strong></td><td>Opcional Fase 1</td><td>Auto</td><td>Sin limite</td></tr>
+<tr><td><strong>PRODUCTION</strong></td><td>Obligatorio</td><td>Manual Admin</td><td>10 /32 o /28</td></tr>
+</table>
+<div class="info-amber"><strong>Fase 1:</strong> IP whitelist opcional. <strong>Fase 2 (+90d):</strong> Obligatorio en Produccion.</div>
+</div>
+<div class="kc-realm">
+<div class="kc-realm-title"><i class="fa-solid fa-fingerprint"></i> KeyCloak &mdash; Login Portal</div>
+<div class="kc-config">
+<strong>Flow:</strong> Auth Code + PKCE S256<br>
+<strong>Client:</strong> <code>developer-portal</code> (public, no secret)<br>
+<strong>Scopes:</strong> openid, profile, cpo:manage, cpo:read-credentials<br>
+<strong>MFA:</strong> Opcional Sandbox, Obligatorio Produccion<br>
+<strong>Session:</strong> Access 15min, Refresh 8h rotation<br>
+<strong>Brute Force:</strong> 5 intentos = 30min lockout<br>
+<strong>Password:</strong> Min 12 chars upper+lower+digit+special<br>
+<strong>Custom SPI:</strong> IP Policy Provider
+</div></div>
+</div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-rotate" style="color:#f59e0b"></i> Ciclo de Vida API Keys</div>
+<div class="mermaid-container"><pre class="mermaid">
+stateDiagram-v2
+    [*] --> Created: CPO genera desde Portal
+    Created --> Active: Auto Sandbox o Aprobacion Prod
+    Active --> Rotated: CPO solicita rotacion
+    Rotated --> Active: Nueva key anterior 24h grace
+    Active --> Expired: TTL 365 dias
+    Active --> Revoked: Admin o CPO revoca
+    Active --> Suspended: CPO suspendido Cargame
+    Expired --> [*]
+    Revoked --> [*]
+    Suspended --> Active: Reactivacion
+</pre></div></div>
+</div>
+
+<!-- SECTION 2.3: CARGAME -->
+<div class="section" id="d3">
+<h2><span class="icon"><i class="fa-solid fa-link"></i></span> 2.3 Integracion con Cargame (MinEnergia)</h2>
+<p style="color:#64748b;font-size:0.85rem;margin-bottom:16px">Integracion bidireccional: (A) Cargame expone endpoint para verificar CPO, (B) Cargame notifica nuevos registros via webhook, (C) Sincronizacion periodica 24h.</p>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Arquitectura Bidireccional CARGAME - UPME</div>
+<div class="mermaid-container"><pre class="mermaid">
+graph LR
+    subgraph "Cargame MinEnergia"
+        CARG_DB[("DB Cargame&lt;br/&gt;194 operadores&lt;br/&gt;139 estaciones")]
+        CARG_API["API Expuesta&lt;br/&gt;GET /crg/cpo/nit/status&lt;br/&gt;GET /crg/cpo/nit/stations"]
+        CARG_WH["Webhook Sender&lt;br/&gt;Notifica registros"]
+        CARG_DB --> CARG_API
+        CARG_DB --> CARG_WH
+    end
+    subgraph "VPN Privada"
+        VPN_C["CPE Cargame"] <-->|"IPSec AES-256"| DRG["DRG"] <--> VPN_O["VPN GW OCI"]
+    end
+    subgraph "UPME OKE"
+        ACL["Cargame Adapter ACL&lt;br/&gt;Circuit Breaker&lt;br/&gt;Retry Exp&lt;br/&gt;Cache Redis 24h"]
+        CPOMGR["CPO Manager"]
+        LIFE["Lifecycle Mgr"]
+        SYNC["Sync Job 24h"]
+        KC["KeyCloak HA"]
+        WH_RX["Webhook Receiver&lt;br/&gt;HMAC-SHA256"]
+    end
+    subgraph "APIs UPME para Cargame"
+        API1["GET /cpo/nit/interop-status"]
+        API2["POST /webhooks/cargame/cpo-registered"]
+        API3["POST /webhooks/cargame/cpo-suspended"]
+    end
+    subgraph "Storage"
+        ATP[("Autonomous DB")]
+        REDIS["Redis 24h"]
+        OBJ["Obj Storage WORM"]
+        KFK["OCI Streaming"]
+    end
+    CARG_API -->|"VPN"| VPN_C
+    VPN_O --> ACL --> REDIS
+    ACL --> CPOMGR --> LIFE --> KC
+    LIFE --> ATP & KFK
+    KFK --> OBJ
+    CARG_WH -->|"HTTPS"| WH_RX --> CPOMGR
+    SYNC -->|"24h"| ACL
+    API1 & API2 & API3 -.-> WH_RX
+    style KC fill:#7c3aed,color:#fff
+    style ACL fill:#0891b2,color:#fff
+    style ATP fill:#c74634,color:#fff
+    style VPN_C fill:#1e293b,color:#fff
+    style DRG fill:#1e293b,color:#fff
+</pre></div></div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-bell" style="color:#f59e0b"></i> Secuencia A: Cargame notifica nuevo CPO a UPME</div>
+<div class="mermaid-container"><pre class="mermaid">
+sequenceDiagram
+    autonumber
+    participant CARG as Cargame
+    participant WAF as OCI WAF
+    participant WH as Webhook Receiver
+    participant SVC as CPO Manager
+    participant ACL as Cargame Adapter
+    participant VPN as VPN Site2Site
+    participant KC as KeyCloak HA
+    participant DB as Autonomous DB
+    participant VAULT as OCI Vault
+    participant KFK as OCI Streaming
+    participant NOTIF as Notification Svc
+    CARG->>CARG: Nuevo CPO NIT 900123456 status ACTIVE
+    CARG->>CARG: Firmar HMAC-SHA256
+    CARG->>WAF: POST /webhooks/cargame/cpo-registered
+    Note right of CARG: X-Cargame-Signature sha256=abc - X-Cargame-Event cpo.registered
+    WAF->>WAF: IP Whitelist IPs Cargame + OWASP
+    WAF->>WH: Forward
+    WH->>WH: Verificar HMAC-SHA256 secret de Vault
+    WH->>WH: Verificar idempotencia delivery_id
+    WH->>SVC: CargameCPORegistered nit company
+    rect rgb(240, 253, 244)
+        Note over SVC,VPN: Doble verificacion VPN
+        SVC->>ACL: ValidateCPO nit
+        ACL->>VPN: GET /crg/cpo/nit/status
+        VPN->>CARG: Red privada IPSec
+        CARG-->>VPN: registered true status ACTIVE
+        ACL-->>SVC: CPO verificado
+    end
+    SVC->>DB: INSERT cpo status REGISTERED
+    rect rgb(245, 243, 255)
+        Note over SVC,VAULT: Crear identidad OAuth KeyCloak
+        SVC->>KC: POST /admin/realms/upme-cpo/clients
+        KC->>VAULT: Generar client_secret
+        KC-->>SVC: client_id + client_secret
+        SVC->>DB: UPDATE cpo status CREDENTIALED
+    end
+    SVC->>KFK: cpo-events CPORegistered
+    SVC->>NOTIF: Email CPO instrucciones onboarding
+</pre></div></div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-magnifying-glass" style="color:#0369a1"></i> Secuencia B: Validacion CPO via VPN con Circuit Breaker</div>
+<div class="mermaid-container"><pre class="mermaid">
+sequenceDiagram
+    autonumber
+    participant SVC as CPO Manager
+    participant ACL as Cargame Adapter
+    participant REDIS as Redis Cache
+    participant CB as Circuit Breaker
+    participant VPN as VPN Site2Site
+    participant CARG as Cargame API
+    participant DB as Autonomous DB
+    SVC->>ACL: ValidateCPO nit 900123456
+    ACL->>REDIS: GET cargame:cpo:900123456
+    alt Cache HIT TTL 24h
+        REDIS-->>ACL: status ACTIVE cached
+        ACL-->>SVC: CPO valido cached
+    else Cache MISS
+        REDIS-->>ACL: null
+        ACL->>CB: Check circuit state
+        alt Circuit CLOSED normal
+            CB->>VPN: GET /crg/cpo/900123456/status
+            VPN->>CARG: REST via IPSec
+            alt Cargame OK
+                CARG-->>VPN: registered true status ACTIVE
+                VPN-->>CB: 200 OK
+                ACL->>REDIS: SET cargame:cpo:900123456 TTL 24h
+                ACL-->>SVC: CPO valido
+            else Cargame error timeout
+                CARG-->>VPN: 500 o timeout 3s
+                CB->>CB: Incrementar fallos 5=OPEN
+                ACL-->>SVC: Error retry o fallback
+            end
+        else Circuit OPEN
+            CB-->>ACL: Circuit abierto
+            ACL->>DB: SELECT last_cargame_status
+            DB-->>ACL: status ACTIVE synced hace 12h
+            ACL-->>SVC: CPO valido fallback degraded
+        end
+    end
+</pre></div></div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-ban" style="color:#dc2626"></i> Secuencia C: Suspension CPO y revocacion automatica</div>
+<div class="mermaid-container"><pre class="mermaid">
+sequenceDiagram
+    autonumber
+    participant SYNC as Sync Job 24h
+    participant ACL as Cargame Adapter
+    participant VPN as VPN Site2Site
+    participant CARG as Cargame
+    participant REDIS as Redis
+    participant SVC as CPO Manager
+    participant KC as KeyCloak HA
+    participant DB as Autonomous DB
+    participant KFK as OCI Streaming
+    participant GW as API Gateway
+    participant NOTIF as Notification
+    participant CPO as CPO-789
+    Note over SYNC,CPO: Job periodico detecta CPO suspendido
+    SYNC->>ACL: Validate all active CPOs
+    ACL->>VPN: GET /crg/cpo/CPO-789/status
+    VPN->>CARG: IPSec tunnel
+    CARG-->>ACL: status SUSPENDED reason Incumplimiento
+    ACL->>REDIS: DELETE cargame:CPO-789
+    ACL-->>SYNC: CPO-789 SUSPENDED
+    SYNC->>SVC: SuspendCPO CPO-789
+    SVC->>SVC: status PRODUCTION a SUSPENDED
+    par Revocar credenciales
+        SVC->>KC: Disable client CPO-789
+        SVC->>KC: Revocar todos tokens activos
+        SVC->>REDIS: DELETE apikey:CPO-789
+    end
+    SVC->>DB: UPDATE cpo status SUSPENDED
+    SVC->>KFK: cpo-events CPOSuspended
+    KFK->>GW: Actualizar blacklist
+    KFK->>NOTIF: Trigger notificacion
+    NOTIF->>CPO: Email acceso suspendido + apelacion
+    CPO->>GW: PUT /ocpi/2.2.1/locations
+    GW-->>CPO: 403 Forbidden CPO suspended
+</pre></div></div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-server" style="color:#10b981"></i> Contrato APIs Integracion</div>
+<div class="grid-2">
+<div>
+<h3 style="font-size:0.9rem;color:#c74634">APIs Cargame expone a UPME (VPN)</h3>
+<table>
+<tr><th>Endpoint</th><th>Metodo</th><th>Descripcion</th></tr>
+<tr><td><code>/crg/cpo/{nit}/status</code></td><td>GET</td><td>Estado CPO: registered, status</td></tr>
+<tr><td><code>/crg/cpo/{nit}/stations</code></td><td>GET</td><td>Estaciones del CPO</td></tr>
+<tr><td><code>/crg/operador</code></td><td>GET</td><td>Lista operadores (194)</td></tr>
+</table>
+</div>
+<div>
+<h3 style="font-size:0.9rem;color:#3b82f6">APIs UPME expone a Cargame</h3>
+<table>
+<tr><th>Endpoint</th><th>Metodo</th><th>Descripcion</th></tr>
+<tr><td><code>/webhooks/cargame/cpo-registered</code></td><td>POST</td><td>Webhook nuevo CPO</td></tr>
+<tr><td><code>/webhooks/cargame/cpo-suspended</code></td><td>POST</td><td>Webhook CPO suspendido</td></tr>
+<tr><td><code>/cpo/{nit}/interop-status</code></td><td>GET</td><td>Estado interop en UPME</td></tr>
+</table>
+</div>
+</div></div>
+
+<div class="info-blue">
+<strong><i class="fa-solid fa-shield-halved"></i> Seguridad integracion:</strong>
+<strong>VPN:</strong> Tuneles IPSec IKEv2 redundantes, AES-256-GCM, PSK rotada 90d &bull;
+<strong>Webhooks:</strong> HMAC-SHA256 shared secret en Vault, IP whitelist en WAF, idempotencia &bull;
+<strong>Circuit Breaker:</strong> Open 5 fallos, half-open 30s, fallback cache 24h &bull;
+<strong>SLA:</strong> VPN 99.9%, latencia &lt;300ms P95, timeout 3s
+</div>
+</div>
+
+<!-- SECTION 2.4: SEGURIDAD APIs -->
+<div class="section" id="d4">
+<h2><span class="icon"><i class="fa-solid fa-lock"></i></span> 2.4 Proceso General de Seguridad para APIs</h2>
+<p style="color:#64748b;font-size:0.85rem;margin-bottom:16px">Diagrama end-to-end del proceso de seguridad para acceso a APIs OCPI 2.2.1 por parte de los CPOs.</p>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Arquitectura &mdash; Capas de Seguridad API</div>
+<div class="mermaid-container"><pre class="mermaid">
+graph TB
+    CPO["CPO Server&lt;br/&gt;IP Registrada + Cert X.509"]
+    subgraph "L1-L2: Edge y Red"
+        WAF["OCI WAF&lt;br/&gt;OWASP DDoS GeoFence"]
+        DNS["OCI DNS&lt;br/&gt;Traffic Steering"]
+        NSG["NSGs&lt;br/&gt;IP Whitelist por CPO"]
+        LB["Load Balancer&lt;br/&gt;TLS 1.3"]
+    end
+    subgraph "L3-L4: Identidad y Transporte"
+        APIGW["API Gateway&lt;br/&gt;Rate Limit + Introspection"]
+        KC["KeyCloak HA&lt;br/&gt;Token Introspection RFC 7662&lt;br/&gt;Scope + Cert Binding"]
+        MESH["Service Mesh&lt;br/&gt;mTLS auto inter-servicio"]
+        CERT["OCI Certificates&lt;br/&gt;CA UPME X.509 por CPO"]
+    end
+    subgraph "L5: Aplicacion"
+        ING["Ingesta Go&lt;br/&gt;Schema + Idempotency"]
+        VAL["Validador Python&lt;br/&gt;Business Rules"]
+    end
+    subgraph "L6-L9: Datos y Audit"
+        VAULT["OCI Vault CMK"]
+        ATP["Autonomous DB TDE"]
+        OBJ["Object Storage WORM"]
+        GUARD["Cloud Guard"]
+    end
+    CPO -->|"1. mTLS + Bearer"| WAF --> DNS --> NSG --> LB
+    LB -->|"3. TLS Term"| APIGW
+    APIGW -->|"4. Introspect"| KC
+    KC -->|"5. Scopes OK"| APIGW
+    APIGW -->|"6. Autenticado"| MESH -->|"7. mTLS"| ING -->|"8. Kafka"| VAL
+    VAL --> ATP & OBJ
+    KC --> VAULT
+    style WAF fill:#dc2626,color:#fff
+    style KC fill:#7c3aed,color:#fff
+    style VAULT fill:#1e293b,color:#fff
+    style ATP fill:#c74634,color:#fff
+    style MESH fill:#0891b2,color:#fff
+    style GUARD fill:#dc2626,color:#fff
+</pre></div></div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-arrow-right-arrow-left" style="color:#0369a1"></i> Secuencia &mdash; Request Completo CPO a API OCPI</div>
+<div class="mermaid-container"><pre class="mermaid">
+sequenceDiagram
+    autonumber
+    actor CPO as CPO Server
+    participant KC as KeyCloak HA
+    participant WAF as OCI WAF
+    participant NSG as VCN NSGs
+    participant LB as Load Balancer
+    participant GW as API Gateway
+    participant REDIS as Redis
+    participant MESH as Service Mesh
+    participant ING as Ingesta Go
+    participant KFK as OCI Streaming
+    participant VAL as Validador Python
+    participant DB as Autonomous DB
+    participant OBJ as Object Storage
+    Note over CPO,OBJ: FASE 1: Obtencion de Token OAuth 2.1
+    CPO->>KC: POST /realms/upme-cpo/openid-connect/token
+    Note right of CPO: grant_type client_credentials - client_id cpo-900123456 - scope cpo:write - Cert mTLS X.509
+    KC->>KC: Validar client_credentials
+    KC->>KC: Verificar cert mTLS cert-bound RFC 8705
+    KC->>KC: Verificar client habilitado no suspendido
+    KC->>KC: Generar Bearer Token opaco 15min
+    Note right of KC: Claims: sub cpo-900123456 - scope cpo:write - nit 900123456 - tier MEDIUM - cnf x5t cert
+    KC-->>CPO: access_token opaque expires_in 900
+    Note over CPO,OBJ: FASE 2: Request OCPI con Bearer Token
+    CPO->>WAF: PUT /ocpi/2.2.1/locations Authorization Bearer + mTLS cert
+    rect rgb(254, 242, 242)
+        Note over WAF,LB: Capa 1-2 Filtrado perimetral
+        WAF->>WAF: OWASP Top 10 inspection
+        WAF->>WAF: DDoS L7 rate check
+        WAF->>WAF: GeoFence IP Colombia o whitelisted
+        WAF->>NSG: Forward limpio
+        NSG->>NSG: IP Whitelist CPO registradas
+        NSG->>LB: Forward subnet privada
+        LB->>LB: TLS 1.3 termination + health check
+    end
+    rect rgb(245, 243, 255)
+        Note over GW,REDIS: Capa 3 Autenticacion e identidad
+        LB->>GW: Forward
+        GW->>GW: Extraer Bearer Token
+        GW->>KC: POST /token/introspect RFC 7662
+        Note right of GW: Valida firma expiracion scopes cert-binding client status
+        KC-->>GW: active true sub cpo-900123456 scope cpo:write tier MEDIUM
+        GW->>GW: Verificar scope cpo:write para PUT /locations
+        GW->>REDIS: INCR rate:cpo-900123456 TTL 60s
+        REDIS-->>GW: 847/1000 within limit
+    end
+    rect rgb(240, 253, 244)
+        Note over MESH,ING: Capa 4-5 Procesamiento seguro
+        GW->>MESH: Forward + X-CPO-ID X-Tier X-Correlation-ID
+        MESH->>MESH: mTLS auto envoy sidecar
+        MESH->>ING: Request sanitizado
+        ING->>ING: Deserializar JSON OCPI 2.2.1
+        ING->>ING: Schema validation
+        ING->>REDIS: GET idempotency:request_id
+        REDIS-->>ING: null no duplicado
+        ING->>REDIS: SET idempotency:request_id TTL 24h
+        ING->>ING: Enrich timestamp tier correlation
+    end
+    par Procesamiento asincrono
+        ING->>KFK: Publish ocpi-locations-events
+        ING->>DB: UPDATE estado operacional
+    end
+    ING-->>GW: 202 Accepted
+    GW-->>CPO: 202 Accepted + X-Correlation-ID + X-RateLimit
+    Note over KFK,OBJ: Pipeline asincrono post-response
+    KFK->>VAL: Consume locations event
+    VAL->>VAL: Business rules validation
+    alt Validacion OK
+        VAL->>DB: UPDATE status VALIDATED
+    else Validacion falla
+        VAL->>KFK: ocpi-dlq FAILED + reason
+    end
+    KFK->>OBJ: Persist Bronze inmutable
+</pre></div></div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-table" style="color:#10b981"></i> Resumen Capas de Seguridad por Request</div>
+<table>
+<tr><th>Capa</th><th>Componente</th><th>Validacion</th><th>Si falla</th></tr>
+<tr><td><strong>L1 Edge</strong></td><td>OCI WAF</td><td>OWASP, DDoS, GeoFence, Bot</td><td>Drop silencioso</td></tr>
+<tr><td><strong>L2 Red</strong></td><td>NSGs</td><td>IP Whitelist por CPO</td><td>TCP RST</td></tr>
+<tr><td><strong>L3 TLS</strong></td><td>Load Balancer</td><td>TLS 1.3 cert valido</td><td>TLS failure</td></tr>
+<tr><td><strong>L4 Identity</strong></td><td>API GW + KeyCloak</td><td>Bearer Introspection, scopes, cert-bound</td><td>401/403</td></tr>
+<tr><td><strong>L5 Rate</strong></td><td>API GW + Redis</td><td>Rate limit por CPO tier</td><td>429 + Retry-After</td></tr>
+<tr><td><strong>L6 mTLS</strong></td><td>Service Mesh</td><td>mTLS auto inter-servicio</td><td>Connection refused</td></tr>
+<tr><td><strong>L7 Schema</strong></td><td>Ingesta Go</td><td>JSON Schema OCPI 2.2.1</td><td>400 + errors</td></tr>
+<tr><td><strong>L8 Idemp</strong></td><td>Redis dedup</td><td>X-Request-ID no duplicado</td><td>409 Conflict</td></tr>
+<tr><td><strong>L9 Business</strong></td><td>Validador Python</td><td>Geo, precios, energia</td><td>DLQ + notif</td></tr>
+</table></div>
+
+<div class="info-green">
+<strong><i class="fa-solid fa-check-double"></i> Garantias end-to-end:</strong><br>
+<strong>Confidencialidad:</strong> TLS 1.3 transito + TDE/CMK reposo + mTLS inter-servicio &bull;
+<strong>Integridad:</strong> HMAC webhooks + schema validation + hash idempotencia &bull;
+<strong>No repudio:</strong> Bearer Token con identidad CPO + audit trail WORM inmutable &bull;
+<strong>Disponibilidad:</strong> WAF DDoS + Rate Limit tier + Circuit Breaker + OKE HA 3 FD &bull;
+<strong>Trazabilidad:</strong> Correlation ID E2E + OCI Streaming audit-events + Grafana/Prometheus
+</div>
+</div>
+
+<!-- SECTION: KEYCLOAK -->
+<div class="section" id="kc">
+<h2><span class="icon"><i class="fa-solid fa-fingerprint"></i></span> KeyCloak &mdash; Configuracion Detallada</h2>
+<p style="color:#64748b;font-size:0.85rem;margin-bottom:16px">KeyCloak 24+ (Quarkus) como IdP centralizado. 3 Realms, Token Introspection, Custom SPIs.</p>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Arquitectura Multi-Realm</div>
+<div class="mermaid-container"><pre class="mermaid">
+graph TB
+    subgraph "KeyCloak HA 2 pods OKE"
+        subgraph "upme-internal"
+            R1["LDAP Fed + MFA&lt;br/&gt;Roles: admin operator viewer"]
+        end
+        subgraph "upme-cpo"
+            R2["Client Credentials M2M&lt;br/&gt;Auth Code PKCE Portal&lt;br/&gt;mTLS RFC 8705&lt;br/&gt;Token Introspection RFC 7662&lt;br/&gt;Custom SPIs"]
+        end
+        subgraph "upme-public"
+            R3["Acceso Anonimo&lt;br/&gt;Auto-Registro opcional"]
+        end
+        INFINI["Infinispan Distribuido"]
+    end
+    VAULT["OCI Vault&lt;br/&gt;JWT RS256 + Secrets"] --> R2
+    LDAP["LDAP AD UPME"] --> R1
+    ATP[("Autonomous DB")] --> INFINI
+    KFK["OCI Streaming"] --> R2
+    style VAULT fill:#1e293b,color:#fff
+    style ATP fill:#c74634,color:#fff
+    style KFK fill:#6d28d9,color:#fff
+</pre></div></div>
+
+<h3>Configuracion por Realm</h3>
+<div class="grid-3">
+<div class="kc-realm">
+<div class="kc-realm-title"><i class="fa-solid fa-building"></i> upme-internal</div>
+<div class="kc-config">
+<strong>Usuarios:</strong> 8 UPME<br><strong>Fed:</strong> LDAP/AD LDAPS<br><strong>Auth:</strong> Auth Code + PKCE + MFA<br><strong>MFA:</strong> TOTP + WebAuthn<br><strong>Roles:</strong> admin, operator, viewer, sic-auditor<br><strong>Session:</strong> 15min/4h/8h SSO
+</div></div>
+<div class="kc-realm">
+<div class="kc-realm-title"><i class="fa-solid fa-plug"></i> upme-cpo</div>
+<div class="kc-config">
+<strong>Usuarios:</strong> 500+ CPOs<br><strong>M2M:</strong> client_credentials + mTLS<br><strong>Portal:</strong> PKCE public client<br><strong>Token:</strong> Opaco 15min introspection<br><strong>Scopes:</strong> cpo:sandbox/write/read/manage<br><strong>Cert:</strong> RFC 8705 cnf.x5t#S256<br><strong>SPIs:</strong> IP Policy, Cargame Sync, Kafka<br><strong>Rate:</strong> Max 10 tokens simultaneos
+</div></div>
+<div class="kc-realm">
+<div class="kc-realm-title"><i class="fa-solid fa-globe"></i> upme-public</div>
+<div class="kc-config">
+<strong>Usuarios:</strong> Ciudadanos masivo<br><strong>Auth:</strong> Anonimo lectura<br><strong>Registro:</strong> Opcional dashboards<br><strong>Scopes:</strong> public:read<br><strong>Session:</strong> 30min, no refresh<br><strong>Rate:</strong> Limitado por IP global
+</div></div>
+</div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-puzzle-piece" style="color:#6d28d9"></i> Custom SPIs</div>
+<table>
+<tr><th>SPI</th><th>Tipo</th><th>Funcion</th></tr>
+<tr><td><strong>IP Policy Provider</strong></td><td>Authenticator</td><td>Valida IP request vs IPs registradas CPO en cada token M2M</td></tr>
+<tr><td><strong>Cargame Sync</strong></td><td>Scheduled</td><td>Sincroniza estado CPOs c/24h. Desactiva client si suspendido</td></tr>
+<tr><td><strong>Kafka Event Publisher</strong></td><td>Event Listener</td><td>Publica login/token events a audit-events streaming</td></tr>
+<tr><td><strong>API Key Mapper</strong></td><td>Protocol Mapper</td><td>Custom claim con API Key hash para correlacion</td></tr>
+<tr><td><strong>Tier Policy</strong></td><td>Authorization</td><td>Evalua tier CPO para rate limiting diferenciado</td></tr>
+</table></div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-key" style="color:#f59e0b"></i> Gestion de Claves</div>
+<table>
+<tr><th>Clave</th><th>Storage</th><th>Rotacion</th><th>Proposito</th></tr>
+<tr><td><strong>JWT RS256</strong></td><td>OCI Vault CMK</td><td>90d auto</td><td>Firma tokens KeyCloak</td></tr>
+<tr><td><strong>Client Secrets</strong></td><td>KC DB + Vault</td><td>365d</td><td>Auth client_credentials</td></tr>
+<tr><td><strong>API Keys</strong></td><td>Hash ATP, plain Vault</td><td>365d</td><td>Identificacion CPO en GW</td></tr>
+<tr><td><strong>HMAC Secrets</strong></td><td>OCI Vault</td><td>180d</td><td>Webhooks Cargame</td></tr>
+<tr><td><strong>mTLS X.509</strong></td><td>OCI Certificates</td><td>365d CA UPME</td><td>Cert-bound RFC 8705</td></tr>
+<tr><td><strong>VPN PSK</strong></td><td>OCI Vault</td><td>90d</td><td>Tuneles IPSec</td></tr>
+</table></div>
+
+<div class="info-purple">
+<strong>Buenas practicas KeyCloak:</strong>
+1. Tokens opacos + Introspection RFC 7662 para revocacion inmediata &bull;
+2. Certificate-bound RFC 8705 anti-theft &bull;
+3. Infinispan HA session failover &bull;
+4. Event Listener SPI audit Kafka RT &bull;
+5. IP Policy SPI por CPO &bull;
+6. Realm separation blast radius &bull;
+7. Brute force 5 intentos 30min &bull;
+8. Token 15min sin refresh M2M, con rotation portal
+</div>
+</div>
+
+<!-- SECTION: STORAGE -->
+<div class="section" id="storage">
+<h2><span class="icon"><i class="fa-solid fa-database"></i></span> Almacenamiento de Seguridad</h2>
+<p style="color:#64748b;font-size:0.85rem;margin-bottom:16px">Mapeo de datos de seguridad, keys y tokens en los storage OCI.</p>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Mapa de Almacenamiento</div>
+<div class="mermaid-container"><pre class="mermaid">
+graph TB
+    subgraph "OCI Vault"
+        V1["JWT RS256 Keys"]
+        V2["Client Secrets"]
+        V3["API Keys plaintext"]
+        V4["HMAC Secrets"]
+        V5["VPN PSK"]
+        V6["mTLS CA Key"]
+    end
+    subgraph "Autonomous DB"
+        D1["CPO Registry"]
+        D2["API Key Hashes"]
+        D3["IP Whitelist"]
+        D4["Credentials meta"]
+        D5["KC Schema"]
+    end
+    subgraph "Redis Cache"
+        R1["IP Whitelist hot"]
+        R2["Cargame cache 24h"]
+        R3["Rate counters"]
+        R4["Idempotency 24h"]
+    end
+    subgraph "Object Storage"
+        O1["Bronze Raw OCPI"]
+        O2["Audit WORM"]
+        O3["Certs backup"]
+    end
+    subgraph "OCI Streaming"
+        S1["cpo-events"]
+        S2["audit-events"]
+        S3["notification-events"]
+        S4["ocpi-dlq"]
+    end
+    V1 -.->|"signing"| D5
+    D2 -.->|"cache"| R1
+    S2 -.->|"persist"| O2
+    style V1 fill:#6d28d9,color:#fff
+    style D1 fill:#c74634,color:#fff
+    style R1 fill:#dc2626,color:#fff
+    style O2 fill:#0369a1,color:#fff
+    style S2 fill:#6d28d9,color:#fff
+</pre></div></div>
+
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-table" style="color:#10b981"></i> Mapeo Dato &rarr; Storage &rarr; Cifrado</div>
+<table>
+<tr><th>Dato</th><th>Storage</th><th>Cache</th><th>Cifrado</th><th>Rotacion</th></tr>
+<tr><td><strong>JWT RS256</strong></td><td><span class="st st-vault">Vault</span></td><td>-</td><td>CMK AES-256</td><td>90d auto</td></tr>
+<tr><td><strong>Client Secrets</strong></td><td><span class="st st-kc">KC</span>+<span class="st st-vault">Vault</span></td><td>-</td><td>AES-256</td><td>365d</td></tr>
+<tr><td><strong>API Keys</strong></td><td><span class="st st-atp">ATP</span>(hash) <span class="st st-vault">Vault</span>(plain)</td><td><span class="st st-redis">Redis</span></td><td>SHA-256+AES</td><td>365d</td></tr>
+<tr><td><strong>CPO Registry</strong></td><td><span class="st st-atp">ATP</span></td><td><span class="st st-redis">Redis</span></td><td>TDE+CMK</td><td>N/A</td></tr>
+<tr><td><strong>IP Whitelist</strong></td><td><span class="st st-atp">ATP</span></td><td><span class="st st-redis">Redis 5min</span></td><td>TDE</td><td>N/A</td></tr>
+<tr><td><strong>mTLS X.509</strong></td><td><span class="st st-vault">OCI Certs</span></td><td>-</td><td>CA PKI</td><td>365d</td></tr>
+<tr><td><strong>HMAC Webhooks</strong></td><td><span class="st st-vault">Vault</span></td><td>-</td><td>CMK</td><td>180d</td></tr>
+<tr><td><strong>Sessions</strong></td><td><span class="st st-kc">Infinispan</span></td><td>In-memory</td><td>AES CMK</td><td>TTL</td></tr>
+<tr><td><strong>Audit Trail</strong></td><td><span class="st st-obj">WORM</span></td><td>-</td><td>SSE+CMK</td><td>Inmutable</td></tr>
+<tr><td><strong>Rate Counters</strong></td><td><span class="st st-redis">Redis</span></td><td>In-memory</td><td>Efimero</td><td>TTL 60s</td></tr>
+</table></div>
+
+<div class="info-green">
+<strong><i class="fa-solid fa-check-double"></i> Principios:</strong>
+<strong>Segregacion:</strong> Secrets en Vault, datos en ATP, cache en Redis, audit en WORM &bull;
+<strong>Cifrado reposo:</strong> TDE+CMK en ATP, AES-256 en Vault, SSE Object Storage &bull;
+<strong>One-time:</strong> API Keys plaintext eliminados de Vault tras primera entrega &bull;
+<strong>Inmutabilidad:</strong> Audit logs en WORM no modificables (cumplimiento SIC) &bull;
+<strong>Replicacion DR:</strong> Vault y Object Storage replicados cross-region
+</div>
+</div>
+
+</div><!-- /doc -->
+
+<script>
+function showSection(id){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+event.target.closest('.nav-tab').classList.add('active');
+}
+mermaid.initialize({startOnLoad:false,theme:'default',themeVariables:{fontFamily:'Inter,sans-serif'},securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true},sequence:{useMaxWidth:true,mirrorActors:false}});
+document.addEventListener('DOMContentLoaded',async function(){
+  document.querySelectorAll('.section:not(.active)').forEach(s=>s.classList.add('mermaid-init'));
+  await mermaid.run();
+  document.querySelectorAll('.section.mermaid-init').forEach(s=>s.classList.remove('mermaid-init'));
+});
+</script>
+</body>
+</html>
