@@ -94,6 +94,7 @@ tr:nth-child(even){background:#f8fafc}
 <button class="nav-tab" onclick="showSection('d4')"><i class="fa-solid fa-lock"></i> 2.4 Seguridad APIs</button>
 <button class="nav-tab" onclick="showSection('kc')"><i class="fa-solid fa-fingerprint"></i> KeyCloak</button>
 <button class="nav-tab" onclick="showSection('storage')"><i class="fa-solid fa-database"></i> Almacenamiento</button>
+<button class="nav-tab" onclick="showSection('cargame-sec')" style="background:rgba(220,38,38,0.15);color:#fca5a5;border:1px solid rgba(220,38,38,0.3)"><i class="fa-solid fa-triangle-exclamation"></i> CARGAME: Seguridad</button>
 </div>
 
 <!-- ============================================================ -->
@@ -105,7 +106,7 @@ tr:nth-child(even){background:#f8fafc}
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-sitemap" style="color:#6d28d9"></i> Diagrama de Contexto (C4 Nivel 1) &mdash; Ecosistema de Seguridad</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 graph TB
     subgraph "Actores Externos"
         CPO["&lt;b&gt;CPO (Operador)&lt;/b&gt;&lt;br/&gt;+500 operadores&lt;br/&gt;OCPI 2.2.1 cada 60s"]
@@ -162,7 +163,7 @@ graph TB
     style KFK fill:#6d28d9,color:#fff
     style MESH fill:#0891b2,color:#fff
     style VPN fill:#1e293b,color:#fff
-</pre></div>
+</textarea><div class="mermaid-render"></div></div>
 </div>
 
 <!-- 4-Step Flow -->
@@ -189,7 +190,7 @@ graph TB
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Arquitectura &mdash; Registro CPO</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 graph TB
     subgraph "MinEnerg&iacute;a"
         CARG["C&aacute;rgame&lt;br/&gt;Registro CPOs"]
@@ -233,11 +234,11 @@ graph TB
     style VAULT fill:#1e293b,color:#fff
     style ATP fill:#c74634,color:#fff
     style WAF fill:#dc2626,color:#fff
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-arrow-right-arrow-left" style="color:#0369a1"></i> Secuencia &mdash; Registro Completo CPO</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 sequenceDiagram
     autonumber
     actor CPO as CPO (Operador)
@@ -292,7 +293,7 @@ sequenceDiagram
     SVC->>VAULT: Retrieve API Key one-time
     SVC-->>CPO: client_id + client_secret + api_key + sandbox_url
     SVC->>KFK: CredentialsDelivered
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-list-check" style="color:#10b981"></i> Ciclo de Vida del CPO</div>
@@ -323,7 +324,7 @@ sequenceDiagram
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Arquitectura &mdash; Developer Portal + API Key</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 graph TB
     subgraph "CPO"
         BROWSER["Browser CPO&lt;br/&gt;developer.upme.gov.co"]
@@ -377,11 +378,11 @@ graph TB
     style KC_IPPOL fill:#7c3aed,color:#fff
     style VAULT fill:#1e293b,color:#fff
     style ATP fill:#c74634,color:#fff
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-arrow-right-arrow-left" style="color:#0369a1"></i> Secuencia &mdash; Login + API KEY + IP Whitelist</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 sequenceDiagram
     autonumber
     actor CPO as CPO (Browser)
@@ -450,7 +451,7 @@ sequenceDiagram
     KC-->>GW: Bearer Token interno 5min cpo:sandbox
     GW->>SVC: Request autenticado
     SVC-->>CPO: 200 OK + X-RateLimit headers
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 
 <div class="grid-2">
 <div class="card">
@@ -478,7 +479,7 @@ sequenceDiagram
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-rotate" style="color:#f59e0b"></i> Ciclo de Vida API Keys</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 stateDiagram-v2
     [*] --> Created: CPO genera desde Portal
     Created --> Active: Auto Sandbox o Aprobacion Prod
@@ -490,7 +491,7 @@ stateDiagram-v2
     Expired --> [*]
     Revoked --> [*]
     Suspended --> Active: Reactivacion
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 </div>
 
 <!-- SECTION 2.3: CARGAME -->
@@ -500,7 +501,7 @@ stateDiagram-v2
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Arquitectura Bidireccional CARGAME - UPME</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 graph LR
     subgraph "Cargame MinEnergia"
         CARG_DB[("DB Cargame&lt;br/&gt;194 operadores&lt;br/&gt;139 estaciones")]
@@ -544,11 +545,11 @@ graph LR
     style ATP fill:#c74634,color:#fff
     style VPN_C fill:#1e293b,color:#fff
     style DRG fill:#1e293b,color:#fff
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-bell" style="color:#f59e0b"></i> Secuencia A: Cargame notifica nuevo CPO a UPME</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 sequenceDiagram
     autonumber
     participant CARG as Cargame
@@ -589,11 +590,11 @@ sequenceDiagram
     end
     SVC->>KFK: cpo-events CPORegistered
     SVC->>NOTIF: Email CPO instrucciones onboarding
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-magnifying-glass" style="color:#0369a1"></i> Secuencia B: Validacion CPO via VPN con Circuit Breaker</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 sequenceDiagram
     autonumber
     participant SVC as CPO Manager
@@ -631,11 +632,11 @@ sequenceDiagram
             ACL-->>SVC: CPO valido fallback degraded
         end
     end
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-ban" style="color:#dc2626"></i> Secuencia C: Suspension CPO y revocacion automatica</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 sequenceDiagram
     autonumber
     participant SYNC as Sync Job 24h
@@ -671,7 +672,7 @@ sequenceDiagram
     NOTIF->>CPO: Email acceso suspendido + apelacion
     CPO->>GW: PUT /ocpi/2.2.1/locations
     GW-->>CPO: 403 Forbidden CPO suspended
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-server" style="color:#10b981"></i> Contrato APIs Integracion</div>
@@ -712,7 +713,7 @@ sequenceDiagram
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Arquitectura &mdash; Capas de Seguridad API</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 graph TB
     CPO["CPO Server&lt;br/&gt;IP Registrada + Cert X.509"]
     subgraph "L1-L2: Edge y Red"
@@ -750,11 +751,11 @@ graph TB
     style ATP fill:#c74634,color:#fff
     style MESH fill:#0891b2,color:#fff
     style GUARD fill:#dc2626,color:#fff
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-arrow-right-arrow-left" style="color:#0369a1"></i> Secuencia &mdash; Request Completo CPO a API OCPI</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 sequenceDiagram
     autonumber
     actor CPO as CPO Server
@@ -829,7 +830,7 @@ sequenceDiagram
         VAL->>KFK: ocpi-dlq FAILED + reason
     end
     KFK->>OBJ: Persist Bronze inmutable
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-table" style="color:#10b981"></i> Resumen Capas de Seguridad por Request</div>
@@ -863,7 +864,7 @@ sequenceDiagram
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Arquitectura Multi-Realm</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 graph TB
     subgraph "KeyCloak HA 2 pods OKE"
         subgraph "upme-internal"
@@ -884,7 +885,7 @@ graph TB
     style VAULT fill:#1e293b,color:#fff
     style ATP fill:#c74634,color:#fff
     style KFK fill:#6d28d9,color:#fff
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 
 <h3>Configuracion por Realm</h3>
 <div class="grid-3">
@@ -948,7 +949,7 @@ graph TB
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Mapa de Almacenamiento</div>
-<div class="mermaid-container"><pre class="mermaid">
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
 graph TB
     subgraph "OCI Vault"
         V1["JWT RS256 Keys"]
@@ -990,7 +991,7 @@ graph TB
     style R1 fill:#dc2626,color:#fff
     style O2 fill:#0369a1,color:#fff
     style S2 fill:#6d28d9,color:#fff
-</pre></div></div>
+</textarea><div class="mermaid-render"></div></div></div>
 
 <div class="card">
 <div class="card-header"><i class="fa-solid fa-table" style="color:#10b981"></i> Mapeo Dato &rarr; Storage &rarr; Cifrado</div>
@@ -1018,6 +1019,233 @@ graph TB
 </div>
 </div>
 
+<!-- ============================================================ -->
+<!-- SECTION: CARGAME SEGURIDAD Y ESCALABILIDAD -->
+<!-- ============================================================ -->
+<div class="section" id="cargame-sec">
+<h2 style="color:#dc2626"><span class="icon"><i class="fa-solid fa-triangle-exclamation" style="color:#dc2626"></i></span> CARGAME &mdash; Seguridad y Escalabilidad para la Arquitectura Nacional</h2>
+<p style="color:#64748b;font-size:0.88rem;margin-bottom:16px">An&aacute;lisis de la postura de seguridad actual de CARGAME y los principios arquitect&oacute;nicos que debe cumplir para garantizar la interoperabilidad segura y escalable con la plataforma UPME. <strong style="color:#dc2626">Presentaci&oacute;n para el Ministerio de Minas y Energ&iacute;a.</strong></p>
+
+<!-- HALLAZGOS CRITICOS -->
+<div class="card" style="border-left:5px solid #dc2626">
+<div class="card-header" style="color:#dc2626;font-size:1.05rem"><i class="fa-solid fa-bug" style="color:#dc2626"></i> Hallazgos Cr&iacute;ticos de Seguridad &mdash; Estado Actual CARGAME</div>
+<p style="font-size:0.8rem;color:#64748b;margin-bottom:12px">Resultado del an&aacute;lisis t&eacute;cnico realizado sobre la plataforma <code>cargame.minenergia.gov.co</code> (backend: <code>siveeic.minenergia.gov.co:3011</code>). Estos hallazgos representan riesgos para la interoperabilidad nacional.</p>
+<table>
+<tr><th style="width:40px">#</th><th>Hallazgo</th><th>Severidad</th><th>Impacto</th><th>Referencia</th></tr>
+<tr><td><strong>H-1</strong></td><td><strong>JWT est&aacute;tico hardcoded sin expiraci&oacute;n</strong><br><span style="font-size:0.72rem;color:#64748b">Token con usuario &quot;powerbi&quot;, rol &quot;intelligence&quot;, iat: 2020-07-16. Nunca expira. Embebido en c&oacute;digo frontend.</span></td><td><span style="background:#dc2626;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.7rem;font-weight:700">CR&Iacute;TICA</span></td><td>Acceso total a todas las APIs sin autenticaci&oacute;n real</td><td>OWASP A07:2021</td></tr>
+<tr><td><strong>H-2</strong></td><td><strong>Exposici&oacute;n de hashes bcrypt de contrase&ntilde;as</strong><br><span style="font-size:0.72rem;color:#64748b">Endpoint <code>GET /crg/usuario</code> retorna 272 usuarios con hashes bcrypt de contrase&ntilde;as visibles.</span></td><td><span style="background:#dc2626;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.7rem;font-weight:700">CR&Iacute;TICA</span></td><td>Compromiso potencial de credenciales de 272 usuarios</td><td>OWASP A01:2021</td></tr>
+<tr><td><strong>H-3</strong></td><td><strong>Exposici&oacute;n de datos personales (PII)</strong><br><span style="font-size:0.72rem;color:#64748b">NITs, emails, tel&eacute;fonos, direcci&oacute;n de 194 operadores expuestos sin control de acceso.</span></td><td><span style="background:#f59e0b;color:#000;padding:2px 8px;border-radius:8px;font-size:0.7rem;font-weight:700">ALTA</span></td><td>Violaci&oacute;n Ley 1581/2012 Protecci&oacute;n Datos Personales</td><td>Ley 1581 Art. 17</td></tr>
+<tr><td><strong>H-4</strong></td><td><strong>CORS permisivo &mdash; sin restricci&oacute;n de origen</strong><br><span style="font-size:0.72rem;color:#64748b">Cualquier dominio puede consumir las APIs. Sin pol&iacute;tica de origin.</span></td><td><span style="background:#f59e0b;color:#000;padding:2px 8px;border-radius:8px;font-size:0.7rem;font-weight:700">ALTA</span></td><td>Permite ataques CSRF y scraping masivo desde cualquier origen</td><td>OWASP A05:2021</td></tr>
+<tr><td><strong>H-5</strong></td><td><strong>Sin Rate Limiting ni throttling</strong><br><span style="font-size:0.72rem;color:#64748b">No existe l&iacute;mite de peticiones. Permite abuso, DoS y extracci&oacute;n masiva.</span></td><td><span style="background:#f59e0b;color:#000;padding:2px 8px;border-radius:8px;font-size:0.7rem;font-weight:700">ALTA</span></td><td>Plataforma vulnerable a denegaci&oacute;n de servicio</td><td>OWASP A04:2021</td></tr>
+</table>
+</div>
+
+<!-- DIAGRAMA ESTADO ACTUAL vs TARGET -->
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-scale-balanced" style="color:#6d28d9"></i> Estado Actual vs. Arquitectura Objetivo</div>
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
+graph LR
+    subgraph "CARGAME Actual"
+        direction TB
+        C1["JWT Estatico\nsin expiracion"] --- C2["Sin WAF\nni firewall app"]
+        C2 --- C3["Sin Rate Limiting"]
+        C3 --- C4["CORS Permisivo\nAccess-Control *"]
+        C4 --- C5["PII Expuesta\n194 operadores"]
+        C5 --- C6["Hashes bcrypt\nen API publica"]
+        style C1 fill:#dc2626,color:#fff
+        style C2 fill:#dc2626,color:#fff
+        style C3 fill:#dc2626,color:#fff
+        style C4 fill:#f59e0b,color:#000
+        style C5 fill:#f59e0b,color:#000
+        style C6 fill:#dc2626,color:#fff
+    end
+    subgraph "Arquitectura Objetivo UPME"
+        direction TB
+        T1["OAuth 2.1 + mTLS\nTokens 15min"] --- T2["OCI WAF\nOWASP + GeoFence"]
+        T2 --- T3["Rate Limit por CPO\nTier BASIC/MEDIUM/PREMIUM"]
+        T3 --- T4["CORS Estricto\nOrigins registrados"]
+        T4 --- T5["PII Cifrada\nTDE + CMK + RBAC"]
+        T5 --- T6["VPN Site2Site\nIPSec AES-256"]
+        style T1 fill:#10b981,color:#fff
+        style T2 fill:#10b981,color:#fff
+        style T3 fill:#10b981,color:#fff
+        style T4 fill:#10b981,color:#fff
+        style T5 fill:#10b981,color:#fff
+        style T6 fill:#10b981,color:#fff
+    end
+    C1 -.->|"EVOLUCION\nREQUERIDA"| T1
+</textarea><div class="mermaid-render"></div></div></div>
+
+<!-- PRINCIPIOS ARQUITECTONICOS -->
+<h3 style="margin-top:24px"><i class="fa-solid fa-landmark" style="color:#6d28d9"></i> Principios Arquitect&oacute;nicos para la Integraci&oacute;n CARGAME - UPME</h3>
+<p style="font-size:0.82rem;color:#64748b;margin-bottom:14px">Estos principios son <strong>obligatorios</strong> para garantizar que la integraci&oacute;n entre CARGAME y la plataforma UPME cumpla con los est&aacute;ndares de seguridad y escalabilidad requeridos por la Resoluci&oacute;n 40559/2025.</p>
+
+<div class="grid-2">
+<div class="card" style="border-top:3px solid #dc2626">
+<div class="card-header"><i class="fa-solid fa-shield-halved" style="color:#dc2626"></i> P1: Zero Trust &mdash; Nunca Confiar, Siempre Verificar</div>
+<ul style="font-size:0.78rem;color:#475569;line-height:1.7;padding-left:16px">
+<li>Toda comunicaci&oacute;n CARGAME &rarr; UPME debe ser <strong>mutuamente autenticada</strong></li>
+<li>Tokens con TTL m&aacute;ximo de <strong>15 minutos</strong>, sin refresh para M2M</li>
+<li>Cada request validado independientemente (sin sesiones impl&iacute;citas)</li>
+<li>VPN Site2Site IPSec como canal exclusivo para verificaci&oacute;n de CPOs</li>
+<li><strong>Eliminar JWT est&aacute;tico:</strong> migrar a OAuth 2.1 con rotaci&oacute;n autom&aacute;tica</li>
+</ul>
+</div>
+<div class="card" style="border-top:3px solid #7c3aed">
+<div class="card-header"><i class="fa-solid fa-key" style="color:#7c3aed"></i> P2: Gesti&oacute;n Centralizada de Identidades</div>
+<ul style="font-size:0.78rem;color:#475569;line-height:1.7;padding-left:16px">
+<li><strong>KeyCloak HA</strong> como IdP &uacute;nico para toda la plataforma</li>
+<li>Realm dedicado <code>upme-cpo</code> para gesti&oacute;n de 500+ operadores</li>
+<li>Client Credentials + Certificate Binding (RFC 8705) para M2M</li>
+<li>Token Introspection (RFC 7662) para validaci&oacute;n en API Gateway</li>
+<li>Revocaci&oacute;n inmediata si CARGAME reporta CPO suspendido</li>
+</ul>
+</div>
+<div class="card" style="border-top:3px solid #0369a1">
+<div class="card-header"><i class="fa-solid fa-lock" style="color:#0369a1"></i> P3: Cifrado End-to-End y Protecci&oacute;n de Datos</div>
+<ul style="font-size:0.78rem;color:#475569;line-height:1.7;padding-left:16px">
+<li><strong>TLS 1.3</strong> obligatorio en todo tr&aacute;nsito (eliminar protocolos legacy)</li>
+<li>mTLS entre microservicios via OCI Service Mesh</li>
+<li>Datos en reposo: <strong>TDE + CMK</strong> en Autonomous DB, AES-256 en Vault</li>
+<li>Audit logs inmutables en <strong>WORM Object Storage</strong></li>
+<li>PII clasificada y protegida seg&uacute;n <strong>Ley 1581/2012</strong></li>
+</ul>
+</div>
+<div class="card" style="border-top:3px solid #10b981">
+<div class="card-header"><i class="fa-solid fa-chart-line" style="color:#10b981"></i> P4: Escalabilidad y Resiliencia</div>
+<ul style="font-size:0.78rem;color:#475569;line-height:1.7;padding-left:16px">
+<li><strong>500 CPOs &times; 60s = 21.6M transacciones/mes</strong> proyectadas</li>
+<li>Circuit Breaker para aislar fallos de CARGAME (Open 5 fallos, half-open 30s)</li>
+<li>Cache Redis 24h para reducir dependencia de CARGAME</li>
+<li>OCI Streaming (Kafka) para procesamiento as&iacute;ncrono y desacoplado</li>
+<li>OKE Autoscaling 1&rarr;3 nodos para absorber picos de carga</li>
+</ul>
+</div>
+</div>
+
+<div class="grid-2">
+<div class="card" style="border-top:3px solid #f59e0b">
+<div class="card-header"><i class="fa-solid fa-webhook" style="color:#f59e0b"></i> P5: Integraci&oacute;n Segura por Eventos</div>
+<ul style="font-size:0.78rem;color:#475569;line-height:1.7;padding-left:16px">
+<li>Webhooks firmados con <strong>HMAC-SHA256</strong> (shared secret en OCI Vault)</li>
+<li>Verificaci&oacute;n de idempotencia por <code>delivery_id</code> (24h TTL en Redis)</li>
+<li>IP Whitelist en WAF para origenes autorizados de CARGAME</li>
+<li>Doble verificaci&oacute;n: Webhook + consulta VPN para cada CPO nuevo</li>
+<li>Dead Letter Queue para eventos fallidos con retry exponencial</li>
+</ul>
+</div>
+<div class="card" style="border-top:3px solid #0891b2">
+<div class="card-header"><i class="fa-solid fa-eye" style="color:#0891b2"></i> P6: Observabilidad y Auditor&iacute;a Continua</div>
+<ul style="font-size:0.78rem;color:#475569;line-height:1.7;padding-left:16px">
+<li>Correlation ID de extremo a extremo en cada transacci&oacute;n</li>
+<li>Audit trail inmutable: login, token, API call, lifecycle CPO</li>
+<li><strong>Grafana + Prometheus + Loki</strong> en OKE para monitoreo RT</li>
+<li>Alertas autom&aacute;ticas: intentos fallidos, anomal&iacute;as, SLA breach</li>
+<li>Reportes de cumplimiento para la SIC y el Ministerio</li>
+</ul>
+</div>
+</div>
+
+<!-- DIAGRAMA DE INTEGRACION SEGURA -->
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-diagram-project" style="color:#6d28d9"></i> Arquitectura de Integraci&oacute;n Segura CARGAME &harr; UPME</div>
+<div class="mermaid-container"><textarea class="mermaid-src" style="display:none">
+sequenceDiagram
+    autonumber
+    participant CARG as CARGAME MinEnergia
+    participant VPN as VPN Site2Site IPSec
+    participant WAF as OCI WAF
+    participant GW as API Gateway
+    participant KC as KeyCloak HA
+    participant SVC as UPME Backend
+    participant REDIS as Redis Cache
+    participant DB as Autonomous DB
+    participant AUDIT as Audit WORM
+    Note over CARG,AUDIT: Canal 1: CARGAME notifica nuevo CPO via Webhook
+    CARG->>WAF: POST /webhooks/cargame/cpo-registered
+    Note right of CARG: X-Cargame-Signature HMAC-SHA256
+    WAF->>WAF: IP Whitelist + OWASP + GeoFence
+    WAF->>GW: Forward
+    GW->>SVC: Route
+    SVC->>SVC: Verificar HMAC-SHA256 con secret de Vault
+    SVC->>SVC: Verificar idempotencia delivery_id
+    Note over CARG,AUDIT: Canal 2: UPME verifica CPO via VPN privada
+    SVC->>VPN: GET /crg/cpo/nit/status
+    VPN->>CARG: Tunel IPSec AES-256
+    CARG-->>VPN: status ACTIVE
+    VPN-->>SVC: CPO verificado
+    Note over CARG,AUDIT: Canal 3: Creacion identidad segura
+    SVC->>KC: Crear OAuth Client upme-cpo realm
+    KC->>KC: Generar client_credentials + scopes
+    SVC->>DB: Registrar CPO status CREDENTIALED
+    SVC->>REDIS: Cache estado CPO 24h
+    SVC->>AUDIT: Log inmutable CPORegistered
+</textarea><div class="mermaid-render"></div></div></div>
+
+<!-- MATRIZ DE RIESGO -->
+<div class="card">
+<div class="card-header"><i class="fa-solid fa-table" style="color:#dc2626"></i> Matriz de Riesgo: Qu&eacute; pasa si CARGAME no evoluciona su seguridad</div>
+<table>
+<tr><th>Escenario de Riesgo</th><th>Probabilidad</th><th>Impacto</th><th>Mitigaci&oacute;n UPME</th></tr>
+<tr><td><strong>Compromiso del JWT est&aacute;tico</strong><br><span style="font-size:0.72rem;color:#64748b">Atacante obtiene el token hardcoded y manipula datos de CPOs</span></td><td><span style="background:#dc2626;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.7rem">MUY ALTA</span></td><td><span style="background:#dc2626;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.7rem">CR&Iacute;TICO</span></td><td>VPN Site2Site exclusiva + doble verificaci&oacute;n + cache local</td></tr>
+<tr><td><strong>Ca&iacute;da o indisponibilidad CARGAME</strong><br><span style="font-size:0.72rem;color:#64748b">Sin rate limiting, un ataque DoS puede tumbar la plataforma</span></td><td><span style="background:#f59e0b;color:#000;padding:2px 8px;border-radius:8px;font-size:0.7rem">ALTA</span></td><td><span style="background:#f59e0b;color:#000;padding:2px 8px;border-radius:8px;font-size:0.7rem">ALTO</span></td><td>Circuit Breaker + Redis Cache 24h + fallback degradado</td></tr>
+<tr><td><strong>Datos de CPO manipulados en origen</strong><br><span style="font-size:0.72rem;color:#64748b">Sin integridad en APIs, datos podr&iacute;an ser alterados</span></td><td><span style="background:#f59e0b;color:#000;padding:2px 8px;border-radius:8px;font-size:0.7rem">MEDIA</span></td><td><span style="background:#dc2626;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.7rem">CR&Iacute;TICO</span></td><td>HMAC webhooks + validaci&oacute;n cruzada + audit trail inmutable</td></tr>
+<tr><td><strong>Filtraci&oacute;n de PII de operadores</strong><br><span style="font-size:0.72rem;color:#64748b">Datos personales de 194 operadores ya est&aacute;n expuestos</span></td><td><span style="background:#dc2626;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.7rem">YA OCURRE</span></td><td><span style="background:#f59e0b;color:#000;padding:2px 8px;border-radius:8px;font-size:0.7rem">ALTO</span></td><td>UPME no replica PII innecesaria + cifrado TDE en ATP</td></tr>
+<tr><td><strong>Inconsistencia de datos entre plataformas</strong><br><span style="font-size:0.72rem;color:#64748b">Sin versionamiento ni contratos API definidos</span></td><td><span style="background:#f59e0b;color:#000;padding:2px 8px;border-radius:8px;font-size:0.7rem">ALTA</span></td><td><span style="background:#f59e0b;color:#000;padding:2px 8px;border-radius:8px;font-size:0.7rem">ALTO</span></td><td>Schema validation + OCPI 2.2.1 como est&aacute;ndar + sync 24h</td></tr>
+</table>
+</div>
+
+<!-- RECOMENDACIONES AL MINISTERIO -->
+<div class="card" style="border:2px solid #6d28d9;background:linear-gradient(135deg,#faf5ff,#f5f3ff)">
+<div class="card-header" style="font-size:1.05rem;color:#6d28d9"><i class="fa-solid fa-handshake" style="color:#6d28d9"></i> Recomendaciones para el Ministerio de Minas y Energ&iacute;a</div>
+<p style="font-size:0.82rem;color:#4c1d95;margin-bottom:14px">Para garantizar la interoperabilidad segura y escalable entre CARGAME y la plataforma nacional UPME, se recomienda al Ministerio:</p>
+
+<div class="grid-2">
+<div style="background:#fff;border-radius:10px;padding:14px;border:1px solid #e9d5ff">
+<div style="font-weight:700;color:#6d28d9;font-size:0.85rem;margin-bottom:6px"><i class="fa-solid fa-1" style="margin-right:4px"></i> Corto Plazo (0-3 meses)</div>
+<ul style="font-size:0.76rem;color:#4c1d95;line-height:1.7;padding-left:14px;margin:0">
+<li><strong>Eliminar JWT est&aacute;tico</strong> y migrar a autenticaci&oacute;n din&aacute;mica</li>
+<li><strong>Proteger endpoint /crg/usuario</strong> que expone hashes de contrase&ntilde;as</li>
+<li><strong>Implementar CORS restrictivo</strong> con origins autorizados</li>
+<li><strong>Establecer VPN Site2Site</strong> con UPME para canal seguro</li>
+<li><strong>Definir contrato de APIs</strong> con versionamiento y OpenAPI spec</li>
+</ul>
+</div>
+<div style="background:#fff;border-radius:10px;padding:14px;border:1px solid #e9d5ff">
+<div style="font-weight:700;color:#6d28d9;font-size:0.85rem;margin-bottom:6px"><i class="fa-solid fa-2" style="margin-right:4px"></i> Mediano Plazo (3-6 meses)</div>
+<ul style="font-size:0.76rem;color:#4c1d95;line-height:1.7;padding-left:14px;margin:0">
+<li><strong>Implementar OAuth 2.1</strong> con tokens de vida corta para APIs</li>
+<li><strong>Agregar WAF</strong> con reglas OWASP Top 10</li>
+<li><strong>Rate limiting</strong> por consumidor con cuotas definidas</li>
+<li><strong>Cifrar PII</strong> en reposo y enmascarar en respuestas API</li>
+<li><strong>Webhook bidireccional</strong> con firma HMAC para eventos CPO</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- NUMEROS CLAVE -->
+<div class="grid-3" style="margin-top:14px">
+<div class="card" style="text-align:center;border-top:3px solid #dc2626">
+<div style="font-size:2rem;font-weight:900;color:#dc2626">5</div>
+<div style="font-size:0.78rem;color:#475569;font-weight:600">Vulnerabilidades cr&iacute;ticas/altas detectadas</div>
+</div>
+<div class="card" style="text-align:center;border-top:3px solid #f59e0b">
+<div style="font-size:2rem;font-weight:900;color:#f59e0b">194</div>
+<div style="font-size:0.78rem;color:#475569;font-weight:600">Operadores con PII expuesta sin control</div>
+</div>
+<div class="card" style="text-align:center;border-top:3px solid #10b981">
+<div style="font-size:2rem;font-weight:900;color:#10b981">9</div>
+<div style="font-size:0.78rem;color:#475569;font-weight:600">Capas de seguridad en arquitectura UPME</div>
+</div>
+</div>
+
+<div class="info-purple">
+<strong><i class="fa-solid fa-scale-balanced"></i> Conclusi&oacute;n:</strong>
+La plataforma UPME est&aacute; dise&ntilde;ada con arquitectura de seguridad enterprise-grade (9 capas, Zero Trust, KeyCloak HA, mTLS, OCI Vault). Sin embargo, la integraci&oacute;n con CARGAME introduce riesgos que deben mitigarse conjuntamente. <strong>UPME implementa protecciones defensivas</strong> (VPN, Circuit Breaker, cache, validaci&oacute;n), pero es fundamental que <strong>CARGAME evolucione su postura de seguridad</strong> para garantizar la integridad de los datos que alimentan la pol&iacute;tica nacional de electromovilidad de Colombia.
+</div>
+</div>
+
 </div><!-- /doc -->
 
 <script>
@@ -1030,7 +1258,17 @@ event.target.closest('.nav-tab').classList.add('active');
 mermaid.initialize({startOnLoad:false,theme:'default',themeVariables:{fontFamily:'Inter,sans-serif'},securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true},sequence:{useMaxWidth:true,mirrorActors:false}});
 document.addEventListener('DOMContentLoaded',async function(){
   document.querySelectorAll('.section:not(.active)').forEach(s=>s.classList.add('mermaid-init'));
-  await mermaid.run();
+  const sources=document.querySelectorAll('.mermaid-src');
+  for(let i=0;i<sources.length;i++){
+    const txt=sources[i].value;
+    const target=sources[i].nextElementSibling;
+    try{
+      const {svg}=await mermaid.render('md-'+i,txt);
+      target.innerHTML=svg;
+    }catch(e){
+      target.innerHTML='<div style="color:#dc2626;padding:16px;background:#fef2f2;border-radius:8px;font-size:0.8rem"><strong>Error:</strong> '+e.message+'</div>';
+    }
+  }
   document.querySelectorAll('.section.mermaid-init').forEach(s=>s.classList.remove('mermaid-init'));
 });
 </script>
