@@ -1,0 +1,210 @@
+Este es el presupuesto proyectado para el equipo de electromovilidad, estructurado bajo el cumplimiento de la **Resolución 4559 de 2025**. El cálculo se basa en un equipo de **9 personas**, iniciando en **Abril de 2026** y finalizando en **Mayo de 2027** (14 meses en total), alineado con los hitos técnicos del roadmap.
+
+---
+
+## 1. Estructura de Costos del Equipo
+A continuación se detalla la inversión mensual y total por rol, considerando que los Desarrolladores Senior entran por una fase crítica de 8 meses, mientras que los roles transversales (Arquitectura, DevOps, QA, SemiSeniors) cubren la vigencia total del proyecto.
+
+| Rol | Cantidad | Salario Mensual (COP) | Duración (Meses) | Costo Total Rol |
+| :--- | :---: | :---: | :---: | :---: |
+| **Arquitecto de Solución** (Líder) | 1 | $13.000.000 | 14 | $182.000.000 |
+| **DevOps Senior** | 1 | $9.000.000 | 14 | $126.000.000 |
+| **Analista de QA** | 1 | $8.000.000 | 14 | $112.000.000 |
+| **Desarrollador SemiSenior** | 3 | $7.000.000* | 14 | $294.000.000 |
+| **Desarrollador Senior** (Foco Front/Sandbox) | 1 | $10.000.000 | 8 | $80.000.000 |
+| **Desarrollador Senior** (Foco Seguridad) | 1 | $10.000.000 | 8 | $80.000.000 |
+| **Desarrollador Senior** (Fullstack/Core) | 2 | $10.000.000 | 8 | $160.000.000 |
+| **TOTAL ESTIMADO** | **9** | -- | -- | **$1.034.000.000** |
+
+> *Nota: Se estimó un promedio de $7M para los SemiSeniors al no estar explícito en la descripción, ajustándose al rango del mercado vs los otros roles.*
+
+---
+
+## 2. Cronograma de Ejecución Presupuestal (Hitos)
+
+El presupuesto se ejecutará en tres fases clave según el Roadmap de la UPME:
+
+### Fase A: Desarrollo Core e Infraestructura (Abril 2026 - Noviembre 2026)
+* **Hitos:** PoC, Guía, Infra, Core OCPI + Cárgame y Portal.
+* **Carga de Personal:** Equipo completo (9 personas). Los 4 Seniors están enfocados en la construcción del Sandbox y la capa transaccional.
+* **Gasto Mensual:** **$81.000.000** (Aprox).
+
+### Fase B: Salida a Producción y Estabilización (Diciembre 2026 - Febrero 2027)
+* **Hitos:** LIVE, DRP+Hard, Inicio de Certificación CPOs.
+* **Carga de Personal:** Salen los 4 Seniors. Se mantiene el Arquitecto, DevOps, QA y los 3 SemiSeniors para soporte y evolución técnica.
+* **Gasto Mensual:** **$41.000.000**.
+
+### Fase C: Evolución y Gobernanza (Marzo 2027 - Mayo 2027)
+* **Hitos:** Plena operación, Evolución Analítica y Gobernanza Técnica.
+* **Carga de Personal:** Mantenimiento del equipo base (5 personas).
+* **Enfoque:** Integración final con el equipo de **DATA y Analítica** (Wilson, Sofia, Jesus, Fabian) para la transformación de datos a "Dato de Gobierno".
+
+---
+
+## 3. Resumen Financiero Consolidado
+
+* **Inversión en Desarrollo (Seniors):** $320.000.000 (31% del presupuesto).
+* **Inversión en Continuidad y Arquitectura:** $714.000.000 (69% del presupuesto).
+* **Total Proyecto (14 meses):** **$1.034.000.000 COP.**
+
+---
+
+### Consideraciones Técnicas de Éxito
+1.  **Sandbox (CPOs):** El desarrollador Senior con foco Frontend es crítico entre **Agosto y Octubre** para garantizar que los proveedores puedan interactuar con las APIs de interoperabilidad.
+2.  **Seguridad:** El foco en mejores prácticas debe ser transversal, pero su pico de validación será antes de **Noviembre (Hito LIVE)**.
+3.  **Interdependencia:** El éxito del presupuesto depende de la coordinación con el equipo de DataLake OCI para que la ingesta de datos no retrase el desarrollo de las funcionalidades analíticas.
+
+
+Aquí tienes el desglose detallado mes a mes, proyectado desde **Abril 2026 hasta Mayo 2027**. 
+
+Este presupuesto está diseñado para cubrir la fase de desarrollo intenso (donde el equipo está al 100%) y la fase de estabilización/soporte (donde el equipo se reduce para optimizar costos tras el hito **LIVE** de noviembre).
+
+### Presupuesto Mensual Electromovilidad (COP)
+
+| Mes | Hito Principal (Roadmap) | Personal Activo | Costo Mensual |
+| :--- | :--- | :---: | :--- |
+| **Abril 2026** | PoC / Inicio Infra | 9 | $81.000.000 |
+| **Mayo 2026** | Lanzamiento Guía / Infra | 9 | $81.000.000 |
+| **Junio 2026** | Core OCPI + Cárgame | 9 | $81.000.000 |
+| **Julio 2026** | Core OCPI / Data + Portal | 9 | $81.000.000 |
+| **Agosto 2026** | **Sbox (Sandbox)** / Data | 9 | $81.000.000 |
+| **Septiembre 2026** | Sandbox / DRP+Hard | 9 | $81.000.000 |
+| **Octubre 2026** | Sandbox / DRP+Hard | 9 | $81.000.000 |
+| **Noviembre 2026** | **Hito LIVE** | 9 | $81.000.000 |
+| **Diciembre 2026** | Certificación CPOs / Soporte | 5* | $41.000.000 |
+| **Enero 2027** | Certificación CPOs / Ajustes | 5 | $41.000.000 |
+| **Febrero 2027** | Certificación CPOs / Evolución | 5 | $41.000.000 |
+| **Marzo 2027** | Plena Operación / Analítica | 5 | $41.000.000 |
+| **Abril 2027** | Plena Operación / Analítica | 5 | $41.000.000 |
+| **Mayo 2027** | **Cierre Proyecto / Plena** | 5 | $41.000.000 |
+| **TOTAL** | -- | -- | **$1.034.000.000** |
+
+*\*Nota: En diciembre finalizan su contrato los 4 Desarrolladores Senior, quedando el equipo base de 5 personas (Arquitecto, DevOps, QA y 3 SemiSeniors).*
+
+---
+
+### Análisis de la Curva de Gastos
+
+El proyecto presenta una estructura de **"Front-Loading"** (carga frontal), donde el 63% del presupuesto se ejecuta en los primeros 8 meses. Esto es estratégico por las siguientes razones:
+
+* **Seguridad y Arquitectura:** La inversión fuerte en los Senior de Seguridad y Arquitectura desde el día 1 asegura que la plataforma cumpla con la **Resolución 4559** sin necesidad de re-procesos costosos al final.
+* **Transición a DATA:** A partir de Diciembre, el equipo de 5 personas trabajará estrechamente con Wilson, Sofía, Jesús y Fabián. El costo se reduce a la mitad mensualmente, enfocándose en que el dato transaccional se convierta en **Dato de Gobierno**.
+* **Mitigación de Riesgos:** Al tener a los Seniors durante el hito **LIVE (Noviembre)**, garantizamos que cualquier error en la puesta en marcha de los ambientes productivos sea corregido de inmediato por el personal con mayor expertise.
+
+---
+
+### Resumen de Roles para Aprobación
+* **Arquitecto ($13M):** Liderazgo técnico y visión de futuro (14 meses).
+* **4 Seniors ($10M c/u):** Ejecución técnica, Sandbox, Seguridad y Core (8 meses).
+* **DevOps ($9M):** Automatización, Pipelines y CI/CD (14 meses).
+* **QA ($8M):** Pruebas de interoperabilidad y calidad de APIs (14 meses).
+* **3 SemiSeniors ($7M c/u):** Desarrollo de funcionalidades y evolución continua (14 meses).
+
+Para visualizar cómo se distribuye la inversión frente a los hitos críticos del roadmap (como el **Sandbox** y el **Hito LIVE**), he diseñado este gráfico de barras que muestra la evolución del gasto mensual.
+
+### Gráfico de Ejecución Presupuestal vs. Hitos Técnicos
+
+
+
+---
+
+### Análisis del Gráfico
+
+1.  **Meses 1-8 (Pico de Inversión - $81M):**
+    * Este bloque representa la fase de **Construcción y Despliegue**.
+    * Incluye al equipo completo de 9 personas.
+    * **Hitos clave:** Desarrollo del Core OCPI, integración con Cárgame y la apertura del **Sandbox** para CPOs. La presencia de los 4 Seniors es vital aquí para asegurar que la arquitectura de seguridad sea impenetrable antes de salir a producción.
+
+2.  **Meses 9-14 (Fase de Estabilización - $41M):**
+    * Una vez alcanzado el hito **LIVE** en noviembre, el presupuesto se reduce un **49%**.
+    * El equipo se compacta a 5 personas (Arquitecto, DevOps, QA y 3 SemiSeniors).
+    * **Enfoque:** Soporte a la certificación de CPOs, ajustes post-lanzamiento y la transición de datos hacia el equipo de **Wilson, Sofia, Jesus y Fabian** para la analítica avanzada.
+
+### Tabla de Resumen para Aprobación Final
+
+| Concepto | Valor Total | % del Presupuesto |
+| :--- | :--- | :---: |
+| **Fase de Desarrollo Intensivo** (Abr - Nov) | $648.000.000 | 62.7% |
+| **Fase de Operación y Evolución** (Dic - May) | $386.000.000 | 37.3% |
+| **TOTAL PROYECTO ELECTROMOVILIDAD** | **$1.034.000.000** | **100%** |
+
+---
+
+Este desglose asegura que tengamos el músculo técnico necesario para cumplir con la **Resolución 4559** a tiempo, sin arrastrar costos de personal senior innecesarios durante la fase de mantenimiento.
+
+Para que el comité de dirección comprenda por qué necesitamos este equipo específico de 9 personas, he redactado una **Justificación Técnica de Roles**. Esta narrativa vincula directamente cada cargo con el cumplimiento de la **Resolución 4559 de 2025** y el roadmap técnico de la UPME.
+
+---
+
+## Justificación Técnica del Equipo de Electromovilidad
+
+### 1. Arquitecto de Solución ($13M)
+* **Misión:** Garantizar que la plataforma sea escalable y cumpla con los estándares de interoperabilidad (OCPI).
+* **Justificación:** Es el guardián de la integridad técnica. Su rol es crítico para la **Evolución Continua** y la **Gobernanza Técnica** (Hitos transversales). Asegura que el desarrollo de hoy no sea un obstáculo para las funcionalidades de mañana y lidera la integración con los servicios de OCI (Oracle Cloud Infrastructure).
+
+### 2. Cuatro (4) Desarrolladores Senior ($10M c/u)
+Se requieren perfiles de alta especialidad para la fase de construcción crítica (8 meses):
+* **Foco Frontend / Sandbox:** Responsable de la interfaz donde los CPOs (operadores de carga) probarán sus integraciones. Sin un Sandbox robusto, la certificación de terceros fallará.
+* **Foco Seguridad:** Implementar el esquema de seguridad de la aplicación, cifrado de datos transaccionales y protección de APIS bajo estándares internacionales.
+* **Foco Core / Fullstack (2):** Encargados de la lógica de negocio del **Core OCPI** y el módulo **Cárgame**, asegurando que el flujo de datos entre el cargador y la plataforma sea en tiempo real.
+
+### 3. Tres (3) Analistas SemiSenior ($7M c/u)
+* **Misión:** Ejecución de funcionalidades secundarias y soporte evolutivo.
+* **Justificación:** Mientras los Seniors construyen los cimientos, los SemiSeniors desarrollan los módulos de reportería, gestión de usuarios y alertas. Son el equipo que garantiza la continuidad operativa y el soporte técnico una vez que la plataforma entre en fase **LIVE**.
+
+### 4. DevOps Senior ($9M)
+* **Misión:** Automatización de despliegues y estabilidad de la infraestructura.
+* **Justificación:** Sin un DevOps, los hitos de **ArgoCD, Pipelines y Monitoreo** no son posibles. Su labor permite que el código pase de ambiente de desarrollo a productivo de forma segura y sin caídas del servicio, gestionando la arquitectura de nube para optimizar costos de infraestructura.
+
+### 5. Analista de QA ($8M)
+* **Misión:** Asegurar que la plataforma no tenga errores antes de la certificación de los CPOs.
+* **Justificación:** Es el filtro de calidad. Su trabajo es "romper" la aplicación en pruebas de estrés para garantizar que, cuando lleguemos al hito **LIVE**, la plataforma soporte la carga transaccional de todos los puntos de carga del país sin errores de data.
+
+---
+
+### Sinergia con Equipos Transversales
+Este equipo de 9 personas actuará como el "brazo ejecutor" que entregará los insumos limpios para que el equipo de **DATA y Analítica** (Wilson, Sofia, Jesus y Fabian) realice la:
+* **Ingesta al DataLake OCI.**
+* **Transformación a Dato de Gobierno.**
+* **Evolución Analítica** (Tableros de control para la toma de decisiones).
+
+---
+
+### Resumen para el Comité
+> "La inversión de **$1.034 millones** no solo compra horas de desarrollo, sino que asegura el cumplimiento normativo de la resolución 4559, garantiza la ciberseguridad del sistema nacional de carga y establece una infraestructura tecnológica que posiciona a la UPME como líder en la transición energética del país."
+
+Esta es la estructura para tu **Diapositiva de Resumen Ejecutivo**. Está diseñada para ser visualmente impactante, directa y orientada a la toma de decisiones por parte del Comité.
+
+---
+
+# 📑 RESUMEN EJECUTIVO: PROYECTO ELECTROMOVILIDAD (RES. 4559/2025)
+
+## **1. Objetivo del Equipo**
+Desarrollar, desplegar y estabilizar una plataforma robusta de interoperabilidad (OCPI) que cumpla al 100% con la **Resolución 4559 de 2025**, garantizando la seguridad transaccional y la gobernanza de datos para la UPME.
+
+---
+
+## **2. Estructura de Inversión (Abril 2026 – Mayo 2027)**
+
+| Fase | Enfoque Principal | Inversión Estimada | Personal |
+| :--- | :--- | :--- | :---: |
+| **CONSTRUCCIÓN CRÍTICA** (8 meses) | Core OCPI, Sandbox CPOs, Ciberseguridad e Infraestructura. | **$648.000.000** | 9 Expertos |
+| **ESTABILIZACIÓN Y PLENA** (6 meses) | Certificación CPOs, Soporte, Analítica y Dato de Gobierno. | **$386.000.000** | 5 Expertos |
+| **VALOR TOTAL DEL PROYECTO** | | **$1.034.000.000** | |
+
+---
+
+## **3. Pilares de Valor Técnico**
+
+* **🛡️ Ciberseguridad y Arquitectura:** Liderazgo por Arquitecto y Senior Dev para blindar la exposición de APIs y datos transaccionales.
+* **🔌 Interoperabilidad Real:** Implementación del **Sandbox** para que los CPOs (Proveedores) se certifiquen sin afectar el ambiente productivo.
+* **⚙️ Eficiencia DevOps:** Automatización total (CI/CD) para garantizar disponibilidad del 99.9% desde el hito **LIVE (Nov 2026)**.
+* **📊 Sinergia de Datos:** Integración nativa con el equipo de **DATA (Wilson, Sofia, Jesus, Fabian)** para transformar registros en **Dato de Gobierno**.
+
+---
+
+## **4. Mitigación de Riesgos**
+> *"La desmovilización del equipo Senior tras el hito LIVE reduce el gasto mensual en un **49%**, optimizando el presupuesto sin sacrificar el soporte técnico necesario para la evolución de la plataforma."*
+
+---
+

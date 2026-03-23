@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Solicitud de APIs CargaME — UPME → MinEnergía</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Inter',sans-serif;box-sizing:border-box}
+body{background:#fff;color:#1e293b;line-height:1.7;margin:0}
+.doc{max-width:1100px;margin:0 auto;padding:20px 40px 60px}
+h1{font-size:1.9rem;font-weight:800;color:#0f172a;margin:0 0 8px;border-bottom:3px solid #1d4ed8;padding-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;color:#1e293b;margin:40px 0 12px;border-bottom:2px solid #e2e8f0;padding-bottom:6px}
+h3{font-size:1.05rem;font-weight:600;color:#334155;margin:22px 0 8px}
+h4{font-size:0.92rem;font-weight:600;color:#475569;margin:14px 0 6px}
+p,li{font-size:0.87rem}
+ul{margin:6px 0 12px;padding-left:20px}
+li{margin-bottom:4px}
+table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:0.8rem}
+th{background:#1e3a5f;color:#fff;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #1e3a5f}
+td{padding:7px 10px;border:1px solid #e2e8f0;vertical-align:top}
+tr:nth-child(even){background:#f8fafc}
+code{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:4px;padding:1px 6px;font-family:'Courier New',monospace;font-size:0.8rem;color:#0f172a}
+pre{background:#0f172a;color:#e2e8f0;border-radius:8px;padding:16px;font-family:'Courier New',monospace;font-size:0.78rem;overflow-x:auto;line-height:1.6;margin:10px 0 18px}
+pre .k{color:#7dd3fc} /* key */
+pre .s{color:#86efac} /* string */
+pre .n{color:#fbbf24} /* number */
+pre .b{color:#f9a8d4} /* bool */
+pre .c{color:#64748b} /* comment */
+.cover{text-align:center;padding:60px 40px;background:linear-gradient(135deg,#0f172a,#1e3a5f,#0f172a);color:#fff;border-radius:12px;margin-bottom:40px}
+.cover h1{color:#fff;border:none;font-size:2rem;border-bottom:none}
+.badge{display:inline-block;padding:3px 10px;border-radius:16px;font-size:0.7rem;font-weight:600;margin:2px}
+.bo{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.bb{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+.bg{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
+.br{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+.bp{background:#faf5ff;color:#7e22ce;border:1px solid #e9d5ff}
+.by{background:#fefce8;color:#a16207;border:1px solid #fde68a}
+.info{background:#eff6ff;border-left:4px solid #2563eb;padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:0.85rem}
+.warn{background:#fffbeb;border-left:4px solid #f59e0b;padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:0.85rem}
+.danger{background:#fef2f2;border-left:4px solid #ef4444;padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:0.85rem}
+.success{background:#f0fdf4;border-left:4px solid #22c55e;padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:0.85rem}
+.card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 20px;margin:12px 0}
+.card-blue{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:16px 20px;margin:12px 0}
+.card-orange{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:16px 20px;margin:12px 0}
+.section-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:#1d4ed8;color:#fff;border-radius:50%;font-weight:700;font-size:0.85rem;margin-right:10px;flex-shrink:0;vertical-align:middle}
+.finding{display:flex;gap:12px;padding:10px 14px;border-radius:8px;margin:8px 0;font-size:0.84rem;border:1px solid}
+.finding.ok{background:#f0fdf4;border-color:#bbf7d0}
+.finding.warn{background:#fffbeb;border-color:#fde68a;border-left:none}
+.finding.err{background:#fef2f2;border-color:#fecaca}
+.finding-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+.endpoint-box{background:#0f172a;border-radius:10px;padding:16px 20px;margin:14px 0;color:#e2e8f0}
+.method-get{background:#16a34a;color:#fff;padding:2px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;font-family:'Courier New',monospace}
+.endpoint-path{color:#7dd3fc;font-family:'Courier New',monospace;font-size:0.9rem;margin-left:10px;font-weight:600}
+.endpoint-desc{color:#94a3b8;font-size:0.8rem;margin-top:6px}
+.divider{height:1px;background:#e2e8f0;margin:30px 0}
+.firma-box{border:1px solid #cbd5e1;border-radius:10px;padding:20px 24px;margin:16px 0;background:#f8fafc}
+.firma-line{height:1px;background:#475569;margin:30px 0 6px;width:60%}
+.toc a{color:#2563eb;text-decoration:none;font-size:0.84rem;display:block;padding:2px 0}
+.toc a:hover{text-decoration:underline}
+.toc .sub{padding-left:20px;font-size:0.79rem;color:#475569}
+@media print{.cover{page-break-after:always}h2{page-break-before:auto}body{font-size:10pt}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<!-- ========== PORTADA ========== -->
+<div class="cover">
+  <div style="font-size:3rem;margin-bottom:12px">⚡</div>
+  <h1>CARGAME: Solicitud de Exposición de APIs y Acceso VPN</h1>
+  <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:28px">
+    <span class="badge bo">Res. 40559/2025</span>
+    <span class="badge bg">Integración VPN IPSec</span>
+    <span class="badge bp">CARGAME API</span>
+  </div>
+  <table style="width:auto;margin:0 auto;border:none;text-align:left;font-size:0.82rem;color:#cbd5e1">
+    <tr style="background:transparent"><td style="border:none;padding:4px 20px 4px 0;color:#94a3b8">De</td><td style="border:none;padding:4px 0"><strong style="color:#fff">UPME — Unidad de Planeación Minero-Energética</strong></td></tr>
+    <tr style="background:transparent"><td style="border:none;padding:4px 20px 4px 0;color:#94a3b8">Para</td><td style="border:none;padding:4px 0"><strong style="color:#fff">Ministerio de Minas y Energía — Equipo CargaME</strong></td></tr>
+    <tr style="background:transparent"><td style="border:none;padding:4px 20px 4px 0;color:#94a3b8">Asunto</td><td style="border:none;padding:4px 0">Exposición de APIs REST y habilitación de conectividad VPN site-to-site</td></tr>
+    <tr style="background:transparent"><td style="border:none;padding:4px 20px 4px 0;color:#94a3b8">Versión</td><td style="border:none;padding:4px 0">1.0 — Borrador para revisión</td></tr>
+    <tr style="background:transparent"><td style="border:none;padding:4px 20px 4px 0;color:#94a3b8">Fecha</td><td style="border:none;padding:4px 0">Marzo 2026</td></tr>
+    <tr style="background:transparent"><td style="border:none;padding:4px 20px 4px 0;color:#94a3b8">Clasificación</td><td style="border:none;padding:4px 0"><span class="badge bo">USO INTERNO — RESTRINGIDO</span></td></tr>
+  </table>
+</div>
+
+<!-- ========== TABLA DE CONTENIDO ========== -->
+<h2 id="toc">Tabla de Contenido</h2>
+<div class="toc" style="column-count:2;column-gap:30px;margin-bottom:30px">
+  <a href="#s1"><strong>1.</strong> Marco Regulatorio y Justificación</a>
+  <div class="sub"><a href="#s1-1">1.1 Obligación legal</a></div>
+  <div class="sub"><a href="#s1-2">1.2 Rol de CargaME como fuente maestra</a></div>
+  <div class="sub"><a href="#s1-3">1.3 Casos de uso de consumo</a></div>
+  <a href="#s2"><strong>2.</strong> Solicitud de Exposición de APIs</a>
+  <div class="sub"><a href="#s2-1">2.1 APIs solicitadas</a></div>
+  <div class="sub"><a href="#s2-2">2.2 Datos requeridos por endpoint</a></div>
+  <div class="sub"><a href="#s2-3">2.3 Condiciones funcionales</a></div>
+  <div class="sub"><a href="#s2-4">2.4 SLA y disponibilidad</a></div>
+  <a href="#s3"><strong>3.</strong> Solicitud de Acceso VPN Site-to-Site</a>
+  <div class="sub"><a href="#s3-1">3.1 Justificación de canal privado</a></div>
+  <div class="sub"><a href="#s3-2">3.2 Especificaciones técnicas de la VPN</a></div>
+  <div class="sub"><a href="#s3-3">3.3 Rangos de red y puertos</a></div>
+  <a href="#s4"><strong>4.</strong> Pasos Siguientes solicitados</a>
+  <a href="#s5"><strong>5.</strong> Control de Versiones</a>
+</div>
+
+
+<!-- ========== PUNTO 1: SOLICITUD DE APIs ========== -->
+<h2 id="s1"><span class="section-num">1</span>Marco Regulatorio y Justificación</h2>
+
+<h3 id="s1-1">1.1 Obligación Legal</h3>
+
+<p>La <strong>Resolución 40559 del 21 de noviembre de 2025</strong> del Ministerio de Minas y Energía establece las condiciones para la interoperabilidad de estaciones de carga de vehículos eléctricos de acceso público en Colombia. En cumplimiento de esta resolución, la UPME lidera el desarrollo de la <strong>Plataforma Nacional de Interoperabilidad de Electromovilidad</strong>, cuya arquitectura contempla la integración con el sistema <strong>CargaME</strong> como fuente oficial de registro y habilitación de Operadores de Puntos de Carga (CPOs).</p>
+
+<div class="info">
+  <strong>Base legal:</strong> Resolución 40559/2025 — Art. [X]: La plataforma de interoperabilidad deberá consumir el registro oficial de operadores habilitados por el Ministerio de Minas y Energía como condición previa para la activación del protocolo OCPI 2.2.1 con cada CPO.
+</div>
+
+<h3 id="s1-2">1.2 Rol de CargaME como Fuente Maestra de Datos</h3>
+
+<p>En la arquitectura de la plataforma UPME, <strong>CargaME es la única fuente de verdad (System of Record)</strong> para los datos maestros estáticos de los operadores de carga. Ningún CPO podrá ser activado en la plataforma OCPI de la UPME sin haber completado el proceso de registro y habilitación en CargaME. La integración opera bajo el siguiente principio:</p>
+
+<table>
+  <thead><tr><th>Capa de dato</th><th>Sistema origen</th><th>Descripción</th><th>Frecuencia de consumo</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Datos maestros / estáticos</strong></td>
+      <td>CargaME (MinEnergía)</td>
+      <td>Información legal, administrativa y técnica del operador: razón social, NIT, estaciones registradas, cargadores, conectores, documentos de habilitación.</td>
+      <td>Sincronización diaria + consulta puntual por evento</td>
+    </tr>
+    <tr>
+      <td><strong>Datos operacionales / en tiempo real</strong></td>
+      <td>CPOs (vía protocolo OCPI 2.2.1)</td>
+      <td>Estado de disponibilidad de conectores, tarifas en tiempo real, sesiones activas, registros de carga (CDRs).</td>
+      <td>Tiempo real (cada 60 segundos o por evento push)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="s1-3">1.3 Casos de Uso de Consumo de las APIs</h3>
+
+<div class="card">
+  <h4>Caso de Uso 1 — Sincronización diaria del directorio de operadores habilitados</h4>
+  <p>El servicio de ingesta de la UPME consumirá periódicamente (1 vez al día, en horario de baja carga) el endpoint <code>GET /operadores</code> para obtener el listado actualizado de todos los CPOs en estado Habilitado/Activo. Esta sincronización pobla el módulo de gestión de CPOs en la plataforma y actualiza el caché de validación.</p>
+  <p><strong>Actor:</strong> Servicio Interno UPME (backend Go) | <strong>Destino:</strong> Base de datos ATP + Redis Cache</p>
+</div>
+
+<div class="card">
+  <h4>Caso de Uso 2 — Validación puntual de CPO en el flujo de onboarding</h4>
+  <p>Cuando un CPO solicita acceso a la plataforma UPME, el sistema consulta el endpoint <code>GET /operadores/{nro_identificacion}</code> para verificar en tiempo real que el operador tiene estado Habilitado en CargaME antes de emitir credenciales OCPI. Esta validación es un requisito de seguridad no negociable del proceso de certificación.</p>
+  <p><strong>Actor:</strong> Servicio de gestión de CPOs (backend Go) | <strong>Tiempo de respuesta requerido:</strong> &lt; 2 segundos P95</p>
+</div>
+
+<div class="card">
+  <h4>Caso de Uso 3 — Monitoreo de estado de habilitación (suspensiones)</h4>
+  <p>Ante una suspensión o revocación de habilitación en CargaME (ej. vencimiento de documentos, sanción regulatoria), la plataforma UPME debe reaccionar suspendiendo automáticamente el acceso del CPO. Para esto se requiere ya sea un mecanismo de webhook (notificación push) desde CargaME, o en su defecto, una consulta periódica de menor frecuencia.</p>
+  <p><strong>Actor:</strong> Scheduler UPME | <strong>Nota:</strong> Este caso requiere discusión adicional con el equipo CargaME sobre el mecanismo de notificación.</p>
+</div>
+
+<div class="divider"></div>
+
+<h2 id="s2"><span class="section-num">2</span>Solicitud Formal de Exposición de APIs desde CargaME</h2>
+
+<p>La <strong>Unidad de Planeación Minero-Energética (UPME)</strong> solicita formalmente al equipo técnico del <strong>Ministerio de Minas y Energía</strong> la exposición de los siguientes endpoints REST de la plataforma <strong>CargaME</strong>, para ser consumidos exclusivamente desde la infraestructura de la Plataforma de Interoperabilidad de Electromovilidad de la UPME, a través de un canal de comunicación privado y seguro (VPN Site-to-Site).</p>
+
+<h3 id="s2-1">2.1 APIs Solicitadas</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Método</th>
+      <th>Endpoint</th>
+      <th>Descripción</th>
+      <th>Prioridad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><span class="badge bg">GET</span></td>
+      <td><code>/v1/operadores</code></td>
+      <td>Listado maestro de todos los operadores de carga habilitados. Incluye información legal, administrativa, estaciones, cargadores y conectores registrados.</td>
+      <td><span class="badge br">Crítica</span></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><span class="badge bg">GET</span></td>
+      <td><code>/v1/operadores/{nro_identificacion}</code></td>
+      <td>Consulta individual de un operador por su número de identificación tributaria (NIT). Utilizado para validación puntual en el flujo de onboarding y certificación de CPOs.</td>
+      <td><span class="badge br">Crítica</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="warn">
+  <strong>Nota adicional:</strong> La UPME también solicita evaluar la posibilidad de un mecanismo de notificación push (Webhook) desde CargaME hacia la plataforma UPME cuando cambie el estado de habilitación de un operador (activación, suspensión, revocación). Esto permitiría una reacción inmediata en lugar de depender de sincronizaciones periódicas.
+</div>
+
+<h3 id="s2-1b">2.1.1 Solicitud de Credenciales OAuth 2.0 — Client Credentials</h3>
+
+<p>El contrato de la API CargaME (v1.3.0) incluye un endpoint de autenticación <code>POST /oauth/token</code> bajo el flujo <strong>OAuth 2.0 Client Credentials</strong>. Para que la plataforma UPME pueda consumir las APIs de CargaME, el Ministerio de Minas y Energía debe <strong>provisionar las siguientes credenciales</strong>:</p>
+
+<table>
+  <thead><tr><th>Credencial</th><th>Descripción</th><th>Ambiente</th><th>Responsable de proveer</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>client_id</code></td>
+      <td>Identificador único de la aplicación cliente registrada en CargaME para la Plataforma de Interoperabilidad UPME.</td>
+      <td>Sandbox</td>
+      <td>MinEnergía / Equipo CargaME</td>
+    </tr>
+    <tr>
+      <td><code>client_secret</code></td>
+      <td>Clave secreta asociada al <code>client_id</code>. Debe ser comunicada por canal seguro (no por correo electrónico plano).</td>
+      <td>Sandbox</td>
+      <td>MinEnergía / Equipo CargaME</td>
+    </tr>
+    <tr>
+      <td><code>client_id</code></td>
+      <td>Identificador para el ambiente de producción (diferente al de sandbox).</td>
+      <td>Producción</td>
+      <td>MinEnergía / Equipo CargaME</td>
+    </tr>
+    <tr>
+      <td><code>client_secret</code></td>
+      <td>Clave secreta de producción. Entregada únicamente después de la firma del acuerdo de integración.</td>
+      <td>Producción</td>
+      <td>MinEnergía / Equipo CargaME</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="card-blue">
+  <h4>Gestión segura de credenciales — Compromiso UPME</h4>
+  <p>Las credenciales provistas por MinEnergía serán almacenadas exclusivamente en <strong>OCI Vault (HSM FIPS 140-2 Level 3)</strong>, nunca en texto plano, variables de entorno planas ni repositorios de código.</p>
+</div>
+
+<h3 id="s2-2">2.2 Datos Requeridos por Endpoint</h3>
+
+<h4>Endpoint 1: <code>GET /v1/operadores</code></h4>
+
+<table>
+  <thead><tr><th>Grupo de datos</th><th>Campos solicitados</th><th>Uso en plataforma UPME</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Identificación del operador</strong></td>
+      <td><code>id_operador</code>, <code>nombres</code>, <code>tipo_identificacion</code>, <code>nro_identificacion</code>, <code>sitio_web</code>, <code>fecha_creacion</code>, <code>tipo_usuario</code></td>
+      <td>Registro maestro en la plataforma, identificación unívoca del CPO, directorio público</td>
+    </tr>
+    <tr>
+      <td><strong>Estado de habilitación</strong></td>
+      <td><code>estado_habilitacion</code></td>
+      <td>Control de acceso: solo operadores Habilitados/Activos reciben credenciales OCPI</td>
+    </tr>
+    <tr>
+      <td><strong>Ubicación corporativa</strong></td>
+      <td><code>direccion</code>, <code>departamento</code>, <code>municipio</code></td>
+      <td>Datos administrativos del operador, reportes regulatorios</td>
+    </tr>
+    <tr>
+      <td><strong>Contactos técnicos</strong></td>
+      <td><code>contactos[].nombre</code>, <code>contactos[].rol</code>, <code>contactos[].telefono</code>, <code>contactos[].email</code></td>
+      <td>Comunicación directa con el responsable técnico OCPI del CPO para coordinación de integración</td>
+    </tr>
+    <tr>
+      <td><strong>Estaciones de carga</strong></td>
+      <td><code>estaciones[].id_estacion</code>, <code>nombre</code>, <code>direccion</code>, <code>departamento</code>, <code>municipio</code>, <code>codigo_postal</code>, <code>latitud</code>, <code>longitud</code>, <code>tipo_ubicacion_nombre</code>, <code>acceso</code>, <code>condiciones_uso</code>, <code>cobro_parqueadero</code>, <code>horarios_operacion</code>, <code>estado_administrativo</code></td>
+      <td>Módulo OCPI <em>Locations</em>: poblado desde datos maestros CargaME. Geo-referenciación en mapa público ciudadano.</td>
+    </tr>
+    <tr>
+      <td><strong>Cargadores (EVSEs)</strong></td>
+      <td><code>cargadores[].id_cargador</code>, <code>marca</code>, <code>protocolo_comunicacion</code>, <code>estado_administrativo</code></td>
+      <td>Módulo OCPI <em>EVSEs</em>: identificación de equipos físicos, validación de compatibilidad OCPP</td>
+    </tr>
+    <tr>
+      <td><strong>Conectores</strong></td>
+      <td><code>conectores[].id_conector</code>, <code>tipo_conector</code>, <code>tipo_corriente</code>, <code>potencia_maxima_kw</code>, <code>tarifa_kwh</code>, <code>unidad_precio</code>, <code>estado_administrativo</code></td>
+      <td>Módulo OCPI <em>Connectors</em>: tipos de carga disponibles, tarifas de referencia (estáticas)</td>
+    </tr>
+    <tr>
+      <td><strong>Documentos normativos</strong></td>
+      <td><code>documento_declaracion_cumplimiento_url</code>, <code>documento_certificado_conformidad_url</code></td>
+      <td>Verificación de cumplimiento regulatorio para el proceso de certificación. Auditoría SIC.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Endpoint 2: <code>GET /v1/operadores/{nro_identificacion}</code></h4>
+
+<p>Se requieren los mismos campos descritos anteriormente, pero para un único operador identificado por su NIT. Este endpoint se invoca en dos momentos críticos del proceso:</p>
+<ul>
+  <li><strong>Onboarding:</strong> Verificación de habilitación antes de emitir credenciales OAuth 2.1 + mTLS al CPO.</li>
+  <li><strong>Re-validación periódica:</strong> Verificación del estado vigente del operador (el caché Redis de la plataforma UPME tiene un TTL de 24 horas; ante un miss, se consulta este endpoint).</li>
+</ul>
+
+<h3 id="s2-3">2.3 Condiciones Funcionales Requeridas</h3>
+
+<table>
+  <thead><tr><th>#</th><th>Condición</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>CF-01</td>
+      <td><strong>Solo datos habilitados</strong></td>
+      <td>El endpoint <code>GET /operadores</code> debe exponer únicamente operadores con <code>estado_habilitacion = "Activo"</code> o equivalente habilitado. Los operadores suspendidos, en revisión o inactivos no deben ser retornados por defecto, o bien proveer un filtro explícito <code>?estado=Activo</code>.</td>
+    </tr>
+    <tr>
+      <td>CF-02</td>
+      <td><strong>Integridad de la jerarquía</strong></td>
+      <td>La respuesta debe incluir la jerarquía completa: Operador → Estaciones → Cargadores → Conectores, sin datos huérfanos (estaciones sin cargadores, cargadores sin conectores).</td>
+    </tr>
+    <tr>
+      <td>CF-03</td>
+      <td><strong>Consistencia de identificadores</strong></td>
+      <td>Los identificadores <code>id_estacion</code> e <code>id_conector</code> (UUID) deben ser estables y no cambiar una vez asignados. La plataforma UPME los utilizará como clave de correlación con el protocolo OCPI.</td>
+    </tr>
+    <tr>
+      <td>CF-04</td>
+      <td><strong>Respuestas de error estandarizadas</strong></td>
+      <td>Se solicita definir respuestas HTTP estándar para los códigos: <code>400</code>, <code>401</code>, <code>403</code>, <code>404</code>, <code>429</code> (rate limiting) y <code>500</code>, con cuerpo de error descriptivo.</td>
+    </tr>
+    <tr>
+      <td>CF-05</td>
+      <td><strong>Ambiente de Sandbox</strong></td>
+      <td>Se requiere un ambiente de pruebas (sandbox) con datos sintéticos representativos para ejecutar las pruebas de integración de la plataforma UPME previas al go-live en producción (proyectado: agosto 2026).</td>
+    </tr>
+    <tr>
+      <td>CF-06</td>
+      <td><strong>Versionado de API</strong></td>
+      <td>Se solicita que el contrato incluya versionado explícito en la URL (<code>/v1/</code>). Cualquier cambio que rompa compatibilidad (breaking change) debe ser comunicado con mínimo 30 días de anticipación a la UPME.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="s2-4">2.4 SLA y Disponibilidad Requerida</h3>
+
+<table>
+  <thead><tr><th>Parámetro</th><th>Requerimiento mínimo</th><th>Justificación</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Disponibilidad</strong></td>
+      <td>99.5% mensual (horario hábil)</td>
+      <td>La sincronización diaria y el flujo de onboarding de CPOs dependen de la disponibilidad de estas APIs.</td>
+    </tr>
+    <tr>
+      <td><strong>Latencia</strong></td>
+      <td>&lt; 2 segundos P95 para <code>GET /operadores/{nro_identificacion}</code></td>
+      <td>Este endpoint es consultado en el flujo de autenticación de CPOs; una latencia alta impacta la experiencia de onboarding.</td>
+    </tr>
+    <tr>
+      <td><strong>Latencia listado</strong></td>
+      <td>&lt; 10 segundos P95 para <code>GET /operadores</code></td>
+      <td>Sincronización batch diaria; se acepta mayor latencia dado el volumen de respuesta.</td>
+    </tr>
+    <tr>
+      <td><strong>Ventana de mantenimiento</strong></td>
+      <td>Notificación mínima 72 horas antes</td>
+      <td>Permite activar el modo de fallback (caché extendido) en la plataforma UPME durante el mantenimiento.</td>
+    </tr>
+    <tr>
+      <td><strong>Rate Limiting</strong></td>
+      <td>Mínimo 60 req/min para la IP de la UPME</td>
+      <td>Para soportar la sincronización diaria y las validaciones puntuales concurrentes de múltiples CPOs en onboarding.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="divider"></div>
+
+<!-- ========== PUNTO 2: SOLICITUD VPN ========== -->
+<h2 id="s3"><span class="section-num">3</span>Solicitud de Acceso a las APIs a través de VPN Site-to-Site</h2>
+
+<h3 id="s3-1">3.1 Justificación del Canal Privado</h3>
+
+<p>La naturaleza de los datos expuestos por CargaME — información legal y administrativa de operadores del sector energético regulado, incluyendo datos de contacto, documentos normativos y coordenadas de infraestructura crítica — exige que el canal de comunicación entre ambas plataformas gubernamentales sea <strong>privado, cifrado, autenticado y auditable</strong>. El acceso a las APIs de CargaME por parte de la plataforma UPME <strong>NO debe realizarse a través de Internet público</strong>, incluso si las APIs contaran con autenticación robusta.</p>
+
+<div class="danger">
+  <strong>Riesgo sin VPN:</strong> La exposición de APIs gubernamentales de datos de infraestructura energética en Internet público, aun con autenticación, constituye una superficie de ataque innecesaria. Esto podría contravenir el Modelo de Seguridad y Privacidad de la Información de MinTIC (MSPI) y el marco de ciberseguridad de las entidades del Estado colombiano.
+</div>
+
+<p>La arquitectura de la Plataforma UPME contempla desde su diseño una <strong>VPN Site-to-Site IPSec IKEv2</strong> como canal exclusivo para la integración con CargaME, siguiendo los lineamientos de:</p>
+<ul>
+  <li>Modelo de Seguridad y Privacidad de la Información (MSPI) — MinTIC Colombia</li>
+  <li>ISO 27001:2022 — Control A.8.20: Seguridad de redes</li>
+  <li>NIST SP 800-77r1 — Guide to IPsec VPNs</li>
+  <li>Política de seguridad de la información UPME</li>
+</ul>
+
+<h3 id="s3-2">3.2 Especificaciones Técnicas de la VPN Propuesta</h3>
+
+<table>
+  <thead><tr><th>Parámetro</th><th>Especificación propuesta UPME</th><th>Negociable</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Protocolo</strong></td>
+      <td>IPSec IKEv2</td>
+      <td>No — estándar mínimo requerido</td>
+    </tr>
+    <tr>
+      <td><strong>Cifrado (fase 1 — IKE)</strong></td>
+      <td>AES-256-GCM</td>
+      <td>Sí — se aceptan equivalentes: AES-256-CBC con SHA-256</td>
+    </tr>
+    <tr>
+      <td><strong>Integridad (fase 1)</strong></td>
+      <td>SHA-256 o superior</td>
+      <td>No — SHA-1 no aceptado</td>
+    </tr>
+    <tr>
+      <td><strong>Grupo Diffie-Hellman</strong></td>
+      <td>Grupo 14 (2048-bit) mínimo. Preferible Grupo 20 (ECC 384-bit)</td>
+      <td>Sí</td>
+    </tr>
+    <tr>
+      <td><strong>Cifrado (fase 2 — ESP)</strong></td>
+      <td>AES-256-GCM</td>
+      <td>Sí</td>
+    </tr>
+    <tr>
+      <td><strong>Autenticación de extremo</strong></td>
+      <td>Certificados X.509 (PKI) — preferido. PSK como alternativa temporal.</td>
+      <td>Sí</td>
+    </tr>
+    <tr>
+      <td><strong>Modo de operación</strong></td>
+      <td>Activo/Activo con redundancia (dos túneles)</td>
+      <td>Sí — se acepta Activo/Pasivo</td>
+    </tr>
+    <tr>
+      <td><strong>Dead Peer Detection (DPD)</strong></td>
+      <td>Habilitado — intervalo 30s, timeout 90s</td>
+      <td>Sí</td>
+    </tr>
+    <tr>
+      <td><strong>MTU</strong></td>
+      <td>1400 bytes (recomendado para evitar fragmentación)</td>
+      <td>Sí</td>
+    </tr>
+    <tr>
+      <td><strong>Lado UPME — Equipo VPN</strong></td>
+      <td>OCI VPN Connect (Oracle Cloud — región GRU/MXQ) o appliance físico en sede UPME</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>Lado MinEnergía — Equipo VPN</strong></td>
+      <td>Por definir (firewall/router con soporte IPSec IKEv2)</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="s3-3">3.3 Rangos de Red y Puertos Requeridos</h3>
+
+<div class="card-blue">
+  <h4>Información requerida de MinEnergía / CargaME</h4>
+  <p>Para completar la configuración del túnel VPN, la UPME solicita al Ministerio de Minas y Energía los siguientes datos de red:</p>
+  <ul>
+    <li><strong>IP pública del VPN Gateway</strong> del lado MinEnergía / CargaME</li>
+    <li><strong>Rango de red privada (CIDR)</strong> de los servidores de CargaME (ej. <code>10.X.X.0/24</code>)</li>
+    <li><strong>IPs privadas o nombres DNS internos</strong> de los servidores que expondrán las APIs</li>
+    <li><strong>Puerto TCP</strong> en el que escucha el API server de CargaME (estándar: <code>443</code> HTTPS)</li>
+  </ul>
+</div>
+
+<div class="card-orange">
+  <h4>Información que proveerá la UPME</h4>
+  <ul>
+    <li><strong>IP pública del VPN Gateway</strong> de la plataforma UPME (OCI VPN Connect — por confirmar post-aprovisionamiento)</li>
+    <li><strong>Rango de red privada (CIDR)</strong> de la plataforma UPME: <code>10.0.0.0/16</code> (VCN OCI — por confirmar)</li>
+    <li><strong>IPs de origen permitidas:</strong> IPs de los pods de los servicios de ingesta y gestión de CPOs dentro de OKE (Oracle Kubernetes Engine)</li>
+  </ul>
+</div>
+
+<table>
+  <thead><tr><th>Tráfico</th><th>Origen</th><th>Destino</th><th>Puerto</th><th>Protocolo</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Consulta API operadores (listado)</td>
+      <td>Red privada UPME (OKE — namespace electromovilidad)</td>
+      <td>Red privada CargaME — API server</td>
+      <td>443/TCP</td>
+      <td>HTTPS sobre túnel IPSec</td>
+    </tr>
+    <tr>
+      <td>Consulta API operador por NIT</td>
+      <td>Red privada UPME (OKE — namespace electromovilidad)</td>
+      <td>Red privada CargaME — API server</td>
+      <td>443/TCP</td>
+      <td>HTTPS sobre túnel IPSec</td>
+    </tr>
+    <tr>
+      <td>IKE (negociación VPN)</td>
+      <td>VPN Gateway UPME</td>
+      <td>VPN Gateway MinEnergía</td>
+      <td>500/UDP, 4500/UDP</td>
+      <td>IKEv2</td>
+    </tr>
+    <tr>
+      <td>ESP (tráfico cifrado)</td>
+      <td>VPN Gateway UPME</td>
+      <td>VPN Gateway MinEnergía</td>
+      <td>—</td>
+      <td>IP Protocol 50 (ESP)</td>
+    </tr>
+    <tr>
+      <td>DPD / Keep-alive</td>
+      <td>VPN Gateway UPME</td>
+      <td>VPN Gateway MinEnergía</td>
+      <td>500/UDP</td>
+      <td>IKEv2</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="divider"></div>
+
+<!-- ========== PASOS SIGUIENTES ========== -->
+<h2 id="s4"><span class="section-num">4</span>Pasos Siguientes Solicitados a MinEnergía</h2>
+
+<p>La UPME solicita al Ministerio de Minas y Energía confirmar la viabilidad de los ítems descritos en este documento y gestionar internamente las siguientes acciones, a fin de avanzar con el proceso de integración entre ambas plataformas:</p>
+
+<table>
+  <thead><tr><th>#</th><th>Acción solicitada a MinEnergía / CargaME</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><strong>Confirmación de viabilidad técnica</strong></td>
+      <td>Confirmar que las dos APIs descritas en la Sección 2 (<code>GET /operadores</code> y <code>GET /operadores/{nro_identificacion}</code>) pueden ser desarrolladas y expuestas para consumo exclusivo de la plataforma UPME.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>Confirmación de viabilidad de la VPN</strong></td>
+      <td>Confirmar que es posible habilitar una VPN Site-to-Site IPSec IKEv2 entre la infraestructura del Ministerio de Minas y Energía (CargaME) y la plataforma de electromovilidad de la UPME, con las especificaciones descritas en la Sección 3.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>Provisión de credenciales OAuth 2.0</strong></td>
+      <td>Una vez confirmada la viabilidad, proveer al equipo UPME las credenciales <code>client_id</code> y <code>client_secret</code> para el ambiente de Sandbox, a través del canal seguro que acuerden ambas partes.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>Intercambio de datos de red para VPN</strong></td>
+      <td>Compartir los datos técnicos necesarios para la configuración del túnel VPN: IP pública del VPN Gateway, CIDR de red privada de CargaME, y puerto de exposición del API server.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><strong>Mesa de trabajo técnica</strong></td>
+      <td>Proponer una fecha para una reunión técnica entre los equipos de MinEnergía/CargaME y UPME, con el fin de alinear los detalles del contrato de API, la topología de red de la VPN y el plan de pruebas de integración.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="info">
+  <strong>Contexto regulatorio:</strong> La integración con CargaME es una dependencia bloqueante para la certificación de CPOs en la Plataforma de Electromovilidad de la UPME. De acuerdo con la Resolución 40559/2025, la plataforma debe estar operativa en noviembre de 2026. La confirmación oportuna de la viabilidad de estos ítems es indispensable para cumplir con los plazos regulatorios establecidos por el Ministerio de Minas y Energía.
+</div>
+
+<div class="divider"></div>
+
+
+</div><!-- /doc -->
+</body>
+</html>

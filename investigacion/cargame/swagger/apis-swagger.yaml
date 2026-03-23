@@ -1,0 +1,392 @@
+openapi: 3.0.0
+info:
+  title: API CargaME - Datos Maestros de Operadores (Autenticada)
+  description: API gubernamental para consultar la información estática, legal y administrativa de operadores, estaciones, cargadores y conectores. Incluye capa de seguridad OAuth 2.0.
+  version: 1.3.0
+servers:
+  - url: https://api.cargame.gov.co/v1
+    description: Servidor de Producción
+
+# 🔒 Se aplica la seguridad a nivel global (todas las rutas la pedirán por defecto)
+security:
+  - bearerAuth: []
+
+paths:
+  # 🔑 NUEVO ENDPOINT DE AUTENTICACIÓN
+  /oauth/token:
+    post:
+      summary: Generar token de acceso (OAuth 2.0 - Client Credentials)
+      description: Permite a las aplicaciones cliente obtener un token JWT válido para consumir los servicios de CargaME.
+      security: [] # Este endpoint es público (no requiere token previo)
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - grant_type
+                - client_id
+                - client_secret
+              properties:
+                grant_type:
+                  type: string
+                  example: "client_credentials"
+                client_id:
+                  type: string
+                  description: Identificador de la aplicación cliente (ej. Plataforma Electromovilidad).
+                  example: "app-electromovilidad-01"
+                client_secret:
+                  type: string
+                  description: Clave secreta de la aplicación cliente.
+                  example: "secret-key-123456"
+      responses:
+        '200':
+          description: Token generado exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  token_type:
+                    type: string
+                    example: "Bearer"
+                  expires_in:
+                    type: integer
+                    description: Tiempo de expiración en segundos (ej. 1 hora).
+                    example: 3600
+        '401':
+          description: Credenciales inválidas.
+
+  /operadores:
+    get:
+      summary: Obtener el listado maestro de todos los operadores.
+      description: Retorna la lista de todos los operadores registrados en estado habilitado. Requiere token Bearer en la cabecera Authorization.
+      responses:
+        '200':
+          description: Respuesta exitosa. Devuelve un arreglo de Operadores.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Operador'
+              example:
+                - id_operador: 21
+                  nombres: "EMPRESAS PÚBLICAS DE MEDELLIN E.S.P."
+                  tipo_identificacion: "NIT"
+                  nro_identificacion: "890904996-1"
+                  direccion: "Cra. 25 A Nro. 1a Sur – 45"
+                  departamento: "ANTIOQUIA"
+                  municipio: "MEDELLIN"
+                  fecha_creacion: "2022-08-02T16:36:08Z"
+                  tipo_usuario: "Empresa energía convencional - Estaciones Carga"
+                  estado_habilitacion: "Activo"
+                  sitio_web: "https://www.epm.com.co"
+                  contactos:
+                    - nombre: "Soporte Técnico EPM"
+                      rol: "Administrador OCPI"
+                      telefono: "+576044444115"
+                      email: "movilidadelectrica@epm.com.co"
+                  estaciones:
+                    - id_estacion: "E408433E-F36B-1410-83CF-008C0C1C7C12"
+                      nombre: "El Tesoro"
+                      fotografia_url: "https://storage.cargame.gov.co/photos/epm_tesoro.jpg"
+                      direccion: "Cra. 25 A Nro. 1a Sur – 45"
+                      departamento: "ANTIOQUIA"
+                      municipio: "MEDELLIN"
+                      codigo_postal: "050022"
+                      latitud: 6.1968616
+                      longitud: -75.5601027
+                      tipo_ubicacion_nombre: "Centro comercial"
+                      acceso: "Debe estar inscrito en la oferta de carga publica de EPM"
+                      condiciones_uso: "Sujeto a disponibilidad de parqueaderos."
+                      cobro_parqueadero: true
+                      horarios_operacion:
+                        - dias: "Lunes a Domingo"
+                          hora_apertura: "08:00:00"
+                          hora_cierre: "22:00:00"
+                      documento_declaracion_cumplimiento_url: true
+                      documento_certificado_conformidad_url: true
+                      estado_administrativo: "Activo"
+                      cargadores:
+                        - id_cargador: "CHG-EPM-001"
+                          marca: "ABB"
+                          protocolo_comunicacion: "OCPP 1.6J"
+                          estado_administrativo: "Activo"
+                          conectores:
+                            - id_conector: "A9F2C19C-96BE-4B0B-A4D4-F87210D8A4FB"
+                              tipo_conector: "Tipo 2 - IEC 62196"
+                              tipo_corriente: "AC"
+                              potencia_maxima_kw: 43.0
+                              tarifa_kwh: "1750.00"
+                              unidad_precio: 1750.00
+                              estado_administrativo: "Activo"
+                            - id_conector: "B8F2C19C-96BE-4B0B-A4D4-F87210D8A4FC"
+                              tipo_conector: "CCS Combo 1"
+                              tipo_corriente: "DC"
+                              potencia_maxima_kw: 50.0
+                              tarifa_kwh: "1750.00"
+                              unidad_precio: 1750.00
+                              estado_administrativo: "Activo"
+        '401':
+          description: No autorizado. Token Bearer ausente, inválido o expirado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                codigo: 401
+                mensaje: "Token de acceso inválido o expirado. Genere un nuevo token en /oauth/token."
+        '403':
+          description: Prohibido. El cliente autenticado no tiene permisos para acceder a este recurso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                codigo: 403
+                mensaje: "No tiene permisos suficientes para consultar el listado de operadores."
+        '500':
+          description: Error interno del servidor CargaME.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                codigo: 500
+                mensaje: "Error interno del servidor. Intente nuevamente en unos minutos."
+
+  /operadores/{nro_identificacion}:
+    get:
+      summary: Consultar operador maestro por número de identificación.
+      description: Retorna toda la información jerárquica de un operador específico. Requiere token Bearer.
+      parameters:
+        - name: nro_identificacion
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Respuesta exitosa.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operador'
+        '401':
+          description: No autorizado. Token Bearer ausente, inválido o expirado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                codigo: 401
+                mensaje: "Token de acceso inválido o expirado. Genere un nuevo token en /oauth/token."
+        '403':
+          description: Prohibido. El cliente autenticado no tiene permisos para acceder a este recurso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                codigo: 403
+                mensaje: "No tiene permisos suficientes para consultar este operador."
+        '404':
+          description: Operador no encontrado con el número de identificación indicado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                codigo: 404
+                mensaje: "No se encontró ningún operador con el NIT proporcionado."
+        '500':
+          description: Error interno del servidor CargaME.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                codigo: 500
+                mensaje: "Error interno del servidor. Intente nuevamente en unos minutos."
+
+components:
+  # 🛡️ DEFINICIÓN DEL ESQUEMA DE SEGURIDAD
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: "Ingresa tu token JWT generado en el endpoint /oauth/token. Ejemplo: Bearer eyJhbGci..."
+
+  schemas:
+    Error:
+      type: object
+      description: Estructura estándar de respuesta de error.
+      properties:
+        codigo:
+          type: integer
+          description: Código HTTP del error.
+          example: 404
+        mensaje:
+          type: string
+          description: Descripción legible del error ocurrido.
+          example: "Recurso no encontrado."
+
+    Operador:
+      type: object
+      properties:
+        id_operador:
+          type: integer
+        nombres:
+          type: string
+        tipo_identificacion:
+          type: string
+        nro_identificacion:
+          type: string
+        direccion:
+          type: string
+        departamento:
+          type: string
+        municipio:
+          type: string
+        fecha_creacion:
+          type: string
+          format: date-time
+        tipo_usuario:
+          type: string
+        estado_habilitacion:
+          type: string
+        sitio_web:
+          type: string
+          format: uri
+        contactos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contacto'
+        estaciones:
+          type: array
+          items:
+            $ref: '#/components/schemas/Estacion'
+
+    Contacto:
+      type: object
+      properties:
+        nombre:
+          type: string
+        rol:
+          type: string
+        telefono:
+          type: string
+        email:
+          type: string
+          format: email
+
+    Estacion:
+      type: object
+      properties:
+        id_estacion:
+          type: string
+          format: uuid
+        nombre:
+          type: string
+        fotografia_url:
+          type: string
+          format: uri
+        direccion:
+          type: string
+        departamento:
+          type: string
+        municipio:
+          type: string
+        codigo_postal:
+          type: string
+        latitud:
+          type: number
+          format: float
+          description: Coordenada geográfica de latitud en formato decimal (WGS84).
+          example: 6.1968616
+        longitud:
+          type: number
+          format: float
+          description: Coordenada geográfica de longitud en formato decimal (WGS84).
+          example: -75.5601027
+        tipo_ubicacion_nombre:
+          type: string
+        acceso:
+          type: string
+        condiciones_uso:
+          type: string
+        cobro_parqueadero:
+          type: boolean
+        horarios_operacion:
+          type: array
+          items:
+            $ref: '#/components/schemas/Horario'
+        documento_declaracion_cumplimiento_url:
+          type: boolean
+        documento_certificado_conformidad_url:
+          type: boolean
+        estado_administrativo:
+          type: string
+        cargadores:
+          type: array
+          description: Lista de cargadores físicos instalados en esta estación.
+          items:
+            $ref: '#/components/schemas/Cargador'
+
+    Cargador:
+      type: object
+      properties:
+        id_cargador:
+          type: string
+          description: Identificador único del cargador (EVSE).
+        marca:
+          type: string
+          description: Marca del fabricante del equipo (ej. ABB, Circontrol).
+        protocolo_comunicacion:
+          type: string
+          description: Versión del protocolo (ej. OCPP 1.6J, OCPP 2.0.1).
+        estado_administrativo:
+          type: string
+        conectores:
+          type: array
+          description: Lista de mangueras/conectores que posee este cargador.
+          items:
+            $ref: '#/components/schemas/Conector'
+
+    Horario:
+      type: object
+      properties:
+        dias:
+          type: string
+        hora_apertura:
+          type: string
+        hora_cierre:
+          type: string
+
+    Conector:
+      type: object
+      properties:
+        id_conector:
+          type: string
+          format: uuid
+        tipo_conector:
+          type: string
+        tipo_corriente:
+          type: string
+          enum: [AC, DC]
+        potencia_maxima_kw:
+          type: number
+          format: float
+        tarifa_kwh:
+          type: string
+        unidad_precio:
+          type: number
+          format: float
+        estado_administrativo:
+          type: string

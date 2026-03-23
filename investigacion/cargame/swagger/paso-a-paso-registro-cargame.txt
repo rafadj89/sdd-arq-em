@@ -1,0 +1,70 @@
+¡Claro que sí! Redactar un instructivo claro es fundamental para que los operadores (CPOs) entiendan que **CargaME es la puerta de entrada obligatoria** y el sistema maestro de validación antes de poder aparecer en la plataforma nacional de electromovilidad.
+
+---
+
+# 📄 Instructivo Paso a Paso: Registro y Habilitación de Operadores en CargaME
+
+**Objetivo:** Guía detallada para Operadores de Puntos de Carga (CPOs) sobre el proceso de registro, carga de información y validación en el portal gubernamental **CargaME**. 
+*Nota Importante: Completar este proceso y obtener el estado "Habilitado" por parte del Ministerio de Minas y Energía es un requisito indispensable para que su infraestructura sea visible en la Plataforma Nacional de Electromovilidad.*
+
+---
+
+### 📍 FASE 1: Registro Corporativo del Operador
+El primer paso es crear el perfil de su empresa dentro de la plataforma para obtener las credenciales de acceso.
+
+1. **Ingreso de Datos Generales:** Diligencie la información básica de la empresa (Razón Social, NIT, Dirección corporativa, Sitio web).
+2. **Registro de Contactos:** Añada los datos de los responsables de la operación. Se recomienda incluir al menos:
+   * Un contacto Comercial/Administrativo.
+   * Un contacto Técnico (quien gestionará la interoperabilidad y reportes).
+3. **Carga de Documentos Legales:** Suba una copia actualizada del **RUT** (Registro Único Tributario) en formato PDF.
+4. *Resultado:* Una vez enviada la solicitud, el sistema creará su cuenta de Operador en CargaME.
+
+---
+
+### 📍 FASE 2: Registro de Estaciones de Carga
+Una vez dentro de su cuenta, deberá registrar cada una de sus ubicaciones físicas (Estaciones).
+
+1. **Información Visual y Geográfica:**
+   * Suba una **fotografía** clara y reciente de la estación.
+   * Seleccione el Departamento y Municipio.
+   * Ingrese la dirección física y **ubique el punto exacto en el mapa interactivo** (esto guardará automáticamente la Latitud y Longitud correctas).
+2. **Condiciones de Operación:**
+   * Indique los **Horarios de operación** (ej. Lunes a Domingo, 00:00 a 23:59).
+   * Especifique si la estación cuenta con **Cobro por parqueadero** (Sí/No) y su tarifa (si aplica).
+   * Añada condiciones de acceso o comentarios (ej. "Acceso exclusivo con App del operador", "Ubicado en el sótano 2").
+3. **Carga de Soportes Normativos (¡Crítico para la aprobación!):**
+   * 📎 **Declaración de cumplimiento:** Documento firmado donde el operador certifica que la estación cumple con todas las regulaciones del Ministerio y normativas eléctricas vigentes.
+   * 📎 **Certificado de conformidad de productos:** Documento (tipo RETIE u homólogos) que garantiza que los equipos instalados son certificados y seguros.
+
+---
+
+### 📍 FASE 3: Registro de Cargadores y Conectores
+Dentro de cada Estación creada, deberá detallar la infraestructura técnica jerárquicamente:
+
+1. **Creación del Cargador (Equipo físico):**
+   * Registre el cargador indicando su **Marca** (ej. ABB, Circontrol, Wallbox) y el **Protocolo de Comunicación** que soporta (ej. OCPP 1.6J).
+2. **Adición de Conectores (Mangueras/Tomas):**
+   * Por cada cargador, agregue los conectores disponibles especificando:
+     * **Tipo de Conector:** (CCS Combo 1, CHAdeMO, Tipo 2, etc.).
+     * **Tipo de Corriente:** AC (Alterna) o DC (Directa).
+     * **Potencia Máxima (kW):** Capacidad máxima de entrega de energía.
+     * **Tarifa de Servicio:** Costo por kWh consumido o la unidad de medida que aplique.
+
+---
+
+### 📍 FASE 4: Proceso de Validación (La Máquina de Estados)
+Una vez usted envíe toda la información de sus estaciones, cargadores y conectores, esta entrará a un proceso de auditoría y calidad por parte del Ministerio. 
+
+El sistema maneja los siguientes estados que usted podrá monitorear:
+
+* 🟡 **EN REVISIÓN:** Su información ha sido recibida y un funcionario del Ministerio está validando que los documentos (RUT, Declaraciones, Certificados) estén vigentes, firmados y correctamente diligenciados. En este estado, *su estación aún no es pública*.
+* 🔴 **REQUIERE AJUSTES:** Si el Ministerio detecta una inconsistencia (ej. ubicación incorrecta en el mapa o documento ilegible), le enviará una notificación con los comentarios respectivos para que usted ingrese y corrija la información.
+* 🟢 **HABILITADA:** ¡Proceso exitoso! El Ministerio certifica que la información tiene un 100% de calidad. **Solo en este momento**, CargaME emitirá una notificación automática (Webhook) a la Plataforma Nacional de Electromovilidad, y su estación aparecerá inmediatamente en el mapa público ciudadano.
+
+---
+
+### 🚀 Siguientes Pasos (Interoperabilidad Tiempo Real)
+Recuerde que este proceso en CargaME gestiona sus **datos maestros (estáticos)**. 
+
+Una vez su estación esté `HABILITADA` en CARGAME, el equipo de electromovilidad deberá consumir la información de cada CPO de manera programada diariamente, y así habilitar la interoperabilidad para el CPO de su(s) estación(es) de los cargador(es) y conector(es) habilitados.
+El equipo de CARGAME debe exponer inforemación solo HABILITADA de cada proveedor.

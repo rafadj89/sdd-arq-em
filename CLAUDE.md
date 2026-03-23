@@ -60,19 +60,66 @@ Locations, EVSEs, Tariffs, Sessions, CDRs, Tokens, Commands
 
 ### Estructura del Proyecto
 ```
-UPME/
-├── CLAUDE.md                              # Este archivo — configuración del agente
-├── specs/                                 # Documentación técnica detallada
-│   ├── resolucion-40559-contexto.md       # Plazos, actores, módulos, seguridad
-│   ├── guia-integracion-cpo.md            # Onboarding, seguridad multi-capa, rate limits, SLA
-│   ├── stack-tecnologico.md               # Stack completo con justificaciones
-│   ├── areas-colaboracion.md              # Legal, Seguridad IT, España, CPOs
-│   └── README.md                          # Índice de specs
-├── Presentacion Feb 2026 release 2.html   # Presentación interactiva (roadmap, arquitectura, dashboards)
-└── sandbox-electromovility/               # Sandbox app (React + Express + TypeScript)
-    ├── client/                            # React SPA (pages, components, hooks)
-    ├── server/                            # Express API backend
-    └── shared/                            # Tipos compartidos client/server
+UPME-2026/
+├── CLAUDE.md                                          # Este archivo — configuración del agente
+│
+├── entregables/                                       # Entregables oficiales versionados
+│   ├── E01-presentacion-kickoff/                      # Presentación Kickoff Feb 2026
+│   │   ├── Presentacion-Feb2026-v0.html               # Versión original
+│   │   ├── Presentacion-Feb2026-v1.html               # Release 1
+│   │   ├── Presentacion-Feb2026-v2.html               # Release 2
+│   │   └── Presentacion-Feb2026-v3.html               # ★ VIGENTE — Release 3
+│   ├── E02-documento-arquitectura/                    # Documento de Arquitectura
+│   │   ├── Documento-Arquitectura-UPME-v1.html        # ★ VIGENTE
+│   │   ├── Arq-UPME-ToBe-v1.drawio.html              # Diagrama drawio
+│   │   └── Arq-UPME-ToBe-v1.svg                      # Diagrama SVG
+│   ├── E03-well-architected-framework/                # OCI Well-Architected Framework
+│   │   ├── UPME-OCI-WAF-v1.html                      # Versión 1
+│   │   ├── UPME-OCI-WAF-v1.pdf
+│   │   ├── UPME-OCI-WAF-v2.html                      # Versión 2
+│   │   ├── UPME-OCI-WAF-v3-min.html                  # Versión Min (para Ministerio)
+│   │   ├── UPME-OCI-WAF-v4-min.html                  # ★ VIGENTE — Min v2
+│   │   └── UPME-OCI-WAF-v4-min-vertical.pdf          # ★ VIGENTE — PDF
+│   ├── E04-estimacion-datalake/                       # Estimación Data Lake OCI
+│   │   └── Estimacion-DataLake-OCI-v1.html           # ★ VIGENTE
+│   ├── E05-seguridad-arquitectura/                    # Diagramas de Seguridad
+│   │   ├── Diagramas-Seguridad-Arquitectura-v1.html  # ★ VIGENTE
+│   │   └── Diagrams-v1.html
+│   └── E06-project-tracker/                          # Project Tracker
+│       └── UPME-Project-Tracker-v1.html              # ★ VIGENTE
+│
+├── specs/                                             # Especificaciones técnicas
+│   ├── README.md                                      # Índice de specs
+│   ├── resolucion-40559-contexto.md                  # Plazos, actores, módulos, seguridad
+│   ├── guia-integracion-cpo.md                       # Onboarding, seguridad multi-capa, rate limits, SLA
+│   ├── stack-tecnologico.md                          # Stack completo con justificaciones
+│   ├── areas-colaboracion.md                         # Legal, Seguridad IT, España, CPOs
+│   ├── arquitectura-c4-ddd.md                        # Arquitectura C4 y DDD
+│   ├── modelo-costos-oci-upme.md                     # Modelo de costos OCI
+│   ├── estimacion-oracle-23ai-upme.md                # Estimación Oracle 23ai
+│   └── comparativa-postgresql-vs-oracle23ai.md       # Comparativa BD
+│
+├── investigacion/                                     # Investigación y análisis
+│   └── cargame/                                       # Análisis de Cárgame
+│       ├── informes/                                  # Informes HTML (APIs, Seguridad)
+│       ├── scripts/                                   # Scripts de scraping (py, js)
+│       └── data/                                      # Datos extraídos (JSON, CSV, Excel)
+│
+├── sandbox-electromovility/                           # App Sandbox OCPI (React + Express + TypeScript)
+│   ├── client/                                        # React SPA (pages, components, hooks)
+│   ├── server/                                        # Express API backend
+│   └── shared/                                        # Tipos compartidos client/server
+│
+├── tracker-electromovilidad/                          # App Tracker del proyecto
+│
+├── assets/                                            # Activos compartidos
+│   ├── logo-upme.png
+│   ├── OCI_Icons.pptx
+│   └── oci-drawio/                                   # OCI Style Guide para Drawio
+│
+└── tools/                                             # Scripts de construcción
+    ├── generate-pdf.js                                # Generador de PDFs
+    └── package.json
 ```
 
 ---
@@ -1345,5 +1392,12 @@ Antes de responder a cualquier solicitud, consulta estos archivos si la pregunta
 | `specs/guia-integracion-cpo.md` | Onboarding CPO, seguridad multi-capa, rate limits, SLA |
 | `specs/stack-tecnologico.md` | Stack completo con justificaciones por tecnología |
 | `specs/areas-colaboracion.md` | Legal, Seguridad IT, España, CPOs — matriz de participación |
-| `Presentacion Feb 2026 release 2.html` | Roadmap 3 visiones, DevOps, arquitectura OCI, dashboard |
-| `sandbox-electromovility/` | Sandbox app (React + Express + TypeScript) |
+| `specs/arquitectura-c4-ddd.md` | Arquitectura C4 Model y Domain-Driven Design |
+| `specs/modelo-costos-oci-upme.md` | Modelo de costos OCI para el proyecto |
+| `entregables/E01-presentacion-kickoff/Presentacion-Feb2026-v3.html` | Roadmap 3 visiones, DevOps, arquitectura OCI, dashboard (★ vigente) |
+| `entregables/E02-documento-arquitectura/Documento-Arquitectura-UPME-v1.html` | Documento de arquitectura detallado |
+| `entregables/E03-well-architected-framework/UPME-OCI-WAF-v4-min.html` | OCI Well-Architected Framework (★ vigente) |
+| `entregables/E04-estimacion-datalake/Estimacion-DataLake-OCI-v1.html` | Estimación y diseño del Data Lake en OCI |
+| `entregables/E05-seguridad-arquitectura/Diagramas-Seguridad-Arquitectura-v1.html` | Diagramas de seguridad de la arquitectura |
+| `investigacion/cargame/informes/` | Informes de análisis de APIs y seguridad de Cárgame |
+| `sandbox-electromovility/` | App Sandbox OCPI (React + Express + TypeScript) |
