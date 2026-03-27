@@ -1,0 +1,372 @@
+{
+  "info": {
+    "_postman_id": "upme-cargame-prod-collection-2026",
+    "name": "CargaME API — Produccion UPME",
+    "description": "Collection de produccion para integracion UPME con CargaME.\nBase URL: https://siveeic.minenergia.gov.co:3011/crg\nToken: Servicio PowerBI (sin expiracion)\n\nPrioridad de endpoints para el proyecto de interoperabilidad.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://siveeic.minenergia.gov.co:3011/crg" },
+    { "key": "token", "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MCwidXN1YXJpbyI6InBvd2VyYmkiLCJyb2xlIjoiaW50ZWxsaWdlbmNlIiwiaWF0IjoxNTk0ODQ5NjMxfQ.UY3BLtqi5zdxpRFaT9XIsYvQIV4gPPXN6iO39AlymMY" }
+  ],
+  "item": [
+    {
+      "name": "00 — Health Check",
+      "item": [
+        {
+          "name": "Ping — Departamentos (publico, sin auth)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/departamento/0"
+          }
+        },
+        {
+          "name": "Ping — Municipios Bogota (publico, sin auth)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/municipio/0/11"
+          }
+        }
+      ]
+    },
+    {
+      "name": "01 — Auth (Login)",
+      "item": [
+        {
+          "name": "POST Login (requiere credenciales)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const data = pm.response.json();",
+                  "  if (data.token) {",
+                  "    pm.environment.set('token', data.token);",
+                  "    console.log('Token guardado exitosamente');",
+                  "  }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\",\n  \"pre\": \"\"\n}"
+            },
+            "url": "{{baseUrl}}/logueo"
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 — Estaciones de Carga (P1)",
+      "item": [
+        {
+          "name": "GET Resumen TODAS las estaciones",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json, text/plain, */*" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "authorization", "value": "{{token}}" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/resumenestacionescarga/0/0/0/0/"
+          }
+        },
+        {
+          "name": "GET Resumen estaciones BOGOTA (mpio 11001)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json, text/plain, */*" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "authorization", "value": "{{token}}" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/resumenestacionescarga/0/0/0/11001/"
+          }
+        },
+        {
+          "name": "GET Resumen estaciones MEDELLIN (mpio 5001)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json, text/plain, */*" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "authorization", "value": "{{token}}" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/resumenestacionescarga/0/0/0/5001/"
+          }
+        },
+        {
+          "name": "GET Resumen por departamento CUNDINAMARCA (depto 25)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json, text/plain, */*" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "authorization", "value": "{{token}}" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/resumenestacionescarga/0/0/25/0/"
+          }
+        },
+        {
+          "name": "GET Estacion por ID (id=1)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json, text/plain, */*" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "authorization", "value": "{{token}}" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/estacioncarga/1/0/0/0"
+          }
+        },
+        {
+          "name": "GET TODAS las estaciones (detalle)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json, text/plain, */*" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "authorization", "value": "{{token}}" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/estacioncarga/0/0/0/0"
+          }
+        },
+        {
+          "name": "GET Estaciones por operador (operador=1)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json, text/plain, */*" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "authorization", "value": "{{token}}" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/estacionoperador/0/1/0/0"
+          }
+        },
+        {
+          "name": "GET Puntos de carga (estacion=1)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json, text/plain, */*" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "authorization", "value": "{{token}}" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/puntocarga/0/1"
+          }
+        },
+        {
+          "name": "GET Conectores (punto=1, estacion=1)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json, text/plain, */*" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "authorization", "value": "{{token}}" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/conectorcarga/0/1/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 — Operadores / CPOs (P2)",
+      "item": [
+        {
+          "name": "GET TODOS los operadores",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json, text/plain, */*" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "authorization", "value": "{{token}}" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/operador/0"
+          }
+        },
+        {
+          "name": "GET Operador por ID (id=1)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json, text/plain, */*" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "authorization", "value": "{{token}}" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/operador/1"
+          }
+        },
+        {
+          "name": "GET Tipos de operador",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json, text/plain, */*" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "authorization", "value": "{{token}}" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/tipo_operador/0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 — Catalogos Publicos (P3, sin auth)",
+      "item": [
+        {
+          "name": "GET TODOS los departamentos",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/departamento/0"
+          }
+        },
+        {
+          "name": "GET Municipios de Cundinamarca (depto=25)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/municipio/0/25"
+          }
+        },
+        {
+          "name": "GET Municipios de Antioquia (depto=5)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/municipio/0/5"
+          }
+        },
+        {
+          "name": "GET Tipos de ubicacion",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/tipoubicacion/0"
+          }
+        },
+        {
+          "name": "GET Tipos de estacion",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/tipoestacion/0"
+          }
+        },
+        {
+          "name": "GET Modelos de tarifa",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/modelotarifa/0"
+          }
+        },
+        {
+          "name": "GET Tipos de estandar (conectores)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/tipoestandar/0/0"
+          }
+        },
+        {
+          "name": "GET Tipos de identificacion",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/tipo_identificacion/0"
+          }
+        },
+        {
+          "name": "GET Tipos de persona",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Origin", "value": "{{origin}}" },
+              { "key": "Referer", "value": "{{origin}}/" }
+            ],
+            "url": "{{baseUrl}}/tipopersona/0"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "info": {
+    "_postman_id": "63f7f438-f293-4f03-97ee-dc1f51130944",
+    "name": "API Cargave",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección generada desde src/routers/*.js"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3011/crg" },
+    { "key": "token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "POST /logueo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const data = pm.response.json();",
+                  "  if (data.token) { pm.environment.set('token', data.token); }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\",\n  \"pre\": \"{{pre}}\"\n}"
+            },
+            "url": "{{baseUrl}}/logueo"
+          }
+        },
+        {
+          "name": "PUT /recuperar/:id",
+          "request": {
+            "method": "PUT",
+            "auth": {"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {"mode":"raw","raw":"{}"},
+            "url": "{{baseUrl}}/recuperar/{{id}}"
+          }
+        },
+        {
+          "name": "POST /validar",
+          "request": {
+            "method": "POST",
+            "auth": {"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {"mode":"raw","raw":"{\n  \"Id\": \"usuario\",\n  \"Registro\": \"clave\"\n}"},
+            "url": "{{baseUrl}}/validar"
+          }
+        },
+        {
+          "name": "POST /solicitud",
+          "request": {
+            "method": "POST",
+            "auth": {"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {"mode":"raw","raw":"{}"},
+            "url": "{{baseUrl}}/solicitud"
+          }
+        },
+        {
+          "name": "PUT /primeringreso/:id",
+          "request": {
+            "method": "PUT",
+            "auth": {"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {"mode":"raw","raw":"{}"},
+            "url": "{{baseUrl}}/primeringreso/{{id}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "General",
+      "item": [
+        { "name":"GET /consentimiento", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/consentimiento/{{id}}/{{id_usuario}}/{{modulo}}"}},
+        { "name":"POST /consentimiento", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/consentimiento/{{id}}/{{id_usuario}}/{{modulo}}"}},
+        { "name":"GET /departamento", "request":{"method":"GET","url":"{{baseUrl}}/departamento/{{id}}"}},
+        { "name":"GET /municipio", "request":{"method":"GET","url":"{{baseUrl}}/municipio/{{id}}/{{id_departamento}}"}},
+        { "name":"GET /municipiofull", "request":{"method":"GET","url":"{{baseUrl}}/municipiofull/{{id}}/{{id_departamento}}"}},
+        { "name":"GET /periodo", "request":{"method":"GET","url":"{{baseUrl}}/periodo/{{id}}"}},
+        { "name":"GET /periodoanio", "request":{"method":"GET","url":"{{baseUrl}}/periodoanio/{{id}}"}},
+        { "name":"GET /fuentefinancia", "request":{"method":"GET","url":"{{baseUrl}}/fuentefinancia/{{id}}/{{fuente}}"}},
+        { "name":"GET /tiposolucion", "request":{"method":"GET","url":"{{baseUrl}}/tiposolucion/{{id}}"}},
+        { "name":"GET /ciclofactura", "request":{"method":"GET","url":"{{baseUrl}}/ciclofactura/{{id}}"}},
+        { "name":"GET /servicioscomparto", "request":{"method":"GET","url":"{{baseUrl}}/servicioscomparto/{{id}}"}},
+        { "name":"GET /niveleducacion", "request":{"method":"GET","url":"{{baseUrl}}/niveleducacion/{{id}}"}},
+        { "name":"GET /genero", "request":{"method":"GET","url":"{{baseUrl}}/genero/{{id}}"}},
+        { "name":"GET /tipodosimetro", "request":{"method":"GET","url":"{{baseUrl}}/tipodosimetro/{{id}}"}},
+        { "name":"GET /tecnodosimetro", "request":{"method":"GET","url":"{{baseUrl}}/tecnodosimetro/{{id}}"}},
+        { "name":"GET /practicasri", "request":{"method":"GET","url":"{{baseUrl}}/practicasri/{{id}}"}},
+        { "name":"GET /ciclodosimetria", "request":{"method":"GET","url":"{{baseUrl}}/ciclodosimetria/{{id}}"}},
+        { "name":"GET /tipoubicacion", "request":{"method":"GET","url":"{{baseUrl}}/tipoubicacion/{{id}}"}},
+        { "name":"GET /tipoestacion", "request":{"method":"GET","url":"{{baseUrl}}/tipoestacion/{{id}}"}},
+        { "name":"GET /modelotarifa", "request":{"method":"GET","url":"{{baseUrl}}/modelotarifa/{{id}}"}},
+        { "name":"GET /tipopersona", "request":{"method":"GET","url":"{{baseUrl}}/tipopersona/{{id}}"}},
+        { "name":"GET /tipoestandar", "request":{"method":"GET","url":"{{baseUrl}}/tipoestandar/{{id}}/{{nombre}}"}},
+        { "name":"GET /canalmanual", "request":{"method":"GET","url":"{{baseUrl}}/canalmanual/{{id}}/{{tipo}}"}},
+        { "name":"POST /contactoestaciones", "request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/contactoestaciones/{{id}}"}}
+      ]
+    },
+    {
+      "name": "Parametros",
+      "item": [
+        { "name":"GET /variable", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/variable/{{id}}/{{tipo}}/{{nombre}}"}},
+        { "name":"POST /variable", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/variable/{{id}}/{{tipo}}/{{nombre}}"}},
+        { "name":"PUT /variable", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/variable/{{id}}/{{tipo}}/{{nombre}}"}},
+        { "name":"DELETE /variable", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/variable/{{id}}/{{tipo}}/{{nombre}}"}},
+
+        { "name":"GET /servicioweb", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/servicioweb/{{id}}/{{tipo}}"}},
+        { "name":"POST /servicioweb", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/servicioweb/{{id}}/{{tipo}}"}},
+        { "name":"PUT /servicioweb", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/servicioweb/{{id}}/{{tipo}}"}},
+        { "name":"DELETE /servicioweb", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/servicioweb/{{id}}/{{tipo}}"}},
+
+        { "name":"GET /txtbusqueda", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/txtbusqueda/{{id}}/{{tipo}}"}},
+        { "name":"POST /txtbusqueda", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/txtbusqueda/{{id}}/{{tipo}}"}},
+        { "name":"PUT /txtbusqueda", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/txtbusqueda/{{id}}/{{tipo}}"}},
+        { "name":"DELETE /txtbusqueda", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/txtbusqueda/{{id}}/{{tipo}}"}}
+      ]
+    },
+    {
+      "name": "Usuarios",
+      "item": [
+        { "name":"GET /tipo_usuario", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/tipo_usuario/{{id}}/{{mod}}"}},
+        { "name":"POST /tipo_usuario", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/tipo_usuario/{{id}}/{{mod}}"}},
+        { "name":"PUT /tipo_usuario", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/tipo_usuario/{{id}}/{{mod}}"}},
+        { "name":"DELETE /tipo_usuario", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/tipo_usuario/{{id}}/{{mod}}"}},
+
+        { "name":"GET /usuario", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/usuario/{{id}}/{{tipo_usuario}}"}},
+        { "name":"POST /usuario", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/usuario/{{id}}/{{tipo_usuario}}"}},
+        { "name":"PUT /usuario", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/usuario/{{id}}/{{tipo_usuario}}"}},
+        { "name":"DELETE /usuario", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/usuario/{{id}}/{{tipo_usuario}}"}},
+
+        { "name":"GET /tipo_identificacion", "request":{"method":"GET","url":"{{baseUrl}}/tipo_identificacion/{{id}}"}},
+        { "name":"GET /tipo_estado", "request":{"method":"GET","url":"{{baseUrl}}/tipo_estado/{{id}}"}},
+        { "name":"GET /coordinacion", "request":{"method":"GET","url":"{{baseUrl}}/coordinacion/{{id}}/{{tipo}}"}},
+        { "name":"GET /nombre_usuario", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/nombre_usuario/{{user}}/{{ident}}"}},
+        { "name":"GET /resumen_usuario", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/resumen_usuario/{{user}}/{{ident}}"}}
+      ]
+    },
+    {
+      "name": "Perfiles",
+      "item": [
+        { "name":"GET /permisos", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/permisos/{{id}}"}},
+        { "name":"GET /grupomenu", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/grupomenu/{{id}}"}},
+        { "name":"POST /grupomenu", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/grupomenu/{{id}}"}},
+        { "name":"PUT /grupomenu", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/grupomenu/{{id}}"}},
+        { "name":"DELETE /grupomenu", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/grupomenu/{{id}}"}},
+
+        { "name":"GET /enlacemenu", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/enlacemenu/{{id}}/{{id_grupo}}"}},
+        { "name":"POST /enlacemenu", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/enlacemenu/{{id}}/{{id_grupo}}"}},
+        { "name":"PUT /enlacemenu", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/enlacemenu/{{id}}/{{id_grupo}}"}},
+        { "name":"DELETE /enlacemenu", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/enlacemenu/{{id}}/{{id_grupo}}"}},
+
+        { "name":"GET /perfilmenu", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/perfilmenu/{{id}}/{{rol}}/{{enlace}}"}},
+        { "name":"POST /perfilmenu", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/perfilmenu/{{id}}/{{rol}}/{{enlace}}"}},
+        { "name":"PUT /perfilmenu", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/perfilmenu/{{id}}/{{rol}}/{{enlace}}"}},
+        { "name":"DELETE /perfilmenu", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/perfilmenu/{{id}}/{{rol}}/{{enlace}}"}}
+      ]
+    },
+    {
+      "name": "Operador",
+      "item": [
+        { "name":"GET /operador", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/operador/{{id}}"}},
+        { "name":"POST /operador", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/operador/{{id}}"}},
+        { "name":"PUT /operador", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/operador/{{id}}"}},
+        { "name":"DELETE /operador", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/operador/{{id}}"}},
+        { "name":"GET /tipo_operador", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/tipo_operador/{{id}}"}},
+
+        { "name":"GET /contactoop", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/contactoop/{{id}}/{{id_operador}}/{{tipo_identificacion}}/{{nro_identificacion}}"}},
+        { "name":"POST /contactoop", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/contactoop/{{id}}/{{id_operador}}/{{tipo_identificacion}}/{{nro_identificacion}}"}},
+        { "name":"PUT /contactoop", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/contactoop/{{id}}/{{id_operador}}/{{tipo_identificacion}}/{{nro_identificacion}}"}},
+        { "name":"DELETE /contactoop", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/contactoop/{{id}}/{{id_operador}}/{{tipo_identificacion}}/{{nro_identificacion}}"}}
+      ]
+    },
+    {
+      "name": "Estaciones de carga",
+      "item": [
+        { "name":"GET /estacionoperador", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/estacionoperador/{{id}}/{{id_operador}}/{{id_departamento}}/{{id_municipio}}"}},
+        { "name":"PUT /validaestacion", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/validaestacion/{{id}}"}},
+
+        { "name":"GET /estacioncarga", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/estacioncarga/{{id}}/{{id_operador}}/{{id_departamento}}/{{id_municipio}}"}},
+        { "name":"POST /estacioncarga", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/estacioncarga/{{id}}/{{id_operador}}/{{id_departamento}}/{{id_municipio}}"}},
+        { "name":"PUT /estacioncarga", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/estacioncarga/{{id}}/{{id_operador}}/{{id_departamento}}/{{id_municipio}}"}},
+        { "name":"DELETE /estacioncarga", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/estacioncarga/{{id}}/{{id_operador}}/{{id_departamento}}/{{id_municipio}}"}},
+
+        { "name":"POST /twinestacioncarga", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/twinestacioncarga/{{id}}/{{id_operador}}"}},
+        { "name":"POST /twinpuntocarga", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/twinpuntocarga/{{id}}/{{id_operador}}"}},
+        { "name":"POST /estacionmasivo", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/estacionmasivo/{{id_operador}}"}},
+
+        { "name":"GET /puntocarga", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/puntocarga/{{id}}/{{id_estacion}}"}},
+        { "name":"POST /puntocarga", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/puntocarga/{{id}}/{{id_estacion}}"}},
+        { "name":"PUT /puntocarga", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/puntocarga/{{id}}/{{id_estacion}}"}},
+        { "name":"DELETE /puntocarga", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/puntocarga/{{id}}/{{id_estacion}}"}},
+
+        { "name":"GET /conectorcarga", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/conectorcarga/{{id}}/{{id_punto}}/{{id_estacion}}"}},
+        { "name":"POST /conectorcarga", "request":{"method":"POST","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/conectorcarga/{{id}}/{{id_punto}}/{{id_estacion}}"}},
+        { "name":"PUT /conectorcarga", "request":{"method":"PUT","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{baseUrl}}/conectorcarga/{{id}}/{{id_punto}}/{{id_estacion}}"}},
+        { "name":"DELETE /conectorcarga", "request":{"method":"DELETE","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/conectorcarga/{{id}}/{{id_punto}}/{{id_estacion}}"}},
+
+        { "name":"GET /filtrosbuscar", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/filtrosbuscar/{{id}}/{{nombre}}/"}},
+        { "name":"GET /resumenestacionescarga", "request":{"method":"GET","auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"url":"{{baseUrl}}/resumenestacionescarga/{{id}}/{{id_operador}}/{{id_departamento}}/{{id_municipio}}"}}
+      ]
+    }
+  ]
+}

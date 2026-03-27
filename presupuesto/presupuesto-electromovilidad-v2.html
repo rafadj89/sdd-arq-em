@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presupuesto Proyecto Electromovilidad v2 — UPME 2026–2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --upme-blue:   #1a4b8c;
+      --upme-mid:    #2563eb;
+      --upme-light:  #eff6ff;
+      --upme-border: #bfdbfe;
+      --green:       #16a34a;
+      --green-light: #f0fdf4;
+      --green-border:#bbf7d0;
+      --orange:      #d97706;
+      --orange-light:#fffbeb;
+      --orange-border:#fde68a;
+      --red:         #dc2626;
+      --red-light:   #fef2f2;
+      --slate:       #0f172a;
+      --muted:       #64748b;
+      --line:        #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 15px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    /* ── DOC WRAPPER ──────────────────────────────────────────── */
+    .doc {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    /* ── PORTADA ──────────────────────────────────────────────── */
+    .cover {
+      background: linear-gradient(145deg, var(--upme-blue) 0%, #1e3a8a 60%, #1e40af 100%);
+      border-radius: 12px;
+      padding: 64px 56px;
+      margin: 32px 0 40px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      right: -40px; top: -40px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      right: 60px; bottom: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .cover-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .cover h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    .cover h1 span { color: #93c5fd; }
+    .cover p.sub {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 560px;
+      margin-bottom: 32px;
+    }
+    .cover-meta {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .cover-meta-item label {
+      display: block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2px;
+    }
+    .cover-meta-item span {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .cover-total {
+      margin-top: 28px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      padding: 16px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .cover-total label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.6);
+    }
+    .cover-total .amount {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .cover-total .sub-amount {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── TOC ──────────────────────────────────────────────────── */
+    .toc {
+      background: var(--upme-light);
+      border: 1px solid var(--upme-border);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+    }
+    .toc h2 {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--upme-mid);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .toc ol {
+      list-style: decimal;
+      padding-left: 18px;
+    }
+    .toc li {
+      font-size: 0.875rem;
+      line-height: 1.9;
+      color: var(--upme-blue);
+      font-weight: 500;
+    }
+    .toc li a { color: var(--upme-blue); text-decoration: none; }
+    .toc li a:hover { text-decoration: underline; }
+    .toc ol ol {
+      list-style: decimal;
+      margin-top: 2px;
+    }
+    .toc ol ol li { font-weight: 400; color: var(--muted); font-size: 0.82rem; }
+
+    /* ── SECCIONES ────────────────────────────────────────────── */
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--upme-blue);
+      border-bottom: 2px solid var(--upme-border);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .section-title span { color: var(--upme-mid); margin-right: 8px; }
+    .subsection-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--slate);
+      margin: 20px 0 10px;
+    }
+
+    p { font-size: 0.9rem; color: #334155; margin-bottom: 10px; line-height: 1.7; }
+
+    /* ── KPI CARDS ────────────────────────────────────────────── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 20px 0 28px;
+    }
+    .kpi-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .kpi-card .kpi-value {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--upme-blue);
+      line-height: 1.2;
+    }
+    .kpi-card .kpi-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+    .kpi-card.green .kpi-value { color: var(--green); }
+    .kpi-card.orange .kpi-value { color: var(--orange); }
+
+    /* ── TABLAS ───────────────────────────────────────────────── */
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.845rem; }
+    thead th {
+      background: var(--upme-blue);
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+    }
+    thead th.c { text-align: center; }
+    tbody tr:nth-child(even) { background: #f8fafc; }
+    tbody tr:hover { background: var(--upme-light); }
+    tbody td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--line);
+      color: #1e293b;
+      vertical-align: top;
+    }
+    tbody td.c { text-align: center; }
+    tbody td.r { text-align: right; }
+    tbody td strong { font-weight: 700; }
+    tfoot td {
+      padding: 10px 14px;
+      background: #1e293b;
+      color: #fff;
+      font-weight: 700;
+      border-top: 2px solid var(--upme-blue);
+    }
+    tfoot td.r { text-align: right; }
+
+    /* ── FASE BADGES ──────────────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .badge-a { background: #dbeafe; color: #1d4ed8; }
+    .badge-b { background: #dcfce7; color: #15803d; }
+    .badge-c { background: #fef3c7; color: #b45309; }
+    .badge-live { background: #fee2e2; color: #dc2626; }
+
+    /* ── GRÁFICO ──────────────────────────────────────────────── */
+    .chart-wrap {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+    .chart-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--upme-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+    }
+
+    /* ── FASE CARDS ───────────────────────────────────────────── */
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .phase-card {
+      border-radius: 10px;
+      padding: 20px;
+      border: 1px solid;
+    }
+    .phase-card.a { background: #eff6ff; border-color: #bfdbfe; }
+    .phase-card.b { background: #f0fdf4; border-color: #bbf7d0; }
+    .phase-card.c { background: #fffbeb; border-color: #fde68a; }
+    .phase-card .ph-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .phase-card.a .ph-label { color: #1d4ed8; }
+    .phase-card.b .ph-label { color: #15803d; }
+    .phase-card.c .ph-label { color: #b45309; }
+    .phase-card .ph-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--slate);
+      margin-bottom: 8px;
+    }
+    .phase-card .ph-amount {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+    .phase-card.a .ph-amount { color: #1d4ed8; }
+    .phase-card.b .ph-amount { color: #15803d; }
+    .phase-card.c .ph-amount { color: #b45309; }
+    .phase-card .ph-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .phase-card ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 8px;
+    }
+    .phase-card ul li {
+      font-size: 0.78rem;
+      color: #334155;
+      padding: 2px 0;
+      padding-left: 14px;
+      position: relative;
+    }
+    .phase-card ul li::before {
+      content: '\2022';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    /* ── ROL CARDS ────────────────────────────────────────────── */
+    .role-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 16px 0;
+    }
+    .role-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .role-card .role-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+    .role-card .role-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--slate);
+    }
+    .role-card .role-salary {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--upme-blue);
+      white-space: nowrap;
+      margin-left: 8px;
+    }
+    .role-card .role-months {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .role-card .role-desc {
+      font-size: 0.78rem;
+      color: #475569;
+      line-height: 1.55;
+    }
+    .role-card .role-total {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .role-card .role-total strong { color: var(--green); }
+
+    /* ── INFO / WARN BOXES ────────────────────────────────────── */
+    .info {
+      background: var(--upme-light);
+      border-left: 4px solid var(--upme-mid);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 0.85rem;
+      color: #1e3a8a;
+    }
+    .warn {
+      background: var(--orange-light);
+      border-left: 4px solid var(--orange);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 0.85rem;
+      color: #78350f;
+    }
+    .success {
+      background: var(--green-light);
+      border-left: 4px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 0.85rem;
+      color: #14532d;
+    }
+
+    /* ── QUOTE EJECUTIVO ──────────────────────────────────────── */
+    .quote-exec {
+      background: linear-gradient(135deg, var(--upme-blue) 0%, #1e40af 100%);
+      color: #fff;
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin: 24px 0;
+      position: relative;
+    }
+    .quote-exec::before {
+      content: '\201C';
+      position: absolute;
+      top: 10px; left: 20px;
+      font-size: 5rem;
+      color: rgba(255,255,255,0.12);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .quote-exec p {
+      font-size: 0.95rem;
+      color: #fff;
+      line-height: 1.7;
+      margin: 0;
+      padding-left: 8px;
+    }
+
+    /* ── HITO TIMELINE ────────────────────────────────────────── */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      margin: 16px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px; top: 6px; bottom: 6px;
+      width: 2px;
+      background: var(--upme-border);
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -24px; top: 5px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--upme-mid);
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--upme-mid);
+    }
+    .tl-item.live::before { background: var(--red); box-shadow: 0 0 0 2px var(--red); }
+    .tl-item.done::before { background: var(--green); box-shadow: 0 0 0 2px var(--green); }
+    .tl-date {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .tl-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--slate);
+    }
+    .tl-desc {
+      font-size: 0.78rem;
+      color: #475569;
+      margin-top: 2px;
+    }
+
+    /* ── PIE CHART LEGEND ─────────────────────────────────────── */
+    .pie-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .pie-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pie-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pie-dot {
+      width: 12px; height: 12px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .pie-legend-item .pie-label { font-size: 0.8rem; color: #334155; }
+    .pie-legend-item .pie-val { font-size: 0.78rem; font-weight: 700; color: var(--slate); margin-left: auto; }
+
+    /* ── DIVIDER ──────────────────────────────────────────────── */
+    .divider { border: none; border-top: 1px solid var(--line); margin: 32px 0; }
+
+    /* ── SINERGIA DATA ────────────────────────────────────────── */
+    .data-team {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+    .data-member {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--upme-blue);
+    }
+
+    /* ── FOOTER DOC ───────────────────────────────────────────── */
+    .doc-footer {
+      margin-top: 56px;
+      border-top: 2px solid var(--upme-border);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .doc-footer .footer-left {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .doc-footer .footer-right {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ── PIVOT MATRIX ─────────────────────────────────────────── */
+    .pivot-wrap { overflow-x: auto; margin: 16px 0; }
+    .pivot-wrap table { font-size: 0.75rem; }
+    .pivot-wrap thead th {
+      padding: 6px 4px;
+      font-size: 0.68rem;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .pivot-wrap tbody td {
+      padding: 6px 4px;
+      text-align: center;
+      font-size: 0.75rem;
+      min-width: 40px;
+    }
+    .pivot-wrap tbody td:first-child {
+      text-align: left;
+      white-space: nowrap;
+      font-weight: 600;
+      min-width: 140px;
+      padding-left: 10px;
+    }
+    .cell-active {
+      background: #dcfce7 !important;
+      color: #15803d;
+      font-weight: 700;
+    }
+    .cell-existing {
+      background: #dbeafe !important;
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+    .cell-inactive {
+      background: #f1f5f9 !important;
+      color: #cbd5e1;
+    }
+    .pivot-wrap tfoot td {
+      padding: 6px 4px;
+      font-size: 0.72rem;
+      text-align: center;
+    }
+    .pivot-wrap tfoot td:first-child {
+      text-align: left;
+      padding-left: 10px;
+    }
+
+    @media (max-width: 720px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .phase-grid { grid-template-columns: 1fr; }
+      .role-grid { grid-template-columns: 1fr; }
+      .pie-grid { grid-template-columns: 1fr; }
+      .cover { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- ── PORTADA ──────────────────────────────────────────── -->
+  <div class="cover">
+    <div class="cover-badge">Comite Tecnico y Gerencial — Uso Interno</div>
+    <h1>Presupuesto<br/><span>Plataforma de Electromovilidad</span></h1>
+    <p class="sub">Gestion de Costos del Equipo de Desarrollo bajo el cumplimiento de la Resolucion 40559 de 2025 — Ministerio de Minas y Energia.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <label>Entidad</label>
+        <span>UPME</span>
+      </div>
+      <div class="cover-meta-item">
+        <label>Vigencia</label>
+        <span>Abril 2026 — Junio 2027</span>
+      </div>
+      <div class="cover-meta-item">
+        <label>Duracion</label>
+        <span>15 meses</span>
+      </div>
+      <div class="cover-meta-item">
+        <label>Version</label>
+        <span>v2.0 — Mar 2026</span>
+      </div>
+    </div>
+    <div class="cover-total">
+      <div>
+        <label>Inversion Total Proyecto</label>
+        <div class="amount">$732.000.000</div>
+        <div class="sub-amount">Pesos Colombianos (COP) — 9 profesionales</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TABLA DE CONTENIDO ───────────────────────────────── -->
+  <div class="toc">
+    <h2>Tabla de Contenido</h2>
+    <ol>
+      <li><a href="#s1">Resumen Ejecutivo</a></li>
+      <li><a href="#s2">Marco Regulatorio y Contexto del Proyecto</a></li>
+      <li><a href="#s3">Estructura del Equipo y Costos por Rol</a>
+        <ol>
+          <li><a href="#s3a">Tabla de Personal y Costos</a></li>
+          <li><a href="#s3b">Matriz de Personal por Mes (Pivot)</a></li>
+        </ol>
+      </li>
+      <li><a href="#s4">Cronograma de Ejecucion Presupuestal por Fases</a>
+        <ol>
+          <li><a href="#s4a">Fase A — Construccion Critica (Abr–Nov 2026)</a></li>
+          <li><a href="#s4b">Fase B — Estabilizacion y Produccion (Dic 2026–May 2027)</a></li>
+          <li><a href="#s4c">Fase C — Gobernanza Tecnica (Jun 2027)</a></li>
+        </ol>
+      </li>
+      <li><a href="#s5">Desglose Mensual con Hitos Tecnicos</a></li>
+      <li><a href="#s6">Analisis de Curva de Gastos</a></li>
+      <li><a href="#s7">Distribucion de la Inversion</a></li>
+      <li><a href="#s8">Justificacion Tecnica de Roles</a></li>
+      <li><a href="#s9">Sinergia con Equipo de DATA y Analitica</a></li>
+      <li><a href="#s10">Mitigacion de Riesgos Presupuestales</a></li>
+      <li><a href="#s11">Resumen para Aprobacion del Comite</a></li>
+    </ol>
+  </div>
+
+  <!-- ── 1. RESUMEN EJECUTIVO ─────────────────────────────── -->
+  <div class="section" id="s1">
+    <div class="section-title"><span>1.</span> Resumen Ejecutivo</div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">$732M</div>
+        <div class="kpi-label">Inversion Total (COP)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">15</div>
+        <div class="kpi-label">Meses de ejecucion</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-value">8</div>
+        <div class="kpi-label">Profesionales (pico)</div>
+      </div>
+      <div class="kpi-card orange">
+        <div class="kpi-value">3</div>
+        <div class="kpi-label">Equipo base post-LIVE</div>
+      </div>
+    </div>
+
+    <div class="quote-exec">
+      <p>La inversion de <strong>$732 millones de pesos</strong> cubre el equipo de desarrollo necesario para asegurar el cumplimiento normativo de la Resolucion 40559 de 2025, garantizar la ciberseguridad del sistema nacional de carga electrica y establecer una infraestructura tecnologica que posiciona a la UPME como lider en la transicion energetica del pais. El Arquitecto de Solucion, pieza clave del proyecto, esta presente desde abril 2026 bajo un contrato vigente previo, y este presupuesto cubre su extension por 8 meses adicionales a partir de noviembre 2026.</p>
+    </div>
+
+    <p>El presente documento detalla la estructura de costos del equipo de Electromovilidad de la UPME para el periodo <strong>Abril 2026 – Junio 2027</strong>, estructurado en tres fases de ejecucion alineadas con los hitos tecnicos del roadmap y los plazos mandatorios de la Resolucion 40559.</p>
+
+    <div class="success">
+      <strong>Modelo de inversion Front-Loading:</strong> El 57.2% del presupuesto ($397M) se concentra en los primeros 8 meses (Fase A), garantizando la presencia del personal mas especializado durante la construccion del nucleo tecnologico. A partir de diciembre 2026, el gasto mensual se reduce de $71M a $43M, y a partir de junio 2027, se reduce a solo $13M/mes con el Arquitecto realizando gobernanza tecnica y transferencia de conocimiento.
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ── 2. MARCO REGULATORIO ─────────────────────────────── -->
+  <div class="section" id="s2">
+    <div class="section-title"><span>2.</span> Marco Regulatorio y Contexto del Proyecto</div>
+
+    <p>La <strong>Resolucion 40559 del 21 de noviembre de 2025</strong> del Ministerio de Minas y Energia establece las condiciones para la interoperabilidad de estaciones de carga de vehiculos electricos de acceso publico en Colombia, adoptando el estandar <strong>OCPI 2.2.1</strong> (Open Charge Point Interface). La UPME es la entidad ejecutora y supervisora tecnica.</p>
+
+    <div class="subsection-title">Hitos Mandatorios del Roadmap</div>
+
+    <div class="timeline">
+      <div class="tl-item done">
+        <div class="tl-date">Nov 2025</div>
+        <div class="tl-title">Entrada en vigencia — Resolucion 40559</div>
+        <div class="tl-desc">Inicio del marco normativo de interoperabilidad nacional.</div>
+      </div>
+      <div class="tl-item done">
+        <div class="tl-date">Feb 2026</div>
+        <div class="tl-title">Fase Actual — Inicio construccion Guia Tecnica</div>
+        <div class="tl-desc">Arquitectura, PoC, especificaciones y documentacion formal.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Abr 2026</div>
+        <div class="tl-title">Inicio contratacion equipo de desarrollo</div>
+        <div class="tl-desc">Arranque formal del equipo de 7 personas. Hito presupuestal.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">~Abr 2026</div>
+        <div class="tl-title">Informacion publica en tiempo real (90 dias habiles)</div>
+        <div class="tl-desc">Plazo regulatorio mandatorio para exposicion de datos.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">~May 2026</div>
+        <div class="tl-title">Entrega Guia Tecnica de Implementacion</div>
+        <div class="tl-desc">Documento tecnico oficial para CPOs (operadores de carga).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">~Ago 2026</div>
+        <div class="tl-title">Sandbox disponible para CPOs</div>
+        <div class="tl-desc">Ambiente de pruebas para certificacion de operadores.</div>
+      </div>
+      <div class="tl-item live">
+        <div class="tl-date">Nov 2026</div>
+        <div class="tl-title">HITO LIVE — Produccion Go-Live</div>
+        <div class="tl-desc">Plataforma en produccion. Fin del contrato de Sr. Fullstack, 2 Sr. Backend, DevOps y QA. Inicio contrato Arquitecto en este presupuesto.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Nov 2026 — May 2027</div>
+        <div class="tl-title">Certificacion CPOs + Operacion plena</div>
+        <div class="tl-desc">Equipo de 5 personas — soporte, evolucion y certificacion.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jun 2027</div>
+        <div class="tl-title">Gobernanza Tecnica y Cierre del Proyecto</div>
+        <div class="tl-desc">Arquitecto solo — documentacion final, gobernanza y cierre del proyecto.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ── 3. ESTRUCTURA EQUIPO ─────────────────────────────── -->
+  <div class="section" id="s3">
+    <div class="section-title"><span>3.</span> Estructura del Equipo y Costos por Rol</div>
+
+    <p>El equipo esta conformado por <strong>9 profesionales especializados</strong> que se despliegan en diferentes periodos segun las fases del proyecto. El equipo opera a capacidad completa (9 personas) durante la fase de construccion critica (Abr–Nov 2026), se reduce a 3 personas para estabilizacion (Dic 2026–May 2027), y finaliza con el Arquitecto en solitario para gobernanza tecnica (Jun 2027).</p>
+
+    <div class="warn" style="border-left-width: 5px; padding: 18px 22px;">
+      <strong>NOTA IMPORTANTE — Arquitecto de Solucion (Contrato Vigente):</strong><br/>
+      El Arquitecto de Solucion se encuentra <strong>actualmente contratado hasta octubre 2026</strong> bajo un contrato existente, cuyo costo ya esta comprometido y no forma parte de este presupuesto. Sin embargo, el Arquitecto <strong>esta presente y trabajando activamente</strong> en el proyecto desde 31 de enero del 2026 en adelante.<br/><br/>
+      Este presupuesto cubre unicamente el <strong>nuevo contrato de 8 meses (Nov 2026 – Jun 2027)</strong> por un valor de <strong>$104.000.000 COP</strong>.
+    </div>
+
+    <div id="s3a" class="subsection-title">3.1 Tabla de Personal y Costos</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Rol</th>
+            <th class="c">Cantidad</th>
+            <th class="c">Salario Mensual</th>
+            <th class="c">Duracion</th>
+            <th class="c">Periodo</th>
+            <th class="r">Costo Total Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Arquitecto de Solucion</strong> (Lider Tecnico)<br/><small style="color:#1d4ed8;">* Nuevo contrato — ver nota arriba</small></td>
+            <td class="c">1</td>
+            <td class="c">$13.000.000</td>
+            <td class="c">8 meses</td>
+            <td class="c">Nov 2026 – Jun 2027</td>
+            <td class="r"><strong>$104.000.000</strong></td>
+          </tr>
+          <tr>
+            <td><strong>DevOps Senior</strong> (CI/CD, Infraestructura OCI)</td>
+            <td class="c">1</td>
+            <td class="c">$9.000.000</td>
+            <td class="c">8 meses</td>
+            <td class="c">Abr 2026 – Nov 2026</td>
+            <td class="r"><strong>$72.000.000</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Analista de QA</strong> (Interoperabilidad y APIs)</td>
+            <td class="c">1</td>
+            <td class="c">$8.000.000</td>
+            <td class="c">8 meses</td>
+            <td class="c">Abr 2026 – Nov 2026</td>
+            <td class="r"><strong>$64.000.000</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Desarrollador SemiSenior</strong> (x2 — Modulos y Evolucion)</td>
+            <td class="c">2</td>
+            <td class="c">$7.000.000 c/u</td>
+            <td class="c">14 meses</td>
+            <td class="c">Abr 2026 – May 2027</td>
+            <td class="r"><strong>$196.000.000</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Desarrollador SemiSenior</strong> (x1 — Fase Construccion)</td>
+            <td class="c">1</td>
+            <td class="c">$7.000.000</td>
+            <td class="c">8 meses</td>
+            <td class="c">Abr 2026 – Nov 2026</td>
+            <td class="r"><strong>$56.000.000</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Desarrollador Senior Fullstack</strong> (Frontend / Sandbox / Core)</td>
+            <td class="c">1</td>
+            <td class="c">$10.000.000</td>
+            <td class="c">8 meses</td>
+            <td class="c">Abr 2026 – Nov 2026</td>
+            <td class="r"><strong>$80.000.000</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Desarrollador Senior Backend</strong> (APIs / Integraciones / Core OCPI)</td>
+            <td class="c">2</td>
+            <td class="c">$10.000.000 c/u</td>
+            <td class="c">8 meses</td>
+            <td class="c">Abr 2026 – Nov 2026</td>
+            <td class="r"><strong>$160.000.000</strong></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4"><strong>TOTAL ESTIMADO — 9 profesionales</strong></td>
+            <td class="c" style="color:#93c5fd;">15 meses</td>
+            <td class="r" style="color:#93c5fd; font-size:1rem;"><strong>$732.000.000</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="info">
+      <strong>Nota metodologica:</strong> Se estimo un promedio de <strong>$7.000.000</strong> para los perfiles SemiSenior, ajustado al rango del mercado tecnologico colombiano 2026 en relacion con los demas roles del equipo. El Arquitecto de Solucion esta presente durante los 15 meses del proyecto, pero este presupuesto solo cubre los 8 meses del nuevo contrato (Nov 2026 – Jun 2027).
+    </div>
+
+    <!-- ── 3.2 MATRIZ PIVOT ────────────────────────────────── -->
+    <div id="s3b" class="subsection-title">3.2 Matriz de Personal por Mes (Pivot)</div>
+
+    <p>La siguiente matriz muestra la presencia de cada rol en cada mes del proyecto. Las celdas verdes indican personal activo presupuestado en este proyecto, las celdas azules indican personal activo bajo contrato vigente existente, y las celdas grises indican inactividad.</p>
+
+    <div class="pivot-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Rol</th>
+            <th class="c">Abr<br/>26</th>
+            <th class="c">May<br/>26</th>
+            <th class="c">Jun<br/>26</th>
+            <th class="c">Jul<br/>26</th>
+            <th class="c">Ago<br/>26</th>
+            <th class="c">Sep<br/>26</th>
+            <th class="c">Oct<br/>26</th>
+            <th class="c">Nov<br/>26</th>
+            <th class="c">Dic<br/>26</th>
+            <th class="c">Ene<br/>27</th>
+            <th class="c">Feb<br/>27</th>
+            <th class="c">Mar<br/>27</th>
+            <th class="c">Abr<br/>27</th>
+            <th class="c">May<br/>27</th>
+            <th class="c">Jun<br/>27</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Arquitecto: existing Apr-Oct, budgeted Nov 26 - Jun 27 -->
+          <tr>
+            <td>Arquitecto de Solucion</td>
+            <td class="cell-existing">&diams;</td>
+            <td class="cell-existing">&diams;</td>
+            <td class="cell-existing">&diams;</td>
+            <td class="cell-existing">&diams;</td>
+            <td class="cell-existing">&diams;</td>
+            <td class="cell-existing">&diams;</td>
+            <td class="cell-existing">&diams;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+          </tr>
+          <!-- DevOps: Apr 26 - Nov 26 -->
+          <tr>
+            <td>DevOps Senior</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+          </tr>
+          <!-- QA: Apr 26 - Nov 26 -->
+          <tr>
+            <td>Analista de QA</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+          </tr>
+          <!-- SemiSenior 1: Apr 26 - May 27 -->
+          <tr>
+            <td>SemiSenior #1</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-inactive">—</td>
+          </tr>
+          <!-- SemiSenior 2: Apr 26 - May 27 -->
+          <tr>
+            <td>SemiSenior #2</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-inactive">—</td>
+          </tr>
+          <!-- SemiSenior 3: Apr 26 - Nov 26 (8 meses) -->
+          <tr>
+            <td>SemiSenior #3</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+          </tr>
+          <!-- Sr Backend #1: Apr 26 - Nov 26 -->
+          <tr>
+            <td>Senior Backend #1</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+          </tr>
+          <!-- Sr Backend #2: Apr 26 - Nov 26 -->
+          <tr>
+            <td>Senior Backend #2</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+          </tr>
+          <!-- Sr Fullstack: Apr 26 - Nov 26 -->
+          <tr>
+            <td>Senior Fullstack</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-active">&bull;</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+            <td class="cell-inactive">—</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr style="background:#f8fafc; color: var(--slate);">
+            <td><strong>Total personas activas</strong></td>
+            <td>9</td><td>9</td><td>9</td><td>9</td><td>9</td><td>9</td><td>9</td>
+            <td>9</td>
+            <td>3</td><td>3</td><td>3</td><td>3</td><td>3</td><td>3</td>
+            <td>1</td>
+          </tr>
+          <tr style="background:#eff6ff; color: var(--upme-blue);">
+            <td><strong>Personas en este presupuesto</strong></td>
+            <td>8</td><td>8</td><td>8</td><td>8</td><td>8</td><td>8</td><td>8</td>
+            <td>9</td>
+            <td>3</td><td>3</td><td>3</td><td>3</td><td>3</td><td>3</td>
+            <td>1</td>
+          </tr>
+          <tr style="background:#1e293b; color:#fff;">
+            <td><strong>Costo mensual este presupuesto</strong></td>
+            <td>$68M</td><td>$68M</td><td>$68M</td><td>$68M</td><td>$68M</td><td>$68M</td><td>$68M</td>
+            <td>$81M</td>
+            <td>$27M</td><td>$27M</td><td>$27M</td><td>$27M</td><td>$27M</td><td>$27M</td>
+            <td>$13M</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="info" style="margin-top:12px;">
+      <strong>Leyenda:</strong>
+      <span style="display:inline-block; width:12px; height:12px; background:#dcfce7; border:1px solid #15803d; border-radius:3px; vertical-align:middle; margin: 0 4px 0 12px;"></span> <strong style="color:#15803d;">&bull;</strong> = Activo y presupuestado en este proyecto &nbsp;&nbsp;
+      <span style="display:inline-block; width:12px; height:12px; background:#dbeafe; border:1px solid #1d4ed8; border-radius:3px; vertical-align:middle; margin: 0 4px 0 12px;"></span> <strong style="color:#1d4ed8;">&diams;</strong> = Activo bajo contrato vigente existente &nbsp;&nbsp;
+      <span style="display:inline-block; width:12px; height:12px; background:#f1f5f9; border:1px solid #cbd5e1; border-radius:3px; vertical-align:middle; margin: 0 4px 0 12px;"></span> — = No activo
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ── 4. FASES ──────────────────────────────────────────── -->
+  <div class="section" id="s4">
+    <div class="section-title"><span>4.</span> Cronograma de Ejecucion Presupuestal por Fases</div>
+
+    <p>El presupuesto se estructura en <strong>tres fases estrategicas</strong> que responden a los hitos del roadmap tecnico y a la variacion en la carga de personal a lo largo del proyecto.</p>
+
+    <div class="phase-grid">
+      <!-- Fase A -->
+      <div class="phase-card a" id="s4a">
+        <div class="ph-label">Fase A</div>
+        <div class="ph-title">Construccion Critica</div>
+        <div class="ph-amount">$557.000.000</div>
+        <div class="ph-sub">Abr – Nov 2026 &middot; 8 meses &middot; 9 personas &middot; $68M–$81M/mes</div>
+        <ul>
+          <li>PoC e Infraestructura OCI</li>
+          <li>Core OCPI 2.2.1 + Integracion Cargame</li>
+          <li>Portal y Sandbox CPOs</li>
+          <li>DRP + Hardening de Seguridad</li>
+          <li>Arquitecto bajo contrato vigente (Abr–Oct)</li>
+          <li><strong>Hito LIVE — Nov 2026</strong></li>
+        </ul>
+      </div>
+      <!-- Fase B -->
+      <div class="phase-card b" id="s4b">
+        <div class="ph-label">Fase B</div>
+        <div class="ph-title">Estabilizacion y Produccion</div>
+        <div class="ph-amount">$162.000.000</div>
+        <div class="ph-sub">Dic 2026 – May 2027 &middot; 6 meses &middot; 3 personas &middot; $27M/mes</div>
+        <ul>
+          <li>Certificacion de CPOs piloto</li>
+          <li>Soporte post-LIVE y ajustes</li>
+          <li>Salen Sr. Fullstack, 2 Sr. Backend, DevOps y QA</li>
+          <li>Analitica y evolucion con equipo DATA</li>
+          <li>Inicio transicion a equipo DATA</li>
+        </ul>
+      </div>
+      <!-- Fase C -->
+      <div class="phase-card c" id="s4c">
+        <div class="ph-label">Fase C</div>
+        <div class="ph-title">Gobernanza Tecnica</div>
+        <div class="ph-amount">$13.000.000</div>
+        <div class="ph-sub">Jun 2027 &middot; 1 mes &middot; 1 persona &middot; $13M/mes</div>
+        <ul>
+          <li>Gobernanza tecnica del sistema</li>
+          <li>Documentacion final y mejores practicas</li>
+          <li>Cierre formal del proyecto</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warn">
+      <strong>Nota sobre transiciones:</strong> A partir de diciembre de 2026, finalizan los contratos del Desarrollador Senior Fullstack y el Analista de QA tras el hito LIVE. El equipo se compacta a <strong>3 personas</strong> (Arquitecto y 2 SemiSeniors), reduciendo el gasto de <strong>$81M a $27M</strong>. A partir de junio 2027, solo permanece el Arquitecto de Solucion ($13M/mes) para cerrar la gobernanza tecnica y la transferencia de conocimiento.
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ── 5. DESGLOSE MENSUAL ───────────────────────────────── -->
+  <div class="section" id="s5">
+    <div class="section-title"><span>5.</span> Desglose Mensual con Hitos Tecnicos</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Mes</th>
+            <th>Hito Principal (Roadmap)</th>
+            <th class="c">Fase</th>
+            <th class="c">Personal</th>
+            <th class="r">Costo Mensual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Abril 2026</strong></td>
+            <td>PoC / Inicio Infraestructura OCI</td>
+            <td class="c"><span class="badge badge-a">FASE A</span></td>
+            <td class="c">9</td>
+            <td class="r">$68.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Mayo 2026</strong></td>
+            <td>Lanzamiento Guia Tecnica / Infraestructura</td>
+            <td class="c"><span class="badge badge-a">FASE A</span></td>
+            <td class="c">9</td>
+            <td class="r">$68.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Junio 2026</strong></td>
+            <td>Core OCPI + Integracion Cargame</td>
+            <td class="c"><span class="badge badge-a">FASE A</span></td>
+            <td class="c">9</td>
+            <td class="r">$68.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Julio 2026</strong></td>
+            <td>Core OCPI / Data Lake + Portal</td>
+            <td class="c"><span class="badge badge-a">FASE A</span></td>
+            <td class="c">9</td>
+            <td class="r">$68.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Agosto 2026</strong></td>
+            <td><strong>Apertura Sandbox CPOs</strong> / Data Lake</td>
+            <td class="c"><span class="badge badge-a">FASE A</span></td>
+            <td class="c">9</td>
+            <td class="r">$68.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Septiembre 2026</strong></td>
+            <td>Sandbox CPOs / DRP + Hardening</td>
+            <td class="c"><span class="badge badge-a">FASE A</span></td>
+            <td class="c">9</td>
+            <td class="r">$68.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Octubre 2026</strong></td>
+            <td>Sandbox CPOs / DRP + Hardening (Cierre)</td>
+            <td class="c"><span class="badge badge-a">FASE A</span></td>
+            <td class="c">9</td>
+            <td class="r">$68.000.000</td>
+          </tr>
+          <tr style="background:#fef2f2;">
+            <td><strong>Noviembre 2026</strong></td>
+            <td><strong>HITO LIVE — Salida a Produccion</strong></td>
+            <td class="c"><span class="badge badge-live">LIVE</span></td>
+            <td class="c">9</td>
+            <td class="r">$81.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Diciembre 2026</strong></td>
+            <td>Certificacion CPOs / Soporte post-LIVE</td>
+            <td class="c"><span class="badge badge-b">FASE B</span></td>
+            <td class="c">3 &#9733;</td>
+            <td class="r">$27.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Enero 2027</strong></td>
+            <td>Certificacion CPOs / Ajustes</td>
+            <td class="c"><span class="badge badge-b">FASE B</span></td>
+            <td class="c">3</td>
+            <td class="r">$27.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Febrero 2027</strong></td>
+            <td>Certificacion CPOs / Evolucion</td>
+            <td class="c"><span class="badge badge-b">FASE B</span></td>
+            <td class="c">3</td>
+            <td class="r">$27.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Marzo 2027</strong></td>
+            <td>Plena Operacion / Analitica DATA</td>
+            <td class="c"><span class="badge badge-b">FASE B</span></td>
+            <td class="c">3</td>
+            <td class="r">$27.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Abril 2027</strong></td>
+            <td>Plena Operacion / Dato de Gobierno</td>
+            <td class="c"><span class="badge badge-b">FASE B</span></td>
+            <td class="c">3</td>
+            <td class="r">$27.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Mayo 2027</strong></td>
+            <td>Fin contrato SemiSeniors</td>
+            <td class="c"><span class="badge badge-b">FASE B</span></td>
+            <td class="c">3</td>
+            <td class="r">$27.000.000</td>
+          </tr>
+          <tr>
+            <td><strong>Junio 2027</strong></td>
+            <td><strong>Cierre del Proyecto — Gobernanza Tecnica</strong></td>
+            <td class="c"><span class="badge badge-c">FASE C</span></td>
+            <td class="c">1</td>
+            <td class="r">$13.000.000</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3"><strong>TOTAL PROYECTO — 15 meses</strong></td>
+            <td class="c" style="color:#93c5fd;">—</td>
+            <td class="r" style="color:#93c5fd; font-size:1rem;"><strong>$732.000.000</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="info">
+      <strong>&#9733; Diciembre 2026:</strong> Finalizan contratos del Desarrollador Senior Fullstack y el Analista de QA tras el hito LIVE. El equipo base de 3 personas (Arquitecto + 2 SemiSeniors) continua para soporte, certificacion de CPOs y evolucion analitica. En junio 2027, solo permanece el Arquitecto para gobernanza tecnica.
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ── 6. CURVA DE GASTOS ────────────────────────────────── -->
+  <div class="section" id="s6">
+    <div class="section-title"><span>6.</span> Analisis de Curva de Gastos</div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Ejecucion Presupuestal Mensual vs. Hitos Tecnicos (COP Millones)</div>
+      <canvas id="barChart" height="90"></canvas>
+    </div>
+
+    <p>El proyecto presenta una estructura de <strong>"Front-Loading" (carga frontal)</strong> donde el 57.2% del presupuesto se ejecuta en los primeros 8 meses. Este diseno es estrategico por tres razones fundamentales:</p>
+
+    <div class="role-grid" style="grid-template-columns: 1fr 1fr 1fr; margin-top:16px;">
+      <div class="role-card">
+        <div class="role-top">
+          <div class="role-title">Construccion del Nucleo</div>
+        </div>
+        <div class="role-desc">La inversion fuerte en Desarrollador Senior Fullstack, QA y el equipo completo desde el inicio garantiza que la plataforma cumpla con la Resolucion 40559 sin re-procesos costosos. El Arquitecto, ya contratado, lidera la coherencia tecnica desde el dia 1.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-top">
+          <div class="role-title">Mitigacion en el LIVE</div>
+        </div>
+        <div class="role-desc">Al mantener el equipo completo de 7 personas durante el hito LIVE (Noviembre), cualquier error en la puesta en marcha de ambientes productivos es corregido de inmediato por el personal con mayor expertise tecnico.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-top">
+          <div class="role-title">Optimizacion Post-LIVE</div>
+        </div>
+        <div class="role-desc">La reduccion progresiva — de $71M a $43M (Fase B) y luego a $13M (Fase C) — optimiza el presupuesto sin sacrificar la continuidad operativa, aprovechando la transferencia de conocimiento hacia el equipo base y DATA.</div>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:20px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Concepto</th>
+            <th class="r">Inversion Total</th>
+            <th class="c">% del Presupuesto</th>
+            <th>Periodo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Fase A — Construccion Critica</strong></td>
+            <td class="r">$557.000.000</td>
+            <td class="c"><strong>76.1%</strong></td>
+            <td>Abr – Nov 2026 (8 meses)</td>
+          </tr>
+          <tr>
+            <td><strong>Fase B — Estabilizacion y Produccion</strong></td>
+            <td class="r">$162.000.000</td>
+            <td class="c"><strong>22.1%</strong></td>
+            <td>Dic 2026 – May 2027 (6 meses)</td>
+          </tr>
+          <tr>
+            <td><strong>Fase C — Gobernanza Tecnica</strong></td>
+            <td class="r">$13.000.000</td>
+            <td class="c"><strong>1.8%</strong></td>
+            <td>Jun 2027 (1 mes)</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><strong>TOTAL PROYECTO ELECTROMOVILIDAD</strong></td>
+            <td class="r" style="color:#93c5fd; font-size:1rem;"><strong>$732.000.000</strong></td>
+            <td class="c" style="color:#93c5fd;"><strong>100%</strong></td>
+            <td style="color:#94a3b8;">15 meses</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ── 7. DISTRIBUCIÓN ───────────────────────────────────── -->
+  <div class="section" id="s7">
+    <div class="section-title"><span>7.</span> Distribucion de la Inversion</div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Distribucion del Presupuesto por Rol y Tipo de Perfil</div>
+      <div class="pie-grid">
+        <canvas id="pieChart" width="260" height="260"></canvas>
+        <div class="pie-legend">
+          <div class="pie-legend-item">
+            <div class="pie-dot" style="background:#1a4b8c;"></div>
+            <span class="pie-label">Arquitecto de Solucion (1x8m)</span>
+            <span class="pie-val">$104M — 14.2%</span>
+          </div>
+          <div class="pie-legend-item">
+            <div class="pie-dot" style="background:#2563eb;"></div>
+            <span class="pie-label">Senior Fullstack (8m)</span>
+            <span class="pie-val">$80M — 10.9%</span>
+          </div>
+          <div class="pie-legend-item">
+            <div class="pie-dot" style="background:#0ea5e9;"></div>
+            <span class="pie-label">2 Senior Backend (8m)</span>
+            <span class="pie-val">$160M — 21.9%</span>
+          </div>
+          <div class="pie-legend-item">
+            <div class="pie-dot" style="background:#16a34a;"></div>
+            <span class="pie-label">3 SemiSeniors (2x14m + 1x8m)</span>
+            <span class="pie-val">$252M — 34.4%</span>
+          </div>
+          <div class="pie-legend-item">
+            <div class="pie-dot" style="background:#d97706;"></div>
+            <span class="pie-label">DevOps Senior (8m)</span>
+            <span class="pie-val">$72M — 9.8%</span>
+          </div>
+          <div class="pie-legend-item">
+            <div class="pie-dot" style="background:#7c3aed;"></div>
+            <span class="pie-label">Analista QA (8m)</span>
+            <span class="pie-val">$64M — 9.2%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">$240M</div>
+        <div class="kpi-label">3 Seniors (Fullstack + 2 Backend)</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-value">$492M</div>
+        <div class="kpi-label">Continuidad y Arquitectura (67.2%)</div>
+      </div>
+      <div class="kpi-card orange">
+        <div class="kpi-value">$81M</div>
+        <div class="kpi-label">Gasto mensual pico (Nov 2026)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">$13M</div>
+        <div class="kpi-label">Gasto mensual minimo (Fase C)</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ── 8. JUSTIFICACIÓN TÉCNICA ─────────────────────────── -->
+  <div class="section" id="s8">
+    <div class="section-title"><span>8.</span> Justificacion Tecnica de Roles y Perfil de Competencias</div>
+
+    <p>Cada perfil del equipo tiene una responsabilidad directa sobre el cumplimiento de los hitos regulatorios y tecnicos del proyecto. El stack tecnologico del proyecto demanda perfiles con experiencia comprobable en <strong>arquitecturas de microservicios, Event-Driven Architecture (EDA), Domain-Driven Design (DDD), Arquitectura Hexagonal</strong> y tecnologias cloud-native sobre <strong>Oracle Cloud Infrastructure (OCI)</strong>. A continuacion se presenta el perfil tecnico detallado y la justificacion de cada rol:</p>
+
+    <!-- ── ARQUITECTO — FULL WIDTH ── -->
+    <div class="role-grid" style="grid-template-columns: 1fr;">
+      <div class="role-card" style="border-left: 4px solid #1a4b8c;">
+        <div class="role-top">
+          <div class="role-title" style="font-size:0.95rem;">Arquitecto de Solucion — Lider Tecnico</div>
+          <div class="role-salary">$13.000.000/mes</div>
+        </div>
+        <div class="role-months">1 perfil &middot; 8 meses (en este presupuesto: Nov 2026 – Jun 2027) &middot; Presente 15 meses totales (Abr–Oct bajo contrato vigente) &middot; Total: $104.000.000</div>
+        <div class="role-desc">
+          <strong>Mision:</strong> Guardian de la integridad tecnica, la coherencia arquitectural y el cumplimiento normativo del sistema. Es el rol mas critico del proyecto: define la estrategia tecnica, valida cada decision de diseno y asegura que la plataforma sea escalable, segura y mantenible a largo plazo.<br/><br/>
+
+          <strong>Perfil y experiencia requerida (15+ anos):</strong>
+          <ul style="margin:8px 0 8px 16px; font-size:0.78rem; color:#475569;">
+            <li><strong>Arquitectura de Microservicios:</strong> Descomposicion por dominio, comunicacion sync (REST/gRPC) y async (Kafka/Event Streaming), patrones Saga, Choreography vs Orchestration, Circuit Breaker, Bulkhead, Retry con backoff exponencial.</li>
+            <li><strong>Event-Driven Architecture (EDA):</strong> Event Sourcing, CQRS (Command Query Responsibility Segregation), idempotencia, exactly-once semantics, Dead Letter Queues (DLQ), diseno de topicos y particionamiento en Kafka/OCI Streaming.</li>
+            <li><strong>Domain-Driven Design (DDD):</strong> Bounded Contexts, Aggregates, Domain Events, Context Maps, Anti-Corruption Layers. Definicion de los 6 bounded contexts del proyecto: CPO Management, OCPI Core, Identity &amp; Access, Public Data, Data Governance, Observability &amp; Audit.</li>
+            <li><strong>Arquitectura Hexagonal (Ports &amp; Adapters):</strong> Separacion estricta entre dominio, aplicacion e infraestructura. Inyeccion de dependencias, contratos de puertos, adaptadores para persistencia (Oracle ATP, TimescaleDB), messaging (Kafka) y servicios externos (Cargame VPN).</li>
+            <li><strong>Golang (Go 1.22+):</strong> Diseno de servicios de alta concurrencia para ingesta OCPI (goroutines, channels, context propagation). Experiencia con frameworks como Fiber/Echo/Chi, pgx para PostgreSQL/Oracle, y patrones de concurrencia avanzados.</li>
+            <li><strong>Python 3.12+:</strong> FastAPI para validacion OCPI, Pydantic v2 para schemas estrictos, SQLAlchemy/asyncpg para acceso a datos, APScheduler para tareas programadas.</li>
+            <li><strong>Cloud OCI:</strong> Autonomous Database (ATP/ADW), OKE (Kubernetes), OCI Streaming (Kafka API), OCI Queue, OCI Object Storage (Data Lake), OCI Vault (HSM), OCI WAF, OCI Network Firewall, VPN Connect, OCI DevOps, OCI Monitoring + Logging Analytics.</li>
+            <li><strong>Seguridad:</strong> OAuth 2.1 (PKCE, DPoP, Certificate-Bound Tokens RFC 8705), mTLS, JWT RS256, KeyCloak (realms, clients, federation LDAP/SAML), Zero-Trust Architecture, OWASP Top 10 / API Security Top 10.</li>
+            <li><strong>Observabilidad:</strong> OpenTelemetry (metricas, logs, trazas distribuidas), Prometheus, Grafana, Jaeger, SLOs/SLIs, runbooks, alerting con PagerDuty.</li>
+            <li><strong>Infraestructura como Codigo:</strong> Terraform, ArgoCD (GitOps), Helm Charts, OCI Resource Manager.</li>
+            <li><strong>Modelado C4 + Structurizr:</strong> Diagramas System Context, Container, Component y Code. ADRs (Architecture Decision Records) para cada decision significativa.</li>
+            <li><strong>Cumplimiento regulatorio:</strong> Resolucion 40559/2025, Ley 1581/2012 (Proteccion de Datos), estandares MinTIC, trazabilidad para auditorias SIC.</li>
+          </ul>
+          <strong>Entregables clave:</strong> Documento de Arquitectura, ADRs, diagramas C4/Structurizr, diseno de Bounded Contexts, estrategia de seguridad, plan de DRP, gobernanza tecnica post-LIVE, transferencia de conocimiento al equipo base.
+        </div>
+        <div class="role-total">Costo en este presupuesto: <strong>$104.000.000 COP</strong></div>
+      </div>
+    </div>
+
+    <!-- ── DEMÁS ROLES — 2 COLUMNAS ── -->
+    <div class="role-grid">
+      <div class="role-card" style="border-left: 4px solid #2563eb;">
+        <div class="role-top">
+          <div class="role-title">Desarrollador Senior Fullstack</div>
+          <div class="role-salary">$10.000.000/mes</div>
+        </div>
+        <div class="role-months">1 perfil &middot; 8 meses &middot; Total: $80.000.000</div>
+        <div class="role-desc">
+          <strong>Mision:</strong> Construccion del Portal Administrativo UPME y el Sandbox de certificacion de CPOs.<br/><br/>
+          <strong>Perfil y experiencia requerida (5+ anos):</strong>
+          <ul style="margin:8px 0 8px 16px; font-size:0.78rem; color:#475569;">
+            <li><strong>React 18 + TypeScript:</strong> Hooks avanzados, Context API, custom hooks, TanStack Query para cache client-side.</li>
+            <li><strong>UI/UX:</strong> TailwindCSS 3+, Radix UI, shadcn/ui. Dashboards con Chart.js/Recharts. Mapas con Leaflet.</li>
+            <li><strong>Build &amp; Tooling:</strong> Vite 5+, ESLint, Prettier, Vitest + Testing Library.</li>
+            <li><strong>Integracion Backend:</strong> APIs REST (OpenAPI 3.1), OAuth 2.1 + PKCE + DPoP desde SPA, JWT con refresh rotation.</li>
+            <li><strong>Core Web Vitals:</strong> LCP &lt; 2.5s, FID &lt; 100ms, CLS &lt; 0.1.</li>
+          </ul>
+          <strong>Entregable critico:</strong> Sin Sandbox funcional, la certificacion de CPOs falla y el hito LIVE se bloquea.
+        </div>
+        <div class="role-total">Costo total validado: <strong>$80.000.000 COP</strong></div>
+      </div>
+
+      <div class="role-card" style="border-left: 4px solid #0ea5e9;">
+        <div class="role-top">
+          <div class="role-title">2 Desarrolladores Senior Backend</div>
+          <div class="role-salary">$10.000.000 c/u</div>
+        </div>
+        <div class="role-months">2 perfiles &middot; 8 meses &middot; Total: $160.000.000</div>
+        <div class="role-desc">
+          <strong>Mision:</strong> Nucleo transaccional — Core OCPI, ingesta de alta concurrencia, integraciones con Cargame.<br/><br/>
+          <strong>Perfil y experiencia requerida (5+ anos):</strong>
+          <ul style="margin:8px 0 8px 16px; font-size:0.78rem; color:#475569;">
+            <li><strong>Golang (Go 1.22+):</strong> Servicios de alta concurrencia. Goroutines, channels, context propagation. Frameworks: Fiber/Echo/Chi. ORM: pgx, sqlc.</li>
+            <li><strong>Python 3.12+ / FastAPI:</strong> Validador OCPI con Pydantic v2, schemas estrictos, async handlers.</li>
+            <li><strong>Arquitectura Hexagonal:</strong> Ports &amp; Adapters, inyeccion de dependencias, separacion dominio/aplicacion/infraestructura.</li>
+            <li><strong>Event-Driven:</strong> Kafka/OCI Streaming, idempotencia, DLQ, patron Outbox.</li>
+            <li><strong>OCPI 2.2.1:</strong> Locations, EVSEs, Tariffs, Sessions, CDRs, Tokens, Commands.</li>
+            <li><strong>Seguridad:</strong> OAuth 2.1 (client_credentials + mTLS), JWT RS256, DPoP, rate limiting por CPO tier.</li>
+            <li><strong>Bases de datos:</strong> Oracle ATP, TimescaleDB, Redis (cache-aside, write-through, sliding window).</li>
+          </ul>
+          <strong>Volumetria:</strong> ~600 estaciones x 5 conectores x 1 reporte/60s = ~50 req/s = 21.6M tx/mes.
+        </div>
+        <div class="role-total">Costo total validado: <strong>$160.000.000 COP</strong></div>
+      </div>
+
+      <div class="role-card" style="border-left: 4px solid #16a34a;">
+        <div class="role-top">
+          <div class="role-title">3 Desarrolladores SemiSenior (2×14m + 1×8m)</div>
+          <div class="role-salary">$7.000.000 c/u</div>
+        </div>
+        <div class="role-months">2 perfiles × 14 meses + 1 perfil × 8 meses &middot; Total: $252.000.000</div>
+        <div class="role-desc">
+          <strong>Mision:</strong> Desarrollo de modulos funcionales, soporte evolutivo y continuidad post-LIVE.<br/><br/>
+          <strong>Perfil y experiencia requerida (3+ anos):</strong>
+          <ul style="margin:8px 0 8px 16px; font-size:0.78rem; color:#475569;">
+            <li><strong>Python 3.10+ / FastAPI:</strong> Endpoints REST, Pydantic, SQLAlchemy, asyncpg.</li>
+            <li><strong>React + TypeScript:</strong> Componentes funcionales, hooks, consumo de APIs.</li>
+            <li><strong>Bases de datos:</strong> SQL avanzado, Oracle ATP, modelado relacional, migraciones.</li>
+            <li><strong>Testing:</strong> pytest, Vitest, cobertura &gt; 80%.</li>
+            <li><strong>Git &amp; CI/CD:</strong> Git Flow, code reviews, pipelines CI.</li>
+          </ul>
+          <strong>Valor estrategico:</strong> Permanencia de 14 meses asegura transferencia de conocimiento y continuidad post-LIVE.
+        </div>
+        <div class="role-total">Costo total validado: <strong>$252.000.000 COP</strong></div>
+      </div>
+
+      <div class="role-card" style="border-left: 4px solid #d97706;">
+        <div class="role-top">
+          <div class="role-title">DevOps Senior</div>
+          <div class="role-salary">$9.000.000/mes</div>
+        </div>
+        <div class="role-months">1 perfil &middot; 8 meses &middot; Total: $72.000.000</div>
+        <div class="role-desc">
+          <strong>Mision:</strong> Infraestructura cloud, pipelines CI/CD y disponibilidad 99.9%.<br/><br/>
+          <strong>Perfil y experiencia requerida (5+ anos):</strong>
+          <ul style="margin:8px 0 8px 16px; font-size:0.78rem; color:#475569;">
+            <li><strong>OCI:</strong> Compartments, IAM, VCN/Subnets, NSGs, Container Instances, OCI DevOps, OCI Vault, OCI WAF, Certificates.</li>
+            <li><strong>IaC:</strong> Terraform (modulos OCI), OCI Resource Manager, Git-versionado.</li>
+            <li><strong>Contenedores:</strong> Docker, OCIR con vulnerability scanning, OKE o Container Instances.</li>
+            <li><strong>CI/CD &amp; GitOps:</strong> OCI DevOps pipelines, ArgoCD, Helm, blue-green / canary deployments.</li>
+            <li><strong>Observabilidad:</strong> OCI Monitoring, Logging Analytics, alarmas, PagerDuty.</li>
+            <li><strong>DRP:</strong> OCI Full Stack DR, failover cross-region, RPO &lt; 1h / RTO &lt; 30min.</li>
+          </ul>
+          <strong>Entregable critico:</strong> Sin DevOps no hay ambientes, no hay pipelines, no hay monitoreo.
+        </div>
+        <div class="role-total">Costo total validado: <strong>$72.000.000 COP</strong></div>
+      </div>
+
+      <div class="role-card" style="border-left: 4px solid #7c3aed;">
+        <div class="role-top">
+          <div class="role-title">Analista de QA</div>
+          <div class="role-salary">$8.000.000/mes</div>
+        </div>
+        <div class="role-months">1 perfil &middot; 8 meses &middot; Total: $64.000.000</div>
+        <div class="role-desc">
+          <strong>Mision:</strong> Calidad, seguridad y confiabilidad antes de certificacion de CPOs y LIVE.<br/><br/>
+          <strong>Perfil y experiencia requerida (3+ anos):</strong>
+          <ul style="margin:8px 0 8px 16px; font-size:0.78rem; color:#475569;">
+            <li><strong>Testing de APIs:</strong> Postman/Bruno, Schemathesis (contract testing OpenAPI 3.1), validacion OCPI 2.2.1.</li>
+            <li><strong>Performance:</strong> k6, Artillery o JMeter (target: 50 req/s, P99 &lt; 500ms).</li>
+            <li><strong>Seguridad:</strong> OWASP ZAP (DAST), OWASP API Security Top 10, pruebas JWT/mTLS/BOLA/BFLA.</li>
+            <li><strong>Automatizacion:</strong> Pytest, Vitest, CI/CD testing pipelines, cobertura &gt; 80%.</li>
+            <li><strong>Data quality:</strong> Integridad OCPI, deteccion de anomalias, trazabilidad SIC.</li>
+          </ul>
+          <strong>Entregable critico:</strong> Suite de compliance para certificacion de CPOs en Sandbox.
+        </div>
+        <div class="role-total">Costo total validado: <strong>$64.000.000 COP</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ── 9. SINERGIA DATA ──────────────────────────────────── -->
+  <div class="section" id="s9">
+    <div class="section-title"><span>9.</span> Sinergia con Equipo de DATA y Analitica</div>
+
+    <p>El equipo de Electromovilidad actua como el <strong>"brazo ejecutor"</strong> que entrega datos transaccionales limpios para que el equipo de DATA y Analitica realice la transformacion hacia <strong>Dato de Gobierno</strong>.</p>
+
+    <div class="subsection-title">Equipo DATA y Analitica (colaboracion transversal)</div>
+    <div class="data-team">
+      <div class="data-member">Wilson</div>
+      <div class="data-member">Sofia</div>
+      <div class="data-member">Jesus</div>
+      <div class="data-member">Fabian</div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:16px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Entregable del Equipo Electromovilidad</th>
+            <th>Insumo para Equipo DATA</th>
+            <th class="c">Activacion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Datos OCPI validados — Locations, Sessions, CDRs</td>
+            <td>Ingesta al Data Lake OCI (capa Bronze &rarr; Silver)</td>
+            <td class="c">Jun–Jul 2026</td>
+          </tr>
+          <tr>
+            <td>Pipeline de streaming Kafka operativo</td>
+            <td>Procesamiento en tiempo real y ETL Spark</td>
+            <td class="c">Ago 2026</td>
+          </tr>
+          <tr>
+            <td>Plataforma LIVE + APIs estables</td>
+            <td>Capa Gold — Dato de Gobierno, KPIs regulatorios</td>
+            <td class="c">Dic 2026</td>
+          </tr>
+          <tr>
+            <td>Equipo base (5 personas) estabilizado</td>
+            <td>Evolucion analitica y tableros para MinEnergia / SIC</td>
+            <td class="c">Ene–May 2027</td>
+          </tr>
+          <tr>
+            <td>Arquitecto en fase de gobernanza</td>
+            <td>Transferencia de conocimiento arquitectural al equipo DATA</td>
+            <td class="c">Jun 2027</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="success">
+      <strong>Presupuesto complementario:</strong> Los costos del equipo DATA (Wilson, Sofia, Jesus, Fabian) no estan incluidos en este presupuesto de $732M. Su incorporacion activa se proyecta a partir de Diciembre 2026, cuando reciben los primeros insumos estables de la plataforma en produccion.
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ── 10. MITIGACIÓN RIESGOS ────────────────────────────── -->
+  <div class="section" id="s10">
+    <div class="section-title"><span>10.</span> Mitigacion de Riesgos Presupuestales</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Riesgo Identificado</th>
+            <th class="c">Probabilidad</th>
+            <th class="c">Impacto</th>
+            <th>Medida de Mitigacion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Retraso en el hito LIVE (Nov 2026) que extienda contratos del Sr. Fullstack, 2 Sr. Backend, DevOps y QA</td>
+            <td class="c">Media</td>
+            <td class="c">Alto — +$18M/mes</td>
+            <td>Seguimiento mensual de avance. Escalar a Arquitecto si hay bloqueos tecnicos antes de Agosto.</td>
+          </tr>
+          <tr>
+            <td>Dificultad para contratar Senior Fullstack especializado</td>
+            <td class="c">Media</td>
+            <td class="c">Alto — Retraso Fase A</td>
+            <td>Iniciar convocatoria con 2 meses de anticipacion (Feb 2026). Evaluar perfiles de contratistas certificados.</td>
+          </tr>
+          <tr>
+            <td>Incumplimiento normativo que exija re-ingenieria mayor</td>
+            <td class="c">Baja</td>
+            <td class="c">Critico</td>
+            <td>Revision juridico-tecnica bimensual. Arquitecto valida cada release contra Resolucion 40559.</td>
+          </tr>
+          <tr>
+            <td>Sobre-costos de infraestructura OCI no previstos</td>
+            <td class="c">Baja</td>
+            <td class="c">Medio</td>
+            <td>Presupuesto OCI gestionado por DevOps. Alertas de consumo al 70% y 90% del presupuesto cloud.</td>
+          </tr>
+          <tr>
+            <td>Rotacion no planeada de personal clave (Arquitecto / DevOps)</td>
+            <td class="c">Baja</td>
+            <td class="c">Alto</td>
+            <td>Documentacion tecnica continua en specs/. Transferencia de conocimiento activa hacia SemiSeniors.</td>
+          </tr>
+          <tr>
+            <td>Dependencia bloqueante del equipo DATA para Fase B</td>
+            <td class="c">Media</td>
+            <td class="c">Medio</td>
+            <td>Alinear onboarding del equipo DATA desde Sep 2026, con reuniones de sincronizacion quincenales.</td>
+          </tr>
+          <tr>
+            <td>No renovacion del contrato del Arquitecto para Nov 2026</td>
+            <td class="c">Baja</td>
+            <td class="c">Critico</td>
+            <td>Gestionar aprobacion del nuevo contrato con 3 meses de anticipacion (Ago 2026). El Arquitecto es esencial para Fases B y C.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ── 11. RESUMEN PARA APROBACIÓN ──────────────────────── -->
+  <div class="section" id="s11">
+    <div class="section-title"><span>11.</span> Resumen para Aprobacion del Comite</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Concepto</th>
+            <th class="r">Inversion</th>
+            <th class="c">% del Total</th>
+            <th class="c">Personal</th>
+            <th>Periodo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Fase A — Construccion Critica</strong><br/><small style="color:#64748b;">PoC, Infra, Core OCPI, Cargame, Sandbox, DRP, LIVE</small></td>
+            <td class="r"><strong>$557.000.000</strong></td>
+            <td class="c">63.8%</td>
+            <td class="c">8</td>
+            <td>Abr–Nov 2026</td>
+          </tr>
+          <tr>
+            <td><strong>Fase B — Estabilizacion y Produccion</strong><br/><small style="color:#64748b;">Certificacion CPOs, Soporte, Analitica</small></td>
+            <td class="r"><strong>$162.000.000</strong></td>
+            <td class="c">38.6%</td>
+            <td class="c">5</td>
+            <td>Dic 2026–May 2027</td>
+          </tr>
+          <tr>
+            <td><strong>Fase C — Gobernanza Tecnica</strong><br/><small style="color:#64748b;">Gobernanza tecnica, Cierre del proyecto</small></td>
+            <td class="r"><strong>$13.000.000</strong></td>
+            <td class="c">1.9%</td>
+            <td class="c">1</td>
+            <td>Jun 2027</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><strong>TOTAL PROYECTO ELECTROMOVILIDAD</strong></td>
+            <td class="r" style="color:#93c5fd; font-size:1rem;"><strong>$732.000.000</strong></td>
+            <td class="c" style="color:#93c5fd;"><strong>100%</strong></td>
+            <td class="c" style="color:#94a3b8;">—</td>
+            <td style="color:#94a3b8;">15 meses</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="warn" style="margin-top:20px;">
+      <strong>Recordatorio:</strong> El Arquitecto de Solucion trabaja durante los 15 meses del proyecto. Los primeros 7 meses (Abr–Oct 2026) estan cubiertos por su contrato vigente actual. Este presupuesto de $732M incluye su nuevo contrato de 8 meses a partir de noviembre 2026 ($104M). El equipo se complementa con 3 Seniors (Fullstack + 2 Backend) y DevOps durante la fase de construccion critica.
+    </div>
+
+    <div class="subsection-title" style="margin-top:24px;">Consideraciones Tecnicas Criticas de Exito</div>
+
+    <div class="role-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+      <div class="role-card">
+        <div class="role-title">Sandbox CPOs (Ago–Oct 2026)</div>
+        <div class="role-desc" style="margin-top:8px;">El Senior Fullstack es critico en este periodo para garantizar que los operadores de carga puedan interactuar con las APIs antes del hito LIVE. Sin Sandbox funcional, la certificacion falla.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-title">Continuidad Arquitectural</div>
+        <div class="role-desc" style="margin-top:8px;">La extension del contrato del Arquitecto por 8 meses adicionales asegura coherencia tecnica durante la estabilizacion, certificacion de CPOs y la gobernanza final del proyecto. Es el unico rol que cubre las 3 fases.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-title">Interdependencia con DATA</div>
+        <div class="role-desc" style="margin-top:8px;">El presupuesto depende de la coordinacion con el equipo de Data Lake OCI para que la ingesta de datos no retrase el desarrollo de funcionalidades analiticas de Gobierno.</div>
+      </div>
+    </div>
+
+    <div class="quote-exec" style="margin-top:28px;">
+      <p>Con un equipo optimizado de <strong>9 profesionales</strong> y un presupuesto total de <strong>$732 millones</strong>, este modelo de inversion garantiza el cumplimiento de la Resolucion 40559, la puesta en produccion de la plataforma de interoperabilidad y una fase de gobernanza tecnica que asegura la transferencia de conocimiento y la sostenibilidad del sistema a largo plazo.</p>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ────────────────────────────────────────────── -->
+  <div class="doc-footer">
+    <div class="footer-left">
+      UPME — Unidad de Planeacion Minero-Energetica<br/>
+      Plataforma de Interoperabilidad de Electromovilidad<br/>
+      Resolucion 40559 de 2025 — MinEnergia
+    </div>
+    <div class="footer-right">
+      Documento: presupuesto-electromovilidad-v2<br/>
+      Version: 2.0 — Marzo 2026<br/>
+      Uso Interno — Comite Tecnico y Gerencial
+    </div>
+  </div>
+
+</div><!-- /doc -->
+
+<script>
+// ── BAR CHART ────────────────────────────────────────────────────────────────
+const barCtx = document.getElementById('barChart').getContext('2d');
+const months = [
+  'Abr 26','May 26','Jun 26','Jul 26','Ago 26','Sep 26','Oct 26',
+  'Nov 26','Dic 26','Ene 27','Feb 27','Mar 27','Abr 27','May 27',
+  'Jun 27'
+];
+const costs  = [68,68,68,68,68,68,68,81,27,27,27,27,27,27,13];
+const colors = costs.map((v, i) => {
+  if (i === 7) return '#dc2626'; // LIVE mes
+  if (i < 7)   return '#2563eb'; // Fase A (pre-LIVE)
+  if (i >= 8 && i <= 13) return '#16a34a'; // Fase B
+  return '#d97706';              // Fase C (Jun 27)
+});
+
+new Chart(barCtx, {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [{
+      label: 'Costo Mensual ($M COP)',
+      data: costs,
+      backgroundColor: colors,
+      borderRadius: 5,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` $${ctx.parsed.y}.000.000 COP`,
+          afterLabel: ctx => {
+            const i = ctx.dataIndex;
+            if (i === 7)  return 'HITO LIVE';
+            if (i === 3)  return 'Core OCPI';
+            if (i === 4)  return 'Sandbox CPOs';
+            if (i === 8)  return 'Salen Sr. Fullstack, 2 Sr. Backend, DevOps y QA';
+            if (i === 14) return 'Solo Arquitecto';
+            return '';
+          }
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 80,
+        ticks: {
+          callback: v => `$${v}M`,
+          font: { size: 11 }
+        },
+        grid: { color: '#f1f5f9' }
+      },
+      x: {
+        ticks: { font: { size: 10 } },
+        grid: { display: false }
+      }
+    }
+  }
+});
+
+// ── PIE CHART ────────────────────────────────────────────────────────────────
+const pieCtx = document.getElementById('pieChart').getContext('2d');
+new Chart(pieCtx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Arquitecto','Sr. Fullstack','Sr. Backend','3 SemiSeniors','DevOps Sr','QA'],
+    datasets: [{
+      data: [104, 80, 160, 252, 72, 64],
+      backgroundColor: ['#1a4b8c','#2563eb','#0ea5e9','#16a34a','#d97706','#7c3aed'],
+      borderWidth: 2,
+      borderColor: '#fff',
+    }]
+  },
+  options: {
+    responsive: false,
+    cutout: '62%',
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` $${ctx.parsed.toLocaleString('es-CO')}M — ${((ctx.parsed/732)*100).toFixed(1)}%`
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
